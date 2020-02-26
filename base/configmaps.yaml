@@ -5,3 +5,4 @@ metadata:
   name: thoth 
 data: 
   applicationName: thoth
+  applicationVersion: 0.5.0
