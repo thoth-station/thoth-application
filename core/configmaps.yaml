@@ -4,4 +4,4 @@ apiVersion: v1
 metadata:
   name: thoth 
 data: 
-  deploymentName: dev
+  applicationName: thoth
