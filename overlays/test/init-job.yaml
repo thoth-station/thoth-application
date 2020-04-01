@@ -7,4 +7,5 @@ spec:
   template:
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/thoth-test-goern/init-job:latest 
+        - name: init-job
+          image: image-registry.openshift-image-registry.svc:5000/thoth-test-goern/init-job:latest
