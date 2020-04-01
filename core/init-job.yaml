@@ -68,7 +68,7 @@ spec:
                 secretKeyRef:
                   key: database-name
                   name: postgresql
-          image: init-job:latest
+          image: init-job
           name: init-job
           resources:
             limits:
