@@ -1,8 +1,9 @@
 ---
-kind: ImageStream
 apiVersion: image.openshift.io/v1
+kind: ImageStream
 metadata:
   labels:
+    app: thoth
     component: user-api
   name: user-api
 spec:
@@ -11,6 +12,26 @@ spec:
       from:
         kind: DockerImage
         name: "quay.io/thoth-station/user-api:v0.6.0-dev"
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: thoth
+    component: init-job
+  name: init-job
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/init-job:v0.6.0-dev
+      generation: 17
       importPolicy: {}
       referencePolicy:
         type: Source
