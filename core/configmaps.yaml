@@ -2,7 +2,12 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: thoth 
-data: 
+  name: thoth
+data:
   applicationName: thoth
   applicationVersion: 0.5.0
+  middletier-namespace: thoth-middletier
+  infra-namespace: thoth-infra
+  sentry-dsn: unset
+  storage-bucket-name: unset
+  postgresql-host: postgresql
