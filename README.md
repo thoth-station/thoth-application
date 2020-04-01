@@ -18,3 +18,9 @@ This proposal has two main aspects:
 ### pushing a release to production
 
 ### developing a new component
+
+# Open Questions
+
+## how do we tag release
+
+in git repo of the app component, in git repo of app config, in container image repo
