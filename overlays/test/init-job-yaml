@@ -1,0 +1,10 @@
+---
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: init-job
+spec:
+  template:
+    spec:
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/thoth-test-goern/init-job:latest 
