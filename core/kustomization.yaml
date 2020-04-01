@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - configmaps.yaml
   - imagestreams.yaml
+  - init-job.yaml
