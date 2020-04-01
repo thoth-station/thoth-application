@@ -78,4 +78,3 @@ spec:
               cpu: 500m
               memory: 256Mi
       restartPolicy: OnFailure
-      test: false
