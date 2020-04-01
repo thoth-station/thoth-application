@@ -15,67 +15,67 @@ spec:
         component: init-job
     spec:
       containers:
-      - env:
-        - name: THOTH_LOG_INIT_JOB
-          value: INFO
-        - name: KUBERNETES_API_URL
-          value: https://kubernetes.default.svc.cluster.local
-        - name: KUBERNETES_VERIFY_TLS
-          value: "0"
-        - name: THOTH_RESULT_API_URL
-          value: http://result-api
-        - name: THOTH_MIDDLETIER_NAMESPACE
-          valueFrom:
-            configMapKeyRef:
-              key: middletier-namespace
-              name: thoth
-        - name: THOTH_INFRA_NAMESPACE
-          valueFrom:
-            configMapKeyRef:
-              key: infra-namespace
-              name: thoth
-        - name: SENTRY_DSN
-          valueFrom:
-            secretKeyRef:
-              key: sentry-dsn
-              name: thoth
-        - name: THOTH_DEPLOYMENT_NAME
-          valueFrom:
-            configMapKeyRef:
-              key: storage-bucket-name
-              name: thoth
-        - name: KNOWLEDGE_GRAPH_HOST
-          valueFrom:
-            configMapKeyRef:
-              key: postgresql-host
-              name: thoth
-        - name: KNOWLEDGE_GRAPH_PORT
-          value: "5432"
-        - name: KNOWLEDGE_GRAPH_SSL_DISABLED
-          value: "1"
-        - name: KNOWLEDGE_GRAPH_USER
-          valueFrom:
-            secretKeyRef:
-              key: database-user
-              name: postgresql
-        - name: KNOWLEDGE_GRAPH_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: database-password
-              name: postgresql
-        - name: KNOWLEDGE_GRAPH_DATABASE
-            valueFrom:
-              secretKeyRef:
-                key: database-name
-                name: postgresql
-        image: init-job:latest
-        name: init-job
-        resources:
-          limits:
-            cpu: 500m
-            memory: 256Mi
-          requests:
-            cpu: 500m
-            memory: 256Mi
+        - env:
+            - name: THOTH_LOG_INIT_JOB
+              value: INFO
+            - name: KUBERNETES_API_URL
+              value: https://kubernetes.default.svc.cluster.local
+            - name: KUBERNETES_VERIFY_TLS
+              value: "0"
+            - name: THOTH_RESULT_API_URL
+              value: http://result-api
+            - name: THOTH_MIDDLETIER_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: middletier-namespace
+                  name: thoth
+            - name: THOTH_INFRA_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: infra-namespace
+                  name: thoth
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  key: sentry-dsn
+                  name: thoth
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: storage-bucket-name
+                  name: thoth
+            - name: KNOWLEDGE_GRAPH_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: postgresql-host
+                  name: thoth
+            - name: KNOWLEDGE_GRAPH_PORT
+              value: "5432"
+            - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+              value: "1"
+            - name: KNOWLEDGE_GRAPH_USER
+              valueFrom:
+                secretKeyRef:
+                  key: database-user
+                  name: postgresql
+            - name: KNOWLEDGE_GRAPH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: database-password
+                  name: postgresql
+            - name: KNOWLEDGE_GRAPH_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  key: database-name
+                  name: postgresql
+          image: init-job:latest
+          name: init-job
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 500m
+              memory: 256Mi
       restartPolicy: OnFailure
       test: false
