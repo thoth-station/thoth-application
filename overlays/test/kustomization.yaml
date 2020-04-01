@@ -4,4 +4,4 @@ resources:
   - github.com/goern/thoth-application?ref=master
 patchesStrategicMerge:
   - configmaps.yaml
-  - imageStreamTags.yaml
+  - imagestreamtags.yaml
