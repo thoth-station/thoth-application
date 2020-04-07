@@ -19,6 +19,7 @@ spec:
       serviceAccountName: result-api
       containers:
         - name: result-api
+          image: "result-api:latest"
           env:
             - name: THOTH_DEPLOYMENT_NAME
               valueFrom:
