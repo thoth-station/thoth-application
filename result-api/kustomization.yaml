@@ -4,6 +4,10 @@ resources:
   - configmaps.yaml
   - deploymentconfigs.yaml
   - imagestreams.yaml
-  - secrets.yaml
   - serviceaccounts.yaml
   - services.yaml
+secretGenerator:
+  - name: result-api
+    literals:
+      - ceph-key-id=empty
+      - ceph-secret-key=empty
