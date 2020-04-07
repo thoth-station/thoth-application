@@ -11,3 +11,5 @@ data:
   sentry-dsn: unset
   storage-bucket-name: unset
   postgresql-host: postgresql
+  rsyslog-host: syslog
+  rsyslog-port: 514
