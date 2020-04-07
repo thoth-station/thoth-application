@@ -46,16 +46,6 @@ spec:
                 configMapKeyRef:
                   key: ceph-bucket-prefix
                   name: result-api
-            - name: THOTH_CEPH_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: result-api
-                  key: ceph-key-id
-            - name: THOTH_CEPH_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: result-api
-                  key: ceph-secret-key
             - name: RSYSLOG_HOST
               valueFrom:
                 configMapKeyRef:
@@ -66,11 +56,6 @@ spec:
                 configMapKeyRef:
                   key: rsyslog-port
                   name: thoth
-            - name: SENTRY_DSN
-              valueFrom:
-                secretKeyRef:
-                  name: thoth
-                  key: sentry-dsn
             - name: KNOWLEDGE_GRAPH_HOST
               valueFrom:
                 configMapKeyRef:
@@ -95,6 +80,21 @@ spec:
                 secretKeyRef:
                   name: postgresql
                   key: database-name
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: thoth
+                  key: sentry-dsn
+            - name: THOTH_CEPH_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: result-api
+                  key: ceph-key-id
+            - name: THOTH_CEPH_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: result-api
+                  key: ceph-secret-key
           ports:
             - containerPort: 8080
               protocol: TCP
