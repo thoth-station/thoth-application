@@ -5,7 +5,7 @@ metadata:
   name: thoth
 data:
   applicationName: thoth
-  applicationVersion: 0.5.0
+  applicationVersion: "0.5.0"
   deploymentName: integration
   middletier-namespace: thoth-middletier
   infra-namespace: thoth-infra
@@ -13,4 +13,4 @@ data:
   storage-bucket-name: thoth
   postgresql-host: postgresql
   rsyslog-host: syslog
-  rsyslog-port: "514" # FIXME this should be an int
+  rsyslog-port: "514"
