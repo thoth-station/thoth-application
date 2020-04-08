@@ -7,3 +7,11 @@ patchesStrategicMerge:
   - configmaps.yaml
   - imagestreamtags.yaml
   - init-job.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+secretGenerator:
+  - name: thoth
+    literals:
+      - app-secret-key=empty
+      - management-api-token=empty
+      - thoth-secret=empt
