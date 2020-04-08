@@ -6,10 +6,3 @@ resources:
   - init-job.yaml
 generatorOptions:
   disableNameSuffixHash: true
-secretGenerator:
-  - name: thoth
-    literals:
-      - app-secret-key=empty
-      - management-api-token=empty
-      - sentry-dsn=empty@unset
-      - thoth-secret=empt
