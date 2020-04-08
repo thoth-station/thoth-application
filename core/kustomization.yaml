@@ -4,7 +4,6 @@ resources:
   - configmaps.yaml
   - imagestreams.yaml
   - init-job.yaml
-  - secrets.yaml
 secretGenerator:
   - name: thoth
     literals:
