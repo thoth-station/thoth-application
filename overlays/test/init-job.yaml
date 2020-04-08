@@ -8,4 +8,4 @@ spec:
     spec:
       containers:
         - name: init-job
-          image: image-registry.openshift-image-registry.svc:5000/thoth-test-goern/init-job:latest
+          image: image-registry.openshift-image-registry.svc:5000/thoth-goern-test/init-job:latest
