@@ -6,6 +6,8 @@ resources:
   - imagestreams.yaml
   - serviceaccounts.yaml
   - services.yaml
+generatorOptions:
+  disableNameSuffixHash: true
 secretGenerator:
   - name: result-api
     literals:

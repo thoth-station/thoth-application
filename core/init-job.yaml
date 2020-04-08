@@ -38,7 +38,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: sentry-dsn
-                  name: thoth-fdmtfh49hh
+                  name: thoth
             - name: THOTH_DEPLOYMENT_NAME
               valueFrom:
                 configMapKeyRef:
