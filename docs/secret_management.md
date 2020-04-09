@@ -1,0 +1,18 @@
+# Secret Management
+
+This chapter describes how to manage secrets for Thoth deployments. As we migrate to ArgoCD/kustomize, we not only
+use `gopass` and `ansible-vault` but also `sops`. The thoth-ops container image v0.17.0 does include `sops`.
+
+## GnuPG Keys
+
+GnuPG Keys of each DevOps and Ops engineer should be uploaded to `hkps://keys.openpgp.org`, so that they are
+accessible to all DevOps and Ops. 
+
+## Storage location of encrypted secrets
+
+For ArgoCD applications, secret information shall be stored within the corresponding application configuration
+repository. Test, Integration, Stage and Production data should be encrypted for the corresponding sets of DevOps
+and/or Ops engineers. This configuration should be done via `.sops.yaml` and its [creation rules](https://github.com/mozilla/sops#29using-sopsyaml-conf-to-select-kmspgp-for-new-files) in the root directory of the application
+configuration repository. See [thoth-application](https://github.com/thoth-station/thoth-application/blob/master/.sops.yaml) for an example. 
+
+## Local decryption of secrets
