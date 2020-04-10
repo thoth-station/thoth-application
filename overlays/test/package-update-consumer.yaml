@@ -2,9 +2,6 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  labels:
-    app: thoth
-    component: package-update-consumer
   name: package-update-consumer
 spec:
   template:
