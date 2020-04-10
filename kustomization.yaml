@@ -4,3 +4,4 @@ resources:
   - core
   - frontend
   - result-api
+  - package-update
