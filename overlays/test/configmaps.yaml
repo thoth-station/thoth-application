@@ -6,3 +6,22 @@ metadata:
 data:
   applicationVersion: 0.6.0-dev
   deploymentName: goern-test
+  postgresql-host: postgresql.thoth-goern-test.svc
+  storage-bucket-name: thoth-goern-tesn
+  amun-infra-namespace: thoth-goern-test
+  amun-inspection-namespace: thoth-goern-test
+  amun-namespace: thoth-goern-test
+  backend-namespace: thoth-goern-test
+  middletier-namespace: thoth-goern-test
+  frontend-namespace: thoth-goern-test
+  infra-namespace: thoth-goern-test
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: result-api
+data:
+  ceph-bucket-name: "thoth"
+  ceph-bucket-prefix: "data/thoth-goern-test"
+  ceph-host: "https://s3.upshift.redhat.com/"
+  ceph-results-path: "/results"
