@@ -88,12 +88,12 @@ spec:
             - name: THOTH_CEPH_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: result-api
+                  name: ceph
                   key: ceph-key-id
             - name: THOTH_CEPH_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: result-api
+                  name: ceph
                   key: ceph-secret-key
           ports:
             - containerPort: 8080

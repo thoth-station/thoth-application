@@ -128,5 +128,5 @@ spec:
             items:
               - key: kafka_ca.crt
                 path: kafka_ca.crt
-            secretName: kafka-secret
+            secretName: kafka
   test: false

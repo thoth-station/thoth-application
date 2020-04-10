@@ -8,8 +8,3 @@ resources:
   - services.yaml
 generatorOptions:
   disableNameSuffixHash: true
-secretGenerator:
-  - name: result-api
-    literals:
-      - ceph-key-id=empty
-      - ceph-secret-key=empty
