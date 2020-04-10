@@ -51,3 +51,20 @@ spec:
       importPolicy: {}
       referencePolicy:
         type: Source
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: thoth
+    component: package-update
+  name: package-update-job
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: "quay.io/thoth-station/package-update-job:v0.6.0-dev"
+      importPolicy: {}
+      referencePolicy:
+        type: Source
