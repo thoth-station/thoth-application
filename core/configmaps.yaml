@@ -37,4 +37,4 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: kafka
+  name: ceph 
