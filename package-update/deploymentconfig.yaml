@@ -104,6 +104,7 @@ spec:
                 configMapKeyRef:
                   key: kafka-topic-retention-time
                   name: thoth
+          image: "package-update-job"
           imagePullPolicy: Always
           name: package-update-consumer
           ports:
