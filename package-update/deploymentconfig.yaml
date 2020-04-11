@@ -47,17 +47,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: ceph-host
-                  name: thoth
+                  name: ceph
             - name: THOTH_CEPH_BUCKET
               valueFrom:
                 configMapKeyRef:
                   key: ceph-bucket-name
-                  name: thoth
+                  name: ceph
             - name: THOTH_CEPH_BUCKET_PREFIX
               valueFrom:
                 configMapKeyRef:
                   key: ceph-bucket-prefix
-                  name: thoth
+                  name: ceph
             - name: KNOWLEDGE_GRAPH_HOST
               valueFrom:
                 configMapKeyRef:
@@ -86,24 +86,24 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: kafka-bootstrap-servers
-                  name: thoth
+                  name: kafka
             - name: KAFKA_CAFILE
               value: /mnt/secrets/kafka_ca.crt
             - name: KAFKA_CLIENT_ID
               valueFrom:
                 configMapKeyRef:
                   key: kafka-client-id
-                  name: thoth
+                  name: kafka
             - name: KAFKA_SSL_AUTH
               valueFrom:
                 configMapKeyRef:
                   key: kafka-ssl-auth
-                  name: thoth
+                  name: kafka
             - name: KAFKA_RETENTION_TIME_SECONDS
               valueFrom:
                 configMapKeyRef:
                   key: kafka-topic-retention-time
-                  name: thoth
+                  name: kafka
           image: "package-update-job:latest"
           name: package-update-consumer
           ports:

@@ -25,7 +25,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: storage-bucket-name
-                  name: result-api
+                  name: thoth
             - name: THOTH_PERSISTENT_VOLUME_PATH
               valueFrom:
                 configMapKeyRef:
@@ -35,17 +35,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: ceph-host
-                  name: result-api
+                  name: ceph
             - name: THOTH_CEPH_BUCKET
               valueFrom:
                 configMapKeyRef:
                   key: ceph-bucket-name
-                  name: result-api
+                  name: ceph
             - name: THOTH_CEPH_BUCKET_PREFIX
               valueFrom:
                 configMapKeyRef:
                   key: ceph-bucket-prefix
-                  name: result-api
+                  name: ceph
             - name: RSYSLOG_HOST
               valueFrom:
                 configMapKeyRef:
