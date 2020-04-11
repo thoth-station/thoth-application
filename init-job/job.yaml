@@ -14,6 +14,7 @@ spec:
         app: thoth
         component: init-job
     spec:
+      serviceAccountName: init-job
       containers:
         - env:
             - name: THOTH_LOG_INIT_JOB
@@ -70,8 +71,6 @@ spec:
                   name: postgresql
           image: init-job
           name: init-job
-          serviceAccount: init-job
-          serviceAccountName: init-job
           resources:
             limits:
               cpu: 500m
