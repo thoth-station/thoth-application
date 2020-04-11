@@ -71,6 +71,7 @@ spec:
           image: init-job
           name: init-job
           serviceAccount: init-job
+          serviceAccountName: init-job
           resources:
             limits:
               cpu: 500m
