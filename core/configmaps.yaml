@@ -33,3 +33,8 @@ data:
   kafka-client-id: "thoth-messaging"
   kafka-ssl-auth: "1"
   kafka-topic-retention-time: "8640"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: kafka
