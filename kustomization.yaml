@@ -2,6 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - core
-  - frontend
+  - solver
   - result-api
+  - init-job
   - package-update
+  - frontend
