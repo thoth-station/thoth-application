@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    thoth-station.ninja/template-version: 0.2.0
+    thoth-station.ninja/template-version: 0.3.0
   labels:
     app: thoth
     component: init-job
