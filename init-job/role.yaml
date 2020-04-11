@@ -14,3 +14,8 @@ rules:
     resources:
       - configmaps
     verbs: ["get"]
+  - apiGroups: ["template.openshift.io"]
+    resource: "templates"
+    verbs:
+      - "get"
+      - "list"
