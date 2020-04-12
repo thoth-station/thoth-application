@@ -17,6 +17,7 @@ rules:
   - apiGroups: ["template.openshift.io"]
     resources:
       - "templates"
+      - "processedtemplates"
     verbs:
       - "get"
       - "list"
