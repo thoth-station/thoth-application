@@ -10,6 +10,7 @@ This proposal has two main aspects:
 
 ## Separation of Application Components and Application Configuration
 
+There is a separate `thoth-solver` ArgoCD Application in the `solver/` directory.  
 
 ## Use Cases
 
