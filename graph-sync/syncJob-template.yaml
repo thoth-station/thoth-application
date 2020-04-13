@@ -1,0 +1,215 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: graph-sync-job
+  annotations:
+    description: "Thoth: Graph Sync Job for syncing multiple documents"
+    openshift.io/display-name: "Thoth: Graph Sync Job Multiple Documents"
+    version: 0.6.0
+    tags: thoth,ai-stacks,aistacks,graph-sync-job
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to deploy Thoth's Graph Sync Job on OpenShift.
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+    thoth-station.ninja/template-version: 0.6.0
+  labels:
+    template: graph-sync-job
+    app: thoth
+    component: graph-sync
+
+parameters:
+  - description: Registry the ImageStream to be use lives in
+    displayName: ImageStream Registry
+    required: true
+    name: IMAGE_STREAM_REGISTRY
+    value: "docker-registry.default.svc:5000"
+
+  - description: Namespace the ImageStream to be used
+    displayName: ImageStream Project
+    required: true
+    name: IMAGE_STREAM_NAMESPACE
+    value: "thoth-infra-stage"
+
+  - description: Tag of the ImageStream to be use
+    displayName: ImageStream Tag
+    required: true
+    name: IMAGE_STREAM_TAG
+    value: "latest"
+
+  - name: THOTH_ONLY_SOLVER_DOCUMENTS
+    displayName: Sync only solver documents
+    description: Sync only solver documents
+    required: true
+    value: "1"
+
+  - name: THOTH_ONLY_ADVISER_DOCUMENTS
+    displayName: Sync only adviser documents
+    description: Sync only adviser documents
+    required: true
+    value: "0"
+
+  - name: THOTH_ONLY_ANALYSIS_DOCUMENTS
+    displayName: Sync only analysis documents
+    description: Sync only analysis documents
+    required: true
+    value: "0"
+
+  - name: THOTH_ONLY_PACKAGE_ANALYZER_DOCUMENTS
+    displayName: Sync only package analyzer documents
+    description: Sync only package analyzer documents
+    required: true
+    value: "0"
+
+  - name: THOTH_ONLY_DEPENDENCY_MONKEY_DOCUMENTS
+    displayName: Sync only dependency monkey documents
+    description: Sync only dependency monkey documents
+    required: true
+    value: "0"
+
+  - name: THOTH_ONLY_PROVENANCE_CHECKER_DOCUMENTS
+    displayName: Sync only provenance checker documents
+    description: Sync only provenance checker documents
+    required: true
+    value: "0"
+
+  - name: THOTH_FORCE_SYNC
+    description: Perform force sync - sync data even if they are reported to be existing
+    displayName: Perform force sync
+    required: true
+    value: "0"
+
+  - name: THOTH_JOB_ID
+    description: A unique identifier of job
+    displayName: A unique identifier of job
+    required: true
+
+  - name: THOTH_GRAPH_SYNC_TYPE
+    description: Identifier to distinguish different graph sync types.
+    displayName: An identifier for graph sync type.
+    required: true
+
+  - name: THOTH_SYNC_DOCUMENT_ID
+    required: true
+    description: Document id to be synced.
+
+objects:
+  - apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: "${THOTH_JOB_ID}"
+      labels:
+        app: thoth
+        component: graph-sync
+        graph-sync-type: "${THOTH_GRAPH_SYNC_TYPE}"
+        mark: cleanup
+    spec:
+      backoffLimit: 7
+      template:
+        metadata:
+          labels:
+            app: thoth
+            component: graph-sync
+            graph-sync-type: "${THOTH_GRAPH_SYNC_TYPE}"
+            mark: cleanup
+        spec:
+          containers:
+            - name: graph-sync
+              image: "${IMAGE_STREAM_REGISTRY}/${IMAGE_STREAM_NAMESPACE}/graph-sync-job:${IMAGE_STREAM_TAG}"
+              env:
+                - name: THOTH_ONLY_SOLVER_DOCUMENTS
+                  value: "${THOTH_ONLY_SOLVER_DOCUMENTS}"
+                - name: THOTH_SYNC_DOCUMENT_ID
+                  value: "${THOTH_SYNC_DOCUMENT_ID}"
+                - name: THOTH_ONLY_ADVISER_DOCUMENTS
+                  value: "${THOTH_ONLY_ADVISER_DOCUMENTS}"
+                - name: THOTH_ONLY_ANALYSIS_DOCUMENTS
+                  value: "${THOTH_ONLY_ANALYSIS_DOCUMENTS}"
+                - name: THOTH_ONLY_PACKAGE_ANALYZER_DOCUMENTS
+                  value: "${THOTH_ONLY_PACKAGE_ANALYZER_DOCUMENTS}"
+                - name: THOTH_ONLY_DEPENDENCY_MONKEY_DOCUMENTS
+                  value: "${THOTH_ONLY_DEPENDENCY_MONKEY_DOCUMENTS}"
+                - name: THOTH_ONLY_PROVENANCE_CHECKER_DOCUMENTS
+                  value: "${THOTH_ONLY_DEPENDENCY_MONKEY_DOCUMENTS}"
+                - name: THOTH_FORCE_SYNC
+                  value: "${THOTH_FORCE_SYNC}"
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: storage-bucket-name
+                      name: thoth
+                - name: AMUN_API_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: amun-api-url
+                      name: thoth
+                - name: THOTH_S3_ENDPOINT_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: ceph-host
+                      name: thoth
+                - name: THOTH_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: ceph-bucket-name
+                      name: thoth
+                - name: THOTH_CEPH_BUCKET_PREFIX
+                  valueFrom:
+                    configMapKeyRef:
+                      key: ceph-bucket-prefix
+                      name: thoth
+                - name: THOTH_CEPH_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: thoth
+                      key: ceph-key-id
+                - name: THOTH_CEPH_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: thoth
+                      key: ceph-secret-key
+                - name: THOTH_METRICS_PUSHGATEWAY_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: metrics-pushgateway-url
+                - name: "THOTH_NAMESPACE"
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: SENTRY_DSN
+                  valueFrom:
+                    secretKeyRef:
+                      name: thoth
+                      key: sentry-dsn
+                - name: KNOWLEDGE_GRAPH_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: postgresql-host
+                      name: thoth
+                - name: KNOWLEDGE_GRAPH_PORT
+                  value: "5432"
+                - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+                  value: "1"
+                - name: KNOWLEDGE_GRAPH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-user
+                - name: KNOWLEDGE_GRAPH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-password
+                - name: KNOWLEDGE_GRAPH_DATABASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-name
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "1"
+                limits:
+                  memory: "512Mi"
+                  cpu: "1"
+          restartPolicy: OnFailure
