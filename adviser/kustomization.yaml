@@ -4,4 +4,3 @@ resources:
   - adviser-template.yaml
   - advise-template.yaml
   - finished-webhook-template.yaml
-  - kustomization.yaml
