@@ -5,4 +5,3 @@ resources:
   - result-api
   - init-job
   - package-update
-  - frontend
