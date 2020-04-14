@@ -29,3 +29,8 @@ How do we move components from one environment (git branch) to another?
 ## how do we tag release
 
 in git repo of the app component, in git repo of app config, in container image repo
+
+## how to patch embedded applications
+
+it seems that there is no way to patch the `solver-any` template from the test branch? As the `solver-any` template
+belongs to the solver Application, the core application overlay can not access it?
