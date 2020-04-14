@@ -8,6 +8,8 @@ This proposal has two main aspects:
 1. separate responsibilities and possibilities of Dev/DevOps and SRE/Ops team
 2. give a single view on one deployment target environment at a time
 
+Thoth is deployed to the following [environments](docs/environments.md).
+
 ## Separation of Application Components and Application Configuration
 
 There is a separate `thoth-solver` ArgoCD Application in the `solver/` directory.  
@@ -19,6 +21,8 @@ There is a separate `thoth-solver` ArgoCD Application in the `solver/` directory
 ### pushing a release to production
 
 ### developing a new component
+
+How do we move components from one environment (git branch) to another?
 
 # Open Questions
 
