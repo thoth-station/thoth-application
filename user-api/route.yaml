@@ -1,0 +1,14 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: user-api
+  annotations:
+    thoth-station.ninja/template-version: 0.6.0-dev
+  labels:
+    app: thoth
+    component: user-api
+spec:
+  to:
+    kind: Service
+    name: user-api
