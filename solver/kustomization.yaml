@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - solve_and_sync-template.yaml
   - solver-template.yaml
+  - imagestreams.yaml
