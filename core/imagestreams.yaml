@@ -33,3 +33,27 @@ metadata:
 spec:
   lookupPolicy:
     local: true
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: solver-rhel-8-py36
+spec:
+  lookupPolicy:
+    local: true
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: solver-fedora-31-py37
+spec:
+  lookupPolicy:
+    local: true
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: solver-fedora-31-py38
+spec:
+  lookupPolicy:
+    local: true
