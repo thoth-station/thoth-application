@@ -1,0 +1,206 @@
+---
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: metrics-exporter
+spec:
+  replicas: 1
+  selector:
+    service: metrics-exporter
+  template:
+    metadata:
+      labels:
+        service: metrics-exporter
+    spec:
+      serviceAccountName: metrics-exporter
+      containers:
+        - name: metrics-exporter
+          image: metrics-exporter
+          env:
+            - name: "THOTH_METRICS_EXPORTER_UPDATE_INTERVAL"
+              valueFrom:
+                configMapKeyRef:
+                  key: update-interval
+                  name: metrics-exporter
+            - name: "THOTH_METRICS_EXPORTER_GRAFANA_REDIRECT_URL"
+              valueFrom:
+                configMapKeyRef:
+                  key: grafana-redirect-url
+                  name: metrics-exporter
+            - name: "THOTH_METRICS_EXPORTER_MAX_WORKERS"
+              valueFrom:
+                configMapKeyRef:
+                  key: max-workers
+                  name: metrics-exporter
+            - name: "THOTH_METRICS_EXPORTER_WEAK_READINESS"
+              valueFrom:
+                configMapKeyRef:
+                  key: weak-readiness
+                  name: metrics-exporter
+            - name: "THOTH_FRONTEND_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: frontend-namespace
+                  name: thoth
+            - name: "THOTH_MIDDLETIER_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: middletier-namespace
+                  name: thoth
+            - name: "THOTH_BACKEND_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: backend-namespace
+                  name: thoth
+            - name: "THOTH_INFRA_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: infra-namespace
+                  name: thoth
+            - name: "THOTH_AMUN_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: amun-namespace
+                  name: thoth
+            - name: "THOTH_AMUN_INSPECTION_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: amun-inspection-namespace
+                  name: thoth
+            - name: "RSYSLOG_HOST"
+              valueFrom:
+                configMapKeyRef:
+                  key: "rsyslog-host"
+                  name: "thoth"
+            - name: "RSYSLOG_PORT"
+              valueFrom:
+                configMapKeyRef:
+                  key: "rsyslog-port"
+                  name: "thoth"
+            - name: "SENTRY_DSN"
+              valueFrom:
+                secretKeyRef:
+                  name: "thoth"
+                  key: "sentry-dsn"
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: storage-bucket-name
+                  name: thoth
+            - name: THOTH_S3_ENDPOINT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: ceph-host
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: ceph-bucket-name
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  key: ceph-bucket-prefix
+                  name: ceph
+            - name: THOTH_CEPH_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ceph
+                  key: ceph-key-id
+            - name: THOTH_CEPH_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ceph
+                  key: ceph-secret-key
+            - name: THOTH_STORAGES_GRAPH_CACHE_DISABLED
+              valueFrom:
+                configMapKeyRef:
+                  key: graph-cache-disabled
+                  name: metrics-exporter
+            - name: KNOWLEDGE_GRAPH_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: postgresql-host
+                  name: thoth
+            - name: KNOWLEDGE_GRAPH_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: knowledge-graph-port
+                  name: metrics-exporter
+            - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+              valueFrom:
+                configMapKeyRef:
+                  key: knowledge-graph-ssl-disabled
+                  name: metrics-exporter
+            - name: KNOWLEDGE_GRAPH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-user
+            - name: KNOWLEDGE_GRAPH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-password
+            - name: KNOWLEDGE_GRAPH_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-name
+            - name: PROMETHEUS_SERVICE_ACCOUNT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: prometheus-reader
+                  key: token
+            - name: PROMETHEUS_HOST_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: prometheus-host-url
+            - name: METRICS_EXPORTER_FRONTEND_PROMETHEUS_INSTANCE
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: prometheus-instance-metrics-exporter-frontend
+            - name: WORKFLOW_METRICS_BACKEND_PROMETHEUS_INSTANCE
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: prometheus-instance-workflow-metrics-backend
+            - name: WORKFLOW_METRICS_MIDDLETIER_PROMETHEUS_INSTANCE
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: prometheus-instance-workflow-metrics-middletier
+            - name: WORKFLOW_METRICS_AMUN_INSPECTION_PROMETHEUS_INSTANCE
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: prometheus-instance-workflow-metrics-amun-inspection
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "384Mi"
+              cpu: "2"
+            limits:
+              memory: "768Mi"
+              cpu: "2"
+          readinessProbe:
+            httpGet:
+              path: "/metrics"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 780
+            periodSeconds: 10
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: "/metrics"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 600
+            periodSeconds: 10
+            timeoutSeconds: 10
+  test: false

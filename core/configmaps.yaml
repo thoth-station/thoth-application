@@ -37,4 +37,9 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: ceph 
+  name: ceph
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus
