@@ -153,9 +153,15 @@ spec:
                   name: postgresql
                   key: database-name
             - name: THOTH_API_HTTPS
-              value: "1"
+              valueFrom:
+                configMapKeyRef:
+                  name: user-api
+                  key: api-https
             - name: THOTH_USE_ARGO
-              value: "1"
+              valueFrom:
+                configMapKeyRef:
+                  name: user-api
+                  key: use-argo
           ports:
             - containerPort: 8080
               protocol: TCP
