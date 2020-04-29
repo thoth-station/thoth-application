@@ -7,7 +7,7 @@ data:
   update-interval: "20"
   grafana-redirect-url: "https://grafana.datahub.redhat.com/"
   max-workers: "16"
-  weak-readiness: "0"
+  weak-readiness: "1"
   graph-cache-disabled: "1"
   knowledge-graph-port: "5432"
   knowledge-graph-ssl-disabled: "1"
