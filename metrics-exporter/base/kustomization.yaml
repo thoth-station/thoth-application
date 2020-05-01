@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - configmap.yaml
   - deploymentconfig.yaml
+  - imagestream.yaml
   - role.yaml
   - rolebinding.yaml
   - route.yaml
