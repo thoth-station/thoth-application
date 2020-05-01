@@ -4,6 +4,8 @@ kind: ImageStream
 metadata:
   name: metrics-exporter
 spec:
+  lookupPolicy:
+    local: true
   tags:
     - name: latest
       from:
