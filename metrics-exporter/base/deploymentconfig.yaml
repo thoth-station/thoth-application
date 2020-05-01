@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         service: metrics-exporter
+        app: metrics-exporter
+        component: metrics-exporter
     spec:
       serviceAccountName: metrics-exporter
       containers:

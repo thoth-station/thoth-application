@@ -10,3 +10,5 @@ spec:
       targetPort: 8080
   selector:
     service: metrics-exporter
+    app: thoth
+    component: metrics-exporter
