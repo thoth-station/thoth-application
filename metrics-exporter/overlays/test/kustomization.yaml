@@ -4,7 +4,3 @@ resources:
   - ../../base
 patchesStrategicMerge:
   - imagestreamtag.yaml
-  - less-resources.yaml
-images:
-  - name: metrics-exporter
-    newName: thoth-test-core/metrics-exporter

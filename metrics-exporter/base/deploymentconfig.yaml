@@ -192,7 +192,7 @@ spec:
               path: "/metrics"
               port: 8080
               scheme: HTTP
-            initialDelaySeconds: 780
+            initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 10
           livenessProbe:
