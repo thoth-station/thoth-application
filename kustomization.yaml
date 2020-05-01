@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - thoth-notification.yaml
   - core
-  - result-api
   - init-job
   - package-update
 # workaround from https://www.gitmemory.com/issue/argoproj/argo-cd/1639/494999921

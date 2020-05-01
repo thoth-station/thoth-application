@@ -4,8 +4,4 @@ apiVersion: v1
 metadata:
   name: result-api
 data:
-  storage-bucket-name: ""
   ceph-results-path: ""
-  ceph-host: ""
-  ceph-bucket-name: ""
-  ceph-bucket-prefix: ""
