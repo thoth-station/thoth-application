@@ -10,9 +10,9 @@ spec:
   template:
     metadata:
       labels:
-        service: metrics-exporter
-        app: metrics-exporter
+        app: thoth
         component: metrics-exporter
+        service: metrics-exporter
     spec:
       serviceAccountName: metrics-exporter
       containers:
