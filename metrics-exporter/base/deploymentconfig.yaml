@@ -179,6 +179,8 @@ spec:
                 configMapKeyRef:
                   name: prometheus
                   key: prometheus-instance-workflow-metrics-amun-inspection
+            - name: WEB_CONCURRENCY
+              value: "1"
           ports:
             - containerPort: 8080
               protocol: TCP
