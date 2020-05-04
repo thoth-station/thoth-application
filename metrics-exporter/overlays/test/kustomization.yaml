@@ -7,3 +7,10 @@ resources:
   - ../../base
 patchesStrategicMerge:
   - imagestreamtag.yaml
+patches:
+  - path: resources_patch.yaml
+    target:
+      group: apps.openshift.io
+      version: v1
+      kind: DeploymentConfig
+      name: metrics-exporter
