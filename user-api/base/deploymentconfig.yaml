@@ -2,9 +2,6 @@
 kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
-  labels:
-    app: thoth
-    component: user-api
   name: user-api
 spec:
   replicas: 1
@@ -13,6 +10,8 @@ spec:
   template:
     metadata:
       labels:
+        app: thoth
+        component: user-api
         service: user-api
     spec:
       serviceAccountName: user-api

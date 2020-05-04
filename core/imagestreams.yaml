@@ -29,14 +29,6 @@ spec:
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: user-api
-spec:
-  lookupPolicy:
-    local: true
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
   name: solver-rhel-8-py36
 spec:
   lookupPolicy:
