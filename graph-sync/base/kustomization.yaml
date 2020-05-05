@@ -8,11 +8,4 @@ generatorOptions:
 commonLabels:
   app: thoth
   component: solver
-patchesJson6902:
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-
 
