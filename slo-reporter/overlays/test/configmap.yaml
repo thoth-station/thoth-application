@@ -4,7 +4,7 @@ apiVersion: v1
 metadata:
   name: slo-reporter
 data:
-  sender-address: ""
-  smtp-server: ""
-  thanos-endpoint: ""
-  email-recipients: ""
+  thanos-endpoint: "https://prometheus-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
+  smtp-server: "smtp.corp.redhat.com"
+  sender-address: "aicoe-thoth@redhat.com"
+  email-recipients: "aicoe@redhat.com"
