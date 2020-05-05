@@ -3,11 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: graph-sync
-  annotations:
-    thoth-station.ninja/template-version: 0.6.0-dev
-  labels:
-    app: thoth
-    component: graph-sync
 spec:
   templates:
     - name: graph-sync
@@ -15,9 +10,6 @@ spec:
         parameters:
           - name: "THOTH_DOCUMENT_ID"
           - name: "THOTH_FORCE_SYNC"
-          - name: "IMAGE_STREAM_REGISTRY"
-          - name: "IMAGE_STREAM_NAMESPACE"
-          - name: "IMAGE_STREAM_TAG"
         artifacts:
           - name: "outputdocument"
             path: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -25,9 +17,7 @@ spec:
         limit: 3
       container:
         name: "graph-sync"
-        image: "{{inputs.parameters.IMAGE_STREAM_REGISTRY}}/\
-        {{inputs.parameters.IMAGE_STREAM_NAMESPACE}}/\
-        graph-sync-job:{{inputs.parameters.IMAGE_STREAM_TAG}}"
+        image: "graph-sync-job"
         env:
           - name: "THOTH_DOCUMENT_ID"
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"

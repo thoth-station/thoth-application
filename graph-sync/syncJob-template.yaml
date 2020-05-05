@@ -5,37 +5,16 @@ metadata:
   annotations:
     description: "Thoth: Graph Sync Job for syncing multiple documents"
     openshift.io/display-name: "Thoth: Graph Sync Job Multiple Documents"
-    version: 0.6.0
+    version: 0.7.0
     tags: thoth,ai-stacks,aistacks,graph-sync-job
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
       This template defines resources needed to deploy Thoth's Graph Sync Job on OpenShift.
     template.openshift.io/provider-display-name: Red Hat, Inc.
-    thoth-station.ninja/template-version: 0.6.0
   labels:
     template: graph-sync-job
-    app: thoth
-    component: graph-sync
 
 parameters:
-  - description: Registry the ImageStream to be use lives in
-    displayName: ImageStream Registry
-    required: true
-    name: IMAGE_STREAM_REGISTRY
-    value: "docker-registry.default.svc:5000"
-
-  - description: Namespace the ImageStream to be used
-    displayName: ImageStream Project
-    required: true
-    name: IMAGE_STREAM_NAMESPACE
-    value: "thoth-infra-stage"
-
-  - description: Tag of the ImageStream to be use
-    displayName: ImageStream Tag
-    required: true
-    name: IMAGE_STREAM_TAG
-    value: "latest"
-
   - name: THOTH_ONLY_SOLVER_DOCUMENTS
     displayName: Sync only solver documents
     description: Sync only solver documents
@@ -114,7 +93,7 @@ objects:
         spec:
           containers:
             - name: graph-sync
-              image: "${IMAGE_STREAM_REGISTRY}/${IMAGE_STREAM_NAMESPACE}/graph-sync-job:${IMAGE_STREAM_TAG}"
+              image: "graph-sync-job"
               env:
                 - name: THOTH_ONLY_SOLVER_DOCUMENTS
                   value: "${THOTH_ONLY_SOLVER_DOCUMENTS}"

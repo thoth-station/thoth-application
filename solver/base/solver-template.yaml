@@ -3,11 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: solver-any
-  annotations:
-    thoth-station.ninja/template-version: 0.6.1
-  labels:
-    app: thoth
-    component: solver
 spec:
   templates:
     - name: solve
@@ -19,9 +14,6 @@ spec:
           - name: "THOTH_SOLVER_NO_TRANSITIVE"
           - name: "THOTH_SOLVER_PACKAGES"
           - name: "THOTH_SOLVER_INDEXES"
-          - name: "IMAGE_STREAM_REGISTRY"
-          - name: "IMAGE_STREAM_NAMESPACE"
-          - name: "IMAGE_STREAM_TAG"
           - name: "THOTH_S3_ENDPOINT_URL"
           - name: "THOTH_CEPH_BUCKET_NAME"
           - name: "THOTH_CEPH_BUCKET_PREFIX"
@@ -34,8 +26,8 @@ spec:
               none: {}
             s3:
               key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
-              {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
-              solver/{{inputs.parameters.THOTH_SOLVER_DOCUMENT_ID}}"
+                {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
+                solver/{{inputs.parameters.THOTH_SOLVER_DOCUMENT_ID}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               insecure: true
@@ -47,9 +39,7 @@ spec:
                 key: secretKey
       container:
         name: solver
-        image: "{{inputs.parameters.IMAGE_STREAM_REGISTRY}}/\
-        {{inputs.parameters.IMAGE_STREAM_NAMESPACE}}/\
-        {{inputs.parameters.THOTH_SOLVER_NAME}}:{{inputs.parameters.IMAGE_STREAM_TAG}}"
+        image: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
         env:
           - name: THOTH_SOLVER
             value: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
