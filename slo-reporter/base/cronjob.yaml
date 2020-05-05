@@ -1,0 +1,72 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: slo-reporter
+spec:
+  schedule: "0 6 * * FRI"
+  suspend: false
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: slo-reporter
+          labels:
+            app: thoth
+            component: slo-reporter
+        spec:
+          containers:
+            - image: "slo-reporter"
+              name: slo-reporter
+              env:
+                - name: PROMETHEUS_PUSHGATEWAY_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: metrics-pushgateway-url
+                - name: SENDER_ADDRESS
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: sender-address
+                - name: SMTP_SERVER
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: smtp-server
+                - name: THANOS_ENDPOINT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: thanos-endpoint
+                - name: THANOS_ACCESS_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: prometheus-reader
+                      key: token
+                - name: EMAIL_RECIPIENTS
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: email-recipients
+                - name: THOTH_ENVIRONMENT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: deploymentName
+                - name: METRICS_EXPORTER_FRONTEND_PROMETHEUS_INSTANCE
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: prometheus-instance-metrics-exporter-frontend
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "500m"
+                limits:
+                  memory: "512Mi"
+                  cpu: "500m"
+          restartPolicy: OnFailure
