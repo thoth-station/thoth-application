@@ -16,9 +16,7 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-
-secretGenerator:
-  - name: slo-reporter
-    envs:
-      - test.env
+generators:
+  - secret-generator.yaml
 generatorOptions:
   disableNameSuffixHash: true
