@@ -1,10 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - ../../base
+  - postgresql-ephemeral.yaml
+  - argo-namespace-install.yaml
+  - argo-ui-route.yaml
   - thoth-notification.yaml
-  - init-job
-  - package-update
-# workaround from https://www.gitmemory.com/issue/argoproj/argo-cd/1639/494999921
+patchesStrategicMerge:
+  - configmaps.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
@@ -12,3 +15,7 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-
+generatorOptions:
+  disableNameSuffixHash: true
+generators:
+  - ./secret-generator.yaml

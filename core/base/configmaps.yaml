@@ -5,15 +5,9 @@ metadata:
   name: thoth
 data:
   applicationName: "thoth"
-  applicationVersion: "0.6.0-dev"
-  deploymentName: "integration"
   rsyslog-host: ""
   rsyslog-port: ""
   analyzer-cleanup-time: 1d
-  middletier-pod-cpu-limit: "0.5"
-  middletier-pod-memory-limit: "0.5Gi"
-  package-releases-only-if-package-seen: "1"
-  sync-observations: "0"
 ---
 kind: ConfigMap
 apiVersion: v1
