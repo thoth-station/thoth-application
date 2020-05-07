@@ -19,6 +19,11 @@ data:
     solver-rhel-8-py36
     solver-fedora-31-py38
     solver-fedora-31-py37
+  analyzer-cleanup-time: 1d
+  middletier-pod-cpu-limit: "0.5"
+  middletier-pod-memory-limit: "0.5Gi"
+  package-releases-only-if-package-seen: "1"
+  sync-observations: "0"
 ---
 kind: ConfigMap
 apiVersion: v1
