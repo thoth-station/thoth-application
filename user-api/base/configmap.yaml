@@ -6,3 +6,4 @@ metadata:
 data:
   use-argo: "1"
   api-https: "0"
+  amun-api-url: "http://amun-api-thoth-test-core.cloud.paas.psi.redhat.com/api/v1"

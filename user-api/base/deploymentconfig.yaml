@@ -101,7 +101,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: amun-api-url
-                  name: amun
+                  name: user-api
             - name: RSYSLOG_HOST
               valueFrom:
                 configMapKeyRef:
