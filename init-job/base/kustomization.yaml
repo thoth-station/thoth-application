@@ -4,6 +4,7 @@ commonLabels:
   app: thoth
   component: init-job
 resources:
+  - imagestream.yaml
   - job.yaml
   - role_binding.yaml
   - role.yaml
