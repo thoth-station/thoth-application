@@ -26,7 +26,7 @@ spec:
                   valueFrom:
                     configMapKeyRef:
                       name: thoth
-                      key: metrics-pushgateway-url
+                      key: pushgateway-url
                 - name: SENDER_ADDRESS
                   valueFrom:
                     configMapKeyRef:
@@ -61,7 +61,7 @@ spec:
                   valueFrom:
                     configMapKeyRef:
                       name: prometheus
-                      key: prometheus-instance-metrics-exporter-frontend
+                      key: instance-metrics-exporter-frontend
               resources:
                 requests:
                   memory: "256Mi"
