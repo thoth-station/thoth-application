@@ -88,10 +88,11 @@ apiVersion: v1
 metadata:
   name: prometheus
 data:
-  prometheus-host-url: "https://prometheus-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
-  prometheus-instance-metrics-exporter-frontend: "metrics-exporter-thoth-test-core.cloud.paas.psi.redhat.com:80"
-  prometheus-instance-workflow-metrics-amun-inspection: "workflow-controller-metrics-thoth-test-core.cloud.paas.psi.redhat.com:80"
-  prometheus-instance-workflow-metrics-backend: "workflow-controller-metrics-thoth-test-core.cloud.paas.psi.redhat.com:80"
-  prometheus-instance-workflow-metrics-middletier: "workflow-controller-metrics-thoth-test-core.cloud.paas.psi.redhat.com:80"
-  prometheus-pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
-  prometheus-pushgateway-port: "80"
+  host-url: "https://prometheus-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
+  instance-metrics-exporter-frontend: "metrics-exporter-thoth-test-core.cloud.paas.psi.redhat.com:80"
+  instance-workflow-metrics-amun-inspection: "workflow-controller-metrics-thoth-test-core.cloud.paas.psi.redhat.com:80"
+  instance-workflow-metrics-backend: "workflow-controller-metrics-thoth-test-core.cloud.paas.psi.redhat.com:80"
+  instance-workflow-metrics-middletier: "workflow-controller-metrics-thoth-test-core.cloud.paas.psi.redhat.com:80"
+  pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
+  pushgateway-port: "80"
+  pushgateway-url: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80
