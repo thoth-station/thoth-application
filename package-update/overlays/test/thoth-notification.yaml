@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have just successfully synchronized *package-update* to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-package-update|ArgoCD UI> and <https://console-openshift-console.apps.ocp.prod.psi.redhat.com/k8s/cluster/projects/thoth-test-core|thoth-test-core>'}"
+            - "{'text':'I have just successfully synchronized *package-update* to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-package-update|ArgoCD UI> and <https://console-openshift-console.apps.thoth01.lab.upshift.rdu2.redhat.com/k8s/ns/thoth-test-core/cronjobs/package-update|thoth-test-core>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
