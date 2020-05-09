@@ -1,0 +1,9 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: management-api
+spec:
+  to:
+    kind: Service
+    name: management-api
