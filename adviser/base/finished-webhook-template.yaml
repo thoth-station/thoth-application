@@ -3,11 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: finished-webhook
-  annotations:
-    thoth-station.ninja/template-version: 0.6.0
-  labels:
-    app: thoth
-    component: finished-webhook
 spec:
   templates:
     - name: finished-webhook

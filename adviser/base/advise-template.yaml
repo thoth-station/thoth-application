@@ -3,11 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: advise
-  annotations:
-    thoth-station.ninja/template-version: 0.6.5
-  labels:
-    app: thoth
-    component: advise
 spec:
   templates:
     - name: advise
@@ -50,8 +45,8 @@ spec:
               none: {}
             s3:
               key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
-              {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
-              adviser/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+                {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
+                adviser/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               insecure: true
@@ -64,8 +59,8 @@ spec:
       container:
         name: advise
         image: "{{inputs.parameters.IMAGE_STREAM_REGISTRY}}/\
-        {{inputs.parameters.IMAGE_STREAM_NAMESPACE}}/\
-        adviser:{{inputs.parameters.IMAGE_STREAM_TAG}}"
+          {{inputs.parameters.IMAGE_STREAM_NAMESPACE}}/\
+          adviser:{{inputs.parameters.IMAGE_STREAM_TAG}}"
         env:
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -167,12 +162,10 @@ spec:
             cpu: 1.1
             memory: 8Gi
         livenessProbe:
-          # Give adviser some seconds to compute results
           exec:
             command:
               - python3
               - liveness.py
           failureThreshold: 1
           initialDelaySeconds: 1500
-          # Give main process some time to finish scoring and submit results.
           timeoutSeconds: 600
