@@ -15,6 +15,7 @@ spec:
       serviceAccountName: management-api
       containers:
         - name: management-api-openapi
+          image: management-api
           env:
             - name: APP_MODULE
               value: "thoth.management_api.openapi_server:app"
