@@ -17,6 +17,11 @@ spec:
                 configMapKeyRef:
                   key: ceph-bucket-prefix
                   name: ceph
+             - name: THOTH_CEPH_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: ceph-bucket-name
+                  name: ceph
             - name: KUBERNETES_API_URL
               value: https://kubernetes.default.svc.cluster.local
             - name: KUBERNETES_VERIFY_TLS
