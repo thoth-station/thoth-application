@@ -7,10 +7,6 @@ data:
   applicationVersion: 0.6.0-dev
   deploymentName: thoth-test-core
   postgresql-host: postgresql.thoth-test-core.svc
-  storage-bucket-name: thoth-test-core
-  amun-infra-namespace: thoth-test-core
-  amun-inspection-namespace: thoth-test-core
-  amun-namespace: thoth-test-core
   backend-namespace: thoth-test-core
   middletier-namespace: thoth-test-core
   frontend-namespace: thoth-test-core
@@ -24,16 +20,8 @@ data:
   middletier-pod-memory-limit: "0.5Gi"
   package-releases-only-if-package-seen: "1"
   sync-observations: "0"
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: solvers
-data:
-  solvers: |
-    solver-rhel-8-py36
-    solver-fedora-31-py38
-    solver-fedora-31-py37
+  rsyslog-host: ""
+  rsyslog-port: ""
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -41,7 +29,7 @@ metadata:
   name: ceph
 data:
   ceph-bucket-name: "thoth"
-  ceph-bucket-prefix: "data/thoth-test-core"
+  ceph-bucket-prefix: "data/thoth-test-core-thoth01"
   ceph-host: "https://s3.upshift.redhat.com/"
   ceph-endpoint: "https://s3.upshift.redhat.com/"
 ---

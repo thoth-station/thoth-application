@@ -5,9 +5,6 @@ metadata:
   name: thoth
 data:
   applicationName: "thoth"
-  rsyslog-host: ""
-  rsyslog-port: ""
-  analyzer-cleanup-time: 1d
 ---
 kind: ConfigMap
 apiVersion: v1
