@@ -17,7 +17,7 @@ spec:
                 configMapKeyRef:
                   key: ceph-bucket-prefix
                   name: ceph
-             - name: THOTH_CEPH_BUCKET
+            - name: THOTH_CEPH_BUCKET
               valueFrom:
                 configMapKeyRef:
                   key: ceph-bucket-name
