@@ -87,7 +87,7 @@ spec:
             - name: THOTH_DEPLOYMENT_NAME
               valueFrom:
                 configMapKeyRef:
-                  key: storage-bucket-name
+                  key: deploymentName
                   name: thoth
             - name: THOTH_S3_ENDPOINT_URL
               valueFrom:

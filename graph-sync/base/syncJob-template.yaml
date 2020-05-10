@@ -114,7 +114,7 @@ objects:
                 - name: THOTH_DEPLOYMENT_NAME
                   valueFrom:
                     configMapKeyRef:
-                      key: storage-bucket-name
+                      key: deploymentName
                       name: thoth
                 - name: AMUN_API_URL
                   valueFrom:

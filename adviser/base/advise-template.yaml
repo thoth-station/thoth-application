@@ -121,7 +121,7 @@ spec:
             valueFrom:
               configMapKeyRef:
                 name: thoth
-                key: storage-bucket-name
+                key: deploymentName
           - name: SENTRY_DSN
             valueFrom:
               secretKeyRef:

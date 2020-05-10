@@ -32,7 +32,7 @@ spec:
           - name: "THOTH_DEPLOYMENT_NAME"
             valueFrom:
               configMapKeyRef:
-                key: ceph-bucket-name
+                key: deploymentName
                 name: thoth
           - name: AMUN_API_URL
             valueFrom:
