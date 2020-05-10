@@ -12,7 +12,8 @@ Thoth is deployed to the following [environments](docs/environments.md).
 
 ## Separation of Application Components and Application Configuration
 
-There is a separate `thoth-solver` ArgoCD Application in the `solver/` directory.  
+Each component of the Thoth Application is separated into an ArgoCD Application, there is a core Application
+that contains global configs and secrets.
 
 ## Use Cases
 
@@ -22,15 +23,8 @@ There is a separate `thoth-solver` ArgoCD Application in the `solver/` directory
 
 ### developing a new component
 
-How do we move components from one environment (git branch) to another?
+## Open Questions
 
-# Open Questions
-
-## how do we tag release
+### how do we tag release
 
 in git repo of the app component, in git repo of app config, in container image repo
-
-## how to patch embedded applications
-
-it seems that there is no way to patch the `solver-any` template from the test branch? As the `solver-any` template
-belongs to the solver Application, the core application overlay can not access it?
