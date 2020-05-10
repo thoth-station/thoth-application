@@ -22,6 +22,11 @@ spec:
                 configMapKeyRef:
                   key: ceph-bucket-name
                   name: ceph
+            - name: THOTH_S3_ENDPOINT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: ceph-endpoint
+                  name: ceph
             - name: KUBERNETES_API_URL
               value: https://kubernetes.default.svc.cluster.local
             - name: KUBERNETES_VERIFY_TLS
