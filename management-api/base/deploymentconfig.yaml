@@ -10,6 +10,8 @@ spec:
   template:
     metadata:
       labels:
+        app: thoth
+        component: management-api
         service: management-api
     spec:
       serviceAccountName: management-api
