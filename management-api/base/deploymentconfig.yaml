@@ -184,5 +184,3 @@ spec:
             periodSeconds: 60
             timeoutSeconds: 10
   test: false
-  triggers:
-    - type: ConfigChange
