@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-thoth-management-api
+spec:
+  destination:
+    namespace: thoth-test-core
+    server: "https://api.thoth01.lab.upshift.rdu2.redhat.com:6443"
+  source:
+    path: management-api/overlays/test
+    repoURL: "https://github.com/thoth-station/thoth-application.git"
+    targetRevision: master
+  project: thoth
+  syncPolicy:
+    automated:
+      automated:
+        prune: false
+        selfHeal: false
+      selfHeal: true

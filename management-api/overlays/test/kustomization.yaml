@@ -5,6 +5,13 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
+patches:
+  - path: resources_patch.yaml
+    target:
+      group: apps.openshift.io
+      version: v1
+      kind: DeploymentConfig
+      name: management-api
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
