@@ -12,6 +12,11 @@ spec:
               value: INFO
             - name: THOTH_USE_ARGO
               value: "1"
+            - name: THOTH_CEPH_BUCKET_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  key: ceph-bucket-prefix
+                  name: ceph
             - name: KUBERNETES_API_URL
               value: https://kubernetes.default.svc.cluster.local
             - name: KUBERNETES_VERIFY_TLS
