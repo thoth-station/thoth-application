@@ -115,13 +115,13 @@ spec:
             - name: PROMETHEUS_PUSHGATEWAY_HOST
               valueFrom:
                 configMapKeyRef:
-                  key: prometheus-pushgateway-host
+                  key: pushgateway-host
                   name: prometheus
             - name: PROMETHEUS_PUSHGATEWAY_PORT
               valueFrom:
                 configMapKeyRef:
                   name: prometheus
-                  key: prometheus-pushgateway-port
+                  key: pushgateway-port
             - name: SENTRY_DSN
               valueFrom:
                 secretKeyRef:
