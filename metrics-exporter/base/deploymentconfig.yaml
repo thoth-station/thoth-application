@@ -63,12 +63,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: amun-namespace
-                  name: thoth
+                  name: amun
             - name: "THOTH_AMUN_INSPECTION_NAMESPACE"
               valueFrom:
                 configMapKeyRef:
                   key: amun-inspection-namespace
-                  name: thoth
+                  name: amun
             - name: "RSYSLOG_HOST"
               valueFrom:
                 configMapKeyRef:
@@ -158,27 +158,27 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: prometheus
-                  key: prometheus-host-url
+                  key: host-url
             - name: METRICS_EXPORTER_FRONTEND_PROMETHEUS_INSTANCE
               valueFrom:
                 configMapKeyRef:
                   name: prometheus
-                  key: prometheus-instance-metrics-exporter-frontend
+                  key: instance-metrics-exporter-frontend
             - name: WORKFLOW_METRICS_BACKEND_PROMETHEUS_INSTANCE
               valueFrom:
                 configMapKeyRef:
                   name: prometheus
-                  key: prometheus-instance-workflow-metrics-backend
+                  key: instance-workflow-metrics-backend
             - name: WORKFLOW_METRICS_MIDDLETIER_PROMETHEUS_INSTANCE
               valueFrom:
                 configMapKeyRef:
                   name: prometheus
-                  key: prometheus-instance-workflow-metrics-middletier
+                  key: instance-workflow-metrics-middletier
             - name: WORKFLOW_METRICS_AMUN_INSPECTION_PROMETHEUS_INSTANCE
               valueFrom:
                 configMapKeyRef:
                   name: prometheus
-                  key: prometheus-instance-workflow-metrics-amun-inspection
+                  key: instance-workflow-metrics-amun-inspection
             - name: WEB_CONCURRENCY
               value: "1"
           ports:
