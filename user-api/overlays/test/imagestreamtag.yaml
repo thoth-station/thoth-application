@@ -4,10 +4,10 @@ metadata:
   name: user-api
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: quay.io/thoth-station/user-api:v0.6.0-dev
-      importPolicy: {}
-      referencePolicy:
-        type: Source
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/user-api:870
+    importPolicy: {}
+    referencePolicy:
+      type: Source
