@@ -4,7 +4,6 @@ commonLabels:
   app: thoth
   component: adviser
 resources:
-  - adviser-template.yaml
   - advise-template.yaml
   - finished-webhook-template.yaml
   - imagestream.yaml

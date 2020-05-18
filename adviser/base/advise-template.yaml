@@ -30,9 +30,6 @@ spec:
             value: "1"
           - name: THOTH_ADVISER_LIMIT_LATEST_VERSIONS
             value: "9999999"
-          - name: "IMAGE_STREAM_REGISTRY"
-          - name: "IMAGE_STREAM_NAMESPACE"
-          - name: "IMAGE_STREAM_TAG"
           - name: "THOTH_S3_ENDPOINT_URL"
           - name: "THOTH_CEPH_BUCKET_NAME"
           - name: "THOTH_CEPH_BUCKET_PREFIX"
@@ -58,9 +55,7 @@ spec:
                 key: secretKey
       container:
         name: advise
-        image: "{{inputs.parameters.IMAGE_STREAM_REGISTRY}}/\
-          {{inputs.parameters.IMAGE_STREAM_NAMESPACE}}/\
-          adviser:{{inputs.parameters.IMAGE_STREAM_TAG}}"
+        image: adviser
         env:
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -103,20 +98,17 @@ spec:
           - name: THOTH_ADVISER_LIBRARY_USAGE
             value: "{{inputs.parameters.THOTH_ADVISER_LIBRARY_USAGE}}"
           - name: ISIS_API_URL
-            valueFrom:
-              configMapKeyRef:
-                name: thoth
-                key: isis-api-url
+            value: "UNSET"
           - name: PROMETHEUS_PUSHGATEWAY_HOST
             valueFrom:
               configMapKeyRef:
-                key: prometheus-pushgateway-host
-                name: thoth
+                key: pushgateway-host
+                name: prometheus
           - name: PROMETHEUS_PUSHGATEWAY_PORT
             valueFrom:
               configMapKeyRef:
-                name: thoth
-                key: prometheus-pushgateway-port
+                key: pushgateway-port
+                name: prometheus
           - name: THOTH_DEPLOYMENT_NAME
             valueFrom:
               configMapKeyRef:
