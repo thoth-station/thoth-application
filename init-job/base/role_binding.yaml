@@ -17,8 +17,20 @@ metadata:
   name: init-job-argo
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: argo-role
+  kind: ClusterRole
+  name: argo
+subjects:
+  - kind: ServiceAccount
+    name: init-job
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: init-job-argo-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argo-admin
 subjects:
   - kind: ServiceAccount
     name: init-job
