@@ -1,0 +1,59 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: qeb-hwt-webhook-recevier
+spec:
+  replicas: 1
+  revisionHistoryLimit: 4
+  selector:
+    app: qeb-hwt
+    component: webhook-recevier
+  template:
+    metadata:
+      labels:
+        app: qeb-hwt
+        component: webhook-recevier
+    spec:
+      containers:
+        - env:
+            - name: ENV
+              value: dev
+            - name: PYTHONPATH
+              value: .
+            - name: THOTH_DEPLOYMENT_NAME
+              value: aicoe-psi-prod
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  key: sentry-dsn
+                  name: qeb-hwt
+          envFrom:
+            - prefix: GITHUB_
+              secretRef:
+                name: qeb-hwt-github-app
+          image: qeb-hwt-webhook-recevier
+          name: webhook-recevier
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 250m
+            requests:
+              cpu: 100m
+        - envFrom:
+            - prefix: ULTRAHOOK_
+              secretRef:
+                name: ultrahook
+          image: ultrahook
+          name: ultrahook
+          resources:
+            limits:
+              cpu: 250m
+            requests:
+              cpu: 100m
+  test: false
+  triggers:
+    - type: ConfigChange
+  updatedReplicas: 1

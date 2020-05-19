@@ -1,0 +1,9 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: qeb-hwt-webhook-receiver
+spec:
+  to:
+    kind: Service
+    name: qeb-hwt-webhook-receiver

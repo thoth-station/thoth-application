@@ -1,0 +1,28 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: ultrahook
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: "quay.io/thoth-station/ultrahook:latest"
+      importPolicy: {}
+      referencePolicy:
+        type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: qeb-hwt-webhook-receiver
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: "quay.io/thoth-station/qeb-hwt-webhook-receiver:v0.6.0"
+      importPolicy: {}
+      referencePolicy:
+        type: Local
