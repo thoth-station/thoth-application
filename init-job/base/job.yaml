@@ -15,17 +15,17 @@ spec:
             - name: THOTH_CEPH_BUCKET_PREFIX
               valueFrom:
                 configMapKeyRef:
-                  key: ceph-bucket-prefix
+                  key: bucket-prefix
                   name: ceph
             - name: THOTH_CEPH_BUCKET
               valueFrom:
                 configMapKeyRef:
-                  key: ceph-bucket-name
+                  key: bucket-name
                   name: ceph
             - name: THOTH_S3_ENDPOINT_URL
               valueFrom:
                 configMapKeyRef:
-                  key: ceph-endpoint
+                  key: endpoint
                   name: ceph
             - name: KUBERNETES_API_URL
               value: https://kubernetes.default.svc.cluster.local

@@ -34,17 +34,17 @@ spec:
             - name: THOTH_S3_ENDPOINT_URL
               valueFrom:
                 configMapKeyRef:
-                  key: ceph-host
+                  key: host
                   name: ceph
             - name: THOTH_CEPH_BUCKET
               valueFrom:
                 configMapKeyRef:
-                  key: ceph-bucket-name
+                  key: bucket-name
                   name: ceph
             - name: THOTH_CEPH_BUCKET_PREFIX
               valueFrom:
                 configMapKeyRef:
-                  key: ceph-bucket-prefix
+                  key: bucket-prefix
                   name: ceph
             - name: RSYSLOG_HOST
               valueFrom:
@@ -89,12 +89,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: ceph
-                  key: ceph-key-id
+                  key: key-id
             - name: THOTH_CEPH_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: ceph
-                  key: ceph-secret-key
+                  key: secret-key
           ports:
             - containerPort: 8080
               protocol: TCP

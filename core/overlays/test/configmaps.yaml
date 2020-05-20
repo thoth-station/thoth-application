@@ -30,10 +30,10 @@ apiVersion: v1
 metadata:
   name: ceph
 data:
-  ceph-bucket-name: "thoth"
-  ceph-bucket-prefix: "data/thoth-test-core-thoth01"
-  ceph-host: "https://s3.upshift.redhat.com/"
-  ceph-endpoint: "https://s3.upshift.redhat.com/"
+  bucket-name: "thoth"
+  bucket-prefix: "data/thoth-test-core-thoth01"
+  host: "https://s3.upshift.redhat.com/"
+  endpoint: "https://s3.upshift.redhat.com/"
 ---
 kind: ConfigMap
 apiVersion: v1
