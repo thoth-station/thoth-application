@@ -15,7 +15,13 @@ patchesJson6902:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-
+      name: chat-notification-success-
+  - path: job-generate-name.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      name: chat-notification-fail-
 generators:
   - secret-generator.yaml
 generatorOptions:
