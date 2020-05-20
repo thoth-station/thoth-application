@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: thoth-backend-stage
 commonLabels:
   app: thoth
   component: adviser
@@ -21,6 +22,12 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-failed-
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: adviser
 generatorOptions:
   disableNameSuffixHash: true
 generators:
