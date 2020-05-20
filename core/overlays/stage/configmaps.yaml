@@ -23,12 +23,6 @@ data:
   rsyslog-host: ""
   rsyslog-port: ""
   sentry-environment: "https://d26126364ba24c91aca4608c8a9b93e5@sentry.io/1298083"
-  solvers: |
-    solver-rhel-8-py36
-    solver-fedora-31-py38
-    solver-fedora-31-py37
-    solver-fedora-32-py37
-    solver-fedora-32-py38
   storage-bucket-name: thoth-psi-stage
   sync-observations: "0"
 ---
@@ -49,37 +43,6 @@ metadata:
   name: kafka
 data:
   kafka-bootstrap-servers: "thoth-kafka-bootstrap-thoth-infra-stage.apps.thoth01.lab.upshift.rdu2.redhat.com:443"
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: workflow-controller-configmap
-data:
-  config: |
-    containerRuntimeExecutor: "k8sapi"
-    namespace: "thoth-frontend-stage"
-    parallelism: 10
-
-    # metricsConfig controls the path and port for prometheus metrics
-    metricsConfig:
-      enabled: true
-      path: /metrics
-      port: 8080
-
-    artifactRepository:
-      archiveLogs: False
-
-      s3:
-        bucket: "DH-DEV-DATA"
-        keyPrefix: "data/thoth/ocp-prod-stage/argo/artifacts/"
-        endpoint: "s3.upshift.redhat.com"
-        insecure: true
-        accessKeySecret:
-          name: argo-artifact-repository-secrets
-          key: accessKey
-        secretKeySecret:
-          name: argo-artifact-repository-secrets
-          key: secretKey
 ---
 kind: ConfigMap
 apiVersion: v1
