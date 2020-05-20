@@ -4,6 +4,7 @@ commonLabels:
   app: thoth
   component: adviser
 resources:
-  - advise-template.yaml
-  - finished-webhook-template.yaml
+  - argo-workflows/advise.yaml
+  - argo-workflows/finished-webhook.yaml
+  - openshift-templates/adviser.yaml
   - imagestream.yaml
