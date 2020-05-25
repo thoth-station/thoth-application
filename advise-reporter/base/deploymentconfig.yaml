@@ -14,11 +14,12 @@ spec:
     spec:
       containers:
         - name: advise-reporter-consumer
+          image: advise-reporter
           env:
             - name: SUBCOMMAND
               value: "consumer"
             - name: DEBUG_LEVEL
-              value: 0
+              value: "0"
             - name: APP_SCRIPT
               value: "app.sh"
             - name: THOTH_DEPLOYMENT_NAME
