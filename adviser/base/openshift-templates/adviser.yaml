@@ -5,7 +5,6 @@ metadata:
   annotations:
     description: "Thoth: Adviser"
     openshift.io/display-name: "Thoth: Adviser"
-    version: 0.7.0
     tags: thoth,ai-stacks,adviser
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -89,8 +88,6 @@ objects:
     kind: Workflow
     metadata:
       name: "${THOTH_ADVISER_JOB_ID}"
-      annotations:
-        thoth-station.ninja/template-version: 0.7.0
       labels:
         app: thoth
         component: adviser
