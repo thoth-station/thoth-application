@@ -1,11 +1,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+commonLabels:
+  app.kubernetes.io/name: thoth
+  app.kubernetes.io/component: core
+  app.kubernetes.io/managed-by: kustomize-ksops
+  app.kubernetes.io/version: "0.6"
 resources:
   - ../../base
   - postgresql-ephemeral.yaml
   - argo-namespace-install.yaml
   - argo-ui-route.yaml
   - argo-workflow-controller-metrics.yaml
+  - pgbouncer.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - configmaps.yaml
