@@ -1,0 +1,10 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: user-api-route53
+spec:
+  host: test.thoth-station.ninja
+  to:
+    kind: Service
+    name: user-api
