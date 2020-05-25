@@ -8,6 +8,7 @@ kind: ServiceAccount
 metadata:
   name: argo-server
 ---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: argo-binding
