@@ -4,3 +4,4 @@ application_default_credentials.json
 .vscode
 .env
 **.env
+argocd-role-binding.yaml
