@@ -5,7 +5,6 @@ resources:
   - postgresql-ephemeral.yaml
   - argo-namespace-install.yaml
   - argo-ui-route.yaml
-  - argo-workflow-controller-metrics.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - configmaps.yaml
