@@ -22,7 +22,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: "quay.io/thoth-station/thoth-toolbox:v0.2.0"
+        name: "quay.io/thoth-station/workflow-helpers:v0.1.0-dev"
       importPolicy: {}
       referencePolicy:
         type: Local
