@@ -18,3 +18,10 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-fail-
+patches:
+  - path: resources_patch.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: solver-any
