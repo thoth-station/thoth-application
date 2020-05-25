@@ -1,0 +1,77 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: advise-reporter-consumer
+spec:
+  replicas: 1
+  selector:
+    service: advise-reporter-consumer
+  template:
+    metadata:
+      labels:
+        service: advise-reporter-consumer
+    spec:
+      containers:
+        - name: advise-reporter-consumer
+          env:
+            - name: SUBCOMMAND
+              value: "consumer"
+            - name: DEBUG_LEVEL
+              value: 0
+            - name: APP_SCRIPT
+              value: "app.sh"
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: deploymentName
+                  name: thoth
+            - name: PROMETHEUS_HOST_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: host-url
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: kafka-bootstrap-servers
+            - name: KAFKA_CLIENT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: kafka-client-id
+            - name: KAFKA_SSL_AUTH
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: kafka-ssl-auth
+            - name: KAFKA_RETENTION_TIME_SECONDS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: kafka-topic-retention-time
+            - name: KAFKA_CAFILE
+              value: "/mnt/secrets/kafka_ca.crt"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
+      volumes:
+        - name: secrets
+          secret:
+            secretName: "kafka-secret"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
+  test: false

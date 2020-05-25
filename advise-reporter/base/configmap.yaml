@@ -1,0 +1,8 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: advise-reporter
+data:
+  use-argo: "1"
+  api-https: "0"

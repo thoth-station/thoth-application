@@ -1,0 +1,9 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: advise-reporter-consumer
+spec:
+  to:
+    kind: Service
+    name: advise-reporter-consumer
