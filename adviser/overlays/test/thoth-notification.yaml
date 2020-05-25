@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have just successfully synchronized *adviser* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-adviser|ArgoCD UI>'}"
+            - "{'text':'I have successfully synchronized *adviser* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-adviser|ArgoCD UI> 🚀'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':':fire: *FAILED* syncing *adviser* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-adviser|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* syncing *adviser* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-adviser|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
