@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: thoth-test-core
 resources:
   - ../../base
+  - imagestreamtag.yaml
   - thoth-notification.yaml
 patchesJson6902:
   - path: job-generate-name.yaml

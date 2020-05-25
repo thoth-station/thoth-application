@@ -1,0 +1,11 @@
+metadata:
+  name: advise-reporter
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: "quay.io/thoth-station/advise-reporter:v0.6.0-dev"
+      importPolicy: {}
+      referencePolicy:
+        type: Local
