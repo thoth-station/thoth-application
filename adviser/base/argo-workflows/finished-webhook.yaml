@@ -19,6 +19,8 @@ spec:
             value: "trigger_integration"
           - name: WORKFLOW_NAME
             value: "{{inputs.parameters.WORKFLOW_NAME}}"
+          - name: THOTH_DOCUMENT_ID
+            value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
           - name: THOTH_ADVISER_METADATA
             value: "{{inputs.parameters.THOTH_ADVISER_METADATA}}"
           - name: "WEBHOOK_CALLBACK_URL"
