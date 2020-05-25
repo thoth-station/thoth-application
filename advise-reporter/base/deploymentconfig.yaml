@@ -71,7 +71,7 @@ spec:
       volumes:
         - name: secrets
           secret:
-            secretName: "kafka-secret"
+            secretName: "kafka"
             items:
               - key: kafka_ca.crt
                 path: kafka_ca.crt
