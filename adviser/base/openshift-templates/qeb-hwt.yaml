@@ -1,0 +1,125 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: qeb-hwt
+  annotations:
+    description: "Thoth: qeb-hwt Template"
+    openshift.io/display-name: "Thoth: qeb-hwt"
+    version: 0.2.0
+    tags: thoth,ai-stacks,aistacks,qeb-hwt,machinelearning
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to run thamos advise workflow for qeb-hwt Template.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    template: qeb-hwt
+    app: thoth
+    component: qeb-hwt
+
+parameters:
+  - name: WORKFLOW_ID
+    description: "a UUID for the workflow instance"
+    displayName: "Workflow UUID"
+    required: true
+  - name: GITHUB_EVENT_TYPE
+    description: "GitHub event Type"
+    displayName: "GitHub event Type"
+    required: true
+    value: "thoth_thamos_advise"
+  - name: GITHUB_CHECK_RUN_ID
+    description: "ID of the check-run that shall carry the thamos advise."
+    displayName: "ID of the check-run"
+    required: true
+  - name: GITHUB_INSTALLATION_ID
+    description: "GitHub App Installation ID"
+    displayName: "Installation ID"
+    required: true
+  - name: ORIGIN
+    description: "Origin of the repo where the Pull Request was opened.."
+    displayName: "Origin of the Pull Request."
+    required: true
+  - name: GITHUB_HEAD_REPO_URL
+    description: "URL of the Pull Request's head commit."
+    displayName: "URL of the Pull Request's head commit"
+    required: true
+  - name: GITHUB_BASE_REPO_URL
+    description: "URL of the GitHub repository containing the Pull Request."
+    displayName: "URL of the repository."
+    required: true
+  - name: REVISION
+    description: "Pull Request head SHA"
+    displayName: "Pull Request head SHA"
+    required: true
+  - name: THOTH_HOST
+    description: "Thoth host to talk to User API"
+    displayName: "Thoth Host"
+    required: true
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: "${WORKFLOW_ID}"
+      annotations:
+        thoth-station.ninja/template-version: 0.2.0
+      labels:
+        app: thoth
+        component: qeb-hwt
+    spec:
+      serviceAccountName: argo
+      ttlStrategy:
+        secondsAfterCompletion: 900  # Keep qeb-hwt for 15 minutes.
+        secondsAfterSuccess: 900  # Keep qeb-hwt for 15 minutes.
+        # secondsAfterFailure kept unset to keep failed qeb-hwt workflows for debugging
+      podGC:
+        strategy: OnWorkflowSuccess
+      entrypoint: qeb-hwt
+      arguments:
+        parameters:
+          - name: "GITHUB_EVENT_TYPE"
+            value: "${GITHUB_EVENT_TYPE}"
+          - name: "GITHUB_CHECK_RUN_ID"
+            value: "${GITHUB_CHECK_RUN_ID}"
+          - name: "GITHUB_INSTALLATION_ID"
+            value: "${GITHUB_INSTALLATION_ID}"
+          - name: "GITHUB_HEAD_REPO_URL"
+            value: "${GITHUB_HEAD_REPO_URL}"
+          - name: "GITHUB_BASE_REPO_URL"
+            value: "${GITHUB_BASE_REPO_URL}"
+          - name: "ORIGIN"
+            value: "${ORIGIN}"
+          - name: "REVISION"
+            value: "${REVISION}"
+          - name: "THOTH_HOST"
+            value: "${THOTH_HOST}"
+      volumes:
+        - name: workdir
+          emptyDir: {}
+      templates:
+        - name: "qeb-hwt"
+          archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - name: "thamos-advise"
+                templateRef:
+                  name: "thamos-advise"
+                  template: "thamos-advise"
+                arguments:
+                  parameters:
+                    - name: "GITHUB_EVENT_TYPE"
+                      value: "{{workflow.parameters.GITHUB_EVENT_TYPE}}"
+                    - name: "GITHUB_CHECK_RUN_ID"
+                      value: "{{workflow.parameters.GITHUB_CHECK_RUN_ID}}"
+                    - name: "GITHUB_INSTALLATION_ID"
+                      value: "{{workflow.parameters.GITHUB_INSTALLATION_ID}}"
+                    - name: "GITHUB_HEAD_REPO_URL"
+                      value: "{{workflow.parameters.GITHUB_HEAD_REPO_URL}}"
+                    - name: "GITHUB_BASE_REPO_URL"
+                      value: "{{workflow.parameters.GITHUB_BASE_REPO_URL}}"
+                    - name: "ORIGIN"
+                      value: "{{workflow.parameters.ORIGIN}}"
+                    - name: "REVISION"
+                      value: "{{workflow.parameters.REVISION}}"
+                    - name: "THOTH_HOST"
+                      value: "{{workflow.parameters.THOTH_HOST}}"
