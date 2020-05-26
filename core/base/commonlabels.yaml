@@ -1,0 +1,5 @@
+commonLabels:
+  - path: spec/selector
+    create: False
+    version: v1
+    kind: Service
