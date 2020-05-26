@@ -4,8 +4,11 @@ commonLabels:
   app: thoth
   component: init-job
 resources:
+  - argo-workflows/initialize-schema.yaml
+  - argo-workflows/register-indexes-template.yaml
+  - argo-workflows/solve-core-packages.yaml
+  - argo-workflows/solve-data-science-packages.yaml
   - imagestream.yaml
-  - job.yaml
   - role_binding.yaml
   - role.yaml
   - serviceaccount.yaml
