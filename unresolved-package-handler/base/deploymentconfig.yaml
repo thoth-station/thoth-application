@@ -1,0 +1,105 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+      thoth-station.ninja/template-version: 0.1.0
+  labels:
+    app: thoth
+    component: unresolved-package-handler-consumer
+  name: unresolved-package-handler-consumer
+spec:
+  replicas: 1
+  selector:
+    service: unresolved-package-handler-consumer
+  template:
+    metadata:
+      labels:
+        service: unresolved-package-handler-consumer
+    spec:
+      containers:
+        - image: unresolved-package-handler
+          name: unresolved-package-handler-consumer
+          env:
+            - name: SUBCOMMAND
+              value: "consumer"
+            - name: DEBUG_LEVEL
+              value: "0"
+            - name: APP_SCRIPT
+              value: "app.sh"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka-bootstrap-servers
+                  name: thoth
+            - name: KAFKA_CLIENT_ID
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka-client-id
+                  name: thoth
+            - name: KAFKA_SSL_AUTH
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka-ssl-auth
+                  name: thoth
+            - name: KAFKA_RETENTION_TIME_SECONDS
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka-topic-retention-time
+                  name: thoth
+            - name: KAFKA_CAFILE
+              value: "/mnt/secrets/kafka_ca.crt"
+            - name: KNOWLEDGE_GRAPH_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: postgresql-host
+            - name: KNOWLEDGE_GRAPH_PORT
+              value: "5432"
+            - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+              value: "1"
+            - name: KNOWLEDGE_GRAPH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-user
+            - name: KNOWLEDGE_GRAPH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-password
+            - name: KNOWLEDGE_GRAPH_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-name
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            failureThreshold: 1
+            # Give this consumer 2 hours to finish
+            initialDelaySeconds: 7200
+            periodSeconds: 10
+            tcpSocket:
+              port: 80
+      volumes:
+        - name: secrets
+          secret:
+            secretName: "kafka-secret"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
+      restartPolicy: OnFailure
+  test: false
+  triggers:
+    - type: ConfigChange
+  updatedReplicas: 1
