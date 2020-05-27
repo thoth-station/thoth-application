@@ -1,7 +1,7 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: slo-reporter
+  name: unresolved-package-handler
 spec:
   tags:
   - name: latest
