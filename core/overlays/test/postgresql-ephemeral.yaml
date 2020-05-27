@@ -25,6 +25,7 @@ items:
         name: postgresql
         app.kubernetes.io/managed-by: kustomize-ksops
         app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: core
         app.kubernetes.io/version: "0.6"
       sessionAffinity: None
       type: ClusterIP
@@ -42,6 +43,7 @@ items:
         name: postgresql
         app.kubernetes.io/managed-by: kustomize-ksops
         app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: core
         app.kubernetes.io/version: "0.6"
       strategy:
         type: Recreate
@@ -51,6 +53,7 @@ items:
             name: postgresql
             app.kubernetes.io/managed-by: kustomize-ksops
             app.kubernetes.io/name: thoth
+            app.kubernetes.io/component: core
             app.kubernetes.io/version: "0.6"
         spec:
           containers:
