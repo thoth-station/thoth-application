@@ -23,6 +23,9 @@ items:
           targetPort: 5432
       selector:
         name: postgresql
+        app.kubernetes.io/managed-by: kustomize-ksops
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/version: "0.6"
       sessionAffinity: None
       type: ClusterIP
     status:
@@ -37,12 +40,18 @@ items:
       replicas: 1
       selector:
         name: postgresql
+        app.kubernetes.io/managed-by: kustomize-ksops
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/version: "0.6"
       strategy:
         type: Recreate
       template:
         metadata:
           labels:
             name: postgresql
+            app.kubernetes.io/managed-by: kustomize-ksops
+            app.kubernetes.io/name: thoth
+            app.kubernetes.io/version: "0.6"
         spec:
           containers:
             - env:
