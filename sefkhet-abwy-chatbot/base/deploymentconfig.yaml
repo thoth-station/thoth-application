@@ -1,0 +1,40 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: sefkhet-abwy-chatbot
+spec:
+  replicas: 1
+  selector:
+    # FIXME we need to reconfigure the transformer
+    app.kubernetes.io/component: sefkhet-abwy-chatbot
+    app.kubernetes.io/managed-by: thothops-manual
+    app.kubernetes.io/name: thoth
+    deploymentconfig: sefkhet-abwy-chatbot
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: sefkhet-abwy-chatbot
+        app.kubernetes.io/managed-by: thothops-manual
+        app.kubernetes.io/name: thoth
+        deploymentconfig: sefkhet-abwy-chatbot
+    spec:
+      containers:
+        - env:
+            - name: PYTHONPATH
+              value: .
+            - name: APP_SCRIPT
+              value: chatbot
+            - name: GITHUB_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: SESHETA_SRCOPS_ACCESS_TOKEN
+                  name: sefkhet-abwy
+          image: sefkhet-abwy-chatbot
+          name: sefkhet-abwy-chatbot
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+  test: false
+  triggers:
+    - type: ConfigChange
