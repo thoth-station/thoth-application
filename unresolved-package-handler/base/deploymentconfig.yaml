@@ -2,11 +2,6 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  annotations:
-      thoth-station.ninja/template-version: 0.1.0
-  labels:
-    app: thoth
-    component: unresolved-package-handler-consumer
   name: unresolved-package-handler-consumer
 spec:
   replicas: 1
@@ -100,6 +95,3 @@ spec:
                 path: kafka_ca.crt
       restartPolicy: OnFailure
   test: false
-  triggers:
-    - type: ConfigChange
-  updatedReplicas: 1
