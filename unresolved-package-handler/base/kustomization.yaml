@@ -4,5 +4,6 @@ resources:
   - deploymentconfig.yaml
   - imagestream.yaml
 commonLabels:
-  app: thoth
-  component: unresolved-package-handler
+  app.kubernetes.io/name: thoth
+  app.kubernetes.io/component: unresolved-package-handler
+  app.kubernetes.io/managed-by: kustomize-ksops
