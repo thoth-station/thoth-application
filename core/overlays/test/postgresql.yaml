@@ -29,8 +29,19 @@ items:
         app.kubernetes.io/version: "0.6"
       sessionAffinity: None
       type: ClusterIP
-    status:
-      loadBalancer: {}
+  - kind: PersistentVolumeClaim
+    apiVersion: v1
+    metadata:
+      name: pgsql-data
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+      volumeName: postgresql-data
+      storageClassName: dynamic-nfs
+      volumeMode: Filesystem
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
@@ -101,7 +112,8 @@ items:
           dnsPolicy: ClusterFirst
           restartPolicy: Always
           volumes:
-            - emptyDir: {}
-              name: postgresql-data
+            - name: postgresql-data
+              persistentVolumeClaim:
+                claimName: pgsql-data
 kind: List
 metadata: {}
