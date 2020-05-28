@@ -1,0 +1,13 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: unresolved-package-handler
+spec:
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/unresolved-package-handler:v0.1.0-dev
+    importPolicy: {}
+    referencePolicy:
+      type: Source

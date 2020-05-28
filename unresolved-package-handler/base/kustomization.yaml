@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - deploymentconfig.yaml
+  - imagestream.yaml
+commonLabels:
+  app.kubernetes.io/name: thoth
+  app.kubernetes.io/component: unresolved-package-handler
+  app.kubernetes.io/managed-by: kustomize-ksops
