@@ -21,7 +21,3 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-fail-
-generators:
-  - secret-generator.yaml
-generatorOptions:
-  disableNameSuffixHash: true
