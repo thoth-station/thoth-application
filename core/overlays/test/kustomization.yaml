@@ -7,7 +7,7 @@ commonLabels:
   app.kubernetes.io/version: "0.6"
 resources:
   - ../../base
-  - postgresql-ephemeral.yaml
+  - postgresql.yaml
   - argo-namespace-install.yaml
   - argo-ui-route.yaml
   - argo-workflow-controller-metrics.yaml
