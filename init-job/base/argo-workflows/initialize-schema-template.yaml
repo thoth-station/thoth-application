@@ -9,7 +9,7 @@ spec:
       container:
         name: initialize-schema
         image: init-job
-        command: ['pipenv', 'run', 'python3', 'app.py', '--initialize-schema']
+        command: ['python3', 'app.py', '--initialize-schema']
         env:
           - name: KNOWLEDGE_GRAPH_HOST
             valueFrom:

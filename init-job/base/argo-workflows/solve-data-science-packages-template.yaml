@@ -2,14 +2,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: solve-core-packages
+  name: solve-data-science-packages
 spec:
   templates:
-    - name: solve-core-packages
+    - name: solve-data-science-packages
       container:
-        name: solve-core-packages
+        name: solve-data-science-packages
         image: init-job
-        command: ['pipenv', 'run', 'python3', 'app.py', '--solve-core-packages']
+        command: ['python3', 'app.py', '--solve-data-science-packages']
         env:
           - name: THOTH_MIDDLETIER_NAMESPACE
             valueFrom:
