@@ -1,0 +1,63 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: initializer-
+spec:
+  serviceAccountName: argo
+  podGC:
+    strategy: OnWorkflowSuccess
+  entrypoint: initializer
+  arguments:
+    parameters:
+      - name: THOTH_LOG_INIT_JOB
+        value: "INFO"
+  volumes:
+    - name: workdir
+      emptyDir: {}
+  templates:
+    - name: "initializer"
+      archiveLocation:
+        archiveLogs: true
+      dag:
+        tasks:
+          - name: "initialize-schema"
+            templateRef:
+              name: "initialize-schema"
+              template: "initialize-schema"
+            arguments:
+              parameters:
+                - name: THOTH_LOG_INIT_JOB
+                  value: "{{workflow.parameters.THOTH_LOG_INIT_JOB}}"
+
+          - name: "register-indexes"
+            dependencies:
+              - "initialize-schema"
+            templateRef:
+              name: "register-indexes"
+              template: "register-indexes"
+            arguments:
+              parameters:
+                - name: THOTH_LOG_INIT_JOB
+                  value: "{{workflow.parameters.THOTH_LOG_INIT_JOB}}"
+
+          - name: "solve-core-packages"
+            dependencies:
+              - "register-indexes"
+            templateRef:
+              name: "solve-core-packages"
+              template: "solve-core-packages"
+            arguments:
+              parameters:
+                - name: THOTH_LOG_INIT_JOB
+                  value: "{{workflow.parameters.THOTH_LOG_INIT_JOB}}"
+
+          - name: "solve-data-science-packages"
+            dependencies:
+              - "register-indexes"
+            templateRef:
+              name: "solve-data-science-packages"
+              template: "solve-data-science-packages"
+            arguments:
+              parameters:
+                - name: THOTH_LOG_INIT_JOB
+                  value: "{{workflow.parameters.THOTH_LOG_INIT_JOB}}"

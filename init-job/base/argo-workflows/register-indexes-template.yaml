@@ -1,0 +1,44 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: register-indexes
+spec:
+  templates:
+    - name: register-indexes
+      container:
+        name: register-indexes
+        image: init-job
+        command: ['python3', 'app.py', '--register-indexes']
+        env:
+          - name: KNOWLEDGE_GRAPH_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: postgresql-host
+                name: thoth
+          - name: KNOWLEDGE_GRAPH_PORT
+            value: "5432"
+          - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+            value: "1"
+          - name: KNOWLEDGE_GRAPH_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-user
+          - name: KNOWLEDGE_GRAPH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-password
+          - name: KNOWLEDGE_GRAPH_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-name
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
