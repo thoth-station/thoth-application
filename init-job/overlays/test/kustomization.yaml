@@ -5,10 +5,6 @@ commonLabels:
 resources:
   - ../../base
   - thoth-notification.yaml
-images:
-  - name: init-job
-    newName: quay.io/thoth-station/init-job
-    newTag: v0.6.0-dev
 patchesStrategicMerge:
   - imagestreamtag.yaml
 patchesJson6902:
@@ -17,4 +13,10 @@ patchesJson6902:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-
+      name: chat-notification-succeeded-
+  - path: job-generate-name.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      name: chat-notification-failed-

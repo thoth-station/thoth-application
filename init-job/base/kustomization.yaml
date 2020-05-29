@@ -6,7 +6,6 @@ commonLabels:
   app.kubernetes.io/managed-by: kustomize-ksops
 resources:
   - imagestream.yaml
-  - job.yaml
   - role_binding.yaml
   - role.yaml
   - serviceaccount.yaml
