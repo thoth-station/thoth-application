@@ -3,11 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: solve-core-packages
-  annotations:
-    thoth-station.ninja/template-version: 0.1.0
-  labels:
-    app: thoth
-    component: solve-core-packages
 spec:
   templates:
     - name: solve-core-packages

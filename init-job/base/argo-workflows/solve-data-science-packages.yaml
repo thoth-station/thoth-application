@@ -3,19 +3,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: solve-data-science-packages
-  annotations:
-    thoth-station.ninja/template-version: 0.1.0
-  labels:
-    app: thoth
-    component: solve-data-science-packages
 spec:
   templates:
     - name: solve-data-science-packages
-      inputs:
-        parameters:
-          - name: "IMAGE_STREAM_REGISTRY"
-          - name: "IMAGE_STREAM_NAMESPACE"
-          - name: "IMAGE_STREAM_TAG"
       container:
         name: solve-data-science-packages
         image: init-job

@@ -3,19 +3,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: initialize-schema
-  annotations:
-    thoth-station.ninja/template-version: 0.1.0
-  labels:
-    app: thoth
-    component: initialize-schema
 spec:
   templates:
     - name: initialize-schema
-      inputs:
-        parameters:
-          - name: "IMAGE_STREAM_REGISTRY"
-          - name: "IMAGE_STREAM_NAMESPACE"
-          - name: "IMAGE_STREAM_TAG"
       container:
         name: initialize-schema
         image: init-job

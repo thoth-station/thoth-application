@@ -3,19 +3,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: register-indexes
-  annotations:
-    thoth-station.ninja/template-version: 0.1.0
-  labels:
-    app: thoth
-    component: register-indexes
 spec:
   templates:
     - name: register-indexes
-      inputs:
-        parameters:
-          - name: "IMAGE_STREAM_REGISTRY"
-          - name: "IMAGE_STREAM_NAMESPACE"
-          - name: "IMAGE_STREAM_TAG"
       container:
         name: register-indexes
         image: init-job
