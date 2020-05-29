@@ -6,7 +6,7 @@ metadata:
 data:
   applicationVersion: 0.6.0-dev
   deploymentName: thoth-test-core
-  postgresql-host: postgresql.thoth-test-core.svc
+  postgresql-host: pgbouncer.thoth-test-core.svc
   backend-namespace: thoth-test-core
   middletier-namespace: thoth-test-core
   frontend-namespace: thoth-test-core
