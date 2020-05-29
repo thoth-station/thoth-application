@@ -31,7 +31,6 @@ items:
       resources:
         requests:
           storage: 10Gi
-      volumeName: postgresql-data
       storageClassName: dynamic-nfs
       volumeMode: Filesystem
   - apiVersion: apps.openshift.io/v1
