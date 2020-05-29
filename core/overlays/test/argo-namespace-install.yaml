@@ -14,7 +14,7 @@ metadata:
   name: argo-binding-to-argo
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: argo-role
 subjects:
   - kind: ServiceAccount
@@ -27,7 +27,7 @@ metadata:
   name: argo-server-binding-to-argo-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: argo-admin
 subjects:
   - kind: ServiceAccount
@@ -40,7 +40,7 @@ metadata:
   name: argo-server-binding-to-argo
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: argo
 subjects:
   - kind: ServiceAccount
