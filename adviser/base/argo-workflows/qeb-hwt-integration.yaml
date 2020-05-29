@@ -3,11 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: thamos-advise
-  annotations:
-    thoth-station.ninja/template-version: 0.2.0
-  labels:
-    app: thoth
-    component: thamos-advise
 spec:
   templates:
     - name: thamos-advise
@@ -54,13 +49,16 @@ spec:
             value: "{{inputs.parameters.THOTH_HOST}}"
           - name: REPO_PATH
             value: "{{inputs.parameters.REPO_PATH}}"
-          - name: "WEBHOOK_CALLBACK_URL"
-            value: "http://qeb-hwt-aicoe-prod-bots.cloud.paas.psi.redhat.com"
+          - name: WEBHOOK_CALLBACK_URL
+            valueFrom:
+              configMapKeyRef:
+                key: webhook-callback-url
+                name: qeb-hwt
           - name: WEBHOOK_SECRET
             valueFrom:
               secretKeyRef:
                 key: WEBHOOK_SECRET
-                name: qeb-hwt-github-app
+                name: qeb-hwt
         resources:
           limits:
             cpu: 250m
