@@ -3,6 +3,7 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: core
-  app.kubernetes.io/managed-by: kustomize-ksops
+  app.kubernetes.io/managed-by: thothops-argocd
 resources:
   - configmaps.yaml
+  - imagestreams.yaml
