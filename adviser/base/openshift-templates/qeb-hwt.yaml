@@ -2,19 +2,6 @@ apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
   name: qeb-hwt
-  annotations:
-    description: "Thoth: qeb-hwt Template"
-    openshift.io/display-name: "Thoth: qeb-hwt"
-    version: 0.2.0
-    tags: thoth,ai-stacks,aistacks,qeb-hwt,machinelearning
-    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
-    template.openshift.io/long-description: >
-      This template defines resources needed to run thamos advise workflow for qeb-hwt Template.
-    template.openshift.io/provider-display-name: "Red Hat, Inc."
-  labels:
-    template: qeb-hwt
-    app: thoth
-    component: qeb-hwt
 
 parameters:
   - name: WORKFLOW_ID
