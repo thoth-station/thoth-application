@@ -5,6 +5,7 @@ commonLabels:
   app.kubernetes.io/component: adviser
   app.kubernetes.io/managed-by: kustomize-ksops
 resources:
+  - configmap.yaml
   - argo-workflows/advise.yaml
   - argo-workflows/trigger-integration.yaml
   - argo-workflows/qeb-hwt-integration.yaml
