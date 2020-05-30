@@ -7,7 +7,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/slo-reporter:12
+      name: quay.io/thoth-station/slo-reporter:v0.2.0
     importPolicy: {}
     referencePolicy:
       type: Source
