@@ -5,6 +5,7 @@ commonLabels:
   component: adviser
 resources:
   - argo-workflows/advise.yaml
-  - argo-workflows/finished-webhook.yaml
+  - argo-workflows/trigger-integration.yaml
+  - argo-workflows/qeb-hwt-integration.yaml
   - openshift-templates/adviser.yaml
   - imagestream.yaml
