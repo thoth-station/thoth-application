@@ -2,9 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - imagestreams.yaml
-  - argo-workflows/solve_and_sync-template.yaml
-  - openshift-templates/solver-template.yaml
+  - openshift-templates/solve_and_sync-template.yaml
+  - argo-workflows/solver-template.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: solver
-  app.kubernetes.io/managed-by: kustomize-ksops
+  app.kubernetes.io/managed-by: thothops-argocd
