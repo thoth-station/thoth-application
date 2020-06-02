@@ -6,10 +6,6 @@ metadata:
 spec:
   replicas: 1
   selector:
-    app.kubernetes.io/component: unresolved-package-handler-consumer
-    app.kubernetes.io/managed-by: thothops-argocd
-    app.kubernetes.io/name: thoth
-    app.kubernetes.io/version: "v0.1.0-dev"
     service: unresolved-package-handler-consumer
   template:
     metadata:
