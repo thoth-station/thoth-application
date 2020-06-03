@@ -43,10 +43,6 @@ items:
       replicas: 1
       selector:
         name: postgresql
-        app.kubernetes.io/managed-by: kustomize-ksops
-        app.kubernetes.io/name: thoth
-        app.kubernetes.io/component: core
-        app.kubernetes.io/version: "0.6"
       strategy:
         type: Recreate
       template:
