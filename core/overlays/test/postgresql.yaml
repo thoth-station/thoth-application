@@ -15,10 +15,10 @@ items:
           targetPort: 5432
       selector:
         name: postgresql
-        app.kubernetes.io/managed-by: kustomize-ksops
+        app.kubernetes.io/managed-by: thothops-argocd
         app.kubernetes.io/name: thoth
         app.kubernetes.io/component: core
-        app.kubernetes.io/version: "0.6"
+        app.kubernetes.io/version: "0.6.1"
       sessionAffinity: None
       type: ClusterIP
   - kind: PersistentVolumeClaim
@@ -53,10 +53,6 @@ items:
         metadata:
           labels:
             name: postgresql
-            app.kubernetes.io/managed-by: kustomize-ksops
-            app.kubernetes.io/name: thoth
-            app.kubernetes.io/component: core
-            app.kubernetes.io/version: "0.6"
         spec:
           containers:
             - env:

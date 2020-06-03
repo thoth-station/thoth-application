@@ -3,8 +3,8 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: core
-  app.kubernetes.io/managed-by: kustomize-ksops
-  app.kubernetes.io/version: "0.6"
+  app.kubernetes.io/managed-by: thothops-argocd
+  app.kubernetes.io/version: "0.6.1"
 resources:
   - ../../base
   - postgresql.yaml
