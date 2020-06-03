@@ -45,6 +45,10 @@ items:
         metadata:
           labels:
             name: postgresql
+            app.kubernetes.io/name: thoth
+            app.kubernetes.io/component: core
+            app.kubernetes.io/managed-by: thothops-argocd
+            app.kubernetes.io/version: "0.6.1"
         spec:
           containers:
             - env:
