@@ -3,13 +3,21 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: init-job
-  app.kubernetes.io/managed-by: kustomize-ksops
+  app.kubernetes.io/managed-by: thothos-argocd
 resources:
   - argo-workflows/initialize-schema.yaml
-  - argo-workflows/register-indexes-template.yaml
+  - argo-workflows/register-indexes.yaml
   - argo-workflows/solve-core-packages.yaml
   - argo-workflows/solve-data-science-packages.yaml
+  - argo-workflows/initializer.yaml
   - imagestream.yaml
   - role_binding.yaml
   - role.yaml
   - serviceaccount.yaml
+patchesJson6902:
+  - path: generate-name.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Workflow
+      name: initializer
