@@ -3,8 +3,6 @@ items:
   - apiVersion: v1
     kind: Service
     metadata:
-      annotations:
-        template.openshift.io/expose-uri: postgres://{.spec.clusterIP}:{.spec.ports[?(.name=="postgresql")].port}
       name: postgresql
     spec:
       ports:
@@ -36,8 +34,6 @@ items:
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
-      annotations:
-        template.alpha.openshift.io/wait-for-ready: "true"
       name: postgresql
     spec:
       replicas: 1
