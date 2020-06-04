@@ -4,13 +4,19 @@ kind: WorkflowTemplate
 metadata:
   name: solve-data-science-packages
 spec:
+  serviceAccountName: init-job
   templates:
     - name: solve-data-science-packages
+      inputs:
+        parameters:
+          - name: THOTH_LOG_INIT_JOB
       container:
         name: solve-data-science-packages
         image: init-job
         command: ['python3', 'app.py', '--solve-data-science-packages']
         env:
+          - name: THOTH_LOG_INIT_JOB
+            value: "{{inputs.parameters.THOTH_LOG_INIT_JOB}}"
           - name: THOTH_MIDDLETIER_NAMESPACE
             valueFrom:
               configMapKeyRef:

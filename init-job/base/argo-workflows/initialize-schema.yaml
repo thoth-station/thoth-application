@@ -4,13 +4,19 @@ kind: WorkflowTemplate
 metadata:
   name: initialize-schema
 spec:
+  serviceAccountName: init-job
   templates:
     - name: initialize-schema
+      inputs:
+        parameters:
+          - name: THOTH_LOG_INIT_JOB
       container:
         name: initialize-schema
         image: init-job
         command: ['python3', 'app.py', '--initialize-schema']
         env:
+          - name: THOTH_LOG_INIT_JOB
+            value: "{{inputs.parameters.THOTH_LOG_INIT_JOB}}"
           - name: KNOWLEDGE_GRAPH_HOST
             valueFrom:
               configMapKeyRef:
