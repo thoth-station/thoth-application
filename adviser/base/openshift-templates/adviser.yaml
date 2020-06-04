@@ -215,12 +215,12 @@ objects:
                     - name: "THOTH_FORCE_SYNC"
                       value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
 
-              - name: "trigger-finished-webhook"
+              - name: "trigger-integration"
                 dependencies:
                   - "advise"
                 templateRef:
-                  name: "finished-webhook"
-                  template: "finished-webhook"
+                  name: "trigger-integration"
+                  template: "trigger-integration"
                 arguments:
                   parameters:
                     - name: "WORKFLOW_NAME"
