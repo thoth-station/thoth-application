@@ -5,5 +5,5 @@ metadata:
   name: user-api
 data:
   use-argo: "1"
-  api-https: "0"
+  api-https: "1"
   amun-api-url: "http://amun-api-thoth-test-core.cloud.paas.psi.redhat.com/api/v1"
