@@ -1,0 +1,14 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: kebechet-thoth-station
+spec:
+  suspend: false
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: kebechet-aicoe
+spec:
+  suspend: false

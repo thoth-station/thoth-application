@@ -1,0 +1,13 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: kebechet-job
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/kebechet-job@sha256:064fd81a7bb23d4d7282ad562e7bdf252f92b1a5b76256e5b593bea1df1b408a
+      importPolicy: {}
+      referencePolicy:
+        type: Local
