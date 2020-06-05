@@ -4,7 +4,7 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: management-api-route53
 spec:
-  host: management-api.test.thoth-station.ninja
+  host: management.test.thoth-station.ninja
   to:
     kind: Service
     name: management-api
