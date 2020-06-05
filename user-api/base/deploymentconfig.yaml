@@ -7,12 +7,16 @@ spec:
   replicas: 1
   selector:
     service: user-api
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: user-api
+    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
   template:
     metadata:
       labels:
-        app: thoth
-        component: user-api
         service: user-api
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: user-api
+        app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
     spec:
       serviceAccountName: user-api
       containers:
