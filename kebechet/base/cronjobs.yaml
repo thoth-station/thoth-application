@@ -2,7 +2,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: kebechet
+  name: kebechet-thoth-station
 spec:
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 2
