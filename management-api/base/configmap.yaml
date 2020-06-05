@@ -5,4 +5,4 @@ metadata:
   name: management-api
 data:
   use-argo: "1"
-  api-https: "0"
+  api-https: "1"
