@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+data:
+  verbose: "0"
+kind: ConfigMap
+metadata:
+  name: kebechet
