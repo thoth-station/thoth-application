@@ -10,3 +10,6 @@ spec:
       targetPort: 8080
   selector:
     service: management-api
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: management-api
+    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
