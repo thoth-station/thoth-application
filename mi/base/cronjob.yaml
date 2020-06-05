@@ -1,0 +1,58 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: mi
+spec:
+  schedule: "0 0 * * 0"
+  suspend: false
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: mi
+          labels:
+            app: thoth
+            component: mi
+        spec:
+          containers:
+            - image: mi
+              name: mi
+              command: ["srcopsmetrics/cli.py"]
+              args: ["-co", "AICoE"]
+              env:
+                - name: GITHUB_ACCESS_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: sesheta-srcops
+                      key: sesheta-srcops
+                - name: S3_ENDPOINT_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: ceph
+                      key: host
+                - name: CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      name: ceph
+                      key: bucket-name
+                - name: CEPH_BUCKET_PREFIX
+                  valueFrom:
+                    configMapKeyRef:
+                      name: ceph
+                      key: bucket-prefix
+                - name: CEPH_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: secret-key
+                - name: CEPH_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: key-id
+                - name: PYTHONPATH
+                  value: "."
