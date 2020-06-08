@@ -7,5 +7,6 @@ resources:
   - route.yaml
   - service.yaml
 commonLabels:
-  app: thoth
-  component: advise-reporter
+  app.kubernetes.io/name: thoth
+  app.kubernetes.io/component: advise-reporter
+  app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd

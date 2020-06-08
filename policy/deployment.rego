@@ -1,5 +1,10 @@
 package main
 
+import data.openshift
+import data.kubernetes
+
+name = input.metadata.name
+
 required_deployment_labels {
     input.metadata.labels["app.kubernetes.io/name"]
     input.metadata.labels["app.kubernetes.io/component"]
@@ -7,13 +12,13 @@ required_deployment_labels {
 }
 
 deny[msg] {
-  input.kind = "DeploymentConfig"
+  openshift.is_deploymentConfig
   not required_deployment_labels
   msg = sprintf("%s must include AICoE recommended labels: https://github.com/AICoE/aicoe-cd/blob/master/docs/recommended_labels.md", [name])
 }
 
 deny[msg] {
-  input.kind = "Deployment"
+  kubernetes.is_deployment
   not input.spec.template.spec.securityContext.runAsNonRoot = true
   msg = "Containers must not run as root"
 }
