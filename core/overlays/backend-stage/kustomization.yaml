@@ -7,12 +7,6 @@ patchesStrategicMerge:
   - configmaps.yaml
   - imagestreamtags.yaml
 patchesJson6902:
-  - path: put-into-infra-namespace.yaml
-    target:
-      group: ""
-      version: v1
-      kind: ConfigMap
-      name: solvers
   - path: job-generate-name.yaml
     target:
       group: batch
