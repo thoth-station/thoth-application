@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../stage/
   - pgbouncer.yaml
+  - postgresql.yaml
   - thoth-notification.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
