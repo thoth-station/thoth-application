@@ -1,0 +1,68 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: thamos-advise
+spec:
+  templates:
+    - name: thamos-advise
+      inputs:
+        parameters:
+          - name: "GITHUB_EVENT_TYPE"
+          - name: "GITHUB_CHECK_RUN_ID"
+          - name: "GITHUB_INSTALLATION_ID"
+          - name: "GITHUB_BASE_REPO_URL"
+          - name: "GITHUB_HEAD_REPO_URL"
+          - name: "ORIGIN"
+          - name: "REVISION"
+          - name: "THOTH_HOST"
+          - name: "REPO_PATH"
+            value: "/mnt/inputs/artifacts/repository"
+        artifacts:
+          - name: repository
+            path: "{{inputs.parameters.REPO_PATH}}"
+            git:
+              repo: "{{inputs.parameters.GITHUB_HEAD_REPO_URL}}"
+              revision: "{{inputs.parameters.REVISION}}"
+              depth: 1
+      container:
+        name: advise
+        image: workflow-helpers
+        env:
+          - name: WORKFLOW_TASK
+            value: "qeb_hwt"
+          - name: APP_SCRIPT
+            value: "app.sh"
+          - name: GITHUB_EVENT_TYPE
+            value: "{{inputs.parameters.GITHUB_EVENT_TYPE}}"
+          - name: GITHUB_CHECK_RUN_ID
+            value: "{{inputs.parameters.GITHUB_CHECK_RUN_ID}}"
+          - name: GITHUB_INSTALLATION_ID
+            value: "{{inputs.parameters.GITHUB_INSTALLATION_ID}}"
+          - name: GITHUB_BASE_REPO_URL
+            value: "{{inputs.parameters.GITHUB_BASE_REPO_URL}}"
+          - name: GITHUB_HEAD_REPO_URL
+            value: "{{inputs.parameters.GITHUB_HEAD_REPO_URL}}"
+          - name: ORIGIN
+            value: "{{inputs.parameters.ORIGIN}}"
+          - name: THOTH_HOST
+            value: "{{inputs.parameters.THOTH_HOST}}"
+          - name: REPO_PATH
+            value: "{{inputs.parameters.REPO_PATH}}"
+          - name: WEBHOOK_CALLBACK_URL
+            valueFrom:
+              configMapKeyRef:
+                key: webhook-callback-url
+                name: qeb-hwt
+          - name: WEBHOOK_SECRET
+            valueFrom:
+              secretKeyRef:
+                key: WEBHOOK_SECRET
+                name: qeb-hwt
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
