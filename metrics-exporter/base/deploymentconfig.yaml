@@ -7,12 +7,16 @@ spec:
   replicas: 1
   selector:
     service: metrics-exporter
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: metrics-exporter
+    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
   template:
     metadata:
       labels:
-        app: thoth
-        component: metrics-exporter
         service: metrics-exporter
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: metrics-exporter
+        app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
     spec:
       serviceAccountName: metrics-exporter
       containers:

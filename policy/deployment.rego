@@ -14,5 +14,5 @@ required_deployment_labels {
 deny[msg] {
   openshift.is_deploymentConfig
   not required_deployment_labels
-  msg = sprintf("%s must include AICoE recommended labels: https://github.com/AICoE/aicoe-cd/blob/master/docs/recommended_labels.md", [name])
+  msg = sprintf("DeploymentConfig/%s must include AICoE recommended labels: https://github.com/AICoE/aicoe-cd/blob/master/docs/recommended_labels.md", [name])
 }

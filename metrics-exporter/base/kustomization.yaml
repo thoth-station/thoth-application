@@ -1,5 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+commonLabels:
+  app.kubernetes.io/name: thoth
+  app.kubernetes.io/component: metrics-exporter
+  app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
 resources:
   - configmap.yaml
   - deploymentconfig.yaml
@@ -9,6 +13,3 @@ resources:
   - route.yaml
   - service.yaml
   - serviceaccount.yaml
-commonLabels:
-  app: thoth
-  component: metrics-exporter
