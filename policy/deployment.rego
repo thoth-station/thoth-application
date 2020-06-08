@@ -16,9 +16,3 @@ deny[msg] {
   not required_deployment_labels
   msg = sprintf("%s must include AICoE recommended labels: https://github.com/AICoE/aicoe-cd/blob/master/docs/recommended_labels.md", [name])
 }
-
-deny[msg] {
-  kubernetes.is_deployment
-  not input.spec.template.spec.securityContext.runAsNonRoot = true
-  msg = "Containers must not run as root"
-}
