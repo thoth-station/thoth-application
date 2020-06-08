@@ -8,6 +8,5 @@ resources:
   - configmap.yaml
   - argo-workflows/advise.yaml
   - argo-workflows/trigger-integration.yaml
-  - argo-workflows/qeb-hwt-integration.yaml
   - openshift-templates/adviser.yaml
   - imagestream.yaml

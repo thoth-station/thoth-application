@@ -6,6 +6,8 @@ resources:
   - imagestream.yaml
   - route.yaml
   - service.yaml
+  - argo-workflows/qeb-hwt-integration.yaml
+  - openshift-templates/qeb-hwt.yaml
 commonLabels:
   app: thoth
   component: qeb-hwt
