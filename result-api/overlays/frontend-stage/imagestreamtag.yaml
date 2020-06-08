@@ -4,10 +4,10 @@ metadata:
   name: result-api
 spec:
   tags:
-  - name: latest
-    from:
-      kind: DockerImage
-      name: quay.io/thoth-station/result-api:0.7.5
-    importPolicy: {}
-    referencePolicy:
-      type: Source
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/result-api:0.7.5
+      importPolicy: {}
+      referencePolicy:
+        type: Local
