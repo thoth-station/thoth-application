@@ -18,7 +18,3 @@ patchesJson6902:
       kind: Job
       name: chat-notification-failed-
       namespace: thoth-infra-stage
-generatorOptions:
-  disableNameSuffixHash: true
-generators:
-  - ./secret-generator.yaml
