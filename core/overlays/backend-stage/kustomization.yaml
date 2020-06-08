@@ -13,12 +13,14 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-succeeded-
+      namespace: thoth-infra-stage
   - path: job-generate-name.yaml
     target:
       group: batch
       version: v1
       kind: Job
       name: chat-notification-failed-
+      namespace: thoth-infra-stage
 generatorOptions:
   disableNameSuffixHash: true
 generators:
