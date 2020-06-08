@@ -2,19 +2,21 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  labels:
-    app: thoth
-    component: result-api
-    service: result-api
   name: result-api
 spec:
   replicas: 1
   selector:
     service: result-api
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: result-api
+    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
   template:
     metadata:
       labels:
         service: result-api
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: result-api
+        app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
     spec:
       serviceAccountName: result-api
       containers:
