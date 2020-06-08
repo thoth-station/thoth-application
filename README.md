@@ -15,6 +15,11 @@ Thoth is deployed to the following [environments](docs/environments.md).
 Each component of the Thoth Application is separated into an ArgoCD Application, there is a core Application
 that contains global configs and secrets.
 
+## Policy Based Control of resources
+
+All resources created by kustomize should pass OPA conftest, you could check this by
+using: `kustomize build --enable_alpha_plugins overlays/test | conftest test --policy ../policy -`.
+
 ## Use Cases
 
 ### testing a pull request
