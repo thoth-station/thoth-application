@@ -88,10 +88,10 @@ objects:
             archiveLogs: true
           dag:
             tasks:
-              - name: "thamos-advise"
+              - name: "qeb-hwt-integration"
                 templateRef:
-                  name: "thamos-advise"
-                  template: "thamos-advise"
+                  name: "qeb-hwt-integration"
+                  template: "qeb-hwt-integration"
                 arguments:
                   parameters:
                     - name: "GITHUB_EVENT_TYPE"

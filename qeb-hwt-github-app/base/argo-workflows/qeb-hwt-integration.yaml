@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: thamos-advise
+  name: qeb-hwt-integration
 spec:
   templates:
-    - name: thamos-advise
+    - name: qeb-hwt-integration
       inputs:
         parameters:
           - name: "GITHUB_EVENT_TYPE"
@@ -26,7 +26,7 @@ spec:
               revision: "{{inputs.parameters.REVISION}}"
               depth: 1
       container:
-        name: advise
+        name: qeb-hwt-integration
         image: workflow-helpers
         env:
           - name: WORKFLOW_TASK
