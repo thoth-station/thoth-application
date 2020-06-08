@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stage-thoth-core-middletier
+spec:
+  destination:
+    namespace: thoth-middletier-stage
+    server: "https://api.ocp.prod.psi.redhat.com:6443"
+  source:
+    path: core/overlays/middletier-stage
+    repoURL: "https://github.com/thoth-station/thoth-application.git"
+    targetRevision: master
+  project: thoth
+  syncPolicy:
+    automated:
+      automated:
+        prune: false
+        selfHeal: false
+      prune: true
+      selfHeal: true
