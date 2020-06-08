@@ -6,14 +6,14 @@ metadata:
 data:
   applicationVersion: 0.7.0
   deploymentName: ocp-prod-stage
-  amun-api-url: "http://amun-api-thoth-amun-api-stage.cloud.paas.psi.redhat.com/api/v1"
+  amun-api-url: "UNSET"
   amun-inspection-namespace: thoth-amun-inspection-stage
   amun-namespace: thoth-amun-api-stage
   analyzer-cleanup-time: 7d
-  backend-namespace: thoth-prod-tensorflow
+  backend-namespace: aicoe-infra-prod
   frontend-namespace: thoth-frontend-stage
   infra-namespace: thoth-infra-stage
-  isis-api-url: "http://isis-api-thoth-frontend-stage.cloud.paas.psi.redhat.com"
+  isis-api-url: "UNSET"
   metrics-pushgateway-url: "pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80"
   middletier-namespace: thoth-middletier-stage
   middletier-pod-cpu-limit: "0.5"
@@ -23,7 +23,7 @@ data:
   rsyslog-host: ""
   rsyslog-port: ""
   sentry-environment: "https://d26126364ba24c91aca4608c8a9b93e5@sentry.io/1298083"
-  storage-bucket-name: thoth-psi-stage
+  storage-bucket-name: ocp-prod-stage
   sync-observations: "0"
 ---
 kind: ConfigMap
@@ -42,7 +42,7 @@ apiVersion: v1
 metadata:
   name: kafka
 data:
-  kafka-bootstrap-servers: "thoth-kafka-bootstrap-thoth-infra-stage.apps.thoth01.lab.upshift.rdu2.redhat.com:443"
+  kafka-bootstrap-servers: "thoth-kafka-bootstrap-thoth-infra-stage.apps.thoth12.lab.upshift.rdu2.redhat.com:443"
 ---
 kind: ConfigMap
 apiVersion: v1

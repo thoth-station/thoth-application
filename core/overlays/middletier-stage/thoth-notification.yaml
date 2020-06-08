@@ -20,7 +20,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have successfully synchronized *Thoth Core* components to *STAGE* *middletier* namespace, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/stage-thoth-core-middletier|ArgoCD UI> 🚀'}"
+            - "{'text':'I have successfully synchronized *Thoth Core* components to <https://console-openshift-console.apps.ocp.prod.psi.redhat.com/k8s/cluster/projects/thoth-middletier-stage|STAGE middletier> namespace, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/stage-thoth-core-middletier|ArgoCD UI> 🚀'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -52,7 +52,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAILED* syncing *Thoth Core* components to *STAGE* *middletier* namespace, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/stage-thoth-core-middletier|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* syncing *Thoth Core* components to <https://console-openshift-console.apps.ocp.prod.psi.redhat.com/k8s/cluster/projects/thoth-middletier-stage|STAGE middletier> namespace, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/stage-thoth-core-middletier|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
