@@ -5,4 +5,4 @@ metadata:
   name: qeb-hwt
 data:
   use-argo: "1"
-  webhook-callback-url: "http://qeb-hwt-aicoe-prod-bots.cloud.paas.psi.redhat.com"
+  webhook-callback-url: "http://qeb-hwt-aicoe-prod-bots.cloud.paas.psi.redhat.com"  # TODO: Add correct url
