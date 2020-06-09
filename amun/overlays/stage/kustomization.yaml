@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
+  - configmap-prometheus.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - configmaps.yaml
@@ -18,3 +19,39 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-failed-
+  - path: put-into-api-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: metrics-exporter-reader
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: metrics-exporter-reader
+  - path: put-into-api-namespace.yaml
+    target:
+      group: ""
+      version: v1
+      kind: ConfigMap
+      name: prometheus
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: ""
+      version: v1
+      kind: ConfigMap
+      name: prometheus
+  - path: put-into-api-namespace.yaml
+    target:
+      group: ""
+      version: v1
+      kind: ConfigMap
+      name: amun
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: ""
+      version: v1
+      kind: ConfigMap
+      name: amun

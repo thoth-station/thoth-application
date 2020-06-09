@@ -18,3 +18,9 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-failed-
+  - path: put-into-test-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: metrics-exporter-reader

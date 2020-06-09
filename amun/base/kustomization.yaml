@@ -5,5 +5,8 @@ commonLabels:
   app.kubernetes.io/component: amun
   app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
 resources:
-  - configmaps.yaml
   - roles/
+configMapGenerator:
+  - name: amun
+generatorOptions:
+  disableNameSuffixHash: true
