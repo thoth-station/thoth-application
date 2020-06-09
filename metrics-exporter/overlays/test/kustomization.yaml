@@ -1,13 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-commonLabels:
-  app.kubernetes.io/version: "0.8.0"
 resources:
   - ../../base
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
-  - service.yaml
 patches:
   - path: resources_patch.yaml
     target:
