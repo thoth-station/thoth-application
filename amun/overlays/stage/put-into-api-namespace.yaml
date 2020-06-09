@@ -1,0 +1,3 @@
+- op: add
+  path: /metadata/namespace
+  value: thoth-amun-api-stage
