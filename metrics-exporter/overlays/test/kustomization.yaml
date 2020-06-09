@@ -7,6 +7,7 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
+  - service.yaml
 patches:
   - path: resources_patch.yaml
     target:

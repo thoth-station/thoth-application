@@ -1,0 +1,9 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: metrics-exporter
+spec:
+  selector:
+    service: metrics-exporter
+    app.kubernetes.io/version: "0.8.0"
