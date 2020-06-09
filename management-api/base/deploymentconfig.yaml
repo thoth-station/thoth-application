@@ -34,7 +34,7 @@ spec:
             - name: AMUN_API_URL
               valueFrom:
                 configMapKeyRef:
-                  key: amun-api-url
+                  key: api-url
                   name: amun
             - name: THOTH_RESULT_API_URL
               value: http://result-api

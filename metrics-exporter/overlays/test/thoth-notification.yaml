@@ -20,7 +20,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have just successfully synchronized *metrics-exporter* to <https://console-openshift-console.apps.ocp.prod.psi.redhat.com/k8s/cluster/projects/thoth-test-core|TEST>, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-metrics-exporter|ArgoCD UI>'}"
+            - "{'text':'I have successfully synchronized *metrics-exporter* to <https://console-openshift-console.apps.ocp.prod.psi.redhat.com/k8s/cluster/projects/thoth-test-core|TEST>, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-metrics-exporter|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
