@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stage-thoth-user-api
+spec:
+  destination:
+    namespace: thoth-frontend-stage
+    server: 'https://api.ocp.prod.psi.redhat.com:6443'
+  source:
+    path: user-api/overlays/stage
+    repoURL: 'https://github.com/thoth-station/thoth-application.git'
+    targetRevision: master
+  project: thoth
+  syncPolicy:
+    automated:
+      automated:
+        prune: false
+        selfHeal: false
+      selfHeal: true
+
