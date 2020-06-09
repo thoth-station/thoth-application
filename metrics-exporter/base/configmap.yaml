@@ -11,3 +11,11 @@ data:
   graph-cache-disabled: "1"
   knowledge-graph-port: "5432"
   knowledge-graph-ssl-disabled: "1"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: amun
+data:
+  api-namespace: "UNSET"
+  inspection-namespace: "UNSET"
