@@ -1,0 +1,15 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: amun-api
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    service: amun-api
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: amun-api
+    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd

@@ -1,0 +1,115 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: amun-api
+spec:
+  replicas: 1
+  selector:
+    service: amun-api
+    app.kubernetes.io/component: amun
+    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+    app.kubernetes.io/name: thoth
+  template:
+    metadata:
+      labels:
+        service: amun-api
+        app.kubernetes.io/component: amun
+        app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+        app.kubernetes.io/name: thoth
+    spec:
+      containers:
+        - env:
+            - name: APP_MODULE
+              value: "amun.entrypoint:app"
+            - name: KUBERNETES_API_URL
+              value: "https://kubernetes.default.svc.cluster.local"
+            - name: KUBERNETES_VERIFY_TLS
+              value: "0"
+            - name: AMUN_DEBUG
+              value: "1"
+            - name: THOTH_CEPH_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-name
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-prefix
+                  name: ceph
+            - name: THOTH_S3_ENDPOINT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: endpoint
+                  name: ceph
+            - name: THOTH_AMUN_INSPECTION_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: inspection-namespace
+                  name: amun
+            - name: THOTH_AMUN_INFRA_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: infra-namespace
+                  name: amun
+            - name: AMUN_API_APP_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: app-secret-key
+                  name: amun
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  key: sentry-dsn
+                  name: amun
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: deployment-name
+                  name: amun
+            - name: PROMETHEUS_PUSHGATEWAY_HOST
+            - name: PROMETHEUS_PUSHGATEWAY_PORT
+          image: amun-api
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /liveness
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 10
+          name: amun-api
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /readiness
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+          resources:
+            limits:
+              cpu: 500m
+              memory: 384Mi
+            requests:
+              cpu: 125m
+              memory: 384Mi
+  test: false
+  triggers:
+    - imageChangeParams:
+        containerNames:
+          - amun-api
+        from:
+          kind: ImageStreamTag
+          name: "amun-api:latest"
+      type: ImageChange
+    - type: ConfigChange

@@ -6,6 +6,10 @@ commonLabels:
   app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
 resources:
   - roles/
+  - deploymentconfig.yaml
+  - imagestream.yaml
+  - route.yaml
+  - service.yaml
 configMapGenerator:
   - name: amun
 generatorOptions:

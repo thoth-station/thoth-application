@@ -5,6 +5,7 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - configmaps.yaml
+  - imagestreamtag.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
@@ -24,3 +25,5 @@ patchesJson6902:
       version: v1
       kind: Role
       name: metrics-exporter-reader
+generators:
+  - ./secret-generator.yaml
