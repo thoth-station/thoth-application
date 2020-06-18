@@ -82,7 +82,8 @@ objects:
     spec:
       serviceAccountName: argo
       ttlStrategy:
-        secondsAfterSuccess: 3600
+        secondsAfterSuccess: 7200
+        secondsAfterFailure: 7200
       entrypoint: adviser
       arguments:
         parameters:
