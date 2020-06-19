@@ -5,7 +5,7 @@ metadata:
 spec:
   destination:
     namespace: thoth-test-core
-    server: 'https://api.thoth01.lab.upshift.rdu2.redhat.com:6443' 
+    server: 'https://api.thoth01.lab.upshift.rdu2.redhat.com:6443'
   source:
     path: chat-notification/overlays/test
     repoURL: 'https://github.com/thoth-station/thoth-application.git'
@@ -17,4 +17,3 @@ spec:
         prune: false
         selfHeal: false
       selfHeal: true
-
