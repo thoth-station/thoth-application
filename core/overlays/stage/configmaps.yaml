@@ -51,12 +51,6 @@ metadata:
 data:
   host-url: "https://prometheus-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
   instance-metrics-exporter-frontend: "metrics-exporter-thoth-frontend-stage.cloud.paas.psi.redhat.com:80"
-  instance-workflow-metrics-amun-inspection: >-
-    workflow-controller-metrics-thoth-amun-inspection-stage.cloud.paas.psi.redhat.com:80
-  instance-workflow-metrics-backend: >-
-    workflow-controller-metrics-thoth-prod-tensorflow.cloud.paas.psi.redhat.com:80
-  instance-workflow-metrics-middletier: >-
-    workflow-controller-metrics-thoth-middletier-stage.cloud.paas.psi.redhat.com:80
   pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
   pushgateway-port: "80"
   pushgateway-url: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80
