@@ -168,21 +168,6 @@ spec:
                 configMapKeyRef:
                   name: prometheus
                   key: instance-metrics-exporter-frontend
-            - name: WORKFLOW_METRICS_BACKEND_PROMETHEUS_INSTANCE
-              valueFrom:
-                configMapKeyRef:
-                  name: prometheus
-                  key: instance-workflow-metrics-backend
-            - name: WORKFLOW_METRICS_MIDDLETIER_PROMETHEUS_INSTANCE
-              valueFrom:
-                configMapKeyRef:
-                  name: prometheus
-                  key: instance-workflow-metrics-middletier
-            - name: WORKFLOW_METRICS_AMUN_INSPECTION_PROMETHEUS_INSTANCE
-              valueFrom:
-                configMapKeyRef:
-                  name: prometheus
-                  key: instance-workflow-metrics-amun-inspection
             - name: WEB_CONCURRENCY
               value: "1"
           ports:
