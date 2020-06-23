@@ -3,7 +3,7 @@ kind: Workflow
 metadata:
   name: initializer
 spec:
-  serviceAccountName: argo
+  serviceAccountName: init-job
   podGC:
     strategy: OnWorkflowSuccess
   entrypoint: initializer
