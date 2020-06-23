@@ -1,6 +1,7 @@
 ---
 apiVersion: v1
 data:
+  amun-api-url: amun-api.thoth-test-core.svc
   deployment-name: opc-prod-test
   infra-namespace: thoth-test-core
   inspection-namespace: thoth-test-core
