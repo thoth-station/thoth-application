@@ -53,6 +53,32 @@ spec:
               secretKeyRef:
                 name: postgresql
                 key: database-name
+          - name: THOTH_CEPH_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                key: bucket-name
+                name: ceph
+          - name: THOTH_CEPH_BUCKET_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                key: bucket-prefix
+                name: ceph
+          - name: THOTH_S3_ENDPOINT_URL
+            valueFrom:
+              configMapKeyRef:
+                key: host
+                name: ceph
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: deploymentName
+                name: thoth
+          - name: THOTH_USE_ARGO
+            value: "1"
+          - name: KUBERNETES_API_URL
+            value: "https://kubernetes.default.svc.cluster.local"
+          - name: KUBERNETES_VERIFY_TLS
+            value: "0"
         resources:
           limits:
             cpu: 250m
