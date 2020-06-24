@@ -106,7 +106,6 @@ objects:
     spec:
       serviceAccountName: argo
       ttlStrategy:
-        # Keep adviser 1h to let users browse the logs.
         secondsAfterSuccess: 7200
         secondsAfterFailure: 7200
       entrypoint: adviser
@@ -158,19 +157,6 @@ objects:
           emptyDir: {}
         - name: output
           emptyDir: {}
-        - name: secrets
-          secret:
-            secretName: "kafka-secret"
-            items:
-              - key: kafka_ca.crt
-                path: kafka_ca.crt
-        - name: ssh-config
-          secret:
-            secretName: kebechet-secret
-            items:
-              - key: ssh-privatekey
-                path: id_rsa
-                mode: 0600
 
       templates:
         - name: "adviser"
@@ -227,20 +213,6 @@ objects:
                     - name: "THOTH_DEPLOYMENT_NAME"
                       value: "{{workflow.parameters.deployment_name}}"
 
-              - name: "unresolved-package-handler"
-                dependencies:
-                  - "advise"
-                templateRef:
-                  name: "unresolved-package-handler"
-                  template: "unresolved-package-handler"
-                arguments:
-                  artifacts:
-                    - name: outputdocument
-                      from: "{{tasks.advise.outputs.artifacts.outputdocument}}"
-                  parameters:
-                    - name: THOTH_DOCUMENT_ID
-                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
-
               - name: "graph-sync-advise"
                 dependencies:
                   - "advise"
@@ -271,23 +243,3 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_ADVISER_METADATA"
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
-
-              - name: "kebechet-run-results"
-                dependencies:
-                  - "trigger-integration"
-                templateRef:
-                  name: "kebechet-run-results"
-                  template: "schedule-kebechet"
-                arguments:
-                  parameters:
-                    - name: "WORKFLOW_NAME"
-                      value: "{{workflow.parameters.THOTH_ADVISER_JOB_ID}}"
-                    - name: "THOTH_DOCUMENT_ID"
-                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
-                    - name: "THOTH_ADVISER_METADATA"
-                      value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
-                    - name: origin
-                      value: "{{tasks.trigger-integration.outputs.parameters.origin}}"
-                    - name: source_type
-                      value: "{{tasks.trigger-integration.outputs.parameters.source_type}}"
-                when: "{{tasks.trigger-integration.outputs.parameters.source_type}} == KEBECHET"
