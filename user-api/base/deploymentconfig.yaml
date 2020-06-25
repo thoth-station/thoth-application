@@ -192,11 +192,3 @@ spec:
             periodSeconds: 60
             timeoutSeconds: 10
   test: false
-  triggers:
-    - type: ImageChange
-      imageChangeParams:
-        containerNames:
-          - user-api
-        from:
-          kind: ImageStreamTag
-          name: "user-api:latest"
