@@ -192,7 +192,7 @@ spec:
             periodSeconds: 60
             timeoutSeconds: 10
   test: false
-  trigger:
+  triggers:
     - type: ConfigChange
     - type: ImageChange
       imageChangeParams:
