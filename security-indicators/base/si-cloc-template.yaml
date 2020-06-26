@@ -5,7 +5,7 @@ metadata:
   annotations:
     description: "Thoth: SI-CLOC"
     openshift.io/display-name: "Thoth: SI-CLOC"
-    version: 0.1.0
+    version: 0.7.0
     tags: thoth,ai-stacks,si-cloc
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -15,38 +15,15 @@ metadata:
     app: thoth
     template: si-cloc
     component: si-cloc
-
-parameters:
-  - name: THOTH_SI_CLOC_JOB_ID
-    required: true
-    description: A unique dentifier of CLOC security indicator job.
-    displayName: si-cloc id
-  - name: THOTH_SI_CLOC_PACKAGE_NAME
-    required: true
-    description: Name of package which is being analyzed.
-    displayName: package name
-  - name: THOTH_SI_CLOC_PACKAGE_VERSION
-    required: true
-    description: Version of the package being analyzed.
-    displayName: package version
-  - name: THOTH_SI_CLOC_PACKAGE_INDEX
-    required: true
-    description: Index to get package from.
-    displayName: package Index
-
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
     metadata:
-      name: "${THOTH_SI_CLOC_JOB_ID}"
-      annotations:
-        thoth-station.ninja/template-version: 0.1.0
       labels:
         app: thoth
         component: si-cloc
+      name: "${THOTH_SI_CLOC_JOB_ID}"
     spec:
-      serviceAccountName: argo
-      entrypoint: si-cloc
       arguments:
         parameters:
           - name: THOTH_SI_CLOC_JOB_ID
@@ -63,37 +40,54 @@ objects:
           - name: ceph_bucket_name
           - name: ceph_host
           - name: deployment_name
-
-      volumes:
-        - name: workdir
-          emptyDir: {}
-
+      entrypoint: si-cloc
+      serviceAccountName: argo
       templates:
-        - name: "si-cloc"
-          archiveLocation:
+        - archiveLocation:
             archiveLogs: true
+          name: si-cloc
           steps:
-            - - name: cloc
-                templateRef:
-                  name: "cloc"
-                  template: "cloc"
-                arguments:
+            - - arguments:
                   parameters:
-                    - name: "THOTH_SI_CLOC_JOB_ID"
+                    - name: THOTH_SI_CLOC_JOB_ID
                       value: "{{workflow.parameters.THOTH_SI_CLOC_JOB_ID}}"
-                    - name: "THOTH_DOCUMENT_ID"
+                    - name: THOTH_DOCUMENT_ID
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
-                    - name: "THOTH_SI_CLOC_PACKAGE_NAME"
+                    - name: THOTH_SI_CLOC_PACKAGE_NAME
                       value: "{{workflow.parameters.THOTH_SI_CLOC_PACKAGE_NAME}}"
-                    - name: "THOTH_SI_CLOC_PACKAGE_VERSION"
+                    - name: THOTH_SI_CLOC_PACKAGE_VERSION
                       value: "{{workflow.parameters.THOTH_SI_CLOC_PACKAGE_VERSION}}"
-                    - name: "THOTH_SI_CLOC_PACKAGE_INDEX"
+                    - name: THOTH_SI_CLOC_PACKAGE_INDEX
                       value: "{{workflow.parameters.THOTH_SI_CLOC_PACKAGE_INDEX}}"
-                    - name: "THOTH_S3_ENDPOINT_URL"
+                    - name: THOTH_S3_ENDPOINT_URL
                       value: "{{workflow.parameters.ceph_host}}"
-                    - name: "THOTH_CEPH_BUCKET_NAME"
+                    - name: THOTH_CEPH_BUCKET_NAME
                       value: "{{workflow.parameters.ceph_bucket_name}}"
-                    - name: "THOTH_CEPH_BUCKET_PREFIX"
+                    - name: THOTH_CEPH_BUCKET_PREFIX
                       value: "{{workflow.parameters.ceph_bucket_prefix}}"
-                    - name: "THOTH_DEPLOYMENT_NAME"
+                    - name: THOTH_DEPLOYMENT_NAME
                       value: "{{workflow.parameters.deployment_name}}"
+                name: cloc
+                templateRef:
+                  name: cloc
+                  template: cloc
+      volumes:
+        - emptyDir: {}
+          name: workdir
+parameters:
+  - name: THOTH_SI_CLOC_JOB_ID
+    displayName: si-cloc id
+    description: A unique dentifier of CLOC security indicator job.
+    required: true
+  - name: THOTH_SI_CLOC_PACKAGE_NAME
+    displayName: package name
+    description: Name of package which is being analyzed.
+    required: true
+  - name: THOTH_SI_CLOC_PACKAGE_VERSION
+    displayName: package version
+    description: Version of the package being analyzed.
+    required: true
+  - name: THOTH_SI_CLOC_PACKAGE_INDEX
+    displayName: package Index
+    description: Index to get package from.
+    required: true
