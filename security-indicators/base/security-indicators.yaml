@@ -1,0 +1,193 @@
+---
+kind: Template
+apiVersion: template.openshift.io/v1
+metadata:
+  name: security-indicators
+  labels:
+    app: thoth
+    component: security-indicators
+    template: security-indicators
+  annotations:
+    description: "Thoth: Security Indicators"
+    openshift.io/display-name: "Thoth: Security Indicators"
+    tags: "thoth,ai-stacks,security-indicators"
+    template.openshift.io/documentation-url: "https://github.com/Thoth-Station/"
+    template.openshift.io/long-description: >
+      This template defines resources needed to run all security indicators on
+      Openshift.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+    version: 0.7.0
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      labels:
+        app: thoth
+        component: security-indicators
+      name: "${THOTH_SECURITY_INDICATORS_JOB_ID}"
+    spec:
+      arguments:
+        parameters:
+          - name: THOTH_SECURITY_INDICATORS_JOB_ID
+            value: "${THOTH_SECURITY_INDICATORS_JOB_ID}"
+          - name: THOTH_DOCUMENT_ID
+            value: "${THOTH_SECURITY_INDICATORS_JOB_ID}"
+          - name: THOTH_SECURITY_INDICATORS_PACKAGE_NAME
+            value: "${THOTH_SECURITY_INDICATORS_PACKAGE_NAME}"
+          - name: THOTH_SECURITY_INDICATORS_PACKAGE_VERSION
+            value: "${THOTH_SECURITY_INDICATORS_PACKAGE_VERSION}"
+          - name: THOTH_SECURITY_INDICATORS_PACKAGE_INDEX
+            value: "${THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}"
+          - name: THOTH_SECURITY_INDICATORS_AGGREGATION_FUNCTION
+            value: "${THOTH_SECURITY_INDICATORS_AGGREGATION_FUNCTION}"
+          - name: ceph_bucket_prefix
+          - name: ceph_bucket_name
+          - name: ceph_host
+          - name: deployment_name
+      entrypoint: security-indicators
+      onExit: exit-handler
+      podGC:
+        strategy: OnPodCompletion
+      serviceAccountName: argo
+      templates:
+        - archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - arguments:
+                  parameters:
+                    - name: THOTH_PACKAGE_NAME
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_NAME}}
+                    - name: THOTH_PACKAGE_VERSION
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_VERSION}}
+                    - name: THOTH_PACKAGE_INDEX
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}}
+                name: download-package
+                templateRef:
+                  name: download-package
+                  template: download-package
+              - arguments:
+                  parameters:
+                    - name: THOTH_SI_BANDIT_JOB_ID
+                      value: "{{workflow.parameters.THOTH_SECURITY_INDICATORS_JOB_ID}}"
+                    - name: THOTH_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+                    - name: THOTH_SI_BANDIT_PACKAGE_NAME
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_NAME}}
+                    - name: THOTH_SI_BANDIT_PACKAGE_VERSION
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_VERSION}}
+                    - name: THOTH_SI_BANDIT_PACKAGE_INDEX
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}}
+                    - name: THOTH_SI_BANDIT_DIR
+                      value: /mnt/workdir/package
+                dependencies:
+                  - download-package
+                name: bandit
+                templateRef:
+                  name: bandit
+                  template: bandit-from-dir
+              - arguments:
+                  parameters:
+                    - name: THOTH_SI_CLOC_JOB_ID
+                      value: "{{workflow.parameters.THOTH_SECURITY_INDICATORS_JOB_ID}}"
+                    - name: THOTH_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+                    - name: THOTH_SI_CLOC_PACKAGE_NAME
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_NAME}}
+                    - name: THOTH_SI_CLOC_PACKAGE_VERSION
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_VERSION}}
+                    - name: THOTH_SI_CLOC_PACKAGE_INDEX
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}}
+                    - name: THOTH_SI_CLOC_DIR
+                      value: /mnt/workdir/package
+                dependencies:
+                  - download-package
+                name: cloc
+                templateRef:
+                  name: cloc
+                  template: cloc-from-dir
+              - arguments:
+                  parameters:
+                    - name: THOTH_SI_AGGREGATOR_JOB_ID
+                      value: "{{workflow.parameters.THOTH_SECURITY_INDICATORS_JOB_ID}}"
+                    - name: THOTH_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+                    - name: THOTH_SI_AGGREGATOR_PACKAGE_NAME
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_NAME}}
+                    - name: THOTH_SI_AGGREGATOR_PACKAGE_VERSION
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_VERSION}}
+                    - name: THOTH_SI_AGGREGATOR_PACKAGE_INDEX
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}}
+                    - name: THOTH_SI_AGGREGATOR_FUNCTION
+                      value: >-
+                        {{workflow.parameters.THOTH_SECURITY_INDICATORS_AGGREGATION_FUNCTION}}
+                    - name: THOTH_S3_ENDPOINT_URL
+                      value: "{{workflow.parameters.ceph_host}}"
+                    - name: THOTH_CEPH_BUCKET_NAME
+                      value: "{{workflow.parameters.ceph_bucket_name}}"
+                    - name: THOTH_CEPH_BUCKET_PREFIX
+                      value: "{{workflow.parameters.ceph_bucket_prefix}}"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
+                dependencies:
+                  - bandit
+                  - cloc
+                name: aggregator
+                templateRef:
+                  name: aggregator
+                  template: aggregator
+          name: security-indicators
+        - name: exit-handler
+          steps:
+            - - name: delete-pvc
+                template: delete-pvc
+                when: "{{workflow.status}} != Succeeded"
+        - name: delete-pvc
+          resource:
+            action: delete
+            manifest: |
+              apiVersion: v1
+              kind: PersistentVolumeClaim
+              metadata:
+                name: {{workflow.name}}-workdir
+      volumeClaimTemplates:
+        - metadata:
+            name: workdir
+          spec:
+            accessModes:
+              - ReadWriteMany
+            resources:
+              requests:
+                storage: 1Gi
+parameters:
+  - name: THOTH_SECURITY_INDICATORS_JOB_ID
+    displayName: security-indicators id
+    description: A unique dentifier of security indicators job.
+    required: true
+  - name: THOTH_SECURITY_INDICATORS_PACKAGE_NAME
+    displayName: package name
+    description: Name of package which is being analyzed.
+    required: true
+  - name: THOTH_SECURITY_INDICATORS_PACKAGE_VERSION
+    displayName: package version
+    description: Version of the package being analyzed.
+    required: true
+  - name: THOTH_SECURITY_INDICATORS_PACKAGE_INDEX
+    displayName: package Index
+    description: Index to get package from.
+    required: true
+  - name: THOTH_SECURITY_INDICATORS_AGGREGATION_FUNCTION
+    description: Name of function used to aggregate security indicators.
+    required: true
