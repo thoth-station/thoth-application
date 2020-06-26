@@ -1,0 +1,67 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: cloc
+  annotations:
+    thoth-station.ninja/template-version: 0.6.5
+  labels:
+    app: thoth
+    component: si-cloc
+spec:
+  templates:
+    - name: cloc
+      inputs:
+        parameters:
+          - name: "THOTH_SI_CLOC_JOB_ID"
+          - name: "THOTH_DOCUMENT_ID"
+          - name: "THOTH_SI_CLOC_PACKAGE_NAME"
+          - name: "THOTH_SI_CLOC_PACKAGE_VERSION"
+          - name: "THOTH_SI_CLOC_PACKAGE_INDEX"
+          - name: "THOTH_S3_ENDPOINT_URL"
+          - name: "THOTH_CEPH_BUCKET_NAME"
+          - name: "THOTH_CEPH_BUCKET_PREFIX"
+          - name: "THOTH_DEPLOYMENT_NAME"
+      outputs:
+        artifacts:
+          - name: outputdocument
+            path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+            archive:
+              none: {}
+            s3:
+              key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
+              {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
+              si-cloc/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              insecure: true
+              accessKeySecret:
+                name: argo-artifact-repository-secrets
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
+      container:
+        name: si-cloc
+        image: "si-cloc"
+        env:
+          - name: THOTH_DOCUMENT_ID
+            value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: THOTH_SI_CLOC_OUTPUT
+            value: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: THOTH_SI_CLOC_PACKAGE_NAME
+            value: "{{inputs.parameters.THOTH_SI_CLOC_PACKAGE_NAME}}"
+          - name: THOTH_SI_CLOC_PACKAGE_VERSION
+            value: "{{inputs.parameters.THOTH_SI_CLOC_PACKAGE_VERSION}}"
+          - name: THOTH_SI_CLOC_PACKAGE_INDEX
+            value: "{{inputs.parameters.THOTH_SI_CLOC_PACKAGE_INDEX}}"
+        volumeMounts:
+          - name: workdir
+            mountPath: /mnt/workdir
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
