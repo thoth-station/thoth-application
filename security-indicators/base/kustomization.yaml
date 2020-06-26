@@ -2,10 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - imagestream.yaml
+  - argo-workflows/aggregator-template.yaml
   - argo-workflows/cloc-template.yaml
   - argo-workflows/bandit-template.yaml
-  - si-bandit-template.yaml
-  - si-cloc-template.yaml
+  - argo-workflows/download-package-template.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: security-indicators
