@@ -1,0 +1,341 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hook
+  labels:
+    app: hook
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: hook
+  template:
+    metadata:
+      labels:
+        app: hook
+    spec:
+      serviceAccountName: "hook"
+      terminationGracePeriodSeconds: 180
+      containers:
+      - name: hook
+        image: gcr.io/k8s-prow/hook:v20200625-dd6a466605
+        imagePullPolicy: Always
+        args:
+        - --dry-run=false
+        - --config-path=/etc/config/config.yaml
+        - --github-token-path=/etc/github/oauth
+        ports:
+          - name: http
+            containerPort: 8888
+        volumeMounts:
+        - name: hmac
+          mountPath: /etc/webhook
+          readOnly: true
+        - name: oauth
+          mountPath: /etc/github
+          readOnly: true
+        - name: config
+          mountPath: /etc/config
+          readOnly: true
+        - name: plugins
+          mountPath: /etc/plugins
+          readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8081
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /healthz/ready
+            port: 8081
+          initialDelaySeconds: 10
+          periodSeconds: 3
+          timeoutSeconds: 600
+      volumes:
+      - name: hmac
+        secret:
+          secretName: hmac-token
+      - name: oauth
+        secret:
+          secretName: oauth-token
+      - name: config
+        configMap:
+          name: config
+      - name: plugins
+        configMap:
+          name: plugins
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plank
+  labels:
+    app: plank
+spec:
+  selector:
+    matchLabels:
+      app: plank
+  replicas: 1 # Do not scale up.
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: plank
+    spec:
+      serviceAccountName: "plank"
+      containers:
+      - name: plank
+        image: gcr.io/k8s-prow/plank:v20200625-dd6a466605
+        args:
+        - --dry-run=false
+        - --config-path=/etc/config/config.yaml
+        volumeMounts:
+        - name: oauth
+          mountPath: /etc/github
+          readOnly: true
+        - name: config
+          mountPath: /etc/config
+          readOnly: true
+      volumes:
+      - name: oauth
+        secret:
+          secretName: oauth-token
+      - name: config
+        configMap:
+          name: config
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sinker
+  labels:
+    app: sinker
+spec:
+  selector:
+    matchLabels:
+      app: sinker
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sinker
+    spec:
+      serviceAccountName: "sinker"
+      containers:
+      - name: sinker
+        image: gcr.io/k8s-prow/sinker:v20200625-dd6a466605
+        args:
+        - --config-path=/etc/config/config.yaml
+        volumeMounts:
+        - name: config
+          mountPath: /etc/config
+          readOnly: true
+      volumes:
+      - name: config
+        configMap:
+          name: config
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deck
+  labels:
+    app: deck
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: deck
+  template:
+    metadata:
+      labels:
+        app: deck
+    spec:
+      serviceAccountName: "deck"
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: deck
+        image: gcr.io/k8s-prow/deck:v20200625-dd6a466605
+        args:
+        - --config-path=/etc/config/config.yaml
+        - --plugin-config=/etc/plugins/plugins.yaml
+        - --tide-url=http://tide/
+        - --hook-url=http://hook:8888/plugin-help
+        - --github-token-path=/etc/github/oauth
+        - --plugin-config=/etc/plugins/plugins.yaml
+        ports:
+          - name: http
+            containerPort: 8080
+        volumeMounts:
+        - name: config
+          mountPath: /etc/config
+          readOnly: true
+        - name: oauth
+          mountPath: /etc/github
+          readOnly: true
+        - name: plugins
+          mountPath: /etc/plugins
+          readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8081
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /healthz/ready
+            port: 8081
+          initialDelaySeconds: 10
+          periodSeconds: 3
+          timeoutSeconds: 600
+      volumes:
+      - name: config
+        configMap:
+          name: config
+      - name: oauth
+        secret:
+          secretName: oauth-token
+      - name: plugins
+        configMap:
+          name: plugins
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: horologium
+  labels:
+    app: horologium
+spec:
+  replicas: 1 # Do not scale up.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: horologium
+  template:
+    metadata:
+      labels:
+        app: horologium
+    spec:
+      serviceAccountName: "horologium"
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: horologium
+        image: gcr.io/k8s-prow/horologium:v20200625-dd6a466605
+        args:
+        - --dry-run=false
+        - --config-path=/etc/config/config.yaml
+        volumeMounts:
+        - name: config
+          mountPath: /etc/config
+          readOnly: true
+      volumes:
+      - name: config
+        configMap:
+          name: config
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tide
+  labels:
+    app: tide
+spec:
+  replicas: 1 # Do not scale up.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: tide
+  template:
+    metadata:
+      labels:
+        app: tide
+    spec:
+      serviceAccountName: "tide"
+      containers:
+      - name: tide
+        image: gcr.io/k8s-prow/tide:v20200625-dd6a466605
+        args:
+        - --dry-run=false
+        - --config-path=/etc/config/config.yaml
+        ports:
+          - name: http
+            containerPort: 8888
+        volumeMounts:
+        - name: oauth
+          mountPath: /etc/github
+          readOnly: true
+        - name: config
+          mountPath: /etc/config
+          readOnly: true
+      volumes:
+      - name: oauth
+        secret:
+          secretName: oauth-token
+      - name: config
+        configMap:
+          name: config
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: statusreconciler
+  labels:
+    app: statusreconciler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: statusreconciler
+  template:
+    metadata:
+      labels:
+        app: statusreconciler
+    spec:
+      serviceAccountName: statusreconciler
+      terminationGracePeriodSeconds: 180
+      containers:
+      - name: statusreconciler
+        image: gcr.io/k8s-prow/status-reconciler:v20200625-dd6a466605
+        args:
+        - --dry-run=false
+        - --continue-on-error=true
+        - --plugin-config=/etc/plugins/plugins.yaml
+        - --config-path=/etc/config/config.yaml
+        - --github-token-path=/etc/github/oauth
+        volumeMounts:
+        - name: oauth
+          mountPath: /etc/github
+          readOnly: true
+        - name: config
+          mountPath: /etc/config
+          readOnly: true
+        - name: plugins
+          mountPath: /etc/plugins
+          readOnly: true
+      volumes:
+      - name: oauth
+        secret:
+          secretName: oauth-token
+      - name: config
+        configMap:
+          name: config
+      - name: plugins
+        configMap:
+          name: plugins
