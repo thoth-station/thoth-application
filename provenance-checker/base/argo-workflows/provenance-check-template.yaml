@@ -45,7 +45,7 @@ spec:
                 key: secretKey
       container:
         name: provenance-check
-        image: quay.io/thoth-station/adviser:v0.6.0-dev
+        image: adviser
         env:
           - name: THOTH_PROVENANCE_CHECKER_JOB_ID
             value: "{{inputs.parameters.THOTH_PROVENANCE_CHECKER_JOB_ID}}"
