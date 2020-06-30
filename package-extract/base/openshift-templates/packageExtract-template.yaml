@@ -1,0 +1,144 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: package-extract
+  annotations:
+    description: "Thoth: Package Extract"
+    openshift.io/display-name: "Thoth: Package Extract"
+    version: 0.0.1
+    tags: thoth,ai-stacks,packages,dependencies,package-extract
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to run package-extract on OpenShift.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    app: thoth
+    template: package-extract
+    component: package-extract
+
+parameters:
+  - name: THOTH_ANALYZED_IMAGE
+    displayName: Analyzer Image
+    description: Thoth's Analyser container image name
+    required: true
+  - name: THOTH_PACKAGE_EXTRACT_JOB_ID
+    description: A job id for package extract job.
+    displayName: Job identifier
+    required: true
+  - name: THOTH_DOCUMENT_ID
+    description: "A unique identifier of the resulting document in a Thoth deployment."
+    displayName: "Document identifier"
+    required: true
+  - name: THOTH_LOG_PACKAGE_EXTRACT
+    description: Log Level for package extract
+    displayName: Log package extract
+    required: true
+    value: 'INFO'
+  - name: THOTH_PACKAGE_EXTRACT_METADATA
+    description: Additional metadata passed with the request.
+    displayName: Package extract metadata
+    required: true
+  - name: THOTH_ANALYZER_NO_TLS_VERIFY
+    description: Do not perform X.509 certificates verification
+    displayName: Disable TLS verification
+    required: false
+    value: '0'
+  - name: THOTH_REGISTRY_CREDENTIALS
+    description: Credentials for connecting to registry to pull images from
+    displayName: Registry credentials
+    required: false
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name:
+      annotations:
+        thoth-station.ninja/template-version: 0.0.1
+      labels:
+        app: thoth
+        component: package-extract
+    spec:
+      serviceAccountName: argo
+      ttlStrategy:
+        secondsAfterSuccess: 7200
+        secondsAfterFailure: 7200
+      entrypoint: package-extract
+      arguments:
+        parameters:
+          - name: THOTH_ANALYZED_IMAGE
+            value: "${THOTH_ANALYZED_IMAGE}"
+          - name: THOTH_PACKAGE_EXTRACT_JOB_ID
+            value: "${THOTH_PACKAGE_EXTRACT_JOB_ID}"
+          - name: THOTH_DOCUMENT_ID
+            value: "${THOTH_DOCUMENT_ID}"
+          - name: THOTH_LOG_PACKAGE_EXTRACT
+            value: "${THOTH_LOG_PACKAGE_EXTRACT}"
+          - name: THOTH_PACKAGE_EXTRACT_METADATA
+            value: "${THOTH_PACKAGE_EXTRACT_METADATA}"
+          - name: THOTH_ANALYZER_NO_TLS_VERIFY
+            value: "${THOTH_ANALYZER_NO_TLS_VERIFY}"
+          - name: THOTH_REGISTRY_CREDENTIALS
+            value: "${THOTH_REGISTRY_CREDENTIALS}"
+          - name: THOTH_FORCE_SYNC
+            value: "${THOTH_FORCE_SYNC}"
+          - name: ceph_bucket_prefix
+          - name: ceph_bucket_name
+          - name: ceph_host
+          - name: deployment_name
+      volumes:
+        - name: workdir
+          emptyDir: {}
+        - name: output
+          emptyDir: {}
+      templates:
+        - name: "package-extract"
+          archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - name: "extract-packages"
+                templateRef:
+                  name: "extract-packages"
+                  template: "extract-packages"
+                continueOn:
+                  failed: true
+                arguments:
+                  parameters:
+                    - name: THOTH_ANALYZED_IMAGE
+                      value: "{{workflow.parameters.THOTH_ANALYZED_IMAGE}}"
+                    - name: THOTH_PACKAGE_EXTRACT_JOB_ID
+                      value: "{{workflow.parameters.THOTH_PACKAGE_EXTRACT_JOB_ID}}"
+                    - name: THOTH_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+                    - name: THOTH_LOG_PACKAGE_EXTRACT
+                      value: "{{workflow.parameters.THOTH_LOG_PACKAGE_EXTRACT}}"
+                    - name: THOTH_PACKAGE_EXTRACT_METADATA
+                      value: "{{workflow.parameters.THOTH_PACKAGE_EXTRACT_METADATA}}"
+                    - name: THOTH_ANALYZER_NO_TLS_VERIFY
+                      value: "{{workflow.parameters.THOTH_ANALYZER_NO_TLS_VERIFY}}"
+                    - name: THOTH_REGISTRY_CREDENTIALS
+                      value: "{{workflow.parameters.THOTH_REGISTRY_CREDENTIALS}}"
+                    - name: THOTH_S3_ENDPOINT_URL
+                      value: "{{workflow.parameters.ceph_host}}"
+                    - name: THOTH_CEPH_BUCKET_NAME
+                      value: "{{workflow.parameters.ceph_bucket_name}}"
+                    - name: THOTH_CEPH_BUCKET_PREFIX
+                      value: "{{workflow.parameters.ceph_bucket_prefix}}"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
+              - name: "graph-sync-package-extract"
+                dependencies:
+                  - "extract-packages"
+                templateRef:
+                  name: "graph-sync"
+                  template: "graph-sync"
+                arguments:
+                  artifacts:
+                    - name: outputdocument
+                      from: "{{tasks.extract-packages.outputs.artifacts.outputdocument}}"
+                  parameters:
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+                    - name: "THOTH_FORCE_SYNC"
+                      value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
