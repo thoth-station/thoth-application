@@ -5,7 +5,6 @@ metadata:
   annotations:
     description: "Thoth: Package Extract"
     openshift.io/display-name: "Thoth: Package Extract"
-    version: 0.0.1
     tags: thoth,ai-stacks,packages,dependencies,package-extract
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -52,9 +51,7 @@ objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
     metadata:
-      name:
-      annotations:
-        thoth-station.ninja/template-version: 0.0.1
+      name: "${THOTH_PACKAGE_EXTRACT_JOB_ID}"
       labels:
         app: thoth
         component: package-extract
