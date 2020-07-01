@@ -40,12 +40,10 @@ parameters:
   - name: THOTH_ANALYZER_NO_TLS_VERIFY
     description: Do not perform X.509 certificates verification
     displayName: Disable TLS verification
-    required: false
     value: '0'
   - name: THOTH_REGISTRY_CREDENTIALS
     description: Credentials for connecting to registry to pull images from
     displayName: Registry credentials
-    required: false
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
