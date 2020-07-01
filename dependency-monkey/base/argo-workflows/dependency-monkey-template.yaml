@@ -149,3 +149,9 @@ spec:
           requests:
             cpu: 1.1
             memory: 8Gi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3600
+          periodSeconds: 1
