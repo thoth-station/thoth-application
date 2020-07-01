@@ -77,8 +77,6 @@ objects:
             value: "${THOTH_ANALYZER_NO_TLS_VERIFY}"
           - name: THOTH_REGISTRY_CREDENTIALS
             value: "${THOTH_REGISTRY_CREDENTIALS}"
-          - name: THOTH_FORCE_SYNC
-            value: "${THOTH_FORCE_SYNC}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -138,4 +136,4 @@ objects:
                     - name: "THOTH_DOCUMENT_ID"
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
-                      value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
+                      value: "1"
