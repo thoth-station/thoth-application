@@ -42,7 +42,7 @@ spec:
             s3:
               key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
               {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
-              dependency-monkey/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+              dependency-monkey-reports/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               insecure: true
@@ -98,6 +98,8 @@ spec:
             value: "{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}"
           - name: THOTH_ADVISER_SUBCOMMAND
             value: "dependency-monkey"
+          - name: THOTH_DEPENDENCY_MONKEY_REPORT_OUTPUT
+            value: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
           - name: PROMETHEUS_PUSHGATEWAY_HOST
             valueFrom:
               configMapKeyRef:
@@ -147,3 +149,9 @@ spec:
           requests:
             cpu: 1.1
             memory: 8Gi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3600
+          periodSeconds: 1
