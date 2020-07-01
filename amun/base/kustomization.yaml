@@ -5,6 +5,10 @@ commonLabels:
   app.kubernetes.io/component: amun
   app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
 resources:
+  - argo-workflows/inspection-build.yaml
+  - argo-workflows/inspection-build-with-cpu.yaml
+  - argo-workflows/inspection-run.yaml
+  - argo-workflows/inspection-run-with-cpu.yaml
   - roles/
   - deploymentconfig.yaml
   - imagestream.yaml

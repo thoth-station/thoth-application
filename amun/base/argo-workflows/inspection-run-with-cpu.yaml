@@ -1,0 +1,229 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: inspection-run-with-cpu-template
+spec:
+  entrypoint: main
+
+  templates:
+    - name: main
+      inputs:
+        parameters:
+          # Required
+          - name: batch-name
+          - name: batch-size
+          - name: inspection-id
+          - name: volume
+          # Hardware parameters
+          - name: cpu-family
+          - name: cpu-model
+          - name: physical-cpus
+          - name: processor
+          - name: cpu
+            value: "750m"
+          - name: memory
+            value: "1Gi"
+          - name: registry
+            value: docker-registry.default.svc:5000
+          - name: thoth-infra-namespace
+            value: "{{workflow.namespace}}"
+      steps:
+        - - name: job
+            arguments:
+              parameters:
+                - name: batch-name
+                  value: "{{inputs.parameters.batch-name}}"
+                - name: inspection-id
+                  value: "{{inputs.parameters.inspection-id}}"
+                - name: cpu
+                  value: "{{inputs.parameters.cpu}}"
+                - name: cpu-family
+                  value: "{{inputs.parameters.cpu-family}}"
+                - name: cpu-model
+                  value: "{{inputs.parameters.cpu-model}}"
+                - name: memory
+                  value: "{{inputs.parameters.memory}}"
+                - name: physical-cpus
+                  value: "{{inputs.parameters.physical-cpus}}"
+                - name: processor
+                  value: "{{inputs.parameters.processor}}"
+                - name: registry
+                  value: "{{inputs.parameters.registry}}"
+                - name: thoth-infra-namespace
+                  value: "{{inputs.parameters.thoth-infra-namespace}}"
+                - name: item
+                  value: "{{item}}"
+                - name: volume
+                  value: "{{inputs.parameters.volume}}"
+            template: create-job
+            withSequence:
+              count: "{{inputs.parameters.batch-size}}"
+            continueOn:
+              error: true
+              failed: true
+
+        - - name: joblog-aggregation
+            arguments:
+              parameters:
+                - name: inspection-id
+                  value: "{{inputs.parameters.inspection-id}}"
+                - name: volume
+                  value: "{{inputs.parameters.volume}}"
+                - name: registry
+                  value: "{{inputs.parameters.registry}}"
+                - name: thoth-infra-namespace
+                  value: "{{inputs.parameters.thoth-infra-namespace}}"
+                - name: batch-size
+                  value: "{{inputs.parameters.batch-size}}"
+            template: aggregate-joblog
+
+    - name: create-job
+      inputs:
+        parameters:
+          - name: inspection-id
+          - name: batch-name
+          - name: cpu-family
+          - name: cpu-model
+          - name: physical-cpus
+          - name: processor
+          - name: cpu
+          - name: memory
+          - name: registry
+          - name: thoth-infra-namespace
+          - name: item
+          - name: volume
+      initContainers:
+        - name: inspect-hwinfo
+          image: >-
+            {{inputs.parameters.registry}}/
+            {{inputs.parameters.thoth-infra-namespace}}/
+            inspect-hwinfo:latest
+          volumeMounts:
+            - mountPath: "/home/amun/results/"
+              name: "{{inputs.parameters.volume}}"
+          env:
+            - name: "THOTH_OUTPUT_PATH"
+              value: "/home/amun/results/{{inputs.parameters.item}}/hwinfo"
+      metadata:
+        # Add labels to easily identify job pods in the namespace during log aggregation.
+        labels:
+          inspection: job
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: CPU_FAMILY
+                    operator: In
+                    values:
+                      - "{{inputs.parameters.cpu-family}}"
+                  - key: CPU_MODEL
+                    operator: In
+                    values:
+                      - "{{inputs.parameters.cpu-model}}"
+                  - key: PHYSICAL_CPUS
+                    operator: In
+                    values:
+                      - "{{inputs.parameters.physical-cpus}}"
+                  - key: processor
+                    operator: In
+                    values:
+                      - "{{inputs.parameters.processor}}"
+      podSpecPatch: '{
+        "containers": [
+        {
+        "name": "main",
+        "resources": {
+        "limits": {
+        "cpu": "{{inputs.parameters.cpu}}",
+        "memory": "{{inputs.parameters.memory}}"
+        },
+        "requests": {
+        "cpu": "{{inputs.parameters.cpu}}",
+        "memory": "{{inputs.parameters.memory}}"
+        }
+        }
+        }
+        ]
+        }'
+      container:
+        image: "{{inputs.parameters.inspection-id}}:latest"
+        env:
+          - name: "THOTH_OUTPUT_PATH"
+            value: "/home/amun/results/{{inputs.parameters.item}}/result"
+          - name: "THOTH_AMUN_HWINFO_PATH"
+            value: "/home/amun/results/{{inputs.parameters.item}}/hwinfo"
+        volumeMounts:
+          - mountPath: "/home/amun/results/"
+            name: "{{inputs.parameters.volume}}"
+      outputs:
+        artifacts:
+          - name: output
+            path: "/home/amun/results/"
+            archive:
+              none: {}
+
+    - name: aggregate-joblog
+      inputs:
+        parameters:
+          - name: inspection-id
+          - name: volume
+          - name: registry
+          - name: thoth-infra-namespace
+          - name: batch-size
+      outputs:
+        artifacts:
+          - name: output
+            path: "/mnt/results/"
+            archive:
+              none: {}
+      script:
+        image: "{{inputs.parameters.registry}}/{{inputs.parameters.thoth-infra-namespace}}/kubectl"
+        imagePullPolicy: Always
+        command: [bash]
+        source: |-
+          set -euxo pipefail
+
+          results=/mnt/results/ ; mkdir -p "$results"
+          pod_json=/tmp/amun-inspection-pod.json
+
+          pod_names=$(\
+            kubectl get pods \
+              --selector workflows.argoproj.io/workflow={{inputs.parameters.inspection-id}},inspection=job \
+              --output json |\
+            jq -r '.items[].metadata.name' \
+          )
+
+          {
+            cnt=0
+            exit_code=0
+            IFS=$'\n' ; for name in $pod_names; do
+              let "cnt+=1";
+              mkdir -p "${results}/${cnt}"
+              kubectl get pod $name -o json > $pod_json
+
+              container_exit_code=`cat $pod_json | \
+                jq '.status.containerStatuses[] | \
+                select(.name == "main") | .state.terminated.exitCode'`
+              let "exit_code+=${container_exit_code}" || :
+
+              # Parse inspection identifier (number of inspection job).
+              item=`cat $pod_json | \
+                jq '.metadata.annotations."workflows.argoproj.io/node-name"' | \
+                sed 's/".*inspection-run.*\.job(\([0-9]*\):.*)"/\1/'`
+              mkdir -p "${results}/${item}"
+              kubectl logs $name -c main > "${results}/${item}/log"
+            done
+          }
+
+          # The sum of exit codes is non-zero if any of the containers failed.
+          exit $exit_code
+
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        volumeMounts:
+          - name: "{{inputs.parameters.volume}}"
+            mountPath: /mnt/results

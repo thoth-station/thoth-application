@@ -1,0 +1,263 @@
+# Inspection Build Workflow Template
+#
+# This workflow builds an inspection image from the given Specification
+# Additionally, it mounts an artifact repository to store the resulting artifacts.
+#
+# The outputs are stored in s3 as such:
+# s3://<bucket>/<prefix>/<workflow-name>/<workflow-step>
+#
+# NOTE: The artifact repository has to be configured via ConfigMap, see
+# https://github.com/argoproj/argo/blob/master/ARTIFACT_REPO.md
+# or use the Argo ansible role: https://github.com/thoth-stastion/ansible-role-argo-workflows
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: inspection-build-with-cpu-template
+spec:
+  entrypoint: main
+
+  templates:
+    - name: main
+      inputs:
+        parameters:
+          # Required
+          - name: dockerfile
+          - name: inspection-id
+          - name: specification
+          - name: volume
+          # Hardware parameters
+          - name: cpu-family
+          - name: cpu-model
+          - name: physical-cpus
+          - name: processor
+          # Defaults
+          - name: cpu
+            value: "500m"
+          - name: memory
+            value: "512Mi"
+          - name: registry
+            value: docker-registry.default.svc:5000
+          - name: thoth-infra-namespace
+            value: "{{workflow.namespace}}"
+      steps:
+        - - name: imagestream
+            arguments:
+              parameters:
+                - name: inspection-id
+                  value: "{{inputs.parameters.inspection-id}}"
+            template: create-imagestream
+
+        - - name: buildconfig
+            arguments:
+              parameters:
+                - name: inspection-id
+                  value: "{{inputs.parameters.inspection-id}}"
+                - name: dockerfile
+                  value: "{{inputs.parameters.dockerfile}}"
+                - name: specification
+                  value: "{{inputs.parameters.specification}}"
+                - name: cpu
+                  value: "{{inputs.parameters.cpu}}"
+                - name: cpu-family
+                  value: "{{inputs.parameters.cpu-family}}"
+                - name: cpu-model
+                  value: "{{inputs.parameters.cpu-model}}"
+                - name: memory
+                  value: "{{inputs.parameters.memory}}"
+                - name: physical-cpus
+                  value: "{{inputs.parameters.physical-cpus}}"
+                - name: processor
+                  value: "{{inputs.parameters.processor}}"
+            template: create-buildconfig
+
+        - - name: build
+            arguments:
+              parameters:
+                - name: inspection-id
+                  value: "{{inputs.parameters.inspection-id}}"
+            template: await-build
+            continueOn:
+              failed: true
+
+        - - name: buildlog-aggregation
+            arguments:
+              parameters:
+                - name: inspection-id
+                  value: "{{inputs.parameters.inspection-id}}"
+                - name: volume
+                  value: "{{inputs.parameters.volume}}"
+                - name: registry
+                  value: "{{inputs.parameters.registry}}"
+                - name: thoth-infra-namespace
+                  value: "{{inputs.parameters.thoth-infra-namespace}}"
+                - name: dockerfile
+                  value: "{{inputs.parameters.dockerfile}}"
+                - name: specification
+                  value: "{{inputs.parameters.specification}}"
+            template: aggregate-buildlog
+
+    - name: create-imagestream
+      inputs:
+        parameters:
+          - name: inspection-id
+      resource:
+        action: create
+        manifest: |
+          apiVersion: image.openshift.io/v1
+          kind: ImageStream
+          metadata:
+            labels:
+              app: amun
+              component: amun-inspection-imagestream
+              mark: cleanup
+            name: "{{inputs.parameters.inspection-id}}"
+            ownerReferences:
+            - apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              name: "{{workflow.name}}"
+              uid: "{{workflow.uid}}"
+          spec:
+            lookupPolicy:
+              local: true
+
+    - name: create-buildconfig
+      inputs:
+        parameters:
+          - name: dockerfile
+          - name: inspection-id
+          - name: specification
+          - name: cpu
+          - name: memory
+      resource:
+        action: create
+        flags: ["--validate=false"]
+        manifest: |
+          kind: BuildConfig
+          apiVersion: build.openshift.io/v1
+          metadata:
+            name: "{{workflow.parameters.inspection-id}}"
+            labels:
+              app: amun
+              component: amun-inspection-buildconfig
+              mark: cleanup
+            annotations:
+              amun_specification: '{{inputs.parameters.specification}}'
+            ownerReferences:
+            - apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              name: "{{workflow.name}}"
+              uid: "{{workflow.uid}}"
+          spec:
+            output:
+              to:
+                kind: ImageStreamTag
+                name: "{{inputs.parameters.inspection-id}}:latest"
+            resources:
+              limits:
+                memory: "{{inputs.parameters.memory}}"
+                cpu: "{{inputs.parameters.cpu}}"
+              requests:
+                memory: "{{inputs.parameters.memory}}"
+                cpu: "{{inputs.parameters.cpu}}"
+            source:
+              type: Dockerfile
+              dockerfile: '{{inputs.parameters.dockerfile}}'
+            strategy:
+              type: Docker
+              dockerStrategy:
+                env:
+                  - name: LANG
+                    value: 'en_US.UTF-8'
+                  - name: HOME
+                    value: '/home/amun/'
+                  - name: PIPENV_CACHE_DIR
+                    value: '/home/amun/.cache'
+                  - name: PIPENV_COLORBLIND
+                    value: '1'
+                  - name: PIPENV_HIDE_EMOJIS
+                    value: '1'
+                  - name: PIPENV_NOSPIN
+                    value: '1'
+                  - name: PIPENV_VERBOSITY
+                    value: '1'
+            triggers:
+              - type: ConfigChange
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: CPU_FAMILY
+                          operator: In
+                          values:
+                            - "{{inputs.parameters.cpu-family}}"
+                        - key: CPU_MODEL
+                          operator: In
+                          values:
+                            - "{{inputs.parameters.cpu-model}}"
+                        - key: PHYSICAL_CPUS
+                          operator: In
+                          values:
+                            - "{{inputs.parameters.physical-cpus}}"
+                        - key: processor
+                          operator: In
+                          values:
+                            - "{{inputs.parameters.processor}}"
+
+    - name: await-build
+      inputs:
+        parameters:
+          - name: inspection-id
+      resource:
+        action: get
+        successCondition: status.phase == Complete
+        failureCondition: status.phase == Failed
+        manifest: |
+          apiVersion: "build.openshift.io/v1"
+          kind: "Build"
+          metadata:
+            name: "{{inputs.parameters.inspection-id}}-1"
+
+    - name: aggregate-buildlog
+      inputs:
+        parameters:
+          - name: inspection-id
+          - name: volume
+          - name: registry
+          - name: thoth-infra-namespace
+          - name: dockerfile
+          - name: specification
+      outputs:
+        artifacts:
+          - name: output
+            path: "/mnt/build/"
+            archive:
+              none: {}
+      script:
+        image: "{{inputs.parameters.registry}}/{{inputs.parameters.thoth-infra-namespace}}/kubectl"
+        imagePullPolicy: Always
+        command: [bash]
+        source: |-
+          set -euxo pipefail
+
+          results="/mnt/build/"
+          mkdir -p "$results"
+          kubectl logs "{{inputs.parameters.inspection-id}}-1-build" > "${results}/log"
+          cat <<EOFEOF  | jq . > "${results}/specification"
+          {{inputs.parameters.specification}}
+          EOFEOF
+          cat <<EOFEOF > "${results}/Dockerfile"
+          {{inputs.parameters.dockerfile}}
+          EOFEOF
+
+          # Fail if the build failed but let the build log, specification and Dockerfile aggregated.
+          exit `kubectl get pod "{{inputs.parameters.inspection-id}}-1-build" -o json | \
+            jq '.status.containerStatuses[0].state.terminated.exitCode'`
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        volumeMounts:
+          - name: "{{inputs.parameters.volume}}"
+            mountPath: /mnt/build
