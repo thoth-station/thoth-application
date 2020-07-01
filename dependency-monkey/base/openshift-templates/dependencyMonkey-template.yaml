@@ -143,8 +143,6 @@ objects:
       volumes:
         - name: workdir
           emptyDir: {}
-        - name: output
-          emptyDir: {}
       templates:
         - name: "dependency-monkey"
           archiveLocation:
