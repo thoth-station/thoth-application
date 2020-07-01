@@ -80,7 +80,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: deployment-name
-                  name: thoth
+                  name: amun
             - name: PROMETHEUS_PUSHGATEWAY_HOST
               valueFrom:
               configMapKeyRef:

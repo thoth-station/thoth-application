@@ -9,11 +9,16 @@ resources:
   - argo-workflows/inspection-build-with-cpu.yaml
   - argo-workflows/inspection-run.yaml
   - argo-workflows/inspection-run-with-cpu.yaml
+  - openshift-templates/inspection-workflow.yaml
+  - openshift-templates/inspection-with-cpu-workflow.yaml
   - roles/
   - deploymentconfig.yaml
   - imagestream.yaml
+  - role.yaml
+  - role_binding.yaml
   - route.yaml
   - service.yaml
+  - serviceaccount.yaml
 configMapGenerator:
   - name: amun
 generatorOptions:

@@ -17,9 +17,6 @@ data:
         name: argo-artifact-repository-secrets
         key: secretKey
       keyFormat: "argo/inspections/{{workflow.labels.component}}/{{workflow.name}}"
-  metrics-pushgateway-url: "pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80"
-  prometheus-pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
-  prometheus-pushgateway-port: "80"
 kind: ConfigMap
 metadata:
   name: amun

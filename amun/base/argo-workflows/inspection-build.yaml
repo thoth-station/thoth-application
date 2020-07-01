@@ -31,10 +31,6 @@ spec:
             value: "500m"
           - name: memory
             value: "512Mi"
-          - name: registry
-            value: docker-registry.default.svc:5000
-          - name: thoth-infra-namespace
-            value: "{{workflow.namespace}}"
       steps:
         - - name: imagestream
             arguments:
@@ -74,10 +70,6 @@ spec:
                   value: "{{inputs.parameters.inspection-id}}"
                 - name: volume
                   value: "{{inputs.parameters.volume}}"
-                - name: registry
-                  value: "{{inputs.parameters.registry}}"
-                - name: thoth-infra-namespace
-                  value: "{{inputs.parameters.thoth-infra-namespace}}"
                 - name: dockerfile
                   value: "{{inputs.parameters.dockerfile}}"
                 - name: specification
@@ -190,8 +182,6 @@ spec:
         parameters:
           - name: inspection-id
           - name: volume
-          - name: registry
-          - name: thoth-infra-namespace
           - name: dockerfile
           - name: specification
       outputs:
@@ -201,7 +191,7 @@ spec:
             archive:
               none: {}
       script:
-        image: "{{inputs.parameters.registry}}/{{inputs.parameters.thoth-infra-namespace}}/kubectl"
+        image: "kubectl"
         imagePullPolicy: Always
         command: [bash]
         source: |-

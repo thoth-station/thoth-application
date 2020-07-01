@@ -24,10 +24,6 @@ spec:
             value: "750m"
           - name: memory
             value: "1Gi"
-          - name: registry
-            value: docker-registry.default.svc:5000
-          - name: thoth-infra-namespace
-            value: "{{workflow.namespace}}"
       steps:
         - - name: job
             arguments:
@@ -48,10 +44,6 @@ spec:
                   value: "{{inputs.parameters.physical-cpus}}"
                 - name: processor
                   value: "{{inputs.parameters.processor}}"
-                - name: registry
-                  value: "{{inputs.parameters.registry}}"
-                - name: thoth-infra-namespace
-                  value: "{{inputs.parameters.thoth-infra-namespace}}"
                 - name: item
                   value: "{{item}}"
                 - name: volume
@@ -70,10 +62,6 @@ spec:
                   value: "{{inputs.parameters.inspection-id}}"
                 - name: volume
                   value: "{{inputs.parameters.volume}}"
-                - name: registry
-                  value: "{{inputs.parameters.registry}}"
-                - name: thoth-infra-namespace
-                  value: "{{inputs.parameters.thoth-infra-namespace}}"
                 - name: batch-size
                   value: "{{inputs.parameters.batch-size}}"
             template: aggregate-joblog
@@ -89,16 +77,11 @@ spec:
           - name: processor
           - name: cpu
           - name: memory
-          - name: registry
-          - name: thoth-infra-namespace
           - name: item
           - name: volume
       initContainers:
         - name: inspect-hwinfo
-          image: >-
-            {{inputs.parameters.registry}}/
-            {{inputs.parameters.thoth-infra-namespace}}/
-            inspect-hwinfo:latest
+          image: inspect-hwinfo
           volumeMounts:
             - mountPath: "/home/amun/results/"
               name: "{{inputs.parameters.volume}}"
@@ -169,8 +152,6 @@ spec:
         parameters:
           - name: inspection-id
           - name: volume
-          - name: registry
-          - name: thoth-infra-namespace
           - name: batch-size
       outputs:
         artifacts:
@@ -179,7 +160,7 @@ spec:
             archive:
               none: {}
       script:
-        image: "{{inputs.parameters.registry}}/{{inputs.parameters.thoth-infra-namespace}}/kubectl"
+        image: kubectl
         imagePullPolicy: Always
         command: [bash]
         source: |-

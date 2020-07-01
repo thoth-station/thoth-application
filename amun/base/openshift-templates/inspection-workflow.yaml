@@ -1,17 +1,17 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: amun-inspection-workflow-with-cpu
+  name: amun-inspection-workflow
   annotations:
     description: This is Amun configuration template
     openshift.io/display-name: "Amun core components"
-    version: 0.6.3
+    version: 0.7.0
     tags: amun,argo,thoth,ai-stacks,aistacks,machinelearning,workflows
     template.openshift.io/documentation-url: https://github.com/thoth-station/
     template.openshift.io/long-description: This template defines resources needed to deploy Amun to OpenShift.
     template.openshift.io/provider-display-name: Red Hat, Inc.
   labels:
-    template: amun-inspection-workflow-with-cpu
+    template: amun-inspection-workflow
     app: amun
 
 objects:
@@ -23,10 +23,8 @@ objects:
       app: amun
       component: amun-inspection-workflow
       inspection_id: "${AMUN_INSPECTION_ID}"
-    annotations:
-      thoth-station.ninja/template-version: 0.6.3
   spec:
-    serviceAccountName: "${ARGO_SERVICE_ACCOUNT}"
+    serviceAccountName: amun-api
 
     artifactRepositoryRef:
       configMap: amun
@@ -58,18 +56,6 @@ objects:
         value: "${AMUN_BUILD_CPU}"
       - name: build-memory
         value: "${AMUN_BUILD_MEMORY}"
-      - name: cpu-family
-        value: "${CPU_FAMILY}"
-      - name: cpu-model
-        value: "${CPU_MODEL}"
-      - name: physical-cpus
-        value: "${PHYSICAL_CPUS}"
-      - name: processor
-        value: "${PROCESSOR}"
-      - name: registry
-        value: "${THOTH_REGISTRY}"
-      - name: thoth-infra-namespace
-        value: "${THOTH_INFRA_NAMESPACE}"
       # Used in artifact repository to store results
       - name: ceph_bucket_prefix
       - name: ceph_bucket_name
@@ -95,14 +81,6 @@ objects:
               value: "{{workflow.parameters.build-cpu}}"
             - name: memory
               value: "{{workflow.parameters.build-memory}}"
-            - name: cpu-family
-              value: "{{workflow.parameters.cpu-family}}"
-            - name: cpu-model
-              value: "{{workflow.parameters.cpu-model}}"
-            - name: physical-cpus
-              value: "{{workflow.parameters.physical-cpus}}"
-            - name: processor
-              value: "{{workflow.parameters.processor}}"
             - name: registry
               value: "{{workflow.parameters.registry}}"
             - name: thoth-infra-namespace
@@ -110,7 +88,7 @@ objects:
             - name: volume
               value: output-volume
           templateRef:
-            name: inspection-build-with-cpu-template
+            name: inspection-build-template
             template: main
 
         - name: inspection-run
@@ -127,14 +105,6 @@ objects:
               value: "{{workflow.parameters.run-cpu}}"
             - name: memory
               value: "{{workflow.parameters.run-memory}}"
-            - name: cpu-family
-              value: "{{workflow.parameters.cpu-family}}"
-            - name: cpu-model
-              value: "{{workflow.parameters.cpu-model}}"
-            - name: physical-cpus
-              value: "{{workflow.parameters.physical-cpus}}"
-            - name: processor
-              value: "{{workflow.parameters.processor}}"
             - name: registry
               value: "{{workflow.parameters.registry}}"
             - name: thoth-infra-namespace
@@ -142,7 +112,7 @@ objects:
             - name: volume
               value: output-volume
           templateRef:
-            name: inspection-run-with-cpu-template
+            name: inspection-run-template
             template: main
           continueOn:
             failed: true
@@ -152,17 +122,6 @@ parameters:
   description: Id of inspection that is run.
   displayName: Inspection id
   required: true
-
-- name: THOTH_INFRA_NAMESPACE
-  description: Project where ImageStream is present
-  displayName: ImageStream Project
-  required: true
-
-- name: THOTH_REGISTRY
-  description: Registry server from where Image is to be pulled
-  displayName: Registry
-  required: true
-  value: docker-registry.default.svc:5000
 
 - name: AMUN_RUN_CPU
   description: CPU cores requested for inspection run
@@ -177,7 +136,7 @@ parameters:
 - name: AMUN_BUILD_CPU
   description: CPU cores requested for build
   displayName: Build CPU
-  value: "1"
+  value: 750m
 
 - name: AMUN_BUILD_MEMORY
   description: Memory requested for build
@@ -188,23 +147,3 @@ parameters:
   description: Service account used by workflow steps
   displayName: Argo service account
   value: argo
-
-- name: CPU_FAMILY
-  description: Family number of CPU.
-  displayName: CPU Family
-  required: true
-
-- name: CPU_MODEL
-  description: Modelnumber of CPU.
-  displayName: CPU model
-  required: true
-
-- name: PHYSICAL_CPUS
-  description: Number of physical CPUs.
-  displayName: Physical CPUS
-  required: true
-
-- name: PROCESSOR
-  description: Name of processor.
-  displayName: Processor name
-  required: true
