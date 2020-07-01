@@ -1,0 +1,94 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: extract-packages
+spec:
+  templates:
+    - name: extract-packages
+      inputs:
+        parameters:
+          - name: THOTH_ANALYZED_IMAGE
+          - name: THOTH_PACKAGE_EXTRACT_JOB_ID
+          - name: THOTH_DOCUMENT_ID
+          - name: THOTH_LOG_PACKAGE_EXTRACT
+          - name: THOTH_PACKAGE_EXTRACT_METADATA
+          - name: THOTH_ANALYZER_NO_TLS_VERIFY
+          - name: THOTH_REGISTRY_CREDENTIALS
+          - name: THOTH_S3_ENDPOINT_URL
+          - name: THOTH_CEPH_BUCKET_NAME
+          - name: THOTH_CEPH_BUCKET_PREFIX
+          - name: THOTH_DEPLOYMENT_NAME
+      outputs:
+        artifacts:
+          - name: outputdocument
+            path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+            archive:
+              none: {}
+            s3:
+              key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
+                {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
+                package-extract/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              insecure: true
+              accessKeySecret:
+                name: argo-artifact-repository-secrets
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
+      container:
+        name: extract-packages
+        image: package-extract
+        env:
+          - name: THOTH_ANALYZED_IMAGE
+            value: "{{inputs.parameters.THOTH_ANALYZED_IMAGE}}"
+          - name: THOTH_PACKAGE_EXTRACT_JOB_ID
+            value: "{{inputs.parameters.THOTH_PACKAGE_EXTRACT_JOB_ID}}"
+          - name: THOTH_DOCUMENT_ID
+            value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: THOTH_LOG_PACKAGE_EXTRACT
+            value: "{{inputs.parameters.THOTH_LOG_PACKAGE_EXTRACT}}"
+          - name: THOTH_PACKAGE_EXTRACT_METADATA
+            value: "{{inputs.parameters.THOTH_PACKAGE_EXTRACT_METADATA}}"
+          - name: THOTH_ANALYZER_NO_TLS_VERIFY
+            value: "{{inputs.parameters.THOTH_ANALYZER_NO_TLS_VERIFY}}"
+          - name: THOTH_REGISTRY_CREDENTIALS
+            value: "{{inputs.parameters.THOTH_REGISTRY_CREDENTIALS}}"
+          - name: THOTH_DEPLOYMENT_NAME
+            value: "{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}"
+          - name: THOTH_ANALYZER_OUTPUT
+            value: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: SENTRY_DSN
+            valueFrom:
+              secretKeyRef:
+                name: thoth
+                key: sentry-dsn
+#          - name: PROMETHEUS_PUSHGATEWAY_HOST
+#            valueFrom:
+#              configMapKeyRef:
+#                key: pushgateway-host
+#                name: prometheus
+#          - name: PROMETHEUS_PUSHGATEWAY_PORT
+#            valueFrom:
+#              configMapKeyRef:
+#                key: pushgateway-port
+#                name: prometheus
+        volumeMounts:
+          - name: output
+            mountPath: /mnt/workdir
+        resources:
+          limits:
+            cpu: 1
+            memory: 1Gi
+          requests:
+            cpu: 1
+            memory: 1Gi
+        livenessProbe:
+          # Give analyzer 30 minutes to compute results, kill it if it was not able result anything.
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 1800
+          failureThreshold: 1
+          periodSeconds: 10
