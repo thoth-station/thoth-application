@@ -11,5 +11,5 @@ spec:
   selector:
     service: amun-api
     app.kubernetes.io/name: thoth
-    app.kubernetes.io/component: amun-api
+    app.kubernetes.io/component: amun
     app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
