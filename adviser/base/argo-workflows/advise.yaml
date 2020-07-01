@@ -97,8 +97,6 @@ spec:
             value: "{{inputs.parameters.THOTH_ADVISER_LIMIT_LATEST_VERSIONS}}"
           - name: THOTH_ADVISER_LIBRARY_USAGE
             value: "{{inputs.parameters.THOTH_ADVISER_LIBRARY_USAGE}}"
-          - name: ISIS_API_URL
-            value: "UNSET"
           - name: PROMETHEUS_PUSHGATEWAY_HOST
             valueFrom:
               configMapKeyRef:
