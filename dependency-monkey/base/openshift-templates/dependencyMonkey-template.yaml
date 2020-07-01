@@ -136,8 +136,6 @@ objects:
             value: "${THOTH_ADVISER_LIMIT_LATEST_VERSIONS}"
           - name: THOTH_ADVISER_PIPELINE
             value: "${THOTH_ADVISER_PIPELINE}"
-          - name: THOTH_FORCE_SYNC
-            value: "${THOTH_FORCE_SYNC}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -215,4 +213,4 @@ objects:
                     - name: "THOTH_DOCUMENT_ID"
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
-                      value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
+                      value: "1"
