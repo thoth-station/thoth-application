@@ -83,14 +83,14 @@ spec:
                   name: amun
             - name: PROMETHEUS_PUSHGATEWAY_HOST
               valueFrom:
-              configMapKeyRef:
-                key: pushgateway-host
-                name: prometheus
+                configMapKeyRef:
+                  key: pushgateway-host
+                  name: prometheus
             - name: PROMETHEUS_PUSHGATEWAY_PORT
               valueFrom:
-              configMapKeyRef:
-                key: pushgateway-port
-                name: prometheus
+                configMapKeyRef:
+                  key: pushgateway-port
+                  name: prometheus
           ports:
             - containerPort: 8080
               protocol: TCP
