@@ -78,15 +78,11 @@ objects:
             value: "${THOTH_ADVISER_METADATA}"
           - name: THOTH_LOG_ADVISER
             value: "${THOTH_LOG_ADVISER}"
-          - name: THOTH_FORCE_SYNC
-            value: "${THOTH_FORCE_SYNC}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
           - name: deployment_name
       volumes:
-        - name: workdir
-          emptyDir: {}
         - name: output
           emptyDir: {}
       templates:
@@ -139,4 +135,4 @@ objects:
                     - name: "THOTH_DOCUMENT_ID"
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
-                      value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
+                      value: "1"
