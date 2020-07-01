@@ -36,7 +36,7 @@ spec:
         - name: "THOTH_DRY_RUN"
           value: "1"
         - name: "THOTH_ADVISE"
-          value: "1"
+          value: "0"
         - name: "THOTH_ERROR_FALLBACK"
           value: "1"
         - name: "THAMOS_VERBOSE"
