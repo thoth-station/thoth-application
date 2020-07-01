@@ -85,8 +85,6 @@ objects:
           - name: ceph_host
           - name: deployment_name
       volumes:
-        - name: workdir
-          emptyDir: {}
         - name: output
           emptyDir: {}
       templates:
