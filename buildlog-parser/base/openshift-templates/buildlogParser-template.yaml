@@ -1,0 +1,95 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: buildlog-parser
+  annotations:
+    description: "Thoth: buildlog-parser"
+    openshift.io/display-name: "Thoth: buildlog-parser"
+    version: 0.0.1
+    tags: thoth,ai-stacks,buildlog,log,build
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to run buildlog-parser on OpenShift.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    app: thoth
+    template: buildlog-parser
+    component: buildlog-parser
+
+parameters:
+  - name: THOTH_BUILDLOG_PARSER_DEBUG
+    displayName: Debug mode
+    description: Run in debug mode.
+    required: true
+  - name: THOTH_BUILDLOG_PARSER_METADATA
+    displayName: Metadata
+    description: Additional metadata.
+    required: false
+  - name: THOTH_BUILDLOG_PARSER_INPUT
+    displayName: Input
+    description: Input to be parsed
+    required: true
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: "${THOTH_BUILDLOG_PARSER_JOB_ID}"
+      annotations:
+        thoth-station.ninja/template-version: 0.0.1
+      labels:
+        app: thoth
+        component: buildlog-parser
+    spec:
+      serviceAccountName: argo
+      ttlStrategy:
+        secondsAfterSuccess: 7200
+        secondsAfterFailure: 7200
+      entrypoint: buildlog-parser
+      arguments:
+        parameters:
+          - name: THOTH_BUILDLOG_PARSER_DEBUG
+            value: "${THOTH_BUILDLOG_PARSER_DEBUG}"
+          - name: THOTH_BUILDLOG_PARSER_METADATA
+            value: "${THOTH_BUILDLOG_PARSER_METADATA}"
+          - name: THOTH_BUILDLOG_PARSER_INPUT
+            value: "${THOTH_BUILDLOG_PARSER_INPUT}"
+          - name: THOTH_FORCE_SYNC
+            value: "${THOTH_FORCE_SYNC}"
+          - name: ceph_bucket_prefix
+          - name: ceph_bucket_name
+          - name: ceph_host
+          - name: deployment_name
+      volumes:
+        - name: workdir
+          emptyDir: {}
+        - name: output
+          emptyDir: {}
+      templates:
+        - name: "buildlog-parser"
+          archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - name: "parse-buildlog"
+                templateRef:
+                  name: "parse-buildlog"
+                  template: "parse-buildlog"
+                continueOn:
+                  failed: true
+                arguments:
+                  parameters:
+                    - name: THOTH_BUILDLOG_PARSER_DEBUG
+                      value: "{{workflow.parameters.THOTH_BUILDLOG_PARSER_DEBUG}}"
+                    - name: THOTH_BUILDLOG_PARSER_METADATA
+                      value: "{{workflow.parametersTHOTH_BUILDLOG_PARSER_METADATA.}}"
+                    - name: THOTH_BUILDLOG_PARSER_INPUT
+                      value: "{{workflow.parameters.THOTH_BUILDLOG_PARSER_INPUT}}"
+                    - name: THOTH_S3_ENDPOINT_URL
+                      value: "{{workflow.parameters.ceph_host}}"
+                    - name: THOTH_CEPH_BUCKET_NAME
+                      value: "{{workflow.parameters.ceph_bucket_name}}"
+                    - name: THOTH_CEPH_BUCKET_PREFIX
+                      value: "{{workflow.parameters.ceph_bucket_prefix}}"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
