@@ -1,3 +1,4 @@
+---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
@@ -8,6 +9,20 @@ spec:
       from:
         kind: DockerImage
         name: quay.io/thoth-station/amun-api:v0.6.0-dev
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: amun-api
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/amun-inspect-hwinfo:v0.6.0-dev
       importPolicy: {}
       referencePolicy:
         type: Source
