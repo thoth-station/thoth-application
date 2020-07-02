@@ -1,0 +1,91 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: mi-scheduler
+  labels:
+    app: mi-scheduler
+  annotations:
+    thoth-station.ninja/template-version: 0.1.0
+    description: >
+      mi-scheduler CronJob, schedules workflows for all repositories found
+      in repositories-configMap
+    openshift.io/display-name: 'Scheduler Cronjob'
+    version: 0.0.1
+    tags: mi-scheduler
+    template.openshift.io/long-description: >
+      mi-scheduler CronJob, schedules workflows for all repositories found
+      in repositories-configMap
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+
+parameters:
+  - description: SrcOpsMetrics GitHub repository name
+    displayName: Git Repository
+    required: true
+    name: GITHUB_URL
+    value: 'https://github.com/thoth-station/mi-scheduler'
+
+  - description: Git reference to be used for SrcOpsMetrics
+    displayName: Git Reference
+    required: true
+    name: GITHUB_REF
+    value: 'master'
+
+  - description: Tag of the output ImageStream the resulting container image should go to
+    displayName: ImageStream Tag
+    required: true
+    name: IMAGE_STREAM_TAG
+    value: 'latest'
+
+  - description: Thamos Advise setup tag value
+    displayName: THOTH_ADVISE
+    required: true
+    name: THOTH_ADVISE
+    value: "0"
+
+  - description: Thoth provenance check setup tag value
+    displayName: THOTH_PROVENANCE_CHECK
+    required: true
+    name: THOTH_PROVENANCE_CHECK
+    value: "0"
+
+  - description: Thamos Advise setup tag value
+    displayName: ENABLE_PIPENV
+    required: true
+    name: ENABLE_PIPENV
+    value: "1"
+
+objects:
+  - apiVersion: build.openshift.io/v1
+    kind: BuildConfig
+    metadata:
+      name: mi-scheduler
+      labels:
+        app: mi-scheduler
+      annotations:
+        thoth-station.ninja/template-version: 0.1.0
+    spec:
+      output:
+        to:
+          kind: ImageStreamTag
+          name: 'mi-scheduler:latest'
+      source:
+        git:
+          ref: ${GITHUB_REF}
+          uri: ${GITHUB_URL}
+        type: Git
+      strategy:
+        sourceStrategy:
+          env:
+            - name: ENABLE_PIPENV
+              value: ${ENABLE_PIPENV}
+            - name: THOTH_ADVISE
+              value: ${THOTH_ADVISE}
+            - name: THOTH_PROVENANCE_CHECK
+              value: ${THOTH_PROVENANCE_CHECK}
+          from:
+            kind: ImageStreamTag
+            name: 's2i-thoth-ubi8-py36:latest'
+            namespace: thoth-test-core
+        type: Source
+      triggers:
+        - type: ConfigChange
