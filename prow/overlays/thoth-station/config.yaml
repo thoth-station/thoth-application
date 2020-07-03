@@ -1,0 +1,240 @@
+plank:
+  default_decoration_configs:
+    "*":
+      utility_images:
+        clonerefs: "gcr.io/k8s-prow/clonerefs:v20200615-5d59425fc2"
+        initupload: "gcr.io/k8s-prow/initupload:v20200615-5d59425fc2"
+        entrypoint: "gcr.io/k8s-prow/entrypoint:v20200615-5d59425fc2"
+        sidecar: "gcr.io/k8s-prow/sidecar:v20200615-5d59425fc2"
+      gcs_configuration:
+        bucket: aicoe-thoth-prow-artifacts
+        path_strategy: explicit
+      gcs_credentials_secret: gcs-credentials
+
+branch-protection:
+  allow_disabled_policies: true
+  orgs:
+    thoth-station:
+      exclude:
+        - "^revert-"
+        - "^kebechet-"
+        - "^dependabot/"
+      protect: true
+      restrictions:
+        users: []
+        teams:
+          - sourceops
+      allow_force_pushes: false
+      repos:
+        test-infra:
+          allow_force_pushes: true
+        tensorflow:
+          protect: false
+        contra-env-infra:
+          protect: false
+        ansible-role-core-imagestreams:
+          protect: false
+        ansible-role-core-templates:
+          protect: false
+        ansible-role-core-cronjob:
+          protect: false
+        ansible-role-metrics-exporter:
+          protect: false
+        ansible-role-cronjob:
+          protect: false
+        ansible-role-argo-workflows:
+          protect: false
+        ansible-role-postgresql:
+          protect: false
+        ansible-role-kebechet:
+          protect: false
+        statusfy:
+          protect: false
+        statusfy-ops:
+          protect: false
+        website-tooling:
+          protect: false
+        cuda:
+          protect: false
+        stub-api:
+          protect: false
+        nvidia-usage-dashboard:
+          protect: false
+        template-project:
+          protect: false
+        pipelines-catalog:
+          protect: false
+
+tide:
+  pr_status_base_urls:
+    '*': https://prow.thoth-station.dev/pr
+
+  merge_method:
+    AICoE: squash
+    thoth-station: squash
+
+  queries:
+    - orgs:
+        - thoth-station
+      excludedRepos:
+        - thoth-station/dgraph-thoth-config
+        - thoth-station/workload-operator
+      labels:
+        - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebase
+    - repos:
+        - AICoE/aicoe-cd
+        - AICoE/aicoe-ci
+        - AICoE/aicoe-sre
+        - AICoE/s2i-custom-notebook
+      labels:
+        - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebase
+
+  blocker_label: tide/merge-blocker
+  squash_label: tide/merge-method-squash
+  rebase_label: tide/merge-method-rebase
+  merge_label: tide/merge-method-merge
+
+  context_options:
+    from-branch-protection: true
+    skip-unknown-contexts: true
+    orgs:
+      AICoE:
+        repos:
+          s2i-custom-notebook:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          aicoe-cd:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+      thoth-station:
+        repos:
+          adviser:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          amun-api:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          amun-client:
+            required-contexts:
+              - thoth-ci/pytest-check
+          buildlog-parser:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          common:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+          datasets:
+            required-contexts:
+              - thoth-ci/build-check
+          init-job:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          integration-tests:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          kebechet:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          source-management:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+          management-api:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          user-api:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          package-analyzer:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+          python:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          srcops-testing:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+          s2i:
+            required-contexts:
+              - thoth-ci/pytest-check
+          si-bandit:
+            required-contexts:
+              - thoth-ci/build-check
+              - thoth-ci/pre-commit-check
+          si-cloc:
+            required-contexts:
+              - thoth-ci/build-check
+              - thoth-ci/pre-commit-check
+          solver:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          storages:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          unresolved-package-handler:
+            required-contexts:
+              - thoth-ci/build-check
+
+presubmits:
+  thoth-station/srcops-testing:
+    - name: try-out-prow-plus-tekton
+      agent: tekton-pipeline
+      always_run: true
+      rerun_command: "/run try-out-tekton"
+      trigger: "(?m)^/run (all|try-out-tekton),?(\\s+|$)"
+      pipeline_run_spec:
+        pipelineRef:
+          name: try-out-pipeline
+        resources:
+        - name: git
+          resourceRef:
+            name: PROW_IMPLICIT_GIT_REF
+
+periodics:
+  - name: integration-tests-periodic-moc
+    interval: 8h
+    labels:
+      preset-service-account: "true"
+    spec:
+      containers:
+        - image: quay.io/thoth-station/integration-tests:v0.1.1
+          imagePullPolicy: Always
+          command:
+            - "behave"
+          env:
+            - name: THOTH_MANAGEMENT_API_HOST
+              value: management.test.thoth-station.ninja
+            - name: THOTH_USER_API_HOST
+              value: test.thoth-station.ninja
+    annotations:
+      description: Periodic integration tests on MOC
