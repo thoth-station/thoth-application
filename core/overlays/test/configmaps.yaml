@@ -51,7 +51,7 @@ data:
   config: |
     containerRuntimeExecutor: "k8sapi"
     namespace: "thoth-test-core"
-    parallelism: 6
+    parallelism: 10
 
     # metricsConfig controls the path and port for prometheus metrics
     metricsConfig:
