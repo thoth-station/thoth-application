@@ -1,0 +1,37 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: mi-scheduler
+  labels:
+    app: mi-scheduler
+  annotations:
+    thoth-station.ninja/template-version: 0.1.0
+spec:
+  schedule: "0 0 * * 0"
+  suspend: false
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - image: mi-scheduler
+              name: mi-scheduler
+              command: ["mi-scheduler"]
+              args: ["-r", "${REPOSITORIES}", "-o", "${ORGANIZATIONS}"]
+              env:
+              - name: APP_FILE
+                value: "./app.py"
+              - name: REPOSITORIES
+                valueFrom:
+                  secretKeyRef:
+                    name: srcopsmetrics-repositories
+                    key: repositories
+              - name: ORGANIZATIONS
+                valueFrom:
+                  configMapRef:
+                    name: srcopsmetrics-repositories
+                    key: organizations

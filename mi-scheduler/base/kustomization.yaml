@@ -5,4 +5,4 @@ resources:
   - imagestream.yaml
 commonLabels:
   app: thoth
-  component: mi
+  component: mi-scheduler
