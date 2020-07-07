@@ -81,10 +81,6 @@ objects:
               value: "{{workflow.parameters.build-cpu}}"
             - name: memory
               value: "{{workflow.parameters.build-memory}}"
-            - name: registry
-              value: "{{workflow.parameters.registry}}"
-            - name: thoth-infra-namespace
-              value: "{{workflow.parameters.thoth-infra-namespace}}"
             - name: volume
               value: output-volume
           templateRef:
@@ -105,10 +101,6 @@ objects:
               value: "{{workflow.parameters.run-cpu}}"
             - name: memory
               value: "{{workflow.parameters.run-memory}}"
-            - name: registry
-              value: "{{workflow.parameters.registry}}"
-            - name: thoth-infra-namespace
-              value: "{{workflow.parameters.thoth-infra-namespace}}"
             - name: volume
               value: output-volume
           templateRef:
