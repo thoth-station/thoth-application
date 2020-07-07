@@ -8,15 +8,19 @@ data:
   artifactRepository: |-
     archiveLogs: false
     s3:
-      bucket: "thoth"
-      endpoint: "s3.upshift.redhat.com"
-      accessKeySecret:
+      bucket: "{{workflow.parameters.ceph_bucket_name}}"
+      endpoint: "{{workflow.parameters.ceph_host}}"
+      accessKeySecret:                #omit if accessing via AWS IAM
         name: argo-artifact-repository-secrets
         key: accessKey
-      secretKeySecret:
+      secretKeySecret:                #omit if accessing via AWS IAM
         name: argo-artifact-repository-secrets
         key: secretKey
-      keyFormat: "argo/inspections/{{workflow.labels.component}}/{{workflow.name}}"
+      keyFormat: >-
+        {{workflow.parameters.ceph_bucket_prefix}}/
+        {{workflow.parameters.deployment_name}}/
+        inspections/
+        {{workflow.name}}
 kind: ConfigMap
 metadata:
   name: amun
