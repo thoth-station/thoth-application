@@ -97,10 +97,6 @@ objects:
               value: "{{workflow.parameters.physical-cpus}}"
             - name: processor
               value: "{{workflow.parameters.processor}}"
-            - name: registry
-              value: "{{workflow.parameters.registry}}"
-            - name: thoth-infra-namespace
-              value: "{{workflow.parameters.thoth-infra-namespace}}"
             - name: volume
               value: output-volume
           templateRef:
@@ -129,10 +125,6 @@ objects:
               value: "{{workflow.parameters.physical-cpus}}"
             - name: processor
               value: "{{workflow.parameters.processor}}"
-            - name: registry
-              value: "{{workflow.parameters.registry}}"
-            - name: thoth-infra-namespace
-              value: "{{workflow.parameters.thoth-infra-namespace}}"
             - name: volume
               value: output-volume
           templateRef:
