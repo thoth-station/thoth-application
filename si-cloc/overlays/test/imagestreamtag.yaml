@@ -1,0 +1,14 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: si-cloc
+spec:
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/si-cloc:v0.1.0
+    importPolicy: {}
+    referencePolicy:
+      type: Source
