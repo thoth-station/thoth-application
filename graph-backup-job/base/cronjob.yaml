@@ -72,8 +72,8 @@ spec:
                 - name: PROMETHEUS_PUSHGATEWAY_URL
                   valueFrom:
                     configMapKeyRef:
-                      name: thoth
-                      key: metrics-pushgateway-url
+                      name: prometheus
+                      key: pushgateway-url
                 - name: KNOWLEDGE_GRAPH_HOST
                   valueFrom:
                     configMapKeyRef:
