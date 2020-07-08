@@ -1,0 +1,72 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: revsolve
+spec:
+  templates:
+    - name: revsolve
+      inputs:
+        parameters:
+          - name: "THOTH_REVSOLVER_DOCUMENT_ID"
+          - name: "THOTH_REVSOLVER_PACKAGE_NAME"
+          - name: "THOTH_REVSOLVER_PACKAGE_VERSION"
+          - name: "THOTH_LOG_REVSOLVER"
+          - name: "THOTH_S3_ENDPOINT_URL"
+          - name: "THOTH_CEPH_BUCKET_NAME"
+          - name: "THOTH_CEPH_BUCKET_PREFIX"
+          - name: "THOTH_DEPLOYMENT_NAME"
+      outputs:
+        artifacts:
+          - name: outputdocument
+            path: "/mnt/workdir/{{inputs.parameters.THOTH_REVSOLVER_DOCUMENT_ID}}"
+            archive:
+              none: {}
+            s3:
+              key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
+                {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
+                revsolver/{{inputs.parameters.THOTH_REVSOLVER_DOCUMENT_ID}}"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              insecure: true
+              accessKeySecret:
+                name: argo-artifact-repository-secrets
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
+      container:
+        name: solver
+        image: revsolver
+        env:
+          - name: "THOTH_REVSOLVER_PACKAGE_NAME"
+            value: "{{inputs.parameters.THOTH_REVSOLVER_PACKAGE_NAME}}"
+          - name: "THOTH_REVSOLVER_PACKAGE_VERSION"
+            value: "{{inputs.parameters.THOTH_REVSOLVER_PACKAGE_VERSION}}"
+          - name: THOTH_LOG_REVSOLVER
+            value: "{{inputs.parameters.THOTH_LOG_REVSOLVER}}"
+          - name: THOTH_REVSOLVER_OUTPUT
+            value: "/mnt/workdir/{{inputs.parameters.THOTH_REVSOLVER_DOCUMENT_ID}}"
+          - name: "THOTH_DOCUMENT_ID"
+            value: "{{inputs.parameters.THOTH_REVSOLVER_DOCUMENT_ID}}"
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: deploymentName
+                name: thoth
+          - name: SENTRY_DSN
+            valueFrom:
+              secretKeyRef:
+                name: thoth
+                key: sentry-dsn
+        volumeMounts:
+          - name: workdir
+            mountPath: /mnt/workdir
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1Gi
+          requests:
+            cpu: 500m
+            memory: 1Gi
+        activeDeadlineSeconds: 1800
