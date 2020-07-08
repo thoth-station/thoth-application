@@ -47,11 +47,6 @@ parameters:
     displayName: "Log solver actions"
     required: true
     value: INFO
-  - name: THOTH_RUN_REVERSE_SOLVER
-    description: "Run reverse solver in the workflow"
-    displayName: "Run reverse solver"
-    required: false
-    value: "1"
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -86,8 +81,6 @@ objects:
             value: "${THOTH_SOLVER_INDEXES}"
           - name: "THOTH_FORCE_SYNC"
             value: "${THOTH_FORCE_SYNC}"
-          - name: "THOTH_RUN_REVERSE_SOLVER"
-            value: "${THOTH_RUN_REVERSE_SOLVER}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -145,4 +138,3 @@ objects:
                       value: "{{workflow.parameters.THOTH_SOLVER_WORKFLOW_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
-
