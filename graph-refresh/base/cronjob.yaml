@@ -56,14 +56,14 @@ spec:
                       name: thoth
                 - name: RSYSLOG_HOST
                   valueFrom:
-                  configMapKeyRef:
-                    key: rsyslog-host
-                    name: thoth
+                    configMapKeyRef:
+                      key: rsyslog-host
+                      name: thoth
                 - name: RSYSLOG_PORT
                   valueFrom:
-                  configMapKeyRef:
-                    key: rsyslog-port
-                    name: thoth
+                    configMapKeyRef:
+                      key: rsyslog-port
+                      name: thoth
                 - name: PROMETHEUS_PUSHGATEWAY_URL
                   valueFrom:
                     configMapKeyRef:
