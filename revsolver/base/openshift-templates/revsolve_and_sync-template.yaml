@@ -1,0 +1,113 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: revsolver
+  annotations:
+    description: "Thoth: Reverse Solver  Template"
+    openshift.io/display-name: "Thoth: Reverse Solver"
+    tags: thoth,ai-stacks,aistacks,solver,machinlearning
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to run reverse solvers in Thoth.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    template: revsolver
+    app: thoth
+    component: revsolver
+
+parameters:
+  - name: THOTH_REVSOLVER_WORKFLOW_ID
+    description: "A unique workflow identifier."
+    displayName: "Workflow UUID"
+    required: true
+  - name: "THOTH_REVSOLVER_PACKAGE_NAME"
+    description: "Name of the package to be reverse-solved."
+    displayName: "Package name"
+    required: true
+  - name: "THOTH_REVSOLVER_PACKAGE_VERSION"
+    description: "Version of the package to be revese-solved."
+    diplayName: "Package version"
+    required: true
+  - name: THOTH_LOG_REVSOLVER
+    description: "Log reverse solver actions"
+    displayName: "Log reverse solver"
+    required: true
+    value: INFO
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: "${THOTH_REVSOLVER_WORKFLOW_ID}"
+    spec:
+      serviceAccountName: argo
+      # kill workflow if running too much time
+      activeDeadlineSeconds: 3600
+      podGC:
+        strategy: OnWorkflowSuccess
+      ttlStrategy:
+        secondsAfterSuccess: 7200
+        secondsAfterFailure: 7200
+      entrypoint: revsolve-and-sync
+      arguments:
+        parameters:
+          - name: "THOTH_REVSOLVER_WORKFLOW_ID"
+            value: "${THOTH_REVSOLVER_WORKFLOW_ID}"
+          - name: "THOTH_LOG_REVSOLVER"
+            value: "${THOTH_LOG_REVSOLVER}"
+          - name: "THOTH_REVSOLVER_PACKAGE_NAME"
+            value: "${THOTH_REVSOLVER_PACKAGE_NAME}"
+          - name: "THOTH_REVSOLVER_PACKAGE_VERSION"
+            value: "${THOTH_REVSOLVER_PACKAGE_VERSION}"
+          - name: ceph_bucket_prefix
+          - name: ceph_bucket_name
+          - name: ceph_host
+          - name: deployment_name
+      volumes:
+        - name: workdir
+          emptyDir: {}
+        - name: output
+          emptyDir: {}
+      templates:
+        - name: "revsolve-and-sync"
+          archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - name: "revsolve"
+                templateRef:
+                  name: "revsolve"
+                  template: "revsolve"
+                arguments:
+                  parameters:
+                    - name: "THOTH_REVSOLVER_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_REVSOLVER_WORKFLOW_ID}}"
+                    - name: "THOTH_LOG_REVSOLVER"
+                      value: "{{workflow.parameters.THOTH_LOG_REVSOLVER}}"
+                    - name: "THOTH_REVSOLVER_PACKAGE_NAME"
+                      value: "{{workflow.parameters.THOTH_REVSOLVER_PACKAGE_NAME}}"
+                    - name: "THOTH_REVSOLVER_PACKAGE_VERSION"
+                      value: "{{workflow.parameters.THOTH_REVSOLVER_PACKAGE_VERSION}}"
+                    - name: "THOTH_S3_ENDPOINT_URL"
+                      value: "{{workflow.parameters.ceph_host}}"
+                    - name: "THOTH_CEPH_BUCKET_NAME"
+                      value: "{{workflow.parameters.ceph_bucket_name}}"
+                    - name: "THOTH_CEPH_BUCKET_PREFIX"
+                      value: "{{workflow.parameters.ceph_bucket_prefix}}"
+                    - name: "THOTH_DEPLOYMENT_NAME"
+                      value: "{{workflow.parameters.deployment_name}}"
+              - name: "graph-sync-revsolver"
+                dependencies:
+                  - "revsolve"
+                templateRef:
+                  name: "graph-sync"
+                  template: "graph-sync"
+                arguments:
+                  artifacts:
+                    - name: outputdocument
+                      from: "{{tasks.revsolve.outputs.artifacts.outputdocument}}"
+                  parameters:
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_REVSOLVER_WORKFLOW_ID}}"
+                    - name: "THOTH_FORCE_SYNC"
+                      value: "1"
