@@ -48,6 +48,8 @@ branch-protection:
           protect: false
         ansible-role-kebechet:
           protect: false
+        ansible-role-postgresql-metrics-exporter:
+          protect: false
         statusfy:
           protect: false
         statusfy-ops:
