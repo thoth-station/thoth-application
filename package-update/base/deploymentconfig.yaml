@@ -23,6 +23,8 @@ spec:
               value: "1" # TODO refactor me in a new configmap
             - name: SUBCOMMAND
               value: "consumer"
+            - name: DEBUG_LEVEL
+              value: "0"
             - name: KUBERNETES_API_URL
               value: "https://kubernetes.default.svc.cluster.local"
             - name: KUBERNETES_VERIFY_TLS
