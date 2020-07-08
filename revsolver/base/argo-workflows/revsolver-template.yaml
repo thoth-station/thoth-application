@@ -49,6 +49,8 @@ spec:
             value: "/mnt/workdir/{{inputs.parameters.THOTH_REVSOLVER_DOCUMENT_ID}}"
           - name: "THOTH_DOCUMENT_ID"
             value: "{{inputs.parameters.THOTH_REVSOLVER_DOCUMENT_ID}}"
+          - name: THOTH_REVSOLVER_QUERY_COUNT
+            value: "100"
           - name: THOTH_DEPLOYMENT_NAME
             valueFrom:
               configMapKeyRef:
