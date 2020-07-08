@@ -20,8 +20,11 @@ rules:
       - imagestreams
       - imagestreamtags
     verbs:
+      - create
       - get
       - list
+      - patch
+      - update
       - watch
   - apiGroups:
       - ""
@@ -29,7 +32,10 @@ rules:
     resources:
       - imagestreams/layers
     verbs:
+      - create
       - get
+      - patch
+      - update
   - apiGroups:
       - ""
     resources:
@@ -205,8 +211,11 @@ rules:
     resources:
       - imagestreams/status
     verbs:
+      - create
       - get
       - list
+      - patch
+      - update
       - watch
   - apiGroups:
       - ""
@@ -265,8 +274,11 @@ rules:
       - imagestreams
       - imagestreamtags
     verbs:
+      - create
       - get
       - list
+      - patch
+      - update
       - watch
   - apiGroups:
       - ""
@@ -274,7 +286,10 @@ rules:
     resources:
       - imagestreams/layers
     verbs:
+      - create
       - get
+      - patch
+      - update
   - apiGroups:
       - ""
     resources:
