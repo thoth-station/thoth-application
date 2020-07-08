@@ -5,7 +5,6 @@ metadata:
   annotations:
     description: "Thoth: Reverse Solver  Template"
     openshift.io/display-name: "Thoth: Reverse Solver"
-    version: 0.6.0
     tags: thoth,ai-stacks,aistacks,solver,machinlearning
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -40,8 +39,6 @@ objects:
     kind: Workflow
     metadata:
       name: "${THOTH_REVSOLVER_WORKFLOW_ID}"
-      annotations:
-        thoth-station.ninja/template-version: 0.6.0
     spec:
       serviceAccountName: argo
       # kill workflow if running too much time
