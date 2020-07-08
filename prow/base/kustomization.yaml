@@ -3,8 +3,6 @@ kind: Kustomization
 resources:
   - configmaps.yaml
   - serviceaccount.yaml
-  - roles.yaml
-  - rolebindings.yaml
   - deploymentconfig.yaml
   - ingress.yaml
   - services.yaml
