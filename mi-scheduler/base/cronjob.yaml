@@ -16,6 +16,8 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          name: mi-scheduler
         spec:
           containers:
             - image: mi-scheduler
