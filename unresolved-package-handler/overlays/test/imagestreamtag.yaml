@@ -7,7 +7,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/unresolved-package-handler:v0.1.0-dev
+      name: quay.io/thoth-station/unresolved-package-handler:v0.1.2
     importPolicy: {}
     referencePolicy:
       type: Source
