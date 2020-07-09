@@ -4,6 +4,7 @@ kind: WorkflowTemplate
 metadata:
   name: revsolve
 spec:
+  serviceAccountName: revsolver
   templates:
     - name: revsolve
       inputs:
