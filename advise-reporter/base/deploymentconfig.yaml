@@ -43,21 +43,6 @@ spec:
                 configMapKeyRef:
                   name: kafka
                   key: kafka-bootstrap-servers
-            - name: KAFKA_CLIENT_ID
-              valueFrom:
-                configMapKeyRef:
-                  name: kafka
-                  key: kafka-client-id
-            - name: KAFKA_SSL_AUTH
-              valueFrom:
-                configMapKeyRef:
-                  name: kafka
-                  key: kafka-ssl-auth
-            - name: KAFKA_RETENTION_TIME_SECONDS
-              valueFrom:
-                configMapKeyRef:
-                  name: kafka
-                  key: kafka-topic-retention-time
             - name: KAFKA_CAFILE
               value: "/mnt/secrets/kafka_ca.crt"
           ports:
