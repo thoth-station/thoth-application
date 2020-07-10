@@ -18,7 +18,7 @@ spec:
               name: package-update
               env:
                 - name: SUBCOMMAND
-                  value: ""
+                  value: "producer"
                 - name: APP_SCRIPT
                   value: "app.sh"
                 - name: KAFKA_BOOTSTRAP_SERVERS
@@ -28,21 +28,6 @@ spec:
                       name: kafka
                 - name: KAFKA_CAFILE
                   value: "/mnt/secrets/kafka_ca.crt"
-                - name: KAFKA_TOPIC_RETENTION_TIME_SECONDS
-                  valueFrom:
-                    configMapKeyRef:
-                      key: kafka-topic-retention-time
-                      name: kafka
-                - name: KAFKA_SSL_AUTH
-                  valueFrom:
-                    configMapKeyRef:
-                      key: kafka-ssl-auth
-                      name: kafka
-                - name: KAFKA_CLIENT_ID
-                  valueFrom:
-                    configMapKeyRef:
-                      key: kafka-client-id
-                      name: kafka
                 - name: RSYSLOG_HOST
                   valueFrom:
                     configMapKeyRef:
