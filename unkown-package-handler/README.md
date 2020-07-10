@@ -1,0 +1,5 @@
+# Thoth Unknown Package Handler Consumer
+
+This is a standalone ArgoCD Application for Thoth's Unknown Package Handler Consumer. It is meant to be deployed into a separate OpenShift
+Project, therefore it is not references from the `kustomization.yaml` file at the root directory of this
+repository.
