@@ -2,7 +2,6 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-<<<<<<< HEAD:investigator/base/deploymentconfig.yaml
   name: investigator-consumer
 spec:
   replicas: 1
@@ -16,21 +15,6 @@ spec:
       containers:
         - image: investigator
           name: investigator-consumer
-=======
-  name: unknown-package-handler-consumer
-spec:
-  replicas: 1
-  selector:
-    service: unknown-package-handler-consumer
-  template:
-    metadata:
-      labels:
-        service: unknown-package-handler-consumer
-    spec:
-      containers:
-        - image: unknown-package-handler
-          name: unknown-package-handler-consumer
->>>>>>> rename  component:unkown-package-handler/base/deploymentconfig.yaml
           env:
             - name: SUBCOMMAND
               value: "consumer"
@@ -43,21 +27,6 @@ spec:
                 configMapKeyRef:
                   name: kafka
                   key: kafka-bootstrap-servers
-            - name: KAFKA_CLIENT_ID
-              valueFrom:
-                configMapKeyRef:
-                  name: kafka
-                  key: kafka-client-id
-            - name: KAFKA_SSL_AUTH
-              valueFrom:
-                configMapKeyRef:
-                  name: kafka
-                  key: kafka-ssl-auth
-            - name: KAFKA_RETENTION_TIME_SECONDS
-              valueFrom:
-                configMapKeyRef:
-                  name: kafka
-                  key: kafka-topic-retention-time
             - name: KAFKA_CAFILE
               value: "/mnt/secrets/kafka_ca.crt"
             - name: KNOWLEDGE_GRAPH_HOST

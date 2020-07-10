@@ -270,22 +270,3 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_ADVISER_METADATA"
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
-
-
-              - name: "kebechet-run-results"
-                dependencies:
-                  - "trigger-integration"
-                templateRef:
-                  name: "kebechet-run-results"
-                  template: "schedule-kebechet"
-                arguments:
-                  parameters:
-                    - name: "WORKFLOW_NAME"
-                      value: "{{workflow.parameters.THOTH_ADVISER_JOB_ID}}"
-                    - name: "THOTH_DOCUMENT_ID"
-                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
-                    - name: "THOTH_ADVISER_METADATA"
-                      value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
-                    - name: origin
-                      value: "{{tasks.trigger-integration.outputs.parameters.origin}}"
-                when: "{{tasks.trigger-integration.outputs.parameters.source_type}} == KEBECHET"
