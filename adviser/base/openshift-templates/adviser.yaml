@@ -157,6 +157,19 @@ objects:
           emptyDir: {}
         - name: output
           emptyDir: {}
+        - name: secrets
+          secret:
+            secretName: "kafka-secret"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
+        - name: ssh-config
+          secret:
+            secretName: kebechet-secret
+            items:
+              - key: ssh-privatekey
+                path: id_rsa
+                mode: 0600
 
       templates:
         - name: "adviser"
@@ -212,6 +225,20 @@ objects:
                       value: "{{workflow.parameters.ceph_bucket_prefix}}"
                     - name: "THOTH_DEPLOYMENT_NAME"
                       value: "{{workflow.parameters.deployment_name}}"
+
+              - name: "investigator-producer"
+                dependencies:
+                  - "advise"
+                templateRef:
+                  name: "investigator-producer"
+                  template: "investigator-producer"
+                arguments:
+                  artifacts:
+                    - name: outputdocument
+                      from: "{{tasks.advise.outputs.artifacts.outputdocument}}"
+                  parameters:
+                    - name: THOTH_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
 
               - name: "graph-sync-advise"
                 dependencies:
