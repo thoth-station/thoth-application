@@ -208,7 +208,7 @@ tide:
           investigator:
             required-contexts:
               - thoth-ci/build-check
-              - thoth-ci/pytest-check
+              - thoth-ci/pre-commit-check
 
 presubmits:
   thoth-station/srcops-testing:
