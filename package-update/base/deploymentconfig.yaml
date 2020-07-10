@@ -92,21 +92,6 @@ spec:
                   name: kafka
             - name: KAFKA_CAFILE
               value: "/mnt/secrets/kafka_ca.crt"
-            - name: KAFKA_CLIENT_ID
-              valueFrom:
-                configMapKeyRef:
-                  key: kafka-client-id
-                  name: kafka
-            - name: KAFKA_SSL_AUTH
-              valueFrom:
-                configMapKeyRef:
-                  key: kafka-ssl-auth
-                  name: kafka
-            - name: KAFKA_RETENTION_TIME_SECONDS
-              valueFrom:
-                configMapKeyRef:
-                  key: kafka-topic-retention-time
-                  name: kafka
           ports:
             - containerPort: 8000
               protocol: TCP
