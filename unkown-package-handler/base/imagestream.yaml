@@ -1,0 +1,12 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+<<<<<<< HEAD:advise-reporter/base/imagestream.yaml
+  name: advise-reporter
+=======
+  name: unknown-package-handler
+>>>>>>> rename  component:unkown-package-handler/base/imagestream.yaml
+spec:
+  lookupPolicy:
+    local: true
