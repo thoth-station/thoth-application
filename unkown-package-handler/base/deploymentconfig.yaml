@@ -2,19 +2,19 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  name: unresolved-package-handler-consumer
+  name: unknown-package-handler-consumer
 spec:
   replicas: 1
   selector:
-    service: unresolved-package-handler-consumer
+    service: unknown-package-handler-consumer
   template:
     metadata:
       labels:
-        service: unresolved-package-handler-consumer
+        service: unknown-package-handler-consumer
     spec:
       containers:
-        - image: unresolved-package-handler
-          name: unresolved-package-handler-consumer
+        - image: unknown-package-handler
+          name: unknown-package-handler-consumer
           env:
             - name: SUBCOMMAND
               value: "consumer"

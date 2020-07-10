@@ -5,5 +5,5 @@ resources:
   - imagestream.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
-  app.kubernetes.io/component: unresolved-package-handler
+  app.kubernetes.io/component: unknown-package-handler
   app.kubernetes.io/managed-by: thothops-argocd
