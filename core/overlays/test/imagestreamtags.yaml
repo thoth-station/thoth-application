@@ -30,20 +30,6 @@ spec:
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: investigator
-spec:
-  tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: "quay.io/thoth-station/investigator:v0.2.0"
-      importPolicy: {}
-      referencePolicy:
-        type: Local
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
   name: s2i-thoth-ubi8-py36
 spec:
   tags:

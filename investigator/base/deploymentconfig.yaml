@@ -2,7 +2,6 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-<<<<<<< HEAD:investigator/base/deploymentconfig.yaml
   name: investigator-consumer
 spec:
   replicas: 1
@@ -16,21 +15,6 @@ spec:
       containers:
         - image: investigator
           name: investigator-consumer
-=======
-  name: unknown-package-handler-consumer
-spec:
-  replicas: 1
-  selector:
-    service: unknown-package-handler-consumer
-  template:
-    metadata:
-      labels:
-        service: unknown-package-handler-consumer
-    spec:
-      containers:
-        - image: unknown-package-handler
-          name: unknown-package-handler-consumer
->>>>>>> rename  component:unkown-package-handler/base/deploymentconfig.yaml
           env:
             - name: SUBCOMMAND
               value: "consumer"
