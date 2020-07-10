@@ -66,10 +66,12 @@ branch-protection:
           protect: false
         pipelines-catalog:
           protect: false
+        bz1816214-example:
+          protect: false
 
 tide:
   pr_status_base_urls:
-    '*': https://prow.thoth-station.dev/pr
+    "*": https://prow.thoth-station.dev/pr
 
   merge_method:
     AICoE: squash
@@ -219,9 +221,9 @@ presubmits:
         pipelineRef:
           name: try-out-pipeline
         resources:
-        - name: git
-          resourceRef:
-            name: PROW_IMPLICIT_GIT_REF
+          - name: git
+            resourceRef:
+              name: PROW_IMPLICIT_GIT_REF
 
 periodics:
   - name: integration-tests-periodic-moc
