@@ -4,9 +4,5 @@ resources:
   - deploymentconfig.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
-<<<<<<< HEAD:investigator/base/kustomization.yaml
   app.kubernetes.io/component: investigator
-=======
-  app.kubernetes.io/component: unknown-package-handler
->>>>>>> rename  component:unkown-package-handler/base/kustomization.yaml
   app.kubernetes.io/managed-by: thothops-argocd
