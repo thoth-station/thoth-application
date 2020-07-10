@@ -60,6 +60,7 @@ plugins:
     - approve
     - blunderbuss
     - hold
+    - label
     - lifecycle
     - size
     - trigger
