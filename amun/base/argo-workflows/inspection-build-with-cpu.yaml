@@ -234,13 +234,16 @@ spec:
           results="/mnt/build/"
           mkdir -p "$results"
           kubectl logs "{{inputs.parameters.inspection-id}}-1-build" > "${results}/log"
-          cat <<EOFEOF  | jq . > "${results}/specification"
+          cat << EOF  | jq . > "${results}/specification"
           {{inputs.parameters.specification}}
-          EOFEOF
-          cat <<EOFEOF > "${results}/Dockerfile"
-          {{inputs.parameters.dockerfile}}
-          EOFEOF
+          EOF
 
+          set +e
+          cat << EOF > "${results}/Dockerfile"
+          {{inputs.parameters.dockerfile}}
+          EOF
+          set -e
+          
           # Fail if the build failed but let the build log, specification and Dockerfile aggregated.
           exit `kubectl get pod "{{inputs.parameters.inspection-id}}-1-build" -o json | \
             jq '.status.containerStatuses[0].state.terminated.exitCode'`
