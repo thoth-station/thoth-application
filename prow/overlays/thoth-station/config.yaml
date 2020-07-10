@@ -203,9 +203,10 @@ tide:
             required-contexts:
               - thoth-ci/pytest-check
               - thoth-ci/build-check
-          unresolved-package-handler:
+          investigator:
             required-contexts:
               - thoth-ci/build-check
+              - thoth-ci/pytest-check
 
 presubmits:
   thoth-station/srcops-testing:
