@@ -226,20 +226,13 @@ presubmits:
               name: PROW_IMPLICIT_GIT_REF
 
 periodics:
-  - name: integration-tests-periodic-moc
+  - name: integration-tests-periodic-preprod
     interval: 8h
-    labels:
-      preset-service-account: "true"
     spec:
       containers:
-        - image: quay.io/thoth-station/integration-tests:v0.1.1
+        - image: quay.io/thoth-station/integration-tests:v0.1.2
           imagePullPolicy: Always
           command:
-            - "behave"
-          env:
-            - name: THOTH_MANAGEMENT_API_HOST
-              value: management.test.thoth-station.ninja
-            - name: THOTH_USER_API_HOST
-              value: test.thoth-station.ninja
+            - "./e2e-test.sh"
     annotations:
-      description: Periodic integration tests on MOC
+      description: Periodic 'advise endpoint' tests against preprod API
