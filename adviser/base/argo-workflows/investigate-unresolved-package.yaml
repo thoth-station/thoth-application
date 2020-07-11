@@ -12,36 +12,36 @@ spec:
         artifacts:
           - name: "outputdocument"
             path: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
-        container:
-          name: investigator-producer
-          image: investigator
-          env:
-            - name: JSON_FILE_PATH
-              value: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
-            - name: SUBCOMMAND
-              value: "producer"
-            - name: DEBUG_LEVEL
-              value: "0"
-            - name: APP_SCRIPT
-              value: "app.sh"
-            - name: KAFKA_BOOTSTRAP_SERVERS
-              valueFrom:
-                configMapKeyRef:
-                  key: kafka-bootstrap-servers
-                  name: kafka
-            - name: KAFKA_CAFILE
-              value: "/mnt/secrets/kafka_ca.crt"
-            - name: KUBERNETES_API_URL
-              value: "https://kubernetes.default.svc.cluster.local"
-            - name: KUBERNETES_VERIFY_TLS
-              value: "0"
-          resources:
-            limits:
-              cpu: 250m
-              memory: 256Mi
-            requests:
-              cpu: 250m
-              memory: 256Mi
-          volumeMounts:
-            - name: secrets
-              mountPath: /mnt/secrets
+      container:
+        name: investigator-producer
+        image: investigator
+        env:
+          - name: JSON_FILE_PATH
+            value: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: SUBCOMMAND
+            value: "producer"
+          - name: DEBUG_LEVEL
+            value: "0"
+          - name: APP_SCRIPT
+            value: "app.sh"
+          - name: KAFKA_BOOTSTRAP_SERVERS
+            valueFrom:
+              configMapKeyRef:
+                key: kafka-bootstrap-servers
+                name: kafka
+          - name: KAFKA_CAFILE
+            value: "/mnt/secrets/kafka_ca.crt"
+          - name: KUBERNETES_API_URL
+            value: "https://kubernetes.default.svc.cluster.local"
+          - name: KUBERNETES_VERIFY_TLS
+            value: "0"
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+        volumeMounts:
+          - name: secrets
+            mountPath: /mnt/secrets
