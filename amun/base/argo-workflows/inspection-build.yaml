@@ -205,9 +205,11 @@ spec:
           {{inputs.parameters.specification}}
           EOF
 
+          set +e
           cat << EOF > "${results}/Dockerfile"
           {{inputs.parameters.dockerfile}}
           EOF
+          set -e
 
           # Fail if the build failed but let the build log, specification and Dockerfile aggregated.
           exit `kubectl get pod "{{inputs.parameters.inspection-id}}-1-build" -o json | \
