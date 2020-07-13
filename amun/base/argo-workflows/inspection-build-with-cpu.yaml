@@ -243,7 +243,7 @@ spec:
           {{inputs.parameters.dockerfile}}
           EOF
           set -e
-          
+
           # Fail if the build failed but let the build log, specification and Dockerfile aggregated.
           exit `kubectl get pod "{{inputs.parameters.inspection-id}}-1-build" -o json | \
             jq '.status.containerStatuses[0].state.terminated.exitCode'`
