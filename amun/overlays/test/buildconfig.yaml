@@ -48,7 +48,6 @@ spec:
         - name: "THAMOS_CONFIG_EXPAND_ENV"
           value: "1"
   triggers:
-    - type: ConfigChange
     - type: ImageChange
       imageChange: {}
 ---
@@ -98,6 +97,5 @@ spec:
           value: "1"
     type: Source
   triggers:
-    - type: ConfigChange
     - type: ImageChange
       imageChange: {}
