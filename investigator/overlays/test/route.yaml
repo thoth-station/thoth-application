@@ -1,0 +1,9 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: faust-web
+spec:
+  to:
+    kind: Service
+    name: faust-web

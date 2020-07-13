@@ -4,6 +4,8 @@ commonLabels:
   app.kubernetes.io/version: "0.6"
 resources:
   - ../../base
+  - service.yaml
+  - route.yaml
   - thoth-notification.yaml
 patchesJson6902:
   - path: job-generate-name.yaml

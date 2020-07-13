@@ -5,4 +5,4 @@ resources:
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: investigator
-  app.kubernetes.io/managed-by: thothops-argocd
+  app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd

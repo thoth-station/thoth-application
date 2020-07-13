@@ -7,10 +7,16 @@ spec:
   replicas: 1
   selector:
     service: investigator-consumer
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: investigator
+    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
   template:
     metadata:
       labels:
         service: investigator-consumer
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: investigator
+        app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
     spec:
       containers:
         - image: investigator
