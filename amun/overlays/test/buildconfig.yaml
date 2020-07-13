@@ -30,7 +30,6 @@ spec:
         - name: ENABLE_PIPENV
           value: "1"
         - name: UPGRADE_PIP_TO_LATEST
-          value: ""
         - name: WEB_CONCURRENCY
           value: "4"
         - name: "THOTH_DRY_RUN"
@@ -82,7 +81,6 @@ spec:
         - name: ENABLE_PIPENV
           value: "1"
         - name: UPGRADE_PIP_TO_LATEST
-          value: ""
         - name: "THOTH_DRY_RUN"
           value: "1"
         - name: "THOTH_ADVISE"
