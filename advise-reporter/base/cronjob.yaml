@@ -2,7 +2,7 @@
 kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
-  name: package-update
+  name: advise-reporter
 spec:
   schedule: "0 */12 * * *"
   suspend: True
@@ -14,13 +14,15 @@ spec:
       template:
         spec:
           containers:
-            - image: package-update-job
-              name: package-update
+            - image: advise-reporter
+              name: advise-reporter-producer
               env:
                 - name: SUBCOMMAND
                   value: "producer"
                 - name: APP_SCRIPT
                   value: "app.sh"
+                - name: ADVISER_VERSION
+                  value: "0.7.3"
                 - name: KAFKA_BOOTSTRAP_SERVERS
                   valueFrom:
                     configMapKeyRef:
