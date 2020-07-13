@@ -1,0 +1,95 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: github-webhook-receiver
+spec:
+  replicas: 1
+  selector:
+    deploymentconfig: sefkhet-abwy-webhook-receiver
+    app.kubernetes.io/name: sefkhet-abwy
+    app.kubernetes.io/component: webhook-receiver
+    app.kubernetes.io/managed-by: aicoe-thoth-devops-manual
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        deploymentconfig: sefkhet-abwy-webhook-receiver
+        app.kubernetes.io/name: sefkhet-abwy
+        app.kubernetes.io/component: webhook-receiver
+        app.kubernetes.io/managed-by: aicoe-thoth-devops-manual
+    spec:
+      containers:
+        - env:
+            - name: GITHUB_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: github-secret
+                  name: sefkhet-abwy
+            - name: GITHUB_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: github-access-token
+                  name: sefkhet-abwy
+            - name: DEBUG
+              value: "true"
+            - name: ENV
+              value: dev
+            - name: APP_FILE
+              value: review-manager
+            - name: GITHUB_APP_IDENTIFIER
+              valueFrom:
+                secretKeyRef:
+                  key: github-app-identifier
+                  name: sefkhet-abwy
+            - name: GITHUB_WEBHOOK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: github-webhook-secret
+                  name: sefkhet-abwy
+            - name: PYTHONPATH
+              value: .
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  key: sentry-dsn
+                  name: sefkhet-abwy
+            - name: THOTH_DEPLOYMENT_NAME
+              value: ocp-aicoe-prod-bots
+            - name: SESHETA_AIOPS_DEVOPS_SPACE
+              valueFrom:
+                secretKeyRef:
+                  key: google-chat-space
+                  name: aiops
+            - name: SESHETA_THOTH_DEVOPS_SPACE
+              valueFrom:
+                secretKeyRef:
+                  key: google-chat-space
+                  name: sefkhet-abwy
+          envFrom:
+            - prefix: GITHUB_
+              secretRef:
+                name: sefkhet-abwy-github-app
+          image: sefkhet-abwy-webhook-receiver
+          imagePullPolicy: Always
+          name: sefkhet-abwy-webhook-receiver
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 250m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /opt/app-root/etc/gcloud
+              name: sesheta-pubsub-consumer-wrjq4
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - name: sesheta-pubsub-consumer-wrjq4
+          secret:
+            defaultMode: 420
+            secretName: sesheta-pubsub-consumer
+  test: false
