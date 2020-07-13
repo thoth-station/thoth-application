@@ -2,7 +2,7 @@
 apiVersion: v1
 data:
   amun-api-url: amun-api.thoth-test-core.svc
-  deployment-name: opc-prod-test
+  deployment-name: ocp-prod-test
   infra-namespace: thoth-test-core
   inspection-namespace: thoth-test-core
   artifactRepository: |-
@@ -10,17 +10,13 @@ data:
     s3:
       bucket: "{{workflow.parameters.ceph_bucket_name}}"
       endpoint: "{{workflow.parameters.ceph_host}}"
-      accessKeySecret:                #omit if accessing via AWS IAM
+      accessKeySecret:
         name: argo-artifact-repository-secrets
         key: accessKey
-      secretKeySecret:                #omit if accessing via AWS IAM
+      secretKeySecret:
         name: argo-artifact-repository-secrets
         key: secretKey
-      keyFormat: >-
-        {{workflow.parameters.ceph_bucket_prefix}}/
-        {{workflow.parameters.deployment_name}}/
-        inspections/
-        {{workflow.name}}
+      keyFormat: "{{workflow.parameters.ceph_bucket_prefix}}/{{workflow.parameters.deployment_name}}/inspections/{{workflow.name}}"
 kind: ConfigMap
 metadata:
   name: amun
