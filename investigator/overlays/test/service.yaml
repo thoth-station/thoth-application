@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: faust-web
+  name: investigator-faust-web
 spec:
   ports:
     - port: 80
