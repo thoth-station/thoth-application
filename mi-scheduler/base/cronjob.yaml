@@ -37,3 +37,4 @@ spec:
                     configMapKeyRef:
                       name: mi
                       key: organizations
+          restartPolicy: Never
