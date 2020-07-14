@@ -1,0 +1,11 @@
+project: thoth
+source:
+  repoURL: 'https://github.com/thoth-station/thoth-application.git'
+  path: mi-scheduler/overlays/test
+  targetRevision: master
+destination:
+  server: 'https://api.ocp.prod.psi.redhat.com:6443'
+  namespace: thoth-test-core
+syncPolicy:
+  automated:
+    selfHeal: true
