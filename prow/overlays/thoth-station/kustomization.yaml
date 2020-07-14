@@ -3,3 +3,10 @@ kind: Kustomization
 namespace: aicoe-infra-prod
 resources:
   - ../../base
+configMapGenerator:
+  - name: config
+    files:
+      - config.yaml
+  - name: plugins
+    files:
+      - plugins.yaml
