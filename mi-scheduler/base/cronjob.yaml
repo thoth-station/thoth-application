@@ -25,15 +25,15 @@ spec:
               command: ["mi-scheduler"]
               args: ["-r", "${REPOSITORIES}", "-o", "${ORGANIZATIONS}"]
               env:
-              - name: APP_FILE
-                value: "./app.py"
-              - name: REPOSITORIES
-                valueFrom:
-                  secretKeyRef:
-                    name: srcopsmetrics-repositories
-                    key: repositories
-              - name: ORGANIZATIONS
-                valueFrom:
-                  configMapRef:
-                    name: srcopsmetrics-repositories
-                    key: organizations
+                - name: APP_FILE
+                  value: "./app.py"
+                - name: REPOSITORIES
+                  valueFrom:
+                    configMapRef:
+                      name: mi
+                      key: repositories
+                - name: ORGANIZATIONS
+                  valueFrom:
+                    configMapRef:
+                      name: mi
+                      key: organizations
