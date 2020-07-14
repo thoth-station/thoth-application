@@ -132,7 +132,6 @@ tide:
           amun-api:
             required-contexts:
               - thoth-ci/pre-commit-check
-              - thoth-ci/pytest-check
               - thoth-ci/build-check
           amun-client:
             required-contexts:
@@ -172,7 +171,6 @@ tide:
           user-api:
             required-contexts:
               - thoth-ci/pre-commit-check
-              - thoth-ci/pytest-check
               - thoth-ci/build-check
           package-analyzer:
             required-contexts:
