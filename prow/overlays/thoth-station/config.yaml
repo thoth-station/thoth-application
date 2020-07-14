@@ -24,6 +24,12 @@ branch-protection:
         users: []
         teams:
           - sourceops
+        required_pull_request_reviews:
+          dismiss_stale_reviews: false
+        required_approving_review_count: 1
+        required_status_checks:
+          contexts:
+            - thoth-ci/pre-commit-check
       allow_force_pushes: false
       repos:
         test-infra:
@@ -83,6 +89,25 @@ tide:
       excludedRepos:
         - thoth-station/dgraph-thoth-config
         - thoth-station/workload-operator
+        - tensorflow
+        - contra-env-infra
+        - ansible-role-core-imagestreams
+        - ansible-role-core-templates
+        - ansible-role-core-cronjob
+        - ansible-role-metrics-exporter
+        - ansible-role-cronjob
+        - ansible-role-argo-workflows
+        - ansible-role-postgresql
+        - ansible-role-kebechet
+        - ansible-role-postgresql-metrics-exporter
+        - statusfy
+        - statusfy-ops
+        - website-tooling
+        - cuda
+        - stub-api
+        - nvidia-usage-dashboard
+        - pipelines-catalog
+        - bz1816214-example
       labels:
         - approved
       missingLabels:
