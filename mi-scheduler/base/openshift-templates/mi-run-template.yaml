@@ -1,17 +1,17 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: srcopsmetrics
+  name: mi
   annotations:
-    description: "SrcOpsMetrics"
-    openshift.io/display-name: "SrcOpsMetrics"
+    description: "Meta-information Indicators"
+    openshift.io/display-name: "mi"
     version: 0.1.0
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
       This template defines resources needed to run recommendation logic of Thoth to OpenShift.
     template.openshift.io/provider-display-name: "Red Hat, Inc."
   labels:
-    app: srcopsmetrics
+    app: mi
 
 parameters:
   - name: REPOSITORY
@@ -42,25 +42,25 @@ objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
     metadata:
-      generateName: srcopsmetrics-analysis-
+      generateName: mi-analysis-
       annotations:
         thoth-station.ninja/template-version: 0.1.0
       labels:
         app: scropsmetrics
     spec:
       serviceAccountName: argo
-      entrypoint: srcopsmetrics
+      entrypoint: mi
       ttlStrategy:
         secondsAfterCompletion: 10
         secondsAfterSuccess: 10
       templates:
-        - name: "srcopsmetrics"
+        - name: "mi"
           dag:
             tasks:
-              - name: "srcopsmetrics"
+              - name: "mi"
                 templateRef:
-                  name: "srcopsmetrics"
-                  template: "srcopsmetrics-workflow"
+                  name: "mi"
+                  template: "mi-workflow"
                 arguments:
                   parameters:
                     - name: REPOSITORY

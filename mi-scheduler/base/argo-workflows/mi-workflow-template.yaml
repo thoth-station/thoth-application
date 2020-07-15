@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: srcopsmetrics
+  name: mi
   annotations:
     thoth-station.ninja/template-version: 0.1.0
   labels:
-    app: srcopsmetrics
+    app: mi
 
 spec:
   serviceAccountName: argo
-  entrypoint: srcopsmetrics-workflow
+  entrypoint: mi-workflow
 
   templates:
-    - name: srcopsmetrics-workflow
+    - name: mi-workflow
       inputs:
         parameters:
           - name: REPOSITORY
