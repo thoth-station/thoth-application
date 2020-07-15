@@ -2,7 +2,16 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: mi
+  name: mi-scheduler
 data:
   repositories: ""
   organizations: "thoth-station,AICoE"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mi
+data:
+  bucket: DH-DEV-DATA
+  host: https://s3.upshift.redhat.com
+  prefix: data/thoth/dtuchyna

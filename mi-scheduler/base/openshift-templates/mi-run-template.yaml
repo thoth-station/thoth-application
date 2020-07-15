@@ -1,0 +1,73 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: srcopsmetrics
+  annotations:
+    description: "SrcOpsMetrics"
+    openshift.io/display-name: "SrcOpsMetrics"
+    version: 0.1.0
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to run recommendation logic of Thoth to OpenShift.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    app: srcopsmetrics
+
+parameters:
+  - name: REPOSITORY
+    required: true
+    description: GitHub repository whose Health Indicator will be computed
+    displayName: inspected GitHub repository
+
+  - description: Registry the ImageStream to be use lives in
+    displayName: ImageStream Registry
+    required: true
+    name: IMAGE_STREAM_REGISTRY
+    value: "docker-registry.default.svc:5000"
+
+  - description: Project the ImageStream to be use lives in
+    displayName: ImageStream Project
+    required: true
+    name: IMAGE_STREAM_NAMESPACE
+    value: "thoth-test-core"
+
+  - description: Tag of the ImageStream to be use
+    displayName: ImageStream Tag
+    required: true
+    name: IMAGE_STREAM_TAG
+    value: "latest"
+
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      generateName: srcopsmetrics-analysis-
+      annotations:
+        thoth-station.ninja/template-version: 0.1.0
+      labels:
+        app: scropsmetrics
+    spec:
+      serviceAccountName: argo
+      entrypoint: srcopsmetrics
+      ttlStrategy:
+        secondsAfterCompletion: 10
+        secondsAfterSuccess: 10
+      templates:
+        - name: "srcopsmetrics"
+          dag:
+            tasks:
+              - name: "srcopsmetrics"
+                templateRef:
+                  name: "srcopsmetrics"
+                  template: "srcopsmetrics-workflow"
+                arguments:
+                  parameters:
+                    - name: REPOSITORY
+                      value: ${REPOSITORY}
+                    - name: IMAGE_STREAM_TAG
+                      value: ${IMAGE_STREAM_TAG}
+                    - name: IMAGE_STREAM_REGISTRY
+                      value: ${IMAGE_STREAM_REGISTRY}
+                    - name: IMAGE_STREAM_NAMESPACE
+                      value: ${IMAGE_STREAM_NAMESPACE}
