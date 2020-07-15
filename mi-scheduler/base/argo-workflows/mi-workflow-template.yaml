@@ -64,18 +64,18 @@ spec:
           - name: S3_ENDPOINT_URL
             valueFrom:
               configMapKeyRef:
-                name: thoth
-                key: ceph-host
+                name: ceph
+                key: host
           - name: CEPH_BUCKET
             valueFrom:
               configMapKeyRef:
-                name: thoth
-                key: ceph-bucket-name
+                name: ceph
+                key: bucket-name
           - name: CEPH_BUCKET_PREFIX
             valueFrom:
               configMapKeyRef:
-                name: thoth
-                key: ceph-bucket-prefix
+                name: ceph
+                key: bucket-prefix
           - name: CEPH_SECRET_KEY
             valueFrom:
               secretKeyRef:
@@ -109,18 +109,18 @@ spec:
           - name: S3_ENDPOINT_URL
             valueFrom:
               configMapKeyRef:
-                name: thoth
-                key: ceph-host
+                name: ceph
+                key: host
           - name: CEPH_BUCKET
             valueFrom:
               configMapKeyRef:
-                name: thoth
-                key: ceph-bucket-name
+                name: ceph
+                key: bucket-name
           - name: CEPH_BUCKET_PREFIX
             valueFrom:
               configMapKeyRef:
-                name: thoth
-                key: ceph-bucket-prefix
+                name: ceph
+                key: bucket-prefix
           - name: CEPH_SECRET_KEY
             valueFrom:
               secretKeyRef:
