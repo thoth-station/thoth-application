@@ -26,9 +26,9 @@ using: `kustomize build --enable_alpha_plugins overlays/test | conftest test --p
 
 ### pushing a release to production
 
-### developing a new component
+### Developing a new component
 
-#### component secrets
+#### Component secrets
 We use [sops](https://github.com/mozilla/sops#sops-secrets-operations) for creating secrets with encryption.
 Contributor first needs to have the secret in the manifest file to run `sops` on it for encryption
 (because we cannot have that secret file mistakenly pushed to the repo).
