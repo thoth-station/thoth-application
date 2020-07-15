@@ -2,8 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: mi
-  annotations:
-    thoth-station.ninja/template-version: 0.1.0
   labels:
     app: mi
 
@@ -54,9 +52,7 @@ spec:
           - name: IMAGE_STREAM_NAMESPACE
           - name: IMAGE_STREAM_TAG
       container:
-        image: "{{inputs.parameters.IMAGE_STREAM_REGISTRY}}/\
-        {{inputs.parameters.IMAGE_STREAM_NAMESPACE}}/\
-        srcopsmetrics:{{inputs.parameters.IMAGE_STREAM_TAG}}"
+        image: "mi:latest"
         command: ["srcopsmetrics/cli.py"]
         args: ["-cr", "{{inputs.parameters.REPOSITORY}}"]
         env:
@@ -101,9 +97,7 @@ spec:
           - name: IMAGE_STREAM_NAMESPACE
           - name: IMAGE_STREAM_TAG
       container:
-        image: "{{inputs.parameters.IMAGE_STREAM_REGISTRY}}/\
-        {{inputs.parameters.IMAGE_STREAM_NAMESPACE}}/\
-        srcopsmetrics:{{inputs.parameters.IMAGE_STREAM_TAG}}"
+        image: "mi:latest"
         command: ["srcopsmetrics/cli.py"]
         args: ["-pr", "{{inputs.parameters.REPOSITORY}}"]
         env:

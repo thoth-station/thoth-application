@@ -2,14 +2,6 @@ apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
   name: mi
-  annotations:
-    description: "Meta-information Indicators"
-    openshift.io/display-name: "mi"
-    version: 0.1.0
-    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
-    template.openshift.io/long-description: >
-      This template defines resources needed to run recommendation logic of Thoth to OpenShift.
-    template.openshift.io/provider-display-name: "Red Hat, Inc."
   labels:
     app: mi
 
@@ -19,32 +11,11 @@ parameters:
     description: GitHub repository whose Health Indicator will be computed
     displayName: inspected GitHub repository
 
-  - description: Registry the ImageStream to be use lives in
-    displayName: ImageStream Registry
-    required: true
-    name: IMAGE_STREAM_REGISTRY
-    value: "docker-registry.default.svc:5000"
-
-  - description: Project the ImageStream to be use lives in
-    displayName: ImageStream Project
-    required: true
-    name: IMAGE_STREAM_NAMESPACE
-    value: "thoth-test-core"
-
-  - description: Tag of the ImageStream to be use
-    displayName: ImageStream Tag
-    required: true
-    name: IMAGE_STREAM_TAG
-    value: "latest"
-
-
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
     metadata:
       generateName: mi-analysis-
-      annotations:
-        thoth-station.ninja/template-version: 0.1.0
       labels:
         app: scropsmetrics
     spec:
