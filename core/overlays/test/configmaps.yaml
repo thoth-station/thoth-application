@@ -10,6 +10,7 @@ data:
   backend-namespace: thoth-test-core
   middletier-namespace: thoth-test-core
   frontend-namespace: thoth-test-core
+  amun-api-url: amun-api.thoth-test-core.svc
   infra-namespace: thoth-test-core
   solvers: |
     solver-rhel-8-py36
