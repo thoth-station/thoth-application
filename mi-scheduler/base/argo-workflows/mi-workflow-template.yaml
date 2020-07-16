@@ -129,7 +129,7 @@ spec:
           - name: CEPH_KEY_ID
             valueFrom:
               secretKeyRef:
-                name: thoth
-                key: ceph-key-id
+                name: ceph
+                key: key-id
           - name: PYTHONPATH
             value: "."
