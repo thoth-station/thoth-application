@@ -36,8 +36,6 @@ spec:
                 configMapKeyRef:
                   key: api-url
                   name: amun
-            - name: THOTH_RESULT_API_URL
-              value: http://result-api
             - name: THOTH_MIDDLETIER_POD_CPU_LIMIT
               valueFrom:
                 configMapKeyRef:
