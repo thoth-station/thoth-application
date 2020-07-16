@@ -22,9 +22,8 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/si-bandit:v0.7.0
-    importPolicy:
-      scheduled: true
+      name: quay.io/thoth-station/si-bandit:v0.1.2
+    importPolicy: {}
     referencePolicy:
       type: Source
 ---
