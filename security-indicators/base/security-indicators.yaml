@@ -40,6 +40,8 @@ objects:
             value: "${THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}"
           - name: THOTH_SECURITY_INDICATORS_AGGREGATION_FUNCTION
             value: "${THOTH_SECURITY_INDICATORS_AGGREGATION_FUNCTION}"
+          - name: THOTH_FORCE_SYNC
+            value: "${THOTH_SECURITY_INDICATORS_FORCE_SYNC}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -152,6 +154,21 @@ objects:
                   name: aggregator
                   template: aggregator
                 resubmitPendingPods: true
+              - name: "graph-sync-security-indicators"
+                dependencies:
+                  - "aggregator"
+                templateRef:
+                  name: "graph-sync"
+                  template: "graph-sync"
+                arguments:
+                  artifacts:
+                    - name: outputdocument
+                      from: "{{tasks.aggregator.outputs.artifacts.outputdocument}}"
+                  parameters:
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+                    - name: "THOTH_FORCE_SYNC"
+                      value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
           name: security-indicators
         - name: exit-handler
           steps:
