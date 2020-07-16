@@ -22,11 +22,11 @@ spec:
           containers:
             - image: mi-scheduler
               name: mi-scheduler
-              command: ["mi-scheduler"]
+              command: ["app.py"]
               args: ["-r", "${REPOSITORIES}", "-o", "${ORGANIZATIONS}"]
               env:
                 - name: APP_FILE
-                  value: "./app.py"
+                  value: "app.py"
                 - name: REPOSITORIES
                   valueFrom:
                     configMapKeyRef:
