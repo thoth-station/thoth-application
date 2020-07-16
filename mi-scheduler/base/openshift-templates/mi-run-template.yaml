@@ -36,9 +36,3 @@ objects:
                   parameters:
                     - name: REPOSITORY
                       value: ${REPOSITORY}
-                    - name: IMAGE_STREAM_TAG
-                      value: ${IMAGE_STREAM_TAG}
-                    - name: IMAGE_STREAM_REGISTRY
-                      value: ${IMAGE_STREAM_REGISTRY}
-                    - name: IMAGE_STREAM_NAMESPACE
-                      value: ${IMAGE_STREAM_NAMESPACE}
