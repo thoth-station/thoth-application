@@ -8,7 +8,7 @@ metadata:
   annotations:
     thoth-station.ninja/template-version: 0.1.0
 spec:
-  schedule: "0 * * * *"
+  schedule: "@hourly"
   suspend: false
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
@@ -22,19 +22,7 @@ spec:
           containers:
             - image: mi-scheduler
               name: mi-scheduler
-              command: ["app.py"]
-              args: ["-r", "${REPOSITORIES}", "-o", "${ORGANIZATIONS}"]
               env:
                 - name: APP_FILE
                   value: "app.py"
-                - name: REPOSITORIES
-                  valueFrom:
-                    configMapKeyRef:
-                      name: mi
-                      key: repositories
-                - name: ORGANIZATIONS
-                  valueFrom:
-                    configMapKeyRef:
-                      name: mi
-                      key: organizations
-          restartPolicy: Never
+          restartPolicy: onFailure
