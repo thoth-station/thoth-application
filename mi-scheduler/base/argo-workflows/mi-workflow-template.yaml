@@ -1,0 +1,114 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: mi
+  labels:
+    app: mi
+
+spec:
+  serviceAccountName: argo
+  entrypoint: mi-workflow
+
+  templates:
+    - name: mi-workflow
+      inputs:
+        parameters:
+          - name: REPOSITORY
+      steps:
+        - - name: collect-knowledge
+            template: analyse
+            arguments:
+              parameters:
+                - name: REPOSITORY
+                  value: "{{inputs.parameters.REPOSITORY}}"
+
+        - - name: process-information
+            template: process
+            arguments:
+              parameters:
+                - name: REPOSITORY
+                  value: "{{inputs.parameters.REPOSITORY}}"
+
+    - name: analyse
+      inputs:
+        parameters:
+          - name: REPOSITORY
+      container:
+        image: "mi"
+        command: ["srcopsmetrics/cli.py"]
+        args: ["-cr", "{{inputs.parameters.REPOSITORY}}"]
+        env:
+          - name: GITHUB_ACCESS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: sesheta-srcops
+                key: github-access-token
+          - name: S3_ENDPOINT_URL
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: host
+          - name: CEPH_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: bucket-name
+          - name: CEPH_BUCKET_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: bucket-prefix
+          - name: CEPH_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: secret-key
+          - name: CEPH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: key-id
+          - name: PYTHONPATH
+            value: "."
+
+    - name: process
+      inputs:
+        parameters:
+          - name: REPOSITORY
+      container:
+        image: "mi"
+        command: ["srcopsmetrics/cli.py"]
+        args: ["-pr", "{{inputs.parameters.REPOSITORY}}"]
+        env:
+          - name: GITHUB_ACCESS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: sesheta-srcops
+                key: github-access-token
+          - name: S3_ENDPOINT_URL
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: host
+          - name: CEPH_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: bucket-name
+          - name: CEPH_BUCKET_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: bucket-prefix
+          - name: CEPH_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: secret-key
+          - name: CEPH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: key-id
+          - name: PYTHONPATH
+            value: "."
