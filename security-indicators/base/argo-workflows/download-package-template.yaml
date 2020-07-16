@@ -19,7 +19,7 @@ spec:
             value: "{{inputs.parameters.THOTH_PACKAGE_VERSION}}"
           - name: THOTH_PACKAGE_INDEX
             value: "{{inputs.parameters.THOTH_PACKAGE_INDEX}}"
-        image: "workflow-helpers:test"
+        image: "workflow-helpers"
         name: download-package
         resources:
           limits:
