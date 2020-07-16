@@ -1,19 +1,17 @@
----
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
   name: si-aggregator
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: quay.io/thoth-station/si-aggregator:v0.7.0
-      importPolicy:
-        scheduled: true
-      referencePolicy:
-        type: Source
-
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/si-aggregator:v0.7.0
+    importPolicy:
+      scheduled: true
+    referencePolicy:
+      type: Source
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -21,14 +19,14 @@ metadata:
   name: si-bandit
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: quay.io/thoth-station/si-bandit:v0.7.0
-      importPolicy:
-        scheduled: true
-      referencePolicy:
-        type: Source
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/si-bandit:v0.7.0
+    importPolicy:
+      scheduled: true
+    referencePolicy:
+      type: Source
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -36,11 +34,10 @@ metadata:
   name: si-cloc
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: quay.io/thoth-station/si-cloc:v0.7.0
-      importPolicy:
-        scheduled: true
-      referencePolicy:
-        type: Source
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/si-cloc:v0.1.2
+    importPolicy: {}
+    referencePolicy:
+      type: Source
