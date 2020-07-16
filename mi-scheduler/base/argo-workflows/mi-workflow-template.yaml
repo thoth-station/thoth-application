@@ -34,7 +34,7 @@ spec:
         parameters:
           - name: REPOSITORY
       container:
-        image: "mi:latest"
+        image: "mi"
         command: ["srcopsmetrics/cli.py"]
         args: ["-cr", "{{inputs.parameters.REPOSITORY}}"]
         env:
@@ -76,7 +76,7 @@ spec:
         parameters:
           - name: REPOSITORY
       container:
-        image: "mi:latest"
+        image: "mi"
         command: ["srcopsmetrics/cli.py"]
         args: ["-pr", "{{inputs.parameters.REPOSITORY}}"]
         env:
