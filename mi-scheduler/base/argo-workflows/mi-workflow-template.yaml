@@ -14,9 +14,6 @@ spec:
       inputs:
         parameters:
           - name: REPOSITORY
-          - name: IMAGE_STREAM_REGISTRY
-          - name: IMAGE_STREAM_NAMESPACE
-          - name: IMAGE_STREAM_TAG
       steps:
         - - name: collect-knowledge
             template: analyse
@@ -24,12 +21,6 @@ spec:
               parameters:
                 - name: REPOSITORY
                   value: "{{inputs.parameters.REPOSITORY}}"
-                - name: IMAGE_STREAM_REGISTRY
-                  value: "{{inputs.parameters.IMAGE_STREAM_REGISTRY}}"
-                - name: IMAGE_STREAM_NAMESPACE
-                  value: "{{inputs.parameters.IMAGE_STREAM_NAMESPACE}}"
-                - name: IMAGE_STREAM_TAG
-                  value: "{{inputs.parameters.IMAGE_STREAM_TAG}}"
 
         - - name: process-information
             template: process
@@ -37,20 +28,11 @@ spec:
               parameters:
                 - name: REPOSITORY
                   value: "{{inputs.parameters.REPOSITORY}}"
-                - name: IMAGE_STREAM_REGISTRY
-                  value: "{{inputs.parameters.IMAGE_STREAM_REGISTRY}}"
-                - name: IMAGE_STREAM_NAMESPACE
-                  value: "{{inputs.parameters.IMAGE_STREAM_NAMESPACE}}"
-                - name: IMAGE_STREAM_TAG
-                  value: "{{inputs.parameters.IMAGE_STREAM_TAG}}"
 
     - name: analyse
       inputs:
         parameters:
           - name: REPOSITORY
-          - name: IMAGE_STREAM_REGISTRY
-          - name: IMAGE_STREAM_NAMESPACE
-          - name: IMAGE_STREAM_TAG
       container:
         image: "mi:latest"
         command: ["srcopsmetrics/cli.py"]
@@ -93,9 +75,6 @@ spec:
       inputs:
         parameters:
           - name: REPOSITORY
-          - name: IMAGE_STREAM_REGISTRY
-          - name: IMAGE_STREAM_NAMESPACE
-          - name: IMAGE_STREAM_TAG
       container:
         image: "mi:latest"
         command: ["srcopsmetrics/cli.py"]
