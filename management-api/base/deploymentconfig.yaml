@@ -34,8 +34,8 @@ spec:
             - name: AMUN_API_URL
               valueFrom:
                 configMapKeyRef:
-                  key: api-url
-                  name: amun
+                  key: amun-api-url
+                  name: thoth
             - name: THOTH_MIDDLETIER_POD_CPU_LIMIT
               valueFrom:
                 configMapKeyRef:
