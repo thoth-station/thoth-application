@@ -41,7 +41,7 @@ objects:
           - name: THOTH_SECURITY_INDICATORS_AGGREGATION_FUNCTION
             value: "${THOTH_SECURITY_INDICATORS_AGGREGATION_FUNCTION}"
           - name: THOTH_FORCE_SYNC
-            value: "${THOTH_SECURITY_INDICATORS_FORCE_SYNC}"
+            value: "${THOTH_FORCE_SYNC}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -212,3 +212,8 @@ parameters:
   - name: THOTH_SECURITY_INDICATORS_AGGREGATION_FUNCTION
     description: Name of function used to aggregate security indicators.
     required: true
+  - name: THOTH_FORCE_SYNC
+    description: Perform force sync - sync data even if they are reported to be existing
+    displayName: Perform force sync
+    required: true
+    value: "0"
