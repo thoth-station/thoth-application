@@ -1,0 +1,99 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: bandit
+  labels:
+    app: thoth
+    component: si-bandit
+spec:
+  templates:
+    - container:
+        env:
+          - name: THOTH_DOCUMENT_ID
+            value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: THOTH_SI_BANDIT_OUTPUT
+            value: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: THOTH_SI_BANDIT_PACKAGE_NAME
+            value: "{{inputs.parameters.THOTH_SI_BANDIT_PACKAGE_NAME}}"
+          - name: THOTH_SI_BANDIT_PACKAGE_VERSION
+            value: "{{inputs.parameters.THOTH_SI_BANDIT_PACKAGE_VERSION}}"
+          - name: THOTH_SI_BANDIT_PACKAGE_INDEX
+            value: "{{inputs.parameters.THOTH_SI_BANDIT_PACKAGE_INDEX}}"
+        image: si-bandit
+        name: si-bandit
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        volumeMounts:
+          - mountPath: /mnt/workdir
+            name: workdir
+      inputs:
+        parameters:
+          - name: THOTH_SI_BANDIT_JOB_ID
+          - name: THOTH_DOCUMENT_ID
+          - name: THOTH_SI_BANDIT_PACKAGE_NAME
+          - name: THOTH_SI_BANDIT_PACKAGE_VERSION
+          - name: THOTH_SI_BANDIT_PACKAGE_INDEX
+          - name: THOTH_S3_ENDPOINT_URL
+          - name: THOTH_CEPH_BUCKET_NAME
+          - name: THOTH_CEPH_BUCKET_PREFIX
+          - name: THOTH_DEPLOYMENT_NAME
+      name: bandit
+      outputs:
+        artifacts:
+          - archive:
+              none: {}
+            name: outputdocument
+            path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+            s3:
+              accessKeySecret:
+                key: accessKey
+                name: argo-artifact-repository-secrets
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              insecure: true
+              key: >-
+                {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/si-bandit/{{inputs.parameters.THOTH_DOCUMENT_ID}}
+              secretKeySecret:
+                key: secretKey
+                name: argo-artifact-repository-secrets
+    - container:
+        env:
+          - name: THOTH_DOCUMENT_ID
+            value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: THOTH_SI_BANDIT_OUTPUT
+            value: /mnt/workdir/bandit_results
+          - name: THOTH_SI_BANDIT_PACKAGE_NAME
+            value: "{{inputs.parameters.THOTH_SI_BANDIT_PACKAGE_NAME}}"
+          - name: THOTH_SI_BANDIT_PACKAGE_VERSION
+            value: "{{inputs.parameters.THOTH_SI_BANDIT_PACKAGE_VERSION}}"
+          - name: THOTH_SI_BANDIT_PACKAGE_INDEX
+            value: "{{inputs.parameters.THOTH_SI_BANDIT_PACKAGE_INDEX}}"
+          - name: THOTH_SI_BANDIT_DIR
+            value: "{{inputs.parameters.THOTH_SI_BANDIT_DIR}}"
+        image: si-bandit
+        name: si-bandit
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        volumeMounts:
+          - mountPath: /mnt/workdir
+            name: workdir
+      inputs:
+        parameters:
+          - name: THOTH_SI_BANDIT_JOB_ID
+          - name: THOTH_DOCUMENT_ID
+          - name: THOTH_SI_BANDIT_PACKAGE_NAME
+          - name: THOTH_SI_BANDIT_PACKAGE_VERSION
+          - name: THOTH_SI_BANDIT_PACKAGE_INDEX
+          - name: THOTH_SI_BANDIT_DIR
+      name: bandit-from-dir

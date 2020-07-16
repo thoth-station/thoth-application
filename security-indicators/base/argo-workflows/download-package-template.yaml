@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: download-package
+  labels:
+    app: thoth
+    component: download-package
+spec:
+  templates:
+    - container:
+        env:
+          - name: THOTH_WORKFLOW_TASK
+            value: download_package
+          - name: APP_SCRIPT
+            value: app.sh
+          - name: THOTH_PACKAGE_NAME
+            value: "{{inputs.parameters.THOTH_PACKAGE_NAME}}"
+          - name: THOTH_PACKAGE_VERSION
+            value: "{{inputs.parameters.THOTH_PACKAGE_VERSION}}"
+          - name: THOTH_PACKAGE_INDEX
+            value: "{{inputs.parameters.THOTH_PACKAGE_INDEX}}"
+        image: "workflow-helpers"
+        name: download-package
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+        volumeMounts:
+          - mountPath: /mnt/workdir
+            name: workdir
+      inputs:
+        parameters:
+          - name: THOTH_PACKAGE_NAME
+          - name: THOTH_PACKAGE_VERSION
+          - name: THOTH_PACKAGE_INDEX
+      name: download-package

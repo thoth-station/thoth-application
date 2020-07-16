@@ -1,0 +1,102 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: aggregator
+  labels:
+    app: thoth
+    component: si-aggregator
+spec:
+  templates:
+    - container:
+        env:
+          - name: THOTH_DOCUMENT_ID
+            value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: THOTH_SI_AGGREGATOR_OUTPUT
+            value: /mnt/workdir/aggregator_results
+          - name: THOTH_SI_AGGREGATOR_PACKAGE_NAME
+            value: "{{inputs.parameters.THOTH_SI_AGGREGATOR_PACKAGE_NAME}}"
+          - name: THOTH_SI_AGGREGATOR_PACKAGE_VERSION
+            value: "{{inputs.parameters.THOTH_SI_AGGREGATOR_PACKAGE_VERSION}}"
+          - name: THOTH_SI_AGGREGATOR_PACKAGE_INDEX
+            value: "{{inputs.parameters.THOTH_SI_AGGREGATOR_PACKAGE_INDEX}}"
+          - name: THOTH_SI_AGGREGATOR_SI_BANDIT_RESULTS
+            value: /mnt/workdir/bandit_results
+          - name: THOTH_SI_AGGREGATOR_SI_CLOC_RESULTS
+            value: /mnt/workdir/cloc_results
+          - name: THOTH_SI_AGGREGATOR_FUNCTION
+            value: "{{inputs.parameters.THOTH_SI_AGGREGATOR_FUNCTION}}"
+        image: si-aggregator
+        name: si-aggregator
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        volumeMounts:
+          - mountPath: /mnt/workdir
+            name: workdir
+      inputs:
+        parameters:
+          - name: THOTH_SI_AGGREGATOR_JOB_ID
+          - name: THOTH_DOCUMENT_ID
+          - name: THOTH_SI_AGGREGATOR_PACKAGE_NAME
+          - name: THOTH_SI_AGGREGATOR_PACKAGE_VERSION
+          - name: THOTH_SI_AGGREGATOR_PACKAGE_INDEX
+          - name: THOTH_SI_AGGREGATOR_FUNCTION
+          - name: THOTH_S3_ENDPOINT_URL
+          - name: THOTH_CEPH_BUCKET_NAME
+          - name: THOTH_CEPH_BUCKET_PREFIX
+          - name: THOTH_DEPLOYMENT_NAME
+      name: aggregator
+      outputs:
+        artifacts:
+          - archive:
+              none: {}
+            name: outputdocument
+            path: /mnt/workdir/aggregator_results
+            s3:
+              accessKeySecret:
+                key: accessKey
+                name: argo-artifact-repository-secrets
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              insecure: true
+              key: >-
+                {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/security-indicators/{{inputs.parameters.THOTH_DOCUMENT_ID}}/aggregated
+              secretKeySecret:
+                key: secretKey
+                name: argo-artifact-repository-secrets
+          - archive:
+              none: {}
+            name: banditout
+            path: /mnt/workdir/bandit_results
+            s3:
+              accessKeySecret:
+                key: accessKey
+                name: argo-artifact-repository-secrets
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              insecure: true
+              key: >-
+                {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/security-indicators/{{inputs.parameters.THOTH_DOCUMENT_ID}}/bandit
+              secretKeySecret:
+                key: secretKey
+                name: argo-artifact-repository-secrets
+          - archive:
+              none: {}
+            name: clocout
+            path: /mnt/workdir/cloc_results
+            s3:
+              accessKeySecret:
+                key: accessKey
+                name: argo-artifact-repository-secrets
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              insecure: true
+              key: >-
+                {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/security-indicators/{{inputs.parameters.THOTH_DOCUMENT_ID}}/cloc
+              secretKeySecret:
+                key: secretKey
+                name: argo-artifact-repository-secrets
