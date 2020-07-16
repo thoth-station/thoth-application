@@ -29,9 +29,12 @@ using: `kustomize build --enable_alpha_plugins overlays/test | conftest test --p
 ### Developing a new component
 
 #### Component secrets
-We use [sops](https://github.com/mozilla/sops#sops-secrets-operations) for creating secrets with encryption.
-Contributor first needs to have the secret in the manifest file to run `sops` on it for encryption
-(because we cannot have that secret file mistakenly pushed to the repo).
+We use [sops](https://github.com/mozilla/sops#sops-secrets-operations) for encrypting secrets.
+For encrypting the secrets, the contributor can do the following:
+ - first, create a `secrets.yaml` at the root level. (git would ignore the file)
+ - Then run sops command to encrypt them to the desired application subdirectory.
+  Example: `sops -e secrets.yaml > core/overlays/test/secrets.enc.yaml`
+ - Make sure contribute the encrypted **secrets.enc.yaml** .
 
 ## Open Questions
 
