@@ -111,7 +111,7 @@ spec:
             valueFrom:
               configMapKeyRef:
                 name: thoth
-                key: deploymentName
+                key: deployment-name
           - name: SENTRY_DSN
             valueFrom:
               secretKeyRef:

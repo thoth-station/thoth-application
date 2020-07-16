@@ -60,7 +60,7 @@ spec:
           - name: THOTH_DEPLOYMENT_NAME
             valueFrom:
               configMapKeyRef:
-                key: deploymentName
+                key: deployment-name
                 name: thoth
           - name: SENTRY_DSN
             valueFrom:

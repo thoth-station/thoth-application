@@ -13,7 +13,7 @@ spec:
       container:
         name: solve-data-science-packages
         image: init-job
-        command: ['python3', 'app.py', '--solve-data-science-packages']
+        command: ["python3", "app.py", "--solve-data-science-packages"]
         env:
           - name: THOTH_LOG_INIT_JOB
             value: "{{inputs.parameters.THOTH_LOG_INIT_JOB}}"
@@ -71,7 +71,7 @@ spec:
           - name: THOTH_DEPLOYMENT_NAME
             valueFrom:
               configMapKeyRef:
-                key: deploymentName
+                key: deployment-name
                 name: thoth
           - name: THOTH_USE_ARGO
             value: "1"
