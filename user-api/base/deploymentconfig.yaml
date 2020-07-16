@@ -158,11 +158,6 @@ spec:
                 configMapKeyRef:
                   name: user-api
                   key: api-https
-            - name: THOTH_USE_ARGO
-              valueFrom:
-                configMapKeyRef:
-                  name: user-api
-                  key: use-argo
           ports:
             - containerPort: 8080
               protocol: TCP
