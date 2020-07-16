@@ -79,7 +79,10 @@ spec:
                 name: thoth
                 key: sentry-dsn
           - name: KNOWLEDGE_GRAPH_HOST
-            value: "postgresql.thoth-test-core.svc"
+            valueFrom:
+              configMapKeyRef:
+                key: postgresql-host
+                name: thoth
           - name: KNOWLEDGE_GRAPH_PORT
             value: "5432"
           - name: KNOWLEDGE_GRAPH_SSL_DISABLED
