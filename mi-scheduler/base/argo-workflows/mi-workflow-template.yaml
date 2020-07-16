@@ -79,8 +79,8 @@ spec:
           - name: CEPH_SECRET_KEY
             valueFrom:
               secretKeyRef:
-                name: thoth
-                key: ceph-secret-key
+                name: ceph
+                key: secret-key
           - name: CEPH_KEY_ID
             valueFrom:
               secretKeyRef:
