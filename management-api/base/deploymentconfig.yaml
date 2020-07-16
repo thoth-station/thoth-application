@@ -69,7 +69,7 @@ spec:
             - name: THOTH_DEPLOYMENT_NAME
               valueFrom:
                 configMapKeyRef:
-                  key: deploymentName
+                  key: deployment-name
                   name: thoth
             - name: THOTH_S3_ENDPOINT_URL
               valueFrom:

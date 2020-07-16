@@ -5,7 +5,6 @@ metadata:
   name: thoth
 data:
   applicationVersion: 0.7.0-dev
-  deploymentName: ocp-test
   deployment-name: ocp-test
   postgresql-host: pgbouncer.thoth-test-core.svc
   backend-namespace: thoth-test-core

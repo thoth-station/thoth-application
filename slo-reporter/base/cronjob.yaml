@@ -56,7 +56,7 @@ spec:
                   valueFrom:
                     configMapKeyRef:
                       name: thoth
-                      key: deploymentName
+                      key: deployment-name
                 - name: METRICS_EXPORTER_FRONTEND_PROMETHEUS_INSTANCE
                   valueFrom:
                     configMapKeyRef:

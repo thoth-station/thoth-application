@@ -4,8 +4,8 @@ apiVersion: v1
 metadata:
   name: thoth
 data:
-  applicationVersion: 0.6.0-dev
-  deploymentName: thoth-test-core
+  applicationVersion: 0.7.0-dev
+  deployment-name: quicklab-test
   postgresql-host: postgresql.thoth-test-core.svc
   backend-namespace: thoth-test-core
   middletier-namespace: thoth-test-core
@@ -13,9 +13,6 @@ data:
   infra-namespace: thoth-test-core
   solvers: |
     solver-rhel-8-py36
-    solver-fedora-31-py38
-    solver-fedora-31-py37
-    solver-fedora-32-py37
     solver-fedora-32-py38
   analyzer-cleanup-time: 1d
   middletier-pod-cpu-limit: "0.5"

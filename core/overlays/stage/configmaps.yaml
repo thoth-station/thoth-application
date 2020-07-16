@@ -5,7 +5,7 @@ metadata:
   name: thoth
 data:
   applicationVersion: 0.7.0
-  deploymentName: ocp-prod-stage
+  deployment-name: ocp-stage
   amun-api-url: "UNSET"
   amun-inspection-namespace: thoth-amun-inspection-stage
   amun-namespace: thoth-amun-api-stage
