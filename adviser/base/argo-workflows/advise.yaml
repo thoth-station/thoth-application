@@ -28,8 +28,6 @@ spec:
             value: "100000"
           - name: THOTH_ADVISER_COUNT
             value: "1"
-          - name: THOTH_ADVISER_LIMIT_LATEST_VERSIONS
-            value: "9999999"
           - name: "THOTH_S3_ENDPOINT_URL"
           - name: "THOTH_CEPH_BUCKET_NAME"
           - name: "THOTH_CEPH_BUCKET_PREFIX"
@@ -93,8 +91,6 @@ spec:
             value: "{{inputs.parameters.THOTH_ADVISER_BEAM_WIDTH}}"
           - name: THOTH_ADVISER_SUBCOMMAND
             value: "advise"
-          - name: THOTH_ADVISER_LIMIT_LATEST_VERSIONS
-            value: "{{inputs.parameters.THOTH_ADVISER_LIMIT_LATEST_VERSIONS}}"
           - name: THOTH_ADVISER_LIBRARY_USAGE
             value: "{{inputs.parameters.THOTH_ADVISER_LIBRARY_USAGE}}"
           - name: PROMETHEUS_PUSHGATEWAY_HOST
