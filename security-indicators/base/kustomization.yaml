@@ -6,6 +6,7 @@ resources:
   - argo-workflows/cloc-template.yaml
   - argo-workflows/bandit-template.yaml
   - argo-workflows/download-package-template.yaml
+  - openshift-templates/security-indicators.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: security-indicators
