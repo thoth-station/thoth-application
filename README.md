@@ -33,7 +33,7 @@ We use [sops](https://github.com/mozilla/sops#sops-secrets-operations) for encry
 For encrypting the secrets, the contributor can do the following:
  - First, create a `secrets.yaml` at the root level. (git would ignore the file)
  - Then run sops command to encrypt them to the desired application subdirectory.
-  Example: `sops -e secrets.yaml > core/overlays/test/secrets.enc.yaml`
+  Example: `sops -e secrets.yaml > {component}/overlays/test/secrets.enc.yaml`
  - Make sure to contribute the encrypted **secrets.enc.yaml** .
 
 ## Open Questions
