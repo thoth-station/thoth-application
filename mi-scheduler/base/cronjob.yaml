@@ -5,8 +5,6 @@ metadata:
   name: mi-scheduler
   labels:
     app: mi-scheduler
-  annotations:
-    thoth-station.ninja/template-version: 0.1.0
 spec:
   schedule: "@hourly"
   suspend: false
@@ -22,7 +20,14 @@ spec:
           containers:
             - image: mi-scheduler
               name: mi-scheduler
+              resources:
+                limits:
+                  cpu: 256m
+                  memory: 500Mi
+                requests:
+                  cpu: 256m
+                  memory: 500Mi
               env:
                 - name: APP_FILE
                   value: "app.py"
-          restartPolicy: onFailure
+          restartPolicy: OnFailure
