@@ -79,11 +79,6 @@ parameters:
     description: Number of software stacks returned in the recommendation.
     displayName: Adviser count.
     value: "1"
-  - name: THOTH_ADVISER_LIMIT_LATEST_VERSIONS
-    required: false
-    description: Limit number of versions starting from latest in stacks.
-    displayName: Limit latest versions.
-    value: "9999999"
   - name: THOTH_ADVISER_TIMEOUT_SECONDS
     required: true
     description: Give adviser specified number of seconds on CPU to compute results.
@@ -143,8 +138,6 @@ objects:
             value: "${THOTH_ADVISER_LIMIT}"
           - name: THOTH_ADVISER_COUNT
             value: "${THOTH_ADVISER_COUNT}"
-          - name: THOTH_ADVISER_LIMIT_LATEST_VERSIONS
-            value: "${THOTH_ADVISER_LIMIT_LATEST_VERSIONS}"
           - name: THOTH_FORCE_SYNC
             value: "${THOTH_FORCE_SYNC}"
           - name: ceph_bucket_prefix
@@ -206,8 +199,6 @@ objects:
                       value: "{{workflow.parameters.THOTH_ADVISER_LIMIT}}"
                     - name: THOTH_ADVISER_COUNT
                       value: "{{workflow.parameters.THOTH_ADVISER_COUNT}}"
-                    - name: THOTH_ADVISER_LIMIT_LATEST_VERSIONS
-                      value: "{{workflow.parameters.THOTH_ADVISER_LIMIT_LATEST_VERSIONS}}"
                     - name: THOTH_ADVISER_TIMEOUT_SECONDS
                       value: "{{workflow.parameters.THOTH_ADVISER_TIMEOUT_SECONDS}}"
                     - name: "THOTH_S3_ENDPOINT_URL"
