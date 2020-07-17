@@ -17,6 +17,7 @@ spec:
         metadata:
           name: mi-scheduler
         spec:
+          serviceAccount: mi-scheduler
           containers:
             - image: mi-scheduler
               name: mi-scheduler
