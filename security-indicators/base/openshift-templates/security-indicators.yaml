@@ -16,7 +16,6 @@ metadata:
       This template defines resources needed to run all security indicators on
       Openshift.
     template.openshift.io/provider-display-name: "Red Hat, Inc."
-    version: 0.7.0
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
