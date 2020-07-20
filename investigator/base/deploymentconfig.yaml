@@ -69,6 +69,26 @@ spec:
                 configMapKeyRef:
                   name: thoth
                   key: infra-namespace
+            - name: THOTH_CEPH_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-name
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-prefix
+                  name: ceph
+            - name: THOTH_S3_ENDPOINT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: host
+                  name: ceph
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: deployment-name
+                  name: thoth
           volumeMounts:
             - name: secrets
               mountPath: /mnt/secrets
