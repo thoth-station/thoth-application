@@ -89,6 +89,10 @@ spec:
                 configMapKeyRef:
                   key: deployment-name
                   name: thoth
+            - name: KUBERNETES_API_URL
+              value: "https://kubernetes.default.svc.cluster.local"
+            - name: KUBERNETES_VERIFY_TLS
+              value: "0"
           volumeMounts:
             - name: secrets
               mountPath: /mnt/secrets
