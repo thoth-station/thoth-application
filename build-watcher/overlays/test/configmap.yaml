@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-watcher
+data:
+  storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
+  prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
+  prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
+  sentry-dsn: ${SENTRY_DSN}
