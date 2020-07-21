@@ -3,8 +3,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: provenance-check
-  annotations:
-    thoth-station.ninja/template-version: 0.0.1
   labels:
     app: thoth
     component: provenance-check
