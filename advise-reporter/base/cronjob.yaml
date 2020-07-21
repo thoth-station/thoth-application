@@ -79,6 +79,31 @@ spec:
                     secretKeyRef:
                       name: postgresql
                       key: database-name
+                - name: THOTH_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-name
+                      name: ceph
+                - name: THOTH_CEPH_BUCKET_PREFIX
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-prefix
+                      name: ceph
+                - name: THOTH_S3_ENDPOINT_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: host
+                      name: ceph
+                - name: THOTH_CEPH_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: key-id
+                - name: THOTH_CEPH_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: secret-key
               volumeMounts:
                 - name: secrets
                   mountPath: /mnt/secrets
