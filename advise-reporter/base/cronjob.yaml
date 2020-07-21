@@ -94,6 +94,16 @@ spec:
                     configMapKeyRef:
                       key: host
                       name: ceph
+                - name: THOTH_CEPH_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: key-id
+                - name: THOTH_CEPH_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: secret-key
               volumeMounts:
                 - name: secrets
                   mountPath: /mnt/secrets
