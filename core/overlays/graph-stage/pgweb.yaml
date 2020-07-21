@@ -1,0 +1,105 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: pgweb
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - annotations: null
+    from:
+      kind: DockerImage
+      name: sosedoff/pgweb:0.11.3
+    name: latest
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    service: pgweb
+  name: pgweb
+spec:
+  replicas: 1
+  selector:
+    service: pgweb
+  test: false
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: core
+        app.kubernetes.io/managed-by: thothops-argocd
+        service: pgweb
+    spec:
+      containers:
+      - image: 'pgweb:latest'
+        env:
+        - name: DB_HOST
+          value: postgresql
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: postgresql
+              key: database-name
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgresql
+              key: database-user
+        - name: DB_PASSWORD
+          secretKeyRef:
+            name: postgresql
+            key: database-password
+        name: pgweb
+        ports:
+          - containerPort: 8081
+            protocol: TCP
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "1"
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+        readinessProbe:
+          httpGet:
+            path: '/'
+            port: 8081
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: '/'
+            port: 8081
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 60
+          timeoutSeconds: 10
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: pgweb
+spec:
+  to:
+    kind: Service
+    name: pgweb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgweb
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: core
+    app.kubernetes.io/managed-by: thothops-argocd
+    service: pgweb

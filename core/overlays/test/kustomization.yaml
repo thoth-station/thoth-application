@@ -8,6 +8,7 @@ commonLabels:
 resources:
   - ../../base
   - postgresql.yaml
+  - pgweb.yaml
   - argo-namespace-install.yaml
   - argo-ui-route.yaml
   - argo-workflow-controller-metrics.yaml
