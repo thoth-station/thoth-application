@@ -5,9 +5,18 @@ metadata:
 rules:
   - apiGroups:
       - ""
+      - template.openshift.io
     resources:
-      - configmaps
+      - processedtemplates
+      - templateconfigs
+      - templateinstances
+      - templates
     verbs:
+      - create
+      - delete
+      - deletecollection
       - get
       - list
+      - patch
+      - update
       - watch
