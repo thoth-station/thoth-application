@@ -5,7 +5,6 @@ metadata:
   annotations:
     description: "Thoth: Dependency Monkey"
     openshift.io/display-name: "Thoth: Adviser"
-    version: 0.0.1
     tags: thoth,ai-stacks,dependency-monkey
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -91,8 +90,6 @@ objects:
     kind: Workflow
     metadata:
       name: "${THOTH_DEPENDENCY_MONKEY_JOB_ID}"
-      annotations:
-        thoth-station.ninja/template-version: 0.0.1
       labels:
         app: thoth
         component: dependency-monkey
