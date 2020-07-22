@@ -5,6 +5,14 @@ metadata:
 rules:
   - apiGroups:
       - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
       - template.openshift.io
     resources:
       - processedtemplates
