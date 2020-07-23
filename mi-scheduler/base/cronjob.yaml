@@ -41,4 +41,9 @@ spec:
                     configMapKeyRef:
                       name: thoth
                       key: infra-namespace
+                - name: GITHUB_ACCESS_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: sesheta-srcops
+                      key: github-access-token
           restartPolicy: OnFailure
