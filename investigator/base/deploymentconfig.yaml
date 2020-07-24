@@ -105,6 +105,14 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+          ports:
+            - containerPort: 6066
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: "/_health"
+              port: 6066
+              scheme: HTTP
           livenessProbe:
             failureThreshold: 1
             # Give this consumer 2 hours to finish
