@@ -93,8 +93,13 @@ spec:
             - name: KAFKA_CAFILE
               value: "/mnt/secrets/kafka_ca.crt"
           ports:
-            - containerPort: 8000
+            - containerPort: 6066
               protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: "/_health"
+              port: 6066
+              scheme: HTTP
           resources:
             requests:
               memory: "256Mi"
