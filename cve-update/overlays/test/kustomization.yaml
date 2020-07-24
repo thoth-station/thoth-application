@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: thoth-test-core
 resources:
   - ../../base
+  - buildconfig.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
