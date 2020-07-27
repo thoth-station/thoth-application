@@ -164,13 +164,5 @@ objects:
                   parameters:
                     - name: THOTH_MESSAGING_TOPIC_NAME
                       value: "SolvedPackageMessage"
-                    - name: THOTH_MESSAGING_CREATE_IF_NOT_EXISTS
-                      value: false
                     - name: THOTH_MESSAGING_MESSAGE_CONTENTS
                       value: "{{tasks.parse-solver-inputs.outputs.parameters.message}}"
-                    - name: THOTH_MESSAGING_PARTITIONS
-                      value: ""
-                    - name: THOTH_MESSAGING_REPLICATION
-                      value: ""
-                    - name: THOTH_MESSAGING_TOPIC_RETENTION_TIME
-                      value: ""
