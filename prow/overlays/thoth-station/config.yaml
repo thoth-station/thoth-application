@@ -179,7 +179,6 @@ tide:
           integration-tests:
             required-contexts:
               - thoth-ci/pre-commit-check
-              - thoth-ci/pytest-check
               - thoth-ci/build-check
           kebechet:
             required-contexts:
