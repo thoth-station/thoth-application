@@ -29,7 +29,7 @@ items:
       resources:
         requests:
           storage: 32Gi
-      storageClassName: dynamic-nfs
+      storageClassName: standard
       volumeMode: Filesystem
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
