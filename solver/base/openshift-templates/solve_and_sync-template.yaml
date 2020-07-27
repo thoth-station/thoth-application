@@ -146,9 +146,6 @@ objects:
                   name: "parse-solver-inputs"
                   template: "parse-solver-inputs"
                 arguments:
-                  artifacts:
-                    - name: outputdocument
-                      from: "{{tasks.solverany.outputs.artifacts.outputdocument}}"
                   parameters:
                     - name: "THOTH_SOLVER_NAME"
                       value: "{{workflow.parameters.THOTH_SOLVER_NAME}}"
@@ -168,7 +165,7 @@ objects:
                     - name: THOTH_MESSAGING_TOPIC_NAME
                       value: "SolvedPackageMessage"
                     - name: THOTH_MESSAGING_CREATE_IF_NOT_EXISTS
-                      value: 0
+                      value: false
                     - name: THOTH_MESSAGING_MESSAGE_CONTENTS
                       value: "{{tasks.parse-solver-inputs.outputs.parameters.message}}"
                     - name: THOTH_MESSAGING_PARTITIONS
