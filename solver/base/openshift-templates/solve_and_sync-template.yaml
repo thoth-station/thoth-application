@@ -138,3 +138,31 @@ objects:
                       value: "{{workflow.parameters.THOTH_SOLVER_WORKFLOW_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
+
+              - name: "parse-solver-inputs"
+                dependencies:
+                  - "graph-sync-solverany"
+                templateRef:
+                  name: "parse-solver-inputs"
+                  template: "parse-solver-inputs"
+                arguments:
+                  parameters:
+                    - name: "THOTH_SOLVER_NAME"
+                      value: "{{workflow.parameters.THOTH_SOLVER_NAME}}"
+                    - name: "THOTH_SOLVER_PACKAGES"
+                      value: "{{workflow.parameters.THOTH_SOLVER_PACKAGES}}"
+                    - name: "THOTH_SOLVER_INDEXES"
+                      value: "{{workflow.parameters.THOTH_SOLVER_INDEXES}}"
+
+              - name: "send-message"
+                dependencies:
+                  - "graph-sync-solverany"
+                templateRef:
+                  name: "send-message"
+                  template: "send-message"
+                arguments:
+                  parameters:
+                    - name: THOTH_MESSAGING_TOPIC_NAME
+                      value: "SolvedPackageMessage"
+                    - name: THOTH_MESSAGING_MESSAGE_CONTENTS
+                      value: "{{tasks.parse-solver-inputs.outputs.parameters.message}}"
