@@ -7,6 +7,12 @@ commonLabels:
 resources:
   - configmap.yaml
   - argo-workflows/advise.yaml
+  - argo-workflows/dependency-monkey.yaml
+  - argo-workflows/investigate-unresolved-package.yaml
+  - argo-workflows/kebechet-run-results.yaml
+  - argo-workflows/provenance-check.yaml
   - argo-workflows/trigger-integration.yaml
   - openshift-templates/adviser.yaml
+  - openshift-templates/dependency-monkey.yaml
+  - openshift-templates/provenance-checker.yaml
   - imagestream.yaml
