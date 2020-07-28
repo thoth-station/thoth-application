@@ -76,16 +76,11 @@ spec:
               configMapKeyRef:
                 name: thoth
                 key: isis-api-url
-          - name: PROMETHEUS_PUSHGATEWAY_HOST
+          - name: PROMETHEUS_PUSHGATEWAY_URL
             valueFrom:
               configMapKeyRef:
-                key: prometheus-pushgateway-host
-                name: thoth
-          - name: PROMETHEUS_PUSHGATEWAY_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: thoth
-                key: prometheus-pushgateway-port
+                name: prometheus
+                key: pushgateway-url
           - name: THOTH_DEPLOYMENT_NAME
             valueFrom:
               configMapKeyRef:
