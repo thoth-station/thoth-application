@@ -9,22 +9,22 @@ spec:
       inputs:
         parameters:
           - name: THOTH_MESSAGING_TOPIC_NAME
-          - name: THOTH_MESSAGING_CREATE_IF_NOT_EXISTS
+          - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
           - name: THOTH_MESSAGING_MESSAGE_CONTENTS
           - name: THOTH_MESSAGING_PARTITIONS
-            value: ""  # this is the same as having unset so it will use the default
+            value: "1"  # this is the same as having unset so it will use the default
           - name: THOTH_MESSAGING_REPLICATION
-            value: ""
+            value: "1"
           - name: THOTH_MESSAGING_TOPIC_RETENTION_TIME
-            value: ""
+            value: "2160000"
       container:
         name: send-message
         image: messaging
         env:
           - name: THOTH_MESSAGING_TOPIC_NAME
             value: "{{inputs.parameters.THOTH_MESSAGING_TOPIC_NAME}}"
-          - name: THOTH_MESSAGING_CREATE_IF_NOT_EXISTS
-            value: "{{inputs.parameters.THOTH_MESSAGING_CREATE_IF_NOT_EXISTS}}"
+          - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+            value: "{{inputs.parameters.THOTH_MESSAGING_CREATE_IF_NOT_EXIST}}"
           - name: THOTH_MESSAGING_MESSAGE_CONTENTS
             value: "{{inputs.parameters.THOTH_MESSAGING_MESSAGE_CONTENTS}}"
           - name: THOTH_MESSAGING_PARTITIONS
@@ -32,12 +32,12 @@ spec:
           - name: KAFKA_BOOTSTRAP_SERVERS
             valueFrom:
               configMapKeyRef:
-                name: KAFKA_BOOTSTRAP_SERVERS
+                name: kafka
                 key: kafka-bootstrap-servers
           - name: KAFKA_CAFILE
             value: "/mnt/kafka-secrets/kafka_ca.crt"
         volumeMounts:
-          - name: secrets
+          - name: kafka-secrets
             mountPath: /mnt/kafka-secrets
       ##########################################################################
       # NOTE: when using this in your workflow be sure to supply secret volume
