@@ -6,6 +6,9 @@ resources:
   - configmaps.yaml
   - cronjob.yaml
   - imagestream.yaml
+  - role.yaml
+  - role-binding.yaml
+  - serviceaccount.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: mi-scheduler
