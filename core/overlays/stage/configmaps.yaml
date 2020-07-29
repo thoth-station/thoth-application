@@ -9,22 +9,18 @@ data:
   amun-api-url: "UNSET"
   amun-inspection-namespace: thoth-amun-inspection-stage
   amun-namespace: thoth-amun-api-stage
-  analyzer-cleanup-time: 7d
   backend-namespace: aicoe-infra-prod
   frontend-namespace: thoth-frontend-stage
   infra-namespace: thoth-infra-stage
   isis-api-url: "UNSET"
   metrics-pushgateway-url: "pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80"
   middletier-namespace: thoth-middletier-stage
-  middletier-pod-cpu-limit: "0.5"
-  middletier-pod-memory-limit: 0.5Gi
   package-releases-only-if-package-seen: "1"
   postgresql-host: pgbouncer.thoth-graph-stage.svc
   rsyslog-host: ""
   rsyslog-port: ""
   sentry-environment: "https://d26126364ba24c91aca4608c8a9b93e5@sentry.io/1298083"
   storage-bucket-name: ocp-prod-stage
-  sync-observations: "0"
 ---
 kind: ConfigMap
 apiVersion: v1
