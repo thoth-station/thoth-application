@@ -27,7 +27,6 @@ parameters:
   - name: THOTH_DOCUMENT_ID
     description: "A unique identifier of the resulting document in a Thoth deployment."
     displayName: "Document identifier"
-    required: true
   - name: THOTH_LOG_PACKAGE_EXTRACT
     description: Log Level for package extract
     displayName: Log package extract
