@@ -46,11 +46,12 @@ lgtm:
 
 approve:
   - repos:
-      - thoth-station
+      - aicoe-aiops
       - AICoE/aicoe-cd
       - AICoE/aicoe-ci
       - AICoE/aicoe-sre
       - AICoE/s2i-custom-notebook
+      - thoth-station
     require_self_approval: true
     ignore_review_state: false
 
@@ -97,6 +98,16 @@ plugins:
     - wip
     - verify-owners
   AICoE/s2i-custom-notebook:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
+  aicoe-aiops:
     - assign
     - approve
     - blunderbuss

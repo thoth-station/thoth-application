@@ -80,11 +80,13 @@ tide:
     "*": https://prow.thoth-station.dev/pr
 
   merge_method:
+    aicoe-aiops: squash
     AICoE: squash
     thoth-station: squash
 
   queries:
     - orgs:
+        - aicoe-aiops
         - thoth-station
       excludedRepos:
         - thoth-station/dgraph-thoth-config
