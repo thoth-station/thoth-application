@@ -4,10 +4,7 @@ apiVersion: v1
 metadata:
   name: amun
 data:
-<<<<<<< HEAD
   amun-api-url: http://amun-api.thoth-test-core.svc
-=======
->>>>>>> 9322f50... :alien: setup amun stage deployment in ocp :neckbeard:
   deployment-name: ocp-prod-test
   infra-namespace: thoth-test-core
   inspection-namespace: thoth-test-core
