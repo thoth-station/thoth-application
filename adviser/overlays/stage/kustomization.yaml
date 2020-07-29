@@ -28,6 +28,18 @@ patchesJson6902:
       version: v1
       kind: Template
       name: adviser
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: dependency-monkey
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: provenance-checker
 generatorOptions:
   disableNameSuffixHash: true
 generators:

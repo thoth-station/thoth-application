@@ -8,7 +8,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: "quay.io/thoth-station/adviser:v0.6.0-dev"
+        name: quay.io/thoth-station/adviser:0.9.5
       importPolicy: {}
       referencePolicy:
         type: Local
