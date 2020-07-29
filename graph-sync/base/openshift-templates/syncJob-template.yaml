@@ -5,7 +5,6 @@ metadata:
   annotations:
     description: "Thoth: Graph Sync Job for syncing multiple documents"
     openshift.io/display-name: "Thoth: Graph Sync Job Multiple Documents"
-    version: 0.7.0
     tags: thoth,ai-stacks,aistacks,graph-sync-job
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
