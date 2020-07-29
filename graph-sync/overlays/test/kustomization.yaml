@@ -5,6 +5,7 @@ commonLabels:
   app.kubernetes.io/component: graph-sync
 resources:
   - ../../base
+  - buildconfig.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
