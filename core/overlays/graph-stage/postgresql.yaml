@@ -28,7 +28,7 @@ items:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 32Gi
+          storage: 96Gi
       storageClassName: standard
       volumeMode: Filesystem
   - apiVersion: apps.openshift.io/v1
