@@ -61,11 +61,11 @@ spec:
             timeoutSeconds: 10
           resources:
             limits:
-              cpu: 500m
-              memory: 256Mi
+              cpu: 2
+              memory: 2Gi
             requests:
-              cpu: 125m
-              memory: 128Mi
+              cpu: 2
+              memory: 2Gi
   test: false
   triggers:
     - type: ConfigChange

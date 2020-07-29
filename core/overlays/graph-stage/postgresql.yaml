@@ -88,7 +88,11 @@ items:
                 timeoutSeconds: 1
               resources:
                 limits:
-                  memory: 512Mi
+                  memory: 4Gi
+                  cpu: 4
+                requests:
+                  memory: 4Gi
+                  cpu: 4
               volumeMounts:
                 - mountPath: /var/lib/pgsql/data
                   name: postgresql-data
