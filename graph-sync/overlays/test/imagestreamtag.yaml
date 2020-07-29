@@ -4,8 +4,10 @@ metadata:
   name: graph-sync-job
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: quay.io/thoth-station/graph-sync-job:v0.6.0-dev
-      importPolicy: {}
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/graph-sync-job:v0.6.3
+    importPolicy: {}
+    referencePolicy:
+      type: Source
