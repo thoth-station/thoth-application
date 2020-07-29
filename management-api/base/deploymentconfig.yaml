@@ -36,16 +36,6 @@ spec:
                 configMapKeyRef:
                   key: amun-api-url
                   name: thoth
-            - name: THOTH_MIDDLETIER_POD_CPU_LIMIT
-              valueFrom:
-                configMapKeyRef:
-                  key: middletier-pod-cpu-limit
-                  name: thoth
-            - name: THOTH_MIDDLETIER_POD_MEMORY_LIMIT
-              valueFrom:
-                configMapKeyRef:
-                  key: middletier-pod-memory-limit
-                  name: thoth
             - name: THOTH_FRONTEND_NAMESPACE
               valueFrom:
                 configMapKeyRef:

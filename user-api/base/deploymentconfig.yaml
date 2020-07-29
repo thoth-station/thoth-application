@@ -34,16 +34,6 @@ spec:
               value: "0"
             - name: THOTH_HOST
               value: "khemenu.thoth-station.ninja"
-            - name: THOTH_MIDDLETIER_POD_CPU_LIMIT
-              valueFrom:
-                configMapKeyRef:
-                  key: middletier-pod-cpu-limit
-                  name: thoth
-            - name: THOTH_MIDDLETIER_POD_MEMORY_LIMIT
-              valueFrom:
-                configMapKeyRef:
-                  key: middletier-pod-memory-limit
-                  name: thoth
             - name: THOTH_FRONTEND_NAMESPACE
               valueFrom:
                 configMapKeyRef:
