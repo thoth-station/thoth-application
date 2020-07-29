@@ -1,0 +1,139 @@
+---
+kind: DeploymentConfig
+apiVersion: v1
+metadata:
+  labels:
+    app: thoth
+    component: build-watcher
+  name: build-watcher
+spec:
+  replicas: 1
+  test: false
+  template:
+    metadata:
+      labels:
+        app: thoth
+        component: build-watcher
+    spec:
+      serviceAccountName: build-watcher
+      containers:
+        - name: build-watcher
+          image: build-watcher
+          env:
+            - name: KUBERNETES_API_URL
+              value: 'https://kubernetes.default.svc.cluster.local'
+            - name: KUBERNETES_VERIFY_TLS
+              value: "0"
+            - name: THOTH_LOG_BUILD_WATCHER
+              value: INFO
+            - name: THOTH_WATCHED_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-watched-namespace
+                  name: build-watcher
+            - name: THOTH_ENVIRONMENT_TYPE
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-environment-type
+                  name: build-watcher
+            - name: THOTH_PUSH_REGISTRY
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-push-registry
+                  name: build-watcher
+            - name: THOTH_USER_API_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-user-api-host
+                  name: build-watcher
+            - name: THOTH_NO_TLS_VERIFY
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-no-tls-verify
+                  name: build-watcher
+            - name: THOTH_ANALYZE_EXISTING
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-analyze-exising
+                  name: build-watcher
+            - name: THOTH_BUILD_WATCHER_WORKERS
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-build-watcher-workers
+                  name: build-watcher
+            - name: THOTH_NO_SOURCE_REGISTRY_TLS_VERIFY
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-no-source-registry-tls-verify
+                  name: build-watcher
+            - name: THOTH_NO_DESTINATION_REGISTRY_TLS_VERIFY
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-no-destination-registry-tls-verify
+                  name: build-watcher
+              # If you watch for in-cluster builds, keep pass-token and have view rights assigned in
+              # service account.
+            - name: THOTH_PASS_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-pass-token
+                  name: build-watcher
+              # If you would like to analyze images pushed to external registry (transparent to build-watcher),
+              # provide credentials:
+            - name: THOTH_SRC_REGISTRY_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-src-registry-user
+                  name: build-watcher
+            - name: THOTH_SRC_REGISTRY_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-src-registry-password
+                  name: build-watcher
+            - name: THOTH_DST_REGISTRY_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-dst-registry-user
+                  name: build-watcher
+            - name: THOTH_DST_REGISTRY_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-dst-registry-password
+                  name: build-watcher
+            - name: THAMOS_DISABLE_TLS_WARNING
+              valueFrom:
+                configMapKeyRef:
+                  key: thamos-disable-tls-warning
+                  name: build-watcher
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: thoth-deployment-name
+                  name: build-watcher
+            - name: PROMETHEUS_PUSHGATEWAY_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: prometheus-pushgateway-host
+                  name: build-watcher
+            - name: PROMETHEUS_PUSHGATEWAY_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: prometheus-pushgateway-port
+                  name: build-watcher
+            - name: SENTRY_DSN
+              valueFrom:
+                configMapKeyRef:
+                  key: sentry-dsn
+                  name: build-watcher
+          livenessProbe:
+            failureThreshold: 1
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 1800
+          resources:
+            requests:
+              memory: "384Mi"
+              cpu: "250m"
+            limits:
+              memory: "384Mi"
+              cpu: "250m"
