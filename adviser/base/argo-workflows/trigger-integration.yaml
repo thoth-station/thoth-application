@@ -51,3 +51,6 @@ spec:
             - name: source_type
               valueFrom:
                 path: /mnt/workdir/source_type
+            - name: git_service
+              valueFrom:
+                path: /mnt/workdir/git_service

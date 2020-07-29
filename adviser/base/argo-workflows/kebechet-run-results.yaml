@@ -12,6 +12,7 @@ spec:
           - name: "THOTH_DOCUMENT_ID"
           - name: "THOTH_ADVISER_METADATA"
           - name: "origin"
+          - name: "git_service"
       container:
         image: kebechet-job
         volumeMounts:
@@ -30,7 +31,7 @@ spec:
           - name: KEBECHET_REPO_URL
             value: "{{inputs.parameters.origin}}"
           - name: KEBECHET_SERVICE_NAME
-            value: "github"  # TODO: temp
+            value: "{{inputs.parameters.git_service}}"
           - name: KEBECHET_ANALYSIS_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
           - name: GITHUB_KEBECHET_TOKEN
