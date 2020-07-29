@@ -1,0 +1,42 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api
+  namespace: thoth-middletier-stage
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: management-api
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-stage
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api-argo
+  namespace: thoth-middletier-stage
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argo
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-stage
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api-argo-admin
+  namespace: thoth-middletier-stage
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argo-admin
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-stage
