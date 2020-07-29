@@ -14,6 +14,18 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
 metadata:
+  name: amun-api-workflow
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: amun-api-workflow
+subjects:
+  - kind: ServiceAccount
+    name: amun-api-workflow
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
   name: amun-api-argo
 roleRef:
   apiGroup: rbac.authorization.k8s.io

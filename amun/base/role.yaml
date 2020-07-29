@@ -7,10 +7,6 @@ rules:
       - ""
     resources:
       - pods
-      - pods/log
-      - pods/status
-      - pods/attach
-      - services
       - configmaps
       - secrets
       - serviceaccounts
@@ -35,6 +31,12 @@ rules:
       - patch
       - update
       - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: amun-api-workflow
+rules:
   - apiGroups:
       - ""
       - image.openshift.io
