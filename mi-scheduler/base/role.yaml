@@ -27,4 +27,4 @@ rules:
       - patch
       - update
       - watch
-      - view
+

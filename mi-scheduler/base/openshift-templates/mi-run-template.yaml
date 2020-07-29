@@ -3,7 +3,9 @@ kind: Template
 metadata:
   name: mi
   labels:
-    app: mi
+    app: thoth
+    component: mi
+    template: mi
 
 parameters:
   - name: REPOSITORY
@@ -11,11 +13,16 @@ parameters:
     description: GitHub repository whose Health Indicator will be computed
     displayName: inspected GitHub repository
 
+  - name: WORKFLOW_ID
+    required: true
+    description: ID for MI Workflow
+    displayName: ID for MI Workflow
+
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
     metadata:
-      generateName: mi-analysis-
+      name: mi-analysis-${WORKFLOW_ID}
       labels:
         app: scropsmetrics
     spec:
