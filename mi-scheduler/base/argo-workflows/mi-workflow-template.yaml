@@ -3,7 +3,9 @@ kind: WorkflowTemplate
 metadata:
   name: mi
   labels:
-    app: mi
+    app: thoth
+    component: mi
+    template: mi
 
 spec:
   serviceAccountName: argo

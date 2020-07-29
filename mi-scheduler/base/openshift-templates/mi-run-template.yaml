@@ -3,7 +3,9 @@ kind: Template
 metadata:
   name: mi
   labels:
-    app: mi
+    app: thoth
+    component: mi
+    template: mi
 
 parameters:
   - name: REPOSITORY
