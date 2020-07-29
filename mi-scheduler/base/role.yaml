@@ -17,8 +17,6 @@ rules:
       - template.openshift.io
     resources:
       - processedtemplates
-      - templateconfigs
-      - templateinstances
       - templates
     verbs:
       - create
