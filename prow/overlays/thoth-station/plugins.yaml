@@ -57,63 +57,68 @@ approve:
 
 plugins:
   thoth-station:
-    - assign
     - approve
+    - assign
     - blunderbuss
     - hold
     - label
     - lifecycle
     - size
     - trigger
-    - wip
     - verify-owners
+    - wip
   AICoE/aicoe-cd:
-    - assign
     - approve
+    - assign
     - blunderbuss
     - hold
+    - label
     - lifecycle
     - size
     - trigger
-    - wip
     - verify-owners
+    - wip
   AICoE/aicoe-ci:
-    - assign
     - approve
+    - assign
     - blunderbuss
     - hold
+    - label
     - lifecycle
     - size
     - trigger
-    - wip
     - verify-owners
+    - wip
   AICoE/aicoe-sre:
-    - assign
     - approve
+    - assign
     - blunderbuss
     - hold
+    - label
     - lifecycle
     - size
     - trigger
-    - wip
     - verify-owners
+    - wip
   AICoE/s2i-custom-notebook:
-    - assign
     - approve
+    - assign
     - blunderbuss
     - hold
+    - label
     - lifecycle
     - size
     - trigger
-    - wip
     - verify-owners
+    - wip
   aicoe-aiops:
-    - assign
     - approve
+    - assign
     - blunderbuss
     - hold
+    - label
     - lifecycle
     - size
     - trigger
-    - wip
     - verify-owners
+    - wip
