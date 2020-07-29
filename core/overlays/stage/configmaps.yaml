@@ -27,8 +27,8 @@ apiVersion: v1
 metadata:
   name: ceph
 data:
-  bucket-name: "ocp-prod-stage"
-  bucket-prefix: data/thoth
+  bucket-name: "thoth"
+  bucket-prefix: "data"
   host: "https://s3.upshift.redhat.com/"
   endpoint: "https://s3.upshift.redhat.com/"
   results-path: /results
