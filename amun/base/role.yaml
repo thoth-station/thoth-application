@@ -69,9 +69,19 @@ rules:
       - ""
     resources:
       - pods
+      - configmaps
+    verbs:
+      - create
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - ""
+    resources:
       - pods/log
       - pods/status
-      - configmaps
     verbs:
       - get
       - list
