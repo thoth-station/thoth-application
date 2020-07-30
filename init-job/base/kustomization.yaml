@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: init-job
-  app.kubernetes.io/managed-by: thothos-argocd
+  app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
   - argo-workflows/initialize-schema.yaml
   - argo-workflows/register-indexes.yaml

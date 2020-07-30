@@ -3,28 +3,33 @@ kind: Role
 metadata:
   name: init-job
 rules:
-  - apiGroups: [""]
+  - apiGroups:
+      - ""
     resources:
       - services
       - endpoints
       - pods
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
+  - apiGroups:
+      - ""
     resources:
       - configmaps
-    verbs: ["get"]
-  - apiGroups: ["template.openshift.io"]
+    verbs:
+      - "get"
+  - apiGroups:
+      - ""
+      - "template.openshift.io"
     resources:
       - "templates"
       - "processedtemplates"
     verbs:
       - "get"
       - "list"
-  - apiGroups: ["template.openshift.io"]
-    resources:
-      - "templates"
-      - "processedtemplates"
-    verbs:
       - "create"
       - "delete"
       - "watch"
+      - patch
+      - update
