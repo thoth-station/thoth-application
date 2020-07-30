@@ -69,6 +69,8 @@ rules:
       - ""
     resources:
       - pods
+      - pods/log
+      - pods/status
       - configmaps
     verbs:
       - get
