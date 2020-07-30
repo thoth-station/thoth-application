@@ -279,4 +279,6 @@ objects:
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
                     - name: origin
                       value: "{{tasks.trigger-integration.outputs.parameters.origin}}"
+                    - name: git_service
+                      value: "{{tasks.trigger-integration.outputs.parameters.git_service}}"
                 when: "{{tasks.trigger-integration.outputs.parameters.source_type}} == KEBECHET"
