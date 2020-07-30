@@ -29,6 +29,8 @@ spec:
                   cpu: 256m
                   memory: 500Mi
               env:
+                - name: KUBERNETES_VERIFY_TLS
+                  value: "0"
                 - name: APP_FILE
                   value: "app.py"
                 - name: THOTH_MIDDLETIER_NAMESPACE
