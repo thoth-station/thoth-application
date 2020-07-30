@@ -81,7 +81,7 @@ spec:
           - name: volume
       initContainers:
         - name: inspect-hwinfo
-          image: inspect-hwinfo
+          image: amun-inspect-hwinfo
           volumeMounts:
             - mountPath: "/home/amun/results/"
               name: "{{inputs.parameters.volume}}"
