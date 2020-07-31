@@ -1,0 +1,192 @@
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: thoth-toolbox
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: thoth-toolbox:test
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/thoth-station/thoth-toolbox
+      ref: master
+    type: Git
+  resources:
+    limits:
+      memory: 512Mi
+      cpu: 500m
+    requests:
+      memory: 512Mi
+      cpu: 500m
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: s2i-thoth-ubi8-py36:latest
+      env:
+        - name: ENABLE_PIPENV
+          value: "1"
+        - name: UPGRADE_PIP_TO_LATEST
+        - name: "THOTH_DRY_RUN"
+          value: "1"
+        - name: "THOTH_ADVISE"
+          value: "0"
+        - name: "THAMOS_VERBOSE"
+          value: "1"
+        - name: "THAMOS_DEBUG"
+          value: "0"
+        - name: "THAMOS_CONFIG_TEMPLATE"
+          value: ".thoth.yaml"
+        - name: "THAMOS_CONFIG_EXPAND_ENV"
+          value: "1"
+    type: Source
+  triggers:
+    - type: ImageChange
+      imageChange: {}
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: workflow-helpers
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: workflow-helpers:test
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/thoth-station/workflow-helpers
+      ref: master
+    type: Git
+  resources:
+    limits:
+      memory: 512Mi
+      cpu: 500m
+    requests:
+      memory: 512Mi
+      cpu: 500m
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: s2i-thoth-ubi8-py36:latest
+      env:
+        - name: ENABLE_PIPENV
+          value: "1"
+        - name: UPGRADE_PIP_TO_LATEST
+        - name: "THOTH_DRY_RUN"
+          value: "1"
+        - name: "THOTH_ADVISE"
+          value: "0"
+        - name: "THAMOS_VERBOSE"
+          value: "1"
+        - name: "THAMOS_DEBUG"
+          value: "0"
+        - name: "THAMOS_CONFIG_TEMPLATE"
+          value: ".thoth.yaml"
+        - name: "THAMOS_CONFIG_EXPAND_ENV"
+          value: "1"
+    type: Source
+  triggers:
+    - type: ImageChange
+      imageChange: {}
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: investigator
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: investigator:test
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/thoth-station/investigator
+      ref: master
+    type: Git
+  resources:
+    limits:
+      memory: 512Mi
+      cpu: 500m
+    requests:
+      memory: 512Mi
+      cpu: 500m
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: s2i-thoth-ubi8-py36:latest
+      env:
+        - name: ENABLE_PIPENV
+          value: "1"
+        - name: UPGRADE_PIP_TO_LATEST
+        - name: "THOTH_DRY_RUN"
+          value: "1"
+        - name: "THOTH_ADVISE"
+          value: "0"
+        - name: "THAMOS_VERBOSE"
+          value: "1"
+        - name: "THAMOS_DEBUG"
+          value: "0"
+        - name: "THAMOS_CONFIG_TEMPLATE"
+          value: ".thoth.yaml"
+        - name: "THAMOS_CONFIG_EXPAND_ENV"
+          value: "1"
+    type: Source
+  triggers:
+    - type: ImageChange
+      imageChange: {}
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: messaging
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: messaging:test
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/thoth-station/messaging
+      ref: master
+    type: Git
+  resources:
+    limits:
+      memory: 512Mi
+      cpu: 500m
+    requests:
+      memory: 512Mi
+      cpu: 500m
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: s2i-thoth-ubi8-py36:latest
+      env:
+        - name: ENABLE_PIPENV
+          value: "1"
+        - name: UPGRADE_PIP_TO_LATEST
+        - name: "THOTH_DRY_RUN"
+          value: "1"
+        - name: "THOTH_ADVISE"
+          value: "0"
+        - name: "THAMOS_VERBOSE"
+          value: "1"
+        - name: "THAMOS_DEBUG"
+          value: "0"
+        - name: "THAMOS_CONFIG_TEMPLATE"
+          value: ".thoth.yaml"
+        - name: "THAMOS_CONFIG_EXPAND_ENV"
+          value: "1"
+    type: Source
+  triggers:
+    - type: ImageChange
+      imageChange: {}

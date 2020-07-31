@@ -2,25 +2,26 @@
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
-  name: workflow-helpers
+  name: adviser
 spec:
-  resources:
-    limits:
-      cpu: 1000m
-      memory: 768Mi
-    requests:
-      cpu: 1000m
-      memory: 768Mi
   output:
     to:
       kind: ImageStreamTag
-      name: "workflow-helpers:test"
+      name: adviser:test
+  runPolicy: Serial
   source:
-    type: Git
     git:
-      uri: "https://github.com/thoth-station/workflow-helpers.git"
+      uri: https://github.com/thoth-station/adviser
+      ref: master
+    type: Git
+  resources:
+    limits:
+      memory: 512Mi
+      cpu: 500m
+    requests:
+      memory: 512Mi
+      cpu: 500m
   strategy:
-    type: Source
     sourceStrategy:
       from:
         kind: ImageStreamTag
@@ -28,18 +29,18 @@ spec:
       env:
         - name: ENABLE_PIPENV
           value: "1"
+        - name: UPGRADE_PIP_TO_LATEST
         - name: "THOTH_DRY_RUN"
           value: "1"
         - name: "THOTH_ADVISE"
-          value: ${THOTH_ADVISE}
+          value: "0"
         - name: "THAMOS_VERBOSE"
           value: "1"
         - name: "THAMOS_DEBUG"
           value: "0"
-        - name: "THAMOS_CONFIG_TEMPLATE"
-          value: ".thoth.yaml"
         - name: "THAMOS_CONFIG_EXPAND_ENV"
           value: "1"
+    type: Source
   triggers:
     - type: ImageChange
       imageChange: {}
