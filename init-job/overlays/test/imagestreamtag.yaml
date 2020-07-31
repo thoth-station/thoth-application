@@ -7,7 +7,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/init-job:v0.7.0
+      name: quay.io/thoth-station/init-job:393
     importPolicy: {}
     referencePolicy:
       type: Source
