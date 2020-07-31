@@ -53,7 +53,7 @@ spec:
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
-  name: inspect-hwinfo
+  name: amun-inspect-hwinfo
 spec:
   output:
     to:
