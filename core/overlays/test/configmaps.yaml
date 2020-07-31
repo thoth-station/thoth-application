@@ -55,6 +55,10 @@ data:
       path: /metrics
       port: 8080
 
+    workflowDefaults:
+      spec:
+        parallelism: 10
+
     artifactRepository:
       archiveLogs: False
 
