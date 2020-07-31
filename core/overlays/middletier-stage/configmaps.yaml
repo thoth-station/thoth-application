@@ -11,6 +11,9 @@ data:
 
     workflowDefaults:
       spec:
+        ttlStrategy:
+          secondsAfterSuccess: 7200
+          secondsAfterFailure: 7200
         parallelism: 10
 
     # metricsConfig controls the path and port for prometheus metrics
