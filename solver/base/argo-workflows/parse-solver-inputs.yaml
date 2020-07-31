@@ -11,6 +11,11 @@ spec:
           - name: "THOTH_SOLVER_NAME"
           - name: "THOTH_SOLVER_PACKAGES"
           - name: "THOTH_SOLVER_INDEXES"
+      outputs:
+        parameters:
+          - name: message
+            valueFrom:
+              path: /mnt/workdir/message
       container:
         name: parse-solver-inputs
         image: workflow-helpers
@@ -33,8 +38,3 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /mnt/workdir
-        outputs:
-          parameters:
-            - name: message
-              valueFrom:
-                path: /mnt/workdir/message
