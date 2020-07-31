@@ -67,12 +67,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: api-namespace
-                  name: amun
+                  name: thoth
             - name: "THOTH_AMUN_INSPECTION_NAMESPACE"
               valueFrom:
                 configMapKeyRef:
                   key: inspection-namespace
-                  name: amun
+                  name: thoth
             - name: "RSYSLOG_HOST"
               valueFrom:
                 configMapKeyRef:
