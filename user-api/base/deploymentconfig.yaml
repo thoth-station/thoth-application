@@ -34,6 +34,8 @@ spec:
               value: "0"
             - name: THOTH_HOST
               value: "khemenu.thoth-station.ninja"
+            - name: "THOTH_SENTRY_IGNORE_EXCEPTION"
+              value: "thoth.user_api.exceptions.NotFoundException,thoth.storages.exceptions.NotFoundError"
             - name: THOTH_FRONTEND_NAMESPACE
               valueFrom:
                 configMapKeyRef:
