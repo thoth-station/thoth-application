@@ -166,7 +166,7 @@ objects:
                 arguments:
                   parameters:
                     - name: THOTH_MESSAGING_TOPIC_NAME
-                      value: "SolvedPackageMessage"
+                      value: "thoth.solver.solved-package"
                     - name: THOTH_MESSAGING_MESSAGE_CONTENTS
                       value: "{{tasks.parse-solver-inputs.outputs.parameters.message}}"
                     - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
