@@ -1,0 +1,39 @@
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: thoth
+    component: nepthys
+  name: nepthys
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "nepthys:test"
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  runPolicy: Serial
+  source:
+    git:
+      ref: "master"
+      uri: "https://github.com/thoth-station/nepthys"
+    type: Git
+  strategy:
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+      noCache: true
+    env:
+      - name: ENABLE_PIPENV
+        value: "1"
+      - name: UPGRADE_PIP_TO_LATEST
+        value: ""
+    type: Docker
+  triggers:
+    - imageChange: {}
+      type: ImageChange
