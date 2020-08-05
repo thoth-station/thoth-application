@@ -1,7 +1,7 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  name: github-webhook-receiver
+  name: sefkhet-abwy-webhook-receiver
 spec:
   replicas: 1
   selector:
