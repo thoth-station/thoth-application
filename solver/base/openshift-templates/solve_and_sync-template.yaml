@@ -159,7 +159,7 @@ objects:
 
               - name: "send-message"
                 dependencies:
-                  - "graph-sync-solverany"
+                  - "parse-solver-inputs"
                 templateRef:
                   name: "send-message"
                   template: "send-message"
