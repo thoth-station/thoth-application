@@ -23,7 +23,7 @@ data:
   postgresql-host: pgbouncer.thoth-test-core.svc
   rsyslog-host: ""
   rsyslog-port: ""
-  storage-bucket-name: ocp-prod-test
+  storage-bucket-name: ocp-test
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -70,7 +70,7 @@ data:
 
       s3:
         bucket: "thoth"
-        keyPrefix: "data/ocp-prod-test/argo/artifacts/"
+        keyPrefix: "data/ocp-test/argo/artifacts/"
         endpoint: "s3.upshift.redhat.com"
         insecure: true
         accessKeySecret:
