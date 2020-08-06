@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: sefkhet-abwy
   app.kubernetes.io/component: webhook-receiver
-  app.kubernetes.io/managed-by: aicoe-thoth-devops-manual
+  app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
   - deploymentconfig.yaml
   - imagestream.yaml

@@ -3,6 +3,9 @@ kind: Kustomization
 namespace: aicoe-prod-bots
 resources:
   - ../../base
+  - ultrahook.yaml
+patchesStrategicMerge:
+  - imagestreamtag.yaml
 generatorOptions:
   disableNameSuffixHash: true
 generators:

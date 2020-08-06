@@ -1,0 +1,69 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    app: sesheta
+    component: scrum-standup
+  name: sesheta-friday-scrum
+spec:
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - image: sesheta:latest
+            imagePullPolicy: Always
+            name: scrum-standup
+            env:
+            - name: APP_FILE
+              value: scrum_standup.py
+            - name: SESHETA_VERBOSE
+              valueFrom:
+                configMapKeyRef:
+                  key: sesheta-verbose
+                  name: sesheta-configmap
+            - name: SESHETA_SCRUM_MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  key: scrum-message
+                  name: sesheta-configmap
+            - name: SESHETA_SCRUM_SPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: scrum-space
+                  name: sesheta-configmap
+            - name: SESHETA_SCRUM_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: scrum-url
+                  name: sesheta-configmap
+            - name: USERS_INVITED
+              valueFrom:
+                configMapKeyRef:
+                  key: users-invited
+                  name: sesheta-configmap
+            resources:
+              limits:
+                cpu: 250m
+                memory: 128Mi
+              requests:
+                cpu: 100m
+                memory: 64Mi
+            volumeMounts:
+            - mountPath: /opt/app-root/src/etc
+              name: sesheta-pubsub-consumer
+              readOnly: true
+          volumes:
+          - name: sesheta-pubsub-consumer
+            secret:
+              defaultMode: 420
+              items:
+              - key: sesheta-chatbot.json
+                path: credentials.json
+              secretName: sesheta-pubsub-consumer
+  schedule: 59 12 * * 5
+  successfulJobsHistoryLimit: 2
+  suspend: false
