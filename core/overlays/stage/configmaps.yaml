@@ -10,16 +10,19 @@ data:
   amun-inspection-namespace: thoth-amun-inspection-stage
   amun-namespace: thoth-amun-api-stage
   backend-namespace: aicoe-infra-prod
+  middletier-namespace: thoth-middletier-stage
   frontend-namespace: thoth-frontend-stage
   infra-namespace: thoth-infra-stage
-  isis-api-url: "UNSET"
-  metrics-pushgateway-url: "pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80"
-  middletier-namespace: thoth-middletier-stage
+  solvers: |
+    solver-rhel-8-py36
+    solver-fedora-31-py38
+    solver-fedora-31-py37
+    solver-fedora-32-py37
+    solver-fedora-32-py38
   package-releases-only-if-package-seen: "1"
   postgresql-host: pgbouncer.thoth-graph-stage.svc
   rsyslog-host: ""
   rsyslog-port: ""
-  sentry-environment: "https://d26126364ba24c91aca4608c8a9b93e5@sentry.io/1298083"
   storage-bucket-name: ocp-prod-stage
 ---
 kind: ConfigMap
@@ -31,7 +34,6 @@ data:
   bucket-prefix: "data"
   host: "https://s3.upshift.redhat.com/"
   endpoint: "https://s3.upshift.redhat.com/"
-  results-path: /results
 ---
 kind: ConfigMap
 apiVersion: v1

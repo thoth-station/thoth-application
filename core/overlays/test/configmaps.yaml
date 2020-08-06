@@ -6,11 +6,12 @@ metadata:
 data:
   applicationVersion: 0.7.0-dev
   deployment-name: ocp-test
-  postgresql-host: pgbouncer.thoth-test-core.svc
+  amun-api-url: http://amun-api.thoth-test-core.svc
+  amun-inspection-namespace: thoth-test-core
+  amun-namespace: thoth-test-core
   backend-namespace: thoth-test-core
   middletier-namespace: thoth-test-core
   frontend-namespace: thoth-test-core
-  amun-api-url: http://amun-api.thoth-test-core.svc
   infra-namespace: thoth-test-core
   solvers: |
     solver-rhel-8-py36
@@ -19,8 +20,10 @@ data:
     solver-fedora-32-py37
     solver-fedora-32-py38
   package-releases-only-if-package-seen: "1"
+  postgresql-host: pgbouncer.thoth-test-core.svc
   rsyslog-host: ""
   rsyslog-port: ""
+  storage-bucket-name: ocp-prod-test
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -66,8 +69,8 @@ data:
       archiveLogs: False
 
       s3:
-        bucket: "DH-DEV-DATA"
-        keyPrefix: "data/thoth/thoth-test-core/argo/artifacts/"
+        bucket: "thoth"
+        keyPrefix: "data/ocp-prod-test/argo/artifacts/"
         endpoint: "s3.upshift.redhat.com"
         insecure: true
         accessKeySecret:
