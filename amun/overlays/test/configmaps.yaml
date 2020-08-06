@@ -5,7 +5,7 @@ metadata:
   name: amun
 data:
   amun-api-url: http://amun-api.thoth-test-core.svc
-  deployment-name: ocp-prod-test
+  deployment-name: ocp-test
   infra-namespace: thoth-test-core
   inspection-namespace: thoth-test-core
   artifactRepository: |-
