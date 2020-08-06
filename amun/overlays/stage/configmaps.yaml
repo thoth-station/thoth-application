@@ -5,7 +5,7 @@ metadata:
   name: amun
 data:
   amun-api-url: http://amun-api.thoth-amun-api-stage.svc
-  deployment-name: ocp-prod-stage
+  deployment-name: ocp-stage
   infra-namespace: thoth-amun-inspection-stage
   inspection-namespace: thoth-amun-inspection-stage
   artifactRepository: |-
