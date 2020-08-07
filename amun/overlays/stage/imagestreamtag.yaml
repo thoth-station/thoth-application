@@ -7,7 +7,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/amun-api:v0.7.2
+      name: quay.io/thoth-station/amun-api:v0.7.4
     importPolicy: {}
     referencePolicy:
       type: Source
