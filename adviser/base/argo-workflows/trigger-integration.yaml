@@ -11,6 +11,17 @@ spec:
           - name: "WORKFLOW_NAME"
           - name: "THOTH_DOCUMENT_ID"
           - name: "THOTH_ADVISER_METADATA"
+      outputs:
+        parameters:
+          - name: origin
+            valueFrom:
+              path: /mnt/workdir/origin
+          - name: source_type
+            valueFrom:
+              path: /mnt/workdir/source_type
+          - name: git_service
+            valueFrom:
+              path: /mnt/workdir/git_service
       container:
         name: trigger-integration
         image: workflow-helpers
@@ -43,14 +54,3 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /mnt/workdir
-        outputs:
-          parameters:
-            - name: origin
-              valueFrom:
-                path: /mnt/workdir/origin
-            - name: source_type
-              valueFrom:
-                path: /mnt/workdir/source_type
-            - name: git_service
-              valueFrom:
-                path: /mnt/workdir/git_service
