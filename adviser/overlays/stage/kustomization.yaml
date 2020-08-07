@@ -40,6 +40,12 @@ patchesJson6902:
       version: v1
       kind: Template
       name: provenance-checker
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: dm
 generatorOptions:
   disableNameSuffixHash: true
 generators:
