@@ -6,7 +6,7 @@ metadata:
 data:
   config: |
     containerRuntimeExecutor: "k8sapi"
-    namespace: "thoth-middletier-stage"
+    namespace: "thoth-backend-stage"
     parallelism: 10
 
     workflowDefaults:

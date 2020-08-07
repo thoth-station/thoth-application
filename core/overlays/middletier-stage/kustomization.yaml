@@ -4,6 +4,7 @@ resources:
   - ../stage/
   - argo-namespace-install.yaml
   - argo-workflow-controller-metrics.yaml
+  - argo-ui-route.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - configmaps.yaml
