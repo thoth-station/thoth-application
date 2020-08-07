@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base
   - route.yaml
+  - role-binding.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml

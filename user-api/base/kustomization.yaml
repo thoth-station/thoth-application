@@ -4,7 +4,6 @@ resources:
   - configmap.yaml
   - deploymentconfig.yaml
   - imagestream.yaml
-  - role_binding.yaml
   - role.yaml
   - route.yaml
   - service.yaml
