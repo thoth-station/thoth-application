@@ -1,0 +1,70 @@
+---
+# This template uses the kebechet argo workflow to run kebechet on a particular webhook.
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: kebechet
+  annotations:
+    description: This is Kebechet Job Config, this template is meant to be used by Bots, but could also be used by humans...
+    openshift.io/display-name: Kebechet Job
+    tags: thoth,ai-stacks,kebechet,cyborg,srcops
+    template.openshift.io/documentation-url: https://github.com/thoth-station/kebechet/
+    template.openshift.io/long-description: This is Kebechet used for automatic package releases and updates.
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+  labels:
+    app: thoth
+    template: kebechet
+    component: kebechet
+
+parameters:
+  - name: WORKFLOW_ID
+    description: "a UUID for the workflow instance"
+    displayName: "Workflow UUID"
+    required: true
+  - name: WEBHOOK_PAYLOAD
+    description: "The webhook payload for kebecher run."
+    displayName: "Webhook Payload"
+    required: true
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: "${WORKFLOW_ID}"
+      labels:
+        app: thoth
+        component: kebechet
+    spec:
+      serviceAccountName: argo
+      ttlStrategy:
+        secondsAfterSuccess: 7200
+        secondsAfterFailure: 7200
+      podGC:
+        strategy: OnWorkflowSuccess
+      entrypoint: kebechet
+      arguments:
+        parameters:
+          - name: "WEBHOOK_PAYLOAD"
+            value: "${WEBHOOK_PAYLOAD}"
+      volumes:
+        - name: ssh-config
+          secret:
+            secretName: kebechet
+            items:
+            - key: ssh-privatekey
+              path: id_rsa
+
+      templates:
+        - name: "kebechet"
+          archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - name: "kebechet-webhook-run"
+                templateRef:
+                  name: "kebechet"
+                  template: "kebechet"
+                arguments:
+                  parameters:
+                    - name: "WEBHOOK_PAYLOAD"
+                      value: "{{workflow.parameters.WEBHOOK_PAYLOAD}}"

@@ -1,0 +1,81 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: kebechet-aicoe
+spec:
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - env:
+                - name: PIPENV_NOSPIN
+                  value: "1"
+                - name: PIPENV_COLORBLIND
+                  value: "1"
+                - name: PIPENV_HIDE_EMOJIS
+                  value: "1"
+                - name: KEBECHET_SUBCOMMAND
+                  value: run
+                - name: KEBECHET_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      key: github-oauth-token
+                      name: kebechet
+                - name: KEBECHET_CONFIGURATION_PATH
+                  valueFrom:
+                    configMapKeyRef:
+                      key: config-aicoe
+                      name: kebechet
+                - name: KEBECHET_VERBOSE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: verbose
+                      name: kebechet
+                - name: SENTRY_DSN
+                  valueFrom:
+                    secretKeyRef:
+                      key: sentry-dsn
+                      name: kebechet
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: kebechet
+              image: kebechet
+              livenessProbe:
+                failureThreshold: 1
+                initialDelaySeconds: 7200
+                periodSeconds: 10
+                successThreshold: 1
+                tcpSocket:
+                  port: 80
+                timeoutSeconds: 1
+              name: kebechet
+              resources:
+                limits:
+                  cpu: "2"
+                  memory: 4Gi
+                requests:
+                  cpu: "2"
+                  memory: 4Gi
+              volumeMounts:
+                - mountPath: /home/user/.ssh
+                  name: ssh-config
+          restartPolicy: Never
+          volumes:
+            - name: ssh-config
+              secret:
+                defaultMode: 420
+                items:
+                  - key: ssh-privatekey
+                    mode: 384
+                    path: id_rsa
+                secretName: kebechet
+  schedule: "@weekly"
+  startingDeadlineSeconds: 50
+  successfulJobsHistoryLimit: 2
+  suspend: true
