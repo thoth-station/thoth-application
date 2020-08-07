@@ -38,17 +38,17 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: github-oauth-token
-                name: kebechet-secret
+                name: kebechet
           - name: GITLAB_KEBECHET_TOKEN
             valueFrom:
               secretKeyRef:
                 key: gitlab-oauth-token
-                name: kebechet-secret
+                name: kebechet
           - name: PAGURE_KEBECHET_TOKEN
             valueFrom:
               secretKeyRef:
                 key: pagure-oauth-token
-                name: kebechet-secret
+                name: kebechet
           - name: SENTRY_DSN
             valueFrom:
               secretKeyRef:

@@ -35,4 +35,3 @@ patchesJson6902:
       version: v1
       kind: Role
       name: user-api
-      namespace: thoth-infra-stage
