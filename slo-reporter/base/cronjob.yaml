@@ -110,8 +110,8 @@ spec:
                 - name: PROMETHEUS_INSTANCE_USER_API
                   valueFrom:
                     configMapKeyRef:
+                      name: prometheus
                       key: user-api-url
-                      name: thoth
               resources:
                 requests:
                   memory: "256Mi"
