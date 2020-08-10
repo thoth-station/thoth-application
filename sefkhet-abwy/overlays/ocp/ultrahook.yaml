@@ -9,7 +9,7 @@ spec:
     deploymentconfig: ultrahook-sefkhet-abwy
     app.kubernetes.io/name: sefkhet-abwy
     app.kubernetes.io/component: webhook-receiver
-    app.kubernetes.io/managed-by: aicoe-thoth-devops-manua
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       creationTimestamp: null
@@ -17,7 +17,7 @@ spec:
         deploymentconfig: ultrahook-sefkhet-abwy
         app.kubernetes.io/name: sefkhet-abwy
         app.kubernetes.io/component: webhook-receiver
-        app.kubernetes.io/managed-by: aicoe-thoth-devops-manua
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       containers:
         - env:

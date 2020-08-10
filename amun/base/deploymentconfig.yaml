@@ -9,14 +9,14 @@ spec:
     service: amun-api
     app.kubernetes.io/name: thoth
     app.kubernetes.io/component: amun
-    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
         service: amun-api
         app.kubernetes.io/name: thoth
         app.kubernetes.io/component: amun
-        app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       serviceAccountName: amun-api
       containers:

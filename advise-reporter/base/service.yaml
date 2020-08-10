@@ -12,4 +12,4 @@ spec:
     service: advise-reporter-consumer
     app.kubernetes.io/name: thoth
     app.kubernetes.io/component: advise-reporter
-    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+    app.kubernetes.io/managed-by: aicoe-thoth-devops

@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: amun
-  app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+  app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
   - argo-workflows/inspection-build.yaml
   - argo-workflows/inspection-build-with-cpu.yaml

@@ -9,14 +9,14 @@ spec:
     service: investigator-consumer
     app.kubernetes.io/name: thoth
     app.kubernetes.io/component: investigator
-    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
         service: investigator-consumer
         app.kubernetes.io/name: thoth
         app.kubernetes.io/component: investigator
-        app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       serviceAccountName: investigator
       containers:

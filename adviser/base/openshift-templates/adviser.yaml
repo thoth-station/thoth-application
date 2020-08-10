@@ -21,30 +21,23 @@ parameters:
     description: A unique dentifier of adviser job.
     displayName: Adviser id
   - name: THOTH_ADVISER_REQUIREMENTS
-    required: false
     description: Raw stack requirements
   - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
-    required: false
     description: Fully pinned down stack
     displayName: Locked requirements
   - name: THOTH_ADVISER_LIBRARY_USAGE
-    required: false
     description: Usage of libraries for adviser's resolution algorithm.
     displayName: Library usage
   - name: THOTH_ADVISER_REQUIREMENTS_FORMAT
-    required: false
     description: Format of input
     displayName: Requirements format
   - name: THOTH_ADVISER_RECOMMENDATION_TYPE
-    required: false
     description: Type of requested recommendation
     displayName: Recommendation type
   - name: THOTH_ADVISER_RUNTIME_ENVIRONMENT
-    required: false
     description: Runtime environment to create recommendation for
     displayName: Runtime environment
   - name: THOTH_ADVISER_METADATA
-    required: false
     description: Metadata carried with the adviser request
     displayName: Adviser metadata
   - name: THOTH_ADVISER_SEED
@@ -65,17 +58,14 @@ parameters:
     displayName: Beam width
     value: "25000"
   - name: THOTH_LOG_ADVISER
-    required: false
     description: Log adviser actions
     displayName: Log adviser actions
     value: INFO
   - name: THOTH_ADVISER_LIMIT
-    required: false
     description: Limit number of software stacks scored.
     displayName: Adviser limit.
     value: "100000"
   - name: THOTH_ADVISER_COUNT
-    required: false
     description: Number of software stacks returned in the recommendation.
     displayName: Adviser count.
     value: "1"

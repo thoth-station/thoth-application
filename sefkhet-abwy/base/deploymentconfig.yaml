@@ -8,14 +8,14 @@ spec:
     deploymentconfig: sefkhet-abwy-webhook-receiver
     app.kubernetes.io/name: sefkhet-abwy
     app.kubernetes.io/component: webhook-receiver
-    app.kubernetes.io/managed-by: aicoe-thoth-devops-manual
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
         deploymentconfig: sefkhet-abwy-webhook-receiver
         app.kubernetes.io/name: sefkhet-abwy
         app.kubernetes.io/component: webhook-receiver
-        app.kubernetes.io/managed-by: aicoe-thoth-devops-manual
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       containers:
         - env:
