@@ -86,7 +86,8 @@ metadata:
   name: prometheus
 data:
   host-url: "https://prometheus-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
-  instance-metrics-exporter-frontend: "metrics-exporter-thoth-test-core.cloud.paas.psi.redhat.com:80"
+  user-api-url: "user-api-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
+  instance-metrics-exporter-frontend: "metrics-exporter-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
   pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
   pushgateway-port: "80"
   pushgateway-url: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80
