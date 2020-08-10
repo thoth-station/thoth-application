@@ -57,11 +57,61 @@ spec:
                     configMapKeyRef:
                       name: thoth
                       key: deployment-name
+                - name: THOTH_MIDDLETIER_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: middletier-namespace
+                      name: thoth
+                - name: THOTH_BACKEND_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: backend-namespace
+                      name: thoth
+                - name: THOTH_AMUN_INSPECTION_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: amun-inspection-namespace
+                      name: thoth
+                - name: THOTH_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-name
+                      name: ceph
+                - name: THOTH_PUBLIC_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: public-bucket-name
+                      name: ceph
+                - name: THOTH_CEPH_BUCKET_PREFIX
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-prefix
+                      name: ceph
+                - name: THOTH_S3_ENDPOINT_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: host
+                      name: ceph
+                - name: THOTH_CEPH_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: key-id
+                - name: THOTH_CEPH_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: secret-key
                 - name: METRICS_EXPORTER_FRONTEND_PROMETHEUS_INSTANCE
                   valueFrom:
                     configMapKeyRef:
                       name: prometheus
                       key: instance-metrics-exporter-frontend
+                - name: PROMETHEUS_INSTANCE_USER_API
+                  valueFrom:
+                    configMapKeyRef:
+                      key: user-api-url
+                      name: thoth
               resources:
                 requests:
                   memory: "256Mi"
