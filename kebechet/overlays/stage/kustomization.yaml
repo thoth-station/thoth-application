@@ -4,8 +4,6 @@ commonLabels:
   app.kubernetes.io/version: "0.7.0"
 resources:
   - ../../base
-  - ../../base/argo-workflows/kebechet.yaml
-  - ../../base/openshift-template/kebechet.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - configmap.yaml

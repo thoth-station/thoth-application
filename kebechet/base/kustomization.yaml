@@ -3,7 +3,9 @@ kind: Kustomization
 resources:
   - configmap.yaml
   - imagestream.yaml
+  - argo-workflows/kebechet.yaml
+  - openshift-template/kebechet.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: kebechet
-  app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+  app.kubernetes.io/managed-by: aicoe-thoth-devops
