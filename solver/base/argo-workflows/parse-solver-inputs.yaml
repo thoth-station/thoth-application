@@ -20,7 +20,7 @@ spec:
         name: parse-solver-inputs
         image: workflow-helpers
         env:
-          - name: WORKFLOW_TASK
+          - name: THOTH_WORKFLOW_TASK
             value: "parse_solver_inputs"
           - name: THOTH_SOLVER_NAME
             value: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
