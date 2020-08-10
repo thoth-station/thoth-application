@@ -4,7 +4,7 @@ resources:
   - configmap.yaml
   - imagestream.yaml
   - argo-workflows/kebechet.yaml
-  - openshift-template/kebechet.yaml
+  - openshift-templates/kebechet.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: kebechet
