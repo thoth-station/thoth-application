@@ -31,6 +31,7 @@ metadata:
   name: ceph
 data:
   bucket-name: "thoth"
+  public-bucket-name: DH-PLAYPEN
   bucket-prefix: "data"
   host: "https://s3.upshift.redhat.com/"
   endpoint: "https://s3.upshift.redhat.com/"

@@ -84,6 +84,11 @@ spec:
                     configMapKeyRef:
                       key: bucket-name
                       name: ceph
+                - name: THOTH_PUBLIC_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: public-bucket-name
+                      name: ceph
                 - name: THOTH_CEPH_BUCKET_PREFIX
                   valueFrom:
                     configMapKeyRef:
@@ -104,6 +109,11 @@ spec:
                     secretKeyRef:
                       name: ceph
                       key: secret-key
+                - name: THOTH_ENVIRONMENT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: deployment-name
               volumeMounts:
                 - name: secrets
                   mountPath: /mnt/secrets
