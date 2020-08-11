@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: adviser
-  app.kubernetes.io/managed-by: kustomize-ksops
+  app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
   - configmap.yaml
   - argo-workflows/advise.yaml

@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: package-extract
-  app.kubernetes.io/managed-by: kustomize-ksops
+  app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
   - openshift-templates/package-extract.yaml
   - argo-workflows/package-extract.yaml

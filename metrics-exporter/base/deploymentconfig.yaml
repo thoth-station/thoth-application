@@ -9,14 +9,14 @@ spec:
     service: metrics-exporter
     app.kubernetes.io/name: thoth
     app.kubernetes.io/component: metrics-exporter
-    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
         service: metrics-exporter
         app.kubernetes.io/name: thoth
         app.kubernetes.io/component: metrics-exporter
-        app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       serviceAccountName: metrics-exporter
       containers:

@@ -9,14 +9,14 @@ spec:
     service: user-api
     app.kubernetes.io/name: thoth
     app.kubernetes.io/component: user-api
-    app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
         service: user-api
         app.kubernetes.io/name: thoth
         app.kubernetes.io/component: user-api
-        app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       serviceAccountName: user-api
       containers:
