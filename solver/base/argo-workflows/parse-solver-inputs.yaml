@@ -13,9 +13,9 @@ spec:
           - name: "THOTH_SOLVER_INDEXES"
       outputs:
         parameters:
-          - name: message
+          - name: kafka_message
             valueFrom:
-              path: /mnt/workdir/message
+              path: /mnt/workdir/kafka_message
       container:
         name: parse-solver-inputs
         image: workflow-helpers
