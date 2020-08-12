@@ -12,7 +12,6 @@ resources:
   - argo-ui-route.yaml
   - argo-workflow-controller-metrics.yaml
   - pgbouncer.yaml
-  - buildConfigs/workflow-helpers.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - configmaps.yaml
