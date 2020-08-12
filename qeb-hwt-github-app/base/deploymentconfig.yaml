@@ -22,7 +22,7 @@ spec:
             - name: PYTHONPATH
               value: .
             - name: THOTH_DEPLOYMENT_NAME
-              value: aicoe-psi-prod
+              value: aicoe-prod-bots
             - name: SENTRY_DSN
               valueFrom:
                 secretKeyRef:
@@ -56,4 +56,3 @@ spec:
   test: false
   triggers:
     - type: ConfigChange
-  updatedReplicas: 1

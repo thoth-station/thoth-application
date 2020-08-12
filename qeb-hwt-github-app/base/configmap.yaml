@@ -4,4 +4,4 @@ apiVersion: v1
 metadata:
   name: qeb-hwt
 data:
-  webhook-callback-url: "http://qeb-hwt-aicoe-prod-bots.cloud.paas.psi.redhat.com"  # TODO: Add correct url
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-aicoe-prod-bots.apps.ocp.prod.psi.redhat.com"
