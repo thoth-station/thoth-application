@@ -45,6 +45,41 @@ spec:
                   key: kafka-bootstrap-servers
             - name: KAFKA_CAFILE
               value: "/mnt/secrets/kafka_ca.crt"
+            - name: THOTH_CEPH_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-name
+                  name: ceph
+            - name: THOTH_PUBLIC_CEPH_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: public-bucket-name
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-prefix
+                  name: ceph
+            - name: THOTH_S3_ENDPOINT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: host
+                  name: ceph
+            - name: THOTH_CEPH_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ceph
+                  key: key-id
+            - name: THOTH_CEPH_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ceph
+                  key: secret-key
+            - name: THOTH_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: deployment-name
           ports:
             - containerPort: 8080
               protocol: TCP
