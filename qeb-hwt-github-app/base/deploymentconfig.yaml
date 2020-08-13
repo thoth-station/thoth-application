@@ -5,18 +5,27 @@ metadata:
   name: qeb-hwt-webhook-recevier
 spec:
   replicas: 1
-  revisionHistoryLimit: 4
+  revisionHistoryLimit: 2
   selector:
-    app: qeb-hwt
-    component: webhook-recevier
+    deploymentconfig: qeb-hwt-webhook-receiver
+    app.kubernetes.io/name: qeb-hwt
+    app.kubernetes.io/component: webhook-receiver
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
-        app: qeb-hwt
-        component: webhook-recevier
+        deploymentconfig: qeb-hwt-webhook-receiver
+        app.kubernetes.io/name: qeb-hwt
+        app.kubernetes.io/component: webhook-receiver
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       containers:
-        - env:
+        - name: webhook-recevier
+          image: qeb-hwt-webhook-receiver
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
             - name: ENV
               value: dev
             - name: PYTHONPATH
@@ -32,27 +41,37 @@ spec:
             - prefix: GITHUB_
               secretRef:
                 name: qeb-hwt-github-app
-          image: qeb-hwt-webhook-recevier
-          name: webhook-recevier
+          resources:
+            limits:
+              cpu: 250m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+        - name: ultrahook-qeb-hwt
+          image: ultrahook
           ports:
             - containerPort: 8080
               protocol: TCP
+          env:
+            - name: ULTRAHOOK_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: api.key
+                  name: ultrahook-aicoe
+            - name: ULTRAHOOK_SUBDOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  key: subdomain
+                  name: qeb-hwt
+            - name: ULTRAHOOK_DESTINATION
+              valueFrom:
+                configMapKeyRef:
+                  key: webhook-callback-url
+                  name: qeb-hwt
           resources:
             limits:
-              cpu: 250m
-            requests:
-              cpu: 100m
-        - envFrom:
-            - prefix: ULTRAHOOK_
-              secretRef:
-                name: ultrahook
-          image: ultrahook
-          name: ultrahook
-          resources:
-            limits:
-              cpu: 250m
-            requests:
-              cpu: 100m
+              memory: 50Mi
   test: false
   triggers:
     - type: ConfigChange

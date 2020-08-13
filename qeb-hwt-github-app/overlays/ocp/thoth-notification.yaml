@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have just successfully synchronized *qeb-hwt-github-app* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-qeb-hwt-github-app|ArgoCD UI>'}"
+            - "{'text':'I have just successfully synchronized *qeb-hwt-github-app* components to *OCP*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/thoth-qeb-hwt-github-app|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':':fire: *FAILED* syncing *qeb-hwt-github-app* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-qeb-hwt-github-app|ArgoCD UI>'}"
+            - "{'text':':fire: *FAILED* syncing *qeb-hwt-github-app* components to *OCP*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/thoth-qeb-hwt-github-app|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

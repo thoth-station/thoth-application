@@ -47,8 +47,6 @@ objects:
     kind: Workflow
     metadata:
       name: "${WORKFLOW_ID}"
-      annotations:
-        thoth-station.ninja/template-version: 0.2.0
       labels:
         app: thoth
         component: qeb-hwt

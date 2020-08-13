@@ -53,12 +53,12 @@ spec:
             valueFrom:
               configMapKeyRef:
                 key: webhook-callback-url
-                name: qeb-hwt
+                name: qeb-hwt-workflow
           - name: WEBHOOK_SECRET
             valueFrom:
               secretKeyRef:
                 key: WEBHOOK_SECRET
-                name: qeb-hwt
+                name: qeb-hwt-secret
         resources:
           limits:
             cpu: 250m
