@@ -3,7 +3,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: chat-notification-succeeded-
-  namespace: thoth-infra-stage
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -35,7 +34,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: chat-notification-failed-
-  namespace: thoth-infra-stage
   annotations:
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
