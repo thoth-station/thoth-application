@@ -1,0 +1,15 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: package-update-faust-web
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 6066
+  selector:
+    service: package-update-consumer
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: package-update
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
