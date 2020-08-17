@@ -1,0 +1,41 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: amun
+data:
+  amun-api-url: http://amun-api.thoth-amun-api-prod.svc
+  deployment-name: p9-prod
+  infra-namespace: thoth-amun-api-prod
+  inspection-namespace: thoth-amun-api-prod
+  artifactRepository: |-
+    archiveLogs: false
+    s3:
+      bucket: "{{workflow.parameters.ceph_bucket_name}}"
+      endpoint: "{{workflow.parameters.ceph_host}}"
+      accessKeySecret:
+        name: argo-artifact-repository-secrets
+        key: accessKey
+      secretKeySecret:
+        name: argo-artifact-repository-secrets
+        key: secretKey
+      keyFormat: "{{workflow.parameters.ceph_bucket_prefix}}/{{workflow.parameters.deployment_name}}/inspections/{{workflow.name}}"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ceph
+data:
+  bucket-name: "thoth"
+  bucket-prefix: "data"
+  host: "https://kzn-swift.massopen.cloud/"
+  endpoint: "https://kzn-swift.massopen.cloud/"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus
+data:
+  pushgateway-host: pushgateway-opendatahub.k-apps.osh.massopen.cloud
+  pushgateway-port: "80"
+  pushgateway-url: pushgateway-opendatahub.k-apps.osh.massopen.cloud:80

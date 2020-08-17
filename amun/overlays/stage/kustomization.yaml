@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
   - ../../base
   - role_binding.yaml
-  - configmaps.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
+  - configmaps.yaml
   - imagestreamtag.yaml
 generators:
   - ./secret-generator.yaml
