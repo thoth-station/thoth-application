@@ -9,5 +9,4 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    app: qeb-hwt
-    component: webhook-recevier
+    deploymentconfig: qeb-hwt-webhook-receiver
