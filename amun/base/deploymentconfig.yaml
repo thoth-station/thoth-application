@@ -31,6 +31,8 @@ spec:
               value: "0"
             - name: AMUN_DEBUG
               value: "0"
+            - name: THOTH_SENTRY_IGNORE_LOGGER
+              value: "connexion.decorators.validation"
             - name: THOTH_AMUN_INSPECTION_NAMESPACE
               valueFrom:
                 configMapKeyRef:
