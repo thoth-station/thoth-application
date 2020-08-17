@@ -18,7 +18,13 @@ spec:
         app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       containers:
-        - env:
+        - name: sefkhet-abwy-webhook-receiver
+          image: sefkhet-abwy-webhook-receiver
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
             - name: GITHUB_SECRET
               valueFrom:
                 secretKeyRef:
@@ -53,7 +59,7 @@ spec:
                   key: sentry-dsn
                   name: sefkhet-abwy
             - name: THOTH_DEPLOYMENT_NAME
-              value: ocp-aicoe-prod-bots
+              value: aicoe-prod-bots
             - name: SESHETA_AIOPS_DEVOPS_SPACE
               valueFrom:
                 secretKeyRef:
@@ -68,19 +74,31 @@ spec:
             - prefix: GITHUB_
               secretRef:
                 name: sefkhet-abwy-github-app
-          image: sefkhet-abwy-webhook-receiver
+        - name: ultrahook-sefkeht-abwy
+          image: ultrahook
           imagePullPolicy: Always
-          name: sefkhet-abwy-webhook-receiver
+          env:
+            - name: ULTRAHOOK_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: api.key
+                  name: ultrahook-aicoe
+            - name: ULTRAHOOK_SUBDOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  key: subdomain
+                  name: sefkhet-abwy
+            - name: ULTRAHOOK_DESTINATION
+              valueFrom:
+                configMapKeyRef:
+                  key: webhook-callback-url
+                  name: sefkhet-abwy
           ports:
             - containerPort: 8080
               protocol: TCP
           resources:
             limits:
-              cpu: 250m
-              memory: 512Mi
-            requests:
-              cpu: 100m
-              memory: 256Mi
+              memory: 50Mi
           volumeMounts:
             - mountPath: /opt/app-root/etc/gcloud
               name: sesheta-pubsub-consumer
