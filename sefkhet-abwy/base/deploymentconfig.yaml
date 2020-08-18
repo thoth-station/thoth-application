@@ -17,6 +17,7 @@ spec:
         app.kubernetes.io/component: webhook-receiver
         app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
+      test: false
       containers:
         - name: sefkhet-abwy-webhook-receiver
           image: sefkhet-abwy-webhook-receiver
@@ -74,6 +75,10 @@ spec:
             - prefix: GITHUB_
               secretRef:
                 name: sefkhet-abwy-github-app
+          volumeMounts:
+            - mountPath: /opt/app-root/etc/gcloud
+              name: sesheta-pubsub-consumer
+              readOnly: true
         - name: ultrahook-sefkeht-abwy
           image: ultrahook
           imagePullPolicy: Always
@@ -99,14 +104,9 @@ spec:
           resources:
             limits:
               memory: 50Mi
-          volumeMounts:
-            - mountPath: /opt/app-root/etc/gcloud
-              name: sesheta-pubsub-consumer
-              readOnly: true
       restartPolicy: Always
       volumes:
         - name: sesheta-pubsub-consumer
           secret:
             defaultMode: 420
             secretName: sesheta-pubsub-consumer
-  test: false

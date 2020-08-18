@@ -4,6 +4,8 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: qeb-hwt-webhook-receiver
 spec:
+  port:
+    targetPort: 8080-tcp  
   to:
     kind: Service
     name: qeb-hwt-webhook-receiver
