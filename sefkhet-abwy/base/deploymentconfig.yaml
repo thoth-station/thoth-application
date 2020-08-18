@@ -4,6 +4,7 @@ metadata:
   name: sefkhet-abwy-webhook-receiver
 spec:
   replicas: 1
+  test: false
   selector:
     deploymentconfig: sefkhet-abwy-webhook-receiver
     app.kubernetes.io/name: sefkhet-abwy
@@ -17,7 +18,6 @@ spec:
         app.kubernetes.io/component: webhook-receiver
         app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
-      test: false
       containers:
         - name: sefkhet-abwy-webhook-receiver
           image: sefkhet-abwy-webhook-receiver

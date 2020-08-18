@@ -2,8 +2,9 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  name: qeb-hwt-webhook-recevier
+  name: qeb-hwt-webhook-receiver
 spec:
+  test: false
   replicas: 1
   revisionHistoryLimit: 2
   selector:
@@ -19,9 +20,8 @@ spec:
         app.kubernetes.io/component: webhook-receiver
         app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
-      test: false
       containers:
-        - name: webhook-recevier
+        - name: webhook-receiver
           image: qeb-hwt-webhook-receiver
           ports:
             - containerPort: 8080
