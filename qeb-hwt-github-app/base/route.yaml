@@ -5,7 +5,7 @@ metadata:
   name: qeb-hwt-webhook-receiver
 spec:
   port:
-    targetPort: 8080-tcp  
+    targetPort: 8080-tcp
   to:
     kind: Service
     name: qeb-hwt-webhook-receiver
