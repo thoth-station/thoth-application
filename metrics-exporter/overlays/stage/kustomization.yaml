@@ -20,11 +20,9 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-success-
-      namespace: thoth-infra-stage
   - path: job-generate-name.yaml
     target:
       group: batch
       version: v1
       kind: Job
       name: chat-notification-fail-
-      namespace: thoth-infra-stage
