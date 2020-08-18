@@ -1,7 +1,9 @@
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: graph-refresh-job
+  name: graph-refresh-template
+  namespace: thoth-infra-stage
 rules:
   - apiGroups:
       - ""
@@ -40,3 +42,23 @@ rules:
       - patch
       - update
       - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: graph-refresh-config
+  namespace: thoth-middletier-stage
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - deletecollection
+      - patch
+      - update
