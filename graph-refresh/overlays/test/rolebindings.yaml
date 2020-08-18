@@ -1,0 +1,48 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: graph-refresh-template
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: graph-refresh-template
+subjects:
+  - kind: ServiceAccount
+    name: graph-refresh-job
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: graph-refresh-config
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: graph-refresh-config
+subjects:
+  - kind: ServiceAccount
+    name: graph-refresh-job
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: graph-refresh-job-argo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argo
+subjects:
+  - kind: ServiceAccount
+    name: graph-refresh-job
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: graph-refresh-job-argo-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argo-admin
+subjects:
+  - kind: ServiceAccount
+    name: graph-refresh-job
