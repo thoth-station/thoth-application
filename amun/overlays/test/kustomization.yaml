@@ -4,6 +4,8 @@ resources:
   - ../../base
   - role_binding.yaml
   - thoth-notification.yaml
+generators:
+  - ./secret-generator.yaml
 patchesStrategicMerge:
   - configmaps.yaml
   - imagestreamtag.yaml
@@ -26,5 +28,3 @@ patchesJson6902:
       version: v1
       kind: Role
       name: metrics-exporter-reader
-generators:
-  - ./secret-generator.yaml

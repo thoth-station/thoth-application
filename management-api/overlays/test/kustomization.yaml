@@ -5,6 +5,10 @@ resources:
   - route.enc.yaml
   - role-binding.yaml
   - thoth-notification.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+generators:
+  - ./secret-generator.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
 patches:
