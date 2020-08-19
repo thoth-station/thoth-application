@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: revsolver
   annotations:
-    description: "Thoth: Reverse Solver  Template"
+    description: "Thoth: Reverse Solver Template"
     openshift.io/display-name: "Thoth: Reverse Solver"
     tags: thoth,ai-stacks,aistacks,solver,machinlearning
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/

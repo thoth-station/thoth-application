@@ -5,8 +5,8 @@ commonLabels:
   app.kubernetes.io/component: revsolver
   app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
-  - imagestreams.yaml
-  - openshift-templates/revsolver_and_sync-template.yaml
+  - imagestream.yaml
+  - openshift-templates/revsolve_and_sync-template.yaml
   - argo-workflows/revsolver-template.yaml
   - role.yaml
   - serviceaccount.yaml
