@@ -43,6 +43,20 @@ spec:
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
+  name: messaging
+spec:
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/messaging:v0.6.4
+    importPolicy: {}
+    referencePolicy:
+      type: Source
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
   name: s2i-thoth-ubi8-py36
 spec:
   tags:
