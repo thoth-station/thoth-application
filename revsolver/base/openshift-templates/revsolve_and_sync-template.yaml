@@ -26,7 +26,7 @@ parameters:
     required: true
   - name: "THOTH_REVSOLVER_PACKAGE_VERSION"
     description: "Version of the package to be revese-solved."
-    diplayName: "Package version"
+    displayName: "Package version"
     required: true
   - name: THOTH_LOG_REVSOLVER
     description: "Log reverse solver actions"
