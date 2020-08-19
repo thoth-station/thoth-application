@@ -30,7 +30,7 @@ spec:
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: investigator
+  name: messaging
 spec:
   tags:
   - name: latest
