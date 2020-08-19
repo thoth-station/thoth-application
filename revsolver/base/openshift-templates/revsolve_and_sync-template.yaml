@@ -40,7 +40,7 @@ objects:
     metadata:
       name: "${THOTH_REVSOLVER_WORKFLOW_ID}"
     spec:
-      serviceAccountName: argo
+      serviceAccountName: revsolver
       # kill workflow if running too much time
       activeDeadlineSeconds: 3600
       podGC:
