@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':':fire: *FAILED* syncing *sefkhet-abwy-github-app* components to *OCP*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/thoth-sefkhet-abwy-github-app|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* syncing *sefkhet-abwy-github-app* components to *OCP*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/thoth-sefkhet-abwy-github-app|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
