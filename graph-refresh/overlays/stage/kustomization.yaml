@@ -33,3 +33,27 @@ patchesJson6902:
       version: v1
       kind: Role
       name: graph-refresh-config
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1beta1
+      kind: RoleBinding
+      name: graph-refresh-infra
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1beta1
+      kind: RoleBinding
+      name: graph-refresh-middletier
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1beta1
+      kind: RoleBinding
+      name: graph-refresh-job-argo
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1beta1
+      kind: RoleBinding
+      name: graph-refresh-job-argo-admin
