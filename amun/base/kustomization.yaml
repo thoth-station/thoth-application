@@ -18,7 +18,5 @@ resources:
   - route.yaml
   - service.yaml
   - serviceaccount.yaml
-configMapGenerator:
-  - name: amun
 generatorOptions:
   disableNameSuffixHash: true

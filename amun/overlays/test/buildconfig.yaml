@@ -46,9 +46,6 @@ spec:
           value: ".thoth.yaml"
         - name: "THAMOS_CONFIG_EXPAND_ENV"
           value: "1"
-  triggers:
-    - type: ImageChange
-      imageChange: {}
 ---
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
@@ -73,6 +70,7 @@ spec:
       memory: 512Mi
       cpu: 500m
   strategy:
+    type: Source
     sourceStrategy:
       from:
         kind: ImageStreamTag
@@ -93,7 +91,3 @@ spec:
           value: ".thoth.yaml"
         - name: "THAMOS_CONFIG_EXPAND_ENV"
           value: "1"
-    type: Source
-  triggers:
-    - type: ImageChange
-      imageChange: {}
