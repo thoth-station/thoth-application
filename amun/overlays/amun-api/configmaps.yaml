@@ -8,18 +8,6 @@ data:
   deployment-name: ocp-stage
   infra-namespace: thoth-amun-inspection-stage
   inspection-namespace: thoth-amun-inspection-stage
-  artifactRepository: |-
-    archiveLogs: false
-    s3:
-      bucket: "{{workflow.parameters.ceph_bucket_name}}"
-      endpoint: "{{workflow.parameters.ceph_host}}"
-      accessKeySecret:
-        name: argo-artifact-repository-secrets
-        key: accessKey
-      secretKeySecret:
-        name: argo-artifact-repository-secrets
-        key: secretKey
-      keyFormat: "{{workflow.parameters.ceph_bucket_prefix}}/{{workflow.parameters.deployment_name}}/inspections/{{workflow.name}}"
 ---
 kind: ConfigMap
 apiVersion: v1
