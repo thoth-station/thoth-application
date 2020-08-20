@@ -11,14 +11,11 @@ resources:
   - argo-workflows/inspection-run-with-cpu.yaml
   - openshift-templates/inspection-workflow.yaml
   - openshift-templates/inspection-with-cpu-workflow.yaml
-  - roles/
   - deploymentconfig.yaml
   - imagestream.yaml
   - role.yaml
   - route.yaml
   - service.yaml
   - serviceaccount.yaml
-configMapGenerator:
-  - name: amun
 generatorOptions:
   disableNameSuffixHash: true

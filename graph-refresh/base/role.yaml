@@ -3,7 +3,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: graph-refresh-template
-  namespace: thoth-infra-stage
 rules:
   - apiGroups:
       - ""
@@ -47,7 +46,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: graph-refresh-config
-  namespace: thoth-middletier-stage
 rules:
   - apiGroups:
       - ""

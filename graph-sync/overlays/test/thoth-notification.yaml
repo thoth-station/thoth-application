@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':':fire: *FAIL* synchronizing *graph-sync* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-graph-sync|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAIL* synchronizing *graph-sync* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-graph-sync|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

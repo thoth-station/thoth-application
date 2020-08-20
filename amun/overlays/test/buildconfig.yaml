@@ -30,6 +30,7 @@ spec:
         - name: ENABLE_PIPENV
           value: "1"
         - name: UPGRADE_PIP_TO_LATEST
+          value: "0"
         - name: WEB_CONCURRENCY
           value: "4"
         - name: "THOTH_DRY_RUN"
@@ -47,8 +48,7 @@ spec:
         - name: "THAMOS_CONFIG_EXPAND_ENV"
           value: "1"
   triggers:
-    - type: ImageChange
-      imageChange: {}
+    - type: "ConfigChange"
 ---
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
@@ -73,6 +73,7 @@ spec:
       memory: 512Mi
       cpu: 500m
   strategy:
+    type: Source
     sourceStrategy:
       from:
         kind: ImageStreamTag
@@ -81,6 +82,7 @@ spec:
         - name: ENABLE_PIPENV
           value: "1"
         - name: UPGRADE_PIP_TO_LATEST
+          value: "0"
         - name: "THOTH_DRY_RUN"
           value: "1"
         - name: "THOTH_ADVISE"
@@ -93,7 +95,5 @@ spec:
           value: ".thoth.yaml"
         - name: "THAMOS_CONFIG_EXPAND_ENV"
           value: "1"
-    type: Source
   triggers:
-    - type: ImageChange
-      imageChange: {}
+    - type: "ConfigChange"

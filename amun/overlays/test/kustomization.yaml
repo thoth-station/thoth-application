@@ -2,12 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
+  - buildconfig.yaml
   - role_binding.yaml
+  - configmaps.yaml
   - thoth-notification.yaml
 generators:
   - ./secret-generator.yaml
 patchesStrategicMerge:
-  - configmaps.yaml
   - imagestreamtag.yaml
 patchesJson6902:
   - path: job-generate-name.yaml

@@ -8,7 +8,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: amun-api
-  namespace: thoth-amun-inspection-stage
 subjects:
   - kind: ServiceAccount
     name: amun-api
@@ -23,7 +22,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: amun-api-workflow
-  namespace: thoth-amun-inspection-stage
 subjects:
   - kind: ServiceAccount
     name: amun-api-workflow
@@ -38,7 +36,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: argo
-  namespace: thoth-amun-inspection-stage
 subjects:
   - kind: ServiceAccount
     name: amun-api
@@ -53,7 +50,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: argo-admin
-  namespace: thoth-amun-inspection-stage
 subjects:
   - kind: ServiceAccount
     name: amun-api

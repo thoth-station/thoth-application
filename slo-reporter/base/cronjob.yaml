@@ -4,7 +4,7 @@ apiVersion: batch/v1beta1
 metadata:
   name: slo-reporter
 spec:
-  schedule: "0 6 * * FRI"
+  schedule: "0 6 * * *"
   suspend: false
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2

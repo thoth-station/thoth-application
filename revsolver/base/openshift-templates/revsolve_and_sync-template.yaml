@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: revsolver
   annotations:
-    description: "Thoth: Reverse Solver  Template"
+    description: "Thoth: Reverse Solver Template"
     openshift.io/display-name: "Thoth: Reverse Solver"
     tags: thoth,ai-stacks,aistacks,solver,machinlearning
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
@@ -26,7 +26,7 @@ parameters:
     required: true
   - name: "THOTH_REVSOLVER_PACKAGE_VERSION"
     description: "Version of the package to be revese-solved."
-    diplayName: "Package version"
+    displayName: "Package version"
     required: true
   - name: THOTH_LOG_REVSOLVER
     description: "Log reverse solver actions"
@@ -40,7 +40,7 @@ objects:
     metadata:
       name: "${THOTH_REVSOLVER_WORKFLOW_ID}"
     spec:
-      serviceAccountName: argo
+      serviceAccountName: revsolver
       # kill workflow if running too much time
       activeDeadlineSeconds: 3600
       podGC:
