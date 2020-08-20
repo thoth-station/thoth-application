@@ -9,6 +9,18 @@ patchesStrategicMerge:
 generators:
   - ./secret-generator.yaml
 patchesJson6902:
+  - path: job-generate-name.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      name: chat-notification-succeeded-
+  - path: job-generate-name.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      name: chat-notification-failed-
   - path: put-into-inspection-namespace.yaml
     target:
       group: image.openshift.io
