@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: thoth-frontend-stage
 resources:
   - ../../base
+  - rolebindings.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
@@ -19,3 +20,15 @@ patchesJson6902:
       version: v1
       kind: Job
       name: chat-notification-fail-
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: graph-refresh-template
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: graph-refresh-config

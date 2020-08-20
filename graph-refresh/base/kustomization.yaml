@@ -4,7 +4,6 @@ resources:
   - cronjob.yaml
   - serviceaccount.yaml
   - role.yaml
-  - rolebindings.yaml
   - imagestream.yaml
 generatorOptions:
   disableNameSuffixHash: true
