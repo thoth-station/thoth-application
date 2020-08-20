@@ -154,11 +154,11 @@ spec:
             - --configmap
             - workflow-controller-configmap
             - --executor-image
-            - quay.io/thoth-station/argoexec:v2.9.5
+            - argoproj/workflow-controller:fix-3791
             - --namespaced
           command:
             - workflow-controller
-          image: quay.io/thoth-station/workflow-controller:2.9.5
+          image: argoproj/workflow-controller:fix-3791
           name: workflow-controller
           resources:
             requests:
