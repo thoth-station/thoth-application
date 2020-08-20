@@ -154,7 +154,7 @@ spec:
             - --configmap
             - workflow-controller-configmap
             - --executor-image
-            - argoproj/workflow-controller:fix-3791
+            - argoproj/argoexec:v2.10.0
             - --namespaced
           command:
             - workflow-controller
