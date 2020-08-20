@@ -6,6 +6,7 @@ resources:
   - argo-ui-route.yaml
   - argo-workflow-controller-metrics.yaml
   - thoth-notification.yaml
+  - metrics-exporter-reader.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
