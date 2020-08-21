@@ -46,7 +46,3 @@ patchesJson6902:
       version: v1alpha1
       kind: WorkflowTemplate
       name: dm
-generatorOptions:
-  disableNameSuffixHash: true
-generators:
-  - ./secret-generator.yaml
