@@ -7,14 +7,14 @@ data:
   config: |
     containerRuntimeExecutor: "k8sapi"
     namespace: "thoth-backend-stage"
-    parallelism: 10
+    parallelism: 2
 
     workflowDefaults:
       spec:
         ttlStrategy:
           secondsAfterSuccess: 7200
           secondsAfterFailure: 7200
-      parallelism: 10
+      parallelism: 2
 
     # metricsConfig controls the path and port for prometheus metrics
     metricsConfig:
