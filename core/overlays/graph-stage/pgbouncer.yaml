@@ -61,10 +61,10 @@ spec:
             timeoutSeconds: 10
           resources:
             limits:
-              cpu: 2
+              cpu: "2"
               memory: 2Gi
             requests:
-              cpu: 2
+              cpu: "2"
               memory: 2Gi
   test: false
   triggers:
