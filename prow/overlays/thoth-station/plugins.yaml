@@ -4,6 +4,27 @@ label:
     - tide/merge-method-rebase
     - tide/merge-method-squash
 
+project_config:
+  project_org_configs:
+    thoth-station:
+      org_maintainers_team_id: 3934608
+      org_maintainers_team_name: cyborg-supervisors
+      org_default_column_map:
+        Adviser: New
+        Amun: New
+        Integration Tests: New
+        Investigator: New
+        Kebechet: New
+        Knowledge Graph: New
+        Meta-Information Indicators: New
+        Performance Indicators: New
+        Security Indicators: New
+        SLO-reporter: New
+        Solver: New
+        Thoth Data Science: New
+        thoth-toolbox: New
+        User-API: New
+
 external_plugins:
   thoth-station:
     - name: needs-rebase
@@ -63,6 +84,7 @@ plugins:
     - hold
     - label
     - lifecycle
+    - project
     - size
     - trigger
     - verify-owners
