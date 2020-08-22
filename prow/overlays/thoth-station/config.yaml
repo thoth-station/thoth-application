@@ -150,6 +150,10 @@ tide:
           aicoe-cd:
             required-contexts:
               - thoth-ci/pre-commit-check
+          sefkhet-abwy:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
       thoth-station:
         repos:
           adviser:

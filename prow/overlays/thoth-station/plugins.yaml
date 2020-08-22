@@ -51,6 +51,11 @@ external_plugins:
       events:
         - issue_comment
         - pull_request
+  AICoE/sefkhey-abwy:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
 
 welcome:
   - repos:
@@ -123,6 +128,17 @@ plugins:
     - verify-owners
     - wip
   AICoE/s2i-custom-notebook:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/sefkhey-abwy:
     - approve
     - assign
     - blunderbuss
