@@ -16,48 +16,13 @@ rules:
       - monitoring.coreos.com
     resources:
       - podmonitors
-    verbs:
-      - get
-      - list
-      - watch
-  - apiGroups:
-      - apiextensions.k8s.io
-    resourceNames:
-      - prometheuses.monitoring.coreos.com
-    resources:
-      - customresourcedefinitions
-    verbs:
-      - get
-  - apiGroups:
-      - monitoring.coreos.com
-    resources:
       - prometheuses
-    verbs:
-      - get
-      - list
-      - watch
-  - apiGroups:
-      - apiextensions.k8s.io
-    resourceNames:
-      - prometheusrules.monitoring.coreos.com
-    resources:
-      - customresourcedefinitions
-    verbs:
-      - get
-  - apiGroups:
-      - monitoring.coreos.com
-    resources:
       - prometheusrules
+      - servicemonitors
     verbs:
       - get
       - list
       - watch
-  - apiGroups:
-      - ""
-    resources:
-      - namespaces
-    verbs:
-      - get
   - apiGroups:
       - ""
       - project.openshift.io
@@ -73,14 +38,6 @@ rules:
       - customresourcedefinitions
     verbs:
       - get
-  - apiGroups:
-      - monitoring.coreos.com
-    resources:
-      - servicemonitors
-    verbs:
-      - get
-      - list
-      - watch
   - apiGroups:
       - ""
     resources:
@@ -283,6 +240,18 @@ rules:
       - workflows/finalizers
       - workflowtemplates
       - workflowtemplates/finalizers
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+      - image.openshift.io
+    resources:
+      - imagestreamimages
+      - imagestreammappings
+      - imagestreams
+      - imagestreamtags
     verbs:
       - get
       - list
