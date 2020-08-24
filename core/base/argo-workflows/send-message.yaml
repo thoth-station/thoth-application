@@ -9,8 +9,14 @@ spec:
       inputs:
         parameters:
           - name: THOTH_MESSAGING_TOPIC_NAME
+            value: ""
           - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
           - name: THOTH_MESSAGING_MESSAGE_CONTENTS
+            value: ""
+          - name: THOTH_MESSAGING_FROM_FILE
+            value: ""
+          - name: THOTH_DEPLOYMENT_NAME
+            value: ""
           - name: THOTH_MESSAGING_PARTITIONS
             value: "1"  # this is the same as having unset so it will use the default
           - name: THOTH_MESSAGING_REPLICATION
@@ -29,6 +35,10 @@ spec:
             value: "{{inputs.parameters.THOTH_MESSAGING_MESSAGE_CONTENTS}}"
           - name: THOTH_MESSAGING_PARTITIONS
             value: "{{inputs.parameters.THOTH_MESSAGING_PARTITIONS}}"
+          - name: THOTH_MESSAGING_FROM_FILE
+            value: "{{inputs.parameters.THOTH_MESSAGING_FROM_FILE}}"
+          - name: THOTH_DEPLOYMENT_NAME
+            value: "{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}"
           - name: KAFKA_BOOTSTRAP_SERVERS
             valueFrom:
               configMapKeyRef:
