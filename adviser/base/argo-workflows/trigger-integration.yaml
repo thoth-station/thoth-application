@@ -43,7 +43,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: WEBHOOK_SECRET
-                name: qeb-hwt-github-app
+                name: qeb-hwt-secret
         resources:
           limits:
             cpu: 250m
