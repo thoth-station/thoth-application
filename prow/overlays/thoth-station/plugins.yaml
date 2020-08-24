@@ -3,6 +3,9 @@ label:
     - tide/merge-method-merge
     - tide/merge-method-rebase
     - tide/merge-method-squash
+    - deployment_name/ocp-test
+    - deployment_name/ocp-stage
+    - deployment_name/moc
 
 project_config:
   project_org_configs:
