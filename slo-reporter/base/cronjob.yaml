@@ -52,11 +52,6 @@ spec:
                     configMapKeyRef:
                       name: slo-reporter
                       key: email-recipients
-                - name: THOTH_ENVIRONMENT
-                  valueFrom:
-                    configMapKeyRef:
-                      name: thoth
-                      key: deployment-name
                 - name: THOTH_MIDDLETIER_NAMESPACE
                   valueFrom:
                     configMapKeyRef:
