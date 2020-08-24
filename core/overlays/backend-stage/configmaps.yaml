@@ -22,6 +22,16 @@ data:
       path: /metrics
       port: 8080
 
+    executor:
+      imagePullPolicy: IfNotPresent
+      resources:
+        requests:
+          cpu: 0.1
+          memory: 64Mi
+        limits:
+          cpu: 0.5
+          memory: 256Mi
+
     artifactRepository:
       archiveLogs: False
 
