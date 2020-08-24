@@ -169,5 +169,7 @@ objects:
                       value: "thoth.solver.solved-package"
                     - name: THOTH_MESSAGING_MESSAGE_CONTENTS
                       value: "{{tasks.parse-solver-inputs.outputs.parameters.kafka_message}}"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
                     - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
                       value: "1"
