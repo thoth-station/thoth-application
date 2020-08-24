@@ -61,8 +61,8 @@ spec:
                 name: thoth
         resources:
           limits:
-            cpu: "2"
-            memory: "2Gi"
+            cpu: "0.75"
+            memory: "256Mi"
           requests:
-            cpu: "2"
-            memory: "2Gi"
+            cpu: "0.75"
+            memory: "256Mi"
