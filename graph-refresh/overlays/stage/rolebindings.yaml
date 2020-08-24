@@ -1,31 +1,31 @@
----
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: RoleBinding
-metadata:
-  name: graph-refresh-infra
-  namespace: thoth-infra-stage
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: graph-refresh-template
-subjects:
-  - kind: ServiceAccount
-    name: graph-refresh-job
-    namespace: thoth-frontend-stage
----
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: RoleBinding
-metadata:
-  name: graph-refresh-middletier
-  namespace: thoth-middletier-stage
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: graph-refresh-config
-subjects:
-  - kind: ServiceAccount
-    name: graph-refresh-job
-    namespace: thoth-frontend-stage
+# ---
+# apiVersion: rbac.authorization.k8s.io/v1beta1
+# kind: RoleBinding
+# metadata:
+#   name: graph-refresh-infra
+#   namespace: thoth-infra-stage
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: Role
+#   name: graph-refresh-template
+# subjects:
+#   - kind: ServiceAccount
+#     name: graph-refresh-job
+#     namespace: thoth-frontend-stage
+# ---
+# apiVersion: rbac.authorization.k8s.io/v1beta1
+# kind: RoleBinding
+# metadata:
+#   name: graph-refresh-middletier
+#   namespace: thoth-middletier-stage
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: Role
+#   name: graph-refresh-config
+# subjects:
+#   - kind: ServiceAccount
+#     name: graph-refresh-job
+#     namespace: thoth-frontend-stage
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
