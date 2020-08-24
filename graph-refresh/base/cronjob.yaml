@@ -37,11 +37,6 @@ spec:
                       key: kafka-bootstrap-servers
                 - name: KAFKA_CAFILE
                   value: "/mnt/secrets/kafka_ca.crt"
-                - name: KNOWLEDGE_GRAPH_HOST
-                  valueFrom:
-                    configMapKeyRef:
-                      name: thoth
-                      key: postgresql-host
                 - name: KUBERNETES_API_URL
                   value: "https://kubernetes.default.svc.cluster.local"
                 - name: KUBERNETES_VERIFY_TLS
@@ -74,8 +69,8 @@ spec:
                 - name: KNOWLEDGE_GRAPH_HOST
                   valueFrom:
                     configMapKeyRef:
-                      key: postgresql-host
                       name: thoth
+                      key: postgresql-host
                 - name: KNOWLEDGE_GRAPH_PORT
                   value: "5432"
                 - name: KNOWLEDGE_GRAPH_SSL_DISABLED
