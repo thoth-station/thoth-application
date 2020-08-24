@@ -95,6 +95,10 @@ spec:
                     secretKeyRef:
                       name: postgresql
                       key: database-name
+              volumeMounts:
+                - name: secrets
+                  mountPath: /mnt/secrets
+                  readOnly: true
               resources:
                 requests:
                   memory: "256Mi"
@@ -108,4 +112,11 @@ spec:
                 periodSeconds: 10
                 tcpSocket:
                   port: 80
+          volumes:
+            - name: secrets
+              secret:
+                secretName: "kafka"
+                items:
+                  - key: kafka_ca.crt
+                    path: kafka_ca.crt
           restartPolicy: OnFailure
