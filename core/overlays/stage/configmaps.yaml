@@ -6,6 +6,7 @@ metadata:
 data:
   applicationVersion: 0.7.0
   deployment-name: ocp-stage
+  environment: stage
   amun-api-url: "http://amun-api-thoth-amun-api-stage.apps.ocp.prod.psi.redhat.com"
   amun-inspection-namespace: thoth-amun-inspection-stage
   amun-namespace: thoth-amun-api-stage

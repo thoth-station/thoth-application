@@ -6,6 +6,7 @@ metadata:
 data:
   applicationVersion: 0.7.0-dev
   deployment-name: ocp-test
+  environment: test
   amun-api-url: http://amun-api.thoth-test-core.svc
   amun-inspection-namespace: thoth-test-core
   amun-namespace: thoth-test-core
