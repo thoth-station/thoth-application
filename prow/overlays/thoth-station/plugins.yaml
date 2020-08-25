@@ -48,6 +48,11 @@ external_plugins:
       events:
         - issue_comment
         - pull_request
+  AICoE/prometheus-api-client-python:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
   AICoE/s2i-custom-notebook:
     - name: needs-rebase
       events:
@@ -83,6 +88,7 @@ approve:
       - AICoE/aicoe-cd
       - AICoE/aicoe-ci
       - AICoE/aicoe-sre
+      - AICoE/prometheus-api-client-python
       - AICoE/s2i-custom-notebook
       - thoth-station
     require_self_approval: true
@@ -124,6 +130,17 @@ plugins:
     - verify-owners
     - wip
   AICoE/aicoe-sre:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/prometheus-api-client-python:
     - approve
     - assign
     - blunderbuss

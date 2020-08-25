@@ -122,6 +122,7 @@ tide:
         - AICoE/aicoe-cd
         - AICoE/aicoe-ci
         - AICoE/aicoe-sre
+        - AICoE/prometheus-api-client-python
         - AICoE/s2i-custom-notebook
       labels:
         - approved
@@ -150,6 +151,10 @@ tide:
           aicoe-cd:
             required-contexts:
               - thoth-ci/pre-commit-check
+          prometheus-api-client-python:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
           sefkhet-abwy:
             required-contexts:
               - thoth-ci/pre-commit-check
