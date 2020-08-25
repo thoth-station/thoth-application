@@ -150,7 +150,7 @@ objects:
       arguments:
         parameters:
           - name: THOTH_MESSAGING_TOPIC_NAME
-            value: "temporary"  # TODO
+            value: "thoth.amun.inspection-completed"
           - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
             value: "1"
           - name: THOTH_MESSAGING_MESSAGE_CONTENTS
