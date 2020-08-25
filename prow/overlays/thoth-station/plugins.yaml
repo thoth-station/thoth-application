@@ -11,7 +11,6 @@ project_config:
   project_org_configs:
     thoth-station:
       org_maintainers_team_id: 3934608
-      org_maintainers_team_name: cyborg-supervisors
       org_default_column_map:
         Adviser: New
         Amun: New
@@ -55,6 +54,11 @@ external_plugins:
         - issue_comment
         - pull_request
   AICoE/sefkhey-abwy:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  aicoe-aiops:
     - name: needs-rebase
       events:
         - issue_comment

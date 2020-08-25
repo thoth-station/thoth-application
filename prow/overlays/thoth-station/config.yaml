@@ -164,9 +164,6 @@ tide:
             required-contexts:
               - thoth-ci/pre-commit-check
               - thoth-ci/build-check
-          amun-client:
-            required-contexts:
-              - thoth-ci/pytest-check
           buildlog-parser:
             required-contexts:
               - thoth-ci/pytest-check
