@@ -33,8 +33,6 @@ spec:
       env:
         - name: ENABLE_PIPENV
           value: "1"
-        - name: "THOTH_DRY_RUN"
-          value: "0"
         - name: "THOTH_ADVISE"
           value: "0"
         - name: "THAMOS_VERBOSE"
@@ -88,8 +86,6 @@ spec:
       env:
         - name: ENABLE_PIPENV
           value: "1"
-        - name: "THOTH_DRY_RUN"
-          value: "0"
         - name: "THOTH_ADVISE"
           value: "0"
         - name: "THAMOS_VERBOSE"
@@ -143,8 +139,6 @@ spec:
       env:
         - name: ENABLE_PIPENV
           value: "1"
-        - name: "THOTH_DRY_RUN"
-          value: "0"
         - name: "THOTH_ADVISE"
           value: "0"
         - name: "THAMOS_VERBOSE"
