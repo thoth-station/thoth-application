@@ -37,6 +37,13 @@ spec:
           - name: memory
             value: "512Mi"
       steps:
+        - - name: prepare-env
+            arguments:
+              parameters:
+                - name: inspection-id
+                  value: "{{inputs.parameters.inspection-id}}"
+            template: prepare-env
+
         - - name: imagestream
             arguments:
               parameters:
@@ -88,6 +95,24 @@ spec:
                 - name: specification
                   value: "{{inputs.parameters.specification}}"
             template: aggregate-buildlog
+
+    - name: prepare-env
+      inputs:
+        parameters:
+          - name: inspection-id
+      script:
+        image: kubectl
+        imagePullPolicy: Always
+        command: [bash]
+        source: |-
+          # Clean up old imagestream and buildconfig on resubmit
+          kubectl delete imagestream "{{inputs.parameters.inspection-id}}"
+          kubectl delete buildconfig "{{inputs.parameters.inspection-id}}"
+          exit 0
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
 
     - name: create-imagestream
       inputs:
