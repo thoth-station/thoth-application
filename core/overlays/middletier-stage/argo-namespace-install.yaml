@@ -110,7 +110,7 @@ spec:
             - --namespaced
           command:
             - workflow-controller
-          image: quay.io/thoth-station/workflow-controller:v2.9.5
+          image: quay.io/thoth-station/workflow-controller:fix-3791
           name: workflow-controller
           resources:
             requests:
