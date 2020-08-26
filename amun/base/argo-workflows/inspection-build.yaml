@@ -84,6 +84,7 @@ spec:
             template: aggregate-buildlog
 
     - name: prepare-env
+      serviceAccountName: amun-prepare-workflow
       inputs:
         parameters:
           - name: inspection-id
