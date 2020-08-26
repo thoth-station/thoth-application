@@ -86,3 +86,33 @@ rules:
       - get
       - list
       - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: amun-prepare-workflow
+rules:
+  - apiGroups:
+      - ""
+      - image.openshift.io
+    resources:
+      - imagestreamimages
+      - imagestreammappings
+      - imagestreams
+      - imagestreamtags
+    verbs:
+      - delete
+  - apiGroups:
+      - ""
+      - build.openshift.io
+    resources:
+      - builds
+      - buildconfigs
+    verbs:
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - delete
