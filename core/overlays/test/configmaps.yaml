@@ -67,11 +67,14 @@ data:
         parallelism: 10
 
     artifactRepository:
-      archiveLogs: False
+      archiveLogs: True
 
       s3:
         bucket: "thoth"
-        keyPrefix: "data/ocp-test/argo/artifacts/"
+        keyFormat: "data/ocp-test/argo/artifacts/\
+          /{{workflow.creationTimestamp.Y}}/{{workflow.creationTimestamp.m}}\
+          /{{workflow.creationTimestamp.d}}/{{workflow.creationTimestamp.H}}\
+          /{{workflow.name}}/{{pod.name}}"
         endpoint: "s3.upshift.redhat.com"
         insecure: true
         accessKeySecret:
