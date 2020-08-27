@@ -95,7 +95,7 @@ spec:
                 - name: THOTH_CEPH_SECRET_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: ceph 
+                      name: ceph
                       key: secret-key
                 - name: PROMETHEUS_INSTANCE_METRICS_EXPORTER_FRONTEND
                   valueFrom:
