@@ -192,6 +192,8 @@ objects:
                       value: "{{workflow.parameters.THOTH_ADVISER_RECOMMENDATION_TYPE}}"
                     - name: THOTH_ADVISER_RUNTIME_ENVIRONMENT
                       value: "{{workflow.parameters.THOTH_ADVISER_RUNTIME_ENVIRONMENT}}"
+                    - name: THOTH_ADVISER_PREDICTOR_CONFIG
+                      value: "{{workflow.parameters.THOTH_ADVISER_PREDICTOR_CONFIG}}"
                     - name: THOTH_ADVISER_METADATA
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
                     - name: THOTH_ADVISER_SEED
