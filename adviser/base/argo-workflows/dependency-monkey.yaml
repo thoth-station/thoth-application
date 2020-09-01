@@ -24,6 +24,7 @@ spec:
           - name: THOTH_DEPENDENCY_MONKEY_SEED
           - name: THOTH_ADVISER_DEV
           - name: THOTH_ADVISER_PIPELINE
+          - name: THOTH_ADVISER_PREDICTOR_CONFIG
           - name: THOTH_DEPENDENCY_MONKEY_DECISION_TYPE
           - name: THOTH_DEPENDENCY_MONKEY_DRY_RUN
           - name: THOTH_AMUN_CONTEXT
@@ -82,6 +83,8 @@ spec:
             value: "{{inputs.parameters.THOTH_DEPENDENCY_MONKEY_DRY_RUN}}"
           - name: THOTH_ADVISER_PIPELINE
             value: "{{inputs.parameters.THOTH_ADVISER_PIPELINE}}"
+          - name: THOTH_ADVISER_PREDICTOR_CONFIG
+            value: "{{inputs.parameters.THOTH_ADVISER_PREDICTOR_CONFIG}}"
           - name: THOTH_AMUN_CONTEXT
             value: "{{inputs.parameters.THOTH_AMUN_CONTEXT}}"
           - name: THOTH_DEPENDENCY_MONKEY_COUNT

@@ -73,6 +73,10 @@ parameters:
     description: Pipeline configuration to be used.
     displayName: Pipeline.
     value: "null"
+  - name: THOTH_ADVISER_PREDICTOR_CONFIG
+    description: Predictor's configuration.
+    displayName: Predictor's configuration.
+    value: "{}"
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
@@ -121,6 +125,8 @@ objects:
             value: "${THOTH_ADVISER_LIMIT_LATEST_VERSIONS}"
           - name: THOTH_ADVISER_PIPELINE
             value: "${THOTH_ADVISER_PIPELINE}"
+          - name: THOTH_ADVISER_PREDICTOR_CONFIG
+            value: "${THOTH_ADVISER_PREDICTOR_CONFIG}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
