@@ -40,6 +40,10 @@ parameters:
   - name: THOTH_ADVISER_METADATA
     description: Metadata carried with the adviser request
     displayName: Adviser metadata
+  - name: THOTH_ADVISER_PREDICTOR_CONFIG
+    description: Predictor's configuration.
+    displayName: Predictor's configuration.
+    value: "{}"
   - name: THOTH_ADVISER_SEED
     required: true
     description: Random seed to run adviser with.
@@ -118,6 +122,8 @@ objects:
             value: "${THOTH_ADVISER_RUNTIME_ENVIRONMENT}"
           - name: THOTH_ADVISER_METADATA
             value: "${THOTH_ADVISER_METADATA}"
+          - name: THOTH_ADVISER_PREDICTOR_CONFIG
+            value: "${THOTH_ADVISER_PREDICTOR_CONFIG}"
           - name: THOTH_ADVISER_DEV
             value: "${THOTH_ADVISER_DEV}"
           - name: THOTH_ADVISER_SEED

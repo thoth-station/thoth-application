@@ -16,6 +16,8 @@ spec:
           - name: THOTH_ADVISER_REQUIREMENTS_FORMAT
           - name: THOTH_ADVISER_RECOMMENDATION_TYPE
           - name: THOTH_ADVISER_RUNTIME_ENVIRONMENT
+          - name: THOTH_ADVISER_PREDICTOR_CONFIG
+            value: "{}"
           - name: THOTH_ADVISER_METADATA
           - name: THOTH_ADVISER_SEED
             value: "42"
@@ -81,6 +83,8 @@ spec:
             value: "{{inputs.parameters.THOTH_ADVISER_RECOMMENDATION_TYPE}}"
           - name: THOTH_ADVISER_RUNTIME_ENVIRONMENT
             value: "{{inputs.parameters.THOTH_ADVISER_RUNTIME_ENVIRONMENT}}"
+          - name: THOTH_ADVISER_PREDICTOR_CONFIG
+            value: "{{inputs.parameters.THOTH_ADVISER_PREDICTOR_CONFIG}}"
           - name: THOTH_ADVISER_METADATA
             value: "{{inputs.parameters.THOTH_ADVISER_METADATA}}"
           - name: THOTH_ADVISER_SEED
