@@ -182,6 +182,10 @@ objects:
                       value: "{{workflow.parameters.THOTH_AMUN_CONTEXT}}"
                     - name: THOTH_ADVISER_PIPELINE
                       value: "{{workflow.parameters.THOTH_ADVISER_PIPELINE}}"
+                    - name: THOTH_ADVISER_PREDICTOR
+                      value: "{{workflow.parameters.THOTH_ADVISER_PREDICTOR}}"
+                    - name: THOTH_ADVISER_PREDICTOR_CONFIG
+                      value: "{{workflow.parameters.THOTH_ADVISER_PREDICTOR_CONFIG}}"
                     - name: THOTH_DEPENDENCY_MONKEY_COUNT
                       value: "{{workflow.parameters.THOTH_DEPENDENCY_MONKEY_COUNT}}"
                     - name: THOTH_ADVISER_LIMIT_LATEST_VERSIONS
