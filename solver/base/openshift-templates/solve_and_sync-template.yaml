@@ -149,7 +149,12 @@ objects:
                   name: "parse-solver-inputs"
                   template: "parse-solver-inputs"
                 arguments:
+                  artifacts:
+                    - name: outputdocument
+                      from: "{{tasks.solverany.outputs.artifacts.outputdocument}}"
                   parameters:
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_SOLVER_WORKFLOW_ID}}"
                     - name: "THOTH_SOLVER_NAME"
                       value: "{{workflow.parameters.THOTH_SOLVER_NAME}}"
                     - name: "THOTH_SOLVER_PACKAGES"
@@ -157,7 +162,7 @@ objects:
                     - name: "THOTH_SOLVER_INDEXES"
                       value: "{{workflow.parameters.THOTH_SOLVER_INDEXES}}"
 
-              - name: "send-message"
+              - name: "send-solved-message"
                 dependencies:
                   - "parse-solver-inputs"
                 templateRef:
