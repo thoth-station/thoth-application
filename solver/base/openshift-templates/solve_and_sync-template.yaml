@@ -59,6 +59,7 @@ objects:
       podGC:
         strategy: OnWorkflowSuccess
       ttlStrategy:
+        secondsAfterCompletion: 1200
         secondsAfterSuccess: 1200
         secondsAfterFailure: 1200
       entrypoint: solve-and-sync
