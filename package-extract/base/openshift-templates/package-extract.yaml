@@ -54,6 +54,7 @@ objects:
         component: package-extract
     spec:
       serviceAccountName: argo
+      resubmitPendingPods: true
       ttlStrategy:
         secondsAfterSuccess: 7200
         secondsAfterFailure: 7200

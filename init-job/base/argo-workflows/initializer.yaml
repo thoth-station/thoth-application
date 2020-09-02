@@ -4,6 +4,7 @@ metadata:
   name: initializer
 spec:
   serviceAccountName: init-job
+  resubmitPendingPods: true
   podGC:
     strategy: OnWorkflowSuccess
   entrypoint: initializer

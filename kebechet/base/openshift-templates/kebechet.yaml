@@ -36,6 +36,7 @@ objects:
         component: kebechet
     spec:
       serviceAccountName: argo
+      resubmitPendingPods: true
       ttlStrategy:
         secondsAfterSuccess: 7200
         secondsAfterFailure: 7200

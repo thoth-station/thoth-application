@@ -41,6 +41,7 @@ objects:
       name: "${THOTH_REVSOLVER_WORKFLOW_ID}"
     spec:
       serviceAccountName: revsolver
+      resubmitPendingPods: true
       # kill workflow if running too much time
       activeDeadlineSeconds: 3600
       podGC:
