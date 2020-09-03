@@ -47,8 +47,6 @@ objects:
           - name: deployment_name
       entrypoint: security-indicators
       onExit: exit-handler
-      podGC:
-        strategy: OnPodCompletion
       serviceAccountName: argo
       templates:
         - archiveLocation:

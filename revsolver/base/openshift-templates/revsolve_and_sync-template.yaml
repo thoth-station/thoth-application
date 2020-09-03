@@ -43,8 +43,6 @@ objects:
       serviceAccountName: revsolver
       # kill workflow if running too much time
       activeDeadlineSeconds: 3600
-      podGC:
-        strategy: OnWorkflowSuccess
       ttlStrategy:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200

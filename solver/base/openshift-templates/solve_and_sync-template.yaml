@@ -56,8 +56,6 @@ objects:
       serviceAccountName: argo
       # kill workflow if running too much time
       activeDeadlineSeconds: 2600
-      podGC:
-        strategy: OnWorkflowSuccess
       ttlStrategy:
         secondsAfterCompletion: 1200
         secondsAfterSuccess: 1200
