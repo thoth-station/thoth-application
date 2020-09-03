@@ -93,3 +93,11 @@ data:
   pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
   pushgateway-port: "80"
   pushgateway-url: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: qeb-hwt
+data:
+  subdomain: qeb-hwt
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-aicoe-prod-bots.apps.ocp.prod.psi.redhat.com"
