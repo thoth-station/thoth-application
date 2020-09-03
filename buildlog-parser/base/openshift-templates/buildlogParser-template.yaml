@@ -42,6 +42,7 @@ objects:
         component: buildlog-parser
     spec:
       serviceAccountName: argo
+      resubmitPendingPods: true
       ttlStrategy:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200
@@ -73,7 +74,6 @@ objects:
           dag:
             tasks:
               - name: "parse-buildlog"
-                resubmitPendingPods: true
                 templateRef:
                   name: "parse-buildlog"
                   template: "parse-buildlog"

@@ -41,6 +41,7 @@ objects:
       name: "${THOTH_REVSOLVER_WORKFLOW_ID}"
     spec:
       serviceAccountName: revsolver
+      resubmitPendingPods: true
       # kill workflow if running too much time
       activeDeadlineSeconds: 3600
       podGC:
@@ -76,7 +77,6 @@ objects:
           dag:
             tasks:
               - name: "revsolve"
-                resubmitPendingPods: true
                 templateRef:
                   name: "revsolve"
                   template: "revsolve"
@@ -101,7 +101,6 @@ objects:
               - name: "graph-sync-revsolver"
                 dependencies:
                   - "revsolve"
-                resubmitPendingPods: true
                 templateRef:
                   name: "graph-sync"
                   template: "graph-sync"

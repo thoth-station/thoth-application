@@ -91,6 +91,7 @@ objects:
         component: dependency-monkey
     spec:
       serviceAccountName: argo
+      resubmitPendingPods: true
       ttlStrategy:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200
@@ -148,7 +149,6 @@ objects:
           dag:
             tasks:
               - name: "dm"
-                resubmitPendingPods: true
                 templateRef:
                   name: "dm"
                   template: "dm"
@@ -203,7 +203,6 @@ objects:
               - name: "graph-sync-dm"
                 dependencies:
                   - "dm"
-                resubmitPendingPods: true
                 templateRef:
                   name: "graph-sync"
                   template: "graph-sync"
