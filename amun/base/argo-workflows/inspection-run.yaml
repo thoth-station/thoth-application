@@ -8,6 +8,7 @@ spec:
 
   templates:
     - name: main
+      resubmitPendingPods: true
       inputs:
         parameters:
           # Required
@@ -55,6 +56,7 @@ spec:
             template: aggregate-joblog
 
     - name: create-job
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: inspection-id
@@ -111,6 +113,7 @@ spec:
               none: {}
 
     - name: aggregate-joblog
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: inspection-id

@@ -43,6 +43,7 @@ spec:
           - name: THOTH_CEPH_BUCKET_NAME
           - name: THOTH_CEPH_BUCKET_PREFIX
           - name: THOTH_DEPLOYMENT_NAME
+      resubmitPendingPods: true
       name: cloc
       outputs:
         artifacts:
@@ -94,4 +95,5 @@ spec:
           - name: THOTH_SI_CLOC_PACKAGE_VERSION
           - name: THOTH_SI_CLOC_PACKAGE_INDEX
           - name: THOTH_SI_CLOC_DIR
+      resubmitPendingPods: true
       name: cloc-from-dir

@@ -19,6 +19,7 @@ spec:
 
   templates:
     - name: main
+      resubmitPendingPods: true
       inputs:
         parameters:
           # Required
@@ -84,6 +85,7 @@ spec:
             template: aggregate-buildlog
 
     - name: prepare-env
+      resubmitPendingPods: true
       serviceAccountName: amun-prepare-workflow
       inputs:
         parameters:
@@ -103,6 +105,7 @@ spec:
             memory: 128Mi
 
     - name: create-imagestream
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: inspection-id
@@ -127,6 +130,7 @@ spec:
               local: true
 
     - name: create-buildconfig
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: dockerfile
@@ -190,6 +194,7 @@ spec:
               - type: ConfigChange
 
     - name: await-build
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: inspection-id
@@ -204,6 +209,7 @@ spec:
             name: "{{inputs.parameters.inspection-id}}-1"
 
     - name: aggregate-buildlog
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: inspection-id

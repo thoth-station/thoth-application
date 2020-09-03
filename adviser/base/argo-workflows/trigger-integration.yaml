@@ -6,6 +6,7 @@ metadata:
 spec:
   templates:
     - name: trigger-integration
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: "WORKFLOW_NAME"
