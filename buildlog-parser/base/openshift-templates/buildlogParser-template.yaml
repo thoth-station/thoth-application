@@ -42,6 +42,7 @@ objects:
         component: buildlog-parser
     spec:
       serviceAccountName: argo
+      resubmitPendingPods: true
       ttlStrategy:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200

@@ -91,6 +91,7 @@ objects:
         component: dependency-monkey
     spec:
       serviceAccountName: argo
+      resubmitPendingPods: true
       ttlStrategy:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200
