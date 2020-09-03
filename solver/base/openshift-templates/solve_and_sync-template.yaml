@@ -54,7 +54,6 @@ objects:
       name: "${THOTH_SOLVER_WORKFLOW_ID}"
     spec:
       serviceAccountName: argo
-      resubmitPendingPods: true
       # kill workflow if running too much time
       activeDeadlineSeconds: 2600
       podGC:
@@ -102,6 +101,7 @@ objects:
           dag:
             tasks:
               - name: "solverany"
+                resubmitPendingPods: true
                 templateRef:
                   name: "solver-any"
                   template: "solve"
@@ -131,6 +131,7 @@ objects:
               - name: "graph-sync-solverany"
                 dependencies:
                   - "solverany"
+                resubmitPendingPods: true
                 templateRef:
                   name: "graph-sync"
                   template: "graph-sync"
@@ -147,6 +148,7 @@ objects:
               - name: "parse-solver-inputs"
                 dependencies:
                   - "graph-sync-solverany"
+                resubmitPendingPods: true
                 templateRef:
                   name: "parse-solver-inputs"
                   template: "parse-solver-inputs"
@@ -162,6 +164,7 @@ objects:
               - name: "send-message"
                 dependencies:
                   - "parse-solver-inputs"
+                resubmitPendingPods: true
                 templateRef:
                   name: "send-message"
                   template: "send-message"

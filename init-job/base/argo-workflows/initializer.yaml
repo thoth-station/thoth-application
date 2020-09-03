@@ -4,7 +4,6 @@ metadata:
   name: initializer
 spec:
   serviceAccountName: init-job
-  resubmitPendingPods: true
   podGC:
     strategy: OnWorkflowSuccess
   entrypoint: initializer
@@ -22,6 +21,7 @@ spec:
       dag:
         tasks:
           - name: "initialize-schema"
+            resubmitPendingPods: true
             templateRef:
               name: "initialize-schema"
               template: "initialize-schema"
@@ -33,6 +33,7 @@ spec:
           - name: "register-indexes"
             dependencies:
               - "initialize-schema"
+            resubmitPendingPods: true
             templateRef:
               name: "register-indexes"
               template: "register-indexes"
@@ -44,6 +45,7 @@ spec:
           - name: "solve-core-packages"
             dependencies:
               - "register-indexes"
+            resubmitPendingPods: true
             templateRef:
               name: "solve-core-packages"
               template: "solve-core-packages"
@@ -55,6 +57,7 @@ spec:
           - name: "solve-data-science-packages"
             dependencies:
               - "register-indexes"
+            resubmitPendingPods: true
             templateRef:
               name: "solve-data-science-packages"
               template: "solve-data-science-packages"

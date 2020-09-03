@@ -156,6 +156,7 @@ objects:
               - name: "graph-sync-security-indicators"
                 dependencies:
                   - "aggregator"
+                resubmitPendingPods: true
                 templateRef:
                   name: "graph-sync"
                   template: "graph-sync"

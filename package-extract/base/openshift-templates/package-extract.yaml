@@ -54,7 +54,6 @@ objects:
         component: package-extract
     spec:
       serviceAccountName: argo
-      resubmitPendingPods: true
       ttlStrategy:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200
@@ -92,6 +91,7 @@ objects:
           dag:
             tasks:
               - name: "extract-packages"
+                resubmitPendingPods: true
                 templateRef:
                   name: "extract-packages"
                   template: "extract-packages"
@@ -124,6 +124,7 @@ objects:
               - name: "graph-sync-package-extract"
                 dependencies:
                   - "extract-packages"
+                resubmitPendingPods: true
                 templateRef:
                   name: "graph-sync"
                   template: "graph-sync"

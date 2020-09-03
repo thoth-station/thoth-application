@@ -94,7 +94,6 @@ objects:
         component: adviser
     spec:
       serviceAccountName: argo
-      resubmitPendingPods: true
       ttlStrategy:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200
@@ -169,6 +168,7 @@ objects:
           dag:
             tasks:
               - name: "advise"
+                resubmitPendingPods: true
                 templateRef:
                   name: "advise"
                   template: "advise"
@@ -220,6 +220,7 @@ objects:
               - name: "investigator-producer"
                 dependencies:
                   - "advise"
+                resubmitPendingPods: true
                 templateRef:
                   name: "investigator-producer"
                   template: "investigator-producer"
@@ -234,6 +235,7 @@ objects:
               - name: "graph-sync-advise"
                 dependencies:
                   - "advise"
+                resubmitPendingPods: true
                 templateRef:
                   name: "graph-sync"
                   template: "graph-sync"
@@ -250,6 +252,7 @@ objects:
               - name: "trigger-integration"
                 dependencies:
                   - "advise"
+                resubmitPendingPods: true
                 templateRef:
                   name: "trigger-integration"
                   template: "trigger-integration"
@@ -266,6 +269,7 @@ objects:
               - name: "kebechet-run-results"
                 dependencies:
                   - "trigger-integration"
+                resubmitPendingPods: true
                 templateRef:
                   name: "kebechet-run-results"
                   template: "schedule-kebechet"
