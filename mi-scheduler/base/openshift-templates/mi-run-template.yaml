@@ -27,6 +27,7 @@ objects:
         app: scropsmetrics
     spec:
       serviceAccountName: argo
+      resubmitPendingPods: true
       entrypoint: mi
       ttlStrategy:
         secondsAfterCompletion: 10
@@ -40,7 +41,6 @@ objects:
           dag:
             tasks:
               - name: "mi"
-                resubmitPendingPods: true
                 templateRef:
                   name: "mi"
                   template: "mi-workflow"
