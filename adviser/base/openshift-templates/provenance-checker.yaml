@@ -86,6 +86,7 @@ objects:
           dag:
             tasks:
               - name: "provenance-check"
+                resubmitPendingPods: true
                 templateRef:
                   name: "provenance-check"
                   template: "provenance-check"
@@ -118,6 +119,7 @@ objects:
               - name: "graph-sync-provenance-check"
                 dependencies:
                   - "provenance-check"
+                resubmitPendingPods: true
                 templateRef:
                   name: "graph-sync"
                   template: "graph-sync"
