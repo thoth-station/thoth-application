@@ -27,7 +27,6 @@ objects:
         app: scropsmetrics
     spec:
       serviceAccountName: argo
-      resubmitPendingPods: true
       entrypoint: mi
       ttlStrategy:
         secondsAfterCompletion: 10

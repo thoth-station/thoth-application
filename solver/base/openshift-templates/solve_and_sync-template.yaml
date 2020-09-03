@@ -54,7 +54,6 @@ objects:
       name: "${THOTH_SOLVER_WORKFLOW_ID}"
     spec:
       serviceAccountName: argo
-      resubmitPendingPods: true
       # kill workflow if running too much time
       activeDeadlineSeconds: 2600
       podGC:
