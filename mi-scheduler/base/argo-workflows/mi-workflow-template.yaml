@@ -13,7 +13,7 @@ spec:
 
   templates:
     - name: mi-workflow
-      rebumitPendingPods: true
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: REPOSITORY
@@ -33,7 +33,7 @@ spec:
                   value: "{{inputs.parameters.REPOSITORY}}"
 
     - name: analyse
-      rebumitPendingPods: true
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: REPOSITORY
@@ -76,7 +76,7 @@ spec:
             value: "."
 
     - name: process
-      rebumitPendingPods: true
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: REPOSITORY

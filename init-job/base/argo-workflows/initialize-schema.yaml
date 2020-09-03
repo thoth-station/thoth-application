@@ -7,7 +7,7 @@ spec:
   serviceAccountName: init-job
   templates:
     - name: initialize-schema
-      rebumitPendingPods: true
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: THOTH_LOG_INIT_JOB

@@ -6,7 +6,7 @@ metadata:
 spec:
   templates:
     - name: revsolve
-      rebumitPendingPods: true
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: "THOTH_REVSOLVER_DOCUMENT_ID"
