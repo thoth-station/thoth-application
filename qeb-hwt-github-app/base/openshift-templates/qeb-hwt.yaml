@@ -68,8 +68,6 @@ objects:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200
         secondsAfterFailure: 7200
-      podGC:
-        strategy: OnWorkflowSuccess
       entrypoint: qeb-hwt
       arguments:
         parameters:
