@@ -6,7 +6,7 @@ metadata:
 spec:
   templates:
     - name: graph-sync
-      rebumitPendingPods: true
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: "THOTH_DOCUMENT_ID"

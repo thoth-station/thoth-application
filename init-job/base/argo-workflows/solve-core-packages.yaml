@@ -7,7 +7,7 @@ spec:
   serviceAccountName: init-job
   templates:
     - name: solve-core-packages
-      rebumitPendingPods: true
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: THOTH_LOG_INIT_JOB
