@@ -36,4 +36,5 @@ spec:
           - name: THOTH_PACKAGE_NAME
           - name: THOTH_PACKAGE_VERSION
           - name: THOTH_PACKAGE_INDEX
+      resubmitPendingPods: true
       name: download-package

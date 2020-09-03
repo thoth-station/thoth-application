@@ -19,6 +19,7 @@ spec:
 
   templates:
     - name: main
+      rebumitPendingPods: true
       inputs:
         parameters:
           # Required
@@ -97,6 +98,7 @@ spec:
             template: aggregate-buildlog
 
     - name: prepare-env
+      rebumitPendingPods: true
       serviceAccountName: amun-prepare-workflow
       inputs:
         parameters:
@@ -116,6 +118,7 @@ spec:
             memory: 128Mi
 
     - name: create-imagestream
+      rebumitPendingPods: true
       inputs:
         parameters:
           - name: inspection-id
@@ -140,6 +143,7 @@ spec:
               local: true
 
     - name: create-buildconfig
+      rebumitPendingPods: true
       inputs:
         parameters:
           - name: dockerfile
@@ -224,6 +228,7 @@ spec:
                             - "{{inputs.parameters.processor}}"
 
     - name: await-build
+      rebumitPendingPods: true
       inputs:
         parameters:
           - name: inspection-id
@@ -238,6 +243,7 @@ spec:
             name: "{{inputs.parameters.inspection-id}}-1"
 
     - name: aggregate-buildlog
+      rebumitPendingPods: true
       inputs:
         parameters:
           - name: inspection-id

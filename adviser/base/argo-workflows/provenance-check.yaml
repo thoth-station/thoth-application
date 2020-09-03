@@ -9,6 +9,7 @@ metadata:
 spec:
   templates:
     - name: provenance-check
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: THOTH_PROVENANCE_CHECKER_JOB_ID

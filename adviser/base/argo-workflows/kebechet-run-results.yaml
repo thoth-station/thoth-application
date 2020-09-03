@@ -6,6 +6,7 @@ metadata:
 spec:
   templates:
     - name: schedule-kebechet
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: "WORKFLOW_NAME"

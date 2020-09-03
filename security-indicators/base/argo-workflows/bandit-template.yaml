@@ -43,6 +43,7 @@ spec:
           - name: THOTH_CEPH_BUCKET_NAME
           - name: THOTH_CEPH_BUCKET_PREFIX
           - name: THOTH_DEPLOYMENT_NAME
+      resubmitPendingPods: true
       name: bandit
       outputs:
         artifacts:
@@ -96,4 +97,5 @@ spec:
           - name: THOTH_SI_BANDIT_PACKAGE_VERSION
           - name: THOTH_SI_BANDIT_PACKAGE_INDEX
           - name: THOTH_SI_BANDIT_DIR
+      resubmitPendingPods: true
       name: bandit-from-dir

@@ -11,6 +11,7 @@ metadata:
 spec:
   templates:
     - name: dm
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: THOTH_DEPENDENCY_MONKEY_JOB_ID

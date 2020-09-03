@@ -6,6 +6,7 @@ metadata:
 spec:
   templates:
     - name: qeb-hwt-integration
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: "GITHUB_EVENT_TYPE"

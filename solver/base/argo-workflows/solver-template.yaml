@@ -6,6 +6,7 @@ metadata:
 spec:
   templates:
     - name: solve
+      resubmitPendingPods: true
       inputs:
         parameters:
           - name: "THOTH_SOLVER_NAME"

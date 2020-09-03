@@ -49,6 +49,7 @@ spec:
           - name: THOTH_CEPH_BUCKET_NAME
           - name: THOTH_CEPH_BUCKET_PREFIX
           - name: THOTH_DEPLOYMENT_NAME
+      resubmitPendingPods: true
       name: aggregator
       outputs:
         artifacts:

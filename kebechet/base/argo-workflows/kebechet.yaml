@@ -9,6 +9,7 @@ metadata:
 spec:
   templates:
     - name: kebechet
+      resubmitPendingPods: true
       inputs:
         parameters:
         - name: WEBHOOK_PAYLOAD
