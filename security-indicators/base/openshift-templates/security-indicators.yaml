@@ -70,7 +70,6 @@ objects:
                 templateRef:
                   name: download-package
                   template: download-package
-                resubmitPendingPods: true
               - arguments:
                   parameters:
                     - name: THOTH_SI_BANDIT_JOB_ID
@@ -94,7 +93,6 @@ objects:
                 templateRef:
                   name: bandit
                   template: bandit-from-dir
-                resubmitPendingPods: true
               - arguments:
                   parameters:
                     - name: THOTH_SI_CLOC_JOB_ID
@@ -118,7 +116,6 @@ objects:
                 templateRef:
                   name: cloc
                   template: cloc-from-dir
-                resubmitPendingPods: true
               - arguments:
                   parameters:
                     - name: THOTH_SI_AGGREGATOR_JOB_ID
@@ -152,7 +149,6 @@ objects:
                 templateRef:
                   name: aggregator
                   template: aggregator
-                resubmitPendingPods: true
               - name: "graph-sync-security-indicators"
                 dependencies:
                   - "aggregator"

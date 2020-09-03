@@ -109,7 +109,6 @@ objects:
           templateRef:
             name: inspection-build-with-cpu-template
             template: main
-          resubmitPendingPods: true
 
         - name: inspection-run
           dependencies: [inspection-build]
@@ -140,7 +139,6 @@ objects:
             template: main
           continueOn:
             failed: true
-          resubmitPendingPods: true
 
     - name: send_message
       when: "{{workflow.parameters.send_message}}"
