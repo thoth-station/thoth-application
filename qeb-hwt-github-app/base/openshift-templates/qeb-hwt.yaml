@@ -64,6 +64,7 @@ objects:
         component: qeb-hwt
     spec:
       serviceAccountName: argo
+      activeDeadlineSeconds: 3000
       ttlStrategy:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200

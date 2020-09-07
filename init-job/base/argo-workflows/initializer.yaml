@@ -5,6 +5,7 @@ metadata:
 spec:
   serviceAccountName: init-job
   resubmitPendingPods: true
+  activeDeadlineSeconds: 3000
   podGC:
     strategy: OnWorkflowSuccess
   entrypoint: initializer

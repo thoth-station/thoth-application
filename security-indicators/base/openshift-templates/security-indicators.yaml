@@ -25,6 +25,7 @@ objects:
         component: security-indicators
       name: "${THOTH_SECURITY_INDICATORS_JOB_ID}"
     spec:
+      activeDeadlineSeconds: 3000
       arguments:
         parameters:
           - name: THOTH_SECURITY_INDICATORS_JOB_ID

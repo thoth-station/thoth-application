@@ -99,4 +99,3 @@ spec:
           requests:
             cpu: 1
             memory: 1Gi
-        activeDeadlineSeconds: 2700
