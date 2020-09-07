@@ -101,4 +101,3 @@ spec:
           requests:
             cpu: 750m
             memory: 512Mi
-        activeDeadlineSeconds: 14400

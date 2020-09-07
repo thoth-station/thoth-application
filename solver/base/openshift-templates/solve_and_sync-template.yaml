@@ -55,7 +55,7 @@ objects:
     spec:
       serviceAccountName: argo
       # kill workflow if running too much time
-      activeDeadlineSeconds: 2600
+      activeDeadlineSeconds: 3000
       ttlStrategy:
         secondsAfterCompletion: 1200
         secondsAfterSuccess: 1200
