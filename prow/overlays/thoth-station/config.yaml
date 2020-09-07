@@ -83,11 +83,13 @@ tide:
     aicoe-aiops: squash
     AICoE: squash
     thoth-station: squash
+    operate-first: squash
 
   queries:
     - orgs:
         - aicoe-aiops
         - thoth-station
+        - operate-first
       excludedRepos:
         - thoth-station/dgraph-thoth-config
         - thoth-station/workload-operator
