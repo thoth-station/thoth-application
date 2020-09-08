@@ -24,7 +24,13 @@ objects:
       inspection_id: "${AMUN_INSPECTION_ID}"
   spec:
     serviceAccountName: amun-api-workflow
-    activeDeadlineSeconds: 3000
+    # Give 12 hours to finish the inspection.
+    activeDeadlineSeconds: 43200
+    ttlStrategy:
+      # Let inspections live for 3 days once completed.
+      secondsAfterCompletion: 259200
+      secondsAfterSuccess: 259200
+      secondsAfterFailure: 259200
 
     artifactRepositoryRef:
       configMap: amun
