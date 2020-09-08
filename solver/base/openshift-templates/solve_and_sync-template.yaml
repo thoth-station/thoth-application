@@ -57,9 +57,9 @@ objects:
       # kill workflow if running too much time
       activeDeadlineSeconds: 3000
       ttlStrategy:
-        secondsAfterCompletion: 1200
-        secondsAfterSuccess: 1200
-        secondsAfterFailure: 1200
+        secondsAfterCompletion: 10
+        secondsAfterSuccess: 10
+        secondsAfterFailure: 10
       entrypoint: solve-and-sync
       arguments:
         parameters:
