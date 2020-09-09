@@ -18,6 +18,8 @@ rules:
     resources:
       - processedtemplates
       - templates
+      - pods/log
+      - pods/status
     verbs:
       - create
       - delete
