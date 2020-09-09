@@ -53,6 +53,11 @@ external_plugins:
       events:
         - issue_comment
         - pull_request
+  AICoE/internal-data-hub:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
   AICoE/prometheus-api-client-python:
     - name: needs-rebase
       events:
@@ -95,6 +100,7 @@ approve:
       - AICoE/aicoe-cd
       - AICoE/aicoe-ci
       - AICoE/aicoe-sre
+      - AICoE/internal-data-hub
       - AICoE/prometheus-api-client-python
       - AICoE/s2i-custom-notebook
       - operate-first
@@ -150,6 +156,17 @@ plugins:
     - verify-owners
     - wip
   AICoE/aicoe-sre:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/internal-data-hub:
     - approve
     - assign
     - blunderbuss
