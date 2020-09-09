@@ -18,8 +18,6 @@ rules:
     resources:
       - processedtemplates
       - templates
-      - pods/log
-      - pods/status
     verbs:
       - create
       - delete
@@ -28,4 +26,13 @@ rules:
       - list
       - patch
       - update
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - pods/log
+      - pods/status
+    verbs:
+      - get
+      - list
       - watch
