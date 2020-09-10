@@ -4,7 +4,6 @@ resources:
   - branchprotector.yaml
   - deploymentconfig.yaml
   - imagestreamtags.yaml
-  - ingress.yaml
   - serviceaccount.yaml
   - services.yaml
 commonLabels:
