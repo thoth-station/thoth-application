@@ -24,7 +24,7 @@ metadata:
 data:
   config: |
     containerRuntimeExecutor: "k8sapi"
-    parallelism: 8
+    parallelism: 1
 
     # metricsConfig controls the path and port for prometheus metrics
     metricsConfig:
