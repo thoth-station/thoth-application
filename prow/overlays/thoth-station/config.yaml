@@ -29,7 +29,7 @@ branch-protection:
         required_approving_review_count: 1
         required_status_checks:
           contexts:
-            - thoth-ci/pre-commit-check
+            - aicoe-ci/pre-commit-check
       allow_force_pushes: false
       repos:
         test-infra:
@@ -149,99 +149,99 @@ tide:
         repos:
           s2i-custom-notebook:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/build-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
           aicoe-cd:
             required-contexts:
-              - thoth-ci/pre-commit-check
+              - aicoe-ci/pre-commit-check
           prometheus-api-client-python:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/pytest-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
           sefkhet-abwy:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/build-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
       thoth-station:
         repos:
           adviser:
             required-contexts:
-              - thoth-ci/pytest-check
-              - thoth-ci/build-check
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
           amun-api:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/build-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
           buildlog-parser:
             required-contexts:
-              - thoth-ci/pytest-check
-              - thoth-ci/build-check
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
           common:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/pytest-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
           datasets:
             required-contexts:
-              - thoth-ci/build-check
+              - aicoe-ci/build-check
           init-job:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/build-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
           integration-tests:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/build-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
           kebechet:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/pytest-check
-              - thoth-ci/build-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
           source-management:
             required-contexts:
-              - thoth-ci/pre-commit-check
+              - aicoe-ci/pre-commit-check
           management-api:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/build-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
           user-api:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/build-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
           package-analyzer:
             required-contexts:
-              - thoth-ci/pre-commit-check
+              - aicoe-ci/pre-commit-check
           python:
             required-contexts:
-              - thoth-ci/pytest-check
-              - thoth-ci/build-check
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
           srcops-testing:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/pytest-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
           s2i:
             required-contexts:
-              - thoth-ci/pytest-check
+              - aicoe-ci/pytest-check
           si-bandit:
             required-contexts:
-              - thoth-ci/build-check
-              - thoth-ci/pre-commit-check
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
           si-cloc:
             required-contexts:
-              - thoth-ci/build-check
-              - thoth-ci/pre-commit-check
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
           solver:
             required-contexts:
-              - thoth-ci/pre-commit-check
-              - thoth-ci/pytest-check
-              - thoth-ci/build-check
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
           storages:
             required-contexts:
-              - thoth-ci/pytest-check
-              - thoth-ci/build-check
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
           investigator:
             required-contexts:
-              - thoth-ci/build-check
-              - thoth-ci/pre-commit-check
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
 
 presubmits:
   thoth-station/srcops-testing:
