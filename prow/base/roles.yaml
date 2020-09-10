@@ -2,7 +2,7 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: "deck"
+  name: "deck-pods"
 rules:
   - apiGroups:
       - ""
@@ -14,7 +14,7 @@ rules:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: "sinker"
+  name: "sinker-pods"
 rules:
   - apiGroups:
       - ""
@@ -27,7 +27,7 @@ rules:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: "plank"
+  name: "plank-pods"
 rules:
   - apiGroups:
       - ""

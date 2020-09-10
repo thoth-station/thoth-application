@@ -6,7 +6,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: "deck"
+  name: "deck-pods"
 subjects:
 - kind: ServiceAccount
   name: "deck"
@@ -18,7 +18,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: "plank"
+  name: "plank-pods"
 subjects:
 - kind: ServiceAccount
   name: "plank"
@@ -30,7 +30,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: "sinker"
+  name: "sinker-pods"
 subjects:
 - kind: ServiceAccount
   name: "sinker"
