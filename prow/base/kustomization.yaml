@@ -6,7 +6,9 @@ resources:
   - imagestreamtags.yaml
   - serviceaccount.yaml
   - services.yaml
+  - roles.yaml
+  - rolebindings.yaml
 commonLabels:
-  app.kubernetes.io/name: aicoe-ci
+  app.kubernetes.io/name: aicoe-prow
   app.kubernetes.io/component: prow
-  app.kubernetes.io/managed-by: aicoe-thoth-devops-argocd
+  app.kubernetes.io/managed-by: aicoe-thoth-devops
