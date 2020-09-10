@@ -1,0 +1,274 @@
+prowjob_namespace: aicoe-infra-prod
+pod_namespace: aicoe-infra-prod
+
+plank:
+  default_decoration_configs:
+    "*":
+      utility_images:
+        clonerefs: "gcr.io/k8s-prow/clonerefs:v20200615-5d59425fc2"
+        initupload: "gcr.io/k8s-prow/initupload:v20200615-5d59425fc2"
+        entrypoint: "gcr.io/k8s-prow/entrypoint:v20200615-5d59425fc2"
+        sidecar: "gcr.io/k8s-prow/sidecar:v20200615-5d59425fc2"
+      gcs_configuration:
+        bucket: aicoe-thoth-prow-artifacts
+        path_strategy: explicit
+      gcs_credentials_secret: gcs-credentials
+
+branch-protection:
+  allow_disabled_policies: true
+  orgs:
+    thoth-station:
+      exclude:
+        - "^revert-"
+        - "^kebechet-"
+        - "^dependabot/"
+      protect: true
+      restrictions:
+        users: []
+        teams:
+          - sourceops
+        required_pull_request_reviews:
+          dismiss_stale_reviews: false
+        required_approving_review_count: 1
+        required_status_checks:
+          contexts:
+            - thoth-ci/pre-commit-check
+      allow_force_pushes: false
+      repos:
+        test-infra:
+          allow_force_pushes: true
+        tensorflow:
+          protect: false
+        contra-env-infra:
+          protect: false
+        ansible-role-core-imagestreams:
+          protect: false
+        ansible-role-core-templates:
+          protect: false
+        ansible-role-core-cronjob:
+          protect: false
+        ansible-role-metrics-exporter:
+          protect: false
+        ansible-role-cronjob:
+          protect: false
+        ansible-role-argo-workflows:
+          protect: false
+        ansible-role-postgresql:
+          protect: false
+        ansible-role-kebechet:
+          protect: false
+        ansible-role-postgresql-metrics-exporter:
+          protect: false
+        statusfy:
+          protect: false
+        statusfy-ops:
+          protect: false
+        website-tooling:
+          protect: false
+        cuda:
+          protect: false
+        stub-api:
+          protect: false
+        nvidia-usage-dashboard:
+          protect: false
+        template-project:
+          protect: false
+        pipelines-catalog:
+          protect: false
+        bz1816214-example:
+          protect: false
+
+tide:
+  pr_status_base_urls:
+    "*": https://prow.thoth-station.dev/pr
+
+  merge_method:
+    aicoe-aiops: squash
+    AICoE: squash
+    thoth-station: squash
+    operate-first: squash
+
+  queries:
+    - orgs:
+        - aicoe-aiops
+        - thoth-station
+        - operate-first
+      excludedRepos:
+        - thoth-station/dgraph-thoth-config
+        - thoth-station/workload-operator
+        - thoth-station/tensorflow
+        - thoth-station/contra-env-infra
+        - thoth-station/ansible-role-core-imagestreams
+        - thoth-station/ansible-role-core-templates
+        - thoth-station/ansible-role-core-cronjob
+        - thoth-station/ansible-role-metrics-exporter
+        - thoth-station/ansible-role-cronjob
+        - thoth-station/ansible-role-argo-workflows
+        - thoth-station/ansible-role-postgresql
+        - thoth-station/ansible-role-kebechet
+        - thoth-station/ansible-role-postgresql-metrics-exporter
+        - thoth-station/statusfy
+        - thoth-station/statusfy-ops
+        - thoth-station/website-tooling
+        - thoth-station/cuda
+        - thoth-station/stub-api
+        - thoth-station/nvidia-usage-dashboard
+        - thoth-station/pipelines-catalog
+        - thoth-station/bz1816214-example
+      labels:
+        - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebase
+    - repos:
+        - AICoE/aicoe-cd
+        - AICoE/aicoe-ci
+        - AICoE/aicoe-sre
+        - AICoE/internal-data-hub
+        - AICoE/prometheus-api-client-python
+        - AICoE/s2i-custom-notebook
+      labels:
+        - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebase
+
+  blocker_label: tide/merge-blocker
+  squash_label: tide/merge-method-squash
+  rebase_label: tide/merge-method-rebase
+  merge_label: tide/merge-method-merge
+
+  context_options:
+    from-branch-protection: true
+    skip-unknown-contexts: true
+    orgs:
+      AICoE:
+        repos:
+          s2i-custom-notebook:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          aicoe-cd:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+          prometheus-api-client-python:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+          sefkhet-abwy:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+      thoth-station:
+        repos:
+          adviser:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          amun-api:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          buildlog-parser:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          common:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+          datasets:
+            required-contexts:
+              - thoth-ci/build-check
+          init-job:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          integration-tests:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          kebechet:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          source-management:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+          management-api:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          user-api:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          package-analyzer:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+          python:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          srcops-testing:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+          s2i:
+            required-contexts:
+              - thoth-ci/pytest-check
+          si-bandit:
+            required-contexts:
+              - thoth-ci/build-check
+              - thoth-ci/pre-commit-check
+          si-cloc:
+            required-contexts:
+              - thoth-ci/build-check
+              - thoth-ci/pre-commit-check
+          solver:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          storages:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          investigator:
+            required-contexts:
+              - thoth-ci/build-check
+              - thoth-ci/pre-commit-check
+
+presubmits:
+  thoth-station/srcops-testing:
+    - name: try-out-prow-plus-tekton
+      agent: tekton-pipeline
+      always_run: true
+      rerun_command: "/run try-out-tekton"
+      trigger: "(?m)^/run (all|try-out-tekton),?(\\s+|$)"
+      pipeline_run_spec:
+        pipelineRef:
+          name: try-out-pipeline
+        resources:
+          - name: git
+            resourceRef:
+              name: PROW_IMPLICIT_GIT_REF
+
+periodics:
+  - name: integration-tests-periodic-preprod
+    interval: 8h
+    spec:
+      containers:
+        - image: quay.io/thoth-station/integration-tests:v0.1.2
+          imagePullPolicy: Always
+          command:
+            - "./e2e-test.sh"
+    annotations:
+      description: Periodic 'advise endpoint' tests against preprod API

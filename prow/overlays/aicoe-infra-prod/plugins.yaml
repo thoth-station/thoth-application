@@ -1,0 +1,223 @@
+label:
+  additional_labels:
+    - tide/merge-method-merge
+    - tide/merge-method-rebase
+    - tide/merge-method-squash
+    - deployment_name/ocp-test
+    - deployment_name/ocp-stage
+    - deployment_name/moc
+
+project_config:
+  project_org_configs:
+    thoth-station:
+      org_maintainers_team_id: 3934608
+      org_default_column_map:
+        Adviser: New
+        Amun: New
+        Integration Tests: New
+        Investigator: New
+        Kebechet: New
+        Knowledge Graph: New
+        Meta-Information Indicators: New
+        Performance Indicators: New
+        Security Indicators: New
+        SLO-reporter: New
+        Solver: New
+        Thoth Data Science: New
+        thoth-toolbox: New
+        User-API: New
+
+external_plugins:
+  thoth-station:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  operate-first:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/aicoe-cd:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/aicoe-ci:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/aicoe-sre:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/internal-data-hub:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/prometheus-api-client-python:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/s2i-custom-notebook:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/sefkhey-abwy:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  aicoe-aiops:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+
+welcome:
+  - repos:
+      - AICoE
+      - aicoe-aiops
+      - operate-first
+      - thoth-station
+    message_template: "Welcome @{{.AuthorLogin}}! <br><br>It looks like this is your first PR to <a href='https://github.com/{{.Org}}/{{.Repo}}'>{{.Org}}/{{.Repo}}</a> 🎉. Please refer to our [pull request process documentation](https://git.k8s.io/community/contributors/guide/pull-requests.md) to help your PR have a smooth ride to approval. <br><br>You will be prompted by a bot to use commands during the review process. Do not be afraid to follow the prompts! It is okay to experiment. [Here is the bot commands documentation](https://go.k8s.io/bot-commands). <br><br>You can also check if {{.Org}}/{{.Repo}} has [its own contribution guidelines](https://github.com/{{.Org}}/{{.Repo}}/tree/master/CONTRIBUTING.md). <br><br>You may want to refer to our [testing guide](https://git.k8s.io/community/contributors/devel/sig-testing/testing.md) if you run into trouble with your tests not passing. <br><br>If you are having difficulty getting your pull request seen, please follow the [recommended escalation practices](https://github.com/kubernetes/community/blob/master/contributors/guide/pull-requests.md#why-is-my-pull-request-not-getting-reviewed). Also, for tips and tricks in the contribution process you may want to read the [Kubernetes contributor cheat sheet](https://git.k8s.io/community/contributors/guide/contributor-cheatsheet/README.md). We want to make sure your contribution gets all the attention it needs! <br><br>Thank you, and welcome to the Thoth-Station. :smiley:"
+
+lgtm:
+  - repos:
+      - AICoE
+      - aicoe-aiops
+      - operate-first
+      - thoth-station
+
+approve:
+  - repos:
+      - aicoe-aiops
+      - AICoE/aicoe-cd
+      - AICoE/aicoe-ci
+      - AICoE/aicoe-sre
+      - AICoE/internal-data-hub
+      - AICoE/prometheus-api-client-python
+      - AICoE/s2i-custom-notebook
+      - operate-first
+      - thoth-station
+    require_self_approval: true
+    ignore_review_state: false
+
+plugins:
+  operate-first:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - project
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  thoth-station:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - project
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/aicoe-cd:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/aicoe-ci:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/aicoe-sre:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/internal-data-hub:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/prometheus-api-client-python:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/s2i-custom-notebook:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  AICoE/sefkhey-abwy:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
+  aicoe-aiops:
+    - approve
+    - assign
+    - blunderbuss
+    - hold
+    - label
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
