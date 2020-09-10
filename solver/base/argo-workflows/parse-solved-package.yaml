@@ -1,0 +1,107 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: parse-solved-package
+spec:
+  templates:
+    - name: parse-solved-package
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: "THOTH_DOCUMENT_ID"
+          - name: "THOTH_SOLVER_NAME"
+          - name: "THOTH_SOLVER_PACKAGES"
+          - name: "THOTH_SOLVER_INDEXES"
+        artifacts:
+          - name: "outputdocument"
+            path: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+      outputs:
+        artifacts:
+        - name: messagesdocument
+          path: "/mnt/workdir/{{inputs.parameters.THOTH_SOLVER_DOCUMENT_ID}}"
+      container:
+        name: parse-solved-package
+        image: workflow-helpers
+        env:
+          - name: THOTH_WORKFLOW_TASK
+            value: "parse_solved_package"
+          - name: "THOTH_MESSAGING_COMPONENT_NAME"
+            value: "solver"
+          - name: "THOTH_SOLVER_DOCUMENT_PATH"
+            value: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: THOTH_SOLVER_NAME
+            value: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
+          - name: THOTH_SOLVER_PACKAGES
+            value: "{{inputs.parameters.THOTH_SOLVER_PACKAGES}}"
+          - name: THOTH_SOLVER_INDEXES
+            value: "{{inputs.parameters.THOTH_SOLVER_INDEXES}}"
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: deployment-name
+                name: thoth
+          - name: KNOWLEDGE_GRAPH_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: postgresql-host
+                name: thoth
+          - name: KNOWLEDGE_GRAPH_PORT
+            value: "5432"
+          - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+            value: "1"
+          - name: KNOWLEDGE_GRAPH_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-user
+          - name: KNOWLEDGE_GRAPH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-password
+          - name: KNOWLEDGE_GRAPH_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-name
+          - name: THOTH_CEPH_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                key: bucket-name
+                name: ceph
+          - name: THOTH_PUBLIC_CEPH_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                key: public-bucket-name
+                name: ceph
+          - name: THOTH_CEPH_BUCKET_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                key: bucket-prefix
+                name: ceph
+          - name: THOTH_S3_ENDPOINT_URL
+            valueFrom:
+              configMapKeyRef:
+                key: host
+                name: ceph
+          - name: THOTH_CEPH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: key-id
+          - name: THOTH_CEPH_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: secret-key
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+        volumeMounts:
+          - name: workdir
+            mountPath: /mnt/workdir

@@ -177,3 +177,41 @@ objects:
                       value: "{{workflow.parameters.deployment_name}}"
                     - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
                       value: "1"
+
+              - name: "parse-solved-package"
+                dependencies:
+                  - "graph-sync-solverany"
+                templateRef:
+                  name: "parse-solved-package"
+                  template: "parse-solved-package"
+                arguments:
+                  artifacts:
+                    - name: outputdocument
+                      from: "{{tasks.solverany.outputs.artifacts.outputdocument}}"
+                  parameters:
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_SOLVER_WORKFLOW_ID}}"
+                    - name: "THOTH_SOLVER_NAME"
+                      value: "{{workflow.parameters.THOTH_SOLVER_NAME}}"
+                    - name: "THOTH_SOLVER_PACKAGES"
+                      value: "{{workflow.parameters.THOTH_SOLVER_PACKAGES}}"
+                    - name: "THOTH_SOLVER_INDEXES"
+                      value: "{{workflow.parameters.THOTH_SOLVER_INDEXES}}"
+
+              - name: "send-adviser-rerun-messages"
+                dependencies:
+                  - "parse-solved-package"
+                templateRef:
+                  name: "send-message"
+                  template: "send-message"
+                arguments:
+                  artifacts:
+                    - name: messagesdocument
+                      from: "{{tasks.parse-solved-package.outputs.artifacts.messagesdocument}}"
+                  parameters:
+                    - name: THOTH_MESSAGING_FROM_FILE
+                      value: "/mnt/workdir/{{workflow.parameters.THOTH_SOLVER_WORKFLOW_ID}}"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
+                    - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+                      value: "1"
