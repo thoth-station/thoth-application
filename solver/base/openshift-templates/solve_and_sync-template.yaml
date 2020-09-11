@@ -202,8 +202,8 @@ objects:
                 dependencies:
                   - "parse-solved-package"
                 templateRef:
-                  name: "send-message"
-                  template: "send-message"
+                  name: "send-messages"
+                  template: "send-messages"
                 arguments:
                   artifacts:
                     - name: messagesdocument
