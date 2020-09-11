@@ -14,9 +14,9 @@ spec:
           - name: "THOTH_ADVISER_METADATA"
       outputs:
         parameters:
-          - name: origin
+          - name: metadata_origin
             valueFrom:
-              path: /mnt/workdir/origin
+              path: /mnt/workdir/metadata_origin
           - name: source_type
             valueFrom:
               path: /mnt/workdir/source_type
