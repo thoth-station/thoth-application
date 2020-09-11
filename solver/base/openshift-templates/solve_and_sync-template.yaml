@@ -215,3 +215,5 @@ objects:
                       value: "{{workflow.parameters.deployment_name}}"
                     - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
                       value: "1"
+                    - name: THOTH_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_SOLVER_WORKFLOW_ID}}"

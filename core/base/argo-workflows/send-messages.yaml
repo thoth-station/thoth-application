@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: send-message
+  name: send-messages
 spec:
   templates:
-    - name: send-message
+    - name: send-messages
       resubmitPendingPods: true
       inputs:
         parameters:
@@ -24,11 +24,12 @@ spec:
             value: "1"
           - name: THOTH_MESSAGING_TOPIC_RETENTION_TIME
             value: "2160000"
+          - name: THOTH_DOCUMENT_ID
         artifacts:
           - name: "messagesdocument"
             path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
       container:
-        name: send-message
+        name: send-messages
         image: messaging
         env:
           - name: THOTH_MESSAGING_TOPIC_NAME

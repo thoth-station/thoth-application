@@ -18,8 +18,8 @@ spec:
             path: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
       outputs:
         artifacts:
-        - name: messagesdocument
-          path: "/mnt/workdir/{{inputs.parameters.THOTH_SOLVER_DOCUMENT_ID}}"
+          - name: messagesdocument
+            path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
       container:
         name: parse-solved-package
         image: workflow-helpers
