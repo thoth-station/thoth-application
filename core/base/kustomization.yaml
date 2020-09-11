@@ -7,3 +7,5 @@ commonLabels:
 resources:
   - configmaps.yaml
   - imagestreams.yaml
+  - argo-workflows/send-message.yaml
+  - argo-workflows/send-messages.yaml
