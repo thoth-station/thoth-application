@@ -12,7 +12,7 @@ spec:
           - name: "WORKFLOW_NAME"
           - name: "THOTH_DOCUMENT_ID"
           - name: "THOTH_ADVISER_METADATA"
-          - name: "origin"
+          - name: "metadata_origin"
           - name: "git_service"
       container:
         image: kebechet-job
@@ -30,7 +30,7 @@ spec:
           - name: KEBECHET_SUBCOMMAND
             value: run-results
           - name: KEBECHET_REPO_URL
-            value: "{{inputs.parameters.origin}}"
+            value: "{{inputs.parameters.metadata_origin}}"
           - name: KEBECHET_SERVICE_NAME
             value: "{{inputs.parameters.git_service}}"
           - name: KEBECHET_ANALYSIS_ID
