@@ -6,6 +6,8 @@ label:
     - deployment_name/ocp-test
     - deployment_name/ocp-stage
     - deployment_name/moc
+    - thoth/group-programming
+    - thoth/potential-observation
 
 project_config:
   project_org_configs:
