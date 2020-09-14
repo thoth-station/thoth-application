@@ -28,6 +28,8 @@ spec:
             counter:
               value: "1"
       resubmitPendingPods: true
+      retryStrategy:
+        limit: 2
       inputs:
         parameters:
           - name: "THOTH_SOLVER_NAME"

@@ -7,6 +7,8 @@ spec:
   templates:
     - name: revsolve
       resubmitPendingPods: true
+      retryStrategy:
+        limit: 2
       inputs:
         parameters:
           - name: "THOTH_REVSOLVER_DOCUMENT_ID"
