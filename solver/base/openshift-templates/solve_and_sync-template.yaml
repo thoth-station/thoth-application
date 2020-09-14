@@ -169,7 +169,7 @@ objects:
                   template: "send-messages"
                 arguments:
                   artifacts:
-                    - name: solvermessagesdocument
+                    - name: messagesdocument
                       from: "{{tasks.parse-solver-inputs.outputs.artifacts.solvermessagesdocument}}"
                   parameters:
                     - name: THOTH_MESSAGING_FROM_FILE
@@ -209,7 +209,7 @@ objects:
                   template: "send-messages"
                 arguments:
                   artifacts:
-                    - name: advisermessagesdocument
+                    - name: messagesdocument
                       from: "{{tasks.parse-solved-package.outputs.artifacts.advisermessagesdocument}}"
                   parameters:
                     - name: THOTH_MESSAGING_FROM_FILE
