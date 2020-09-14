@@ -7,7 +7,7 @@ data:
   config: |
     containerRuntimeExecutor: "k8sapi"
     namespace: "thoth-backend-stage"
-    parallelism: 6
+    parallelism: 8
 
     workflowDefaults:
       spec:
