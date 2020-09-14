@@ -17,10 +17,9 @@ spec:
           - name: "outputdocument"
             path: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
       outputs:
-        parameters:
-          - name: kafka_message
-            valueFrom:
-              path: /mnt/workdir/kafka_message
+        artifacts:
+          - name: solvermessagesdocument
+            path: "/mnt/workdir/solved_messages.json"
       container:
         name: parse-solver-inputs
         image: workflow-helpers
