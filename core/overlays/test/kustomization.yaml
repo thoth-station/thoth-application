@@ -5,6 +5,7 @@ resources:
   - argo-namespace-install.yaml
   - argo-ui-route.yaml
   - argo-workflow-controller-metrics.yaml
+  - configmap-qebhwt.yaml
   - postgresql.yaml
   - pgbouncer.yaml
   - postgresql-metrics-exporter.yaml
