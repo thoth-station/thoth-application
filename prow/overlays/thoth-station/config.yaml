@@ -242,6 +242,14 @@ tide:
             required-contexts:
               - aicoe-ci/build-check
               - aicoe-ci/pre-commit-check
+          workflow-helpers:
+            required-contexts:
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
+          report-processing:
+            required-contexts:
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
 
 presubmits:
   thoth-station/srcops-testing:
