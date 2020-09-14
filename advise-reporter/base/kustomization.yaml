@@ -3,10 +3,7 @@ kind: Kustomization
 resources:
   - configmap.yaml
   - cronjob.yaml
-  - deploymentconfig.yaml
   - imagestream.yaml
-  - route.yaml
-  - service.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: advise-reporter
