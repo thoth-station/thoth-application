@@ -170,7 +170,7 @@ objects:
                 arguments:
                   artifacts:
                     - name: solvermessagesdocument
-                      from: "{{tasks.parse-solved-package.outputs.artifacts.solvermessagesdocument}}"
+                      from: "{{tasks.parse-solver-inputs.outputs.artifacts.solvermessagesdocument}}"
                   parameters:
                     - name: THOTH_MESSAGING_FROM_FILE
                       value: "/mnt/workdir/solved_messages.json"
