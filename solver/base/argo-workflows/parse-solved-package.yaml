@@ -19,7 +19,7 @@ spec:
       outputs:
         artifacts:
           - name: messagesdocument
-            path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+            path: "/mnt/workdir/adviser_runs_messages.json"
       container:
         name: parse-solved-package
         image: workflow-helpers
