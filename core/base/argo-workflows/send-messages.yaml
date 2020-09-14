@@ -24,10 +24,10 @@ spec:
             value: "1"
           - name: THOTH_MESSAGING_TOPIC_RETENTION_TIME
             value: "2160000"
-          - name: THOTH_DOCUMENT_ID
+          - name: MESSAGES_DOCUMENT_NAME
         artifacts:
           - name: "messagesdocument"
-            path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+            path: "/mnt/workdir/{{inputs.parameters.MESSAGES_DOCUMENT_NAME}}"
       container:
         name: send-messages
         image: messaging
