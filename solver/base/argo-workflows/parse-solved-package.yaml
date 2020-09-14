@@ -70,11 +70,6 @@ spec:
               configMapKeyRef:
                 key: bucket-name
                 name: ceph
-          - name: THOTH_PUBLIC_CEPH_BUCKET
-            valueFrom:
-              configMapKeyRef:
-                key: public-bucket-name
-                name: ceph
           - name: THOTH_CEPH_BUCKET_PREFIX
             valueFrom:
               configMapKeyRef:
