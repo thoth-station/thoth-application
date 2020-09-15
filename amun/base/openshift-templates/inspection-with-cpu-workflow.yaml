@@ -70,20 +70,11 @@ objects:
         value: "${PHYSICAL_CPUS}"
       - name: processor
         value: "${PROCESSOR}"
-      - name: send_message
-        value: false
-      - name: amun-api-url
-        value: "${AMUN_API_URL}"
-      - name: infra-namespace
-        value: "${INFRA_NAMESPACE}"
-      - name: inspection-namespace
-        value: "${INSPECTION_NAMESPACE}"
       # Used in artifact repository to store results
       - name: ceph_bucket_prefix
       - name: ceph_bucket_name
       - name: ceph_host
       - name: deployment_name
-    onExit: send-message
     templates:
     - name: main
       dag:
@@ -147,43 +138,6 @@ objects:
           continueOn:
             failed: true
 
-    - name: send_message
-      when: "{{workflow.parameters.send_message}}"
-      templateRef:
-        name: send-message
-        template: send-message
-      arguments:
-        parameters:
-          - name: THOTH_MESSAGING_TOPIC_NAME
-            value: "thoth.amun.inspection-completed"
-          - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
-            value: "1"
-          - name: THOTH_MESSAGING_MESSAGE_CONTENTS
-            value: |
-              '{
-                "inspection-id": {
-                  "type": "str",
-                  "value": "{{workflow.parameters.inspection-id}}"
-                },
-                "inspection-state": {
-                  "type": "str",
-                  "value": "{{workflow.status}}"
-                },
-                "amun-api-url": {
-                  "type": "str",
-                  "value": "{{workflow.parameters.amun-api-url}}"
-                },
-                "inspection-namespace": {
-                  "type": "str",
-                  "value": "{{workflow.parameters.inspection-namespace}}"
-                },
-                "infra-namespace": {
-                  "type": "str",
-                  "value": "{{workflow.parameters.infra-namespace"
-                }
-              }'
-          - name: THOTH_DEPLOYMENT_NAME
-            value: "{{workflow.parameters.deployment-name}}"
 parameters:
 - name: AMUN_INSPECTION_ID
   description: Id of inspection that is run.
@@ -234,27 +188,3 @@ parameters:
   description: Name of processor.
   displayName: Processor name
   required: true
-
-- name: AMUN_API_URL
-  description: Where the amun api can be found
-  displayName: Amun API URL
-  valueFrom:
-    configMap:
-      name: amun
-      key: amun-api-url
-
-- name: INFRA_NAMESPACE
-  description: thoth infra namespace
-  displayName: Infra namespace
-  valueFrom:
-    configMap:
-      name: amun
-      key: infra-namespace
-
-- name: INSPECTION_NAMESPACE
-  description: Namespace where inspections are run
-  displayName: Inspection namespace
-  valueFrom:
-    configMap:
-      name: amun
-      key: inspection-namespace
