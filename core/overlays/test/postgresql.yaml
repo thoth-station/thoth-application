@@ -16,7 +16,7 @@ items:
         app.kubernetes.io/managed-by: aicoe-thoth-devops
         app.kubernetes.io/name: thoth
         app.kubernetes.io/component: core
-        app.kubernetes.io/version: "0.6.1"
+        app.kubernetes.io/version: "0.7.0"
       sessionAffinity: None
       type: ClusterIP
   - kind: PersistentVolumeClaim
@@ -29,7 +29,7 @@ items:
       resources:
         requests:
           storage: 16Gi
-      storageClassName: standard
+      storageClassName: dynamic-nfs
       volumeMode: Filesystem
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
