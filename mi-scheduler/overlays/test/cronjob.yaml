@@ -2,6 +2,6 @@
 kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
-  name: mi-analysis
+  name: mi-scheduler
 spec:
   suspend: true
