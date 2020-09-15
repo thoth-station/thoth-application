@@ -28,8 +28,8 @@ items:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 10Gi
-      storageClassName: dynamic-nfs
+          storage: 16Gi
+      storageClassName: standard
       volumeMode: Filesystem
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
@@ -48,7 +48,7 @@ items:
             app.kubernetes.io/name: thoth
             app.kubernetes.io/component: core
             app.kubernetes.io/managed-by: aicoe-thoth-devops
-            app.kubernetes.io/version: "0.6.1"
+            app.kubernetes.io/version: "0.7.0"
         spec:
           containers:
             - env:
