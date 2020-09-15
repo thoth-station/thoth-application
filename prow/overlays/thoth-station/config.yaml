@@ -266,15 +266,14 @@ presubmits:
           - name: git
             resourceRef:
               name: PROW_IMPLICIT_GIT_REF
-
-periodics:
-  - name: integration-tests-periodic-preprod
-    interval: 8h
-    spec:
-      containers:
-        - image: quay.io/thoth-station/integration-tests:v0.1.2
-          imagePullPolicy: Always
-          command:
-            - "./e2e-test.sh"
-    annotations:
-      description: Periodic 'advise endpoint' tests against preprod API
+#periodics:
+#  - name: integration-tests-periodic-preprod
+#    interval: 8h
+#    spec:
+#      containers:
+#        - image: quay.io/thoth-station/integration-tests:v0.1.2
+#          imagePullPolicy: Always
+#          command:
+#            - "./e2e-test.sh"
+#    annotations:
+#      description: Periodic 'advise endpoint' tests against preprod API
