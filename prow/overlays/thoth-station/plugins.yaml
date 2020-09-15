@@ -60,6 +60,11 @@ external_plugins:
       events:
         - issue_comment
         - pull_request
+  AICoE/prometheus-anomaly-detector:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
   AICoE/prometheus-api-client-python:
     - name: needs-rebase
       events:
@@ -103,6 +108,7 @@ approve:
       - AICoE/aicoe-ci
       - AICoE/aicoe-sre
       - AICoE/internal-data-hub
+      - AICoE/prometheus-anomaly-detector
       - AICoE/prometheus-api-client-python
       - AICoE/s2i-custom-notebook
       - operate-first
@@ -135,73 +141,7 @@ plugins:
     - trigger
     - verify-owners
     - wip
-  AICoE/aicoe-cd:
-    - approve
-    - assign
-    - blunderbuss
-    - hold
-    - label
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  AICoE/aicoe-ci:
-    - approve
-    - assign
-    - blunderbuss
-    - hold
-    - label
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  AICoE/aicoe-sre:
-    - approve
-    - assign
-    - blunderbuss
-    - hold
-    - label
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  AICoE/internal-data-hub:
-    - approve
-    - assign
-    - blunderbuss
-    - hold
-    - label
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  AICoE/prometheus-api-client-python:
-    - approve
-    - assign
-    - blunderbuss
-    - hold
-    - label
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  AICoE/s2i-custom-notebook:
-    - approve
-    - assign
-    - blunderbuss
-    - hold
-    - label
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  AICoE/sefkhey-abwy:
+  AICoE:
     - approve
     - assign
     - blunderbuss
