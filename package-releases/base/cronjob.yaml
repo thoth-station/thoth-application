@@ -18,6 +18,8 @@ spec:
             - image: "package-releases-job"
               name: package-releases
               env:
+                - name: SUBCOMMAND
+                  value: "producer"
                 - name: APP_SCRIPT
                   value: "app.sh"
                 - name: KAFKA_BOOTSTRAP_SERVERS
