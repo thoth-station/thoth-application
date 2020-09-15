@@ -18,6 +18,15 @@ spec:
             - image: "package-releases-job"
               name: package-releases
               env:
+                - name: APP_SCRIPT
+                  value: "app.sh"
+                - name: KAFKA_BOOTSTRAP_SERVERS
+                  valueFrom:
+                    configMapKeyRef:
+                      key: kafka-bootstrap-servers
+                      name: kafka
+                - name: KAFKA_CAFILE
+                  value: "/mnt/secrets/kafka_ca.crt"
                 - name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
                   valueFrom:
                     configMapKeyRef:
