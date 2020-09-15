@@ -4,7 +4,7 @@ commonLabels:
   app.kubernetes.io/version: "0.7.0"
 resources:
   - ../../base
-  - buildconfig.yaml
+  - buildConfig.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
