@@ -21,7 +21,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/workflow-helpers:v0.1.8
+      name: quay.io/thoth-station/workflow-helpers:v0.1.9
     importPolicy: {}
     referencePolicy:
       type: Source
