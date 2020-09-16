@@ -50,11 +50,16 @@ objects:
       onExit: exit-handler
       serviceAccountName: argo
       templates:
-        - archiveLocation:
+        - name: security-indicators
+          archiveLocation:
             archiveLogs: true
           dag:
             tasks:
-              - arguments:
+              - name: download-package
+                templateRef:
+                  name: download-package
+                  template: download-package
+                arguments:
                   parameters:
                     - name: THOTH_PACKAGE_NAME
                       value: >-
@@ -65,11 +70,14 @@ objects:
                     - name: THOTH_PACKAGE_INDEX
                       value: >-
                         {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}}
-                name: download-package
+
+              - name: bandit
                 templateRef:
-                  name: download-package
-                  template: download-package
-              - arguments:
+                  name: bandit
+                  template: bandit-from-dir
+                dependencies:
+                  - download-package
+                arguments:
                   parameters:
                     - name: THOTH_SI_BANDIT_JOB_ID
                       value: "{{workflow.parameters.THOTH_SECURITY_INDICATORS_JOB_ID}}"
@@ -86,13 +94,14 @@ objects:
                         {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}}
                     - name: THOTH_SI_BANDIT_DIR
                       value: /mnt/workdir/package
+
+              - name: cloc
+                templateRef:
+                  name: cloc
+                  template: cloc-from-dir
                 dependencies:
                   - download-package
-                name: bandit
-                templateRef:
-                  name: bandit
-                  template: bandit-from-dir
-              - arguments:
+                arguments:
                   parameters:
                     - name: THOTH_SI_CLOC_JOB_ID
                       value: "{{workflow.parameters.THOTH_SECURITY_INDICATORS_JOB_ID}}"
@@ -109,13 +118,15 @@ objects:
                         {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}}
                     - name: THOTH_SI_CLOC_DIR
                       value: /mnt/workdir/package
-                dependencies:
-                  - download-package
-                name: cloc
+
+              - name: aggregator
                 templateRef:
-                  name: cloc
-                  template: cloc-from-dir
-              - arguments:
+                  name: aggregator
+                  template: aggregator
+                dependencies:
+                  - bandit
+                  - cloc
+                arguments:
                   parameters:
                     - name: THOTH_SI_AGGREGATOR_JOB_ID
                       value: "{{workflow.parameters.THOTH_SECURITY_INDICATORS_JOB_ID}}"
@@ -141,13 +152,7 @@ objects:
                       value: "{{workflow.parameters.ceph_bucket_prefix}}"
                     - name: THOTH_DEPLOYMENT_NAME
                       value: "{{workflow.parameters.deployment_name}}"
-                dependencies:
-                  - bandit
-                  - cloc
-                name: aggregator
-                templateRef:
-                  name: aggregator
-                  template: aggregator
+
               - name: "graph-sync-security-indicators"
                 dependencies:
                   - "aggregator"
@@ -163,7 +168,7 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
-          name: security-indicators
+
         - name: exit-handler
           steps:
             - - name: delete-pvc
@@ -177,6 +182,7 @@ objects:
               kind: PersistentVolumeClaim
               metadata:
                 name: {{workflow.name}}-workdir
+
       volumeClaimTemplates:
         - metadata:
             name: workdir
@@ -186,6 +192,7 @@ objects:
             resources:
               requests:
                 storage: 1Gi
+
 parameters:
   - name: THOTH_SECURITY_INDICATORS_JOB_ID
     displayName: security-indicators id
