@@ -3,6 +3,9 @@ kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
   name: package-releases
+  labels:
+    app: thoth
+    component: package-releases
 spec:
   schedule: "0 */12 * * *"
   suspend: true
@@ -13,22 +16,15 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            app: thoth
+            component: package-releases
         spec:
           containers:
-            - image: "package-releases-job"
+            - image: "package-releases-job:latest"
               name: package-releases
               env:
-                - name: SUBCOMMAND
-                  value: "producer"
-                - name: APP_SCRIPT
-                  value: "app.sh"
-                - name: KAFKA_BOOTSTRAP_SERVERS
-                  valueFrom:
-                    configMapKeyRef:
-                      key: kafka-bootstrap-servers
-                      name: kafka
-                - name: KAFKA_CAFILE
-                  value: "/mnt/secrets/kafka_ca.crt"
                 - name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
                   valueFrom:
                     configMapKeyRef:
@@ -44,6 +40,11 @@ spec:
                     configMapKeyRef:
                       key: rsyslog-port
                       name: thoth
+                - name: PROMETHEUS_PUSHGATEWAY_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: pushgateway-url
                 - name: SENTRY_DSN
                   valueFrom:
                     secretKeyRef:
@@ -78,10 +79,6 @@ spec:
                     secretKeyRef:
                       name: postgresql
                       key: database-name
-              volumeMounts:
-                - name: secrets
-                  mountPath: /mnt/secrets
-                  readOnly: true
               resources:
                 requests:
                   memory: "256Mi"
@@ -96,11 +93,4 @@ spec:
                 periodSeconds: 10
                 tcpSocket:
                   port: 80
-          volumes:
-            - name: secrets
-              secret:
-                secretName: "kafka"
-                items:
-                  - key: kafka_ca.crt
-                    path: kafka_ca.crt
           restartPolicy: OnFailure
