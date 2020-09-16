@@ -7,7 +7,8 @@ metadata:
     component: si-aggregator
 spec:
   templates:
-    - container:
+    - name: aggregator
+      container:
         env:
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -30,10 +31,10 @@ spec:
         resources:
           limits:
             cpu: 200m
-            memory: 256Mi
+            memory: 1Gi
           requests:
             cpu: 200m
-            memory: 256Mi
+            memory: 1Gi
         volumeMounts:
           - mountPath: /mnt/workdir
             name: workdir
@@ -50,26 +51,8 @@ spec:
           - name: THOTH_CEPH_BUCKET_PREFIX
           - name: THOTH_DEPLOYMENT_NAME
       resubmitPendingPods: true
-      name: aggregator
       outputs:
         artifacts:
-          - name: aggreggatedout
-            path: /mnt/workdir/aggregator_results
-            archive:
-              none: {}
-            s3:
-              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
-              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
-              key: >-
-                {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/security-indicators/{{inputs.parameters.THOTH_DOCUMENT_ID}}/aggregated
-              insecure: true
-              accessKeySecret:
-                name: argo-artifact-repository-secrets
-                key: accessKey
-              secretKeySecret:
-                name: argo-artifact-repository-secrets
-                key: secretKey
-
           - name: banditout
             path: /mnt/workdir/bandit_results
             archive:
@@ -96,6 +79,23 @@ spec:
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
               key: >-
                 {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/security-indicators/{{inputs.parameters.THOTH_DOCUMENT_ID}}/cloc
+              insecure: true
+              accessKeySecret:
+                name: argo-artifact-repository-secrets
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
+
+          - name: aggreggatedout
+            path: /mnt/workdir/aggregator_results
+            archive:
+              none: {}
+            s3:
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              key: >-
+                {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/security-indicators/{{inputs.parameters.THOTH_DOCUMENT_ID}}/aggregated
               insecure: true
               accessKeySecret:
                 name: argo-artifact-repository-secrets
