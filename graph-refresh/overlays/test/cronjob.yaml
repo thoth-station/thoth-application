@@ -28,8 +28,6 @@ spec:
               env:
                 - name: DEBUG_LEVEL
                   value: "0"
-                - name: SUBCOMMAND
-                  value: "producer"
                 - name: APP_SCRIPT
                   value: "app.sh"
                 - name: KAFKA_BOOTSTRAP_SERVERS
