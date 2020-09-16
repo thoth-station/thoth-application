@@ -28,6 +28,8 @@ spec:
               env:
                 - name: DEBUG_LEVEL
                   value: "0"
+                - name: SUBCOMMAND
+                  value: "producer"
                 - name: APP_SCRIPT
                   value: "app.sh"
                 - name: KAFKA_BOOTSTRAP_SERVERS
@@ -41,7 +43,7 @@ spec:
                   value: "https://kubernetes.default.svc.cluster.local"
                 - name: KUBERNETES_VERIFY_TLS
                   value: "0"
-                - name: THOTH_INFRA_NAMESPACE
+                - name: NAMESPACE
                   valueFrom:
                     configMapKeyRef:
                       key: infra-namespace
