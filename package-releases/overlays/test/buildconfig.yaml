@@ -17,7 +17,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: "package-releases-job:latest"
+      name: "package-releases-job:test"
   source:
     type: Git
     git:
