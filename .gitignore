@@ -5,3 +5,5 @@ application_default_credentials.json
 .env
 **.env
 argocd-role-binding.yaml
+**.crt
+**.key
