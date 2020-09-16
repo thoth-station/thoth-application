@@ -53,51 +53,53 @@ spec:
       name: aggregator
       outputs:
         artifacts:
-          - archive:
-              none: {}
-            name: outputdocument
+          - name: aggreggatedout
             path: /mnt/workdir/aggregator_results
+            archive:
+              none: {}
             s3:
-              accessKeySecret:
-                key: accessKey
-                name: argo-artifact-repository-secrets
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
-              insecure: true
               key: >-
                 {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/security-indicators/{{inputs.parameters.THOTH_DOCUMENT_ID}}/aggregated
-              secretKeySecret:
-                key: secretKey
-                name: argo-artifact-repository-secrets
-          - archive:
-              none: {}
-            name: banditout
-            path: /mnt/workdir/bandit_results
-            s3:
+              insecure: true
               accessKeySecret:
-                key: accessKey
                 name: argo-artifact-repository-secrets
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
+
+          - name: banditout
+            path: /mnt/workdir/bandit_results
+            archive:
+              none: {}
+            s3:
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
-              insecure: true
               key: >-
                 {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/security-indicators/{{inputs.parameters.THOTH_DOCUMENT_ID}}/bandit
-              secretKeySecret:
-                key: secretKey
-                name: argo-artifact-repository-secrets
-          - archive:
-              none: {}
-            name: clocout
-            path: /mnt/workdir/cloc_results
-            s3:
+              insecure: true
               accessKeySecret:
-                key: accessKey
                 name: argo-artifact-repository-secrets
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
+
+          - name: clocout
+            path: /mnt/workdir/cloc_results
+            archive:
+              none: {}
+            s3:
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
-              insecure: true
               key: >-
                 {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/security-indicators/{{inputs.parameters.THOTH_DOCUMENT_ID}}/cloc
-              secretKeySecret:
-                key: secretKey
+              insecure: true
+              accessKeySecret:
                 name: argo-artifact-repository-secrets
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
