@@ -3,8 +3,6 @@ kind: Kustomization
 resources:
   - cronjob.yaml
   - imagestream.yaml
-generatorOptions:
-  disableNameSuffixHash: true
 commonLabels:
   app: thoth
   component: package-releases
