@@ -112,9 +112,9 @@ spec:
           name: workflow-controller
           resources:
             requests:
-              memory: "2Gi"
+              memory: "6Gi"
               cpu: "1"
             limits:
-              memory: "2Gi"
+              memory: "6Gi"
               cpu: "1"
       serviceAccountName: argo-server
