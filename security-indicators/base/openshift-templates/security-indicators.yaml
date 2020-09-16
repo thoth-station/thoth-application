@@ -46,6 +46,7 @@ objects:
           - name: ceph_bucket_name
           - name: ceph_host
           - name: deployment_name
+
       entrypoint: security-indicators
       onExit: exit-handler
       serviceAccountName: argo
@@ -162,7 +163,7 @@ objects:
                 arguments:
                   artifacts:
                     - name: outputdocument
-                      from: "{{tasks.aggregator.outputs.artifacts.outputdocument}}"
+                      from: "{{tasks.aggregator.outputs.artifacts.aggreggatedout}}"
                   parameters:
                     - name: "THOTH_DOCUMENT_ID"
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
