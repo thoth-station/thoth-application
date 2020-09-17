@@ -40,42 +40,7 @@ external_plugins:
       events:
         - issue_comment
         - pull_request
-  AICoE/aicoe-cd:
-    - name: needs-rebase
-      events:
-        - issue_comment
-        - pull_request
-  AICoE/aicoe-ci:
-    - name: needs-rebase
-      events:
-        - issue_comment
-        - pull_request
-  AICoE/aicoe-sre:
-    - name: needs-rebase
-      events:
-        - issue_comment
-        - pull_request
-  AICoE/internal-data-hub:
-    - name: needs-rebase
-      events:
-        - issue_comment
-        - pull_request
-  AICoE/prometheus-anomaly-detector:
-    - name: needs-rebase
-      events:
-        - issue_comment
-        - pull_request
-  AICoE/prometheus-api-client-python:
-    - name: needs-rebase
-      events:
-        - issue_comment
-        - pull_request
-  AICoE/s2i-custom-notebook:
-    - name: needs-rebase
-      events:
-        - issue_comment
-        - pull_request
-  AICoE/sefkhey-abwy:
+  AICoE:
     - name: needs-rebase
       events:
         - issue_comment
@@ -103,14 +68,8 @@ lgtm:
 
 approve:
   - repos:
+      - AICoE
       - aicoe-aiops
-      - AICoE/aicoe-cd
-      - AICoE/aicoe-ci
-      - AICoE/aicoe-sre
-      - AICoE/internal-data-hub
-      - AICoE/prometheus-anomaly-detector
-      - AICoE/prometheus-api-client-python
-      - AICoE/s2i-custom-notebook
       - operate-first
       - thoth-station
     require_self_approval: true
