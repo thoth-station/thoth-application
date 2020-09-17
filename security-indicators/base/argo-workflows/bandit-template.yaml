@@ -8,7 +8,8 @@ metadata:
     component: si-bandit
 spec:
   templates:
-    - container:
+    - name: bandit
+      container:
         env:
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -44,26 +45,27 @@ spec:
           - name: THOTH_CEPH_BUCKET_PREFIX
           - name: THOTH_DEPLOYMENT_NAME
       resubmitPendingPods: true
-      name: bandit
       outputs:
         artifacts:
-          - archive:
-              none: {}
-            name: outputdocument
+          - name: outputdocument
             path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+            archive:
+              none: {}
             s3:
-              accessKeySecret:
-                key: accessKey
-                name: argo-artifact-repository-secrets
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
-              insecure: true
               key: >-
                 {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/si-bandit/{{inputs.parameters.THOTH_DOCUMENT_ID}}
-              secretKeySecret:
-                key: secretKey
+              insecure: true
+              accessKeySecret:
                 name: argo-artifact-repository-secrets
-    - container:
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
+
+    - name: bandit-from-dir
+      container:
         env:
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -98,4 +100,3 @@ spec:
           - name: THOTH_SI_BANDIT_PACKAGE_INDEX
           - name: THOTH_SI_BANDIT_DIR
       resubmitPendingPods: true
-      name: bandit-from-dir

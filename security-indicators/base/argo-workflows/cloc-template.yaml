@@ -8,7 +8,9 @@ metadata:
     component: si-cloc
 spec:
   templates:
-    - container:
+
+    - name: cloc
+      container:
         env:
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -44,26 +46,29 @@ spec:
           - name: THOTH_CEPH_BUCKET_PREFIX
           - name: THOTH_DEPLOYMENT_NAME
       resubmitPendingPods: true
-      name: cloc
       outputs:
         artifacts:
           - archive:
               none: {}
             name: outputdocument
             path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+            archive:
+              none: {}
             s3:
-              accessKeySecret:
-                key: accessKey
-                name: argo-artifact-repository-secrets
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
-              insecure: true
               key: >-
                 {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/si-cloc/{{inputs.parameters.THOTH_DOCUMENT_ID}}
-              secretKeySecret:
-                key: secretKey
+              insecure: true
+              accessKeySecret:
                 name: argo-artifact-repository-secrets
-    - container:
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
+
+    - name: cloc-from-dir
+      container:
         env:
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -96,4 +101,3 @@ spec:
           - name: THOTH_SI_CLOC_PACKAGE_INDEX
           - name: THOTH_SI_CLOC_DIR
       resubmitPendingPods: true
-      name: cloc-from-dir

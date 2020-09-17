@@ -48,6 +48,28 @@ objects:
           - name: deployment_name
 
       entrypoint: security-indicators
+      metrics:
+        prometheus:
+          - name: exec_duration_gauge
+            help: "Duration task gauge by name when succeded."
+            labels:
+              - key: name
+                value: "{{workflow.name}}"
+              - key: workflow_type
+                value: "security-indicator"
+            when: "{{status}} == Succeeded"
+            gauge:
+              value: "{{workflow.duration}}"
+          - name: status_counter
+            labels:
+              - key: name
+                value: "security-indicator"
+              - key: status
+                value: "{{status}}"
+            help: "Count of workflow by status"
+            counter:
+              value: "1"
+
       onExit: exit-handler
       serviceAccountName: argo
       templates:
@@ -192,7 +214,7 @@ objects:
               - ReadWriteMany
             resources:
               requests:
-                storage: 1Gi
+                storage: 2Gi
 
 parameters:
   - name: THOTH_SECURITY_INDICATORS_JOB_ID
