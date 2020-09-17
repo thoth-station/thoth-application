@@ -41,7 +41,7 @@ spec:
                   value: "https://kubernetes.default.svc.cluster.local"
                 - name: KUBERNETES_VERIFY_TLS
                   value: "0"
-                - name: THOTH_INFRA_NAMESPACE
+                - name: NAMESPACE
                   valueFrom:
                     configMapKeyRef:
                       key: infra-namespace
