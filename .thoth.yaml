@@ -1,16 +1,3 @@
-host: khemenu.thoth-station.ninja
-tls_verify: true
-requirements_format: pipenv
-
-runtime_environments:
-  - name: 'rhel:8'
-    operating_system:
-      name: rhel
-      version: "8.0"
-    python_version: "3.6"
-    recommendation_type: latest
-    limit_latest_versions: 5
-
 managers:
   - name: version
     configuration:
