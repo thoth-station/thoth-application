@@ -222,6 +222,10 @@ tide:
           s2i:
             required-contexts:
               - aicoe-ci/pytest-check
+          si-aggregator:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
           si-bandit:
             required-contexts:
               - aicoe-ci/build-check
