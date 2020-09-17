@@ -103,6 +103,7 @@ rules:
     verbs:
       - get
       - list
+      - watch
       - delete
   - apiGroups:
       - ""
@@ -113,6 +114,7 @@ rules:
     verbs:
       - get
       - list
+      - watch
       - delete
   - apiGroups:
       - ""
@@ -122,3 +124,4 @@ rules:
       - get
       - list
       - delete
+      - watch
