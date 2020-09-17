@@ -121,7 +121,10 @@ rules:
     resources:
       - pods
     verbs:
+      - create
       - get
       - list
-      - delete
+      - patch
+      - update
       - watch
+      - delete
