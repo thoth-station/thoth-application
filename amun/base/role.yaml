@@ -101,6 +101,8 @@ rules:
       - imagestreams
       - imagestreamtags
     verbs:
+      - get
+      - list
       - delete
   - apiGroups:
       - ""
@@ -109,10 +111,14 @@ rules:
       - builds
       - buildconfigs
     verbs:
+      - get
+      - list
       - delete
   - apiGroups:
       - ""
     resources:
       - pods
     verbs:
+      - get
+      - list
       - delete
