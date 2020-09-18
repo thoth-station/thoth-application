@@ -35,7 +35,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/investigator:v0.4.7
+      name: quay.io/thoth-station/investigator:v0.4.7-dev
     importPolicy: {}
     referencePolicy:
       type: Source
