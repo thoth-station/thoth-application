@@ -97,11 +97,11 @@ spec:
                     secretKeyRef:
                       name: ceph
                       key: secret-key
-                - name: PROMETHEUS_INSTANCE_METRICS_EXPORTER_FRONTEND
+                - name: PROMETHEUS_INSTANCE_METRICS_EXPORTER_INFRA
                   valueFrom:
                     configMapKeyRef:
                       name: prometheus
-                      key: instance-metrics-exporter-frontend
+                      key: instance-metrics-exporter-infra
                 - name: PROMETHEUS_INSTANCE_USER_API
                   valueFrom:
                     configMapKeyRef:
