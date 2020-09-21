@@ -1,9 +1,0 @@
----
-kind: Route
-apiVersion: route.openshift.io/v1
-metadata:
-  name: package-update-consumer
-spec:
-  to:
-    kind: Service
-    name: package-update-consumer
