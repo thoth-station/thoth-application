@@ -29,6 +29,8 @@ spec:
               value: "0"
             - name: APP_SCRIPT
               value: "app.sh"
+            - name: THOTH_MESSAGING_DB_LOCATION
+              value: "/mnt/faust_data"
             - name: KAFKA_BOOTSTRAP_SERVERS
               valueFrom:
                 configMapKeyRef:
@@ -98,6 +100,8 @@ spec:
             - name: secrets
               mountPath: /mnt/secrets
               readOnly: true
+            - name: data-dir
+              mountPath: /mnt/faust_data
           resources:
             requests:
               memory: "256Mi"
@@ -127,4 +131,7 @@ spec:
             items:
               - key: kafka_ca.crt
                 path: kafka_ca.crt
+        - name: data-dir
+          persistentVolumeClaim:
+            claimName: faust-data-dir
   test: false
