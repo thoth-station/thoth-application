@@ -58,6 +58,54 @@ spec:
   selector:
     app: argo-server
 ---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: argocli
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/argocli:v2.11.0
+    importPolicy: {}
+    referencePolicy:
+      type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: workflow-controller
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/workflow-controller:v2.11.0
+    importPolicy: {}
+    referencePolicy:
+      type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: argoexec
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/argoexec:v2.11.0
+    importPolicy: {}
+    referencePolicy:
+      type: Local
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -75,7 +123,7 @@ spec:
         - args:
             - server
             - --namespaced
-          image: quay.io/thoth-station/argocli:v2.9.5
+          image: argocli
           name: argo-server
           ports:
             - containerPort: 2746
@@ -106,11 +154,11 @@ spec:
             - --configmap
             - workflow-controller-configmap
             - --executor-image
-            - quay.io/thoth-station/argoexec:v2.9.5
+            - argoexec:latest
             - --namespaced
           command:
             - workflow-controller
-          image: quay.io/thoth-station/workflow-controller:fix-3791
+          image: workflow-controller
           name: workflow-controller
           resources:
             requests:
@@ -120,8 +168,3 @@ spec:
               memory: "4Gi"
               cpu: "1"
       serviceAccountName: argo-server
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: workflow-controller-configmap
