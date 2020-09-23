@@ -44,9 +44,9 @@ objects:
       # kill workflow if running too much time
       activeDeadlineSeconds: 3600
       ttlStrategy:
-        secondsAfterCompletion: 10
-        secondsAfterSuccess: 10
-        secondsAfterFailure: 10
+        secondsAfterCompletion: 25
+        secondsAfterSuccess: 25
+        secondsAfterFailure: 25
       entrypoint: revsolve-and-sync
 
       metrics:
