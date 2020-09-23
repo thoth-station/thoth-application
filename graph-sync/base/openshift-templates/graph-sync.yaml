@@ -1,0 +1,88 @@
+---
+kind: Template
+apiVersion: template.openshift.io/v1
+metadata:
+  name: graph-sync
+  labels:
+    app: thoth
+    component: graph-sync
+    template: graph-sync
+  annotations:
+    description: "Thoth: Graph Sync"
+    openshift.io/display-name: "Thoth: Graph Sync"
+    tags: "thoth,ai-stacks,graph-sync"
+    template.openshift.io/documentation-url: "https://github.com/Thoth-Station/"
+    template.openshift.io/long-description: >
+      This template defines resources needed to sync a single document from ceph storage to our DB.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      labels:
+        app: thoth
+        component: graph-sync
+      name: "${THOTH_SYNC_JOB_ID}"
+    spec:
+      # kill workflow if running too much time
+      activeDeadlineSeconds: 3000
+      ttlStrategy:
+        secondsAfterCompletion: 25
+        secondsAfterSuccess: 25
+        secondsAfterFailure: 25
+      arguments:
+        parameters:
+          - name: THOTH_SYNC_JOB_ID
+            value: "${THOTH_SYNC_JOB_ID}"
+          - name: THOTH_SYNC_DOCUMENT_ID
+            value: "${THOTH_SYNC_DOCUMENT_ID}"
+          - name: THOTH_FORCE_SYNC
+            value: "${THOTH_FORCE_SYNC}"
+
+      entrypoint: graph-sync
+
+      metrics:
+        prometheus:
+          - name: status_counter
+            help: "Count of workflow by status"
+            labels:
+              - key: name
+                value: graph-sync
+              - key: status
+                value: "{{workflow.status}}"
+            counter:
+              value: "1"
+
+          - name: duration_seconds_histogram
+            help: "Duration of workflow when succeded"
+            when: "{{workflow.status}} == Succeeded"
+            labels:
+              - key: name
+                value: graph-sync
+            histogram:
+              buckets:
+                - 5
+                - 10
+                - 30
+                - 60
+                - 120
+                - 180
+                - 300
+                - 600
+                - 900
+              value: "{{workflow.duration}}"
+
+      serviceAccountName: argo
+      templates:
+        - name: graph-sync
+          archiveLocation:
+            archiveLogs: true
+          templateRef:
+            name: graph-sync
+            template: graph-sync-not-local
+          argument:
+            parameters:
+              - name: THOTH_DOCUMENT_ID
+                value: "{{workflow.parameters.THOTH_SYNC_DOCUMENT_ID}}"
+              - name: THOTH_FORCE_SYNC
+                value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
