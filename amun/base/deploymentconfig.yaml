@@ -33,6 +33,11 @@ spec:
               value: "0"
             - name: THOTH_SENTRY_IGNORE_LOGGER
               value: "connexion.decorators.validation"
+            - name: THOTH_AMUN_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: amun
+                  key: amun-api-url
             - name: THOTH_AMUN_INSPECTION_NAMESPACE
               valueFrom:
                 configMapKeyRef:
