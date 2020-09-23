@@ -2,40 +2,34 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: parse-solved-package
+  name: parse-solver-output
 spec:
   templates:
-    - name: parse-solved-package
+    - name: parse-solver-output
       resubmitPendingPods: true
       inputs:
         parameters:
           - name: "THOTH_DOCUMENT_ID"
           - name: "THOTH_SOLVER_NAME"
-          - name: "THOTH_SOLVER_PACKAGES"
-          - name: "THOTH_SOLVER_INDEXES"
         artifacts:
           - name: "outputdocument"
             path: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
       outputs:
         artifacts:
-          - name: advisermessagesdocument
-            path: "/mnt/workdir/adviser_runs_messages.json"
+          - name: messagestobesentdocument
+            path: "/mnt/workdir/messages_to_be_sent.json"
       container:
-        name: parse-solved-package
+        name: parse-solver-output
         image: workflow-helpers
         env:
           - name: THOTH_WORKFLOW_TASK
-            value: "parse_solved_package"
+            value: "parse_solver_output"
           - name: "THOTH_MESSAGING_COMPONENT_NAME"
             value: "solver"
           - name: "THOTH_SOLVER_DOCUMENT_PATH"
             value: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
           - name: THOTH_SOLVER_NAME
             value: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
-          - name: THOTH_SOLVER_PACKAGES
-            value: "{{inputs.parameters.THOTH_SOLVER_PACKAGES}}"
-          - name: THOTH_SOLVER_INDEXES
-            value: "{{inputs.parameters.THOTH_SOLVER_INDEXES}}"
           - name: THOTH_DEPLOYMENT_NAME
             valueFrom:
               configMapKeyRef:
