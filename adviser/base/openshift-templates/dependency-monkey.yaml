@@ -38,7 +38,7 @@ parameters:
     # value: "history.png"
   - name: THOTH_ADVISER_BEAM_WIDTH
     required: true
-    description: Redependency-monkey's beam width to restrict memory requirements with states generated.
+    description: Resolver's beam width to restrict memory requirements with states generated.
     displayName: Beam width
     value: "1000000"
   - name: THOTH_DEPENDENCY_MONKEY_STACK_OUTPUT
