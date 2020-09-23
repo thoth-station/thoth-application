@@ -31,6 +31,8 @@ objects:
         secondsAfterCompletion: 25
         secondsAfterSuccess: 25
         secondsAfterFailure: 25
+      podGC:
+        strategy: OnPodCompletion
       arguments:
         parameters:
           - name: THOTH_SECURITY_INDICATORS_JOB_ID
@@ -85,7 +87,6 @@ objects:
                 - 900
               value: "{{workflow.duration}}"
 
-      onExit: exit-handler
       serviceAccountName: argo
       templates:
         - name: security-indicators
@@ -206,20 +207,6 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
-
-        - name: exit-handler
-          steps:
-            - - name: delete-pvc
-                template: delete-pvc
-                when: "{{workflow.status}} != Succeeded"
-        - name: delete-pvc
-          resource:
-            action: delete
-            manifest: |
-              apiVersion: v1
-              kind: PersistentVolumeClaim
-              metadata:
-                name: {{workflow.name}}-workdir
 
       volumeClaimTemplates:
         - metadata:
