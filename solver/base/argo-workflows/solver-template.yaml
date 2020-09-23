@@ -6,27 +6,38 @@ metadata:
 spec:
   templates:
     - name: solve
+
       metrics:
         prometheus:
-          - name: exec_duration_gauge
-            help: "Duration task gauge by name when succeded."
+          - name: task_status_counter
+            help: "Count of workflow task by status"
             labels:
               - key: name
-                value: "{{workflow.name}}"
-              - key: workflow_type
-                value: "solver"
-            when: "{{status}} == Succeeded"
-            gauge:
-              value: "{{duration}}"
-          - name: status_counter
-            labels:
-              - key: name
-                value: "solver"
+                value: solver
               - key: status
                 value: "{{status}}"
-            help: "Count of workflow by status"
             counter:
               value: "1"
+
+          - name: task_duration_seconds_histogram
+            help: "Duration of workflow task when succeded"
+            when: "{{status}} == Succeeded"
+            labels:
+              - key: name
+                value: solver
+            histogram:
+              buckets:
+                - 5
+                - 10
+                - 30
+                - 60
+                - 120
+                - 180
+                - 300
+                - 600
+                - 900
+              value: "{{duration}}"
+
       resubmitPendingPods: true
       retryStrategy:
         limit: 2

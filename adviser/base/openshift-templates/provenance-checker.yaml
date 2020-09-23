@@ -56,6 +56,38 @@ objects:
         secondsAfterSuccess: 7200
         secondsAfterFailure: 7200
       entrypoint: provenance-checker
+
+      metrics:
+        prometheus:
+          - name: status_counter
+            help: "Count of workflow by status"
+            labels:
+              - key: name
+                value: provenance-checker
+              - key: status
+                value: "{{workflow.status}}"
+            counter:
+              value: "1"
+
+          - name: duration_seconds_histogram
+            help: "Duration of workflow when succeded"
+            when: "{{workflow.status}} == Succeeded"
+            labels:
+              - key: name
+                value: provenance-checker
+            histogram:
+              buckets:
+                - 5
+                - 10
+                - 30
+                - 60
+                - 120
+                - 180
+                - 300
+                - 600
+                - 900
+              value: "{{workflow.duration}}"
+
       arguments:
         parameters:
           - name: THOTH_PROVENANCE_CHECKER_JOB_ID

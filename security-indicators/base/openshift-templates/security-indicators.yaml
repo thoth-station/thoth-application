@@ -48,27 +48,37 @@ objects:
           - name: deployment_name
 
       entrypoint: security-indicators
+
       metrics:
         prometheus:
-          - name: exec_duration_gauge
-            help: "Duration task gauge by name when succeded."
-            labels:
-              - key: name
-                value: "{{workflow.name}}"
-              - key: workflow_type
-                value: "security-indicator"
-            when: "{{status}} == Succeeded"
-            gauge:
-              value: "{{workflow.duration}}"
           - name: status_counter
+            help: "Count of workflow by status"
             labels:
               - key: name
-                value: "security-indicator"
+                value: security-indicator
               - key: status
-                value: "{{status}}"
-            help: "Count of workflow by status"
+                value: "{{workflow.status}}"
             counter:
               value: "1"
+
+          - name: duration_seconds_histogram
+            help: "Duration of workflow when succeded"
+            when: "{{workflow.status}} == Succeeded"
+            labels:
+              - key: name
+                value: security-indicator
+            histogram:
+              buckets:
+                - 5
+                - 10
+                - 30
+                - 60
+                - 120
+                - 180
+                - 300
+                - 600
+                - 900
+              value: "{{workflow.duration}}"
 
       onExit: exit-handler
       serviceAccountName: argo
