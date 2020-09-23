@@ -25,7 +25,12 @@ objects:
         component: security-indicators
       name: "${THOTH_SECURITY_INDICATORS_JOB_ID}"
     spec:
+      # kill workflow if running too much time
       activeDeadlineSeconds: 3000
+      ttlStrategy:
+        secondsAfterCompletion: 25
+        secondsAfterSuccess: 25
+        secondsAfterFailure: 25
       arguments:
         parameters:
           - name: THOTH_SECURITY_INDICATORS_JOB_ID
