@@ -22,11 +22,11 @@ spec:
               name: nepthys
               resources:
                 limits:
-                  cpu: 500m
-                  memory: 1Gi
+                  cpu: 1
+                  memory: 2Gi
                 requests:
-                  cpu: 500m
-                  memory: 1Gi
+                  cpu: 1
+                  memory: 2Gi
               livenessProbe:
                 failureThreshold: 1
                 # Give this job 30 minutes to finish.
