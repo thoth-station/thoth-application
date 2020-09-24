@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: thoth-backend-prod
+commonLabels:
+  app: thoth
+  component: adviser
+resources:
+  - ../../base
+patchesStrategicMerge:
+  - imagestreamtag.yaml
+patchesJson6902:
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: adviser
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: dependency-monkey
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: provenance-checker
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: dm
