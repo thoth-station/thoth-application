@@ -3,8 +3,6 @@ kind: Kustomization
 resources:
   - cronjob.yaml
   - imagestream.yaml
-  - route.yaml
-  - service.yaml
   - serviceaccount.yaml
 commonLabels:
   app: thoth
