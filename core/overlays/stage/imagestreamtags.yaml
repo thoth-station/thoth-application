@@ -1,17 +1,16 @@
----
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
   name: thoth-toolbox
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: "quay.io/thoth-station/thoth-toolbox:v0.2.0"
-      importPolicy: {}
-      referencePolicy:
-        type: Local
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/thoth-toolbox:v0.2.0
+    importPolicy: {}
+    referencePolicy:
+      type: Local
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -19,27 +18,13 @@ metadata:
   name: workflow-helpers
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: "quay.io/thoth-station/workflow-helpers:v0.1.7"
-      importPolicy: {}
-      referencePolicy:
-        type: Local
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: messaging
-spec:
-  tags:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/messaging:v0.6.4
+      name: quay.io/thoth-station/workflow-helpers:v0.1.13
     importPolicy: {}
     referencePolicy:
-      type: Source
+      type: Local
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -50,10 +35,24 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/investigator:v0.4.0
+      name: quay.io/thoth-station/investigator:v0.4.10
     importPolicy: {}
     referencePolicy:
-      type: Source
+      type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: messaging
+spec:
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/messaging:v0.7.6
+    importPolicy: {}
+    referencePolicy:
+      type: Local
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -61,10 +60,10 @@ metadata:
   name: s2i-thoth-ubi8-py36
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: "quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.15.0"
-      importPolicy: {}
-      referencePolicy:
-        type: Local
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.15.0
+    importPolicy: {}
+    referencePolicy:
+      type: Local
