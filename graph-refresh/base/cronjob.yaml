@@ -7,7 +7,7 @@ metadata:
     app: thoth
     component: graph-refresh
 spec:
-  schedule: "0 */1 * * *"
+  schedule: "0 */2 * * *"
   suspend: true
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
@@ -26,29 +26,32 @@ spec:
             - image: "graph-refresh-job:latest"
               name: graph-refresh
               env:
-                - name: "GRAPH_REFRESH_NO_SOLVERS"
+                - name: DEBUG_LEVEL
                   value: "0"
-                - name: "GRAPH_REFRESH_NO_PACKAGE_ANALYZERS"
-                  value: "0"
-                - name: THOTH_GRAPH_REFRESH_EAGER_STOP
-                  # Stop after N scheduled solver runs per new package-version.
-                  value: "200"
+                - name: APP_SCRIPT
+                  value: "app.sh"
+                - name: KAFKA_BOOTSTRAP_SERVERS
+                  valueFrom:
+                    configMapKeyRef:
+                      name: kafka
+                      key: kafka-bootstrap-servers
+                - name: KAFKA_CAFILE
+                  value: "/mnt/secrets/kafka_ca.crt"
                 - name: KUBERNETES_API_URL
                   value: "https://kubernetes.default.svc.cluster.local"
                 - name: KUBERNETES_VERIFY_TLS
                   value: "0"
-                - name: THOTH_USE_ARGO
-                  value: "1"
-                - name: THOTH_MIDDLETIER_NAMESPACE
-                  valueFrom:
-                    configMapKeyRef:
-                      key: middletier-namespace
-                      name: thoth
-                - name: THOTH_INFRA_NAMESPACE
+                - name: NAMESPACE
                   valueFrom:
                     configMapKeyRef:
                       key: infra-namespace
                       name: thoth
+                - name: THOTH_GRAPH_REFRESH_SOLVER
+                  value: "1"
+                - name: THOTH_GRAPH_REFRESH_REVSOLVER
+                  value: "0"
+                - name: THOTH_GRAPH_REFRESH_SECURITY
+                  value: "0"
                 - name: THOTH_DEPLOYMENT_NAME
                   valueFrom:
                     configMapKeyRef:
@@ -77,8 +80,8 @@ spec:
                 - name: KNOWLEDGE_GRAPH_HOST
                   valueFrom:
                     configMapKeyRef:
-                      key: postgresql-host
                       name: thoth
+                      key: postgresql-host
                 - name: KNOWLEDGE_GRAPH_PORT
                   value: "5432"
                 - name: KNOWLEDGE_GRAPH_SSL_DISABLED
@@ -98,21 +101,10 @@ spec:
                     secretKeyRef:
                       name: postgresql
                       key: database-name
-                - name: THOTH_CEPH_BUCKET
-                  valueFrom:
-                    configMapKeyRef:
-                      key: bucket-name
-                      name: ceph
-                - name: THOTH_CEPH_BUCKET_PREFIX
-                  valueFrom:
-                    configMapKeyRef:
-                      key: bucket-prefix
-                      name: ceph
-                - name: THOTH_S3_ENDPOINT_URL
-                  valueFrom:
-                    configMapKeyRef:
-                      key: host
-                      name: ceph
+              volumeMounts:
+                - name: secrets
+                  mountPath: /mnt/secrets
+                  readOnly: true
               resources:
                 requests:
                   memory: "256Mi"
@@ -126,4 +118,11 @@ spec:
                 periodSeconds: 10
                 tcpSocket:
                   port: 80
+          volumes:
+            - name: secrets
+              secret:
+                secretName: "kafka"
+                items:
+                  - key: kafka_ca.crt
+                    path: kafka_ca.crt
           restartPolicy: OnFailure
