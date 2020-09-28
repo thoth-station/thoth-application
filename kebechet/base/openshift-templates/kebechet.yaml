@@ -49,7 +49,7 @@ objects:
             help: "Count of workflow by status"
             labels:
               - key: name
-                value: qeb-hwt
+                value: kebechet
               - key: status
                 value: "{{workflow.status}}"
             counter:
@@ -60,7 +60,7 @@ objects:
             when: "{{workflow.status}} == Succeeded"
             labels:
               - key: name
-                value: qeb-hwt
+                value: kebechet
             histogram:
               buckets:
                 - 5
