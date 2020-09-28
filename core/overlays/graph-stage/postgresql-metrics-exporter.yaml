@@ -27,8 +27,8 @@ spec:
   selector:
     service: postgres-metrics-exporter
 ---
-apiVersion: v1
-kind: apps.openshift.io/v1
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
 metadata:
   labels:
     service: postgres-metrics-exporter
