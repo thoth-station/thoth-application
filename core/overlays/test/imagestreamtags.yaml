@@ -49,7 +49,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/messaging:v0.7.7
+      name: quay.io/thoth-station/messaging:v0.7.8
     importPolicy: {}
     referencePolicy:
       type: Source
