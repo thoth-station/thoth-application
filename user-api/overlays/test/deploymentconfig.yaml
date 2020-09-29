@@ -1,0 +1,197 @@
+---
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: user-api
+spec:
+  replicas: 1
+  selector:
+    service: user-api
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: user-api
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
+  template:
+    metadata:
+      labels:
+        service: user-api
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: user-api
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
+    spec:
+      serviceAccountName: user-api
+      containers:
+        - name: user-api
+          image: user-api
+          imagePullPolicy: Always
+          env:
+            - name: APP_MODULE
+              value: "thoth.user_api.openapi_server:app"
+            - name: APP_CONFIG
+              value: "gunicorn.conf.py"
+            - name: KUBERNETES_API_URL
+              value: "https://kubernetes.default.svc.cluster.local"
+            - name: KUBERNETES_VERIFY_TLS
+              value: "0"
+            - name: THOTH_HOST
+              value: "khemenu.thoth-station.ninja"
+            - name: "THOTH_SENTRY_IGNORE_EXCEPTION"
+              value: "thoth.user_api.exceptions.NotFoundException,thoth.storages.exceptions.NotFoundError"
+            - name: THOTH_FRONTEND_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: frontend-namespace
+                  name: thoth
+            - name: THOTH_MIDDLETIER_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: middletier-namespace
+                  name: thoth
+            - name: THOTH_INFRA_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: infra-namespace
+                  name: thoth
+            - name: THOTH_BACKEND_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: backend-namespace
+                  name: thoth
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: deployment-name
+                  name: thoth
+            - name: THOTH_S3_ENDPOINT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: host
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-name
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-prefix
+                  name: ceph
+            - name: THOTH_USER_API_APP_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: thoth
+                  key: app-secret-key
+            - name: THOTH_CEPH_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ceph
+                  key: key-id
+            - name: THOTH_CEPH_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ceph
+                  key: secret-key
+            - name: AMUN_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: amun-api-url
+                  name: user-api
+            - name: RSYSLOG_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: rsyslog-host
+                  name: thoth
+            - name: RSYSLOG_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: rsyslog-port
+                  name: thoth
+            - name: PROMETHEUS_PUSHGATEWAY_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: pushgateway-host
+                  name: prometheus
+            - name: PROMETHEUS_PUSHGATEWAY_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: pushgateway-port
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: thoth
+                  key: sentry-dsn
+            - name: KNOWLEDGE_GRAPH_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: postgresql-host
+                  name: thoth
+            - name: KNOWLEDGE_GRAPH_PORT
+              value: "5432"
+            - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+              value: "1"
+            - name: KNOWLEDGE_GRAPH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-user
+            - name: KNOWLEDGE_GRAPH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-password
+            - name: KNOWLEDGE_GRAPH_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-name
+            - name: THOTH_API_HTTPS
+              valueFrom:
+                configMapKeyRef:
+                  name: user-api
+                  key: api-https
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: kafka-bootstrap-servers
+            - name: KAFKA_CAFILE
+              value: "/mnt/secrets/kafka_ca.crt"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "2"
+            limits:
+              memory: "1Gi"
+              cpu: "2"
+          readinessProbe:
+            httpGet:
+              path: "/readiness"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: "/liveness"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            timeoutSeconds: 10
+      volumes:
+        - name: secrets
+          secret:
+            secretName: "kafka"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
+  test: false
