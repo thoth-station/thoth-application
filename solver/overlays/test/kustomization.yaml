@@ -3,11 +3,11 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+  - argo-workflows/parse-solver-output.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
   - openshift-templates/solve_and_sync-template.yaml
   - argo-workflows/solver-template.yaml
-  - argo-workflows/parse-solver-output.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
