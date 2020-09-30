@@ -36,3 +36,9 @@ patchesJson6902:
       version: v1
       kind: Role
       name: user-api
+  - path: put-into-backend-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: user-api-pods-info
