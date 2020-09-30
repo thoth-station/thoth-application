@@ -53,3 +53,6 @@ data:
   pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
   pushgateway-port: "80"
   pushgateway-url: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80
+  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-backend-stage.apps.ocp.prod.psi.redhat.com:80"
+  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-middletier-stage.apps.ocp.prod.psi.redhat.com:80"
+  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-amun-inspection-stage.apps.ocp.prod.psi.redhat.com:80"

@@ -102,6 +102,21 @@ spec:
                     configMapKeyRef:
                       name: prometheus
                       key: instance-metrics-exporter-infra
+                - name: PROMETHEUS_INSTANCE_WORKFLOW_CONTROLLER_BACKEND
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: instance-workflow-controller-metrics-backend
+                - name: PROMETHEUS_INSTANCE_WORKFLOW_CONTROLLER_MIDDLETIER
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: instance-workflow-controller-metrics-middletier
+                - name: PROMETHEUS_INSTANCE_WORKFLOW_CONTROLLER_AMUN_INSPECTION
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: instance-workflow-controller-metrics-amun-inspection
                 - name: PROMETHEUS_INSTANCE_USER_API
                   valueFrom:
                     configMapKeyRef:
