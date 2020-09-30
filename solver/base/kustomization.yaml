@@ -8,5 +8,4 @@ resources:
   - imagestreams.yaml
   - openshift-templates/solve_and_sync-template.yaml
   - argo-workflows/solver-template.yaml
-  - argo-workflows/parse-solver-inputs.yaml
-  - argo-workflows/parse-solved-package.yaml
+  - argo-workflows/parse-solver-output.yaml
