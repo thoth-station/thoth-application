@@ -168,6 +168,11 @@ spec:
                 configMapKeyRef:
                   name: prometheus
                   key: instance-metrics-exporter-infra
+            - name: METRICS_EXPORTER_INFRA_PROMETHEUS_INSTANCE
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: instance-metrics-mangement-api
             - name: WEB_CONCURRENCY
               value: "1"
           ports:
