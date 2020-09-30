@@ -49,6 +49,7 @@ metadata:
 data:
   host-url: "https://prometheus-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
   instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-stage.apps.ocp.prod.psi.redhat.com:80"
+  instance-metrics-mangement-api: "management-api-thoth-frontend-stage.apps.ocp.prod.psi.redhat.com:80"
   pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
   pushgateway-port: "80"
   pushgateway-url: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80
