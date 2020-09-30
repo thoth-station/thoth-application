@@ -10,7 +10,6 @@ generators:
   - ./secret-generator.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
-  - deploymentconfig.yaml
 patches:
   - path: resources_patch.yaml
     target:
