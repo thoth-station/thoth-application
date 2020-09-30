@@ -60,6 +60,11 @@ spec:
                 secretKeyRef:
                   name: postgresql
                   key: database-name
+            - name: THOTH_BACKEND_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: backend-namespace
             - name: THOTH_MIDDLETIER_NAMESPACE
               valueFrom:
                 configMapKeyRef:
