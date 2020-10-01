@@ -4,6 +4,7 @@ namespace: aicoe-prod-bots
 resources:
   - ../../base
   - configmap.yaml
+  - ultrahook-deployment.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml

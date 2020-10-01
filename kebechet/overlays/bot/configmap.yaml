@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+data:
+  deployment-name: "aicoe-prod-bots"
+  config: https://raw.githubusercontent.com/thoth-station/kebechet/master/config/thoth.yaml
+  config-aicoe: https://raw.githubusercontent.com/thoth-station/kebechet/master/config/aicoe.yaml
+  verbose: "1"
+kind: ConfigMap
+metadata:
+  name: kebechet
