@@ -172,7 +172,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: prometheus
-                  key: instance-metrics-mangement-api
+                  key: instance-metrics-management-api
             - name: WEB_CONCURRENCY
               value: "1"
           ports:
