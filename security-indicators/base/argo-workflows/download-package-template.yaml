@@ -24,7 +24,7 @@ spec:
               path: /mnt/workdir/failed_status
       container:
         name: download-package
-        image: workflow-helpers:test
+        image: workflow-helpers
         env:
           - name: THOTH_WORKFLOW_TASK
             value: download_package
