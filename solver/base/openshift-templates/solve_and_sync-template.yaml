@@ -189,7 +189,7 @@ objects:
                     - name: "THOTH_SOLVER_NAME"
                       value: "{{workflow.parameters.THOTH_SOLVER_NAME}}"
 
-              - name: "send-messages-to-be-sent"
+              - name: "send-messages"
                 dependencies:
                   - "parse-solver-output"
                 templateRef:

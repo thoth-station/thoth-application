@@ -7,7 +7,24 @@ metadata:
     component: download-package
 spec:
   templates:
-    - container:
+    - name: download-package
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: THOTH_PACKAGE_NAME
+          - name: THOTH_PACKAGE_VERSION
+          - name: THOTH_PACKAGE_INDEX
+      outputs:
+        artifacts:
+          - name: messagestobesentdocument
+            path: "/mnt/workdir/message"
+        parameters:
+          - name: failed_status
+            valueFrom:
+              path: /mnt/workdir/failed_status
+      container:
+        name: download-package
+        image: workflow-helpers:test
         env:
           - name: THOTH_WORKFLOW_TASK
             value: download_package
@@ -19,8 +36,6 @@ spec:
             value: "{{inputs.parameters.THOTH_PACKAGE_VERSION}}"
           - name: THOTH_PACKAGE_INDEX
             value: "{{inputs.parameters.THOTH_PACKAGE_INDEX}}"
-        image: "workflow-helpers"
-        name: download-package
         resources:
           limits:
             cpu: 250m
@@ -31,10 +46,3 @@ spec:
         volumeMounts:
           - mountPath: /mnt/workdir
             name: workdir
-      inputs:
-        parameters:
-          - name: THOTH_PACKAGE_NAME
-          - name: THOTH_PACKAGE_VERSION
-          - name: THOTH_PACKAGE_INDEX
-      resubmitPendingPods: true
-      name: download-package
