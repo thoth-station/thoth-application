@@ -99,6 +99,8 @@ spec:
               value: "https://kubernetes.default.svc.cluster.local"
             - name: KUBERNETES_VERIFY_TLS
               value: "0"
+            - name: THOTH_INVESTIGATOR_SCHEDULE_REVSOLVER
+              value: "0"
           volumeMounts:
             - name: secrets
               mountPath: /mnt/secrets
