@@ -56,9 +56,9 @@ spec:
                 - name: THOTH_GRAPH_REFRESH_REVSOLVER
                   value: "0"
                 - name: THOTH_GRAPH_REFRESH_SECURITY
-                  value: "1"
+                  value: "0"
                 - name: THOTH_GRAPH_REFRESH_COUNT
-                  value: "200"
+                  value: "250"
                 - name: THOTH_DEPLOYMENT_NAME
                   valueFrom:
                     configMapKeyRef:
