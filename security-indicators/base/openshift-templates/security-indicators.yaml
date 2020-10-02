@@ -87,6 +87,13 @@ objects:
 
       onExit: exit-handler
       serviceAccountName: argo
+      volumes:
+        - name: kafka-secrets
+          secret:
+            secretName: "kafka"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
       templates:
         - name: security-indicators
           archiveLocation:
@@ -132,6 +139,7 @@ objects:
                         {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}}
                     - name: THOTH_SI_BANDIT_DIR
                       value: /mnt/workdir/package
+                when: "{{tasks.download-package.outputs.parameters.failed_status}} == 0"
 
               - name: cloc
                 templateRef:
@@ -156,6 +164,28 @@ objects:
                         {{workflow.parameters.THOTH_SECURITY_INDICATORS_PACKAGE_INDEX}}
                     - name: THOTH_SI_CLOC_DIR
                       value: /mnt/workdir/package
+                when: "{{tasks.download-package.outputs.parameters.failed_status}} == 0"
+
+              - name: "send-messages"
+                dependencies:
+                  - "download-package"
+                templateRef:
+                  name: "send-messages"
+                  template: "send-messages"
+                arguments:
+                  artifacts:
+                    - name: messagesdocument
+                      from: "{{tasks.download-package.outputs.artifacts.messagestobesentdocument}}"
+                  parameters:
+                    - name: THOTH_MESSAGING_FROM_FILE
+                      value: "/mnt/workdir/message"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
+                    - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+                      value: "1"
+                    - name: MESSAGES_DOCUMENT_NAME
+                      value: "message"
+                when: "{{tasks.download-package.outputs.parameters.failed_status}} == 1"
 
               - name: aggregator
                 templateRef:
@@ -190,6 +220,7 @@ objects:
                       value: "{{workflow.parameters.ceph_bucket_prefix}}"
                     - name: THOTH_DEPLOYMENT_NAME
                       value: "{{workflow.parameters.deployment_name}}"
+                when: "{{tasks.download-package.outputs.parameters.failed_status}} == 0"
 
               - name: "graph-sync-security-indicators"
                 dependencies:
@@ -206,6 +237,7 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
+                when: "{{tasks.download-package.outputs.parameters.failed_status}} == 0"
 
         - name: exit-handler
           steps:
