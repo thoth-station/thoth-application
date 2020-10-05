@@ -36,3 +36,11 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: prometheus
+---
+# Change webhook and split into test, stage, prod once available
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: qeb-hwt-workflow
+data:
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-aicoe-prod-bots.apps.ocp.prod.psi.redhat.com"
