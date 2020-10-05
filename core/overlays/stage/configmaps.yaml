@@ -32,6 +32,7 @@ metadata:
 data:
   bucket-name: "thoth"
   bucket-prefix: "data"
+  public-bucket-name: DH-PLAYPEN
   host: "https://s3.upshift.redhat.com/"
   endpoint: "https://s3.upshift.redhat.com/"
 ---
