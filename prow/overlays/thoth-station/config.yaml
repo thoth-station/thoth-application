@@ -271,24 +271,77 @@ presubmits:
           - name: git
             resourceRef:
               name: PROW_IMPLICIT_GIT_REF
-
-periodics:
-  - name: integration-tests-periodic-moc
-    interval: 8h
-    spec:
-      containers:
-        - image: quay.io/thoth-station/integration-tests:v0.1.3
-          imagePullPolicy: Always
-          command:
-            - "behave"
-          env:
-            - name: NO_INSTALL
-              value: "1"
-            - name: THOTH_USER_API_HOST
-              value: api.moc.thoth-station.ninja
-            - name: THOTH_MANAGEMENT_API_HOST
-              value: management.moc.thoth-station.ninja
-            - name: THOTH_AMUN_API_HOST
-              value: amun.moc.thoth-station.ninja
-    annotations:
-      description: Periodic 'advise endpoint' tests against MOC deployment
+  thoth-station/storages:
+    - name: py38-pre-commit
+      context: aicoe-ci/py38-pre-commit
+      decorate: true
+      always_run: true
+      skip_report: false
+      rerun_command: "/run py38-pre-commit"
+      trigger: "(?m)^/run (all|py38-pre-commit),?(\\s+|$)"
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-precommit-py38:v0.11.1
+            imagePullPolicy: Always
+            command:
+              - "bash"
+            args:
+              - "-c"
+              - "pre-commit"
+              - "run"
+              - "--all-files"
+    - name: py38-pytest
+      context: aicoe-ci/py38-pytest
+      decorate: true
+      always_run: true
+      skip_report: false
+      rerun_command: "/run py38-pytest"
+      trigger: "(?m)^/run (all|py38-pytest),?(\\s+|$)"
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-pytest-ubi8-py38:v0.11.1
+            imagePullPolicy: Always
+            command:
+              - "python3"
+            args:
+              - "setup.py"
+              - "test"
+  thoth-station/investigator:
+    - name: py38-pytest
+      context: aicoe-ci/py38-pytest
+      decorate: true
+      always_run: true
+      skip_report: false
+      rerun_command: "/run py38-pytest"
+      trigger: "(?m)^/run py38-pytest,?(\\s+|$)"
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-pytest-ubi8-py38:v0.11.1
+            imagePullPolicy: Always
+            command:
+              - "python3"
+            args:
+              - "setup.py"
+              - "test"
+# periodics:
+#   - name: integration-tests-periodic-moc
+#     interval: 8h
+#     decorate: true
+#     spec:
+#       containers:
+#         - image: quay.io/thoth-station/integration-tests:v0.1.3
+#           imagePullPolicy: Always
+#           command:
+#             - "behave"
+#           env:
+#             - name: NO_INSTALL
+#               value: "1"
+#             - name: THOTH_USER_API_HOST
+#               value: api.moc.thoth-station.ninja
+#             - name: THOTH_MANAGEMENT_API_HOST
+#               value: management.moc.thoth-station.ninja
+#             - name: THOTH_AMUN_API_HOST
+#               value: amun.moc.thoth-station.ninja
+#     annotations:
+#       description: Periodic 'advise endpoint' tests against MOC deployment
+#
