@@ -34,7 +34,7 @@ data:
           memory: 256Mi
 
     artifactRepository:
-      archiveLogs: False
+      archiveLogs: false
 
       s3:
         bucket: "thoth"
