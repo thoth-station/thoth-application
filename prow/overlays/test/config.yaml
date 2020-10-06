@@ -1,6 +1,48 @@
 prowjob_namespace: aicoe-infra
 pod_namespace: aicoe-infra
 
+plank:
+  report_templates:
+    "*": "[Full PR test history](https://prow.thoth-station.dev/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](https://prow.thoth-station.dev/pr?query=is%3Apr%20state%3Aopen%20author%3A{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us cut down on flakes by [open issue](https://github.com/{{.Spec.Refs.Org}}/{{.Spec.Refs.Repo}}/issues?q=is:issue+is:open) when you hit one in your PR."
+  job_url_prefix_config:
+    "*": https://prow.thoth-station.dev/view/
+  pod_pending_timeout: 15m
+  pod_unscheduled_timeout: 5m
+  default_decoration_configs:
+    "*":
+      timeout: 2h
+      grace_period: 15m
+      utility_images:
+        clonerefs: "gcr.io/k8s-prow/clonerefs:v20201002-9b61c96506"
+        initupload: "gcr.io/k8s-prow/initupload:v20201002-9b61c96506"
+        entrypoint: "gcr.io/k8s-prow/entrypoint:v20201002-9b61c96506"
+        sidecar: "gcr.io/k8s-prow/sidecar:v20201002-9b61c96506"
+      gcs_configuration:
+        bucket: "kubernetes-jenkins"
+        path_strategy: "legacy"
+        default_org: "kubernetes"
+        default_repo: "kubernetes"
+      gcs_credentials_secret: "service-account"
+      resources:
+        clonerefs:
+          requests:
+            cpu: 100m
+        initupload:
+          requests:
+            cpu: 100m
+        place_entrypoint:
+          requests:
+            cpu: 100m
+        sidecar:
+          requests:
+            cpu: 100m
+
+sinker:
+  resync_period: 1m
+  max_prowjob_age: 48h
+  max_pod_age: 48h
+  terminated_pod_ttl: 30m
+
 branch-protection:
   allow_disabled_policies: true
   orgs:
