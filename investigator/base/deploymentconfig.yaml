@@ -120,6 +120,9 @@ spec:
               path: "/_health"
               port: 6066
               scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 10
           livenessProbe:
             failureThreshold: 1
             # Give this consumer 2 hours to finish
