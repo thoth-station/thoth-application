@@ -21,8 +21,6 @@ spec:
                   value: "producer"
                 - name: APP_SCRIPT
                   value: "app.sh"
-                - name: ADVISER_VERSION
-                  value: "0.7.3"
                 - name: KAFKA_BOOTSTRAP_SERVERS
                   valueFrom:
                     configMapKeyRef:
