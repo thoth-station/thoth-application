@@ -1,0 +1,44 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  creationTimestamp: null
+  name: ultrahook-aicoe-ci-test
+spec:
+  strategy:
+    type: Recreate
+    recreateParams:
+      timeoutSeconds: 600
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ConfigChange
+  replicas: 1
+  test: false
+  selector:
+    instance: ultrahook-aicoe-ci-test
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        instance: ultrahook-aicoe-ci-test
+    spec:
+      containers:
+        - name: ultrahook
+          image: ultrahook
+          ports:
+            - containerPort: 8888
+              protocol: TCP
+          env:
+            - name: ULTRAHOOK_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ultrahook
+                  key: ULTRAHOOK_API_KEY
+            - name: ULTRAHOOK_SUBDOMAIN
+              value: aicoe-ci-test
+            - name: ULTRAHOOK_DESTINATION
+              value: "http://hook.aicoe-infra.svc:8080"
+          resources:
+            limits:
+              memory: 50Mi
+      restartPolicy: Always
