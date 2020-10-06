@@ -1,0 +1,28 @@
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: prow-pipeline
+rules:
+  - apiGroups:
+      - tekton.dev
+    resources:
+      - pipelineruns
+      - pipelineresources
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - update
+      - watch
+  - apiGroups:
+      - prow.k8s.io
+    resources:
+      - prowjobs
+      - prowjobs/status
+    verbs:
+      - get
+      - list
+      - watch
+      - update

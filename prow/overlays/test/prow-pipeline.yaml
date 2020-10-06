@@ -1,0 +1,50 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: prow-pipeline
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      name: latest
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/pipeline@sha256:b24844b16dc32273a2e19a19f0fa5642dc275069e5583b69b019b0d74876c912
+      importPolicy: {}
+      referencePolicy:
+        type: Local
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prow-pipeline
+  labels:
+    app: prow-pipeline
+spec:
+  replicas: 1 # Do not scale up.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: prow-pipeline
+  template:
+    metadata:
+      labels:
+        app: prow-pipeline
+    spec:
+      serviceAccountName: prow-pipeline
+      containers:
+        - name: pipeline
+          image: prow-pipeline
+          args:
+            - --config=/etc/prow-config/config.yaml
+          volumeMounts:
+            - mountPath: /etc/prow-config
+              name: prow-config
+              readOnly: true
+      volumes:
+        - name: prow-config
+          configMap:
+            name: config

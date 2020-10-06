@@ -1,3 +1,21 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: ultrahook
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/ultrahook:v0.1.0
+      importPolicy: {}
+      referencePolicy:
+        type: Local
+---
 kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:

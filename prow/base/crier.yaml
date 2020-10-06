@@ -62,7 +62,7 @@ spec:
             name: config
         - name: github-token
           secret:
-            secretName: oauth
+            secretName: oauth-token
         - name: gcs-credentials
           secret:
             secretName: gcs-credentials
@@ -75,7 +75,6 @@ metadata:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: prow
   name: crier
 rules:
   - apiGroups:

@@ -3,6 +3,9 @@ kind: Kustomization
 resources:
   - ../../base
   - ghproxy.yaml
+  - cluster_roles.yaml
+  - cluster_role_bindings.yaml
+  - prow-pipeline.yaml
   - ultrahook.yaml
 configMapGenerator:
   - name: config
