@@ -68,7 +68,7 @@ data:
         parallelism: 10
 
     artifactRepository:
-      archiveLogs: False
+      archiveLogs: false
 
       s3:
         bucket: "thoth"
