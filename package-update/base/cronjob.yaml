@@ -83,11 +83,11 @@ spec:
                   readOnly: true
               resources:
                 requests:
-                  memory: "256Mi"
-                  cpu: "500m"
+                  memory: "1Gi"
+                  cpu: "1"
                 limits:
-                  memory: "512Mi"
-                  cpu: "500m"
+                  memory: "1.5Gi"
+                  cpu: "1"
               livenessProbe:
                 failureThreshold: 1
                 initialDelaySeconds: 7200
