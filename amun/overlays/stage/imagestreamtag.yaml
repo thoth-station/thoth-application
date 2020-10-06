@@ -10,7 +10,7 @@ spec:
       name: quay.io/thoth-station/amun-api:v0.9.2
     importPolicy: {}
     referencePolicy:
-      type: Source
+      type: Local
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -24,7 +24,7 @@ spec:
       name: quay.io/thoth-station/amun-inspect-hwinfo:v0.1.2
     importPolicy: {}
     referencePolicy:
-      type: Source
+      type: Local
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -38,4 +38,4 @@ spec:
       name: quay.io/thoth-station/kubectl:latest
     importPolicy: {}
     referencePolicy:
-      type: Source
+      type: Local
