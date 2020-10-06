@@ -43,9 +43,3 @@ patchesJson6902:
       version: v1
       kind: Secret
       name: qeb-hwt-secret
-  - path: put-into-backend-namespace.yaml
-    target:
-      group: ""
-      version: v1
-      kind: ConfigMap
-      name: qeb-hwt-workflow
