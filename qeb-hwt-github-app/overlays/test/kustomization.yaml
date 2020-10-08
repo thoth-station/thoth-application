@@ -8,6 +8,8 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
+  - argo-workflows/qeb-hwt-integration.yaml
+  - openshift-templates/qeb-hwt.yaml
 generatorOptions:
   disableNameSuffixHash: true
 generators:
