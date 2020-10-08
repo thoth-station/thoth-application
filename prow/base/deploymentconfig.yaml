@@ -6,7 +6,7 @@ metadata:
   labels:
     app: hook
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -29,6 +29,8 @@ spec:
           args:
             - --dry-run=false
             - --config-path=/etc/config/config.yaml
+            - --github-endpoint=http://ghproxy
+            - --github-endpoint=https://api.github.com
             - --github-token-path=/etc/github/oauth
           ports:
             - name: http
@@ -97,6 +99,7 @@ spec:
           image: plank
           args:
             - --dry-run=false
+            - --skip-report=true
             - --config-path=/etc/config/config.yaml
           volumeMounts:
             - name: oauth

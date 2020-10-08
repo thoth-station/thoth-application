@@ -1,4 +1,46 @@
 ---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: prow-pipeline
+rules:
+  - apiGroups:
+      - tekton.dev
+    resources:
+      - pipelineruns
+      - pipelineresources
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - update
+      - watch
+  - apiGroups:
+      - prow.k8s.io
+    resources:
+      - prowjobs
+      - prowjobs/status
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+      - patch
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: prow-pipeline
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prow-pipeline
+subjects:
+  - kind: ServiceAccount
+    name: prow-pipeline
+    namespace: aicoe-infra
+---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
@@ -11,7 +53,7 @@ spec:
       name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/pipeline@sha256:b24844b16dc32273a2e19a19f0fa5642dc275069e5583b69b019b0d74876c912
+        name: gcr.io/k8s-prow/pipeline@sha256:13f47b8372eae29a1bc918c87c124bd5799eaf752ce60de628d5ae41ee3f604e
       importPolicy: {}
       referencePolicy:
         type: Local

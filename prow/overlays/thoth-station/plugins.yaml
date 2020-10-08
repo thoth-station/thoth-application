@@ -8,6 +8,7 @@ label:
     - deployment_name/moc
     - thoth/group-programming
     - thoth/potential-observation
+    - hacktoberfest-accepted
 
 project_config:
   project_org_configs:

@@ -41,7 +41,7 @@ spec:
       app: ghproxy
   strategy:
     type: Recreate
-  replicas: 1
+  replicas: 0
   template:
     metadata:
       labels:
@@ -53,7 +53,6 @@ spec:
           args:
             - --cache-dir=/cache
             - --cache-sizeGB=9
-            - --push-gateway=pushgateway
             - --serve-metrics=true
           ports:
             - containerPort: 8888
@@ -62,8 +61,7 @@ spec:
               mountPath: /cache
       volumes:
         - name: cache
-          persistentVolumeClaim:
-            claimName: ghproxy
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service

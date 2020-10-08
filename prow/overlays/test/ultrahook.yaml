@@ -55,7 +55,7 @@ spec:
             - name: ULTRAHOOK_SUBDOMAIN
               value: aicoe-ci-test
             - name: ULTRAHOOK_DESTINATION
-              value: "http://hook.aicoe-infra.svc:8080"
+              value: "http://hook.aicoe-infra.svc:8888"
           resources:
             limits:
               memory: 50Mi
