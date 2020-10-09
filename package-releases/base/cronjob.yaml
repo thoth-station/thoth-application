@@ -85,6 +85,11 @@ spec:
                     secretKeyRef:
                       name: postgresql
                       key: database-name
+                - name: PROMETHEUS_PUSHGATEWAY_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: pushgateway-url
               volumeMounts:
                 - name: secrets
                   mountPath: /mnt/secrets
