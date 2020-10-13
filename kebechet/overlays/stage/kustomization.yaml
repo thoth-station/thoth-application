@@ -27,6 +27,12 @@ patchesJson6902:
       version: v1
       kind: Template
       name: kebechet
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: kebechet-run-url
 generatorOptions:
   disableNameSuffixHash: true
 generators:

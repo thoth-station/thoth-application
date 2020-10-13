@@ -1,0 +1,108 @@
+---
+# This template uses the kebechet-run-url argo workflow to run kebechet on a particular slug name.
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: kebechet-run-url
+  annotations:
+    description: This is Kebechet Run-URL Config, this template is meant to be used by Bots, but could also be used by humans...
+    openshift.io/display-name: Kebechet Run-URL
+    tags: thoth,ai-stacks,kebechet,cyborg,srcops
+    template.openshift.io/documentation-url: https://github.com/thoth-station/kebechet/
+    template.openshift.io/long-description: This is Kebechet used for automatic package releases and updates.
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+  labels:
+    app: thoth
+    template: kebechet-run-url
+    component: kebechet
+
+parameters:
+  - name: WORKFLOW_ID
+    description: "a UUID for the workflow instance"
+    displayName: "Workflow UUID"
+    required: true
+  - name: KEBECHET_REPO_URL
+    description: "The url for kebechet run."
+    displayName: "Repo URL"
+    required: true
+  - name: KEBECHET_SERVICE_NAME
+    description: "The service name for kebechet run, it defaults to github."
+    displayName: "Service Name"
+    required: true
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: "${WORKFLOW_ID}"
+      labels:
+        app: thoth
+        component: kebechet
+    spec:
+      serviceAccountName: argo
+      activeDeadlineSeconds: 3000
+      ttlStrategy:
+        secondsAfterCompletion: 7200
+        secondsAfterSuccess: 7200
+        secondsAfterFailure: 7200
+      entrypoint: kebechet
+
+      metrics:
+        prometheus:
+          - name: status_counter
+            help: "Count of workflow by status"
+            labels:
+              - key: name
+                value: kebechet
+              - key: status
+                value: "{{workflow.status}}"
+            counter:
+              value: "1"
+
+          - name: duration_seconds_histogram
+            help: "Duration of workflow when succeded"
+            when: "{{workflow.status}} == Succeeded"
+            labels:
+              - key: name
+                value: kebechet
+            histogram:
+              buckets:
+                - 5
+                - 10
+                - 30
+                - 60
+                - 120
+                - 180
+                - 300
+                - 600
+                - 900
+              value: "{{workflow.duration}}"
+
+      arguments:
+        parameters:
+          - name: "WEBHOOK_PAYLOAD"
+            value: "${WEBHOOK_PAYLOAD}"
+      volumes:
+        - name: ssh-config
+          secret:
+            secretName: kebechet
+            items:
+            - key: ssh-privatekey
+              path: id_rsa
+
+      templates:
+        - name: "kebechet-run-url"
+          archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - name: "kebechet-run-url"
+                templateRef:
+                  name: "kebechet-run-url"
+                  template: "kebechet-run-url"
+                arguments:
+                  parameters:
+                    - name: "KEBECHET_REPO_URL"
+                      value: "{{workflow.parameters.KEBECHET_REPO_URL}}"
+                    - name: "KEBECHET_SERVICE_NAME"
+                      value: "{{workflow.parameters.KEBECHET_SERVICE_NAME}}"
