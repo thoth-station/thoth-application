@@ -1,0 +1,38 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: parse-adviser-output
+spec:
+  templates:
+    - name: parse-adviser-output
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: THOTH_FILE_PATH
+        artifacts:
+            - name: "outputdocument"
+              path: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+        outputs:
+          artifacts:
+            - name: messagestobesentdocument
+              path: "/mnt/workdir/messages_to_be_sent.json"
+      container:
+        name: parse-adviser-output
+        image: workflow-helpers
+        env:
+          - name: THOTH_WORKFLOW_TASK
+            value: "parse_solver_output"
+          - name: DEBUG_LEVEL
+            value: "0"
+          - name: APP_SCRIPT
+            value: "app.sh"
+          - name: FILE_PATH
+            value: "{{inputs.parameters.THOTH_FILE_PATH}}"
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
