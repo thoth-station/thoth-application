@@ -34,6 +34,11 @@ spec:
                 configMapKeyRef:
                   name: kafka
                   key: kafka-bootstrap-servers
+            - name: KAFKA_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka-protocol
+                  name: kafka
             - name: KAFKA_CAFILE
               value: "/mnt/secrets/kafka_ca.crt"
             - name: KNOWLEDGE_GRAPH_HOST
