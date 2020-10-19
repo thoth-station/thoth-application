@@ -4,10 +4,6 @@ apiVersion: v1
 metadata:
   name: amun
 data:
-  amun-api-url: http://amun-api.thoth-amun-api-prod.svc
-  deployment-name: p9-prod
-  infra-namespace: thoth-amun-api-prod
-  inspection-namespace: thoth-amun-api-prod
   artifactRepository: |-
     archiveLogs: false
     s3:
@@ -24,18 +20,18 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: ceph
+  name: workflow-controller-configmap
 data:
-  bucket-name: "thoth"
-  bucket-prefix: "data"
-  host: "https://kzn-swift.massopen.cloud/"
-  endpoint: "https://kzn-swift.massopen.cloud/"
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: prometheus
-data:
-  pushgateway-host: pushgateway-opendatahub.k-apps.osh.massopen.cloud
-  pushgateway-port: "80"
-  pushgateway-url: pushgateway-opendatahub.k-apps.osh.massopen.cloud:80
+  config: |
+    containerRuntimeExecutor: "k8sapi"
+    parallelism: 9
+
+    # metricsConfig controls the path and port for prometheus metrics
+    metricsConfig:
+      enabled: true
+      path: /metrics
+      port: 8080
+
+    workflowDefaults:
+      spec:
+        parallelism: 10

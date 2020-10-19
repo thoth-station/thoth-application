@@ -1,0 +1,84 @@
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: argocli
+spec:
+  runPolicy: Serial
+  source:
+    git:
+      uri: "https://github.com/harshad16/argo.git"
+      ref: "master"
+    type: Git
+  strategy:
+    dockerStrategy:
+      dockerfilePath: ppc64le/Dockerfile
+      noCache: true
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "argocli:latest"
+  resources:
+    limits:
+      cpu: 4
+      memory: 8Gi
+    requests:
+      cpu: 4
+      memory: 8Gi
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: workflow-controller
+spec:
+  runPolicy: Serial
+  source:
+    git:
+      uri: "https://github.com/harshad16/argo.git"
+      ref: "master"
+    type: Git
+  strategy:
+    dockerStrategy:
+      dockerfilePath: ppc64le/Dockerfile.wc
+      noCache: true
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "workflow-controller:latest"
+  resources:
+    limits:
+      cpu: 4
+      memory: 8Gi
+    requests:
+      cpu: 4
+      memory: 8Gi
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: argoexec
+spec:
+  runPolicy: Serial
+  source:
+    git:
+      uri: "https://github.com/harshad16/argo.git"
+      ref: "master"
+    type: Git
+  strategy:
+    dockerStrategy:
+      dockerfilePath: ppc64le/Dockerfile.argoexec
+      noCache: true
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "argoexec:latest"
+  resources:
+    limits:
+      cpu: 4
+      memory: 8Gi
+    requests:
+      cpu: 4
+      memory: 8Gi
