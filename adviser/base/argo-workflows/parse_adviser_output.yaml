@@ -19,7 +19,7 @@ spec:
             path: "/mnt/workdir/messages_to_be_sent.json"
       container:
         name: parse-adviser-output
-        image: workflow-helpers:test
+        image: workflow-helpers
         env:
           - name: THOTH_WORKFLOW_TASK
             value: "parse_adviser_output"
