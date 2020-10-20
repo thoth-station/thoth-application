@@ -52,6 +52,9 @@ objects:
     kind: Workflow
     metadata:
       name: "${THOTH_SOLVER_WORKFLOW_ID}"
+      labels:
+        app: thoth
+        component: solver
     spec:
       serviceAccountName: argo
       # kill workflow if running too much time
