@@ -180,7 +180,7 @@ objects:
           emptyDir: {}
         - name: output
           emptyDir: {}
-        - name: secrets
+        - name: kafka-secrets
           secret:
             secretName: "kafka"
             items:
