@@ -1,7 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../base
+  - ../../../base
+  - configmaps.yaml
+  - metrics-exporter-reader.yaml
   - role_binding.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
