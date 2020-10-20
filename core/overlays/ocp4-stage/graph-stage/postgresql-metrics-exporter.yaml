@@ -1,0 +1,92 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: postgres-metrics-exporter
+  labels:
+    app: thoth
+    component: postgres-metrics-exporter
+spec:
+  to:
+    kind: Service
+    name: postgres-metrics-exporter
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    service: postgres-metrics-exporter
+    app: thoth
+    component: postgres-metrics-exporter
+  name: postgres-metrics-exporter
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 9187
+  selector:
+    service: postgres-metrics-exporter
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    service: postgres-metrics-exporter
+    app: thoth
+    component: postgres-metrics-exporter
+  name: postgres-metrics-exporter
+spec:
+  replicas: 1
+  selector:
+    service: postgres-metrics-exporter
+  template:
+    metadata:
+      labels:
+        service: postgres-metrics-exporter
+    spec:
+      containers:
+        - name: "postgresql-metrics-exporter"
+          image: wrouesnel/postgres_exporter
+          env:
+            - name: DATA_SOURCE_URI
+              value: "pgbouncer:5432/thoth?sslmode=disable"
+            - name: DATA_SOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  key: database-user
+                  name: postgresql
+            - name: DATA_SOURCE_PASS
+              valueFrom:
+                secretKeyRef:
+                  key: database-password
+                  name: postgresql
+          ports:
+            - containerPort: 9187
+              protocol: TCP
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "1"
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /liveness
+              port: 9187
+              scheme: HTTP
+            initialDelaySeconds: 120
+            periodSeconds: 20
+            successThreshold: 1
+            timeoutSeconds: 10
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /readiness
+              port: 9187
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 5
+            timeoutSeconds: 10

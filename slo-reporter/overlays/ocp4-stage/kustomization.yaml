@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app: thoth
+  component: slo-reporter
+resources:
+  - ../../base
+  - configmap.yaml
+  - thoth-notification.yaml
+patchesStrategicMerge:
+  - imagestreamtag.yaml
+generators:
+  - secret-generator.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+patchesJson6902:
+  - path: job-generate-name.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      name: chat-notification-succeeded-
+  - path: job-generate-name.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      name: chat-notification-failed-

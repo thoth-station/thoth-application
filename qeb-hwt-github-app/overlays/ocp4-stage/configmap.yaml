@@ -1,0 +1,8 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: qeb-hwt
+data:
+  subdomain: qeb-hwt-ocp4
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-frontend-stage.apps.ocp.prod.psi.redhat.com"
