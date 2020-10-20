@@ -10,7 +10,6 @@ spec:
       inputs:
         parameters:
           - name: THOTH_DOCUMENT_ID
-          - name: THOTH_FILE_PATH
         artifacts:
             - name: "outputdocument"
               path: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -29,7 +28,7 @@ spec:
           - name: APP_SCRIPT
             value: "app.sh"
           - name: FILE_PATH
-            value: "{{inputs.parameters.THOTH_FILE_PATH}}"
+            value: "/mnt/component/document/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
         resources:
           limits:
             cpu: 250m
