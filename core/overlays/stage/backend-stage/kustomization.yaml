@@ -1,8 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../stage/
+  - ../common/
+  - argo-namespace-install.yaml
+  - argo-workflow-controller-metrics.yaml
+  - argo-ui-route.yaml
   - thoth-notification.yaml
+  - configmaps.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
