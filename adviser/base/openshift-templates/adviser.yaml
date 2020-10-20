@@ -260,6 +260,8 @@ objects:
                     - name: outputdocument
                       from: "{{tasks.advise.outputs.artifacts.outputdocument}}"
                   parameters:
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: THOTH_FILE_PATH
                       value: "/mnt/workdir/{{workflow.parameters.THOTH_DOCUMENT_ID}}"
 
