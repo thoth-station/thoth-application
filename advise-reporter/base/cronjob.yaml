@@ -26,6 +26,11 @@ spec:
                     configMapKeyRef:
                       key: kafka-bootstrap-servers
                       name: kafka
+                - name: KAFKA_PROTOCOL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: kafka-protocol
+                      name: kafka
                 - name: KAFKA_CAFILE
                   value: "/mnt/secrets/kafka_ca.crt"
                 - name: RSYSLOG_HOST

@@ -41,6 +41,7 @@ apiVersion: v1
 metadata:
   name: kafka
 data:
+  kafka-protocol: "SSL"
   kafka-bootstrap-servers: "thoth-kafka-bootstrap-thoth-infra-stage.apps.thoth02.lab.upshift.rdu2.redhat.com:443"
 ---
 kind: ConfigMap
