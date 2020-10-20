@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have just successfully synchronized *build-watcher* to *Amun* namespace, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/amun-stage-thoth-build-watcher|ArgoCD UI> 🚚'}"
+            - "{'text':'I have just successfully synchronized *build-watcher* to *Amun* namespace, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/amun-stage-thoth-build-watcher|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAIL* synchronizing *build-watcher* to *Amun*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/amun-stage-thoth-build-watcher|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAIL* synchronizing *build-watcher* to *Amun*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/amun-stage-thoth-build-watcher|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
