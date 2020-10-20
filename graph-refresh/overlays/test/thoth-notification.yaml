@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have successfully synchronized *graph-refresh* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-graph-refresh|ArgoCD UI>'}"
+            - "{'text':'I have successfully synchronized *graph-refresh* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/test-thoth-graph-refresh|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAIL* synchronizing *graph-refresh* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-graph-refresh|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAIL* synchronizing *graph-refresh* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/test-thoth-graph-refresh|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

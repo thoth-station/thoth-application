@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have just successfully synchronized *metrics-exporter* to <https://console-openshift-console.apps.ocp.prod.psi.redhat.com/k8s/cluster/projects/thoth-infra-stage|STAGE infra>, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/stage-thoth-metrics-exporter|ArgoCD UI>'}"
+            - "{'text':'I have just successfully synchronized *metrics-exporter* components to *STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/stage-thoth-metrics-exporter|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'*FAIL* synchronizing *metrics-exporter* to <https://console-openshift-console.apps.ocp.prod.psi.redhat.com/k8s/cluster/projects/thoth-test-core|STAGE infra>, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/stage-thoth-metrics-exporter|ArgoCD UI>'}"
+            - "{'text':'*FAIL* synchronizing *metrics-exporter* components to *STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/stage-thoth-metrics-exporter|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
