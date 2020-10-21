@@ -15,10 +15,6 @@ data:
   infra-namespace: thoth-infra-stage
   solvers: |
     solver-rhel-8-py36
-    solver-fedora-31-py38
-    solver-fedora-31-py37
-    solver-fedora-32-py37
-    solver-fedora-32-py38
   package-releases-only-if-package-seen: "1"
   postgresql-host: pgbouncer.thoth-graph-stage.svc
   rsyslog-host: ""
