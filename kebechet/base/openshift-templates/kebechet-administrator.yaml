@@ -1,0 +1,156 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: kebechet-administrator
+  annotations:
+    description: "Thoth: Kebechet-Administrator Template"
+    openshift.io/display-name: "Thoth: Kebechet-Administrator"
+    tags: thoth,ai-stacks,aistacks,kebechet,machinelearning
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to run Kebechet Administrator in Thoth.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    template: kebechet-administrator
+    app: thoth
+    component: kebechet
+
+parameters:
+  - name: WORKFLOW_ID
+    description: "a UUID for the workflow instance"
+    displayName: "Workflow UUID"
+    required: true
+  - name: THOTH_PACKAGE_NAME
+    description: "Name of the package the message is about."
+    displayName: "Package kebechet administrator needs run for."
+    required: true
+  - name: THOTH_PACKAGE_VERSION
+    description: "Version of the package to be analyzed."
+    displayName: "Version of the package to be analyzed."
+    required: false
+  - name: THOTH_PACKAGE_INDEX
+    description: "Package index"
+    displayName: "Package index"
+    required: true
+  - name: THOTH_SOLVER_NAME
+    description: "URL of the Pull Request's head commit."
+    displayName: "URL of the Pull Request's head commit"
+    required: false
+  - name: THOTH_MESSAGE_TYPE
+    description: "Message type that Kebechet administrator needs to process."
+    displayName: "THOTH_MESSAGE_TYPE"
+    required: true
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: "${WORKFLOW_ID}"
+      labels:
+        app: thoth
+        component: kebechet
+    spec:
+      serviceAccountName: argo
+      activeDeadlineSeconds: 3000
+      ttlStrategy:
+        secondsAfterCompletion: 7200
+        secondsAfterSuccess: 7200
+        secondsAfterFailure: 7200
+      entrypoint: kebechet
+
+      metrics:
+        prometheus:
+          - name: status_counter
+            help: "Count of workflow by status"
+            labels:
+              - key: name
+                value: kebechet-administrator
+              - key: status
+                value: "{{workflow.status}}"
+            counter:
+              value: "1"
+
+          - name: duration_seconds_histogram
+            help: "Duration of workflow when succeded"
+            when: "{{workflow.status}} == Succeeded"
+            labels:
+              - key: name
+                value: kebechet-administrator
+            histogram:
+              buckets:
+                - 5
+                - 10
+                - 30
+                - 60
+                - 120
+                - 180
+                - 300
+                - 600
+                - 900
+              value: "{{workflow.duration}}"
+
+      arguments:
+        parameters:
+          - name: "THOTH_PACKAGE_NAME"
+            value: "${THOTH_PACKAGE_NAME}"
+          - name: "THOTH_PACKAGE_VERSION"
+            value: "${THOTH_PACKAGE_VERSION}"
+          - name: "THOTH_PACKAGE_INDEX"
+            value: "${THOTH_PACKAGE_INDEX}"
+          - name: "THOTH_SOLVER_NAME"
+            value: "${THOTH_SOLVER_NAME}"
+          - name: "THOTH_MESSAGE_TYPE"
+            value: "${THOTH_MESSAGE_TYPE}"
+          - name: deployment_name
+      volumes:
+        - name: workdir
+          emptyDir: {}
+        - name: output
+          emptyDir: {}
+        - name: kafka-secrets
+          secret:
+            secretName: "kafka"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
+      templates:
+        - name: "kebechet-administrator"
+          archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - name: "kebechet-administrator-run"
+                templateRef:
+                  name: "kebechet-administrator"
+                  template: "kebechet-administrator"
+                arguments:
+                  parameters:
+                    - name: "THOTH_PACKAGE_NAME"
+                      value: "{{workflow.parameters.THOTH_PACKAGE_NAME}}"
+                    - name: "THOTH_PACKAGE_VERSION"
+                      value: "{{workflow.parameters.THOTH_PACKAGE_VERSION}}"
+                    - name: "THOTH_PACKAGE_INDEX"
+                      value: "{{workflow.parameters.THOTH_PACKAGE_INDEX}}"
+                    - name: "THOTH_SOLVER_NAME"
+                      value: "{{workflow.parameters.THOTH_SOLVER_NAME}}"
+                    - name: "THOTH_MESSAGE_TYPE"
+                      value: "{{workflow.parameters.THOTH_MESSAGE_TYPE}}"
+              - name: "send-messages"
+                dependencies:
+                  - "kebechet-administrator-run"
+                templateRef:
+                  name: "send-messages"
+                  template: "send-messages"
+                arguments:
+                  artifacts:
+                    - name: messagesdocument
+                      from: "{{tasks.kebechet-administrator-run.outputs.artifacts.messagestobesentdocument}}"
+                  parameters:
+                    - name: THOTH_MESSAGING_FROM_FILE
+                      value: "/mnt/workdir/messages_to_be_sent.json"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
+                    - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+                      value: "1"
+                    - name: MESSAGES_DOCUMENT_NAME
+                      value: "messages_to_be_sent.json"
