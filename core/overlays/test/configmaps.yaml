@@ -13,8 +13,6 @@ data:
   middletier-namespace: thoth-test-core
   frontend-namespace: thoth-test-core
   infra-namespace: thoth-test-core
-  solvers: |
-    solver-rhel-8-py36
   package-releases-only-if-package-seen: "1"
   postgresql-host: pgbouncer.thoth-test-core.svc
   rsyslog-host: ""
@@ -35,8 +33,17 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
+  name: solvers
+data:
+  solvers: |
+    solver-rhel-8-py36
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
   name: kafka
 data:
+  kafka-ssl-auth: "1"
   kafka-protocol: "SSL"
   kafka-bootstrap-servers: "thoth-kafka-bootstrap-aicoe.apps.ocp.prod.psi.redhat.com:443"
 ---
