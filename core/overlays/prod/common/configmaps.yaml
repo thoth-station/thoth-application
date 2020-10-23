@@ -13,12 +13,6 @@ data:
   middletier-namespace: thoth-middletier-prod
   frontend-namespace: thoth-frontend-prod
   infra-namespace: thoth-infra-prod
-  solvers: |
-    solver-rhel-8-py36
-    solver-fedora-31-py38
-    solver-fedora-31-py37
-    solver-fedora-32-py37
-    solver-fedora-32-py38
   package-releases-only-if-package-seen: "1"
   postgresql-host: pgbouncer.thoth-graph-prod.svc
   rsyslog-host: ""
@@ -32,8 +26,21 @@ metadata:
 data:
   bucket-name: "thoth"
   bucket-prefix: "data"
+  public-bucket-name: PLAYPEN
   host: "https://kzn-swift.massopen.cloud/"
   endpoint: "https://kzn-swift.massopen.cloud/"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: solvers
+data:
+  solvers: |
+    solver-rhel-8-py36
+    solver-fedora-31-py38
+    solver-fedora-31-py37
+    solver-fedora-32-py37
+    solver-fedora-32-py38
 ---
 kind: ConfigMap
 apiVersion: v1

@@ -10,13 +10,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: solvers
-data:
-  solvers: |
-    solver-rhel-8-py36
-    solver-fedora-31-py38
-    solver-fedora-31-py37
-    solver-fedora-32-py37
-    solver-fedora-32-py38
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -24,7 +17,6 @@ metadata:
   name: kafka
 data:
   kafka-client-id: "thoth-messaging"
-  kafka-ssl-auth: "1"
   kafka-topic-retention-time: "8640"
 ---
 kind: ConfigMap
