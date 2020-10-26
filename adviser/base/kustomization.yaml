@@ -7,7 +7,7 @@ commonLabels:
 resources:
   - argo-workflows/advise.yaml
   - argo-workflows/dependency-monkey.yaml
-  - argo-workflows/parse_adviser_output.yaml
+  - argo-workflows/parse-adviser-output.yaml
   - argo-workflows/kebechet-run-results.yaml
   - argo-workflows/provenance-check.yaml
   - argo-workflows/trigger-integration.yaml
