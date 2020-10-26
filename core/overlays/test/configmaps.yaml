@@ -107,4 +107,4 @@ apiVersion: v1
 metadata:
   name: qeb-hwt-workflow
 data:
-  webhook-callback-url: "http://qeb-hwt-webhook-receiver-aicoe-prod-bots.apps.ocp.prod.psi.redhat.com"
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-test-core.apps.ocp.prod.psi.redhat.com"
