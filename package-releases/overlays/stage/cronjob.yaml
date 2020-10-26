@@ -7,4 +7,4 @@ metadata:
     app: thoth
     component: package-releases
 spec:
-  suspend: stage
+  suspend: false
