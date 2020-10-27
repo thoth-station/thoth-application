@@ -323,25 +323,18 @@ presubmits:
             args:
               - "setup.py"
               - "test"
-# periodics:
-#   - name: integration-tests-periodic-moc
-#     interval: 8h
-#     decorate: true
-#     spec:
-#       containers:
-#         - image: quay.io/thoth-station/integration-tests:v0.1.3
-#           imagePullPolicy: Always
-#           command:
-#             - "behave"
-#           env:
-#             - name: NO_INSTALL
-#               value: "1"
-#             - name: THOTH_USER_API_HOST
-#               value: api.moc.thoth-station.ninja
-#             - name: THOTH_MANAGEMENT_API_HOST
-#               value: management.moc.thoth-station.ninja
-#             - name: THOTH_AMUN_API_HOST
-#               value: amun.moc.thoth-station.ninja
-#     annotations:
-#       description: Periodic 'advise endpoint' tests against MOC deployment
-#
+periodics:
+  - name: integration-tests-moc
+    interval: 8h
+    decorate: true
+    spec:
+      containers:
+        - image: quay.io/thoth-station/integration-tests:v0.1.4
+          imagePullPolicy: Always
+          command:
+            - ./e2e-test.sh
+          env:
+            - name: E2E_TEST_API
+              value: api.moc.thoth-station.ninja
+    annotations:
+      description: Periodic e2e tests against MOC deployment
