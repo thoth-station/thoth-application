@@ -256,6 +256,10 @@ tide:
             required-contexts:
               - aicoe-ci/build-check
               - aicoe-ci/pre-commit-check
+          elyra-aidevsecops-tutorial:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
 
 presubmits:
   thoth-station/srcops-testing:
@@ -297,23 +301,6 @@ presubmits:
       skip_report: false
       rerun_command: "/run py38-pytest"
       trigger: "(?m)^/run (all|py38-pytest),?(\\s+|$)"
-      spec:
-        containers:
-          - image: quay.io/thoth-station/thoth-pytest-ubi8-py38:v0.11.1
-            imagePullPolicy: Always
-            command:
-              - "python3"
-            args:
-              - "setup.py"
-              - "test"
-  thoth-station/investigator:
-    - name: py38-pytest
-      context: aicoe-ci/py38-pytest
-      decorate: true
-      always_run: true
-      skip_report: false
-      rerun_command: "/run py38-pytest"
-      trigger: "(?m)^/run py38-pytest,?(\\s+|$)"
       spec:
         containers:
           - image: quay.io/thoth-station/thoth-pytest-ubi8-py38:v0.11.1
