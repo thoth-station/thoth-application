@@ -27,7 +27,6 @@ parameters:
   - name: THOTH_PACKAGE_VERSION
     description: "Version of the package to be analyzed."
     displayName: "Version of the package to be analyzed."
-    required: false
   - name: THOTH_PACKAGE_INDEX
     description: "Package index"
     displayName: "Package index"
@@ -35,7 +34,6 @@ parameters:
   - name: THOTH_SOLVER_NAME
     description: "URL of the Pull Request's head commit."
     displayName: "URL of the Pull Request's head commit"
-    required: false
   - name: THOTH_MESSAGE_TYPE
     description: "Message type that Kebechet administrator needs to process."
     displayName: "THOTH_MESSAGE_TYPE"
