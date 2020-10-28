@@ -139,3 +139,98 @@
 * :sparkles: some more AICoE prow cleanups
 ### Other
 * :nut_and_bolt: remove non used manifest from kustomize manifest (#483)
+
+## Release 2020.10.28 (2020-10-28T08:56:55)
+### Features
+* confluent kafka deployment changes (#586)
+* :sparkles: added https://github.com/thoth-station/elyra-aidevsecops-tutorial
+* revert to the sefkhet-abwy version v0.3.1
+* :ship: Deploy the Tag v0.3.2 for sefkhet-abwy
+* enabled the periodic e2e test run by prow
+* :ship: Deploy the Tag v0.8.1 for messaging
+* :ship: Deploy the Tag v0.8.2 for messaging
+* :ship: Deploy the Tag v0.19.0 for adviser
+* Bump adviser to v0.19.0 in stage (#592)
+* update the configmap with correct qebhwt urls (#589)
+* Updated the certs for route53 (#587)
+* :sparkles: added a few things missing from current upstream
+* :ship: Deploy the Tag v0.6.1 for slo-reporter
+* :innocent: solvers confimap consistenty across the environments (#585)
+* bump slo-reporter to v0.6.0 (#584)
+* :white_check_mark: switch on the data accumalation components
+* Add Kebechet administrator (#583)
+* :ship: Deploy the Tag v0.6.0 for slo-reporter
+* suspending the data accumalating components
+* :snail: patch up the apiversion for postgresql metrics deployment (#582)
+* :honeybee: include kebechet templates to the kustomize manifest (#581)
+* :arrow_down_small: reduce to only rhel solver
+* :ship: Deploy the Tag v0.8.0 for messaging
+* :package: deployment manifest for ocp4 stage deployment (#579)
+* :apple: enable qeb-hwt to access deployment-name from configmap (#580)
+* Adjust adviser workflow tasks (#571)
+* :ship: Deploy the Tag v0.1.19 for workflow-helpers
+* :octopus: update the chat notification with new argocd url (#577)
+* :snail: re-arrange amun manifest based on deployment environments (#574)
+* setup kafka-protocol env var for all kafka using applications (#573)
+* Increase ingestion (#576)
+* :honeybee: kustomize manifest for the amun power pc deployment
+* Dump slo-reporter to v0.5.9 in stage (#572)
+* :ship: Deploy the Tag v0.5.9 for slo-reporter
+* bump up nepthys version to v0.2.4 (#569)
+* :ship: Deploy the Tag v0.7.13 for messaging
+* :rocket: switch to kafka backed with amq streams for test instance (#567)
+* Bump nepthys to 0.2.3 (#563)
+* Added Kebechet run url templates (#564)
+* :ship: Deploy the Tag v0.5.5-dev for investigator
+* :arrow_up: bump nepthys image version v0.2.2-dev (#565)
+* Moved new templates to base (#562)
+* Add files to kustomize (#560)
+* :ship: Deploy the Tag v0.7.12 for messaging
+* :ship: Deploy the Tag v0.1.17 for workflow-helpers
+* :ship: Deploy the Tag v0.6.20 for user-api
+* :ship: Deploy the Tag v0.5.5 for investigator
+* :mega: allow metrics exporter to get imagestreams (#556)
+* More metrics (#553)
+* :lock: update core test secrets
+* :ship: Deploy the Tag v0.8.8 for package-releases-job
+* Added customize change (#552)
+* :ship: Deploy the Tag v0.2.8 for graph-refresh-job
+* :rocket: update stage with kafka in thoth02 cluster (#551)
+* :rocket: separate overlays based on environment (#550)
+* :ship: Deploy the Tag v0.2.7 for graph-refresh-job
+* :ship: Deploy the Tag v0.1.16 for workflow-helpers
+* :ship: Deploy the Tag v0.5.4 for investigator
+* Activate advise reporter (#548)
+* :ship: Deploy the Tag v0.4.4 for advise-reporter
+* set all stage based imagestream to be pulled locally
+* bump package-update resources and image tag (#546)
+* :ship: Deploy the Tag v0.7.11 for messaging
+* Move CM to core so it is available to adviser and qeb-hwt (#541)
+* Reduce scheduling from graph-refresh (#540)
+* Add missing parameter in core CM (#543)
+* Add parameter to CM (#537)
+* Bump investigator to v0.5.3 (#539)
+* :ship: Deploy the Tag v0.5.3 for investigator
+* :ship: Deploy the Tag v0.5.2 for investigator
+* :sparkles: enabled a prow periodic job to run our integration tests against MOC deployment
+* :ship: Deploy the Tag v0.8.3 for package-update-job
+* Remove test from image (#534)
+* Do not schedule revsolver (#533)
+* Bump metrics-exporter version to v0.8.16 (#531)
+* :ship: Deploy the Tag v0.1.14 for workflow-helpers
+* :mouse2: remove the pre-fixed namespace (#525)
+* Adjust GH template for calendar releases (#523)
+* :package: include production manifest files (#491)
+### Bug Fixes
+* fix cronjob suspend variable in package-releases
+* Thoth does not SI analyze package that do not provide distro (#530)
+### Improvements
+* Bump up version for messaging v0.8.2
+* Add file to kustomization and remove old one (#590)
+* :herb: re-arrange the core stage for consistency of manifests (#578)
+* switch to ocp kafka backed by amq streams in test (#570)
+* Add missing variable for adviser to send messages (#557)
+* :wrench: patch up qebhwt test kustomize file
+* Qebhwt use send messages (#549)
+* set initial delay for readiness probe for investigator consumer (#547)
+* :rabbit2: include idh into prow config (#526)
