@@ -8,7 +8,7 @@ resources:
   - service.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
-    - "deploymentconfig.yaml"
+   - deploymentconfig.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
