@@ -14,7 +14,7 @@ Deployments for test and production are provided:
 Default configuration for all CronJobs is: suspended, prod deployment patches that and activates the CronJobs.
 
 We run Kebechet in two different modes -
-* The default mode i.e. via an webhook trigger from the Github app
+* The default mode i.e. via a webhook trigger from the Github app
   The template for that is [here](https://github.com/thoth-station/thoth-application/blob/master/kebechet/base/openshift-templates/kebechet.yaml). Here kebechet acts on an webhook and operates on the particular repository. In this run we just need the webhook payload from the Github app.
 * The other way is we initiate Kebechet run on a user repository when we recieve new information related to the particular user. We initiate Kebechet the particular repository using the [Kebechet-run-url](https://github.com/thoth-station/thoth-application/blob/master/kebechet/base/openshift-templates/kebechet-run-url.yaml) template. In this run we just need the repository name and the service type which is Github in this case.
 
