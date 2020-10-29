@@ -234,3 +234,15 @@
 * Qebhwt use send messages (#549)
 * set initial delay for readiness probe for investigator consumer (#547)
 * :rabbit2: include idh into prow config (#526)
+
+## Release 2020.10.29 (2020-10-29T15:32:08)
+### Features
+* change bool to str value (#596)
+* check on deployment issue for cve-job test
+* :ship: Deploy the Tag v0.6.0 for investigator
+* :ship: Deploy the Tag v0.14.1 for sefkhet-abwy
+### Bug Fixes
+* Remove explicit key for argocd fix
+### Improvements
+* :boom: migrate stage deployemnt to use ocp kafka (#597)
+* make cve-update kafka producer (#593)
