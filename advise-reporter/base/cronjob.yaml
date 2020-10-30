@@ -113,7 +113,7 @@ spec:
                       name: ceph
                       key: secret-key
                 - name: THOTH_NUMBER_RELEASES
-                  value: 4
+                  value: "4"
               volumeMounts:
                 - name: secrets
                   mountPath: /mnt/secrets
