@@ -63,7 +63,7 @@ spec:
                 - name: THOTH_GRAPH_REFRESH_SECURITY
                   value: "1"
                 - name: THOTH_GRAPH_REFRESH_COUNT
-                  value: "200"
+                  value: "400"  # TODO: Reduce when more solvers are running
                 - name: THOTH_DEPLOYMENT_NAME
                   valueFrom:
                     configMapKeyRef:
