@@ -15,6 +15,19 @@ metadata:
     template.openshift.io/long-description: >
       This template defines resources needed to sync a single document from ceph storage to our DB.
     template.openshift.io/provider-display-name: "Red Hat, Inc."
+
+parameters:
+  - name: THOTH_SYNC_JOB_ID
+    description: Job ID for workflow
+    displayName: job id
+    required: true
+  - name: THOTH_SYNC_DOCUMENT_ID
+    description: id of document to sync
+    displayName: sync document
+    required: true
+  - name: THOTH_FORCE_SYNC
+    required: true
+
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
@@ -75,14 +88,16 @@ objects:
       serviceAccountName: argo
       templates:
         - name: graph-sync
-          archiveLocation:
-            archiveLogs: true
-          templateRef:
-            name: graph-sync
-            template: graph-sync-not-local
-          argument:
-            parameters:
-              - name: THOTH_DOCUMENT_ID
-                value: "{{workflow.parameters.THOTH_SYNC_DOCUMENT_ID}}"
-              - name: THOTH_FORCE_SYNC
-                value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
+          steps:
+          - - name: graph-sync-not-local
+              archiveLocation:
+                archiveLogs: true
+              templateRef:
+                name: graph-sync
+                template: graph-sync-not-local
+              arguments:
+                parameters:
+                  - name: THOTH_SYNC_DOCUMENT_ID
+                    value: "{{workflow.parameters.THOTH_SYNC_DOCUMENT_ID}}"
+                  - name: THOTH_FORCE_SYNC
+                    value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"

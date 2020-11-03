@@ -114,7 +114,7 @@ spec:
       resubmitPendingPods: true
       inputs:
         parameters:
-          - name: "THOTH_DOCUMENT_ID"
+          - name: "THOTH_SYNC_DOCUMENT_ID"
           - name: "THOTH_FORCE_SYNC"
       retryStrategy:
         limit: 3
@@ -123,9 +123,9 @@ spec:
         image: "graph-sync-job"
         env:
           - name: "THOTH_DOCUMENT_ID"
-            value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+            value: "{{inputs.parameters.THOTH_SYNC_DOCUMENT_ID}}"
           - name: "THOTH_SYNC_DOCUMENT_ID"
-            value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+            value: "{{inputs.parameters.THOTH_SYNC_DOCUMENT_ID}}"
           - name: "THOTH_FORCE_SYNC"
             value: "{{inputs.parameters.THOTH_FORCE_SYNC}}"
           - name: "THOTH_LOG_GRAPH_SYNC_JOB"
