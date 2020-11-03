@@ -4,5 +4,5 @@ apiVersion: v1
 metadata:
   name: sefkhet-abwy
 data:
-  subdomain: review-manager
+  subdomain: sefkhet-abwy
   webhook-callback-url: "http://sefkhet-abwy-webhook-receiver-aicoe-prod-bots.apps.ocp.prod.psi.redhat.com"

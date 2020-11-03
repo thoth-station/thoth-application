@@ -5,7 +5,7 @@ metadata:
   name: advise-reporter
 spec:
   schedule: "0 */12 * * *"
-  suspend: True
+  suspend: true
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
   failedJobsHistoryLimit: 4
@@ -21,12 +21,15 @@ spec:
                   value: "producer"
                 - name: APP_SCRIPT
                   value: "app.sh"
-                - name: ADVISER_VERSION
-                  value: "0.7.3"
                 - name: KAFKA_BOOTSTRAP_SERVERS
                   valueFrom:
                     configMapKeyRef:
                       key: kafka-bootstrap-servers
+                      name: kafka
+                - name: KAFKA_PROTOCOL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: kafka-protocol
                       name: kafka
                 - name: KAFKA_CAFILE
                   value: "/mnt/secrets/kafka_ca.crt"
@@ -109,11 +112,8 @@ spec:
                     secretKeyRef:
                       name: ceph
                       key: secret-key
-                - name: THOTH_ENVIRONMENT
-                  valueFrom:
-                    configMapKeyRef:
-                      name: thoth
-                      key: deployment-name
+                - name: THOTH_NUMBER_RELEASES
+                  value: "4"
               volumeMounts:
                 - name: secrets
                   mountPath: /mnt/secrets

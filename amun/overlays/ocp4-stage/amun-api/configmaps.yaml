@@ -1,0 +1,29 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: amun
+data:
+  amun-api-url: http://amun-api.thoth-amun-api-stage.svc
+  deployment-name: ocp4-stage
+  infra-namespace: thoth-amun-inspection-stage
+  inspection-namespace: thoth-amun-inspection-stage
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ceph
+data:
+  bucket-name: "thoth"
+  bucket-prefix: "data"
+  host: "https://s3.upshift.redhat.com/"
+  endpoint: "https://s3.upshift.redhat.com/"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus
+data:
+  pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
+  pushgateway-port: "80"
+  pushgateway-url: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80

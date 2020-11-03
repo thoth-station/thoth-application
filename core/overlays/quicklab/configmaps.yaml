@@ -59,7 +59,7 @@ data:
       port: 8080
 
     artifactRepository:
-      archiveLogs: False
+      archiveLogs: false
 
       s3:
         bucket: "DH-DEV-DATA"

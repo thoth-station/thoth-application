@@ -1,0 +1,115 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: crier
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      name: latest
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/crier:v20201001-87ea1a726b
+      importPolicy: {}
+      referencePolicy:
+        type: Local
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crier
+  labels:
+    app: crier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crier
+  template:
+    metadata:
+      labels:
+        app: crier
+    spec:
+      serviceAccountName: crier
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: crier
+          image: crier
+          args:
+            - --blob-storage-workers=10
+            - --config-path=/etc/config/config.yaml
+            - --gcs-credentials-file=/etc/gcs-credentials/service-account.json
+            - --github-endpoint=http://ghproxy
+            - --github-endpoint=https://api.github.com
+            - --github-token-path=/etc/github/oauth
+            - --github-workers=10
+            - --kubernetes-blob-storage-workers=10
+          volumeMounts:
+            - name: config
+              mountPath: /etc/config
+              readOnly: true
+            - name: github-token
+              mountPath: /etc/github
+              readOnly: true
+            - name: gcs-credentials
+              mountPath: /etc/gcs-credentials
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: config
+        - name: github-token
+          secret:
+            secretName: oauth
+        - name: gcs-credentials
+          secret:
+            secretName: gcs-credentials
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: crier
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: prow
+  name: crier
+rules:
+  - apiGroups:
+      - "prow.k8s.io"
+    resources:
+      - "prowjobs"
+    verbs:
+      - "get"
+      - "watch"
+      - "list"
+      - "patch"
+  - apiGroups:
+      - ""
+    resources:
+      - "pods"
+      - "events"
+    verbs:
+      - "get"
+      - "list"
+  - apiGroups:
+      - ""
+    resources:
+      - "pods"
+    verbs:
+      - "patch"
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: crier
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: crier
+subjects:
+  - kind: ServiceAccount
+    name: crier

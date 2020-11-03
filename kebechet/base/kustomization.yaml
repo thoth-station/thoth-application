@@ -5,6 +5,10 @@ resources:
   - imagestream.yaml
   - argo-workflows/kebechet.yaml
   - openshift-templates/kebechet.yaml
+  - argo-workflows/kebechet-run-url.yaml
+  - openshift-templates/kebechet-run-url.yaml
+  - argo-workflows/kebechet-administrator.yaml
+  - openshift-templates/kebechet-administrator.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: kebechet

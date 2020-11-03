@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - role-binding.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+generators:
+  - ./secret-generator.yaml
+patchesStrategicMerge:
+  - imagestreamtag.yaml
+patches:
+  - path: resources_patch.yaml
+    target:
+      group: apps.openshift.io
+      version: v1
+      kind: DeploymentConfig
+      name: user-api
+patchesJson6902:
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: user-api

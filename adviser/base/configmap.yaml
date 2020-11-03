@@ -1,7 +1,0 @@
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: qeb-hwt
-data:
-  webhook-callback-url: "http://qeb-hwt-aicoe-prod-bots.cloud.paas.psi.redhat.com"

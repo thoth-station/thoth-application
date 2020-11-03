@@ -39,6 +39,9 @@ objects:
     kind: Workflow
     metadata:
       name: "${THOTH_REVSOLVER_WORKFLOW_ID}"
+      labels:
+        app: thoth
+        component: revsolver
     spec:
       serviceAccountName: revsolver
       # kill workflow if running too much time

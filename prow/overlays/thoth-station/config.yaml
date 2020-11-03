@@ -2,10 +2,10 @@ plank:
   default_decoration_configs:
     "*":
       utility_images:
-        clonerefs: "gcr.io/k8s-prow/clonerefs:v20200615-5d59425fc2"
-        initupload: "gcr.io/k8s-prow/initupload:v20200615-5d59425fc2"
-        entrypoint: "gcr.io/k8s-prow/entrypoint:v20200615-5d59425fc2"
-        sidecar: "gcr.io/k8s-prow/sidecar:v20200615-5d59425fc2"
+        clonerefs: "gcr.io/k8s-prow/clonerefs:latest"
+        initupload: "gcr.io/k8s-prow/initupload:latest"
+        entrypoint: "gcr.io/k8s-prow/entrypoint:latest"
+        sidecar: "gcr.io/k8s-prow/sidecar:latest"
       gcs_configuration:
         bucket: aicoe-thoth-prow-artifacts
         path_strategy: explicit
@@ -124,6 +124,7 @@ tide:
         - AICoE/aicoe-cd
         - AICoE/aicoe-ci
         - AICoE/aicoe-sre
+        - AICoE/idh-manifests
         - AICoE/internal-data-hub
         - AICoE/prometheus-anomaly-detector
         - AICoE/prometheus-api-client-python
@@ -255,6 +256,10 @@ tide:
             required-contexts:
               - aicoe-ci/build-check
               - aicoe-ci/pre-commit-check
+          elyra-aidevsecops-tutorial:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
 
 presubmits:
   thoth-station/srcops-testing:
@@ -270,14 +275,53 @@ presubmits:
           - name: git
             resourceRef:
               name: PROW_IMPLICIT_GIT_REF
-#periodics:
-#  - name: integration-tests-periodic-preprod
-#    interval: 8h
-#    spec:
-#      containers:
-#        - image: quay.io/thoth-station/integration-tests:v0.1.2
-#          imagePullPolicy: Always
-#          command:
-#            - "./e2e-test.sh"
-#    annotations:
-#      description: Periodic 'advise endpoint' tests against preprod API
+  thoth-station/storages:
+    - name: py38-pre-commit
+      context: aicoe-ci/py38-pre-commit
+      decorate: true
+      always_run: true
+      skip_report: false
+      rerun_command: "/run py38-pre-commit"
+      trigger: "(?m)^/run (all|py38-pre-commit),?(\\s+|$)"
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-precommit-py38:v0.11.1
+            imagePullPolicy: Always
+            command:
+              - "bash"
+            args:
+              - "-c"
+              - "pre-commit"
+              - "run"
+              - "--all-files"
+    - name: py38-pytest
+      context: aicoe-ci/py38-pytest
+      decorate: true
+      always_run: true
+      skip_report: false
+      rerun_command: "/run py38-pytest"
+      trigger: "(?m)^/run (all|py38-pytest),?(\\s+|$)"
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-pytest-ubi8-py38:v0.11.1
+            imagePullPolicy: Always
+            command:
+              - "python3"
+            args:
+              - "setup.py"
+              - "test"
+periodics:
+  - name: integration-tests-moc
+    interval: 8h
+    decorate: true
+    spec:
+      containers:
+        - image: quay.io/thoth-station/integration-tests:v0.1.4
+          imagePullPolicy: Always
+          command:
+            - ./e2e-test.sh
+          env:
+            - name: E2E_TEST_API
+              value: api.moc.thoth-station.ninja
+    annotations:
+      description: Periodic e2e tests against MOC deployment

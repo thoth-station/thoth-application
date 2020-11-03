@@ -150,9 +150,25 @@ spec:
                 configMapKeyRef:
                   name: user-api
                   key: api-https
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: kafka-bootstrap-servers
+            - name: KAFKA_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka-protocol
+                  name: kafka
+            - name: KAFKA_CAFILE
+              value: "/mnt/secrets/kafka_ca.crt"
           ports:
             - containerPort: 8080
               protocol: TCP
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
           resources:
             requests:
               memory: "1Gi"
@@ -176,4 +192,11 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 60
             timeoutSeconds: 10
+      volumes:
+        - name: secrets
+          secret:
+            secretName: "kafka"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
   test: false

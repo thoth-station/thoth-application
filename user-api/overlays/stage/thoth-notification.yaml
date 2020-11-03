@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🚢 I have successfully synchronized *user-api* to <https://console-openshift-console.apps.ocp.prod.psi.redhat.com/k8s/cluster/projects/thoth-frontend-stage|STAGE frontend>, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/stage-thoth-user-api|ArgoCD UI>'}"
+            - "{'text':'🚢 I have successfully synchronized *user-api* components to *STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/stage-thoth-user-api|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAIL* synchronizing *user-api* to <https://console-openshift-console.apps.ocp.prod.psi.redhat.com/k8s/cluster/projects/thoth-frontend-stage|STAGE frontend>, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/stage-thoth-user-api|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAIL* synchronizing *user-api* components to *STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/stage-thoth-user-api|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

@@ -32,7 +32,10 @@ spec:
             - name: PYTHONPATH
               value: .
             - name: THOTH_DEPLOYMENT_NAME
-              value: aicoe-prod-bots
+              valueFrom:
+                configMapKeyRef:
+                  key: deployment-name
+                  name: thoth
             - name: SENTRY_DSN
               valueFrom:
                 secretKeyRef:
@@ -49,27 +52,3 @@ spec:
             requests:
               cpu: 100m
               memory: 256Mi
-        - name: ultrahook-qeb-hwt
-          image: ultrahook
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          env:
-            - name: ULTRAHOOK_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  key: api.key
-                  name: ultrahook-aicoe
-            - name: ULTRAHOOK_SUBDOMAIN
-              valueFrom:
-                configMapKeyRef:
-                  key: subdomain
-                  name: qeb-hwt
-            - name: ULTRAHOOK_DESTINATION
-              valueFrom:
-                configMapKeyRef:
-                  key: webhook-callback-url
-                  name: qeb-hwt
-          resources:
-            limits:
-              memory: 50Mi

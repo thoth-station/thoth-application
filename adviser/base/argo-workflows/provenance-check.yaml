@@ -72,11 +72,6 @@ spec:
             value: "{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}"
           - name: THOTH_ADVISER_SUBCOMMAND
             value: "provenance"
-          - name: ISIS_API_URL
-            valueFrom:
-              configMapKeyRef:
-                name: thoth
-                key: isis-api-url
           - name: PROMETHEUS_PUSHGATEWAY_URL
             valueFrom:
               configMapKeyRef:

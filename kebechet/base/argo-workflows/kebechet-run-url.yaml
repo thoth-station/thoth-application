@@ -1,0 +1,69 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: kebechet-run-url
+  labels:
+    app: thoth
+    component: kebechet
+spec:
+  templates:
+    - name: kebechet-run-url
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+        - name: KEBECHET_REPO_URL
+        - name: KEBECHET_SERVICE_NAME
+      container:
+        image: kebechet
+        env:
+          - name: PIPENV_NOSPIN
+            value: "1"
+          - name: PIPENV_COLORBLIND
+            value: "1"
+          - name: PIPENV_HIDE_EMOJIS
+            value: "1"
+          - name: KEBECHET_VERBOSE
+            value: "1"
+          - name: KEBECHET_SUBCOMMAND
+            value: "run-url"
+          - name: KEBECHET_REPO_URL
+            value: "{{inputs.parameters.KEBECHET_REPO_URL}}"
+          - name: KEBECHET_SERVICE_NAME
+            value: "{{inputs.parameters.KEBECHET_SERVICE_NAME}}"
+          - name: GITHUB_KEBECHET_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: github-oauth-token
+                name: kebechet
+          - name: GITLAB_KEBECHET_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: gitlab-oauth-token
+                name: kebechet
+          - name: PAGURE_KEBECHET_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: pagure-oauth-token
+                name: kebechet
+          - name: SENTRY_DSN
+            valueFrom:
+              secretKeyRef:
+                key: sentry-dsn
+                name: kebechet
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: deployment-name
+                name: thoth
+        volumeMounts:
+          - name: ssh-config
+            mountPath: /home/user/.ssh
+            readOnly: true
+        resources:
+          limits:
+            cpu: 1
+            memory: 2Gi
+          requests:
+            cpu: 1
+            memory: 2Gi

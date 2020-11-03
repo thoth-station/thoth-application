@@ -5,10 +5,9 @@ commonLabels:
   app.kubernetes.io/component: adviser
   app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
-  - configmap.yaml
   - argo-workflows/advise.yaml
   - argo-workflows/dependency-monkey.yaml
-  - argo-workflows/investigate-unresolved-package.yaml
+  - argo-workflows/parse-adviser-output.yaml
   - argo-workflows/kebechet-run-results.yaml
   - argo-workflows/provenance-check.yaml
   - argo-workflows/trigger-integration.yaml

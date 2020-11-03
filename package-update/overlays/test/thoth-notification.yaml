@@ -2,7 +2,38 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-
+  name: chat-notification-success-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+        - name: chat-notification
+          image: registry.access.redhat.com/ubi8/ubi
+          command:
+            - "curl"
+            - "-X"
+            - "POST"
+            - "-H"
+            - "Content-Type: application/json; charset=UTF-8"
+            - "-d"
+            - "{'text':'I have successfully synchronized *package-update* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/test-thoth-package-update|ArgoCD UI>'}"
+            - "$(THOTH_DEVOPS_WEBHOOK_URL)"
+          env:
+            - name: THOTH_DEVOPS_WEBHOOK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chat-notification
+                  key: thoth-devops
+      restartPolicy: Never
+  backoffLimit: 2
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: chat-notification-fail-
   annotations:
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -19,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have *FAILED* synchronized *package-update* to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp.prod.psi.redhat.com/applications/test-thoth-package-update|ArgoCD UI> and <https://console-openshift-console.apps.thoth01.lab.upshift.rdu2.redhat.com/k8s/ns/thoth-test-core/cronjobs/package-update|thoth-test-core>'}"
+            - "{'text':'🔥 *FAIL* synchronizing *package-update* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/test-thoth-package-update|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

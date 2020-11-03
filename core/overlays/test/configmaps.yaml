@@ -13,12 +13,6 @@ data:
   middletier-namespace: thoth-test-core
   frontend-namespace: thoth-test-core
   infra-namespace: thoth-test-core
-  solvers: |
-    solver-rhel-8-py36
-    solver-fedora-31-py38
-    solver-fedora-31-py37
-    solver-fedora-32-py37
-    solver-fedora-32-py38
   package-releases-only-if-package-seen: "1"
   postgresql-host: pgbouncer.thoth-test-core.svc
   rsyslog-host: ""
@@ -39,9 +33,19 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
+  name: solvers
+data:
+  solvers: |
+    solver-rhel-8-py36
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
   name: kafka
 data:
-  kafka-bootstrap-servers: "thoth-kafka-bootstrap-thoth-infra-stage.apps.thoth12.lab.upshift.rdu2.redhat.com:443"
+  kafka-ssl-auth: "1"
+  kafka-protocol: "SSL"
+  kafka-bootstrap-servers: "thoth-kafka-bootstrap-aicoe.apps.ocp.prod.psi.redhat.com:443"
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -68,7 +72,7 @@ data:
         parallelism: 10
 
     artifactRepository:
-      archiveLogs: False
+      archiveLogs: false
 
       s3:
         bucket: "thoth"
@@ -90,6 +94,17 @@ data:
   host-url: "https://prometheus-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
   user-api-url: "user-api-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
   instance-metrics-exporter-infra: "metrics-exporter-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
+  instance-metrics-management-api: "management-api-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
   pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
   pushgateway-port: "80"
   pushgateway-url: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80
+  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
+  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
+  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: qeb-hwt-workflow
+data:
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-test-core.apps.ocp.prod.psi.redhat.com"

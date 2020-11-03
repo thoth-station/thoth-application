@@ -7,7 +7,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/package-releases-job:v0.8.4
+      name: quay.io/thoth-station/package-releases-job:v0.8.8
     importPolicy: {}
     referencePolicy:
       type: Source
