@@ -6,7 +6,7 @@ metadata:
 data:
   applicationVersion: 0.7.0-dev
   deployment-name: ocp-test
-  amun-api-url: http://amun-api.thoth-test-core.svc
+  amun-api-url: http://amun-api.thoth-test-core.svc/api/v1
   amun-inspection-namespace: thoth-test-core
   amun-namespace: thoth-test-core
   backend-namespace: thoth-test-core

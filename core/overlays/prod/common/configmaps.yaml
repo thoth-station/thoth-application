@@ -6,7 +6,7 @@ metadata:
 data:
   applicationVersion: 0.7.0
   deployment-name: moc-prod
-  amun-api-url: "https://amun.moc.thoth-station.ninja"
+  amun-api-url: "https://amun.moc.thoth-station.ninja/api/v1"
   amun-inspection-namespace: thoth-amun-inspection-prod
   amun-namespace: thoth-amun-api-prod
   backend-namespace: thoth-backend-prod
