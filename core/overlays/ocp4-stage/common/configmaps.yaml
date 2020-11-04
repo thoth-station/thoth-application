@@ -6,7 +6,7 @@ metadata:
 data:
   applicationVersion: 0.7.0
   deployment-name: ocp4-stage
-  amun-api-url: "http://amun-api-thoth-amun-api-stage.apps.ocp4.prod.psi.redhat.com"
+  amun-api-url: "http://amun-api-thoth-amun-api-stage.apps.ocp4.prod.psi.redhat.com/api/v1"
   amun-inspection-namespace: thoth-amun-inspection-stage
   amun-namespace: thoth-amun-api-stage
   backend-namespace: thoth-backend-stage
