@@ -29,18 +29,26 @@ spec:
               value: "0"
             - name: APP_SCRIPT
               value: "app.sh"
+            - name: KAFKA_CONSUMER_GROUP_ID
+              value: "thoth.investigator"
+            - name: KAFKA_CONSUMER_ENABLE_AUTO_COMMIT
+              value: "false"
+            - name: KAFKA_CONSUMER_MAX_POLL_INTERVAL_MS
+              value: "900000"
             - name: KAFKA_BOOTSTRAP_SERVERS
               valueFrom:
                 configMapKeyRef:
                   name: kafka
                   key: kafka-bootstrap-servers
-            - name: KAFKA_PROTOCOL
+            - name: KAFKA_SECURITY_PROTOCOL
               valueFrom:
                 configMapKeyRef:
                   key: kafka-protocol
                   name: kafka
-            - name: KAFKA_CAFILE
+            - name: KAFKA_SSL_CA_LOCATION
               value: "/mnt/secrets/kafka_ca.crt"
+            - name: KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM
+              value: "none"
             - name: KNOWLEDGE_GRAPH_HOST
               valueFrom:
                 configMapKeyRef:
