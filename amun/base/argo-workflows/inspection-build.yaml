@@ -233,10 +233,10 @@ spec:
           mkdir -p "$results"
           kubectl logs "{{inputs.parameters.inspection-id}}-1-build" > "${results}/log"
 
-          cat <<< {{inputs.parameters.specification}} | jq . > "${results}/specification"
+          cat <<< "{{inputs.parameters.specification}}" | jq . > "${results}/specification"
 
           set +e
-          cat <<< {{inputs.parameters.dockerfile}} > "${results}/Dockerfile"
+          cat <<< "{{inputs.parameters.dockerfile}}" > "${results}/Dockerfile"
           set -e
 
           # Fail if the build failed but let the build log, specification and Dockerfile aggregated.
