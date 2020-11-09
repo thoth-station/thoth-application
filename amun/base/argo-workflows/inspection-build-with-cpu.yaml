@@ -266,14 +266,11 @@ spec:
           results="/mnt/build/"
           mkdir -p "$results"
           kubectl logs "{{inputs.parameters.inspection-id}}-1-build" > "${results}/log"
-          cat << EOF  | jq . > "${results}/specification"
-          {{inputs.parameters.specification}}
-          EOF
+
+          cat <<< {{inputs.parameters.specification}} | jq . > "${results}/specification"
 
           set +e
-          cat << EOF > "${results}/Dockerfile"
-          {{inputs.parameters.dockerfile}}
-          EOF
+          cat <<< {{inputs.parameters.dockerfile}} > "${results}/Dockerfile"
           set -e
 
           # Fail if the build failed but let the build log, specification and Dockerfile aggregated.
