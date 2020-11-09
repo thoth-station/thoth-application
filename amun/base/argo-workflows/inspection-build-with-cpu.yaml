@@ -267,14 +267,14 @@ spec:
           mkdir -p "$results"
           kubectl logs "{{inputs.parameters.inspection-id}}-1-build" > "${results}/log"
 
-          spec=`cat <<__EOF__
+          spec=`cat <<'__EOF__'
           {{inputs.parameters.specification}}
           __EOF__
           `
           echo "${spec}" | jq . > "${results}/specification"
 
           set +e
-          dockerfile=`cat <<__EOF__
+          dockerfile=`cat <<'__EOF__'
           {{inputs.parameters.dockerfile}}
           __EOF__
           `
