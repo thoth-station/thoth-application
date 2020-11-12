@@ -31,6 +31,13 @@ spec:
             value: "{{inputs.parameters.KEBECHET_REPO_URL}}"
           - name: KEBECHET_SERVICE_NAME
             value: "{{inputs.parameters.KEBECHET_SERVICE_NAME}}"
+          - name: GITHUB_APP_ID
+            valueFrom:
+              secretKeyRef:
+                key: GITHUB_APP_ID
+                name: kebechet
+          - name: GITHUB_PRIVATE_KEY_PATH
+            value: "/home/user/github/github-privatekey"
           - name: GITHUB_KEBECHET_TOKEN
             valueFrom:
               secretKeyRef:
@@ -59,6 +66,9 @@ spec:
         volumeMounts:
           - name: ssh-config
             mountPath: /home/user/.ssh
+            readOnly: true
+          - name: github-app-privatekey
+            mountPath: /home/user/github
             readOnly: true
         resources:
           limits:

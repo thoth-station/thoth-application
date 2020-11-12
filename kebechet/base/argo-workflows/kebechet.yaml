@@ -28,6 +28,13 @@ spec:
             value: "run-webhook"
           - name: KEBECHET_PAYLOAD
             value: "{{inputs.parameters.WEBHOOK_PAYLOAD}}"
+          - name: GITHUB_APP_ID
+            valueFrom:
+              secretKeyRef:
+                key: GITHUB_APP_ID
+                name: kebechet
+          - name: GITHUB_PRIVATE_KEY_PATH
+            value: "/home/user/github/github-privatekey"
           - name: GITHUB_KEBECHET_TOKEN
             valueFrom:
               secretKeyRef:
@@ -56,6 +63,9 @@ spec:
         volumeMounts:
           - name: ssh-config
             mountPath: /home/user/.ssh
+            readOnly: true
+          - name: github-app-privatekey
+            mountPath: /home/user/github
             readOnly: true
         resources:
           limits:
