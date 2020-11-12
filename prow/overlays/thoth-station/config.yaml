@@ -196,7 +196,6 @@ tide:
           kebechet:
             required-contexts:
               - aicoe-ci/pre-commit-check
-              - aicoe-ci/pytest-check
               - aicoe-ci/build-check
           source-management:
             required-contexts:
