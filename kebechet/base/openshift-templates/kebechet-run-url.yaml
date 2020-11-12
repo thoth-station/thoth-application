@@ -80,8 +80,10 @@ objects:
 
       arguments:
         parameters:
-          - name: "WEBHOOK_PAYLOAD"
-            value: "${WEBHOOK_PAYLOAD}"
+          - name: "KEBECHET_REPO_URL"
+            value: "${KEBECHET_REPO_URL}"
+          - name: "KEBECHET_SERVICE_NAME"
+            value: "${KEBECHET_SERVICE_NAME}"
       volumes:
         - name: ssh-config
           secret:
@@ -89,6 +91,12 @@ objects:
             items:
             - key: ssh-privatekey
               path: id_rsa
+        - name: github-app-privatekey
+          secret:
+            secretName: kebechet
+            items:
+            - key: KEBBHUT_GITHUB_PRIVATE_KEY
+              path: github-privatekey
 
       templates:
         - name: "kebechet-run-url"
