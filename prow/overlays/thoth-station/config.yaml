@@ -189,6 +189,10 @@ tide:
             required-contexts:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
+          invectio:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
           integration-tests:
             required-contexts:
               - aicoe-ci/pre-commit-check
