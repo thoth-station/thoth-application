@@ -60,7 +60,7 @@ parameters:
     required: true
     description: Adviser's beam width to restrict memory requirements with states generated.
     displayName: Beam width
-    value: "17500"
+    value: "10000"
   - name: THOTH_LOG_ADVISER
     description: Log adviser actions
     displayName: Log adviser actions
