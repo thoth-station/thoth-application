@@ -190,6 +190,6 @@ spec:
               - python3
               - liveness.py
           failureThreshold: 3
-          initialDelaySeconds: 1500
+          initialDelaySeconds: 1200
           timeoutSeconds: 600
           periodSeconds: 120
