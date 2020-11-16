@@ -232,6 +232,8 @@ objects:
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
                     - name: THOTH_ADVISER_SEED
                       value: "{{workflow.parameters.THOTH_ADVISER_SEED}}"
+                    - name: THOTH_ADVISER_DEV
+                      value: "{{workflow.parameters.THOTH_ADVISER_DEV}}"
                     - name: THOTH_ADVISER_BEAM_WIDTH
                       value: "{{workflow.parameters.THOTH_ADVISER_BEAM_WIDTH}}"
                     - name: THOTH_ADVISER_LIMIT
