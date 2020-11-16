@@ -180,10 +180,10 @@ spec:
         resources:
           limits:
             cpu: 1.1
-            memory: 12Gi
+            memory: 16Gi
           requests:
             cpu: 1.1
-            memory: 12Gi
+            memory: 16Gi
         livenessProbe:
           exec:
             command:
