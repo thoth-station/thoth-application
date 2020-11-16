@@ -242,7 +242,6 @@ tide:
             required-contexts:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/pytest-check
-              - aicoe-ci/build-check
           storages:
             required-contexts:
               - aicoe-ci/pytest-check
