@@ -45,7 +45,7 @@ metadata:
 data:
   kafka-ssl-auth: "1"
   kafka-protocol: "SSL"
-  kafka-bootstrap-servers: "thoth-kafka-bootstrap-thoth-infra-stage.apps.thoth02.lab.upshift.rdu2.redhat.com:443"
+  kafka-bootstrap-servers: "thoth-kafka-bootstrap-aicoe.apps.ocp4.prod.psi.redhat.com:443"
 ---
 kind: ConfigMap
 apiVersion: v1
