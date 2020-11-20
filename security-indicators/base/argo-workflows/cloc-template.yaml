@@ -78,6 +78,8 @@ spec:
             value: "{{inputs.parameters.THOTH_SI_CLOC_PACKAGE_VERSION}}"
           - name: THOTH_SI_CLOC_PACKAGE_INDEX
             value: "{{inputs.parameters.THOTH_SI_CLOC_PACKAGE_INDEX}}"
+          - name: THOTH_SI_CLOC_DIR
+            value: "{{inputs.parameters.THOTH_SI_CLOC_DIR}}"
         image: si-cloc
         name: si-cloc
         resources:
