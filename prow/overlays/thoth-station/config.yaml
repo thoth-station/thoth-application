@@ -129,6 +129,7 @@ tide:
         - AICoE/prometheus-anomaly-detector
         - AICoE/prometheus-api-client-python
         - AICoE/s2i-custom-notebook
+        - AICoE/sefkhet-abwy
       labels:
         - approved
       missingLabels:
