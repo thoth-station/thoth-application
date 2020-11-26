@@ -25,3 +25,7 @@ patchesJson6902:
       version: v1
       kind: Role
       name: management-api
+generatorOptions:
+  disableNameSuffixHash: true
+generators:
+  - ./secret-generator.yaml
