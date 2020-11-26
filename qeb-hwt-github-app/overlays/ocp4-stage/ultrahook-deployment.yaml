@@ -52,7 +52,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: subdomain
-                  name: qeb-hwt-ocp4
+                  name: qeb-hwt
             - name: ULTRAHOOK_DESTINATION
               valueFrom:
                 configMapKeyRef:
