@@ -9,8 +9,6 @@ metadata:
 
 spec:
   serviceAccountName: argo
-  entrypoint: mi-workflow
-
   templates:
     - name: mi-anaylse-workflow
       resubmitPendingPods: true
@@ -32,7 +30,7 @@ spec:
           - name: REPOSITORY
       steps:
         - - name: collect-kebechet-knowledge
-            template: kebechet
+            template: kebechet-analyse
             arguments:
               parameters:
                 - name: REPOSITORY
@@ -81,7 +79,7 @@ spec:
           - name: PYTHONPATH
             value: "."
 
-    - name: kebechet
+    - name: kebechet-analyse
       resubmitPendingPods: true
       inputs:
         parameters:

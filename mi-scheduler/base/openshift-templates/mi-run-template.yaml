@@ -43,7 +43,19 @@ objects:
               - name: "mi"
                 templateRef:
                   name: "mi"
-                  template: "mi-workflow"
+                  template: "mi-analyse-workflow"
+                arguments:
+                  parameters:
+                    - name: REPOSITORY
+                      value: ${REPOSITORY}
+
+        - name: "mi-kebechet"
+          dag:
+            tasks:
+              - name: "mi-kebechet"
+                templateRef:
+                  name: "mi-kebechet"
+                  template: "mi-kebechet-analyse-workflow"
                 arguments:
                   parameters:
                     - name: REPOSITORY
