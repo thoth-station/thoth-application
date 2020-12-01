@@ -1,0 +1,107 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: graph-schema-update-job
+  annotations:
+    description: "Thoth: Graph Schema Update Job for updating schema in database"
+    openshift.io/display-name: "Thoth: Graph Schema Update Job Multiple Documents"
+    tags: thoth,ai-stacks,aistacks,graph-schema-update-job
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to deploy Thoth's Graph Schema Update Job on OpenShift.
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+  labels:
+    template: graph-schema-update-job
+
+parameters:
+  - name: THOTH_SCHEMA_UPDATE_JOB_ID
+    description: A unique identifier of job
+    displayName: A unique identifier of job
+    required: true
+
+objects:
+  - apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: "${THOTH_SCHEMA_UPDATE_JOB_ID}"
+      labels:
+        app: thoth
+        component: graph-schema-update-job
+        mark: cleanup
+    spec:
+      backoffLimit: 7
+      template:
+        metadata:
+          labels:
+            app: thoth
+            component: graph-schema-update-job
+            mark: cleanup
+        spec:
+          containers:
+            - name: graph-schema-update-job
+              image: workflow-helpers
+              env:
+                - name: THOTH_WORKFLOW_TASK
+                  value: "graph_schema_update"
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: thoth
+                - name: KNOWLEDGE_GRAPH_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: postgresql-host
+                      name: thoth
+                - name: KNOWLEDGE_GRAPH_PORT
+                  value: "5432"
+                - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+                  value: "1"
+                - name: KNOWLEDGE_GRAPH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-user
+                - name: KNOWLEDGE_GRAPH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-password
+                - name: KNOWLEDGE_GRAPH_DATABASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-name
+                - name: THOTH_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-name
+                      name: ceph
+                - name: THOTH_CEPH_BUCKET_PREFIX
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-prefix
+                      name: ceph
+                - name: THOTH_S3_ENDPOINT_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: host
+                      name: ceph
+                - name: THOTH_CEPH_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: key-id
+                - name: THOTH_CEPH_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: secret-key
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "1"
+                limits:
+                  memory: "512Mi"
+                  cpu: "1"
+          restartPolicy: OnFailure
