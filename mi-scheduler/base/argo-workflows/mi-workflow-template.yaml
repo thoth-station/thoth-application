@@ -12,7 +12,7 @@ spec:
   entrypoint: mi-workflow
 
   templates:
-    - name: mi-workflow
+    - name: mi-anaylse-workflow
       resubmitPendingPods: true
       inputs:
         parameters:
@@ -25,8 +25,14 @@ spec:
                 - name: REPOSITORY
                   value: "{{inputs.parameters.REPOSITORY}}"
 
-        - - name: process-information
-            template: process
+    - name: mi-kebechet-anaylse-workflow
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: REPOSITORY
+      steps:
+        - - name: collect-kebechet-knowledge
+            template: kebechet
             arguments:
               parameters:
                 - name: REPOSITORY
@@ -75,7 +81,7 @@ spec:
           - name: PYTHONPATH
             value: "."
 
-    - name: process
+    - name: kebechet
       resubmitPendingPods: true
       inputs:
         parameters:
@@ -83,7 +89,9 @@ spec:
       container:
         image: "mi"
         command: ["srcopsmetrics/cli.py"]
-        args: ["-pr", "{{inputs.parameters.REPOSITORY}}"]
+        args: ["-cr", "{{inputs.parameters.REPOSITORY}}",
+               "-e", "KebechetUpdateManager",
+               "-e", "DependencyUpdate"]
         env:
           - name: GITHUB_ACCESS_TOKEN
             valueFrom:
