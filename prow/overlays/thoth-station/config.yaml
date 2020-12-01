@@ -246,11 +246,9 @@ tide:
           storages:
             required-contexts:
               - aicoe-ci/pytest-check
-              - aicoe-ci/build-check
           tensorflow-symbols:
             required-contexts:
               - aicoe-ci/pre-commit-check
-              - aicoe-ci/build-check
           investigator:
             required-contexts:
               - aicoe-ci/build-check
