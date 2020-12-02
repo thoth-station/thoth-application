@@ -246,3 +246,121 @@
 ### Improvements
 * :boom: migrate stage deployemnt to use ocp kafka (#597)
 * make cve-update kafka producer (#593)
+
+## Release 2020.12.02 (2020-12-02T18:37:43)
+### Features
+* Package module dont require build-check (#689)
+* Bump graph-sync to v0.8.0 (#688)
+* :ship: Deploy the Tag v0.8.0 for graph-sync-job
+* Add graph-schema-update (#687)
+* Bump workflow-helpers version in stage (#686)
+* :ship: Deploy the Tag v0.3.1 for workflow-helpers
+* switch to ocp4 qebhwt webhook receiver from ocp (#685)
+* :ship: Deploy the Tag v0.6.1 for investigator
+* :arrow_up: bump up management-api app version to v0.8.2 (#684)
+* Bump SLO-reporter version to 0.7.0 (#680)
+* Reduce adviser memory to 2Gi (#683)
+* reduce workflows (#670)
+* Switch data aggregating cronjob in ocp , pass the baton to ocp4 (#681)
+* :arrow_up: bump up qebhwt app version to v0.3.2
+* Fix the configmap name for qebhwt in ocp4
+* setup the custom dns route for thoth deployments (#679)
+* Bump adviser to version 0.21.1 in stage environment (#678)
+* Updated kebechet image (#676)
+* :ship: Deploy the Tag pr-105 for sefkhet-abwy
+* :ship: Deploy the Tag v0.17.1 for sefkhet-abwy
+* Revert ":mushroom: update stage investigater to the latest version (#673)" (#674)
+* :mushroom: update stage investigater to the latest version (#673)
+* :ship: Deploy the Tag v0.17.0 for sefkhet-abwy
+* Test pr 610 (#672)
+* :sparkles: add sefkeht-abwy to tide config section
+* Bumped kebechet (#668)
+* Bump kebechet in stage (#667)
+* :ship: Deploy the Tag v0.1.6 for si-aggregator
+* Bump keb (#664)
+* Bump adviser to v0.21.0 in stage (#665)
+* :mushroom: update the kakfa certs for the ocp4 cluster
+* :four_leaf_clover: kafka bootstrap server update for the ocp4
+* Add missing THOTH_ADVISER_DEV option (#657)
+* :honeybee: Remove explicit namespace setup from kustomize file
+* update the prow configuration
+* set other solvers to be solved (#653)
+* Raise adviser requests to 20Gi memory (#652)
+* Bump adviser to 16Gi
+* Decrease beam width to 10000 (#648)
+* Decrease liveness to 20 mins for adviser (#646)
+* Reduce default beam width (#645)
+* Reduce beam width to reduce OOM risk (#644)
+* :four_leaf_clover: synchronous manifest file of ocp4 stage with ocp stage (#636)
+* Keb GitHub (#643)
+* Added env varibles needed for githubapp (#640)
+* :lock: update kebechet secret with github app requirements
+* add pre-commit & pytest for invectio (#638)
+* backported #637
+* :sparkles: add tensorflow-symbols repo
+* :arrow_up: bump up package-update job to v0.8.4 (#635)
+* :ship: Deploy the Tag v0.8.4 for package-update-job
+* :arrow_up: bump up graph-refresh job to v0.2.9 (#634)
+* :ship: Deploy the Tag v0.2.9 for graph-refresh-job
+* :honeybee: update investigator stage to v0.5.6 to run with messaging v0.7.13 (#633)
+* :ship: Deploy the Tag v0.5.6 for investigator
+* Bump User API to v0.8.0 in stage (#631)
+* :ship: Deploy the Tag v0.8.0 for user-api
+* :octocat: update parallelism for middletier stage (#630)
+* add new workflow for graph-sync (#480)
+* Avoid expansion of envariables in here-documents (#627)
+* Fix expansion of env variables (#625)
+* Use here-strings instead of here documents (#624)
+* move tested cve-update kafka producer to base (#620)
+* Downgrade user-api to v0.6.20 in stage environment (#623)
+* Revert "Bump user-api to v0.7.0 in stage environment (#621)" (#622)
+* Bump user-api to v0.7.0 in stage environment (#621)
+* :ship: Deploy the Tag v0.7.0 for user-api
+* :ship: Deploy the Tag 1132 for user-api
+* Bump adviser to version 0.20.1 in stage (#619)
+* :ship: Deploy the Tag v0.20.1 for adviser
+* Bump management-api to v0.8.1 in stage (#617)
+* :ship: Deploy the Tag v0.8.1 for management-api
+* :ship: Deploy the Tag v0.1.4 for si-cloc
+* :ship: Deploy the Tag v0.8.0 for management-api
+* Bump management-api to v0.8.0 in stage
+* :ship: Deploy the Tag v0.2.5 for nepthys
+* revert back to old faust based investigator (#615)
+* update the investigator deploymentconfig wrt to new chnages (#613)
+* Amun API URL should include API version (#611)
+* Bump adviser to v0.20.0 in stage (#607)
+* :ship: Deploy the Tag v0.20.0 for adviser
+* Add additional wait before the resolver is terminated (#606)
+* Set logging to WARNING for sentry_sdk.errors logger (#604)
+* Bump version to v0.4.6 in stage (#603)
+* :ship: Deploy the Tag v0.4.6 for advise-reporter
+* Increase while we have 1 solver running (#600)
+* Added an readme of kebechet components (#591)
+* Bump adviser to 0.19.1 in stage (#598)
+* :ship: Deploy the Tag v0.19.2 for adviser
+* :ship: Deploy the Tag v0.19.1 for adviser
+### Bug Fixes
+* :wrench: fix kebechet secrets and qebhwt configmaps
+* Include fix-test image to check on the qebhwt issue (#677)
+* Reduce time after which adviser is cut off (#671)
+* Another try to fix expansion (#626)
+* :rocket: fix the yaml value issue in advise-reporter
+### Improvements
+* :lock: updated secrets for ocp4 apps
+* Add more memory to adviser (#693)
+* Add more memory to adviser (#691)
+* :arrow_up: bump up management-api app version to v0.8.2 in test
+* :arrow_up_small: bump image version for kebechet and adviser in ocp4
+* set package dir for si cloc (#666)
+* Deploy v0.9.0 to test
+* stick to solvers based on f32 and ubi8 (#655)
+* Give adviser more memory and restore old configuration
+* Give resolver more memory to compute results (#647)
+* Bump Kebechet in test (#642)
+* :lock: updated argo artifact secrets for amun instance (#628)
+* :lock: updated kafka certs for stage and test deployment
+* :arrow_up: bump up investigator and messaging versions (#612)
+* :arrow_up: bump up nepthys version (#608)
+* :arrow_up: bump up parallelism for middletier stage
+### Other
+* :sparkles: remove presubmit jobs again
