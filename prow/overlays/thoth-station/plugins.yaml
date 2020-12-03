@@ -17,6 +17,7 @@ label:
     - sig/slo
     - sig/advisor
     - sig/build
+    - sig/devops
 
 project_config:
   project_org_configs:
