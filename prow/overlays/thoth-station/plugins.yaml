@@ -8,6 +8,15 @@ label:
     - deployment_name/moc
     - thoth/group-programming
     - thoth/potential-observation
+    - sig/documentation
+    - sig/cyborgs
+    - sig/investigator
+    - sig/indicators
+    - sig/knowledge-graph
+    - sig/solvers
+    - sig/slo
+    - sig/advisor
+    - sig/build
 
 project_config:
   project_org_configs:
