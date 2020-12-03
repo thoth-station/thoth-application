@@ -21,7 +21,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/sefkhet-abwy-webhook-receiver:pr-105
+      name: quay.io/thoth-station/sefkhet-abwy-webhook-receiver:v0.18.0
     importPolicy: {}
     referencePolicy:
       type: Source
