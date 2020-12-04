@@ -219,7 +219,7 @@ tide:
           python:
             required-contexts:
               - aicoe-ci/pytest-check
-              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
           srcops-testing:
             required-contexts:
               - aicoe-ci/pre-commit-check
