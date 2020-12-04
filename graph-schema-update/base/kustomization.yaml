@@ -7,5 +7,4 @@ commonLabels:
 generatorOptions:
   disableNameSuffixHash: true
 resources:
-  - imagestream.yaml
   - openshift-templates/schemaUpdateJob-template.yaml
