@@ -13,6 +13,11 @@ parameters:
     description: GitHub repository whose Health Indicator will be computed
     displayName: inspected GitHub repository
 
+  - name: ENTITIES
+    required: true
+    description: Entities according to MI which will be analysed in REPOSITORY
+    displayName: Meta-information Indicator Entities
+
   - name: WORKFLOW_ID
     required: true
     description: ID for MI Workflow
@@ -36,6 +41,8 @@ objects:
         parameters:
           - name: REPOSITORY
             value: ${REPOSITORY}
+          - name: ENTITIES
+            value: ${ENTITIES}
       templates:
         - name: "mi"
           dag:
@@ -43,20 +50,10 @@ objects:
               - name: "mi"
                 templateRef:
                   name: "mi"
-                  template: "mi-analyse-workflow"
+                  template: "mi-workflow"
                 arguments:
                   parameters:
                     - name: REPOSITORY
                       value: ${REPOSITORY}
-
-        - name: "mi-kebechet"
-          dag:
-            tasks:
-              - name: "mi-kebechet"
-                templateRef:
-                  name: "mi-kebechet"
-                  template: "mi-kebechet-analyse-workflow"
-                arguments:
-                  parameters:
-                    - name: REPOSITORY
-                      value: ${REPOSITORY}
+                    - name: ENTITIES
+                      value: ${ENTITIES}
