@@ -26,22 +26,6 @@ spec:
                 - name: ENTITIES
                   value: "{{inputs.parameters.ENTITIES}}"
 
-
-    - name: kebechet-anaylse
-      resubmitPendingPods: true
-      inputs:
-        parameters:
-          - name: REPOSITORY
-      steps:
-        - - name: collect-kebechet-knowledge
-            template: mi-workflow
-            arguments:
-              parameters:
-                - name: REPOSITORY
-                  value: "{{inputs.parameters.REPOSITORY}}"
-                - name: ENTITIES
-                  value: "KebechetUpdateManager,DependencyUpdate"
-
     - name: analyse
       resubmitPendingPods: true
       inputs:
