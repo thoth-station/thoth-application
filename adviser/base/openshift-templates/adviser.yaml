@@ -188,7 +188,7 @@ objects:
                 path: kafka_ca.crt
         - name: ssh-config
           secret:
-            secretName: kebechet-secret
+            secretName: kebechet
             items:
               - key: ssh-privatekey
                 path: id_rsa
