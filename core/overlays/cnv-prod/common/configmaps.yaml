@@ -1,0 +1,72 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: thoth
+data:
+  applicationVersion: 0.7.0
+  deployment-name: cnv-prod
+  amun-api-url: "http://amun-api-thoth-amun-api-prod.apps.cnv.massopen.cloud/api/v1"
+  amun-inspection-namespace: thoth-amun-inspection-prod
+  amun-namespace: thoth-amun-api-prod
+  backend-namespace: thoth-backend-prod
+  middletier-namespace: thoth-middletier-prod
+  frontend-namespace: thoth-frontend-prod
+  infra-namespace: thoth-infra-prod
+  package-releases-only-if-package-seen: "1"
+  postgresql-host: pgbouncer.thoth-graph-prod.svc
+  rsyslog-host: ""
+  rsyslog-port: ""
+  storage-bucket-name: cnv-prod
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ceph
+data:
+  bucket-name: "thoth"
+  bucket-prefix: "data"
+  public-bucket-name: DH-PLAYPEN
+  host: "https://rgw-openshift-storage.apps.cnv.massopen.cloud/"
+  endpoint: "https://rgw-openshift-storage.apps.cnv.massopen.cloud/"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: solvers
+data:
+  solvers: |
+    solver-rhel-8-py36
+    solver-rhel-8-py38
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: kafka
+data:
+  kafka-ssl-auth: "1"
+  kafka-protocol: "SSL"
+  kafka-bootstrap-servers: "odh-message-bus-kafka-bootstrap-opf-kafka.apps.cnv.massopen.cloud:443"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus
+data:
+  host-url: "http://prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud"
+  user-api-url: "user-api-thoth-frontend-prod.apps.cnv.massopen.cloud:80"
+  instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud:80"
+  instance-metrics-management-api: "management-api-thoth-frontend-prod.apps.cnv.massopen.cloud:80"
+  pushgateway-host: prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud
+  pushgateway-port: "80"
+  pushgateway-url: prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud:80
+  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-backend-prod.apps.cnv.massopen.cloud:80"
+  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud:80"
+  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-amun-inspection-prod.apps.cnv.massopen.cloud:80"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: qeb-hwt-workflow
+data:
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-frontend-prod.apps.cnv.massopen.cloud.com"

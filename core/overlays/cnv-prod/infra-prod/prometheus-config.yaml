@@ -1,0 +1,300 @@
+alerting:
+  alert_relabel_configs:
+  - action: labeldrop
+    regex: prometheus_replica
+  alertmanagers: []
+global:
+  evaluation_interval: 30s
+  external_labels:
+    prometheus: thoth-infra-prod/prometheus
+    prometheus_replica: $(POD_NAME)
+  scrape_interval: 30s
+rule_files:
+- /etc/prometheus/rules/prometheus-prometheus-rulefiles-0/*.yaml
+scrape_configs:
+- honor_labels: false
+  job_name: thoth-infra-prod/jupyterhub-metrics/0
+  kubernetes_sd_configs:
+  - namespaces:
+      names:
+      - thoth-infra-prod
+    role: endpoints
+  relabel_configs:
+  - action: keep
+    regex: jupyterhub
+    source_labels:
+    - __meta_kubernetes_service_label_app
+  - action: keep
+    regex: 8080-tcp
+    source_labels:
+    - __meta_kubernetes_endpoint_port_name
+  - regex: Node;(.*)
+    replacement: ${1}
+    separator: ;
+    source_labels:
+    - __meta_kubernetes_endpoint_address_target_kind
+    - __meta_kubernetes_endpoint_address_target_name
+    target_label: node
+  - regex: Pod;(.*)
+    replacement: ${1}
+    separator: ;
+    source_labels:
+    - __meta_kubernetes_endpoint_address_target_kind
+    - __meta_kubernetes_endpoint_address_target_name
+    target_label: pod
+  - source_labels:
+    - __meta_kubernetes_namespace
+    target_label: namespace
+  - source_labels:
+    - __meta_kubernetes_service_name
+    target_label: service
+  - source_labels:
+    - __meta_kubernetes_pod_name
+    target_label: pod
+  - replacement: ${1}
+    source_labels:
+    - __meta_kubernetes_service_name
+    target_label: job
+  - replacement: 8080-tcp
+    target_label: endpoint
+- honor_labels: false
+  job_name: thoth-infra-prod/odhservicemonitor/0
+  kubernetes_sd_configs:
+  - namespaces:
+      names:
+      - thoth-infra-prod
+    role: endpoints
+  relabel_configs:
+  - action: keep
+    regex: web
+    source_labels:
+    - __meta_kubernetes_endpoint_port_name
+  - regex: Node;(.*)
+    replacement: ${1}
+    separator: ;
+    source_labels:
+    - __meta_kubernetes_endpoint_address_target_kind
+    - __meta_kubernetes_endpoint_address_target_name
+    target_label: node
+  - regex: Pod;(.*)
+    replacement: ${1}
+    separator: ;
+    source_labels:
+    - __meta_kubernetes_endpoint_address_target_kind
+    - __meta_kubernetes_endpoint_address_target_name
+    target_label: pod
+  - source_labels:
+    - __meta_kubernetes_namespace
+    target_label: namespace
+  - source_labels:
+    - __meta_kubernetes_service_name
+    target_label: service
+  - source_labels:
+    - __meta_kubernetes_pod_name
+    target_label: pod
+  - replacement: ${1}
+    source_labels:
+    - __meta_kubernetes_service_name
+    target_label: job
+  - replacement: web
+    target_label: endpoint
+- honor_labels: false
+  job_name: thoth-infra-prod/bridge-metrics/0
+  kubernetes_sd_configs:
+  - namespaces:
+      names:
+      - thoth-infra-prod
+    role: pod
+  metrics_path: /metrics
+  relabel_configs:
+  - action: keep
+    regex: KafkaBridge
+    source_labels:
+    - __meta_kubernetes_pod_label_strimzi_io_kind
+  - action: keep
+    regex: rest-api
+    source_labels:
+    - __meta_kubernetes_pod_container_port_name
+  - source_labels:
+    - __meta_kubernetes_namespace
+    target_label: namespace
+  - source_labels:
+    - __meta_kubernetes_pod_container_name
+    target_label: container
+  - source_labels:
+    - __meta_kubernetes_pod_name
+    target_label: pod
+  - replacement: thoth-infra-prod/bridge-metrics
+    target_label: job
+  - replacement: rest-api
+    target_label: endpoint
+- honor_labels: false
+  job_name: thoth-infra-prod/cluster-operator-metrics/0
+  kubernetes_sd_configs:
+  - namespaces:
+      names:
+      - thoth-infra-prod
+    role: pod
+  metrics_path: /metrics
+  relabel_configs:
+  - action: keep
+    regex: cluster-operator
+    source_labels:
+    - __meta_kubernetes_pod_label_strimzi_io_kind
+  - action: keep
+    regex: http
+    source_labels:
+    - __meta_kubernetes_pod_container_port_name
+  - source_labels:
+    - __meta_kubernetes_namespace
+    target_label: namespace
+  - source_labels:
+    - __meta_kubernetes_pod_container_name
+    target_label: container
+  - source_labels:
+    - __meta_kubernetes_pod_name
+    target_label: pod
+  - replacement: thoth-infra-prod/cluster-operator-metrics
+    target_label: job
+  - replacement: http
+    target_label: endpoint
+- honor_labels: false
+  job_name: thoth-infra-prod/entity-operator-metrics/0
+  kubernetes_sd_configs:
+  - namespaces:
+      names:
+      - thoth-infra-prod
+    role: pod
+  metrics_path: /metrics
+  relabel_configs:
+  - action: keep
+    regex: entity-operator
+    source_labels:
+    - __meta_kubernetes_pod_label_app_kubernetes_io_name
+  - action: keep
+    regex: healthcheck
+    source_labels:
+    - __meta_kubernetes_pod_container_port_name
+  - source_labels:
+    - __meta_kubernetes_namespace
+    target_label: namespace
+  - source_labels:
+    - __meta_kubernetes_pod_container_name
+    target_label: container
+  - source_labels:
+    - __meta_kubernetes_pod_name
+    target_label: pod
+  - replacement: thoth-infra-prod/entity-operator-metrics
+    target_label: job
+  - replacement: healthcheck
+    target_label: endpoint
+- honor_labels: false
+  job_name: thoth-infra-prod/kafka-metrics/0
+  kubernetes_sd_configs:
+  - namespaces:
+      names:
+      - thoth-infra-prod
+    role: pod
+  metrics_path: /metrics
+  relabel_configs:
+  - action: keep
+    regex: Kafka|KafkaConnect
+    source_labels:
+    - __meta_kubernetes_pod_label_strimzi_io_kind
+  - action: keep
+    regex: tcp-prometheus
+    source_labels:
+    - __meta_kubernetes_pod_container_port_name
+  - source_labels:
+    - __meta_kubernetes_namespace
+    target_label: namespace
+  - source_labels:
+    - __meta_kubernetes_pod_container_name
+    target_label: container
+  - source_labels:
+    - __meta_kubernetes_pod_name
+    target_label: pod
+  - replacement: thoth-infra-prod/kafka-metrics
+    target_label: job
+  - replacement: tcp-prometheus
+    target_label: endpoint
+  - action: labelmap
+    regex: __meta_kubernetes_pod_label_(.+)
+    replacement: $1
+    separator: ;
+  - action: replace
+    regex: (.*)
+    replacement: $1
+    separator: ;
+    source_labels:
+    - __meta_kubernetes_namespace
+    target_label: namespace
+  - action: replace
+    regex: (.*)
+    replacement: $1
+    separator: ;
+    source_labels:
+    - __meta_kubernetes_pod_name
+    target_label: kubernetes_pod_name
+  - action: replace
+    regex: (.*)
+    replacement: $1
+    separator: ;
+    source_labels:
+    - __meta_kubernetes_pod_node_name
+    target_label: node_name
+  - action: replace
+    regex: (.*)
+    replacement: $1
+    separator: ;
+    source_labels:
+    - __meta_kubernetes_pod_host_ip
+    target_label: node_ip
+- job_name: 'Thoth Metrics (MOC)'
+  metrics_path: '/metrics'
+  scheme: http
+  static_configs:
+    - targets:
+      - metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud
+- job_name: 'Thoth User API Metrics (MOC)'
+  static_configs:
+    - targets:
+      - user-api-thoth-frontend-prod.apps.cnv.massopen.cloud
+- job_name: 'Thoth Amun API Metrics (MOC)'
+  static_configs:
+    - targets:
+      - amun-api-thoth-amun-api-prod.apps.cnv.massopen.cloud
+- job_name: 'Thoth Management API Metrics (MOC)'
+  static_configs:
+    - targets:
+      - management-api-thoth-frontend-prod.apps.cnv.massopen.cloud
+- job_name: 'Thoth Argo Workflow Metrics (middletier)'
+  metrics_path: '/metrics'
+  scheme: http
+  static_configs:
+    - targets:
+      - workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud
+- job_name: 'Thoth Argo Workflow Metrics (amun-inspection)'
+  metrics_path: '/metrics'
+  scheme: http
+  static_configs:
+    - targets:
+      - workflow-controller-metrics-thoth-amun-inspection-prod.apps.cnv.massopen.cloud
+- job_name: 'Thoth Argo Workflow Metrics (backend)'
+  metrics_path: '/metrics'
+  scheme: http
+  static_configs:
+    - targets:
+      - workflow-controller-metrics-thoth-backend-prod.apps.cnv.massopen.cloud
+- job_name: 'Thoth Investigator Consumer Metrics (MOC)'
+  metrics_path: '/metrics'
+  scheme: http
+  static_configs:
+    - targets:
+      - investigator-faust-web-thoth-infra-prod.apps.cnv.massopen.cloud
+- job_name: 'Thoth PostgreSQL Metrics (MOC)'
+  metrics_path: '/metrics'
+  scheme: http
+  static_configs:
+    - targets:
+      - postgres-metrics-exporter-thoth-graph-prod.apps.cnv.massopen.cloud
