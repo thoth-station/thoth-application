@@ -38,7 +38,3 @@ patchesJson6902:
       version: v1
       kind: Role
       name: user-api-pods-info
-generatorOptions:
-  disableNameSuffixHash: true
-generators:
-  - ./secret-generator.yaml
