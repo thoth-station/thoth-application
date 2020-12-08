@@ -1,0 +1,29 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: amun
+data:
+  amun-api-url: http://amun-api.thoth-amun-api-prod.svc
+  deployment-name: cnv-prod
+  infra-namespace: thoth-amun-inspection-prod
+  inspection-namespace: thoth-amun-inspection-prod
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ceph
+data:
+  bucket-name: "thoth"
+  bucket-prefix: "data"
+  host: "https://rgw-openshift-storage.apps.cnv.massopen.cloud/"
+  endpoint: "https://rgw-openshift-storage.apps.cnv.massopen.cloud/"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus
+data:
+  pushgateway-host: prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud
+  pushgateway-port: "80"
+  pushgateway-url: prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud:80

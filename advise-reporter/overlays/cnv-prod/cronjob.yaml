@@ -1,0 +1,10 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: advise-reporter
+  labels:
+    app: thoth
+    component: advise-reporter
+spec:
+  suspend: false
