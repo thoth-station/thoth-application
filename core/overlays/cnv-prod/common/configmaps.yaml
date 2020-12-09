@@ -57,9 +57,9 @@ data:
   user-api-url: "user-api-thoth-frontend-prod.apps.cnv.massopen.cloud:80"
   instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud:80"
   instance-metrics-management-api: "management-api-thoth-frontend-prod.apps.cnv.massopen.cloud:80"
-  pushgateway-host: prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud
+  pushgateway-host: pushgateway-thoth-infra-prod.apps.cnv.massopen.cloud
   pushgateway-port: "80"
-  pushgateway-url: prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud:80
+  pushgateway-url: pushgateway-thoth-infra-prod.apps.cnv.massopen.cloud:80
   instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-backend-prod.apps.cnv.massopen.cloud:80"
   instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud:80"
   instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-amun-inspection-prod.apps.cnv.massopen.cloud:80"

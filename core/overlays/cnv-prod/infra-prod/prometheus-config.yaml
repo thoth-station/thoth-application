@@ -250,49 +250,45 @@ scrape_configs:
     source_labels:
     - __meta_kubernetes_pod_host_ip
     target_label: node_ip
-- job_name: 'Thoth Metrics (MOC)'
+- job_name: 'pushgateway'
+  honor_labels: true
+  scheme: http
+  static_configs:
+    - targets:
+      - pushgateway-thoth-infra-prod.apps.cnv.massopen.cloud
+- job_name: 'Thoth Metrics'
   metrics_path: '/metrics'
   scheme: http
   static_configs:
     - targets:
       - metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud
-- job_name: 'Thoth User API Metrics (MOC)'
+- job_name: 'Thoth User API Metrics'
   static_configs:
     - targets:
       - user-api-thoth-frontend-prod.apps.cnv.massopen.cloud
-- job_name: 'Thoth Amun API Metrics (MOC)'
+- job_name: 'Thoth Amun API Metrics'
   static_configs:
     - targets:
       - amun-api-thoth-amun-api-prod.apps.cnv.massopen.cloud
-- job_name: 'Thoth Management API Metrics (MOC)'
+- job_name: 'Thoth Management API Metrics'
   static_configs:
     - targets:
       - management-api-thoth-frontend-prod.apps.cnv.massopen.cloud
-- job_name: 'Thoth Argo Workflow Metrics (middletier)'
+- job_name: 'Thoth Argo Workflow Metrics'
   metrics_path: '/metrics'
   scheme: http
   static_configs:
     - targets:
       - workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud
-- job_name: 'Thoth Argo Workflow Metrics (amun-inspection)'
-  metrics_path: '/metrics'
-  scheme: http
-  static_configs:
-    - targets:
       - workflow-controller-metrics-thoth-amun-inspection-prod.apps.cnv.massopen.cloud
-- job_name: 'Thoth Argo Workflow Metrics (backend)'
-  metrics_path: '/metrics'
-  scheme: http
-  static_configs:
-    - targets:
       - workflow-controller-metrics-thoth-backend-prod.apps.cnv.massopen.cloud
-- job_name: 'Thoth Investigator Consumer Metrics (MOC)'
+- job_name: 'Thoth Investigator Consumer Metrics'
   metrics_path: '/metrics'
   scheme: http
   static_configs:
     - targets:
       - investigator-faust-web-thoth-infra-prod.apps.cnv.massopen.cloud
-- job_name: 'Thoth PostgreSQL Metrics (MOC)'
+- job_name: 'Thoth PostgreSQL Metrics'
   metrics_path: '/metrics'
   scheme: http
   static_configs:
