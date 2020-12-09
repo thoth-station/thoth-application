@@ -13,7 +13,7 @@ spec:
       labels:
         app.kubernetes.io/name: thoth
         app.kubernetes.io/component: core
-        app.kubernetes.io/managed-by: thoth-devops
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
         app.kubernetes.io/version: "0.7.0"
         service: pgbouncer
     spec:
