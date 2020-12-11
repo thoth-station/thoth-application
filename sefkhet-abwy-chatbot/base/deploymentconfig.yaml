@@ -6,7 +6,6 @@ metadata:
 spec:
   replicas: 1
   selector:
-    # FIXME we need to reconfigure the transformer
     app.kubernetes.io/component: sefkhet-abwy-chatbot
     app.kubernetes.io/managed-by: aicoe-thoth-devops
     app.kubernetes.io/name: thoth
