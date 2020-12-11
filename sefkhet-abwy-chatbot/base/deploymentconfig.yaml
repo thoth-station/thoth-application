@@ -27,7 +27,7 @@ spec:
             - name: GITHUB_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
-                  key: SESHETA_SRCOPS_ACCESS_TOKEN
+                  key: GITHUB_ACCESS_TOKEN
                   name: sefkhet-abwy
           image: sefkhet-abwy-chatbot
           name: sefkhet-abwy-chatbot
