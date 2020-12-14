@@ -1,0 +1,6 @@
+apiVersion: viaduct.ai/v1
+kind: ksops
+metadata:
+  name: route53-generator
+files:
+  - ./route53.enc.yaml
