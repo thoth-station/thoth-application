@@ -14,7 +14,7 @@ parameters:
     displayName: inspected GitHub repository
 
   - name: ENTITIES
-    required: true
+    required: false```
     description: Entities according to MI which will be analysed in REPOSITORY
     displayName: Meta-information Indicator Entities
 
