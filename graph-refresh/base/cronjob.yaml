@@ -63,7 +63,7 @@ spec:
                 - name: THOTH_GRAPH_REFRESH_SECURITY
                   value: "0"
                 - name: THOTH_GRAPH_REFRESH_COUNT
-                  value: "450"
+                  value: "800"
                 - name: THOTH_DEPLOYMENT_NAME
                   valueFrom:
                     configMapKeyRef:
