@@ -9,7 +9,7 @@ metadata:
 
 spec:
   serviceAccountName: argo
-  entrypoint: mi-workflow 
+  entrypoint: mi-workflow
   templates:
     - name: mi-workflow
       resubmitPendingPods: true
