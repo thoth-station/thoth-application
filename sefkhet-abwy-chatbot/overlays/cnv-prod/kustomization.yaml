@@ -4,7 +4,3 @@ resources:
   - ../../base
 patchesStrategicMerge:
   - imagestreamtag.yaml
-generatorOptions:
-  disableNameSuffixHash: true
-generators:
-  - ./route53-generator.yaml
