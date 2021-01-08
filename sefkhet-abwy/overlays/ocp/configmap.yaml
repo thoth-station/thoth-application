@@ -5,4 +5,4 @@ metadata:
   name: sefkhet-abwy
 data:
   subdomain: sefkhet-abwy
-  webhook-callback-url: "http://sefkhet-abwy-webhook-receiver-aicoe-prod-bots.apps.ocp.prod.psi.redhat.com"
+  webhook-callback-url: "http://sefkhet-abwy-webhook-receiver-aicoe-prod-bots.apps.ocp4.prod.psi.redhat.com"
