@@ -1,0 +1,270 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: build-analysis
+  annotations:
+    description: "Thoth: Build Analysis"
+    openshift.io/display-name: "Thoth: Build Analysis"
+    tags: thoth,ai-stacks,packages,dependencies,package-extract,build
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to run build analysis on OpenShift.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    app: thoth
+    template: build-analysis
+    component: build-analysis
+
+parameters:
+  - name: THOTH_BUILD_ANALYSIS_BASE_IMAGE
+    required: false
+    description: Base image used
+    displayName: Base image
+  - name: THOTH_BUILD_ANALYSIS_BASE_IMAGE_ANALYSIS_ID
+    required: false
+    description: ID of base image analysis
+    displayName: Base image analysis id
+  - name: THOTH_BUILD_ANALYSIS_BASE_IMAGE_DOCUMENT_ID
+    required: false
+    description: ID of document with the resulting container image analysis
+    displayName: Base image document id
+  - name: THOTH_BUILD_ANALYSIS_BASE_REGISTRY_CREDENTIALS
+    required: false
+    description: Credentials used in the base registry
+    displayName: Base registry creds
+  - name: THOTH_BUILD_ANALYSIS_BASE_REGISTRY_NO_TLS_VERIFY
+    required: true
+    description: Base registry TLS verification
+    displayName: Base registry TLS verify
+  - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE
+    required: true
+    description: Output image used
+    displayName: Output image
+  - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_DOCUMENT_ID
+    required: false
+    description: ID of the resulting document for output image analysis
+    displayName: Output image analysis id
+  - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_ANALYSIS_ID
+    required: false
+    description: ID of output image analysis
+    displayName: Base image analysis id
+  - name: THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_CREDENTIALS
+    required: false
+    description: Credentials used in the output registry
+    displayName: Output registry credentials
+  - name: THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_NO_TLS_VERIFY
+    required: true
+    description: Bsae registry TLS verification
+    displayName: Base registry TLS verify
+  - name: THOTH_BUILD_ANALYSIS_BUILDLOG_DOCUMENT_ID
+    required: true
+    description: Document id for buildlog document
+    displayName: Buildlog document id
+  - name: THOTH_BUILD_ANALYSIS_BUILDLOG_PARSER_ID
+    required: false
+    description: Buildlog parser id
+    displayName: Buildlog parser id
+  - name: THOTH_BUILD_ANALYSIS_ENVIRONMENT_TYPE
+    required: true
+    description: Name of environment where the image is used
+    displayName: Environment type
+  - name: THOTH_BUILD_ANALYSIS_ORIGIN
+    required: true
+    description: Origin from where the build happened
+    displayName: Build origin
+  - name: THOTH_BUILD_ANALYSIS_LOG
+    required: true
+    description: Rurn on DEBUG logs if DEBUG provided
+    displayName: Debug log
+  - name: THOTH_BUILD_ANALYSIS_JOB_ID
+    required: true
+    description: ID of build analysis job
+    displayName: ID of build analysis job
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: "${THOTH_BUILD_ANALYSIS_JOB_ID}"
+      labels:
+        app: thoth
+        component: build-analysis
+    spec:
+      serviceAccountName: argo
+      activeDeadlineSeconds: 3000
+      ttlStrategy:
+        secondsAfterCompletion: 7200
+        secondsAfterSuccess: 7200
+        secondsAfterFailure: 7200
+      entrypoint: package-extract
+      arguments:
+        parameters:
+          - name: THOTH_BUILD_ANALYSIS_BASE_IMAGE
+            value: "${THOTH_BUILD_ANALYSIS_BASE_IMAGE}"
+          - name: THOTH_BUILD_ANALYSIS_BASE_IMAGE_ANALYSIS_ID
+            value: "${THOTH_BUILD_ANALYSIS_BASE_IMAGE_ANALYSIS_ID}"
+          - name: THOTH_BUILD_ANALYSIS_BASE_IMAGE_DOCUMENT_ID
+            value: "${THOTH_BUILD_ANALYSIS_BASE_IMAGE_DOCUMENT_ID}"
+          - name: THOTH_BUILD_ANALYSIS_BASE_REGISTRY_CREDENTIALS
+            value: "${THOTH_BUILD_ANALYSIS_BASE_REGISTRY_CREDENTIALS}"
+          - name: THOTH_BUILD_ANALYSIS_BASE_REGISTRY_NO_TLS_VERIFY
+            value: "${THOTH_BUILD_ANALYSIS_BASE_REGISTRY_NO_TLS_VERIFY}"
+          - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE
+            value: "${THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE}"
+          - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_ANALYSIS_ID
+            value: "${THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_ANALYSIS_ID}"
+          - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_DOCUMENT_ID
+            value: "${THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_DOCUMENT_ID}"
+          - name: THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_CREDENTIALS
+            value: "${THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_CREDENTIALS}"
+          - name: THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_NO_TLS_VERIFY
+            value: "${THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_NO_TLS_VERIFY}"
+          - name: THOTH_BUILD_ANALYSIS_BUILDLOG_DOCUMENT_ID
+            value: "${THOTH_BUILD_ANALYSIS_BUILDLOG_DOCUMENT_ID}"
+          - name: THOTH_BUILD_ANALYSIS_BUILDLOG_PARSER_ID
+            value: "${THOTH_BUILD_ANALYSIS_BUILDLOG_PARSER_ID}"
+          - name: THOTH_BUILD_ANALYSIS_ENVIRONMENT_TYPE
+            value: "${THOTH_BUILD_ANALYSIS_ENVIRONMENT_TYPE}"
+          - name: THOTH_BUILD_ANALYSIS_ORIGIN
+            value: "${THOTH_BUILD_ANALYSIS_ORIGIN}"
+          - name: THOTH_BUILD_ANALYSIS_LOG
+            value: "${THOTH_BUILD_ANALYSIS_LOG}"
+          - name: THOTH_BUILD_ANALYSIS_JOB_ID
+            value: "${THOTH_BUILD_ANALYSIS_JOB_ID}"
+          - name: ceph_bucket_prefix
+          - name: ceph_bucket_name
+          - name: ceph_host
+          - name: deployment_name
+      volumes:
+        - name: workdir
+          emptyDir: {}
+        - name: output
+          emptyDir: {}
+      templates:
+        - name: package-extract
+          archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - name: extract-packages-base
+                templateRef:
+                  name: extract-packages
+                  template: extract-packages
+                continueOn:
+                  failed: true
+                arguments:
+                  parameters:
+                    - name: THOTH_ANALYZED_IMAGE
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BASE_IMAGE}}"
+                    - name: THOTH_PACKAGE_EXTRACT_JOB_ID
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BASE_IMAGE_ANALYSIS_ID}}"
+                    - name: THOTH_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BASE_IMAGE_DOCUMENT_ID}}"
+                    - name: THOTH_LOG_PACKAGE_EXTRACT
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_LOG}}"
+                    - name: THOTH_PACKAGE_EXTRACT_METADATA
+                      value: "{}"
+                    - name: THOTH_ANALYZER_NO_TLS_VERIFY
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BASE_REGISTRY_NO_TLS_VERIFY}}"
+                    - name: THOTH_REGISTRY_CREDENTIALS
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BASE_REGISTRY_CREDENTIALS}}"
+                    - name: THOTH_S3_ENDPOINT_URL
+                      value: "{{workflow.parameters.ceph_host}}"
+                    - name: THOTH_CEPH_BUCKET_NAME
+                      value: "{{workflow.parameters.ceph_bucket_name}}"
+                    - name: THOTH_CEPH_BUCKET_PREFIX
+                      value: "{{workflow.parameters.ceph_bucket_prefix}}"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
+                when: "'{{workflow.parameters.THOTH_BUILD_ANALYSIS_BASE_IMAGE_ANALYSIS_ID}}' != ''"
+
+              - name: "graph-sync-package-extract-base"
+                dependencies:
+                  - "extract-packages-base"
+                templateRef:
+                  name: "graph-sync"
+                  template: "graph-sync"
+                arguments:
+                  artifacts:
+                    - name: outputdocument
+                      from: "{{tasks.extract-packages-base.outputs.artifacts.outputdocument}}"
+                  parameters:
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BASE_IMAGE_DOCUMENT_ID}}"
+                    - name: "THOTH_FORCE_SYNC"
+                      value: "1"
+
+              - name: extract-packages-output
+                templateRef:
+                  name: extract-packages
+                  template: extract-packages
+                continueOn:
+                  failed: true
+                arguments:
+                  parameters:
+                    - name: THOTH_ANALYZED_IMAGE
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE}}"
+                    - name: THOTH_PACKAGE_EXTRACT_JOB_ID
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_ANALYSIS_ID}}"
+                    - name: THOTH_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_DOCUMENT_ID}}"
+                    - name: THOTH_LOG_PACKAGE_EXTRACT
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_LOG}}"
+                    - name: THOTH_PACKAGE_EXTRACT_METADATA
+                      value: "{}"
+                    - name: THOTH_ANALYZER_NO_TLS_VERIFY
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_NO_TLS_VERIFY}}"
+                    - name: THOTH_REGISTRY_CREDENTIALS
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_CREDENTIALS}}"
+                    - name: THOTH_S3_ENDPOINT_URL
+                      value: "{{workflow.parameters.ceph_host}}"
+                    - name: THOTH_CEPH_BUCKET_NAME
+                      value: "{{workflow.parameters.ceph_bucket_name}}"
+                    - name: THOTH_CEPH_BUCKET_PREFIX
+                      value: "{{workflow.parameters.ceph_bucket_prefix}}"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
+                when: "'{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_ANALYSIS_ID}}' != ''"
+
+              - name: "graph-sync-package-extract-output"
+                dependencies:
+                  - "extract-packages-output"
+                templateRef:
+                  name: "graph-sync"
+                  template: "graph-sync"
+                arguments:
+                  artifacts:
+                    - name: outputdocument
+                      from: "{{tasks.extract-packages-output.outputs.artifacts.outputdocument}}"
+                  parameters:
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_DOCUMENT_ID}}"
+                    - name: "THOTH_FORCE_SYNC"
+                      value: "1"
+
+              - name: "parse-buildlog"
+                templateRef:
+                  name: "parse-buildlog"
+                  template: "parse-buildlog"
+                arguments:
+#                  artifacts:  # TODO
+#                    - name: outputdocument
+#                      from: "{{tasks.extract-packages-output.outputs.artifacts.outputdocument}}"
+                  parameters:
+                    - name: THOTH_BUILDLOG_PARSER_JOB_ID
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BUILDLOG_PARSER_ID}}"
+                    - name: THOTH_BUILDLOG_PARSER_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BUILDLOG_PARSER_ID}}"
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_ANALYSIS_ID}}"
+                    - name: "THOTH_FORCE_SYNC"
+                      value: "1"
+                    - name: THOTH_S3_ENDPOINT_URL
+                      value: "{{workflow.parameters.ceph_host}}"
+                    - name: THOTH_CEPH_BUCKET_NAME
+                      value: "{{workflow.parameters.ceph_bucket_name}}"
+                    - name: THOTH_CEPH_BUCKET_PREFIX
+                      value: "{{workflow.parameters.ceph_bucket_prefix}}"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
+                when: "'{{workflow.parameters.THOTH_BUILD_ANALYSIS_BUILDLOG_PARSER_ID}}' != ''"
