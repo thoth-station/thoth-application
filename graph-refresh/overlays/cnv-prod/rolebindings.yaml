@@ -34,7 +34,7 @@ metadata:
   namespace: thoth-middletier-prod
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
+  kind: Role
   name: argo
 subjects:
   - kind: ServiceAccount
@@ -48,7 +48,7 @@ metadata:
   namespace: thoth-middletier-prod
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
+  kind: Role
   name: argo-admin
 subjects:
   - kind: ServiceAccount
