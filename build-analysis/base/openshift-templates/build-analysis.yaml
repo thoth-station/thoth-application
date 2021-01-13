@@ -253,17 +253,14 @@ objects:
                   name: "parse-buildlog"
                   template: "parse-buildlog"
                 arguments:
-#                  artifacts:  # TODO
-#                    - name: outputdocument
-#                      from: "{{tasks.extract-packages-output.outputs.artifacts.outputdocument}}"
                   parameters:
                     - name: THOTH_BUILDLOG_PARSER_JOB_ID
                       value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BUILDLOG_PARSER_ID}}"
-                    - name: THOTH_BUILDLOG_PARSER_DOCUMENT_ID
+                    - name: THOTH_DOCUMENT_ID
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BUILDLOG_DOCUMENT_ID}}"
+                    - name: THOTH_OUTPUT_DOCUMENT_ID
                       value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BUILDLOG_PARSER_ID}}"
-                    - name: "THOTH_DOCUMENT_ID"
-                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_ANALYSIS_ID}}"
-                    - name: "THOTH_FORCE_SYNC"
+                    - name: THOTH_FORCE_SYNC
                       value: "1"
                     - name: THOTH_S3_ENDPOINT_URL
                       value: "{{workflow.parameters.ceph_host}}"
