@@ -37,7 +37,7 @@ parameters:
     description: Base registry TLS verification
     displayName: Base registry TLS verify
   - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE
-    required: true
+    required: false
     description: Output image used
     displayName: Output image
   - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_DOCUMENT_ID
