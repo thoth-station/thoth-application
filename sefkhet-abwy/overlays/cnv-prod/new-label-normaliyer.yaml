@@ -1,0 +1,38 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    app: sefkhet-abwy
+    component: srcops
+  name: new-label-normalizer
+spec:
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - image: sefkhet-abwy:latest
+              name: new-label-normalizer
+              env:
+                - name: APP_FILE
+                  value: new_label_normalizer
+                - name: PYTHON_PATH
+                  value: "."
+                - name: GITHUB_ACCESS_TOKEN
+                  valueFrom:
+                    configMapKeyRef:
+                      key: github-access-token
+                      name: new-label-normalizer
+              resources:
+                limits:
+                  cpu: 250m
+                  memory: 128Mi
+                requests:
+                  cpu: 100m
+                  memory: 64Mi
+  schedule: 59 2 * * *
+  successfulJobsHistoryLimit: 1
+  suspend: false
