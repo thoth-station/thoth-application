@@ -20,7 +20,7 @@ spec:
     spec:
       serviceAccountName: investigator
       containers:
-        - image: investigator:test
+        - image: investigator
           name: investigator-consumer
           env:
             - name: SUBCOMMAND
