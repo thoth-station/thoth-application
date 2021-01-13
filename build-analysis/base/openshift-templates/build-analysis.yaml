@@ -80,6 +80,10 @@ parameters:
     required: true
     description: ID of build analysis job
     displayName: ID of build analysis job
+  - name: THOTH_BUILD_ANALYSIS_METADATA
+    required: true
+    description: Build analysis metadata supplied - propagated to package-extract
+    displayName: Build analysis metadata
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -129,6 +133,8 @@ objects:
             value: "${THOTH_BUILD_ANALYSIS_ORIGIN}"
           - name: THOTH_BUILD_ANALYSIS_LOG
             value: "${THOTH_BUILD_ANALYSIS_LOG}"
+          - name: THOTH_BUILD_ANALYSIS_METADATA
+            value: "${THOTH_BUILD_ANALYSIS_METADATA}"
           - name: THOTH_BUILD_ANALYSIS_JOB_ID
             value: "${THOTH_BUILD_ANALYSIS_JOB_ID}"
           - name: ceph_bucket_prefix
@@ -163,7 +169,7 @@ objects:
                     - name: THOTH_LOG_PACKAGE_EXTRACT
                       value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_LOG}}"
                     - name: THOTH_PACKAGE_EXTRACT_METADATA
-                      value: "{}"
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_METADATA}}"
                     - name: THOTH_ANALYZER_NO_TLS_VERIFY
                       value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_BASE_REGISTRY_NO_TLS_VERIFY}}"
                     - name: THOTH_REGISTRY_CREDENTIALS
@@ -211,7 +217,7 @@ objects:
                     - name: THOTH_LOG_PACKAGE_EXTRACT
                       value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_LOG}}"
                     - name: THOTH_PACKAGE_EXTRACT_METADATA
-                      value: "{}"
+                      value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_METADATA}}"
                     - name: THOTH_ANALYZER_NO_TLS_VERIFY
                       value: "{{workflow.parameters.THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_NO_TLS_VERIFY}}"
                     - name: THOTH_REGISTRY_CREDENTIALS
