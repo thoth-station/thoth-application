@@ -92,6 +92,9 @@ spec:
             value: "/mnt/workdir-in/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
           - name: THOTH_BUILDLOG_PARSER_OUTPUT
             value: "/mnt/workdir/{{inputs.parameters.THOTH_OUTPUT_DOCUMENT_ID}}"
+          - name: THOTH_BUILDLOG_PARSER_JSONPATH
+            # Provide jsonpath to log entry in the input JSON.
+            value: "$.log"
           - name: "THOTH_S3_ENDPOINT_URL"
             value: "{{workflow.parameters.ceph_host}}"
           - name: "THOTH_CEPH_BUCKET_NAME"
