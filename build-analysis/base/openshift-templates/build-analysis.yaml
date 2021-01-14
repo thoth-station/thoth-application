@@ -17,71 +17,54 @@ metadata:
 
 parameters:
   - name: THOTH_BUILD_ANALYSIS_BASE_IMAGE
-    required: false
     description: Base image used
     displayName: Base image
   - name: THOTH_BUILD_ANALYSIS_BASE_IMAGE_ANALYSIS_ID
-    required: false
     description: ID of base image analysis
     displayName: Base image analysis id
   - name: THOTH_BUILD_ANALYSIS_BASE_IMAGE_DOCUMENT_ID
-    required: false
     description: ID of document with the resulting container image analysis
     displayName: Base image document id
   - name: THOTH_BUILD_ANALYSIS_BASE_REGISTRY_CREDENTIALS
-    required: false
     description: Credentials used in the base registry
     displayName: Base registry creds
   - name: THOTH_BUILD_ANALYSIS_BASE_REGISTRY_NO_TLS_VERIFY
-    required: true
     description: Base registry TLS verification
     displayName: Base registry TLS verify
   - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE
-    required: false
     description: Output image used
     displayName: Output image
   - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_DOCUMENT_ID
-    required: false
     description: ID of the resulting document for output image analysis
     displayName: Output image analysis id
   - name: THOTH_BUILD_ANALYSIS_OUTPUT_IMAGE_ANALYSIS_ID
-    required: false
     description: ID of output image analysis
     displayName: Base image analysis id
   - name: THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_CREDENTIALS
-    required: false
     description: Credentials used in the output registry
     displayName: Output registry credentials
   - name: THOTH_BUILD_ANALYSIS_OUTPUT_REGISTRY_NO_TLS_VERIFY
-    required: true
     description: Bsae registry TLS verification
     displayName: Base registry TLS verify
   - name: THOTH_BUILD_ANALYSIS_BUILDLOG_DOCUMENT_ID
-    required: true
     description: Document id for buildlog document
     displayName: Buildlog document id
   - name: THOTH_BUILD_ANALYSIS_BUILDLOG_PARSER_ID
-    required: false
     description: Buildlog parser id
     displayName: Buildlog parser id
   - name: THOTH_BUILD_ANALYSIS_ENVIRONMENT_TYPE
-    required: true
     description: Name of environment where the image is used
     displayName: Environment type
   - name: THOTH_BUILD_ANALYSIS_ORIGIN
-    required: true
     description: Origin from where the build happened
     displayName: Build origin
   - name: THOTH_BUILD_ANALYSIS_LOG
-    required: true
     description: Rurn on DEBUG logs if DEBUG provided
     displayName: Debug log
   - name: THOTH_BUILD_ANALYSIS_JOB_ID
-    required: true
     description: ID of build analysis job
     displayName: ID of build analysis job
   - name: THOTH_BUILD_ANALYSIS_METADATA
-    required: true
     description: Build analysis metadata supplied - propagated to package-extract
     displayName: Build analysis metadata
 
