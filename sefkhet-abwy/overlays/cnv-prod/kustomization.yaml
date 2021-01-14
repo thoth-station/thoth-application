@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: aicoe-prod-bots
 resources:
   - ../../base
+  - new-label-normalizer.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
