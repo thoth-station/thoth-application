@@ -5,4 +5,4 @@ metadata:
   name: qeb-hwt
 data:
   subdomain: qeb-hwt-test
-  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-test-core.apps.ocp.prod.psi.redhat.com"
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-test-core.apps.ocp4.prod.psi.redhat.com"

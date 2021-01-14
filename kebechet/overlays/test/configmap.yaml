@@ -1,7 +1,7 @@
 ---
 apiVersion: v1
 data:
-  deployment-name: "ocp-test"
+  deployment-name: "ocp4-test"
   verbose: "1"
 kind: ConfigMap
 metadata:

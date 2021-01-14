@@ -1,0 +1,7 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: graph-backup
+spec:
+  suspend: false

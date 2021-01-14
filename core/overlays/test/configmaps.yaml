@@ -5,7 +5,7 @@ metadata:
   name: thoth
 data:
   applicationVersion: 0.7.0-dev
-  deployment-name: ocp-test
+  deployment-name: ocp4-test
   amun-api-url: http://amun-api.thoth-test-core.svc/api/v1
   amun-inspection-namespace: thoth-test-core
   amun-namespace: thoth-test-core
@@ -17,7 +17,7 @@ data:
   postgresql-host: pgbouncer.thoth-test-core.svc
   rsyslog-host: ""
   rsyslog-port: ""
-  storage-bucket-name: ocp-test
+  storage-bucket-name: ocp4-test
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -76,7 +76,7 @@ data:
 
       s3:
         bucket: "thoth"
-        keyPrefix: "data/ocp-test/argo/artifacts/"
+        keyPrefix: "data/ocp4-test/argo/artifacts/"
         endpoint: "s3.upshift.redhat.com"
         insecure: true
         accessKeySecret:
@@ -92,19 +92,19 @@ metadata:
   name: prometheus
 data:
   host-url: "https://prometheus-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
-  user-api-url: "user-api-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
-  instance-metrics-exporter-infra: "metrics-exporter-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
-  instance-metrics-management-api: "management-api-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
+  user-api-url: "user-api-thoth-test-core.apps.ocp4.prod.psi.redhat.com:80"
+  instance-metrics-exporter-infra: "metrics-exporter-thoth-test-core.apps.ocp4.prod.psi.redhat.com:80"
+  instance-metrics-management-api: "management-api-thoth-test-core.apps.ocp4.prod.psi.redhat.com:80"
   pushgateway-host: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com
   pushgateway-port: "80"
   pushgateway-url: pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com:80
-  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
-  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
-  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-test-core.apps.ocp.prod.psi.redhat.com:80"
+  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-test-core.apps.ocp4.prod.psi.redhat.com:80"
+  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-test-core.apps.ocp4.prod.psi.redhat.com:80"
+  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-test-core.apps.ocp4.prod.psi.redhat.com:80"
 ---
 kind: ConfigMap
 apiVersion: v1
 metadata:
   name: qeb-hwt-workflow
 data:
-  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-test-core.apps.ocp.prod.psi.redhat.com"
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-test-core.apps.ocp4.prod.psi.redhat.com"
