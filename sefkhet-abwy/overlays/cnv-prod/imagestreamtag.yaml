@@ -12,3 +12,17 @@ spec:
       importPolicy: {}
       referencePolicy:
         type: Source
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: ghproxy
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/ghproxy:v20210113-cdd2f173ce
+      importPolicy: {}
+      referencePolicy:
+        type: Source

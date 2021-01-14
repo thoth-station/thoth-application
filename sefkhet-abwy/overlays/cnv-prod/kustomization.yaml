@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: aicoe-prod-bots
 resources:
   - ../../base
+  - ghproxy.yaml
   - new-label-normalizer.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
