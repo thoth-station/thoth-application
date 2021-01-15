@@ -13,6 +13,16 @@ rules:
       - list
       - watch
   - apiGroups:
+      - batch
+    resources:
+      - cronjobs
+      - jobs
+    verbs:
+      - get
+      - create
+      - list
+      - watch
+  - apiGroups:
       - ""
     resources:
       - configmaps
