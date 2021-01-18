@@ -122,6 +122,7 @@ spec:
             - server
             - --namespaced
           image: argocli
+          imagePullPolicy: IfNotPresent
           name: argo-server
           ports:
             - containerPort: 2746
