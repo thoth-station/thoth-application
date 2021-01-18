@@ -1,0 +1,28 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: sefkhet-abwy
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/sefkhet-abwy-webhook-receiver:v0.20.3
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: ghproxy
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/ghproxy:v20210113-cdd2f173ce
+      importPolicy: {}
+      referencePolicy:
+        type: Source
