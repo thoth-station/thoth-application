@@ -70,7 +70,7 @@ spec:
       name: quay.io/thoth-station/argocli:v2.11.0
     importPolicy: {}
     referencePolicy:
-      type: Source
+      type: Local
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
