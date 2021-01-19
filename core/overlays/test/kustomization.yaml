@@ -12,6 +12,8 @@ resources:
 patchesStrategicMerge:
   - configmaps.yaml
   - imagestreamtags.yaml
+  - argo-workflows/send-message.yaml
+  - argo-workflows/send-messages.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
