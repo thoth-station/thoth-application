@@ -11,7 +11,7 @@ spec:
       name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/prow-controller-manager:v20201001-87ea1a726b
+        name: gcr.io/k8s-prow/prow-controller-manager:latest
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -52,23 +52,23 @@ rules:
       - events
     verbs:
       - create
----
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-  namespace: test-pods
-  name: prow-controller-manager
-rules:
-  - apiGroups:
-      - ""
-    resources:
-      - pods
-    verbs:
-      - delete
-      - list
-      - watch
-      - create
-      - patch
+#---
+#kind: Role
+#apiVersion: rbac.authorization.k8s.io/v1beta1
+#metadata:
+#  namespace: test-pods
+#  name: prow-controller-manager
+#rules:
+#  - apiGroups:
+#      - ""
+#    resources:
+#      - pods
+#    verbs:
+#      - delete
+#      - list
+#      - watch
+#      - create
+#      - patch
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -81,20 +81,20 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: prow-controller-manager
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-  namespace: test-pods
-  name: prow-controller-manager
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: prow-controller-manager
-subjects:
-  - kind: ServiceAccount
-    name: prow-controller-manager
-    namespace: prow
+#---
+#kind: RoleBinding
+#apiVersion: rbac.authorization.k8s.io/v1beta1
+#metadata:
+#  namespace: test-pods
+#  name: prow-controller-manager
+#roleRef:
+#  apiGroup: rbac.authorization.k8s.io
+#  kind: Role
+#  name: prow-controller-manager
+#subjects:
+#  - kind: ServiceAccount
+#    name: prow-controller-manager
+#    namespace: prow
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -103,7 +103,7 @@ metadata:
   labels:
     app: prow-controller-manager
 spec:
-  replicas: 0 # see https://github.com/kubernetes/test-infra/blob/5a6105dcfb5b102d8102f072a8b06f067241a91f/prow/cmd/prow-controller-manager/README.md#exclusion-with-other-components
+  replicas: 1
   selector:
     matchLabels:
       app: prow-controller-manager
