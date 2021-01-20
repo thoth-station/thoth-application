@@ -14,6 +14,18 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
 metadata:
+  name: user-api-pods-info
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: user-api-pods-info
+subjects:
+  - kind: ServiceAccount
+    name: user-api
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
   name: user-api-argo
 roleRef:
   apiGroup: rbac.authorization.k8s.io
