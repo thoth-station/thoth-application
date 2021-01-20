@@ -1,0 +1,283 @@
+plank:
+  default_decoration_configs:
+    "*":
+      utility_images:
+        clonerefs: "gcr.io/k8s-prow/clonerefs:latest"
+        initupload: "gcr.io/k8s-prow/initupload:latest"
+        entrypoint: "gcr.io/k8s-prow/entrypoint:latest"
+        sidecar: "gcr.io/k8s-prow/sidecar:latest"
+      gcs_configuration:
+        bucket: aicoe-thoth-prow-artifacts
+        path_strategy: explicit
+      gcs_credentials_secret: gcs-credentials
+
+branch-protection:
+  allow_disabled_policies: true
+  orgs:
+    thoth-station:
+      exclude:
+        - "^revert-"
+        - "^kebechet-"
+        - "^dependabot/"
+      protect: true
+      restrictions:
+        users: []
+        teams:
+          - sourceops
+        required_pull_request_reviews:
+          dismiss_stale_reviews: false
+        required_approving_review_count: 1
+        required_status_checks:
+          contexts:
+            - aicoe-ci/pre-commit-check
+      allow_force_pushes: false
+      repos:
+        test-infra:
+          allow_force_pushes: true
+        tensorflow:
+          protect: false
+        contra-env-infra:
+          protect: false
+        ansible-role-core-imagestreams:
+          protect: false
+        ansible-role-core-templates:
+          protect: false
+        ansible-role-core-cronjob:
+          protect: false
+        ansible-role-metrics-exporter:
+          protect: false
+        ansible-role-cronjob:
+          protect: false
+        ansible-role-argo-workflows:
+          protect: false
+        ansible-role-postgresql:
+          protect: false
+        ansible-role-kebechet:
+          protect: false
+        ansible-role-postgresql-metrics-exporter:
+          protect: false
+        statusfy:
+          protect: false
+        statusfy-ops:
+          protect: false
+        website-tooling:
+          protect: false
+        cuda:
+          protect: false
+        stub-api:
+          protect: false
+        nvidia-usage-dashboard:
+          protect: false
+        template-project:
+          protect: false
+        pipelines-catalog:
+          protect: false
+        bz1816214-example:
+          protect: false
+
+tide:
+  pr_status_base_urls:
+    "*": https://prow.thoth-station.dev/pr
+
+  merge_method:
+    aicoe-aiops: squash
+    AICoE: squash
+    thoth-station: squash
+    operate-first: squash
+
+  queries:
+    - orgs:
+        - aicoe-aiops
+        - thoth-station
+        - operate-first
+      excludedRepos:
+        - thoth-station/dgraph-thoth-config
+        - thoth-station/workload-operator
+        - thoth-station/tensorflow
+        - thoth-station/contra-env-infra
+        - thoth-station/ansible-role-core-imagestreams
+        - thoth-station/ansible-role-core-templates
+        - thoth-station/ansible-role-core-cronjob
+        - thoth-station/ansible-role-metrics-exporter
+        - thoth-station/ansible-role-cronjob
+        - thoth-station/ansible-role-argo-workflows
+        - thoth-station/ansible-role-postgresql
+        - thoth-station/ansible-role-kebechet
+        - thoth-station/ansible-role-postgresql-metrics-exporter
+        - thoth-station/statusfy
+        - thoth-station/statusfy-ops
+        - thoth-station/website-tooling
+        - thoth-station/cuda
+        - thoth-station/stub-api
+        - thoth-station/nvidia-usage-dashboard
+        - thoth-station/pipelines-catalog
+        - thoth-station/bz1816214-example
+      labels:
+        - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebase
+    - repos:
+        - AICoE/aicoe-cd
+        - AICoE/aicoe-ci
+        - AICoE/aicoe-sre
+        - AICoE/idh-manifests
+        - AICoE/internal-data-hub
+        - AICoE/prometheus-anomaly-detector
+        - AICoE/prometheus-api-client-python
+        - AICoE/s2i-custom-notebook
+        - AICoE/sefkhet-abwy
+      labels:
+        - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebase
+
+  blocker_label: tide/merge-blocker
+  squash_label: tide/merge-method-squash
+  rebase_label: tide/merge-method-rebase
+  merge_label: tide/merge-method-merge
+
+  context_options:
+    from-branch-protection: true
+    skip-unknown-contexts: true
+    orgs:
+      AICoE:
+        repos:
+          s2i-custom-notebook:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+          aicoe-cd:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+          prometheus-api-client-python:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
+          sefkhet-abwy:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+      thoth-station:
+        repos:
+          adviser:
+            required-contexts:
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
+          amun-api:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+          buildlog-parser:
+            required-contexts:
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
+          common:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
+          datasets:
+            required-contexts:
+              - aicoe-ci/build-check
+          init-job:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+          invectio:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
+          integration-tests:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+          kebechet:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+          source-management:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+          management-api:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+          user-api:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+          package-analyzer:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+          python:
+            required-contexts:
+              - aicoe-ci/pytest-check
+              - aicoe-ci/pre-commit-check
+          srcops-testing:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
+          s2i:
+            required-contexts:
+              - aicoe-ci/pytest-check
+          si-aggregator:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+          si-bandit:
+            required-contexts:
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
+          si-cloc:
+            required-contexts:
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
+          solver:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
+          storages:
+            required-contexts:
+              - aicoe-ci/pytest-check
+          tensorflow-symbols:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+          investigator:
+            required-contexts:
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
+          workflow-helpers:
+            required-contexts:
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
+          report-processing:
+            required-contexts:
+              - aicoe-ci/build-check
+              - aicoe-ci/pre-commit-check
+          elyra-aidevsecops-tutorial:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+
+periodics:
+  - name: integration-tests-moc
+    interval: 8h
+    decorate: true
+    spec:
+      containers:
+        - image: quay.io/thoth-station/integration-tests:v0.1.4
+          imagePullPolicy: Always
+          command:
+            - ./e2e-test.sh
+          env:
+            - name: E2E_TEST_API
+              value: api.moc.thoth-station.ninja
+    annotations:
+      description: Periodic e2e tests against MOC deployment

@@ -24,7 +24,7 @@ spec:
       terminationGracePeriodSeconds: 180
       containers:
         - name: hook
-          image: hook
+          image: hook:latest
           imagePullPolicy: Always
           args:
             - --dry-run=false
@@ -94,7 +94,7 @@ spec:
       serviceAccountName: "plank"
       containers:
         - name: plank
-          image: gcr.io/k8s-prow/plank:v20200625-dd6a466605
+          image: plank:latest
           args:
             - --dry-run=false
             - --config-path=/etc/config/config.yaml
@@ -132,7 +132,7 @@ spec:
       serviceAccountName: "sinker"
       containers:
         - name: sinker
-          image: sinker
+          image: sinker:latest
           args:
             - --config-path=/etc/config/config.yaml
           volumeMounts:
@@ -169,7 +169,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
         - name: deck
-          image: deck
+          image: deck:latest
           args:
             - --config-path=/etc/config/config.yaml
             - --plugin-config=/etc/plugins/plugins.yaml
@@ -238,7 +238,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
         - name: horologium
-          image: horologium
+          image: horologium:latest
           args:
             - --dry-run=false
             - --config-path=/etc/config/config.yaml
@@ -272,7 +272,7 @@ spec:
       serviceAccountName: "tide"
       containers:
         - name: tide
-          image: tide
+          image: tide:latest
           args:
             - --dry-run=false
             - --config-path=/etc/config/config.yaml
@@ -316,7 +316,7 @@ spec:
       terminationGracePeriodSeconds: 180
       containers:
         - name: statusreconciler
-          image: status-reconciler
+          image: status-reconciler:latest
           args:
             - --dry-run=false
             - --continue-on-error=true
