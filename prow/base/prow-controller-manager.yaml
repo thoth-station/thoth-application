@@ -118,22 +118,15 @@ spec:
           args:
             - --dry-run=false
             - --config-path=/etc/config/config.yaml
-            - --github-token-path=/etc/github/token
             - --github-endpoint=http://ghproxy
             - --github-endpoint=https://api.github.com
             - --enable-controller=plank
           image: prow-controller-manager
           volumeMounts:
-            - name: github-token
-              mountPath: /etc/github
-              readOnly: true
             - name: config
               mountPath: /etc/config
               readOnly: true
       volumes:
-        - name: github-token
-          secret:
-            secretName: github-token
         - name: config
           configMap:
             name: config
