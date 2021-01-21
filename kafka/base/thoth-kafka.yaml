@@ -1,0 +1,140 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: Kafka
+metadata:
+  name: thoth
+spec:
+  kafka:
+    version: "2.5.0"
+    replicas: 2
+    listeners:
+      plain: {}
+      tls: {}
+      external:
+        type: route
+    storage:
+      type: persistent-claim
+      size: "5Gi"
+      class: "standard"
+      deleteClaim: false
+    config:
+      offsets.topic.replication.factor: 2
+      transaction.state.log.replication.factor: 2
+      transaction.state.log.min.isr: 1
+      log.message.format.version: "2.1"
+    metrics:
+      lowercaseOutputName: true
+      rules:
+        - pattern: kafka.server<type=(.+), name=(.+), clientId=(.+), topic=(.+), partition=(.*)><>Value
+          name: kafka_server_$1_$2
+          type: GAUGE
+          labels:
+            clientId: "$3"
+            topic: "$4"
+            partition: "$5"
+        - pattern: kafka.server<type=(.+), name=(.+), clientId=(.+), brokerHost=(.+), brokerPort=(.+)><>Value
+          name: kafka_server_$1_$2
+          type: GAUGE
+          labels:
+            clientId: "$3"
+            broker: "$4:$5"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+)Percent\w*><>MeanRate
+          name: kafka_$1_$2_$3_percent
+          type: GAUGE
+        - pattern: kafka.(\w+)<type=(.+), name=(.+)Percent\w*><>Value
+          name: kafka_$1_$2_$3_percent
+          type: GAUGE
+        - pattern: kafka.(\w+)<type=(.+), name=(.+)Percent\w*, (.+)=(.+)><>Value
+          name: kafka_$1_$2_$3_percent
+          type: GAUGE
+          labels:
+            "$4": "$5"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+)PerSec\w*, (.+)=(.+), (.+)=(.+)><>Count
+          name: kafka_$1_$2_$3_total
+          type: COUNTER
+          labels:
+            "$4": "$5"
+            "$6": "$7"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+)PerSec\w*, (.+)=(.+)><>Count
+          name: kafka_$1_$2_$3_total
+          type: COUNTER
+          labels:
+            "$4": "$5"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+)PerSec\w*><>Count
+          name: kafka_$1_$2_$3_total
+          type: COUNTER
+        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+), (.+)=(.+)><>Value
+          name: kafka_$1_$2_$3
+          type: GAUGE
+          labels:
+            "$4": "$5"
+            "$6": "$7"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+)><>Value
+          name: kafka_$1_$2_$3
+          type: GAUGE
+          labels:
+            "$4": "$5"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+)><>Value
+          name: kafka_$1_$2_$3
+          type: GAUGE
+        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+), (.+)=(.+)><>Count
+          name: kafka_$1_$2_$3_count
+          type: COUNTER
+          labels:
+            "$4": "$5"
+            "$6": "$7"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.*), (.+)=(.+)><>(\d+)thPercentile
+          name: kafka_$1_$2_$3
+          type: GAUGE
+          labels:
+            "$4": "$5"
+            "$6": "$7"
+            quantile: "0.$8"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+)><>Count
+          name: kafka_$1_$2_$3_count
+          type: COUNTER
+          labels:
+            "$4": "$5"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.*)><>(\d+)thPercentile
+          name: kafka_$1_$2_$3
+          type: GAUGE
+          labels:
+            "$4": "$5"
+            quantile: "0.$6"
+        - pattern: kafka.(\w+)<type=(.+), name=(.+)><>Count
+          name: kafka_$1_$2_$3_count
+          type: COUNTER
+        - pattern: kafka.(\w+)<type=(.+), name=(.+)><>(\d+)thPercentile
+          name: kafka_$1_$2_$3
+          type: GAUGE
+          labels:
+            quantile: "0.$4"
+  zookeeper:
+    replicas: 3
+    storage:
+      type: ephemeral
+    metrics:
+      lowercaseOutputName: true
+      rules:
+        - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+)><>(\\w+)"
+          name: "zookeeper_$2"
+        - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+)><>(\\w+)"
+          name: "zookeeper_$3"
+          labels:
+            replicaId: "$2"
+        - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+), name2=(\\w+)><>(\\w+)"
+          name: "zookeeper_$4"
+          labels:
+            replicaId: "$2"
+            memberType: "$3"
+        - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+), name2=(\\w+), name3=(\\w+)><>(\\w+)"
+          name: "zookeeper_$4_$5"
+          labels:
+            replicaId: "$2"
+            memberType: "$3"
+        - pattern: "org.apache.ZooKeeperService<name0=StandaloneServer_port(\\d+)><>(\\w+)"
+          name: "zookeeper_$2"
+        - pattern: "org.apache.ZooKeeperService<name0=StandaloneServer_port(\\d+), name1=(InMemoryDataTree)><>(\\w+)"
+          name: "zookeeper_$2_$3"
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
