@@ -67,7 +67,6 @@ kind: Service
 metadata:
   labels:
     app: ghproxy
-  namespace: default
   name: ghproxy
 spec:
   ports:
