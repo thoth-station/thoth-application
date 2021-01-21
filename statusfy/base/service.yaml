@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: statusfy
+  name: statusfy
+spec:
+  ports:
+    - name: web
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    name: statusfy
+    service: user-api
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: user-api
+    app.kubernetes.io/managed-by: aicoe-thoth-devops

@@ -1,0 +1,13 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: statusfy
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/statusfy-thoth-station-ninja:v0.1.0
+      importPolicy: {}
+      referencePolicy:
+        type: Local
