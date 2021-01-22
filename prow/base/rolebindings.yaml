@@ -10,15 +10,3 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: "plank"
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-  name: "sinker-pods"
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: "sinker-pods"
-subjects:
-  - kind: ServiceAccount
-    name: "sinker"

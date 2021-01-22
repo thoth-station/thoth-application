@@ -13,6 +13,7 @@ resources:
   - roles.yaml
   - serviceaccount.yaml
   - services.yaml
+  - sinker.yaml
   - statusreconciler.yaml
   - tide.yaml
 commonLabels:

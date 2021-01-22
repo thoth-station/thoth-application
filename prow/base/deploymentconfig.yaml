@@ -42,37 +42,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sinker
-  labels:
-    app: sinker
-spec:
-  selector:
-    matchLabels:
-      app: sinker
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: sinker
-    spec:
-      serviceAccountName: "sinker"
-      containers:
-        - name: sinker
-          image: sinker:latest
-          args:
-            - --config-path=/etc/config/config.yaml
-          volumeMounts:
-            - name: config
-              mountPath: /etc/config
-              readOnly: true
-      volumes:
-        - name: config
-          configMap:
-            name: config
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: horologium
   labels:
     app: horologium
