@@ -63,7 +63,7 @@ spec:
           args:
             - --dry-run=false
             - --config-path=/etc/config/config.yaml
-            - --github-token-path=/etc/github/token
+            - --github-token-path=/etc/github/oauth
             - --github-endpoint=http://ghproxy
             - --github-endpoint=https://api.github.com
           ports:
@@ -73,7 +73,7 @@ spec:
             - name: hmac
               mountPath: /etc/webhook
               readOnly: true
-            - name: github-token
+            - name: oauth
               mountPath: /etc/github
               readOnly: true
             - name: config
@@ -99,9 +99,9 @@ spec:
         - name: hmac
           secret:
             secretName: hmac-token
-        - name: github-token
+        - name: oauth
           secret:
-            secretName: github-token
+            secretName: oauth-token
         - name: config
           configMap:
             name: config
