@@ -11,7 +11,7 @@ spec:
       name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/hook:latest
+        name: gcr.io/k8s-prow/hook:v20210121-548289bef2
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -62,7 +62,7 @@ spec:
       name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/deck:latest
+        name: gcr.io/k8s-prow/deck:v20210121-548289bef2
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -96,7 +96,7 @@ spec:
       name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/tide:latest
+        name: gcr.io/k8s-prow/tide:v20210121-548289bef2
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -113,7 +113,24 @@ spec:
       name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/status-reconciler:latest
+        name: gcr.io/k8s-prow/status-reconciler:v20210121-548289bef2
+      importPolicy: {}
+      referencePolicy:
+        type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: crier
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      name: latest
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/crier:v20210121-548289bef2
       importPolicy: {}
       referencePolicy:
         type: Local

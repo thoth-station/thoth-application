@@ -2,14 +2,19 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - branchprotector.yaml
+  - crier.yaml
+  - deck.yaml
   - deploymentconfig.yaml
+  - ghproxy.yaml
+  - hook.yaml
   - imagestreamtags.yaml
+  - prow-controller-manager.yaml
+  - rolebindings.yaml
+  - roles.yaml
   - serviceaccount.yaml
   - services.yaml
-  - roles.yaml
-  - rolebindings.yaml
-  - ghproxy.yaml
-  - prow-controller-manager.yaml
+  - statusreconciler.yaml
+  - tide.yaml
 commonLabels:
   app.kubernetes.io/name: aicoe-prow
   app.kubernetes.io/component: prow

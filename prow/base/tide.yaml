@@ -1,97 +1,88 @@
 ---
-kind: ServiceAccount
 apiVersion: v1
+kind: ServiceAccount
 metadata:
-  name: crier
+  name: "tide"
 ---
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: crier
+  name: "tide"
 rules:
   - apiGroups:
       - "prow.k8s.io"
     resources:
-      - "prowjobs"
+      - prowjobs
     verbs:
-      - "get"
-      - "watch"
-      - "list"
-      - "patch"
-  - apiGroups:
-      - ""
-    resources:
-      - "pods"
-      - "events"
-    verbs:
-      - "get"
-      - "list"
-  - apiGroups:
-      - ""
-    resources:
-      - "pods"
-    verbs:
-      - "patch"
+      - create
+      - list
+      - get
+      - watch
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: crier
+  name: "tide"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: crier
+  name: "tide"
 subjects:
   - kind: ServiceAccount
-    name: crier
+    name: "tide"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: crier
+  name: tide
   labels:
-    app: crier
+    app: tide
 spec:
-  replicas: 1
+  replicas: 1 # Do not scale up.
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
-      app: crier
+      app: tide
   template:
     metadata:
       labels:
-        app: crier
+        app: tide
     spec:
-      serviceAccountName: crier
-      terminationGracePeriodSeconds: 30
+      serviceAccountName: "tide"
       containers:
-        - name: crier
-          image: crier
+        - name: tide
+          image: tide:latest
           args:
-            - --blob-storage-workers=10
+            - --dry-run=false
             - --config-path=/etc/config/config.yaml
-            - --s3-credentials-file=/etc/s3-credentials/service-account.json
+            - --github-token-path=/etc/github/token
             - --github-endpoint=http://ghproxy
             - --github-endpoint=https://api.github.com
-            - --github-token-path=/etc/github/token
-            - --github-workers=10
-            - --kubernetes-blob-storage-workers=10
+            - --github-graphql-endpoint=http://ghproxy/graphql
+            - --s3-credentials-file=/etc/s3-credentials/service-account.json
+            - --status-path=s3://tide/tide-status
+            - --history-uri=s3://tide/tide-history.json
+          ports:
+            - name: http
+              containerPort: 8888
           volumeMounts:
-            - name: config
-              mountPath: /etc/config
-              readOnly: true
             - name: github-token
               mountPath: /etc/github
+              readOnly: true
+            - name: config
+              mountPath: /etc/config
               readOnly: true
             - name: s3-credentials
               mountPath: /etc/s3-credentials
               readOnly: true
       volumes:
-        - name: config
-          configMap:
-            name: config
         - name: github-token
           secret:
             secretName: github-token
+        - name: config
+          configMap:
+            name: config
         - name: s3-credentials
           secret:
             secretName: s3-credentials
