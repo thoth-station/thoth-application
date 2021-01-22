@@ -56,7 +56,7 @@ spec:
           args:
             - --dry-run=false
             - --config-path=/etc/config/config.yaml
-            - --github-token-path=/etc/github/token
+            - --github-token-path=/etc/github/oauth
             - --github-endpoint=http://ghproxy
             - --github-endpoint=https://api.github.com
             - --github-graphql-endpoint=http://ghproxy/graphql
@@ -67,7 +67,7 @@ spec:
             - name: http
               containerPort: 8888
           volumeMounts:
-            - name: github-token
+            - name: oauth-token
               mountPath: /etc/github
               readOnly: true
             - name: config
@@ -77,9 +77,9 @@ spec:
               mountPath: /etc/s3-credentials
               readOnly: true
       volumes:
-        - name: github-token
+        - name: oauth-token
           secret:
-            secretName: github-token
+            secretName: oauth-token
         - name: config
           configMap:
             name: config
