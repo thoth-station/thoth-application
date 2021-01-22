@@ -7,5 +7,5 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/build-watcher:v0.6.0-dev
+        name: quay.io/thoth-station/build-watcher:v0.8.0
       importPolicy: {}
