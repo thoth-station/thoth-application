@@ -86,7 +86,7 @@ spec:
                 key: secretKey
       container:
         name: parse-buildlog
-        image: quay.io/thoth-station/buildlog-parser:v0.0.1
+        image: buildlog-parser
         env:
           - name: THOTH_BUILDLOG_PARSER_INPUT
             value: "/mnt/workdir-in/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
