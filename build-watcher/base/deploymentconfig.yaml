@@ -23,9 +23,15 @@ spec:
             - name: KUBERNETES_API_URL
               value: 'https://kubernetes.default.svc.cluster.local'
             - name: KUBERNETES_VERIFY_TLS
-              value: "0"
+              valueFrom:
+                configMapKeyRef:
+                  key: kubernetes-verify-tls
+                  name: build-watcher
             - name: THOTH_LOG_BUILD_WATCHER
-              value: INFO
+              valueFrom:
+                configMapKeyRef:
+                  key: log-build-watcher
+                  name: build-watcher
             - name: THOTH_WATCHED_NAMESPACE
               valueFrom:
                 configMapKeyRef:
@@ -40,6 +46,11 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: thoth-push-registry
+                  name: build-watcher
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  key: logging-no-json
                   name: build-watcher
             - name: THOTH_USER_API_HOST
               valueFrom:
@@ -100,6 +111,22 @@ spec:
                 configMapKeyRef:
                   key: thoth-dst-registry-password
                   name: build-watcher
+            - name: THOTH_BUILD_ANALYSIS_NO_BASE_IMAGE
+              valueFrom:
+                configMapKeyRef:
+                  key: build-analysis-no-base-image
+                  name: build-watcher
+            - name: THOTH_BUILD_ANALYSIS_NO_BUILD_LOG
+              valueFrom:
+                configMapKeyRef:
+                  key: build-analysis-no-build-log
+                  name: build-watcher
+            - name: THOTH_BUILD_ANALYSIS_NO_OUTPUT_IMAGE
+              valueFrom:
+                configMapKeyRef:
+                  key: build-analysis-no-output-image
+                  name: build-watcher
+            # Set to a non-zero value to suppres annoying TLS warnings by Thamos lib:
             - name: THAMOS_DISABLE_TLS_WARNING
               valueFrom:
                 configMapKeyRef:
