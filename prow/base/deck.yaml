@@ -7,7 +7,7 @@ metadata:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: "deck-pods"
+  name: "deck"
 rules:
   - apiGroups:
       - ""
@@ -15,15 +15,23 @@ rules:
       - pods/log
     verbs:
       - get
+  - apiGroups:
+      - "prow.k8s.io"
+    resources:
+      - prowjobs
+    verbs:
+      - get
+      - list
+      - watch
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: "deck-pods"
+  name: "deck"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: "deck-pods"
+  name: "deck"
 subjects:
   - kind: ServiceAccount
     name: "deck"

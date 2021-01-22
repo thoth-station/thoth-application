@@ -4,6 +4,7 @@ resources:
   - ../../base
   - roles.yaml
   - rolebindings.yaml
+  - s3-bucket-claim.yaml
 configMapGenerator:
   - name: config
     files:
