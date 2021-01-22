@@ -18,3 +18,26 @@ rules:
       - get
       - list
       - watch
+  - apiGroups:
+      - ""
+      - image.openshift.io
+    resources:
+      - imagestreamimages
+      - imagestreammappings
+      - imagestreams
+      - imagestreamtags
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+      - build.openshift.io
+    resources:
+      - buildconfigs
+      - builds
+      - builds/log
+    verbs:
+      - get
+      - list
+      - watch
