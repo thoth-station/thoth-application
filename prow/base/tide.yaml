@@ -61,8 +61,8 @@ spec:
             - --github-endpoint=https://api.github.com
             - --github-graphql-endpoint=http://ghproxy/graphql
             - --s3-credentials-file=/etc/s3-credentials/service-account.json
-            - --status-path=s3://tide/tide-status
-            - --history-uri=s3://tide/tide-history.json
+            - --status-path=s3://ci-prow-artifacts--5de4780e-313e-46c0-8758-209adf0ea179/tide/tide-status
+            - --history-uri=s3://ci-prow-artifacts--5de4780e-313e-46c0-8758-209adf0ea179/tide/tide-history.json
           ports:
             - name: http
               containerPort: 8888
