@@ -2,7 +2,7 @@ plank:
   default_decoration_configs:
     "*":
       gcs_configuration:
-        bucket: s3://prow_logs
+        bucket: s3://prow-logs
         path_strategy: explicit
       s3_credentials_secret: s3-credentials
       utility_images:
