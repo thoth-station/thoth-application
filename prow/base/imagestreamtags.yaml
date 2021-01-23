@@ -134,3 +134,20 @@ spec:
       importPolicy: {}
       referencePolicy:
         type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: needs-rebase
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      name: latest
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/needs-rebase:v20210122-d4ead73bf2
+      importPolicy: {}
+      referencePolicy:
+        type: Local

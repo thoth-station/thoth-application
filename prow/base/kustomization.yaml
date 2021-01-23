@@ -8,6 +8,7 @@ resources:
   - ghproxy.yaml
   - hook.yaml
   - imagestreamtags.yaml
+  - needs-rebase.yaml
   - prow-controller-manager.yaml
   - rolebindings.yaml
   - roles.yaml
