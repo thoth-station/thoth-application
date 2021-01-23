@@ -85,14 +85,14 @@ tide:
   merge_method:
     aicoe-aiops: squash
     AICoE: squash
-    thoth-station: squash
     operate-first: squash
+    thoth-station: squash
 
   queries:
     - orgs:
         - aicoe-aiops
-        - thoth-station
         - operate-first
+        - thoth-station
       excludedRepos:
         - thoth-station/dgraph-thoth-config
         - thoth-station/workload-operator
@@ -153,6 +153,9 @@ tide:
     orgs:
       AICoE:
         repos:
+          idh-manifests production:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
           s2i-custom-notebook:
             required-contexts:
               - aicoe-ci/pre-commit-check
