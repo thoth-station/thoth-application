@@ -80,7 +80,7 @@ branch-protection:
 
 tide:
   pr_status_base_urls:
-    "*": https://prow.thoth-station.dev/pr
+    "*": https://prow.operate-first.cloud/pr
 
   merge_method:
     aicoe-aiops: squash
