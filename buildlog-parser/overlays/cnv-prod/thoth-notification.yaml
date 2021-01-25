@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have successfully synchronized *buildlog-parser* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/test-thoth-buildlog-parser|ArgoCD UI> 🚀'}"
+            - "{'text':'I have successfully synchronized *buildlog-parser* components to *CNV-PROD*, see <https://argocd-server-argocd.apps.cnv.massopen.cloud/applications/prod-thoth-buildlog-parser|ArgoCD UI> 🚀'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAILED* syncing *buildlog-parser* components to *TEST*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/test-thoth-buildlog-parser|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* syncing *buildlog-parser* components to *CNV-PROD*, see <https://argocd-server-argocd.apps.cnv.massopen.cloud/applications/prod-thoth-buildlog-parser|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
