@@ -1,0 +1,11 @@
+# See the OWNERS docs at https://go.k8s.io/owners
+
+approvers:
+  - goern
+  - harshad16
+reviewers:
+  - fridex
+  - pacospace
+  - tumido
+labels:
+  - sig/devops
