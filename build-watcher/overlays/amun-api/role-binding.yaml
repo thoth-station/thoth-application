@@ -7,9 +7,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: build-watcher
-# roleRef:
-#   kind: ClusterRole
-#   name: edit
 subjects:
   - kind: ServiceAccount
     name: build-watcher
+    namespace: thoth-amun-api-stage
