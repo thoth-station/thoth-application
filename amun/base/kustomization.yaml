@@ -10,8 +10,8 @@ resources:
   - argo-workflows/inspection-run.yaml
   - argo-workflows/inspection-run-with-cpu.yaml
   - argo-workflows/parse-inspection-inputs.yaml
-  - ../../../core/base/argo-workflows/send-message.yaml
-  - ../../../core/base/argo-workflows/send-messages.yaml
+  - argo-workflows/send-message.yaml
+  - argo-workflows/send-messages.yaml
   - openshift-templates/inspection-workflow.yaml
   - openshift-templates/inspection-with-cpu-workflow.yaml
   - deploymentconfig.yaml
