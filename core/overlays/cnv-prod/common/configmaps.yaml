@@ -27,8 +27,8 @@ data:
   bucket-name: "thoth"
   bucket-prefix: "data"
   public-bucket-name: DH-PLAYPEN
-  host: "https://rgw-openshift-storage.apps.cnv.massopen.cloud/"
-  endpoint: "https://rgw-openshift-storage.apps.cnv.massopen.cloud/"
+  host: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
+  endpoint: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
 ---
 kind: ConfigMap
 apiVersion: v1
