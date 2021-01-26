@@ -278,7 +278,7 @@ periodics:
     decorate: true
     spec:
       containers:
-        - image: quay.io/thoth-station/integration-tests:v0.1.4
+        - image: quay.io/thoth-station/integration-tests:v0.1.5
           imagePullPolicy: Always
           command:
             - ./e2e-test.sh
