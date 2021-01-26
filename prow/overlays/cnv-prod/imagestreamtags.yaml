@@ -9,6 +9,10 @@ spec:
   tags:
     - name: latest
       from:
+        kind: ImageStreamTag
+        name: v20210123-aa0de54ee1
+    - name: v20210123-aa0de54ee1
+      from:
         kind: DockerImage
         name: gcr.io/k8s-prow/hook:v20210123-aa0de54ee1
       importPolicy: {}
