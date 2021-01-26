@@ -117,7 +117,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/argocli:v2.11.0
+      name: quay.io/argoproj/argocli:v2.12.5
     importPolicy: {}
     referencePolicy:
       type: Local
@@ -133,7 +133,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/workflow-controller:v2.11.0
+      name: quay.io/argoproj/workflow-controller:v2.12.5
     importPolicy: {}
     referencePolicy:
       type: Local
@@ -149,7 +149,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/argoexec:v2.11.0
+      name: quay.io/argoproj/argoexec:v2.12.5
     importPolicy: {}
     referencePolicy:
       type: Local
