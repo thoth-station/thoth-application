@@ -61,4 +61,4 @@ spec:
           resources:
             limits:
               memory: 50Mi
-      restartPolicy: OnFailure
+      restartPolicy: Always

@@ -79,7 +79,7 @@ spec:
             - mountPath: /opt/app-root/etc/gcloud
               name: sesheta-pubsub-consumer
               readOnly: true
-      restartPolicy: OnFailure
+      restartPolicy: Always
       volumes:
         - name: sesheta-pubsub-consumer
           secret:
