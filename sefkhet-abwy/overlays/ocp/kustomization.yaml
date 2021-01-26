@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base
   - configmap.yaml
+  - ultrahook.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml

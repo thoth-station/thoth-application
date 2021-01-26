@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: sefkhet-abwy-webhook-receiver
-          image: sefkhet-abwy-webhook-receiver
+          image: sefkhet-abwy
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -79,32 +79,7 @@ spec:
             - mountPath: /opt/app-root/etc/gcloud
               name: sesheta-pubsub-consumer
               readOnly: true
-        - name: ultrahook-sefkeht-abwy
-          image: ultrahook
-          imagePullPolicy: Always
-          env:
-            - name: ULTRAHOOK_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  key: api.key
-                  name: ultrahook-aicoe
-            - name: ULTRAHOOK_SUBDOMAIN
-              valueFrom:
-                configMapKeyRef:
-                  key: subdomain
-                  name: sefkhet-abwy
-            - name: ULTRAHOOK_DESTINATION
-              valueFrom:
-                configMapKeyRef:
-                  key: webhook-callback-url
-                  name: sefkhet-abwy
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          resources:
-            limits:
-              memory: 50Mi
-      restartPolicy: Always
+      restartPolicy: OnFailure
       volumes:
         - name: sesheta-pubsub-consumer
           secret:
