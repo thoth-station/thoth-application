@@ -7,28 +7,10 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - annotations: null
-      name: latest
+    - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/hook:v20210121-548289bef2
-      importPolicy: {}
-      referencePolicy:
-        type: Local
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: plank
-spec:
-  lookupPolicy:
-    local: true
-  tags:
-    - annotations: null
-      name: latest
-      from:
-        kind: DockerImage
-        name: gcr.io/k8s-prow/plank:latest
+        name: gcr.io/k8s-prow/hook:v20210123-aa0de54ee1
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -41,11 +23,10 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - annotations: null
-      name: latest
+    - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/sinker:v20210122-d4ead73bf2
+        name: gcr.io/k8s-prow/sinker:v20210123-aa0de54ee1
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -58,11 +39,10 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - annotations: null
-      name: latest
+    - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/deck:v20210121-548289bef2
+        name: gcr.io/k8s-prow/deck:v20210123-aa0de54ee1
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -75,11 +55,10 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - annotations: null
-      name: latest
+    - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/horologium:latest
+        name: gcr.io/k8s-prow/horologium:v20210123-aa0de54ee1
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -92,11 +71,10 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - annotations: null
-      name: latest
+    - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/tide:v20210121-548289bef2
+        name: gcr.io/k8s-prow/tide:v20210123-aa0de54ee1
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -109,11 +87,10 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - annotations: null
-      name: latest
+    - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/status-reconciler:v20210121-548289bef2
+        name: gcr.io/k8s-prow/status-reconciler:v20210123-aa0de54ee1
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -126,11 +103,10 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - annotations: null
-      name: latest
+    - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/crier:v20210121-548289bef2
+        name: gcr.io/k8s-prow/crier:v20210123-aa0de54ee1
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -143,11 +119,10 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - annotations: null
-      name: latest
+    - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/needs-rebase:v20210122-d4ead73bf2
+        name: gcr.io/k8s-prow/needs-rebase:v20210123-aa0de54ee1
       importPolicy: {}
       referencePolicy:
         type: Local

@@ -5,6 +5,8 @@ resources:
   - roles.yaml
   - rolebindings.yaml
   - s3-bucket-claim.yaml
+patchesStrategicMerge:
+  - imagestreamtags.yaml
 configMapGenerator:
   - name: config
     files:

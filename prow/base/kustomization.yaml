@@ -7,7 +7,7 @@ resources:
   - deploymentconfig.yaml
   - ghproxy.yaml
   - hook.yaml
-  - imagestreamtags.yaml
+  - imagestreams.yaml
   - needs-rebase.yaml
   - prow-controller-manager.yaml
   - rolebindings.yaml
