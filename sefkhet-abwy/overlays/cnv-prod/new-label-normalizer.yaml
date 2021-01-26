@@ -37,6 +37,8 @@ spec:
                 requests:
                   cpu: 100m
                   memory: 64Mi
+          restartPolicy: OnFailure
+
   schedule: 59 2 * * *
   successfulJobsHistoryLimit: 1
   suspend: false
@@ -79,6 +81,7 @@ spec:
                 requests:
                   cpu: 100m
                   memory: 64Mi
+          restartPolicy: OnFailure
   schedule: 59 3 * * *
   successfulJobsHistoryLimit: 1
   suspend: false
