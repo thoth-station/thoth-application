@@ -8,6 +8,7 @@ label:
     - deployment_name/moc
     - thoth/group-programming
     - thoth/potential-observation
+    - thoth/human-intervention-required
     - sig/documentation
     - sig/cyborgs
     - sig/investigator
@@ -18,6 +19,7 @@ label:
     - sig/advisor
     - sig/build
     - sig/devops
+    - kind/question
 
 project_config:
   project_org_configs:
