@@ -48,6 +48,11 @@ objects:
                     configMapKeyRef:
                       key: deployment-name
                       name: thoth
+                - name: PROMETHEUS_PUSHGATEWAY_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: pushgateway-url
                 - name: KNOWLEDGE_GRAPH_HOST
                   valueFrom:
                     configMapKeyRef:

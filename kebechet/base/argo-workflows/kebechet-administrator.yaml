@@ -65,6 +65,16 @@ spec:
               secretKeyRef:
                 name: postgresql
                 key: database-name
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: deployment-name
+                name: thoth
+          - name: PROMETHEUS_PUSHGATEWAY_URL
+            valueFrom:
+              configMapKeyRef:
+                name: prometheus
+                key: pushgateway-url
         resources:
           limits:
             cpu: 250m
