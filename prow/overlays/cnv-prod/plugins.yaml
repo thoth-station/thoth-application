@@ -87,6 +87,7 @@ approve:
       - thoth-station
     require_self_approval: true
     ignore_review_state: false
+    lgtm_acts_as_approve: false
 
 repo_milestone:
   "":
