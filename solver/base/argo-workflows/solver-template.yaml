@@ -79,7 +79,7 @@ spec:
           - name: THOTH_SOLVER
             value: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
           - name: THOTH_SOLVER_VIRTUALENV
-            value: "/home/solver/venv"
+            value: "/opt/app-root/src/solver-venv"
           - name: THOTH_LOG_SOLVER
             value: "{{inputs.parameters.THOTH_LOG_SOLVER}}"
           - name: THOTH_SOLVER_NO_TRANSITIVE
