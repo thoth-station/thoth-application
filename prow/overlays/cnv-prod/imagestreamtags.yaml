@@ -130,3 +130,23 @@ spec:
       importPolicy: {}
       referencePolicy:
         type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: label-sync
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - name: latest
+      from:
+        kind: ImageStreamTag
+        name: v20210127-5fd357428d
+    - name: v20210127-5fd357428
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/label_sync:v20210127-5fd357428d
+      importPolicy: {}
+      referencePolicy:
+        type: Local
