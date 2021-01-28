@@ -222,6 +222,11 @@ tide:
           package-analyzer:
             required-contexts:
               - aicoe-ci/pre-commit-check
+          package-extract:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
           python:
             required-contexts:
               - aicoe-ci/pytest-check
