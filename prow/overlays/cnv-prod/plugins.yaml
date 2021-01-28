@@ -25,27 +25,6 @@ label:
     - community/question
     - community/group-programming
 
-project_config:
-  project_org_configs:
-    thoth-station:
-      org_maintainers_team_id: 4086029
-      org_maintainers_team_name: DevOrgs
-      org_default_column_map:
-        Adviser: New
-        Amun: New
-        Integration Tests: New
-        Investigator: New
-        Kebechet: New
-        Knowledge Graph: New
-        Meta-Information Indicators: New
-        Performance Indicators: New
-        Security Indicators: New
-        SLO-reporter: New
-        Solver: New
-        Thoth Data Science: New
-        thoth-toolbox: New
-        User-API: New
-
 external_plugins:
   thoth-station:
     - name: needs-rebase
@@ -118,7 +97,6 @@ plugins:
     - label
     - lifecycle
     - milestone
-    - project
     - size
     - trigger
     - verify-owners
