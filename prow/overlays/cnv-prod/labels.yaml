@@ -222,6 +222,19 @@ default:
       prowPlugin: shrug
       addedBy: humans
 
+    - color: 99cdf8
+      description: Issues targeting the hacktoberfest participants.
+      name: hacktoberfest
+      target: issue
+      prowPlugin: label
+      addedBy: anyone
+    - color: 99cdf8
+      description: PR that has been accepted for hacktoberfest!
+      name: hacktoberfest-accepted
+      target: prs
+      prowPlugin: label
+      addedBy: humans
+
     - color: fef2c0
       description: Categorizes an issue or PR as relevant to SIG Cyborgs and Bots.
       name: sig/cyborgs
