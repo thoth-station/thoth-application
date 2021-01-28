@@ -20,6 +20,10 @@ label:
     - sig/build
     - sig/devops
     - kind/question
+    - community/discussion
+    - community/maintenance
+    - community/question
+    - community/group-programming
 
 project_config:
   project_org_configs:
