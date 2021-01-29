@@ -84,6 +84,7 @@ plugins:
     - blunderbuss
     - hold
     - label
+    - lgtm
     - lifecycle
     - size
     - trigger
@@ -95,6 +96,7 @@ plugins:
     - blunderbuss
     - hold
     - label
+    - lgtm
     - lifecycle
     - milestone
     - size
@@ -107,6 +109,7 @@ plugins:
     - blunderbuss
     - hold
     - label
+    - lgtm
     - lifecycle
     - size
     - trigger
@@ -118,6 +121,7 @@ plugins:
     - blunderbuss
     - hold
     - label
+    - lgtm
     - lifecycle
     - size
     - trigger
