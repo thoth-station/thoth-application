@@ -41,7 +41,7 @@ spec:
 
   schedule: 59 2 * * *
   successfulJobsHistoryLimit: 1
-  suspend: false
+  suspend: true
 ---
 apiVersion: batch/v1beta1
 kind: CronJob
@@ -84,4 +84,4 @@ spec:
           restartPolicy: OnFailure
   schedule: 59 3 * * *
   successfulJobsHistoryLimit: 1
-  suspend: false
+  suspend: true
