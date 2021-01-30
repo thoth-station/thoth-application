@@ -988,6 +988,12 @@ repos:
     labels:
       - addedBy: human
         color: 0ffa16
+        description: Issues or PRs related to release engineering work.
+        name: release-eng
+        prowPlugin: label
+        target: both
+      - addedBy: human
+        color: 0ffa16
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/14
         name: sig/investigator
         prowPlugin: label
@@ -5914,6 +5920,12 @@ repos:
         target: both
   thoth-station/thoth-application:
     labels:
+      - addedBy: human
+        color: 0ffa16
+        description: Issues or PRs related to release engineering work.
+        name: release-eng
+        prowPlugin: label
+        target: both
       - addedBy: human
         color: 0ffa16
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/14
