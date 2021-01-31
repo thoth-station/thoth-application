@@ -7,4 +7,4 @@ commonLabels:
 generatorOptions:
   disableNameSuffixHash: true
 resources:
-  - openshift-templates/schemaUpdateJob-template.yaml
+  - openshift-templates/graph-schema-update-job-template.yaml
