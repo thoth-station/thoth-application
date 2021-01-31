@@ -1,29 +1,33 @@
 label:
   additional_labels:
+    - community/discussion
+    - community/group-programming
+    - community/maintenance
+    - community/question
+    - deployment_name/moc
+    - deployment_name/ocp-stage
+    - deployment_name/ocp-test
+    - kind/cleanup
+    - kind/deprecation
+    - kind/documentation
+    - kind/question
+    - kind/question
+    - sig/advisor
+    - sig/build
+    - sig/cyborgs
+    - sig/devops
+    - sig/documentation
+    - sig/indicators
+    - sig/investigator
+    - sig/knowledge-graph
+    - sig/slo
+    - sig/solvers
+    - thoth/group-programming
+    - thoth/human-intervention-required
+    - thoth/potential-observation
     - tide/merge-method-merge
     - tide/merge-method-rebase
     - tide/merge-method-squash
-    - deployment_name/ocp-test
-    - deployment_name/ocp-stage
-    - deployment_name/moc
-    - thoth/group-programming
-    - thoth/potential-observation
-    - thoth/human-intervention-required
-    - sig/documentation
-    - sig/cyborgs
-    - sig/investigator
-    - sig/indicators
-    - sig/knowledge-graph
-    - sig/solvers
-    - sig/slo
-    - sig/advisor
-    - sig/build
-    - sig/devops
-    - kind/question
-    - community/discussion
-    - community/maintenance
-    - community/question
-    - community/group-programming
 
 external_plugins:
   thoth-station:
@@ -81,11 +85,13 @@ plugins:
   operate-first:
     - approve
     - assign
+    - blockade
     - blunderbuss
     - hold
     - label
     - lgtm
     - lifecycle
+    - shrug
     - size
     - trigger
     - verify-owners
@@ -93,12 +99,14 @@ plugins:
   thoth-station:
     - approve
     - assign
+    - blockade
     - blunderbuss
     - hold
     - label
     - lgtm
     - lifecycle
     - milestone
+    - shrug
     - size
     - trigger
     - verify-owners
@@ -106,6 +114,7 @@ plugins:
   AICoE:
     - approve
     - assign
+    - blockade
     - blunderbuss
     - hold
     - label
@@ -118,6 +127,7 @@ plugins:
   aicoe-aiops:
     - approve
     - assign
+    - blockade
     - blunderbuss
     - hold
     - label

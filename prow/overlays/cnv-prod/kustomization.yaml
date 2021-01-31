@@ -5,6 +5,7 @@ resources:
   - roles.yaml
   - rolebindings.yaml
   - s3-bucket-claim.yaml
+  - label-sync-cronjob.yaml
 patchesStrategicMerge:
   - imagestreamtags.yaml
 configMapGenerator:
@@ -14,6 +15,9 @@ configMapGenerator:
   - name: plugins
     files:
       - plugins.yaml
+  - name: labels
+    files:
+      - labels.yaml
 generatorOptions:
   disableNameSuffixHash: true
 generators:
