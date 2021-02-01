@@ -1,0 +1,21 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: deployment-trigger
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+        - name: deployment-trigger
+          image: quay.io/openshift/origin-cli:latest
+          command:
+            - "oc"
+            - "rollout"
+            - "latest"
+            - "user-api"
+      restartPolicy: Never
+  backoffLimit: 2
