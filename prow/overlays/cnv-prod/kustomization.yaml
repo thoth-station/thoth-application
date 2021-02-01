@@ -15,7 +15,7 @@ configMapGenerator:
   - name: plugins
     files:
       - plugins.yaml
-  - name: labels
+  - name: label-config
     files:
       - labels.yaml
 generatorOptions:
