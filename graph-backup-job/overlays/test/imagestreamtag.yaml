@@ -4,8 +4,10 @@ metadata:
   name: graph-backup-job
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: quay.io/thoth-station/graph-backup-job:v0.7.0
-      importPolicy: {}
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/graph-backup-job:v0.8.0
+    importPolicy: {}
+    referencePolicy:
+      type: Source
