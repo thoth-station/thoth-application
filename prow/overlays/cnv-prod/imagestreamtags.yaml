@@ -143,7 +143,7 @@ spec:
       from:
         kind: ImageStreamTag
         name: v20210127-5fd357428d
-    - name: v20210127-5fd357428
+    - name: v20210127-5fd357428d
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/label_sync:v20210127-5fd357428d
