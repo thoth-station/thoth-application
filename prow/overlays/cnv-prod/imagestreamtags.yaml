@@ -150,3 +150,23 @@ spec:
       importPolicy: {}
       referencePolicy:
         type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: pipeline
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - name: latest
+      from:
+        kind: ImageStreamTag
+        name: v20210201-6494714d87
+    - name: v20210201-6494714d87
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/pipeline:v20210201-6494714d87
+      importPolicy: {}
+      referencePolicy:
+        type: Local
