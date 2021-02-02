@@ -6,10 +6,10 @@ plank:
         path_strategy: explicit
       s3_credentials_secret: s3-credentials
       utility_images:
-        clonerefs: gcr.io/k8s-prow/clonerefs:v20210121-548289bef2
-        entrypoint: gcr.io/k8s-prow/entrypoint:v20210121-548289bef2
-        initupload: gcr.io/k8s-prow/initupload:v20210121-548289bef2
-        sidecar: gcr.io/k8s-prow/sidecar:v20210121-548289bef2
+        clonerefs: gcr.io/k8s-prow/clonerefs:v20210201-6494714d87
+        entrypoint: gcr.io/k8s-prow/entrypoint:v20210201-6494714d87
+        initupload: gcr.io/k8s-prow/initupload:v20210201-6494714d87
+        sidecar: gcr.io/k8s-prow/sidecar:v20210201-6494714d87
 
 prowjob_namespace: opf-ci-prow
 pod_namespace: opf-ci-prow
@@ -18,11 +18,15 @@ branch-protection:
   allow_disabled_policies: true
   orgs:
     thoth-station:
+      protect: true
+      allow_force_pushes: false
+      required_status_checks:
+        contexts:
+          - aicoe-ci/pre-commit-check
       exclude:
         - "^revert-"
         - "^kebechet-"
         - "^dependabot/"
-      protect: true
       restrictions:
         users: []
         teams:
@@ -30,34 +34,10 @@ branch-protection:
         required_pull_request_reviews:
           dismiss_stale_reviews: false
         required_approving_review_count: 1
-        required_status_checks:
-          contexts:
-            - aicoe-ci/pre-commit-check
-      allow_force_pushes: false
       repos:
-        test-infra:
-          allow_force_pushes: true
         tensorflow:
           protect: false
         contra-env-infra:
-          protect: false
-        ansible-role-core-imagestreams:
-          protect: false
-        ansible-role-core-templates:
-          protect: false
-        ansible-role-core-cronjob:
-          protect: false
-        ansible-role-metrics-exporter:
-          protect: false
-        ansible-role-cronjob:
-          protect: false
-        ansible-role-argo-workflows:
-          protect: false
-        ansible-role-postgresql:
-          protect: false
-        ansible-role-kebechet:
-          protect: false
-        ansible-role-postgresql-metrics-exporter:
           protect: false
         statusfy:
           protect: false
