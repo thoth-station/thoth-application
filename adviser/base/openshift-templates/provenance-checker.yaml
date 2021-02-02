@@ -109,8 +109,16 @@ objects:
           - name: ceph_host
           - name: deployment_name
       volumes:
+        - name: workdir
+          emptyDir: {}
         - name: output
           emptyDir: {}
+        - name: kafka-secrets
+          secret:
+            secretName: "kafka"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
       templates:
         - name: "provenance-checker"
           archiveLocation:
@@ -173,7 +181,7 @@ objects:
                 arguments:
                   artifacts:
                     - name: outputdocument
-                      from: "{{tasks.advise.outputs.artifacts.outputdocument}}"
+                      from: "{{tasks.provenance-check.outputs.artifacts.outputdocument}}"
                   parameters:
                     - name: "THOTH_DOCUMENT_ID"
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
