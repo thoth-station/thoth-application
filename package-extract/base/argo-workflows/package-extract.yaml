@@ -43,8 +43,6 @@ spec:
         name: extract-packages
         image: package-extract
         env:
-          - name: APP_FILE
-            value: "thoth-package-extract"
           - name: THOTH_ANALYZED_IMAGE
             value: "{{inputs.parameters.THOTH_ANALYZED_IMAGE}}"
           - name: THOTH_PACKAGE_EXTRACT_JOB_ID
