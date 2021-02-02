@@ -4,6 +4,8 @@ metadata:
   name: branchprotector
 spec:
   schedule: "37 1 * * *"
+  concurrencyPolicy: Forbid
+  suspend: true
   jobTemplate:
     spec:
       backoffLimit: 2
@@ -20,6 +22,7 @@ spec:
                 - --github-token-path=/etc/github/oauth
                 - --github-endpoint=http://ghproxy
                 - --github-endpoint=https://api.github.com
+                - --confirm
               volumeMounts:
                 - name: oauth
                   mountPath: /etc/github
