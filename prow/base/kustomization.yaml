@@ -9,7 +9,6 @@ resources:
   - hook.yaml
   - imagestreams.yaml
   - needs-rebase.yaml
-  - pipeline.yaml
   - prow-controller-manager.yaml
   - rolebindings.yaml
   - roles.yaml
