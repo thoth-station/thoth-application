@@ -10,11 +10,11 @@ spec:
     - name: latest
       from:
         kind: ImageStreamTag
-        name: v20210123-aa0de54ee1
-    - name: v20210123-aa0de54ee1
+        name: v20210204-de2fa22b93
+    - name: v20210204-de2fa22b93
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/hook:v20210123-aa0de54ee1
+        name: gcr.io/k8s-prow/hook:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -30,7 +30,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/sinker:v20210123-aa0de54ee1
+        name: gcr.io/k8s-prow/sinker:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -46,7 +46,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/deck:v20210123-aa0de54ee1
+        name: gcr.io/k8s-prow/deck:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -62,7 +62,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/horologium:v20210123-aa0de54ee1
+        name: gcr.io/k8s-prow/horologium:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -78,7 +78,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/tide:v20210123-aa0de54ee1
+        name: gcr.io/k8s-prow/tide:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -94,7 +94,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/status-reconciler:v20210123-aa0de54ee1
+        name: gcr.io/k8s-prow/status-reconciler:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -110,7 +110,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/crier:v20210123-aa0de54ee1
+        name: gcr.io/k8s-prow/crier:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
@@ -126,7 +126,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/needs-rebase:v20210123-aa0de54ee1
+        name: gcr.io/k8s-prow/needs-rebase:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local

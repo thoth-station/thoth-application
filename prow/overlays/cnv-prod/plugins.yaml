@@ -81,6 +81,14 @@ repo_milestone:
     maintainers_id: 2990047
     maintainers_team: Devs
 
+project_config:
+  thoth-station:
+    org:
+      org_default_column_map:
+        thoth-deployment: New
+
+      org_maintainers_team_id: 2990047
+
 plugins:
   operate-first:
     - approve
@@ -106,6 +114,8 @@ plugins:
     - lgtm
     - lifecycle
     - milestone
+    - project
+    - projectmanager
     - shrug
     - size
     - trigger
