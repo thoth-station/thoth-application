@@ -14,6 +14,7 @@ spec:
         parameters:
         - name: KEBECHET_REPO_URL
         - name: KEBECHET_SERVICE_NAME
+        - name: KEBECHET_METADATA
       container:
         image: kebechet
         env:
@@ -31,6 +32,8 @@ spec:
             value: "{{inputs.parameters.KEBECHET_REPO_URL}}"
           - name: KEBECHET_SERVICE_NAME
             value: "{{inputs.parameters.KEBECHET_SERVICE_NAME}}"
+          - name: KEBECHET_METADATA
+            value: "{{inputs.parameters.KEBECHET_METADATA}}"
           - name: GITHUB_APP_ID
             valueFrom:
               secretKeyRef:
