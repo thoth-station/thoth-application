@@ -29,6 +29,11 @@ parameters:
     description: "The service name for kebechet run, it defaults to github."
     displayName: "Service Name"
     required: true
+  - name: KEBECHET_METADATA
+    description: "Metadata which is passed to Kebechet that Kebechet can use when opening PRs and Issues."
+    displayName: "Kebechet Metadata"
+    required: true
+    value: 'null'
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -84,6 +89,8 @@ objects:
             value: "${KEBECHET_REPO_URL}"
           - name: "KEBECHET_SERVICE_NAME"
             value: "${KEBECHET_SERVICE_NAME}"
+          - name: "KEBECHET_METADATA"
+            value: "${KEBECHET_METADATA}"
       volumes:
         - name: ssh-config
           secret:
@@ -114,3 +121,5 @@ objects:
                       value: "{{workflow.parameters.KEBECHET_REPO_URL}}"
                     - name: "KEBECHET_SERVICE_NAME"
                       value: "{{workflow.parameters.KEBECHET_SERVICE_NAME}}"
+                    - name: "KEBECHET_METADATA"
+                      value: "{{workflow.parameters.KEBECHET_METADATA}}"
