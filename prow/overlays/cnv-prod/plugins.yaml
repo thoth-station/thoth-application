@@ -82,12 +82,11 @@ repo_milestone:
     maintainers_team: Devs
 
 project_config:
-  thoth-station:
-    org:
+  project_org_configs:
+    thoth-station:
+      org_maintainers_team_id: 2990047
       org_default_column_map:
         thoth-deployment: New
-
-      org_maintainers_team_id: 2990047
 
 plugins:
   operate-first:
@@ -115,7 +114,7 @@ plugins:
     - lifecycle
     - milestone
     - project
-    - project-manager
+    - projectmanager
     - shrug
     - size
     - trigger
