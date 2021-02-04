@@ -3,8 +3,6 @@ kind: Kustomization
 resources:
   - ../../base
   - configmap.yaml
-  - ghproxy.yaml
-  - new-label-normalizer.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
