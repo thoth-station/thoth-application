@@ -114,7 +114,7 @@ plugins:
     - lifecycle
     - milestone
     - project
-    - projectmanager
+    - project-manager
     - shrug
     - size
     - trigger
