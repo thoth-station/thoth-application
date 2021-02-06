@@ -272,3 +272,21 @@ periodics:
               value: api.moc.thoth-station.ninja
     annotations:
       description: Periodic e2e tests against MOC deployment
+
+presubmits:
+  thoth-station/srcops-testing:
+    - name: kustomize-build
+      always_run: true
+      decorate: true
+      max_concurrency: 1
+      spec:
+        containers:
+          - image: quay.io/operate-first/opf-toolbox:v0.2.0
+            command:
+              - "kustomize"
+              - "build"
+              - "--enable-alpha-plugins"
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "500m"
