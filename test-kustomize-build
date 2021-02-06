@@ -1,0 +1,10 @@
+#!/bin/sh
+
+k=$(find . -name kustomization.yaml)
+
+for d in $k; do
+    echo checking $(dirname $d)
+    kustomize build --enable_alpha_plugins $(dirname $d) 2>&1 >/dev/null
+done
+
+#end.
