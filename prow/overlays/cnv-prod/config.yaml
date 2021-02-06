@@ -285,7 +285,7 @@ presubmits:
             command:
               - "kustomize"
               - "build"
-              - "--enable-alpha-plugins"
+              - "--enable_alpha_plugins"
             resources:
               requests:
                 memory: "512Mi"
