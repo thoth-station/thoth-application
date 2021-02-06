@@ -276,7 +276,6 @@ periodics:
 presubmits:
   thoth-station/thoth-application:
     - name: kustomize-build
-      always_run: true
       decorate: true
       max_concurrency: 1
       run_if_changed: ".*yaml"
