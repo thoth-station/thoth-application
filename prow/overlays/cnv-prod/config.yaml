@@ -289,8 +289,6 @@ presubmits:
             resources:
               requests:
                 memory: "256Mi"
-
-  thoth-station/srcops-testing:
     - name: prowjob-pre-commit
       decorate: true
       skip_report: false
