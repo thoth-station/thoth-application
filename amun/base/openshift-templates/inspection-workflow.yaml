@@ -41,6 +41,8 @@ objects:
     volumes:
     - name: output-volume
       emptyDir: {}
+    - name: workdir
+      emptyDir: {}
 
     arguments:
       parameters:
@@ -62,10 +64,11 @@ objects:
         value: "${AMUN_BUILD_CPU}"
       - name: build-memory
         value: "${AMUN_BUILD_MEMORY}"
+      # Used for sending messages when inspection completes
       - name: send-messages
-        value: "${SEND_MESSAGES}"
+        value: "${THOTH_SEND_MESSAGES}"
       - name: force-sync
-        value: "${FORCE_SYNC}"
+        value: "${THOTH_FORCE_SYNC}"
       # Used in artifact repository to store results
       - name: ceph_bucket_prefix
       - name: ceph_bucket_name
@@ -137,7 +140,7 @@ objects:
           arguments:
             artifacts:
               - name: messagesdocument
-                value: "{{tasks.create-inspection-complete-message.outputs.artifacts.messages_to_be_sent_doc}}"
+                from: "{{tasks.create-inspection-complete-message.outputs.artifacts.messages_to_be_sent_doc}}"
             parameters:
               - name: THOTH_MESSAGING_FROM_FILE
                 value: "/mnt/workdir/messages_to_be_sent.json"
@@ -157,15 +160,15 @@ parameters:
   displayName: Inspection id
   required: true
 
-- name: SEND_MESSAGES
+- name: THOTH_SEND_MESSAGES
   description: indicates whether message should be sent upon inspection completion
   displayName: send messages
-  value: 1  # sends message by default
+  value: "1"  # sends message by default
 
-- name: FORCE_SYNC
+- name: THOTH_FORCE_SYNC
   description: should inspection complete message cause graph sync job to be run with force sync
-  display_name: force sync
-  value: 0
+  displayName: force sync
+  value: "0"
 
 - name: AMUN_RUN_CPU
   description: CPU cores requested for inspection run
@@ -173,8 +176,7 @@ parameters:
   value: 750m
 
 - name: AMUN_RUN_MEMORY
-  description: Memory requested for inspection run
-  displayName: Run Memory
+  descisplayNaplayName: Run Memory
   value: 1Gi
 
 - name: AMUN_BUILD_CPU
