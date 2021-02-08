@@ -1,0 +1,12 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: investigator-consumer
+spec:
+  template:
+    spec:
+      containers:
+        - env:
+            - name: ARGO_PENDING_WORKFLOW_LIMIT
+              value: "2000"
