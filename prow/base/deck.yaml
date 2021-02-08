@@ -76,7 +76,7 @@ spec:
             - --plugin-config=/etc/plugins/plugins.yaml
             - --s3-credentials-file=/etc/s3-credentials/service-account.json
             - --cookie-secret=/etc/cookie/secret
-            - --spyglass=false
+            - --spyglass=true
           ports:
             - name: http
               containerPort: 8080
