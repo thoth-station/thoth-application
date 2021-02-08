@@ -10,9 +10,6 @@ generators:
   - ./secret-generator.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
-  - deploymentconfig.yaml
-  - inspection-workflow.yaml
-  - inspection-with-cpu-workflow.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
