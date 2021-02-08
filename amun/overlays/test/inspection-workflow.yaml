@@ -1,0 +1,194 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: amun-inspection-workflow
+  annotations:
+    description: This is Amun configuration template
+    openshift.io/display-name: "Amun core components"
+    tags: amun,argo,thoth,ai-stacks,aistacks,machinelearning,workflows
+    template.openshift.io/documentation-url: https://github.com/thoth-station/
+    template.openshift.io/long-description: This template defines resources needed to deploy Amun to OpenShift.
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+  labels:
+    template: amun-inspection-workflow
+    app: amun
+
+objects:
+- kind: Workflow
+  apiVersion: argoproj.io/v1alpha1
+  metadata:
+    name: "${AMUN_INSPECTION_ID}"
+    labels:
+      app: amun
+      component: amun-inspection-workflow
+      inspection_id: "${AMUN_INSPECTION_ID}"
+  spec:
+    serviceAccountName: amun-api-workflow
+    # Give 4 hours to finish the inspection.
+    activeDeadlineSeconds: 14400
+    ttlStrategy:
+      # Let inspections live for 3 days once completed.
+      secondsAfterCompletion: 259200
+      secondsAfterSuccess: 259200
+      secondsAfterFailure: 259200
+
+    artifactRepositoryRef:
+      configMap: amun
+      key: artifactRepository
+
+    entrypoint: main
+
+    volumes:
+    - name: output-volume
+      emptyDir: {}
+
+    arguments:
+      parameters:
+      # Required workflow parameters
+      - name: dockerfile
+      - name: specification
+      # Defaults
+      - name: inspection-id
+        value: "${AMUN_INSPECTION_ID}"
+      - name: batch-size
+        value: '1'
+      - name: batch-name
+        value: "${AMUN_INSPECTION_ID}"
+      - name: run-cpu
+        value: "${AMUN_RUN_CPU}"
+      - name: run-memory
+        value: "${AMUN_RUN_MEMORY}"
+      - name: build-cpu
+        value: "${AMUN_BUILD_CPU}"
+      - name: build-memory
+        value: "${AMUN_BUILD_MEMORY}"
+      # Used for sending messages when inspection completes
+      - name: send-messages
+        value: "${THOTH_SEND_MESSAGES}"
+      - name: force-sync
+        value: "${THOTH_FORCE_SYNC}"
+      # Used in artifact repository to store results
+      - name: ceph_bucket_prefix
+      - name: ceph_bucket_name
+      - name: ceph_host
+      - name: deployment_name
+
+    templates:
+    - name: main
+      dag:
+        tasks:
+        - name: inspection-build
+          arguments:
+            parameters:
+            - name: dockerfile
+              value: '{{workflow.parameters.dockerfile}}'
+            - name: specification
+              value: '{{workflow.parameters.specification}}'
+            - name: inspection-id
+              value: "{{workflow.parameters.inspection-id}}"
+            - name: batch-name
+              value: "{{workflow.parameters.batch-name}}"
+            - name: cpu
+              value: "{{workflow.parameters.build-cpu}}"
+            - name: memory
+              value: "{{workflow.parameters.build-memory}}"
+            - name: volume
+              value: output-volume
+          templateRef:
+            name: inspection-build-template
+            template: main
+
+        - name: inspection-run
+          dependencies: [inspection-build]
+          arguments:
+            parameters:
+            - name: batch-name
+              value: "{{workflow.parameters.batch-name}}"
+            - name: batch-size
+              value: "{{workflow.parameters.batch-size}}"
+            - name: inspection-id
+              value: "{{workflow.parameters.inspection-id}}"
+            - name: cpu
+              value: "{{workflow.parameters.run-cpu}}"
+            - name: memory
+              value: "{{workflow.parameters.run-memory}}"
+            - name: volume
+              value: output-volume
+          templateRef:
+            name: inspection-run-template
+            template: main
+          continueOn:
+            failed: true
+
+        - name: create-inspection-complete-message
+          dependencies: [inspection-run]
+          arguments:
+            parameters:
+              - name: inspection-id
+                value: "{{workflow.parameters.inspection-id}}"
+              - name: force-sync
+                value: "{{workflow.parameters.force-sync}}"
+          templateRef:
+            name: create-inspection-complete-message
+            template: create-inspection-complete-message
+          when: "{{workflow.parameters.send-messages}} == '1'"
+
+        - name: send-messages
+          dependencies: [create-inspection-complete-message]
+          arguments:
+            artifacts:
+              - name: messagesdocument
+                value: "{{tasks.create-inspection-complete-message.outputs.artifacts.messages_to_be_sent_doc}}"
+            parameters:
+              - name: THOTH_MESSAGING_FROM_FILE
+                value: "/mnt/workdir/messages_to_be_sent.json"
+              - name: THOTH_DEPLOYMENT_NAME
+                value: "thoth-test-core"  # TODO: get deployment name from somewhere
+              - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+                value: "0"
+              - name: MESSAGES_DOCUMENT_NAME
+                value: "messages_to_be_sent.json"
+          templateRef:
+              name: "send-messages"
+              template: "send-messages"
+
+parameters:
+- name: AMUN_INSPECTION_ID
+  description: Id of inspection that is run.
+  displayName: Inspection id
+  required: true
+
+- name: THOTH_SEND_MESSAGES
+  description: indicates whether message should be sent upon inspection completion
+  displayName: send messages
+  value: "1"  # sends message by default
+
+- name: THOTH_FORCE_SYNC
+  description: should inspection complete message cause graph sync job to be run with force sync
+  display_name: force sync
+  value: "0"
+
+- name: AMUN_RUN_CPU
+  description: CPU cores requested for inspection run
+  displayName: Run CPU
+  value: 750m
+
+- name: AMUN_RUN_MEMORY
+  description: Memory requested for inspection run
+  displayName: Run Memory
+  value: 1Gi
+
+- name: AMUN_BUILD_CPU
+  description: CPU cores requested for build
+  displayName: Build CPU
+  value: 750m
+
+- name: AMUN_BUILD_MEMORY
+  description: Memory requested for build
+  displayName: Build Memory
+  value: 1Gi
+
+- name: ARGO_SERVICE_ACCOUNT
+  description: Service account used by workflow steps
+  displayName: Argo service account
+  value: argo
