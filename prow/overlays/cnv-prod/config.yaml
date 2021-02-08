@@ -289,7 +289,7 @@ presubmits:
             resources:
               requests:
                 memory: "256Mi"
-    - name: prowjob-pre-commit
+    - name: pre-commit
       decorate: true
       skip_report: false
       always_run: true
