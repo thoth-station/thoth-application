@@ -2,7 +2,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: label-sync
+  name: label-sync-thoth-station
 spec:
   schedule: "17 * * * *"
   concurrencyPolicy: Forbid
@@ -40,7 +40,7 @@ spec:
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: label-sync
+  name: label-sync-aicoe
 spec:
   schedule: "27 * * * *"
   concurrencyPolicy: Forbid
@@ -78,7 +78,7 @@ spec:
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: label-sync
+  name: label-sync-operate-first
 spec:
   schedule: "37 * * * *"
   concurrencyPolicy: Forbid
