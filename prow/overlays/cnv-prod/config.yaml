@@ -1,4 +1,8 @@
 plank:
+  report_templates:
+    "*": "[Full PR test history](https://prow.operate-first.cloud/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](https://prow.operate-first.cloud/pr?query=is%3Apr%20state%3Aopen%20author%3A{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us and [open an issue](https://github.com/{{.Spec.Refs.Org}}/{{.Spec.Refs.Repo}}/issues?q=is:issue+is:open) when you hit one in your PR."
+  job_url_prefix_config:
+    "*": https://prow.operate-first.cloud/view/
   default_decoration_configs:
     "*":
       gcs_configuration:
