@@ -189,7 +189,7 @@ parameters:
 
 - name: THOTH_FORCE_SYNC
   description: should inspection complete message cause graph sync job to be run with force sync
-  display_name: force sync
+  displayName: force sync
   value: "0"
 
 - name: AMUN_RUN_CPU
