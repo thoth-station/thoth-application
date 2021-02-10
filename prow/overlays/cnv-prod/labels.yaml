@@ -256,6 +256,14 @@ default:
         - name: sig/documentation
       addedBy: anyone
 repos:
+  operate-first/SRE:
+    labels:
+      - addedBy: anyone
+        color: d73a49
+        description: This issue is related to an operations alert!
+        name: alert 💥
+        prowPlugin: label
+        target: issue
   thoth-station/advise-reporter:
     labels:
       - addedBy: human
