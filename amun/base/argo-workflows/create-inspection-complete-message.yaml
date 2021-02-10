@@ -23,7 +23,7 @@ spec:
             value: "create_inspection_complete_message"
           - name: THOTH_AMUN_INSPECTION_ID
             value: "{{inputs.parameters.inspection-id}}"
-          - name: FORCE_SYNC
+          - name: THOTH_FORCE_SYNC
             value: "{{inputs.parameters.force-sync}}"
         resources:
           limits:

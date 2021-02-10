@@ -64,11 +64,6 @@ objects:
         value: "${AMUN_BUILD_CPU}"
       - name: build-memory
         value: "${AMUN_BUILD_MEMORY}"
-      # Used for sending messages when inspection completes
-      - name: send-messages
-        value: "${THOTH_SEND_MESSAGES}"
-      - name: force-sync
-        value: "${THOTH_FORCE_SYNC}"
       # Used in artifact repository to store results
       - name: ceph_bucket_prefix
       - name: ceph_bucket_name
@@ -121,49 +116,6 @@ objects:
             template: main
           continueOn:
             failed: true
-
-        - name: create-inspection-complete-message
-          dependencies: [inspection-run]
-          arguments:
-            parameters:
-              - name: inspection-id
-                value: "{{workflow.parameters.inspection-id}}"
-              - name: force-sync
-                value: "{{workflow.parameters.force-sync}}"
-          templateRef:
-            name: create-inspection-complete-message
-            template: create-inspection-complete-message
-          when: "{{workflow.parameters.send-messages}} == 1"
-
-        - name: send-messages
-          dependencies: [create-inspection-complete-message]
-          arguments:
-            artifacts:
-              - name: messagesdocument
-                from: "{{tasks.create-inspection-complete-message.outputs.artifacts.messages_to_be_sent_doc}}"
-            parameters:
-              - name: THOTH_MESSAGING_FROM_FILE
-                value: "/mnt/workdir/messages_to_be_sent.json"
-              - name: THOTH_DEPLOYMENT_NAME
-                value: "{{workflow.parameters.deployment_name}}"  # TODO: get deployment name from somewhere
-              - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
-                value: "0"
-              - name: MESSAGES_DOCUMENT_NAME
-                value: "messages_to_be_sent.json"
-          templateRef:
-              name: "send-messages"
-              template: "send-messages"
-
-parameters:
-- name: AMUN_INSPECTION_ID
-  description: Id of inspection that is run.
-  displayName: Inspection id
-  required: true
-
-- name: THOTH_SEND_MESSAGES
-  description: indicates whether message should be sent upon inspection completion
-  displayName: send messages
-  value: "1"  # sends message by default
 
 - name: THOTH_FORCE_SYNC
   description: should inspection complete message cause graph sync job to be run with force sync

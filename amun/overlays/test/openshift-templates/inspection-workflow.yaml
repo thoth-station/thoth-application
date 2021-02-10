@@ -1,7 +1,7 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: amun-inspection-workflow-with-cpu
+  name: amun-inspection-workflow
   annotations:
     description: This is Amun configuration template
     openshift.io/display-name: "Amun core components"
@@ -10,7 +10,7 @@ metadata:
     template.openshift.io/long-description: This template defines resources needed to deploy Amun to OpenShift.
     template.openshift.io/provider-display-name: Red Hat, Inc.
   labels:
-    template: amun-inspection-workflow-with-cpu
+    template: amun-inspection-workflow
     app: amun
 
 objects:
@@ -64,19 +64,17 @@ objects:
         value: "${AMUN_BUILD_CPU}"
       - name: build-memory
         value: "${AMUN_BUILD_MEMORY}"
-      - name: cpu-family
-        value: "${CPU_FAMILY}"
-      - name: cpu-model
-        value: "${CPU_MODEL}"
-      - name: physical-cpus
-        value: "${PHYSICAL_CPUS}"
-      - name: processor
-        value: "${PROCESSOR}"
+      # Used for sending messages when inspection completes
+      - name: send-messages
+        value: "${THOTH_SEND_MESSAGES}"
+      - name: force-sync
+        value: "${THOTH_FORCE_SYNC}"
       # Used in artifact repository to store results
       - name: ceph_bucket_prefix
       - name: ceph_bucket_name
       - name: ceph_host
       - name: deployment_name
+
     templates:
     - name: main
       dag:
@@ -96,18 +94,10 @@ objects:
               value: "{{workflow.parameters.build-cpu}}"
             - name: memory
               value: "{{workflow.parameters.build-memory}}"
-            - name: cpu-family
-              value: "{{workflow.parameters.cpu-family}}"
-            - name: cpu-model
-              value: "{{workflow.parameters.cpu-model}}"
-            - name: physical-cpus
-              value: "{{workflow.parameters.physical-cpus}}"
-            - name: processor
-              value: "{{workflow.parameters.processor}}"
             - name: volume
               value: output-volume
           templateRef:
-            name: inspection-build-with-cpu-template
+            name: inspection-build-template
             template: main
 
         - name: inspection-run
@@ -124,21 +114,45 @@ objects:
               value: "{{workflow.parameters.run-cpu}}"
             - name: memory
               value: "{{workflow.parameters.run-memory}}"
-            - name: cpu-family
-              value: "{{workflow.parameters.cpu-family}}"
-            - name: cpu-model
-              value: "{{workflow.parameters.cpu-model}}"
-            - name: physical-cpus
-              value: "{{workflow.parameters.physical-cpus}}"
-            - name: processor
-              value: "{{workflow.parameters.processor}}"
             - name: volume
               value: output-volume
           templateRef:
-            name: inspection-run-with-cpu-template
+            name: inspection-run-template
             template: main
           continueOn:
             failed: true
+
+        - name: create-inspection-complete-message
+          dependencies: [inspection-run]
+          arguments:
+            parameters:
+              - name: inspection-id
+                value: "{{workflow.parameters.inspection-id}}"
+              - name: force-sync
+                value: "{{workflow.parameters.force-sync}}"
+          templateRef:
+            name: create-inspection-complete-message
+            template: create-inspection-complete-message
+          when: "{{workflow.parameters.send-messages}} == 1"
+
+        - name: send-messages
+          dependencies: [create-inspection-complete-message]
+          arguments:
+            artifacts:
+              - name: messagesdocument
+                from: "{{tasks.create-inspection-complete-message.outputs.artifacts.messages_to_be_sent_doc}}"
+            parameters:
+              - name: THOTH_MESSAGING_FROM_FILE
+                value: "/mnt/workdir/messages_to_be_sent.json"
+              - name: THOTH_DEPLOYMENT_NAME
+                value: "{{workflow.parameters.deployment_name}}"
+              - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+                value: "0"
+              - name: MESSAGES_DOCUMENT_NAME
+                value: "messages_to_be_sent.json"
+          templateRef:
+              name: "send-messages"
+              template: "send-messages"
 
 parameters:
 - name: AMUN_INSPECTION_ID
@@ -146,20 +160,29 @@ parameters:
   displayName: Inspection id
   required: true
 
+- name: THOTH_SEND_MESSAGES
+  description: indicates whether message should be sent upon inspection completion
+  displayName: send messages
+  value: "1"  # sends message by default
+
+- name: THOTH_FORCE_SYNC
+  description: should inspection complete message cause graph sync job to be run with force sync
+  displayName: force sync
+  value: "0"
+
 - name: AMUN_RUN_CPU
   description: CPU cores requested for inspection run
   displayName: Run CPU
   value: 750m
 
 - name: AMUN_RUN_MEMORY
-  description: Memory requested for inspection run
-  displayName: Run Memory
+  descisplayNaplayName: Run Memory
   value: 1Gi
 
 - name: AMUN_BUILD_CPU
   description: CPU cores requested for build
   displayName: Build CPU
-  value: "1"
+  value: 750m
 
 - name: AMUN_BUILD_MEMORY
   description: Memory requested for build
@@ -170,23 +193,3 @@ parameters:
   description: Service account used by workflow steps
   displayName: Argo service account
   value: argo
-
-- name: CPU_FAMILY
-  description: Family number of CPU.
-  displayName: CPU Family
-  required: true
-
-- name: CPU_MODEL
-  description: Modelnumber of CPU.
-  displayName: CPU model
-  required: true
-
-- name: PHYSICAL_CPUS
-  description: Number of physical CPUs.
-  displayName: Physical CPUS
-  required: true
-
-- name: PROCESSOR
-  description: Name of processor.
-  displayName: Processor name
-  required: true

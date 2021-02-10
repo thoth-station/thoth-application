@@ -39,28 +39,3 @@ spec:
     importPolicy: {}
     referencePolicy:
       type: Local
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: workflow-helpers
-spec:
-  tags:
-  - name: latest
-    from:
-      kind: DockerImage
-      name: quay.io/thoth-station/workflow-helpers:v0.5.0
-    importPolicy: {}
-    referencePolicy:
-      type: Local
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: messaging
-spec:
-  tags:
-  - name: latest
-    from:
-      kind: DockerImage
-      name: quay.io/thoth-station/messaging:v0.10.3
