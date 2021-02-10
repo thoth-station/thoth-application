@@ -325,6 +325,9 @@ presubmits:
           - image: quay.io/operate-first/opf-toolbox:v0.2.0
             command:
               - "./test-kustomize-build" # this is contained in the thoth-application/ repo not the opf-toolbox
+            env:
+              - name: IS_AICOE_CI
+                value: "1"
             resources:
               requests:
                 memory: "256Mi"
