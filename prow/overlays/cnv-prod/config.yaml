@@ -393,7 +393,9 @@ presubmits:
         containers:
           - image: quay.io/thoth-station/thoth-pytest:v0.12.2
             command:
-              - "micropipenv install --dev"
+              - "micropipenv"
+              - "install"
+              - "--dev"
             resources:
               requests:
                 memory: "2Gi"
