@@ -5,6 +5,6 @@ metadata:
   name: slo-reporter
 data:
   thanos-endpoint: "http://prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud"   # TODO: Use Thanos endpoint when available and set correct secret
-  smtp-server: "smtp.corp.redhat.com"
-  sender-address: "aicoe-thoth@redhat.com"
+  smtp-server: "smtp.sendgrid.net"
+  sender-address: "slo-reporter@thoth-station.ninja"
   email-recipients: "aicoe@redhat.com"
