@@ -384,18 +384,15 @@ presubmits:
                 memory: "2Gi"
                 cpu: "2"
 
-    - name: thoth-pytest-py36
+    - name: thoth-pytest-py38
       decorate: true
       skip_report: true
       always_run: false
       context: aicoe-ci/prow/pytest
       spec:
         containers:
-          - image: quay.io/thoth-station/thoth-pytest:v0.12.2
-            command:
-              - "micropipenv"
-              - "install"
-              - "--dev"
+          - image: quay.io/goern/thoth-pytest:v0.13.0-dev
+            command: "/bin/run-pytest"
             resources:
               requests:
                 memory: "2Gi"
