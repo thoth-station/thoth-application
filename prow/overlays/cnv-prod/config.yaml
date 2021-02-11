@@ -386,8 +386,8 @@ presubmits:
 
     - name: thoth-pytest-py38
       decorate: true
-      skip_report: true
-      always_run: false
+      skip_report: false
+      always_run: true
       context: aicoe-ci/prow/pytest
       spec:
         containers:
