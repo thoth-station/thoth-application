@@ -29,7 +29,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Thanos",
+            "datasource": "thoth-station",
             "fill": 1,
             "id": 27,
             "legend": {
@@ -147,7 +147,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Thanos",
+            "datasource": "thoth-station",
             "fill": 1,
             "id": 28,
             "legend": {
@@ -248,7 +248,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Thanos",
+            "datasource": "thoth-station",
             "fill": 1,
             "id": 29,
             "legend": {
@@ -335,7 +335,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Thanos",
+            "datasource": "thoth-station",
             "fill": 1,
             "id": 30,
             "legend": {

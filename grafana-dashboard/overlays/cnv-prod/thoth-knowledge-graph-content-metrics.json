@@ -33,7 +33,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -109,7 +109,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -185,7 +185,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -261,7 +261,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -337,7 +337,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -425,7 +425,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -501,7 +501,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -577,7 +577,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -653,7 +653,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -729,7 +729,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -817,7 +817,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -905,7 +905,7 @@
             "#0a50a1",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -981,7 +981,7 @@
             "#0a50a1",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1069,7 +1069,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1145,7 +1145,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1221,7 +1221,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1297,7 +1297,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1373,7 +1373,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1461,7 +1461,7 @@
             "#c15c17",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1537,7 +1537,7 @@
             "#967302",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1625,7 +1625,7 @@
             "#3f6833",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1701,7 +1701,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1777,7 +1777,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1853,7 +1853,7 @@
             "#3f6833",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -1929,7 +1929,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -2005,7 +2005,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -2093,7 +2093,7 @@
             "#c15c17",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2169,7 +2169,7 @@
             "#3f6833",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2245,7 +2245,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2329,7 +2329,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "fill": 1,
           "id": 86,
           "legend": {
@@ -2421,7 +2421,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "fill": 1,
           "id": 94,
           "legend": {
@@ -2518,7 +2518,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 10,
@@ -2627,7 +2627,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 17,
@@ -2708,7 +2708,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 71,
@@ -2802,7 +2802,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 97,
@@ -2886,7 +2886,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 6,
@@ -2998,7 +2998,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 92,
@@ -3080,7 +3080,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 91,
@@ -3174,7 +3174,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 16,
@@ -3254,7 +3254,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 21,
@@ -3350,7 +3350,7 @@
             "#511749",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -3426,7 +3426,7 @@
             "#511749",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -3502,7 +3502,7 @@
             "#511749",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -3590,7 +3590,7 @@
             "#3f2b5b",
             "#584477"
           ],
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -3674,7 +3674,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 13,
@@ -3783,7 +3783,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 15,
@@ -3870,7 +3870,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Thanos",
+          "datasource": "thoth-station",
           "decimals": 3,
           "fill": 1,
           "id": 98,
