@@ -366,6 +366,39 @@ presubmits:
                 memory: "2Gi"
                 cpu: "2"
 
+  thoth-station/adviser:
+    - name: pre-commit
+      decorate: true
+      skip_report: false
+      always_run: true
+      context: aicoe-ci/prow/pre-commit
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.4
+            command:
+              - "pre-commit"
+              - "run"
+              - "--all-files"
+            resources:
+              requests:
+                memory: "2Gi"
+                cpu: "2"
+
+    - name: thoth-pytest-py36
+      decorate: true
+      skip_report: true
+      always_run: false
+      context: aicoe-ci/prow/pytest
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-pytest:v0.12.2
+            command:
+              - "micropipenv install --dev"
+            resources:
+              requests:
+                memory: "2Gi"
+                cpu: "2"
+
   AICoE/pricingnbs:
     - name: pre-commit
       decorate: true
