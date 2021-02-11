@@ -123,7 +123,7 @@ spec:
                       key: deployment-name
                       name: thoth
                 - name: SLO_REPORTER_USING_SENDGRID
-                  vale: "1"
+                  value: "1"
                 - name: SENDGRID_API_KEY
                   valueFrom:
                     secretKeyRef:
