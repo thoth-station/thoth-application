@@ -248,13 +248,22 @@ default:
       prowPlugin: label
       addedBy: anyone
     - color: fef2c0
-      description: Categorizes an issue or PR as relevant to SIG Documentation.
+      description: Categorizes an issue or PR as relevant to SIG Docs.
       name: sig/docs
       target: both
       prowPlugin: label
       previously:
         - name: sig/documentation
       addedBy: anyone
+    - color: fef2c0
+      description: Categorizes an issue or PR as relevant to SIG Pipelines (CI/CD)
+      name: sig/pipelines
+      previously:
+        - name: sig/build
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+
 repos:
   operate-first/SRE:
     labels:
@@ -262,6 +271,8 @@ repos:
         color: d73a49
         description: This issue is related to an operations alert!
         name: alert 💥
+        previously:
+          - name: alert💥
         prowPlugin: label
         target: issue
   thoth-station/advise-reporter:
@@ -302,14 +313,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -363,14 +366,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -414,14 +409,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -475,14 +462,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -526,14 +505,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -587,14 +558,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -638,14 +601,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -699,14 +654,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -750,14 +697,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -811,14 +750,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -862,14 +793,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -923,14 +846,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -974,14 +889,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -1041,14 +948,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -1092,14 +991,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -1153,14 +1044,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -1204,14 +1087,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -1265,14 +1140,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -1316,14 +1183,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -1377,14 +1236,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -1428,14 +1279,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -1489,14 +1332,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -1540,14 +1375,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -1601,14 +1428,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -1652,14 +1471,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -1713,14 +1524,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -1764,14 +1567,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -1825,14 +1620,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -1876,14 +1663,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -1937,14 +1716,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -1988,14 +1759,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -2049,14 +1812,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -2100,14 +1855,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -2161,14 +1908,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -2212,14 +1951,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -2273,14 +2004,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -2324,14 +2047,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -2385,14 +2100,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -2436,14 +2143,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -2497,14 +2196,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -2548,14 +2239,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -2609,14 +2292,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -2660,14 +2335,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -2721,14 +2388,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -2772,14 +2431,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -2833,14 +2484,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -2884,14 +2527,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -2945,14 +2580,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -2996,14 +2623,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -3057,14 +2676,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -3108,14 +2719,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -3169,14 +2772,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -3220,14 +2815,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -3281,14 +2868,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -3332,14 +2911,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -3393,14 +2964,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -3444,14 +3007,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -3505,14 +3060,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -3556,14 +3103,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -3617,14 +3156,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -3668,14 +3199,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -3729,14 +3252,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -3780,14 +3295,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -3841,14 +3348,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -3892,14 +3391,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -3953,14 +3444,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -4004,14 +3487,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -4065,14 +3540,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -4116,14 +3583,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -4177,14 +3636,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -4228,14 +3679,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -4289,14 +3732,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -4340,14 +3775,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -4401,14 +3828,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -4452,14 +3871,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -4513,14 +3924,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -4564,14 +3967,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -4625,14 +4020,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -4676,14 +4063,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -4737,14 +4116,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -4788,14 +4159,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -4849,14 +4212,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -4900,14 +4255,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -4961,14 +4308,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -5012,14 +4351,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -5073,14 +4404,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -5124,14 +4447,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -5185,14 +4500,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -5236,14 +4543,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -5297,14 +4596,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -5348,14 +4639,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -5409,14 +4692,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -5460,14 +4735,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -5521,14 +4788,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -5572,14 +4831,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -5633,14 +4884,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -5684,14 +4927,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -5745,14 +4980,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -5796,14 +5023,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -5857,14 +5076,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -5908,14 +5119,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -5975,14 +5178,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -6026,14 +5221,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -6087,14 +5274,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -6138,14 +5317,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -6199,14 +5370,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -6250,14 +5413,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -6311,14 +5466,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -6362,14 +5509,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
@@ -6423,14 +5562,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -6479,14 +5610,6 @@ repos:
       - addedBy: human
         color: fef2c0
         description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
           Issues or PRs related to the User Experience of our Services, Tools,
           and Libraries.
         name: sig/user-experience
@@ -6530,14 +5653,6 @@ repos:
         color: fef2c0
         description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
         name: sig/advisor
-        prowPlugin: label
-        target: both
-      - addedBy: human
-        color: fef2c0
-        description:
-          Issues or PRs related to building and continuous delivery of build
-          artifacts.
-        name: sig/build
         prowPlugin: label
         target: both
       - addedBy: human
