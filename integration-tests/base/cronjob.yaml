@@ -1,0 +1,65 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: integration-tests
+  labels:
+    app: thoth
+    component: integration-tests
+spec:
+  schedule: "@daily"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 4
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: null
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: thoth
+            component: integration-tests
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - image: "integration-tests:latest"
+              name: integration-tests
+              env:
+                - name: SEND_EMAIL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: send-mail
+                      name: integration-tests
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: integration-tests
+                - name: THOTH_USER_API_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: user-api
+                      name: integration-tests
+                - name: THOTH_MANAGEMENT_API_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: management-api
+                      name: integration-tests
+                - name: THOTH_AMUN_API_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: amun-api
+                      name: integration-tests
+                - name: THOTH_MANAGEMENT_API_SECRET
+                  valueFrom:
+                    secretKeyRef:
+                      key: management-api
+                      name: integration-tests
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "1"
+                limits:
+                  memory: "256Mi"
+                  cpu: "1"
