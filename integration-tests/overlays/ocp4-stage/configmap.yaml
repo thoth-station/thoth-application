@@ -1,0 +1,10 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: integration-tests
+data:
+  deployment-name: "ocp4-stage"
+  user-api: "stage.thoth-station.ninja"
+  management-api: "management.stage.thoth-station.ninja"
+  amun-api: "amun.stage.thoth-station.ninja"
