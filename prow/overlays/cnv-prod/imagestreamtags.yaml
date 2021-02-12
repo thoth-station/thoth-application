@@ -170,3 +170,19 @@ spec:
       importPolicy: {}
       referencePolicy:
         type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: integration-tests
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/integration-tests:v0.3.0
+      importPolicy: {}
+      referencePolicy:
+        type: Local
