@@ -38,6 +38,8 @@ data:
   solvers: |
     solver-rhel-8-py36
     solver-rhel-8-py38
+    solver-fedora-32-py37
+    solver-fedora-32-py38
 ---
 kind: ConfigMap
 apiVersion: v1
