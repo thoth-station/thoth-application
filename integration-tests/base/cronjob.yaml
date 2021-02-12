@@ -54,7 +54,7 @@ spec:
                 - name: THOTH_MANAGEMENT_API_SECRET
                   valueFrom:
                     secretKeyRef:
-                      key: management-api
+                      key: management-api-token
                       name: integration-tests
               resources:
                 requests:
