@@ -4,13 +4,8 @@ resources:
   - ../../base
   - thoth-notification.yaml
 patchesStrategicMerge:
+  - configmap.yaml
+  - cronjob.yaml
   - imagestreamtag.yaml
-patchesJson6902:
-  - path: put-into-infra-namespace.yaml
-    target:
-      group: rbac.authorization.k8s.io
-      version: v1
-      kind: Role
-      name: user-api
-generatorOptions:
-  disableNameSuffixHash: true
+generators:
+  - ./secret-generator.yaml
