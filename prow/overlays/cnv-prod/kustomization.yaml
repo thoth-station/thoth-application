@@ -6,6 +6,7 @@ resources:
   - rolebindings.yaml
   - s3-bucket-claim.yaml
   - label-sync-cronjob.yaml
+  - route-ghproxy-metrics.yaml
 patchesStrategicMerge:
   - imagestreamtags.yaml
   - unsuspend_branchprotector.yaml
