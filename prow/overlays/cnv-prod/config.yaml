@@ -302,7 +302,7 @@ periodics:
     decorate: true
     spec:
       containers:
-        - image: integration-tests:latest
+        - image: integration-tests:latest # This obfuscates the version being used in any log produced by job :/ TODO
           imagePullPolicy: Always
           command:
             - ./e2e-test.sh
