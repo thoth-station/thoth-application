@@ -319,7 +319,7 @@ presubmits:
       max_concurrency: 1
       run_if_changed: ".*yaml"
       skip_report: false
-      context: aicoe-ci/kustomize-build
+      context: aicoe-ci/prow/kustomize-build
       spec:
         containers:
           - image: quay.io/operate-first/opf-toolbox:v0.2.0
@@ -335,7 +335,7 @@ presubmits:
       decorate: true
       skip_report: false
       always_run: true
-      context: aicoe-ci/prowjob-pre-commit
+      context: aicoe-ci/prow/pre-commit
       spec:
         containers:
           - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.4
@@ -353,7 +353,7 @@ presubmits:
       decorate: true
       skip_report: false
       always_run: true
-      context: aicoe-ci/prowjob-pre-commit
+      context: aicoe-ci/prow/pre-commit
       spec:
         containers:
           - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.4
@@ -404,7 +404,7 @@ presubmits:
       decorate: true
       skip_report: false
       always_run: true
-      context: aicoe-ci/prowjob-pre-commit
+      context: aicoe-ci/prow/pre-commit
       spec:
         containers:
           - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.4
