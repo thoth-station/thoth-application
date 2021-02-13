@@ -302,7 +302,7 @@ periodics:
     decorate: true
     spec:
       containers:
-        - image: integration-tests:latest # This obfuscates the version being used in any log produced by job :/ TODO
+        - image: quay.io/thoth-station/integration-tests:v0.5.0
           imagePullPolicy: Always
           command:
             - ./e2e-test.sh
