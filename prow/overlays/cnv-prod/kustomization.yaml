@@ -19,6 +19,9 @@ configMapGenerator:
   - name: label-config
     files:
       - labels.yaml
+  - name: labels-thoth-station
+    files:
+      - labels_thoth-station.yaml
 generatorOptions:
   disableNameSuffixHash: true
 generators:

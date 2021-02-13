@@ -4,7 +4,7 @@ kind: CronJob
 metadata:
   name: label-sync-thoth-station
 spec:
-  schedule: "17 * * * *"
+  schedule: "27 * * * *"
   concurrencyPolicy: Forbid
   jobTemplate:
     metadata:
@@ -35,14 +35,14 @@ spec:
                 secretName: oauth-token
             - name: config
               configMap:
-                name: label-config
+                name: labels-thoth-station
 ---
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: label-sync-aicoe
 spec:
-  schedule: "27 * * * *"
+  schedule: "17 * * * *"
   concurrencyPolicy: Forbid
   jobTemplate:
     metadata:
