@@ -5,4 +5,3 @@ metadata:
   name: user-api
 data:
   api-https: "1"
-  amun-api-url: "http://amun-api-thoth-test-core.cloud.paas.psi.redhat.com/api/v1"
