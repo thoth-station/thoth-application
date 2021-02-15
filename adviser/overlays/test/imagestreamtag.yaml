@@ -4,10 +4,10 @@ metadata:
   name: adviser
 spec:
   tags:
-  - name: latest
-    from:
-      kind: DockerImage
-      name: quay.io/thoth-station/adviser:v0.24.1
-    importPolicy: {}
-    referencePolicy:
-      type: Source
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/adviser:pr-1670
+      importPolicy: {}
+      referencePolicy:
+        type: Source
