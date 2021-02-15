@@ -6,7 +6,7 @@ resources:
   - buildconfig.yaml
   - configmaps.yaml
   - role_binding.yaml
-  - secrets.yaml
+#  - secrets.yaml
 patchesStrategicMerge:
 # generators:
 #   - ./secret-generator.yaml
