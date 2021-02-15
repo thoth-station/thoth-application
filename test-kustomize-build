@@ -9,10 +9,12 @@ set -o pipefail
 [ -z "$IS_AICOE_CI" ] && echo "Empty"
 
 # Let's ignore the secrets...
-PLUGIN_ROOT=$XDG_CONFIG_HOME/kustomize/plugin
-mkdir -p $PLUGIN_ROOT/viaduct.ai/v1/ksops/
-echo '#!/bin/sh' > $PLUGIN_ROOT/viaduct.ai/v1/ksops/ksops
-chmod +x $PLUGIN_ROOT/viaduct.ai/v1/ksops/ksops
+
+export KUSTOMIZE_PLUGIN_HOME=/tmp/new_plugin_dir
+
+mkdir -p $KUSTOMIZE_PLUGIN_HOME/viaduct.ai/v1/ksops/
+echo '#!/bin/sh' >$KUSTOMIZE_PLUGIN_HOME/viaduct.ai/v1/ksops/ksops
+chmod +x $KUSTOMIZE_PLUGIN_HOME/viaduct.ai/v1/ksops/ksops
 
 # and check all the sub directories with manifests...
 k=$(find . -name kustomization.yaml)
