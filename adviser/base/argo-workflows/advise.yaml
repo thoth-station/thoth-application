@@ -43,12 +43,7 @@ spec:
         parameters:
           - name: THOTH_ADVISER_JOB_ID
           - name: THOTH_DOCUMENT_ID
-          - name: THOTH_ADVISER_REQUIREMENTS
-          - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
-          - name: THOTH_ADVISER_LIBRARY_USAGE
-          - name: THOTH_ADVISER_REQUIREMENTS_FORMAT
           - name: THOTH_ADVISER_RECOMMENDATION_TYPE
-          - name: THOTH_ADVISER_RUNTIME_ENVIRONMENT
           - name: THOTH_ADVISER_PREDICTOR_CONFIG
             value: "{}"
           - name: THOTH_ADVISER_METADATA
@@ -107,15 +102,15 @@ spec:
           - name: THOTH_ADVISER_LIMIT
             value: "{{inputs.parameters.THOTH_ADVISER_LIMIT}}"
           - name: THOTH_ADVISER_REQUIREMENTS
-            value: "{{inputs.parameters.THOTH_ADVISER_REQUIREMENTS}}"
+            value: "input/Pipfile"
           - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
-            value: "{{inputs.parameters.THOTH_ADVISER_REQUIREMENTS_LOCKED}}"
+            value: "input/Pipfile.lock"
           - name: THOTH_ADVISER_REQUIREMENTS_FORMAT
-            value: "{{inputs.parameters.THOTH_ADVISER_REQUIREMENTS_FORMAT}}"
+            value: "pipenv"
           - name: THOTH_ADVISER_RECOMMENDATION_TYPE
             value: "{{inputs.parameters.THOTH_ADVISER_RECOMMENDATION_TYPE}}"
           - name: THOTH_ADVISER_RUNTIME_ENVIRONMENT
-            value: "{{inputs.parameters.THOTH_ADVISER_RUNTIME_ENVIRONMENT}}"
+            value: "input/runtime_environment.json"
           - name: THOTH_ADVISER_PREDICTOR_CONFIG
             value: "{{inputs.parameters.THOTH_ADVISER_PREDICTOR_CONFIG}}"
           - name: THOTH_ADVISER_METADATA
@@ -129,7 +124,7 @@ spec:
           - name: THOTH_ADVISER_SUBCOMMAND
             value: "advise"
           - name: THOTH_ADVISER_LIBRARY_USAGE
-            value: "{{inputs.parameters.THOTH_ADVISER_LIBRARY_USAGE}}"
+            value: "input/library_usage.json"
           - name: PROMETHEUS_PUSHGATEWAY_HOST
             valueFrom:
               configMapKeyRef:
