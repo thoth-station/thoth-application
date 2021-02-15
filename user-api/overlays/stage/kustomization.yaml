@@ -9,6 +9,7 @@ generatorOptions:
 generators:
   - ./secret-generator.yaml
 patchesStrategicMerge:
+  - configmap.yaml
   - imagestreamtag.yaml
 patches:
   - path: resources_patch.yaml
