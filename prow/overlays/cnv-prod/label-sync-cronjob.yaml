@@ -55,7 +55,7 @@ spec:
             - name: label-sync
               image: label-sync:latest
               args:
-                - --config=/etc/config/labels_thoth-station.yaml
+                - --config=/etc/config/labels.yaml
                 - --confirm=true
                 - --orgs=AICoE
                 - --token=/etc/github/oauth
