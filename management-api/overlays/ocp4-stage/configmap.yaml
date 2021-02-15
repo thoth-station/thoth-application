@@ -5,4 +5,4 @@ metadata:
   name: management-api
 data:
   api-https: "1"
-  validate-responses: "0"
+  validate-responses: "1"
