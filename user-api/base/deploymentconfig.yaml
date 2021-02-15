@@ -39,8 +39,8 @@ spec:
             - name: THOTH_API_VALIDATE_RESPONSES
               valueFrom:
                 configMapKeyRef:
-                  key: management-api
-                  name: thoth
+                  key: validate-responses
+                  name: user-api
             - name: THOTH_FRONTEND_NAMESPACE
               valueFrom:
                 configMapKeyRef:
