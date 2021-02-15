@@ -6,7 +6,7 @@ set -o errtrace
 set -o pipefail
 
 # at least some context
-[ -z "$IS_AICOE_CI" ] && echo "Empty"
+[ -z "$IS_AICOE_CI" ] && exit
 
 # Let's ignore the secrets...
 
