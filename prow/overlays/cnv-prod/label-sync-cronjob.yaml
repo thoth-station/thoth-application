@@ -17,7 +17,7 @@ spec:
             - name: label-sync
               image: label-sync:latest
               args:
-                - --config=/etc/config/labels.yaml
+                - --config=/etc/config/labels_thoth-station.yaml
                 - --confirm=true
                 - --orgs=thoth-station
                 - --token=/etc/github/oauth
