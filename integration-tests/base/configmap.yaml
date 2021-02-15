@@ -4,4 +4,4 @@ apiVersion: v1
 metadata:
   name: integration-tests
 data:
-  send-mail: "1"
+  mail-report: "1"

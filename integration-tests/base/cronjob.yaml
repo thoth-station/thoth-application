@@ -26,10 +26,10 @@ spec:
             - image: "integration-tests:latest"
               name: integration-tests
               env:
-                - name: SEND_EMAIL
+                - name: MAIL_REPORT
                   valueFrom:
                     configMapKeyRef:
-                      key: send-mail
+                      key: mail-report
                       name: integration-tests
                 - name: THOTH_DEPLOYMENT_NAME
                   valueFrom:
