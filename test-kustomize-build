@@ -20,6 +20,11 @@ chmod +x $KUSTOMIZE_PLUGIN_HOME/viaduct.ai/v1/ksops/ksops
 k=$(find . -name kustomization.yaml)
 
 for d in $k; do
+    if [[ $(dirname $d) == ./qeb-hwt-github-app* ]]; then
+        echo skipping $(dirname $d)
+        continue
+    fi
+
     echo checking $(dirname $d)
     kustomize build --enable_alpha_plugins $(dirname $d) 2>&1 >/dev/null
 done
