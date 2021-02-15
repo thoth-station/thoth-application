@@ -7,18 +7,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: v20210204-de2fa22b93
+    - annotations: null
+      name: v20210204-de2fa22b93
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/hook:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/hook:v20210211-72696ce111
@@ -34,18 +37,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: v20210204-de2fa22b93
+    - annotations: null
+      name: v20210204-de2fa22b93
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/sinker:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/sinker:v20210211-72696ce111
@@ -61,18 +67,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: v20210204-de2fa22b93
+    - annotations: null
+      name: v20210204-de2fa22b93
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/deck:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/deck:v20210211-72696ce111
@@ -88,18 +97,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/horologium:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/horologium:v20210211-72696ce111
@@ -115,18 +127,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: v20210204-de2fa22b93
+    - annotations: null
+      name: v20210204-de2fa22b93
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/tide:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/tide:v20210211-72696ce111
@@ -143,18 +158,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/status-reconciler:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/status-reconciler:v20210211-72696ce111
@@ -170,18 +188,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/crier:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/crier:v20210211-72696ce111
@@ -197,18 +218,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/needs-rebase:v20210204-de2fa22b93
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/needs-rebase:v20210211-72696ce111
@@ -224,18 +248,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: v20210127-5fd357428d
+    - annotations: null
+      name: v20210127-5fd357428d
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/label_sync:v20210127-5fd357428d
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/label_sync:v20210211-72696ce111
@@ -251,18 +278,21 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: latest
+    - annotations: null
+      name: latest
       from:
         kind: ImageStreamTag
         name: v20210211-72696ce111
-    - name: v20210201-6494714d87
+    - annotations: null
+      name: v20210201-6494714d87
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/pipeline:v20210201-6494714d87
       importPolicy: {}
       referencePolicy:
         type: Local
-    - name: v20210211-72696ce111
+    - annotations: null
+      name: v20210211-72696ce111
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/pipeline:v20210211-72696ce111
