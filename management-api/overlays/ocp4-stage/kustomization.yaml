@@ -5,6 +5,7 @@ resources:
   - role-binding.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
+  - configmap.yaml
   - imagestreamtag.yaml
 patchesJson6902:
   - path: job-generate-name.yaml

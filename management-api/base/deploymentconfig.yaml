@@ -31,6 +31,11 @@ spec:
               value: "0"
             - name: THOTH_MANAGEMENT_API_RUN_MIGRATIONS
               value: "0"
+            - name: THOTH_API_VALIDATE_RESPONSES
+              valueFrom:
+                configMapKeyRef:
+                  key: validate-responses
+                  name: management-api
             - name: AMUN_API_URL
               valueFrom:
                 configMapKeyRef:
