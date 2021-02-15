@@ -91,11 +91,6 @@ spec:
                 secretKeyRef:
                   name: ceph
                   key: secret-key
-            - name: AMUN_API_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: amun-api-url
-                  name: user-api
             - name: RSYSLOG_HOST
               valueFrom:
                 configMapKeyRef:
