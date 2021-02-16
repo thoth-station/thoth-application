@@ -43,6 +43,12 @@ objects:
       emptyDir: {}
     - name: workdir
       emptyDir: {}
+    - name: kafka-secrets
+      secret:
+        secretName: "kafka"
+        items:
+          - key: kafka_ca.crt
+            path: kafka_ca.crt
 
     arguments:
       parameters:

@@ -41,8 +41,6 @@ objects:
     volumes:
     - name: output-volume
       emptyDir: {}
-    - name: workdir
-      emptyDir: {}
 
     arguments:
       parameters:

@@ -41,8 +41,6 @@ objects:
     volumes:
     - name: output-volume
       emptyDir: {}
-    - name: workdir
-      emptyDir: {}
 
     arguments:
       parameters:
@@ -117,10 +115,11 @@ objects:
           continueOn:
             failed: true
 
-- name: THOTH_FORCE_SYNC
-  description: should inspection complete message cause graph sync job to be run with force sync
-  displayName: force sync
-  value: "0"
+parameters:
+- name: AMUN_INSPECTION_ID
+  description: Id of inspection that is run.
+  displayName: Inspection id
+  required: true
 
 - name: AMUN_RUN_CPU
   description: CPU cores requested for inspection run
@@ -128,7 +127,8 @@ objects:
   value: 750m
 
 - name: AMUN_RUN_MEMORY
-  descisplayNaplayName: Run Memory
+  description: Memory requested for inspection run
+  displayName: Run Memory
   value: 1Gi
 
 - name: AMUN_BUILD_CPU
