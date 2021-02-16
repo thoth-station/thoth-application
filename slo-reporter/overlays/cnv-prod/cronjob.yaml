@@ -21,7 +21,7 @@ spec:
                   value: "1"
                 - name: SMTP_SERVER
                   valueFrom:
-                    secretKeyRef:
+                    configMapKeyRef:
                       name: slo-reporter
                       key: smtp-server
                 - name: SMTP_SERVER_USERNAME
