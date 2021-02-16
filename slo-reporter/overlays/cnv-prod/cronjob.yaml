@@ -17,21 +17,38 @@ spec:
             - image: "slo-reporter"
               name: slo-reporter
               env:
+                - name: THOTH_SLO_REPORTER_USING_SMTP_TLS
+                  value: "1"
+                - name: SMTP_SERVER
+                  valueFrom:
+                    secretKeyRef:
+                      name: slo-reporter
+                      key: smtp-server
+                - name: SMTP_SERVER_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: slo-reporter
+                      key: smtp-username
+                - name: SMTP_SERVER_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: slo-reporter
+                      key: smtp-password
+                - name: EMAIL_SENDER
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: sender-address
+                - name: EMAIL_RECIPIENTS
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: email-recipients
                 - name: PROMETHEUS_PUSHGATEWAY_URL
                   valueFrom:
                     configMapKeyRef:
                       name: prometheus
                       key: pushgateway-url
-                - name: SENDER_ADDRESS
-                  valueFrom:
-                    configMapKeyRef:
-                      name: slo-reporter
-                      key: sender-address
-                - name: SMTP_SERVER
-                  valueFrom:
-                    configMapKeyRef:
-                      name: slo-reporter
-                      key: smtp-server
                 - name: THANOS_ENDPOINT
                   valueFrom:
                     configMapKeyRef:
@@ -42,11 +59,6 @@ spec:
                     secretKeyRef:
                       name: slo-reporter
                       key: token
-                - name: EMAIL_RECIPIENTS
-                  valueFrom:
-                    configMapKeyRef:
-                      name: slo-reporter
-                      key: email-recipients
                 - name: THOTH_MIDDLETIER_NAMESPACE
                   valueFrom:
                     configMapKeyRef:
@@ -122,13 +134,6 @@ spec:
                     configMapKeyRef:
                       key: deployment-name
                       name: thoth
-                - name: SLO_REPORTER_USING_SENDGRID
-                  value: "1"
-                - name: SENDGRID_API_KEY
-                  valueFrom:
-                    secretKeyRef:
-                      name: slo-reporter
-                      key: sendgrid-api-key
               livenessProbe:
                 failureThreshold: 1
                 initialDelaySeconds: 7200

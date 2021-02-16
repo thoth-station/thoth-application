@@ -22,16 +22,21 @@ spec:
                     configMapKeyRef:
                       name: prometheus
                       key: pushgateway-url
-                - name: SENDER_ADDRESS
-                  valueFrom:
-                    configMapKeyRef:
-                      name: slo-reporter
-                      key: sender-address
                 - name: SMTP_SERVER
                   valueFrom:
                     configMapKeyRef:
                       name: slo-reporter
                       key: smtp-server
+                - name: EMAIL_SENDER
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: sender-address
+                - name: EMAIL_RECIPIENTS
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: email-recipients
                 - name: THANOS_ENDPOINT
                   valueFrom:
                     configMapKeyRef:
@@ -42,11 +47,6 @@ spec:
                     secretKeyRef:
                       name: slo-reporter
                       key: token
-                - name: EMAIL_RECIPIENTS
-                  valueFrom:
-                    configMapKeyRef:
-                      name: slo-reporter
-                      key: email-recipients
                 - name: THOTH_MIDDLETIER_NAMESPACE
                   valueFrom:
                     configMapKeyRef:
