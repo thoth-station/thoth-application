@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/adviser:pr-1682
+        name: quay.io/thoth-station/adviser:pr-1684
       importPolicy: {}
       referencePolicy:
         type: Source
