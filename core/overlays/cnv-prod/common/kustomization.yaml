@@ -6,3 +6,7 @@ resources:
 patchesStrategicMerge:
   - configmaps.yaml
   - imagestreamtags.yaml
+generators:
+  - secret-generator.yaml
+generatorOptions:
+  disableNameSuffixHash: true
