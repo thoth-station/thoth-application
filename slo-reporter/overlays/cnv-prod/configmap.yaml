@@ -7,3 +7,4 @@ data:
   thanos-endpoint: "http://prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud"   # TODO: Use Thanos endpoint when available and set correct secret
   sender-address: "aicoe-thoth-devops@redhat.com"
   email-recipients: "aicoe@redhat.com"
+  smtp-server: smtp-relay.sendinblue.com
