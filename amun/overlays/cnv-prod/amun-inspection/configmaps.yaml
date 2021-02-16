@@ -34,4 +34,8 @@ data:
 
     workflowDefaults:
       spec:
+        ttlStrategy:
+          secondsAfterCompletion: 900
+          secondsAfterSuccess: 900
+          secondsAfterFailure: 900
         parallelism: 10
