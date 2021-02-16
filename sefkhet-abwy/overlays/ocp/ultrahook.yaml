@@ -1,0 +1,64 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: ultrahook
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/ultrahook:v0.1.0
+    importPolicy: {}
+    referencePolicy:
+      type: Local
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: sefkhet-abwy-ultrahook
+spec:
+  replicas: 1
+  test: false
+  selector:
+    deploymentconfig: sefkhet-abwy-ultrahook
+    app.kubernetes.io/name: sefkhet-abwy-ultrahook
+    app.kubernetes.io/component: ultrahook
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
+  template:
+    metadata:
+      labels:
+        deploymentconfig: sefkhet-abwy-ultrahook
+        app.kubernetes.io/name: sefkhet-abwy-ultrahook
+        app.kubernetes.io/component: ultrahook
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
+    spec:
+      containers:
+        - name: ultrahook-sefkeht-abwy
+          image: ultrahook
+          imagePullPolicy: Always
+          env:
+            - name: ULTRAHOOK_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: api.key
+                  name: ultrahook-aicoe
+            - name: ULTRAHOOK_SUBDOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  key: subdomain
+                  name: sefkhet-abwy
+            - name: ULTRAHOOK_DESTINATION
+              valueFrom:
+                configMapKeyRef:
+                  key: webhook-callback-url
+                  name: sefkhet-abwy
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              memory: 50Mi
+      restartPolicy: Always

@@ -364,3 +364,428 @@
 * :arrow_up: bump up parallelism for middletier stage
 ### Other
 * :sparkles: remove presubmit jobs again
+
+## Release 2021.02.01 (2021-02-01T18:12:28)
+### Features
+* :robot: use a postsync hook job for deployment trigger (#804)
+* :ship: Deploy the Tag pr-1224 for user-api
+* Bump workflow helpers to v0.4.1 (#828)
+* Bump metrics-exporter to v0.10.1 (#827)
+* Make pre-commit happy (#829)
+* :ship: Deploy the Tag v0.4.1 for workflow-helpers
+* :ship: Deploy the Tag v0.10.1 for metrics-exporter
+* Bump graph-backup-job stage to v0.8.0 to have metrics (#824)
+* Update/Add dashboards (#826)
+* :ship: Deploy the Tag v0.8.0 for graph-backup-job
+* :squirrel: re-encrypt the slo-reporter secrets
+* add cronjob to sync all the labels (#812)
+* :ship: Deploy the Tag v2.3.1 for mi
+* Bump package-extract to v1.1.0 in stage (#811)
+* :bug: add lgtm plugin to all orgs
+* Bump SLO reporter stage to v0.8.2 (#815)
+* :arrow_down: disable/suspend new-label-normalizer cronjob, it can be done by prows's label_sync
+* remove the project plugin, as we dont use it
+* :ship: Deploy the Tag v1.1.0 for package-extract
+* :sparkles: add package-extract to have the correct set of checks enable
+* :arrow_up: add some more labels ;)
+* :ship: Deploy the Tag v0.8.2 for slo-reporter
+* :arrow_up: set to oauth redirect url to prow.o-f.cloud 🐝
+* :sparkles: setting lgtm_acts_as_approve: false for all our repos (#805)
+* Add env variables for metrics (#807)
+* :arrow_up: set to oauth redirect url to prow.o-f.cloud 🐝
+* Bump workflow-helpers stage to v0.4.0 (#806)
+* :ship: Deploy the Tag v0.4.0 for workflow-helpers
+* :ship: Deploy the Tag pr-564 for graph-refresh-job
+* :rabbit2: set onfailure restartpolicy for the sefkhet-abwy cronjob
+* :hatched_chick: allow sefkhet to pull the image from the openshfit imagestream
+* :guardsman: re-encrypt sefkhet secrets with updates sops (#801)
+* :ship: Deploy the Tag v0.20.4 for sefkhet-abwy
+* :ship: Deploy the Tag v1.1.2 for mi-scheduler
+* add some more prow:deck secret configs
+* :arrow_up: add two more hand labels
+* start keeping a imagestreamtag history for the hook IST
+* :arrow_up: upgrade argo components to v2.12.5 to tackle ttl issues (#799)
+* :arrow_down: suspend all data ingestion producers (#798)
+* Bump graph refresh v0.3.1 (#782)
+* Bump components versions to stage (#794)
+* :ship: Deploy the Tag v0.10.0 for metrics-exporter
+* :ship: Deploy the Tag v0.9.1 for investigator
+* :ship: Deploy the Tag v0.13.1 for user-api
+* :arrow_up: using new integration-test container image (manually build)
+* :ship: Deploy the Tag v0.10.2 for management-api
+* :four_leaf_clover: upgrade the investigator deploymentconfig (#793)
+* Bump investigator stage to v0.9.0 (#783)
+* :beers: upgrade of prod with stage versions (#791)
+* :ship: Deploy the Tag v0.11.1 for user-api to the prod (#789)
+* hook route needs to point to hook service
+* :sparkles: add a per component owners
+* :sparkles: add a per component owners
+* Add build analysis workflow (#735)
+* :dragon_face: updated sops encryption pattern and prow routes (#787)
+* :dragon_face: build-watcher deployment manifests for amun inspections (#785)
+* :sparkles: reencrypted certs for prow.o-f.c
+* :sparkles: reencrypted certs for prow.o-f.c
+* :sparkles: switching prow domainname
+* :sparkles: minor changes to prow config
+* :sparkles: add the needs-rebase plugin deployment to Prow at Operate-First
+* checking prow s3 syntax, statusreconciler
+* checking prow s3 syntax
+* reencrypted
+* reencrypted
+* :ship: Deploy the Tag v0.10.2 for messaging
+* extend p-c-m role to see pods
+* add bucket claim for prow ci data
+* reencrypted
+* reencrypted
+* rename the bucket
+* Propagate new environment variables to build-watcher deployment (#781)
+* Bump build-watcher version (#784)
+* :arrow_up: add s3-cred for op1st prow
+* :lock: reencrypted secrets for thoth prow on Operate-First
+* add namespace configuration to opf-prow
+* :ship: Deploy the Tag v2.3.0 for mi
+* :ship: Deploy the Tag v0.3.1 for graph-refresh-job
+* :ship: Deploy the Tag v0.13.0 for user-api
+* :sparkles: add the tls enabled routes
+* :sparkles: add the tls enabled routes
+* :sparkles: add operate-first to the sops.yaml and reencrypt the secrets for prow
+* :sparkles: add roles and rolebindings to the Operate-First deployment, so that we dont need the cluster-admin overlay
+* :sparkles: add roles and rolebindings to the Operate-First deployment, so that we dont need the cluster-admin overlay
+* Bump package release to v0.9.0 (#778)
+* Bump management-api to v0.10.1 in stage (#777)
+* Bump investigator to v0.8.2 in stage environments (#744)
+* Bump slo-reporter stage to v0.8.1 (#776)
+* remove the namespace
+* :ship: Deploy the Tag v0.8.1 for slo-reporter
+* :ship: Deploy the Tag v0.10.1 for management-api
+* :ship: Deploy the Tag v0.8.0 for slo-reporter
+* :ship: Deploy the Tag v1.1.0 for mi-scheduler
+* :game_die: support the deployment of kafka for thoth (#753)
+* :ship: Deploy the Tag pr-676 for management-api
+* :ship: Deploy the Tag v0.12.0 for user-api
+* Bump management api stage to v0.10.0 (#771)
+* add tag to p-c-m image
+* Adjust all envs (#770)
+* Correct env name (#769)
+* :ship: Deploy the Tag v0.9.0 for investigator
+* Bump graph-sync to v0.9.0 (#768)
+* :ship: Deploy the Tag v0.9.0 for graph-sync-job
+* Bump user-api to v0.11.1 in stage environments (#760)
+* Add environments needed for recent user-api with Kafka messaging (#767)
+* :checkered_flag: updated certs for the prod management-api (#764)
+* update env in cron template (#766)
+* :sparkles: add kind/ labels to feature and bug template
+* :sparkles: add ghproxy, switcht to p-c-m
+* :sparkles: added Operate First deployment for Prow
+* :ship: Deploy the Tag v0.10.0 for management-api
+* :ship: Deploy the Tag v0.5.1 for advise-reporter
+* Bump advise reporter stage to v0.5.1 (#765)
+* :ship: Deploy the Tag pr-673 for management-api
+* :bike: set the rolebinding for user-api to get pod logs (#763)
+* :ship: Deploy the Tag pr-672 for management-api
+* :ship: Deploy the Tag v0.11.1 for user-api
+* Bump adviser to v0.22.0 (#761)
+* :ship: Deploy the Tag v0.22.0 for adviser
+* update to latest messaging (#758)
+* :construction: debug the out-of-sync issue with argocli image (#757)
+* :construction: debug the out-of-sync issue with argocli image (#756)
+* add a CronJob to normalize the labels of github organizations (#736)
+* :ship: Deploy the Tag pr-1199 for user-api
+* :bar_chart: store the grafana dashboard json for maintainability (#752)
+* :ship: Deploy the Tag v0.11.0 for user-api
+* :four_leaf_clover: updated management-api role to allow creating jobs (#751)
+* :ship: Deploy the Tag pr-1195 for user-api
+* deployment uses new env for config (#750)
+* Bump metrics-exporter in stage to v0.9.1 (#749)
+* :ship: Deploy the Tag pr-1194 for user-api
+* :ship: Deploy the Tag pr-1193 for user-api
+* :ship: Deploy the Tag pr-1192 for user-api
+* :ship: Deploy the Tag pr-1191 for user-api
+* :ship: Deploy the Tag v0.9.1 for metrics-exporter
+* :ship: Deploy the Tag v0.9.1 for management-api
+* :ship: Deploy the Tag pr-1189 for user-api
+* :ship: Deploy the Tag pr-1188 for user-api
+* :ship: Deploy the Tag pr-1187 for user-api
+* bump adviser-reporter to v0.5.0 (#742)
+* Bump management-api to v0.9.0 (#739)
+* :ship: Deploy the Tag v0.8.2 for investigator
+* :ship: Deploy the Tag v0.8.1 for investigator
+* increase pvc size for the production database (#737)
+* Use latest imagestream for investigator
+* :ship: Deploy the Tag v0.8.0 for investigator
+* namespace specific roles are used in cnv cluster (#733)
+* Bump workflow-helper to v0.3.3 (#731)
+* :ship: Deploy the Tag v0.7.0 for investigator
+* :ship: Deploy the Tag v0.10.1 for messaging
+* :ship: Deploy the Tag v0.3.3 for workflow-helpers
+* :ship: Deploy the Tag v0.8.5 for management-api
+* utilize ocp4 kafka as the test apps are migrated to ocp4
+* :ship: Deploy the Tag pr-1175 for user-api
+* Bump Kebechet to 1.2.3 (#730)
+* :ship: Deploy the Tag v1.2.3 for kebechet
+* :arrow_up: update sa chatbot to v0.20.3
+* Bump workflows helpers to v0.3.2 (#729)
+* :ship: Deploy the Tag v0.10.0 for messaging
+* :ship: Deploy the Tag v0.3.2 for workflow-helpers
+* :ship: Deploy the Tag v0.9.0 for metrics-exporter
+* Bump metrics-exporter to v0.9.0 in stage (#728)
+* change needed for application to run on ocp4 cluster
+* utilize max storage size for database (#727)
+* default parameter required is not required in template
+* :ship: Deploy the Tag pr-140 for sefkhet-abwy
+* :guardsman: re-updated khemenu route creds encryption
+* :robot: encrypt tls certs with sops encryption
+* :ship: Deploy the Tag v0.20.3 for sefkhet-abwy
+* :zap: enable package release in ocp cluster (#723)
+* :zap: Increase the amount of workflow to run in parallel for ocp middletier (#720)
+* :ship: Deploy the Tag v0.8.4 for management-api
+* Increase workflows (#719)
+* :arrow_up: update SA chatbot
+* Increase workflows scheduled (#717)
+* :ship: Deploy the Tag v0.20.2 for sefkhet-abwy
+* Update imagestreamtag.yaml
+* :ship: Deploy the Tag v0.20.1 for sefkhet-abwy
+* :turtle: updated kafka secret of new kafka deployment due to cluster issue
+* :rocket: manual bump management-api to v0.8.3-dev version
+* :boat: bump management-api to v0.8.3 version
+* :sparkles: add route53 based, letsencrypt secured route
+* :ship: Deploy the Tag v0.8.3 for management-api
+* :guardsman: updated certs for routes of thoth-station (#716)
+* :arrow_down: remove secret as we dont have secret management for now, see https://github.com/open-infrastructure-labs/ops-issues/issues/3
+* :sparkles: add s-a chatbot deployment to MOC/cnv
+* :bell: update patched secrets for ocp stage
+* :christmas_tree: Enable ocp stage to solve fedora solvers (#715)
+* :snail: suspend cronjob till all systems are verifyed in cnv moc
+* :package: start with smaller pvc for cnv deployment
+* :honeybee: disable enlisting of encrypted secret
+* disable enlisting of encrypted secret and routes for cnv deployment (#714)
+* :rocket: include production deployement manifest file (#712)
+* bump-graph-sync-to-0.8.4 (#711)
+* :ship: Deploy the Tag v0.8.4 for graph-sync-job
+* patch the correct url in qebhwt workflow configmap (#710)
+* :ship: Deploy the Tag v0.20.0 for sefkhet-abwy
+* :ship: Deploy the Tag pr-126 for sefkhet-abwy
+* :ship: Deploy the Tag pr-124 for sefkhet-abwy
+* :ship: Deploy the Tag pr-123 for sefkhet-abwy
+* :ship: Deploy the Tag pr-122 for sefkhet-abwy
+* Bumped graph sync job (#708)
+* :ship: Deploy the Tag v0.8.3 for graph-sync-job
+* :cow: increase the workflow parallelism for middletier (#706)
+* Bumped in stage (#707)
+* :play_or_pause_button: play the data generation components the maintainence is done (#703)
+* :ship: Deploy the Tag v0.8.2 for graph-sync-job
+* :boat: bump graph-sycn image to v0.8.2
+* :ship: Deploy the Tag pr-517 for graph-sync-job
+* workflow-helper image is a base image presnet in all namespace
+* pause the data generation component for maintainence (#702)
+* Revert "Bump kebechet to v1.2.1 in ocp4 (#698)" (#700)
+* Bump kebechet to v1.2.1 in ocp4 (#698)
+* :ship: Deploy the Tag v0.18.0 for sefkhet-abwy
+* :arrow_up: add SIG labels
+* :arrow_up: add SIG labels
+* bump up graph-sync ocp4 stage version to v0.8.1
+* bump graph-sync in stage to v0.8.1 (#697)
+* :ship: Deploy the Tag v0.8.1 for graph-sync-job
+* :rainbow: patch the slo-reporter cronjob
+* Disable all SI analysis (#696)
+### Bug Fixes
+* :bug: fix a typo in label-sync imagestreamtag
+* :bug: fix the configmap name for label-sync cronjob
+* :tanabata_tree: fix the name of the manifest file for graph-schema-update
+* :guardsman: fix sefkhet-abwy imagestream tag for ocp
+* fix the restart policy of the sefkhet deployment
+* fix tide's pr_status_base_url
+* :hatched_chick: fix the argument certificate in the route tls (#788)
+* fix the token to be used by tide of Prow at Op1st
+* fix the token to be used by hook of Prow at Op1st
+* fix rolebinding related issues with Op1st Prow
+* :construction_worker: fix the kustomize manifest for properly propogating cronjob (#780)
+* :hatched_chick: fix of argocli with respect to the deployment (#755)
+* :bug: fix wrong domain name in route53 route
+* :bug: fix wrong serivce name in route53 route
+* :bug: fix the key name within the secret...
+* :santa: patch the prometheus configuration with correct pushgateway
+* patch the use of wrong secret in adviser workflow (#713)
+* :honeybee: fix the referencing to the correct image for kebechet workflow (#705)
+* fix the kustomize file for the graph-schema-update
+### Improvements
+* :books: updated the docs for creating a new component (#740)
+* :recycle: restructure sefkhet-abwy to separate prod and stage (#803)
+* :guardsman: re-encrypt kebechet and qebhwt secrets with updates sops (#802)
+* reorganize how we manage imagestreamtags, now its per overlay
+* :exclamation: use the direct service hostname for s3 connection (#790)
+* :sparkles: refactored sinker of Prow at Op1st
+* :sparkles: refactored prow@op1st
+* remove use of github token from p-c-m
+* :arrow_up: bump up the latest version of management-api (#754)
+* :zap: use ocp4-test deployment for test and turn on graph backup (#748)
+* Bump user-api to v0.10.0 in test environment (#746)
+* updated kafka certs for ocp4 cluster
+* :arrow_up: bump up the latest version of nepthys
+* bump up the latest version of management-api for stage systems (#734)
+* bump up the version of management-api for stage systems (#732)
+* :lock: updated secrets for cnv prod kafka apps (#722)
+* :turtle: use imagestream instead of direct pull from quay (#721)
+* :lock: updated secrets for cnv prod kafka apps
+* Add kebechet workflow, remove old processing step (#692)
+* :turtle: use consistent managed-by group label
+* :cow: set the ceph based storage class for pvc assignmnet
+* Bumped kebechet in test (#704)
+* patch test check requirement for thoth-station python
+* Kebechet bump in test (#699)
+### Other
+* Bump SLO reporter in prod and change email recipient in stage (#819)
+* :dragon_face: remove explicit namespace definition from kustomize
+* :bug: remove namespace from needs-rebase
+* :bug: remove namespace from sinker
+* :bug: remove namespace from ghproxy service
+
+## Release 2021.02.15 (2021-02-15T06:54:46)
+### Features
+* Bump of version for prod release 15.02.2021 (#904)
+* :ship: Deploy the Tag v1.7.0 for solver
+* :ship: Deploy the Tag v1.7.0 for solver
+* :ship: Deploy the Tag v1.7.0 for solver
+* :pencil: unified the context names send back to github
+* add operate-first labels declaration
+* :sparkles: expose ghproxy metrics
+* using full blown image name
+* seperate thoth-station labels in its own file
+* :arrow_up: using v0.5.0 of integration-tests in prod
+* :ship: Deploy the Tag v0.5.0 for integration-tests
+* switch on all solver in the stage env (#898)
+* Bump User API to v0.19.0 in stage environments (#895)
+* :ship: Deploy the Tag v0.19.0 for user-api
+* rename sig/build to sig/pipeline
+* test domain to send email (#893)
+* Adjust parameters in CM (#892)
+* update slo-reporter secrets for cnv moc cluster (#891)
+* Use sendgrid in production for SLO-reporter (#879)
+* turned reporting on
+* :sparkles: can we run pytest as a prow job?
+* Fix path to container image analysis results (#888)
+* using latest release of integration-tests (#886)
+* add boom label to operate-first/SRE repo
+* add prowjob-pre-commit for integration-tests repo
+* Revert ":bug: add XDG_CONFIG_HOME to kustomize Prow job"
+* :bug: add XDG_CONFIG_HOME to kustomize Prow job
+* Revert ":sparkles: add kustomize-build presubmit job to op1st/apps repo ʕʘ̅͜ʘ̅ʔ (#867)" (#882)
+* :sparkles: add kustomize-build presubmit job to op1st/apps repo ʕʘ̅͜ʘ̅ʔ (#867)
+* Bump metrics-exporter to v0.11.0 (#881)
+* Debug the workflow limit with graph-refresh job (#878)
+* Fix the package-update kustomize
+* Update cronjob for the components with variable changes (#877)
+* Update package-update-job to v0.8.7 in stage (#872)
+* Bump User API to v0.18.0 in stage (#875)
+* Bump adviser to v0.24.1 in stage environments (#873)
+* :ship: Deploy the Tag v0.18.0 for user-api
+* :ship: Deploy the Tag v0.24.1 for adviser
+* :ship: Deploy the Tag v0.24.0 for adviser
+* :ship: Deploy the Tag v0.9.0 for slo-reporter
+* :ship: Deploy the Tag v0.8.7 for package-update-job
+* :ship: Deploy the Tag v0.9.0 for package-releases-job
+* :ship: Deploy the Tag pr-198 for package-update-job
+* Debug amun api (#868)
+* :ship: Deploy the Tag v0.8.5 for package-update-job
+* :arrow_up: add plank config to show dashboard links on each PR
+* :arrow_up: add deck.spyglass config
+* :arrow_up: enable spyglass
+* :sparkles: do label-sync on AICoE and Op1st org
+* add AICoE/pricingnbs to prow
+* :sparkles: change the color of all sig to the same value ⛲
+* :arrow_up: update sendgrid secret, provide a tiny test script for sendgrid
+* :ship: Deploy the Tag v0.11.0 for metrics-exporter
+* :sparkles: run prowjob-pre-commit in thoth-application/
+* :sparkles: enable prowjob-pre-commit to always run
+* add prowjob-pre-commit for srcops-testing repo only
+* faster I said!!
+* tune the job a little more
+* :bug: add missing kustomization file in base fire
+* :sparkles: add kustomize build presubmit job to srcops-testing repo
+* Create OWNERS
+* Create OWNERS
+* reencrypted
+* :sparkles: added secrets to slo-reporter
+* upgrade prod database size (#860)
+* add keb metadata for internal trigger context (#858)
+* :arrow_up: update prow container image versions, add project_config
+* remove all the obsolete prow overlays (#857)
+* remove the new_label_normalizer as it is implemented by label-sync of prow now
+* switch on the data ingestion pipelines (#851)
+* upgrade: bump the version of messaging in stage (#853)
+*  bump the version of graph-sycn in stage  (#852)
+* :ship: Deploy the Tag v0.10.3 for graph-sync-job
+* disabline the pipeline for now 🚧
+* :ship: upgrade stage graph-sync to v0.10.2
+* :ship: Deploy the Tag v0.10.2 for graph-sync-job
+* :ship: upgrade stage management-api to v0.11.1
+* :ship: Deploy the Tag v0.11.1 for management-api
+* Bump graph-sync to v0.10.1 to address solver syncing issues (#850)
+* :ship: Deploy the Tag v0.10.1 for graph-sync-job
+* Remove unused variable as package-extract is not s2i app (#847)
+* :ship: Deploy the Tag v0.3.3 for graph-refresh-job
+* :ship: Deploy the Tag v0.10.3 for messaging
+* Bump User API to v0.17.0 in stage environment (#840)
+* Bump package-extract to v1.1.2 in stage (#845)
+* Extend provenance checker workflow with new steps (#823)
+* :sparkles: added prow tekton pipeline integration
+* :ship: Deploy the Tag v1.1.2 for package-extract
+* Create a document documenting the release procedure (#837)
+* Bump advise-reporter to have all metrics (#844)
+* Bump adviser to v0.23.0 in stage (#835)
+* Bump Management API in stage (#839)
+* :ship: Deploy the Tag v0.16.0 for user-api
+* :ship: Deploy the Tag v0.8.3 for slo-reporter
+* :ship: Deploy the Tag v0.11.0 for management-api
+* Bump Kebechet to v1.2.4 (#832)
+* :ship: Deploy the Tag v0.15.0 for user-api
+* :ship: Deploy the Tag v0.10.2 for metrics-exporter
+* Bump metrics-exporter stage to v0.10.2 (#838)
+* :ship: Deploy the Tag pr-1233 for user-api
+* :ship: Deploy the Tag v0.5.0 for workflow-helpers
+* Provide APP_SCRIPT envornmnet variable to run the application
+* :ship: Deploy the Tag v0.23.0 for adviser
+* Bump graph-sync to v0.10.0 in stage (#833)
+* :ship: Deploy the Tag v0.14.0 for user-api
+* :ship: Deploy the Tag pr-1229 for user-api
+* :ship: Deploy the Tag v0.10.0 for graph-sync-job
+* :ship: Deploy the Tag pr-1228 for user-api
+### Bug Fixes
+* :bug: fix the config file name used by label_sync cronjob
+* :bug: fix the integration-tests IST
+* fix the value string in slo-reporter cronjob
+* fix the command string... array
+* :sparkles: fix how we call micropipenv
+* :bug: fix the non uniq cronjob name
+* fix investigator deployment for debugging argo worflow limits
+* job kustomize-build is set to always run but also declares run_if_changed targets, which are mutually exclusive
+* try to get the job done faster 🚤
+* :bug: fix github token used by crier
+* switch to a trivial recursive test script
+* :sparkles: fix typo in argument to kustomize build presubmit job to srcops-testing repo
+* some fixes to slo-reporter
+* :bug fix typo in prow plugins
+* :bug fix project plugin config
+* :bug fix typo in prow plugins
+### Improvements
+* Bump integration-tests to use s2i application (#900)
+* :four_leaf_clover: update integration test setup manifests (#899)
+* Add integration tests (#894)
+* use an imagestreamtag for integration-tests (#897)
+* use right datasource for cnv grafana dashboard (#890)
+* use -dev container image
+* better test-kustomize-build
+* revert debug change for the workflow limit test with graph-refresh job (#880)
+* debug amun workflows
+* debug amun workflows
+* debug argo worflow limits with investigator limits (#866)
+* Document Thoth's S2I and solver procedure (#849)
+* :arrow_up: use json output for thamos in integration tests
+* use Role instead of ClusterRole
+* sync up graph-refresh to latest version in stage
+* bump up the latest version of graph-refresh (#846)
+* 👨🏻‍🏭 refactored and enabled branchprotector
+* :arrow_up: updated utility images, cleaned up branch-protector config
+* Bump SLO-reporter to v0.8.3 in stage and prod (#841)
+### Other
+* little better test script

@@ -93,22 +93,22 @@ spec:
               # provide credentials:
             - name: THOTH_SRC_REGISTRY_USER
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   key: thoth-src-registry-user
                   name: build-watcher
             - name: THOTH_SRC_REGISTRY_PASSWORD
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   key: thoth-src-registry-password
                   name: build-watcher
             - name: THOTH_DST_REGISTRY_USER
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   key: thoth-dst-registry-user
                   name: build-watcher
             - name: THOTH_DST_REGISTRY_PASSWORD
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   key: thoth-dst-registry-password
                   name: build-watcher
             - name: THOTH_BUILD_ANALYSIS_NO_BASE_IMAGE

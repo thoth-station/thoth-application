@@ -1,44 +1,33 @@
 label:
   additional_labels:
+    - community/discussion
+    - community/group-programming
+    - community/maintenance
+    - community/question
+    - deployment_name/moc
+    - deployment_name/ocp-stage
+    - deployment_name/ocp-test
+    - kind/cleanup
+    - kind/deprecation
+    - kind/documentation
+    - kind/question
+    - kind/question
+    - sig/advisor
+    - sig/build
+    - sig/cyborgs
+    - sig/devops
+    - sig/documentation
+    - sig/indicators
+    - sig/investigator
+    - sig/knowledge-graph
+    - sig/slo
+    - sig/solvers
+    - thoth/group-programming
+    - thoth/human-intervention-required
+    - thoth/potential-observation
     - tide/merge-method-merge
     - tide/merge-method-rebase
     - tide/merge-method-squash
-    - deployment_name/ocp-test
-    - deployment_name/ocp-stage
-    - deployment_name/moc
-    - thoth/group-programming
-    - thoth/potential-observation
-    - sig/documentation
-    - sig/cyborgs
-    - sig/investigator
-    - sig/indicators
-    - sig/knowledge-graph
-    - sig/solvers
-    - sig/slo
-    - sig/advisor
-    - sig/build
-    - sig/devops
-
-project_config:
-  project_org_configs:
-    thoth-station:
-      org_maintainers_team_id: 4086029
-      org_maintainers_team_name: DevOrgs
-      org_default_column_map:
-        Adviser: New
-        Amun: New
-        Integration Tests: New
-        Investigator: New
-        Kebechet: New
-        Knowledge Graph: New
-        Meta-Information Indicators: New
-        Performance Indicators: New
-        Security Indicators: New
-        SLO-reporter: New
-        Solver: New
-        Thoth Data Science: New
-        thoth-toolbox: New
-        User-API: New
 
 external_plugins:
   thoth-station:
@@ -85,20 +74,31 @@ approve:
       - thoth-station
     require_self_approval: true
     ignore_review_state: false
+    lgtm_acts_as_approve: false
 
 repo_milestone:
   "":
     maintainers_id: 2990047
     maintainers_team: Devs
 
+project_config:
+  project_org_configs:
+    thoth-station:
+      org_maintainers_team_id: 2990047
+      org_default_column_map:
+        thoth-deployment: New
+
 plugins:
   operate-first:
     - approve
     - assign
+    - blockade
     - blunderbuss
     - hold
     - label
+    - lgtm
     - lifecycle
+    - shrug
     - size
     - trigger
     - verify-owners
@@ -106,12 +106,16 @@ plugins:
   thoth-station:
     - approve
     - assign
+    - blockade
     - blunderbuss
     - hold
     - label
+    - lgtm
     - lifecycle
     - milestone
     - project
+    - project-manager
+    - shrug
     - size
     - trigger
     - verify-owners
@@ -119,9 +123,11 @@ plugins:
   AICoE:
     - approve
     - assign
+    - blockade
     - blunderbuss
     - hold
     - label
+    - lgtm
     - lifecycle
     - size
     - trigger
@@ -130,9 +136,11 @@ plugins:
   aicoe-aiops:
     - approve
     - assign
+    - blockade
     - blunderbuss
     - hold
     - label
+    - lgtm
     - lifecycle
     - size
     - trigger

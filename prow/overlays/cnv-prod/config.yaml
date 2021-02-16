@@ -1,4 +1,8 @@
 plank:
+  report_templates:
+    "*": "[Full PR test history](https://prow.operate-first.cloud/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}). [Your PR dashboard](https://prow.operate-first.cloud/pr?query=is%3Apr%20state%3Aopen%20author%3A{{with index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}). Please help us and [open an issue](https://github.com/{{.Spec.Refs.Org}}/{{.Spec.Refs.Repo}}/issues?q=is:issue+is:open) when you hit one in your PR."
+  job_url_prefix_config:
+    "*": https://prow.operate-first.cloud/view/
   default_decoration_configs:
     "*":
       gcs_configuration:
@@ -6,10 +10,10 @@ plank:
         path_strategy: explicit
       s3_credentials_secret: s3-credentials
       utility_images:
-        clonerefs: gcr.io/k8s-prow/clonerefs:v20210121-548289bef2
-        entrypoint: gcr.io/k8s-prow/entrypoint:v20210121-548289bef2
-        initupload: gcr.io/k8s-prow/initupload:v20210121-548289bef2
-        sidecar: gcr.io/k8s-prow/sidecar:v20210121-548289bef2
+        clonerefs: gcr.io/k8s-prow/clonerefs:v20210204-de2fa22b93
+        entrypoint: gcr.io/k8s-prow/entrypoint:v20210204-de2fa22b93
+        initupload: gcr.io/k8s-prow/initupload:v20210204-de2fa22b93
+        sidecar: gcr.io/k8s-prow/sidecar:v20210204-de2fa22b93
 
 prowjob_namespace: opf-ci-prow
 pod_namespace: opf-ci-prow
@@ -18,11 +22,15 @@ branch-protection:
   allow_disabled_policies: true
   orgs:
     thoth-station:
+      protect: true
+      allow_force_pushes: false
+      required_status_checks:
+        contexts:
+          - aicoe-ci/pre-commit-check
       exclude:
         - "^revert-"
         - "^kebechet-"
         - "^dependabot/"
-      protect: true
       restrictions:
         users: []
         teams:
@@ -30,34 +38,10 @@ branch-protection:
         required_pull_request_reviews:
           dismiss_stale_reviews: false
         required_approving_review_count: 1
-        required_status_checks:
-          contexts:
-            - aicoe-ci/pre-commit-check
-      allow_force_pushes: false
       repos:
-        test-infra:
-          allow_force_pushes: true
         tensorflow:
           protect: false
         contra-env-infra:
-          protect: false
-        ansible-role-core-imagestreams:
-          protect: false
-        ansible-role-core-templates:
-          protect: false
-        ansible-role-core-cronjob:
-          protect: false
-        ansible-role-metrics-exporter:
-          protect: false
-        ansible-role-cronjob:
-          protect: false
-        ansible-role-argo-workflows:
-          protect: false
-        ansible-role-postgresql:
-          protect: false
-        ansible-role-kebechet:
-          protect: false
-        ansible-role-postgresql-metrics-exporter:
           protect: false
         statusfy:
           protect: false
@@ -78,21 +62,52 @@ branch-protection:
         bz1816214-example:
           protect: false
 
+deck:
+  spyglass:
+    size_limit: 100000000 # 100MB
+    # gcs_browser_prefix: https://gcsweb.k8s.io/gcs/
+    # testgrid_config: gs://k8s-testgrid/config
+    # testgrid_root: https://testgrid.k8s.io/
+    lenses:
+      - lens:
+          name: metadata
+        required_files:
+          - ^(?:started|finished)\.json$
+        optional_files:
+          - ^(?:podinfo|prowjob)\.json$
+      - lens:
+          name: buildlog
+          config:
+            highlight_regexes:
+              - timed out
+              - "ERROR:"
+              - (FAIL|Failure \[)\b
+              - panic\b
+              - ^E\d{4} \d\d:\d\d:\d\d\.\d\d\d]
+              - "^INFO: Analyzed \\d+ targets"
+        required_files:
+          - ^.*build-log\.txt$
+      - lens:
+          name: podinfo
+        required_files:
+          - ^podinfo\.json$
+  tide_update_period: 1s
+
 tide:
   pr_status_base_urls:
-    "*": https://prow.thoth-station.dev/pr
+    "*": https://prow.operate-first.cloud/pr
 
   merge_method:
     aicoe-aiops: squash
     AICoE: squash
-    thoth-station: squash
     operate-first: squash
+    thoth-station: squash
 
   queries:
     - orgs:
         - aicoe-aiops
-        - thoth-station
         - operate-first
+        - thoth-station
       excludedRepos:
         - thoth-station/dgraph-thoth-config
         - thoth-station/workload-operator
@@ -153,6 +168,9 @@ tide:
     orgs:
       AICoE:
         repos:
+          idh-manifests production:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
           s2i-custom-notebook:
             required-contexts:
               - aicoe-ci/pre-commit-check
@@ -165,6 +183,10 @@ tide:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/pytest-check
           sefkhet-abwy:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/build-check
+          pricingnbs:
             required-contexts:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
@@ -219,6 +241,11 @@ tide:
           package-analyzer:
             required-contexts:
               - aicoe-ci/pre-commit-check
+          package-extract:
+            required-contexts:
+              - aicoe-ci/pre-commit-check
+              - aicoe-ci/pytest-check
+              - aicoe-ci/build-check
           python:
             required-contexts:
               - aicoe-ci/pytest-check
@@ -275,7 +302,7 @@ periodics:
     decorate: true
     spec:
       containers:
-        - image: quay.io/thoth-station/integration-tests:v0.1.4
+        - image: quay.io/thoth-station/integration-tests:v0.5.0
           imagePullPolicy: Always
           command:
             - ./e2e-test.sh
@@ -284,3 +311,108 @@ periodics:
               value: api.moc.thoth-station.ninja
     annotations:
       description: Periodic e2e tests against MOC deployment
+
+presubmits:
+  thoth-station/thoth-application:
+    - name: kustomize-build
+      decorate: true
+      max_concurrency: 1
+      run_if_changed: ".*yaml"
+      skip_report: false
+      context: aicoe-ci/prow/kustomize-build
+      spec:
+        containers:
+          - image: quay.io/operate-first/opf-toolbox:v0.2.0
+            command:
+              - "./test-kustomize-build" # this is contained in the thoth-application/ repo not the opf-toolbox
+            env:
+              - name: IS_AICOE_CI
+                value: "1"
+            resources:
+              requests:
+                memory: "256Mi"
+    - name: pre-commit
+      decorate: true
+      skip_report: false
+      always_run: true
+      context: aicoe-ci/prow/pre-commit
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.4
+            command:
+              - "pre-commit"
+              - "run"
+              - "--all-files"
+            resources:
+              requests:
+                memory: "2Gi"
+                cpu: "2"
+
+  thoth-station/integration-tests:
+    - name: pre-commit
+      decorate: true
+      skip_report: false
+      always_run: true
+      context: aicoe-ci/prow/pre-commit
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.4
+            command:
+              - "pre-commit"
+              - "run"
+              - "--all-files"
+            resources:
+              requests:
+                memory: "2Gi"
+                cpu: "2"
+
+  thoth-station/adviser:
+    - name: pre-commit
+      decorate: true
+      skip_report: false
+      always_run: true
+      context: aicoe-ci/prow/pre-commit
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.4
+            command:
+              - "pre-commit"
+              - "run"
+              - "--all-files"
+            resources:
+              requests:
+                memory: "2Gi"
+                cpu: "2"
+
+    - name: thoth-pytest-py38
+      decorate: true
+      skip_report: false
+      always_run: true
+      context: aicoe-ci/prow/pytest
+      spec:
+        containers:
+          - image: quay.io/goern/thoth-pytest:v0.13.0-dev
+            command:
+              - "/bin/run-pytest"
+            resources:
+              requests:
+                memory: "2Gi"
+                cpu: "2"
+
+  AICoE/pricingnbs:
+    - name: pre-commit
+      decorate: true
+      skip_report: false
+      always_run: true
+      context: aicoe-ci/prow/pre-commit
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.4
+            command:
+              - "pre-commit"
+              - "run"
+              - "--all-files"
+            resources:
+              requests:
+                memory: "2Gi"
+                cpu: "2"

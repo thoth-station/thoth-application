@@ -65,14 +65,18 @@ spec:
           args:
             - --config-path=/etc/config/config.yaml
             - --plugin-config=/etc/plugins/plugins.yaml
+            - --github-token-path=/etc/github/oauth
+            - --github-oauth-config-file=/etc/githuboauth/secret
             - --tide-url=http://tide/
             - --hook-url=http://hook:8888/plugin-help
-            - --github-token-path=/etc/github/oauth
             - --github-endpoint=http://ghproxy
             - --github-graphql-endpoint=http://ghproxy/graphql
             - --github-endpoint=https://api.github.com
+            - --oauth-url=/github-login
             - --plugin-config=/etc/plugins/plugins.yaml
             - --s3-credentials-file=/etc/s3-credentials/service-account.json
+            - --cookie-secret=/etc/cookie/secret
+            - --spyglass=true
           ports:
             - name: http
               containerPort: 8080
@@ -83,11 +87,17 @@ spec:
             - name: oauth
               mountPath: /etc/github
               readOnly: true
+            - mountPath: /etc/githuboauth
+              name: oauth-config
+              readOnly: true
             - name: plugins
               mountPath: /etc/plugins
               readOnly: true
             - name: s3-credentials
               mountPath: /etc/s3-credentials
+              readOnly: true
+            - mountPath: /etc/cookie
+              name: cookie-secret
               readOnly: true
           livenessProbe:
             httpGet:
@@ -115,6 +125,12 @@ spec:
         - name: s3-credentials
           secret:
             secretName: s3-credentials
+        - name: oauth-config
+          secret:
+            secretName: github-oauth-config
+        - name: cookie-secret
+          secret:
+            secretName: cookie
 ---
 apiVersion: v1
 kind: Service

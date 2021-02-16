@@ -35,22 +35,17 @@ spec:
                     configMapKeyRef:
                       name: kafka
                       key: kafka-bootstrap-servers
-                - name: KAFKA_PROTOCOL
+                - name: KAFKA_SECURITY_PROTOCOL
                   valueFrom:
                     configMapKeyRef:
                       key: kafka-protocol
                       name: kafka
-                - name: KAFKA_CAFILE
+                - name: KAFKA_SSL_CA_LOCATION
                   value: "/mnt/secrets/kafka_ca.crt"
                 - name: KUBERNETES_API_URL
                   value: "https://kubernetes.default.svc.cluster.local"
                 - name: KUBERNETES_VERIFY_TLS
                   value: "0"
-                - name: NAMESPACE
-                  valueFrom:
-                    configMapKeyRef:
-                      key: infra-namespace
-                      name: thoth
                 - name: THOTH_INFRA_NAMESPACE
                   valueFrom:
                     configMapKeyRef:

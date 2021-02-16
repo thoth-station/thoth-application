@@ -45,12 +45,12 @@ spec:
               configMapKeyRef:
                 name: kafka
                 key: kafka-bootstrap-servers
-          - name: KAFKA_PROTOCOL
+          - name: KAFKA_SECURITY_PROTOCOL
             valueFrom:
               configMapKeyRef:
                 key: kafka-protocol
                 name: kafka
-          - name: KAFKA_CAFILE
+          - name: KAFKA_SSL_CA_LOCATION
             value: "/mnt/kafka-secrets/kafka_ca.crt"
         volumeMounts:
           - name: kafka-secrets

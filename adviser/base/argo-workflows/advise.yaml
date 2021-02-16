@@ -67,6 +67,24 @@ spec:
           - name: "THOTH_CEPH_BUCKET_NAME"
           - name: "THOTH_CEPH_BUCKET_PREFIX"
           - name: "THOTH_DEPLOYMENT_NAME"
+        artifacts:
+          - name: inputdocument
+            path: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}.request"
+            archive:
+              none: {}
+            s3:
+              key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
+                {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
+                adviser/{{inputs.parameters.THOTH_DOCUMENT_ID}}.request"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              insecure: true
+              accessKeySecret:
+                name: argo-artifact-repository-secrets
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
       outputs:
         artifacts:
           - name: outputdocument
@@ -95,6 +113,8 @@ spec:
           - name: THOTH_ADVISER_OUTPUT
             value: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
           - name: THOTH_ADVISER_FORK
+            value: "1"
+          - name: THOTH_ADVISER_ENABLE_PREPARE
             value: "1"
           - name: THOTH_LOG_ADVISER
             value: "{{inputs.parameters.THOTH_LOG_ADVISER}}"

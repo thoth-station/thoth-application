@@ -34,12 +34,12 @@ spec:
                     configMapKeyRef:
                       key: kafka-bootstrap-servers
                       name: kafka
-                - name: KAFKA_PROTOCOL
+                - name: KAFKA_SECURITY_PROTOCOL
                   valueFrom:
                     configMapKeyRef:
                       key: kafka-protocol
                       name: kafka
-                - name: KAFKA_CAFILE
+                - name: KAFKA_SSL_CA_LOCATION
                   value: "/mnt/secrets/kafka_ca.crt"
                 - name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
                   valueFrom:

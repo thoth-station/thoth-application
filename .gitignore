@@ -8,3 +8,4 @@ application_default_credentials.json
 argocd-role-binding.yaml
 **.crt
 **.key
+sendgrid.env

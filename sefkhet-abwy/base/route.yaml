@@ -8,5 +8,5 @@ spec:
     targetPort: 8080-tcp
   to:
     kind: Service
-    name: sefkhet-abwy-webhook-receiver
+    name: sefkhet-abwy
     weight: 100

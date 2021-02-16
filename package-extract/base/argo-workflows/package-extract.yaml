@@ -29,7 +29,7 @@ spec:
             s3:
               key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
                 {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
-                package-extract/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+                analysis/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               insecure: true

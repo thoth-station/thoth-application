@@ -5,6 +5,11 @@ resources:
   - roles.yaml
   - rolebindings.yaml
   - s3-bucket-claim.yaml
+  - label-sync-cronjob.yaml
+  - route-ghproxy-metrics.yaml
+patchesStrategicMerge:
+  - imagestreamtags.yaml
+  - unsuspend_branchprotector.yaml
 configMapGenerator:
   - name: config
     files:
@@ -12,6 +17,15 @@ configMapGenerator:
   - name: plugins
     files:
       - plugins.yaml
+  - name: label-config
+    files:
+      - labels.yaml
+  - name: labels-thoth-station
+    files:
+      - labels_thoth-station.yaml
+  - name: labels-operate-first
+    files:
+      - labels_operate-first.yaml
 generatorOptions:
   disableNameSuffixHash: true
 generators:

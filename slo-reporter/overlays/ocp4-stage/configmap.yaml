@@ -7,4 +7,4 @@ data:
   thanos-endpoint: "https://thanos-query-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
   smtp-server: "smtp.corp.redhat.com"
   sender-address: "aicoe-thoth@redhat.com"
-  email-recipients: "aicoe@redhat.com"
+  email-recipients: "aicoe-thoth@redhat.com"

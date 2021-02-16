@@ -109,8 +109,16 @@ objects:
           - name: ceph_host
           - name: deployment_name
       volumes:
+        - name: workdir
+          emptyDir: {}
         - name: output
           emptyDir: {}
+        - name: kafka-secrets
+          secret:
+            secretName: "kafka"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
       templates:
         - name: "provenance-checker"
           archiveLocation:
@@ -147,6 +155,7 @@ objects:
                       value: "{{workflow.parameters.ceph_bucket_prefix}}"
                     - name: THOTH_DEPLOYMENT_NAME
                       value: "{{workflow.parameters.deployment_name}}"
+
               - name: "graph-sync-provenance-check"
                 dependencies:
                   - "provenance-check"
@@ -162,3 +171,37 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "1"
+
+              - name: "parse-provenance-checker-output"
+                dependencies:
+                  - "provenance-check"
+                templateRef:
+                  name: "parse-provenance-checker-output"
+                  template: "parse-provenance-checker-output"
+                arguments:
+                  artifacts:
+                    - name: outputdocument
+                      from: "{{tasks.provenance-check.outputs.artifacts.outputdocument}}"
+                  parameters:
+                    - name: "THOTH_DOCUMENT_ID"
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+
+              - name: "send-messages"
+                dependencies:
+                  - "parse-provenance-checker-output"
+                templateRef:
+                  name: "send-messages"
+                  template: "send-messages"
+                arguments:
+                  artifacts:
+                    - name: messagesdocument
+                      from: "{{tasks.parse-provenance-checker-output.outputs.artifacts.messagestobesentdocument}}"
+                  parameters:
+                    - name: THOTH_MESSAGING_FROM_FILE
+                      value: "/mnt/workdir/messages_to_be_sent.json"
+                    - name: THOTH_DEPLOYMENT_NAME
+                      value: "{{workflow.parameters.deployment_name}}"
+                    - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+                      value: "1"
+                    - name: MESSAGES_DOCUMENT_NAME
+                      value: "messages_to_be_sent.json"
