@@ -41,6 +41,14 @@ objects:
     volumes:
     - name: output-volume
       emptyDir: {}
+    - name: workdir
+      emptyDir: {}
+    - name: kafka-secrets
+      secret:
+        secretName: "kafka"
+        items:
+          - key: kafka_ca.crt
+            path: kafka_ca.crt
 
     arguments:
       parameters:
@@ -131,19 +139,19 @@ objects:
           templateRef:
             name: create-inspection-complete-message
             template: create-inspection-complete-message
-          when: "{{workflow.parameters.send-messages}} == '1'"
+          when: "{{workflow.parameters.send-messages}} == 1"
 
         - name: send-messages
           dependencies: [create-inspection-complete-message]
           arguments:
             artifacts:
               - name: messagesdocument
-                value: "{{tasks.create-inspection-complete-message.outputs.artifacts.messages_to_be_sent_doc}}"
+                from: "{{tasks.create-inspection-complete-message.outputs.artifacts.messages_to_be_sent_doc}}"
             parameters:
               - name: THOTH_MESSAGING_FROM_FILE
                 value: "/mnt/workdir/messages_to_be_sent.json"
               - name: THOTH_DEPLOYMENT_NAME
-                value: "thoth-test-core"  # TODO: get deployment name from somewhere
+                value: "{{workflow.parameters.deployment_name}}"
               - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
                 value: "0"
               - name: MESSAGES_DOCUMENT_NAME

@@ -10,9 +10,9 @@ generators:
   - ./secret-generator.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
+  - openshift-templates/inspection-workflow.yaml
+  - openshift-templates/inspection-with-cpu-workflow.yaml
   - deploymentconfig.yaml
-  - inspection-workflow.yaml
-  - inspection-with-cpu-workflow.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
