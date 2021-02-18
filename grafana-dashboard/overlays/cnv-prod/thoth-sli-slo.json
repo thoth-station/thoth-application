@@ -169,7 +169,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"metrics-exporter-thoth-infra-stage.apps.ocp.prod.psi.redhat.com:80\"}",
+                "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "Thoth Number of unsolved packages",
@@ -177,7 +177,7 @@
                 "step": 1200
               },
               {
-                "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"metrics-exporter-thoth-infra-stage.apps.ocp.prod.psi.redhat.com:80\"}[$interval])",
+                "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
                 "format": "time_series",
                 "instant": false,
                 "intervalFactor": 2,
@@ -258,7 +258,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"metrics-exporter-thoth-infra-stage.apps.ocp.prod.psi.redhat.com:80\"}",
+                "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance_metrics\"}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "Thoth Number of SI unanalyzed packages",
@@ -266,7 +266,7 @@
                 "step": 1200
               },
               {
-                "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{instance=\"metrics-exporter-thoth-infra-stage.apps.ocp.prod.psi.redhat.com:80\"}[$interval])",
+                "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
                 "format": "time_series",
                 "instant": false,
                 "intervalFactor": 2,
