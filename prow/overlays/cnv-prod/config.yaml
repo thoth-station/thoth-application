@@ -302,7 +302,7 @@ periodics:
     decorate: true
     spec:
       containers:
-        - image: quay.io/thoth-station/integration-tests:v0.5.0
+        - image: quay.io/thoth-station/integration-tests:v0.6.0
           imagePullPolicy: Always
           command:
             - ./e2e-test.sh
@@ -319,7 +319,6 @@ presubmits:
       max_concurrency: 1
       run_if_changed: ".*yaml"
       skip_report: false
-      always_run: true
       context: aicoe-ci/prow/kustomize-build
       spec:
         containers:
@@ -448,6 +447,32 @@ presubmits:
               requests:
                 memory: "2Gi"
                 cpu: "2"
+    - name: integration-tests-moc
+      decorate: true
+      skip_report: false
+      always_run: false
+      context: aicoe-ci/prow/integration-tests
+      spec:
+        containers:
+          - image: quay.io/thoth-station/integration-tests:pr136
+            imagePullPolicy: Always
+            command:
+              - ./run-integration-tests
+            env:
+              - name: THOTH_DEPLOYMENT_NAME
+                value: cnv-prod
+              - name: GENERATE_REPORT
+                value: "1"
+              - name: MAIL_REPORT
+                value: "0"
+              - name: THOTH_USER_API_HOST
+                value: api.moc.thoth-station.ninja
+              - name: THOTH_MANAGEMENT_API_HOST
+                value: management.moc.thoth-station.ninja
+              - name: THOTH_AMUN_API_HOST
+                value: amun.moc.thoth-station.ninja
+              - name: THOTH_MANAGEMENT_API_SECRET
+                value: ""
 
   thoth-station/adviser:
     - name: pre-commit
