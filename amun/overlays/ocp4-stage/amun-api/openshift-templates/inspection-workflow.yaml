@@ -182,7 +182,8 @@ parameters:
   value: 750m
 
 - name: AMUN_RUN_MEMORY
-  descisplayNaplayName: Run Memory
+  description: Memory requested for inspection run
+  displayName: Run Memory
   value: 1Gi
 
 - name: AMUN_BUILD_CPU
