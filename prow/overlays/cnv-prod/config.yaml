@@ -454,7 +454,7 @@ presubmits:
       context: aicoe-ci/prow/integration-tests
       spec:
         containers:
-          - image: quay.io/thoth-station/integration-tests:pr136
+          - image: quay.io/thoth-station/integration-tests:pr-136
             imagePullPolicy: Always
             command:
               - ./run-integration-tests
