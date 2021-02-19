@@ -276,9 +276,8 @@ repos:
       - addedBy: anyone
         color: d73a49
         description: This issue is related to an operations alert!
-        name: "alert :boom:"
+        name: "alert:boom:"
         previously:
-          - name: "alert:boom:"
           - name: alert 💥
         prowPlugin: label
         target: issue
