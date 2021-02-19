@@ -103,7 +103,7 @@ spec:
         kind: ImageStreamTag
         name: v20210211-72696ce111
     - annotations: null
-      name: latest
+      name: v20210204-de2fa22b93
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/horologium:v20210204-de2fa22b93
@@ -164,7 +164,7 @@ spec:
         kind: ImageStreamTag
         name: v20210211-72696ce111
     - annotations: null
-      name: latest
+      name: v20210204-de2fa22b93
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/status-reconciler:v20210204-de2fa22b93
@@ -194,7 +194,7 @@ spec:
         kind: ImageStreamTag
         name: v20210211-72696ce111
     - annotations: null
-      name: latest
+      name: v20210204-de2fa22b93
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/crier:v20210204-de2fa22b93
@@ -224,7 +224,7 @@ spec:
         kind: ImageStreamTag
         name: v20210211-72696ce111
     - annotations: null
-      name: latest
+      name: v20210204-de2fa22b93
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/needs-rebase:v20210204-de2fa22b93
