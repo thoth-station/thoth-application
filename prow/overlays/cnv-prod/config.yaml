@@ -468,7 +468,8 @@ presubmits:
           - image: quay.io/thoth-station/integration-tests:pr-136
             imagePullPolicy: Always
             command:
-              - ./run-integration-tests
+              - python3
+              - app.py
             env:
               - name: THOTH_DEPLOYMENT_NAME
                 value: cnv-prod
