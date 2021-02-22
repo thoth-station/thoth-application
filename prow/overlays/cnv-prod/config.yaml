@@ -305,10 +305,21 @@ periodics:
         - image: quay.io/thoth-station/integration-tests:v0.6.0
           imagePullPolicy: Always
           command:
-            - ./e2e-test.sh
+            - python3
+            - app.py
           env:
-            - name: E2E_TEST_API
+            - name: THOTH_DEPLOYMENT_NAME
+              value: cnv-prod
+            - name: MAIL_REPORT
+              value: "0"
+            - name: THOTH_USER_API_HOST
               value: api.moc.thoth-station.ninja
+            - name: THOTH_MANAGEMENT_API_HOST
+              value: management.moc.thoth-station.ninja
+            - name: THOTH_AMUN_API_HOST
+              value: amun.moc.thoth-station.ninja
+            - name: THOTH_MANAGEMENT_API_SECRET
+              value: ""
     annotations:
       description: Periodic e2e tests against MOC deployment
 
