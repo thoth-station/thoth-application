@@ -5,3 +5,4 @@ metadata:
   name: integration-tests
 data:
   mail-report: "1"
+  generate-report: "1"
