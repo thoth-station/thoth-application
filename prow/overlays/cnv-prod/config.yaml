@@ -18,6 +18,13 @@ plank:
 prowjob_namespace: opf-ci-prow
 pod_namespace: opf-ci-prow
 
+in_repo_config:
+  enabled:
+    thoth-station: true
+
+  allowed_clusters:
+    "thoth-station": ["api-cnv-massopen-cloud:6443"]
+
 branch-protection:
   allow_disabled_policies: true
   orgs:
@@ -503,6 +510,24 @@ presubmits:
                 value: amun.moc.thoth-station.ninja
               - name: THOTH_MANAGEMENT_API_SECRET
                 value: ""
+
+  thoth-station/srcops-testing:
+    - name: validate-prow-yaml
+      always_run: true
+      decorate: true
+      extra_refs:
+        - org: thoth-station
+          repo: thoth-application
+          base_ref: master
+          spec:
+            containers:
+              - image: gcr.io/k8s-prow/checkconfig:v20210204-de2fa22b93
+                command:
+                  - /app/prow/cmd/checkconfig/app.binary
+                args:
+                  - --plugin-config=../thoth-application/prow/overlays/cnv-prod/plugins.yaml # WARN a hard coded path!
+                  - --config-path=../thoth-application/prow/overlays/cnv-prod/config.yaml # WARN a hard coded path!
+                  - --prow-yaml-repo-name=$(REPO_OWNER)/$(REPO_NAME)
 
   thoth-station/adviser:
     - name: pre-commit
