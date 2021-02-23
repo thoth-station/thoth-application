@@ -61,6 +61,11 @@ spec:
                 configMapKeyRef:
                   key: backend-namespace
                   name: thoth
+            - name: THOTH_AMUN_INSPECTION_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: amun-inspection-namespace
+                  name: thoth
             - name: THOTH_DEPLOYMENT_NAME
               valueFrom:
                 configMapKeyRef:
