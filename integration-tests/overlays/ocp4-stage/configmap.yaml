@@ -8,3 +8,4 @@ data:
   user-api: "stage.thoth-station.ninja"
   management-api: "management.stage.thoth-station.ninja"
   amun-api: "amun.stage.thoth-station.ninja"
+  tags: "~@seizes_middletier_namespace"

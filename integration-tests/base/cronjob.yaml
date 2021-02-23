@@ -61,6 +61,11 @@ spec:
                     secretKeyRef:
                       key: management-api-token
                       name: integration-tests
+                - name: THOTH_INTEGRATION_TESTS_TAGS
+                  valueFrom:
+                    configMapKeyRef:
+                      key: tags
+                      name: integration-tests
               resources:
                 requests:
                   memory: "256Mi"
