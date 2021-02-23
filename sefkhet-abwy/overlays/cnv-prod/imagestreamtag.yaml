@@ -8,21 +8,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/sefkhet-abwy-webhook-receiver:v0.20.4
-      importPolicy: {}
-      referencePolicy:
-        type: Local
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: ghproxy
-spec:
-  tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: gcr.io/k8s-prow/ghproxy:v20210113-cdd2f173ce
+        name: quay.io/thoth-station/sefkhet-abwy-webhook-receiver:v0.20.5
       importPolicy: {}
       referencePolicy:
         type: Local
