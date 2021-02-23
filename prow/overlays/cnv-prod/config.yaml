@@ -44,7 +44,7 @@ branch-protection:
           - sourceops
         required_pull_request_reviews:
           dismiss_stale_reviews: false
-        required_approving_review_count: 1
+          required_approving_review_count: 1
       repos:
         tensorflow:
           protect: false
@@ -522,7 +522,7 @@ presubmits:
           base_ref: master
       spec:
         containers:
-          - image: gcr.io/k8s-prow/checkconfig:v20210204-de2fa22b93
+          - image: gcr.io/k8s-prow/checkconfig:v20210204-de2fa22b93 # WARN hard wired container image tag
             command:
               - /app/prow/cmd/checkconfig/app.binary
             args:
@@ -558,22 +558,6 @@ presubmits:
           - image: quay.io/goern/thoth-pytest:v0.13.0-dev
             command:
               - "/bin/run-pytest"
-            resources:
-              requests:
-                memory: "2Gi"
-                cpu: "2"
-
-    - name: thoth-mypy-py38
-      decorate: true
-      skip_report: false
-      always_run: true
-      context: aicoe-ci/prow/mypy
-      spec:
-        containers:
-          - image: quay.io/thoth-station/thoth-pytest-ubi8-py38:v0.12.5
-            command:
-              - "/usr/local/bin/mypy"
-              - "."
             resources:
               requests:
                 memory: "2Gi"
@@ -645,7 +629,7 @@ presubmits:
                 memory: "2Gi"
                 cpu: "2"
 
-  thoth-station/thomos:
+  thoth-station/thamos:
     - name: pre-commit
       decorate: true
       skip_report: false
