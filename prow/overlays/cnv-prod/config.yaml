@@ -537,6 +537,22 @@ presubmits:
                 memory: "2Gi"
                 cpu: "2"
 
+    - name: thoth-mypy-py38
+      decorate: true
+      skip_report: false
+      always_run: true
+      context: aicoe-ci/prow/mypy
+      spec:
+        containers:
+          - image: quay.io/thoth-station/thoth-pytest-ubi8-py38:v0.12.5
+            command:
+              - "/usr/local/bin/mypy"
+              - "."
+            resources:
+              requests:
+                memory: "2Gi"
+                cpu: "2"
+
   thoth-station/messaging:
     - name: pre-commit
       decorate: true
