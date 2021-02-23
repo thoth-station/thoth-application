@@ -512,7 +512,8 @@ presubmits:
                 value: ""
 
   thoth-station/srcops-testing:
-    - name: validate-prow-yaml
+    - name: validate-inrepo-prow-yaml
+      context: aicoe-ci/prow/validate-inrepo-prow-yaml
       always_run: true
       decorate: true
       extra_refs:
