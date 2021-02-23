@@ -519,15 +519,15 @@ presubmits:
         - org: thoth-station
           repo: thoth-application
           base_ref: master
-          spec:
-            containers:
-              - image: gcr.io/k8s-prow/checkconfig:v20210204-de2fa22b93
-                command:
-                  - /app/prow/cmd/checkconfig/app.binary
-                args:
-                  - --plugin-config=../thoth-application/prow/overlays/cnv-prod/plugins.yaml # WARN a hard coded path!
-                  - --config-path=../thoth-application/prow/overlays/cnv-prod/config.yaml # WARN a hard coded path!
-                  - --prow-yaml-repo-name=$(REPO_OWNER)/$(REPO_NAME)
+      spec:
+        containers:
+          - image: gcr.io/k8s-prow/checkconfig:v20210204-de2fa22b93
+            command:
+              - /app/prow/cmd/checkconfig/app.binary
+            args:
+              - --plugin-config=../thoth-application/prow/overlays/cnv-prod/plugins.yaml # WARN a hard coded path!
+              - --config-path=../thoth-application/prow/overlays/cnv-prod/config.yaml # WARN a hard coded path!
+              - --prow-yaml-repo-name=$(REPO_OWNER)/$(REPO_NAME)
 
   thoth-station/adviser:
     - name: pre-commit
