@@ -73,3 +73,9 @@ spec:
                 limits:
                   memory: "256Mi"
                   cpu: "1"
+              livenessProbe:
+                httpGet:
+                  path: /liveness
+                  port: 80
+                initialDelaySeconds: 7200
+                periodSeconds: 1
