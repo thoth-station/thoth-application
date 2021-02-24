@@ -8,4 +8,4 @@ data:
   user-api: "api.moc.thoth-station.ninja"
   management-api: "management.moc.thoth-station.ninja"
   amun-api: "amun.moc.thoth-station.ninja"
-  tags: "~@seizes_middletier_namespace,~@seizes_amun_inspection_namespace"
+  tags: "@seizes_backend_namespace"
