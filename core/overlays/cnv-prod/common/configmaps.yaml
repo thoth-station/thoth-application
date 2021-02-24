@@ -36,7 +36,6 @@ metadata:
   name: solvers
 data:
   solvers: |
-    solver-rhel-8-py36
     solver-rhel-8-py38
 ---
 kind: ConfigMap
