@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have just successfully synchronized an ArgoCD application *management-api* to *CNV-PROD*, see <https://argocd-server-argocd.apps.cnv.massopen.cloud/applications/prod-thoth-management-api|ArgoCD UI>'}"
+            - "{'text':'I have just successfully synchronized an ArgoCD application *management-api* to *CNV-PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-management-api|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAILED* synchronizing *Management API* to *CNV-PROD*, see <https://argocd-server-argocd.apps.cnv.massopen.cloud/applications/prod-thoth-management-api|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* synchronizing *Management API* to *CNV-PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-management-api|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

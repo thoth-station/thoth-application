@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have successfully synchronized *Kebechet workflows* to *CNV-PROD*, see <https://argocd-server-argocd.apps.cnv.massopen.cloud/applications/prod-thoth-kebechet|ArgoCD UI> 🚀'}"
+            - "{'text':'I have successfully synchronized *Kebechet workflows* to *CNV-PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-kebechet|ArgoCD UI> 🚀'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAILED* syncing *Kebechet workflows* components to *CNV-PROD*, see <https://argocd-server-argocd.apps.cnv.massopen.cloud/applications/prod-thoth-kebechet|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* syncing *Kebechet workflows* components to *CNV-PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-kebechet|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
