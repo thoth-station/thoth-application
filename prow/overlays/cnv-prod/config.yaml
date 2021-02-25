@@ -201,10 +201,12 @@ tide:
         repos:
           adviser:
             required-contexts:
-              - aicoe-ci/pytest-check
+              - aicoe-ci/prow/pre-commit
+              - aicoe-ci/prow/pytest
               - aicoe-ci/build-check
           amun-api:
             required-contexts:
+              - aicoe-ci/prow/pre-commit
               - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
           buildlog-parser:
@@ -529,39 +531,6 @@ presubmits:
               - --plugin-config=../thoth-application/prow/overlays/cnv-prod/plugins.yaml # WARN a hard coded path!
               - --config-path=../thoth-application/prow/overlays/cnv-prod/config.yaml # WARN a hard coded path!
               - --prow-yaml-repo-name=$(REPO_OWNER)/$(REPO_NAME)
-
-  thoth-station/adviser:
-    - name: pre-commit
-      decorate: true
-      skip_report: false
-      always_run: true
-      context: aicoe-ci/prow/pre-commit
-      spec:
-        containers:
-          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.5
-            command:
-              - "pre-commit"
-              - "run"
-              - "--all-files"
-            resources:
-              requests:
-                memory: "2Gi"
-                cpu: "2"
-
-    - name: thoth-pytest-py38
-      decorate: true
-      skip_report: false
-      always_run: true
-      context: aicoe-ci/prow/pytest
-      spec:
-        containers:
-          - image: quay.io/goern/thoth-pytest:v0.13.0-dev
-            command:
-              - "/bin/run-pytest"
-            resources:
-              requests:
-                memory: "2Gi"
-                cpu: "2"
 
   thoth-station/messaging:
     - name: pre-commit
