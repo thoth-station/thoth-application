@@ -41,6 +41,11 @@ spec:
                 configMapKeyRef:
                   key: validate-responses
                   name: user-api
+            - name: THOTH_CACHE_EXPIRATION
+              valueFrom:
+                configMapKeyRef:
+                  key: cache-expiration
+                  name: user-api
             - name: THOTH_FRONTEND_NAMESPACE
               valueFrom:
                 configMapKeyRef:
