@@ -1,0 +1,35 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: update-kebechet-installation
+spec:
+  templates:
+    - name: update-kebechet-installation
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: KEBECHET_SLUG
+      container:
+        name: update-kebechet-installation
+        image: workflow-helpers
+        env:
+          - name: KEBECHET_SLUG
+            value: "{{inputs.parameters.KEBECHET_SLUG}}"
+          - name: THOTH_WORKFLOW_TASK
+            value: "update_kebechet_installation"
+          - name: GITHUB_KEBECHET_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: github-oauth-token
+                name: kebechet
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+        volumeMounts:
+          - name: workdir
+            mountPath: /mnt/workdir
