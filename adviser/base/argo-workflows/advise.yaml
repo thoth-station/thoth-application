@@ -43,12 +43,9 @@ spec:
         parameters:
           - name: THOTH_ADVISER_JOB_ID
           - name: THOTH_DOCUMENT_ID
-          - name: THOTH_ADVISER_REQUIREMENTS
-          - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
-          - name: THOTH_ADVISER_LIBRARY_USAGE
           - name: THOTH_ADVISER_REQUIREMENTS_FORMAT
+            value: "pipenv"
           - name: THOTH_ADVISER_RECOMMENDATION_TYPE
-          - name: THOTH_ADVISER_RUNTIME_ENVIRONMENT
           - name: THOTH_ADVISER_PREDICTOR_CONFIG
             value: "{}"
           - name: THOTH_ADVISER_METADATA

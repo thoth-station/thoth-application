@@ -16,21 +16,17 @@ spec:
         parameters:
           - name: THOTH_DEPENDENCY_MONKEY_JOB_ID
           - name: THOTH_DOCUMENT_ID
-          - name: THOTH_ADVISER_REQUIREMENTS
           - name: THOTH_LOG_ADVISER
-          - name: THOTH_ADVISER_RUNTIME_ENVIRONMENT
           - name: THOTH_ADVISER_PLOT
           - name: THOTH_ADVISER_BEAM_WIDTH
           - name: THOTH_DEPENDENCY_MONKEY_STACK_OUTPUT
           - name: THOTH_DEPENDENCY_MONKEY_SEED
           - name: THOTH_ADVISER_DEV
-          - name: THOTH_ADVISER_PIPELINE
           - name: THOTH_ADVISER_PREDICTOR
             value: "AUTO"
           - name: THOTH_ADVISER_PREDICTOR_CONFIG
           - name: THOTH_DEPENDENCY_MONKEY_DECISION_TYPE
           - name: THOTH_DEPENDENCY_MONKEY_DRY_RUN
-          - name: THOTH_AMUN_CONTEXT
           - name: THOTH_DEPENDENCY_MONKEY_COUNT
           - name: THOTH_ADVISER_LIMIT_LATEST_VERSIONS
           - name: THOTH_DEPLOYMENT_NAME
