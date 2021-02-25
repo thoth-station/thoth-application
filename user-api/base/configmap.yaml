@@ -6,3 +6,4 @@ metadata:
 data:
   api-https: "1"
   validate-responses: "0"
+  cache-expiration: "43200"  # 4 hours
