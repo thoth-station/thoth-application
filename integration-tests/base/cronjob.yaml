@@ -21,7 +21,7 @@ spec:
             app: thoth
             component: integration-tests
         spec:
-          restartPolicy: OnFailure
+          restartPolicy: Never
           containers:
             - image: "integration-tests:latest"
               name: integration-tests
