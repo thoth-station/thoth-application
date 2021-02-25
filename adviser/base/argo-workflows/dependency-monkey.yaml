@@ -85,11 +85,11 @@ spec:
           - name: THOTH_ADVISER_ENABLE_PREPARE
             value: "1"
           - name: THOTH_ADVISER_REQUIREMENTS
-            value: "{{inputs.parameters.THOTH_ADVISER_REQUIREMENTS}}"
+            value: "input/Pipfile"
           - name: THOTH_LOG_ADVISER
             value: "{{inputs.parameters.THOTH_LOG_ADVISER}}"
           - name: THOTH_ADVISER_RUNTIME_ENVIRONMENT
-            value: "{{inputs.parameters.THOTH_ADVISER_RUNTIME_ENVIRONMENT}}"
+            value: "input/runtime_environment.json"
           - name: THOTH_ADVISER_PLOT
             value: "{{inputs.parameters.THOTH_ADVISER_PLOT}}"
           - name: THOTH_ADVISER_BEAM_WIDTH
@@ -105,13 +105,13 @@ spec:
           - name: THOTH_DEPENDENCY_MONKEY_DRY_RUN
             value: "{{inputs.parameters.THOTH_DEPENDENCY_MONKEY_DRY_RUN}}"
           - name: THOTH_ADVISER_PIPELINE
-            value: "{{inputs.parameters.THOTH_ADVISER_PIPELINE}}"
+            value: "input/pipeline.json"
           - name: THOTH_ADVISER_PREDICTOR
             value: "{{inputs.parameters.THOTH_ADVISER_PREDICTOR}}"
           - name: THOTH_ADVISER_PREDICTOR_CONFIG
             value: "{{inputs.parameters.THOTH_ADVISER_PREDICTOR_CONFIG}}"
           - name: THOTH_AMUN_CONTEXT
-            value: "{{inputs.parameters.THOTH_AMUN_CONTEXT}}"
+            value: "input/context.json"
           - name: THOTH_DEPENDENCY_MONKEY_COUNT
             value: "{{inputs.parameters.THOTH_DEPENDENCY_MONKEY_COUNT}}"
           - name: THOTH_ADVISER_LIMIT_LATEST_VERSIONS

@@ -73,9 +73,9 @@ spec:
           - name: THOTH_WHITELISTED_SOURCES
             value: "{{inputs.parameters.THOTH_WHITELISTED_SOURCES}}"
           - name: THOTH_ADVISER_REQUIREMENTS
-            value: "{{inputs.parameters.THOTH_ADVISER_REQUIREMENTS}}"
+            value: "input/Pipfile"
           - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
-            value: "{{inputs.parameters.THOTH_ADVISER_REQUIREMENTS_LOCKED}}"
+            value: "input/Pipfile.lock"
           - name: THOTH_ADVISER_METADATA
             value: "{{inputs.parameters.THOTH_ADVISER_METADATA}}"
           - name: THOTH_LOG_ADVISER
