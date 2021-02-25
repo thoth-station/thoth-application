@@ -142,4 +142,4 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "1"
-                when: "{{workflow.parameters.THOTH_SYNC_PACKAGE_EXTRACT}} == '1'"
+                when: "{{workflow.parameters.THOTH_SYNC_PACKAGE_EXTRACT}} == 1"
