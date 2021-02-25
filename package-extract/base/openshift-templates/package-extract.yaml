@@ -43,6 +43,10 @@ parameters:
   - name: THOTH_REGISTRY_CREDENTIALS
     description: Credentials for connecting to registry to pull images from
     displayName: Registry credentials
+  - name: THOTH_SYNC_PACKAGE_EXTRACT
+    description: Sync package-extract results to knowledge graph
+    displayName: Sync package-extract
+    value: '0'
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -76,6 +80,8 @@ objects:
             value: "${THOTH_ANALYZER_NO_TLS_VERIFY}"
           - name: THOTH_REGISTRY_CREDENTIALS
             value: "${THOTH_REGISTRY_CREDENTIALS}"
+          - name: THOTH_SYNC_PACKAGE_EXTRACT
+            value: "${THOTH_SYNC_PACKAGE_EXTRACT}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -136,3 +142,4 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "1"
+                when: "{{workflow.parameters.THOTH_SYNC_PACKAGE_EXTRACT}} == '1'"
