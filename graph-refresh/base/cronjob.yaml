@@ -26,6 +26,8 @@ spec:
             - image: "graph-refresh-job:latest"
               name: graph-refresh
               env:
+                - name: THOTH_LOG_GRAPH_REFRESH_JOB
+                  value: "INFO"
                 - name: DEBUG_LEVEL
                   value: "0"
                 - name: APP_SCRIPT
