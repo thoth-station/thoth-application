@@ -304,6 +304,10 @@ tide:
             required-contexts:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
+          thoth-application:
+            required-contexts:
+              - aicoe-ci/prow/pre-commit
+              - aicoe-ci/prow/kustomize-build
 
 periodics:
   - name: integration-tests-moc
@@ -311,7 +315,7 @@ periodics:
     decorate: true
     spec:
       containers:
-        - image: quay.io/thoth-station/integration-tests:v0.6.0
+        - image: quay.io/thoth-station/integration-tests:v0.7.1
           imagePullPolicy: Always
           command:
             - python3
@@ -512,25 +516,6 @@ presubmits:
                 value: amun.moc.thoth-station.ninja
               - name: THOTH_MANAGEMENT_API_SECRET
                 value: ""
-
-  thoth-station/srcops-testing:
-    - name: validate-inrepo-prow-yaml
-      context: aicoe-ci/prow/validate-inrepo-prow-yaml
-      always_run: true
-      decorate: true
-      extra_refs:
-        - org: thoth-station
-          repo: thoth-application
-          base_ref: master
-      spec:
-        containers:
-          - image: gcr.io/k8s-prow/checkconfig:v20210204-de2fa22b93 # WARN hard wired container image tag
-            command:
-              - /app/prow/cmd/checkconfig/app.binary
-            args:
-              - --plugin-config=../thoth-application/prow/overlays/cnv-prod/plugins.yaml # WARN a hard coded path!
-              - --config-path=../thoth-application/prow/overlays/cnv-prod/config.yaml # WARN a hard coded path!
-              - --prow-yaml-repo-name=$(REPO_OWNER)/$(REPO_NAME)
 
   thoth-station/messaging:
     - name: pre-commit
