@@ -24,16 +24,6 @@ spec:
                     configMapKeyRef:
                       name: slo-reporter
                       key: smtp-server
-                - name: SMTP_SERVER_USERNAME
-                  valueFrom:
-                    secretKeyRef:
-                      name: slo-reporter
-                      key: smtp-username
-                - name: SMTP_SERVER_PASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      name: slo-reporter
-                      key: smtp-password
                 - name: EMAIL_SENDER
                   valueFrom:
                     configMapKeyRef:
