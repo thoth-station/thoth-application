@@ -4,4 +4,147 @@ apiVersion: batch/v1beta1
 metadata:
   name: slo-reporter
 spec:
+  schedule: "0 6 * * *"
   suspend: false
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - image: "slo-reporter"
+              name: slo-reporter
+              env:
+                - name: THOTH_SLO_REPORTER_USING_SMTP_TLS
+                  value: "0"
+                - name: SMTP_SERVER
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: smtp-server
+                - name: SMTP_SERVER_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: slo-reporter
+                      key: smtp-username
+                - name: SMTP_SERVER_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: slo-reporter
+                      key: smtp-password
+                - name: EMAIL_SENDER
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: sender-address
+                - name: EMAIL_RECIPIENTS
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: email-recipients
+                - name: PROMETHEUS_PUSHGATEWAY_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: pushgateway-url
+                - name: THANOS_ENDPOINT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slo-reporter
+                      key: thanos-endpoint
+                - name: THANOS_ACCESS_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: slo-reporter
+                      key: token
+                - name: THOTH_MIDDLETIER_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: middletier-namespace
+                      name: thoth
+                - name: THOTH_BACKEND_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: backend-namespace
+                      name: thoth
+                - name: THOTH_AMUN_INSPECTION_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: amun-inspection-namespace
+                      name: thoth
+                - name: THOTH_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-name
+                      name: ceph
+                - name: THOTH_PUBLIC_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: public-bucket-name
+                      name: ceph
+                - name: THOTH_CEPH_BUCKET_PREFIX
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-prefix
+                      name: ceph
+                - name: THOTH_S3_ENDPOINT_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: host
+                      name: ceph
+                - name: THOTH_CEPH_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: key-id
+                - name: THOTH_CEPH_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: secret-key
+                - name: PROMETHEUS_INSTANCE_METRICS_EXPORTER_INFRA
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: instance-metrics-exporter-infra
+                - name: PROMETHEUS_INSTANCE_WORKFLOW_CONTROLLER_BACKEND
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: instance-workflow-controller-metrics-backend
+                - name: PROMETHEUS_INSTANCE_WORKFLOW_CONTROLLER_MIDDLETIER
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: instance-workflow-controller-metrics-middletier
+                - name: PROMETHEUS_INSTANCE_WORKFLOW_CONTROLLER_AMUN_INSPECTION
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: instance-workflow-controller-metrics-amun-inspection
+                - name: PROMETHEUS_INSTANCE_USER_API
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: user-api-url
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: thoth
+              livenessProbe:
+                failureThreshold: 1
+                initialDelaySeconds: 7200
+                periodSeconds: 10
+                tcpSocket:
+                  port: 80
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "500m"
+                limits:
+                  memory: "512Mi"
+                  cpu: "500m"
+          restartPolicy: OnFailure
