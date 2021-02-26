@@ -21,7 +21,7 @@ spec:
             app: thoth
             component: integration-tests
         spec:
-          restartPolicy: Never
+          backoffLimit: 0
           containers:
             - image: "integration-tests:latest"
               name: integration-tests
@@ -66,6 +66,7 @@ spec:
                     configMapKeyRef:
                       key: tags
                       name: integration-tests
+              restartPolicy: Never
               resources:
                 requests:
                   memory: "256Mi"
