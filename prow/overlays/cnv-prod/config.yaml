@@ -33,7 +33,7 @@ branch-protection:
       allow_force_pushes: false
       required_status_checks:
         contexts:
-          - aicoe-ci/pre-commit-check
+          - aicoe-ci/prow/pre-commit
       exclude:
         - "^revert-"
         - "^kebechet-"
@@ -302,7 +302,7 @@ tide:
               - aicoe-ci/pre-commit-check
           elyra-aidevsecops-tutorial:
             required-contexts:
-              - aicoe-ci/pre-commit-check
+              - aicoe-ci/prow/pre-commit
               - aicoe-ci/build-check
           thoth-application:
             required-contexts:
@@ -384,24 +384,6 @@ presubmits:
             resources:
               requests:
                 memory: "256Mi"
-    - name: pre-commit
-      decorate: true
-      skip_report: false
-      always_run: true
-      context: aicoe-ci/prow/pre-commit
-      spec:
-        containers:
-          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.5
-            command:
-              - "pre-commit"
-              - "run"
-              - "--all-files"
-            resources:
-              requests:
-                memory: "2Gi"
-                cpu: "2"
-
-  thoth-station/elyra-aidevsecops-tutorial:
     - name: pre-commit
       decorate: true
       skip_report: false
