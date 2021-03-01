@@ -22,6 +22,7 @@ spec:
             component: integration-tests
         spec:
           backoffLimit: 0
+          restartPolicy: Never
           containers:
             - image: "integration-tests:latest"
               name: integration-tests
@@ -66,7 +67,6 @@ spec:
                     configMapKeyRef:
                       key: tags
                       name: integration-tests
-              restartPolicy: Never
               resources:
                 requests:
                   memory: "256Mi"
