@@ -15,13 +15,13 @@ spec:
   startingDeadlineSeconds: null
   jobTemplate:
     spec:
+      backoffLimit: 0
       template:
         metadata:
           labels:
             app: thoth
             component: integration-tests
         spec:
-          backoffLimit: 0
           restartPolicy: Never
           containers:
             - image: "integration-tests:latest"
