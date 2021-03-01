@@ -789,3 +789,137 @@
 * Bump SLO-reporter to v0.8.3 in stage and prod (#841)
 ### Other
 * little better test script
+
+## Release 2021.03.01 (2021-03-01T17:19:12)
+### Features
+* :sparkles: :arrow_up: requiring aicoe-ci/prow/pre-commit in branchprotection
+* Handle restarts of integration-tests (#995)
+* Update ocp4 stage slo-reporter (#994)
+* Adjust web concurrency for user-api (#992)
+* Use data stored on Ceph in adviser containers in stage (#989)
+* :ship: Deploy the Tag v0.20.2 for user-api
+* Bump user-api to v0.20.2 in stage environment (#988)
+* :ship: Deploy the Tag pr-1308 for user-api
+* Bump user-api to v0.20.1 in stage environment (#980)
+* :ship: Deploy the Tag v0.20.0 for user-api
+* Bump investigator to v0.10.0 in stage (#984)
+* :ship: Deploy the Tag v0.10.0 for investigator
+* Fix syncing condition for package-extract (#986)
+* :arrow_up: Bump version v0.9.2 for investigator prod (#972)
+* :arrow_up: Bump version v0.21.0 for sefkhet-abwy (#983)
+* Bump management-api to v0.15.0 in prod environment (#979)
+* :ship: Deploy the Tag v0.15.0 for management-api
+* Bump management-api to v0.15.0 in stage environment (#978)
+* Bump user-api to v0.19.4 in stage (#976)
+* :ship: Deploy the Tag v0.19.4 for user-api
+* Increase cache expiration on user-api (#975)
+* :arrow_up: Bump version v0.9.2 for investigator stage (#971)
+* migrate dependency monkey run in amun-inspection (#859)
+* Bump integration-tests to v0.7.1 in prod (#962)
+* Bump integration-tests to v0.7.1 in stage (#961)
+* enable graph-refresh to display logs
+* Configure liveness probe for integration-tests (#969)
+* all chat notification are send from infra namespace
+* :brain: learn ubi8-py38 stack on prod cluster (#965)
+* enable learning on the prod server (#964)
+* :ship: Bump version v0.25.1 for adviser prod (#963)
+* Bump user-api to v0.19.3 in prod (#960)
+* :ship: Deploy the Tag v0.7.1 for integration-tests
+* Bump user-api to v0.19.3 in stage (#959)
+* :ship: Deploy the Tag v0.19.3 for user-api
+* Bump management-api to v0.14.0 in prod (#954)
+* :ship: Deploy the Tag v0.19.2 for user-api
+* :arrow_up: deploy v0.20.5 to PROD
+* :ship: Deploy the Tag v0.7.0 for integration-tests
+* add inrepo config to prow
+* add inrepo config to prow
+* add mypi test to advisor
+* add pre-commit job to thoth-station/elyra-aidevsecops-tutorial
+* Bump management-api to v0.14.0 in stage environment (#953)
+* add pre-commit job to aicoe-aiops/mailing-list-analysis-toolkit
+* update pre-commit image tag being used
+* Provide Amun inspection namespace to management-api (#951)
+* :ship: Deploy the Tag v0.14.0 for management-api
+* Adjust command for integration-tests in Prow (#935)
+* Select only relevant integration-tests in cnv-prod (#948)
+* Enable generating report in integration-tests (#943)
+* :ship: Deploy the Tag v0.9.2 for investigator
+* :ship: Deploy the Tag pr-136 for integration-tests
+* switch of solving while syncing is happening
+* kustomize-build can not run always
+* Bump adviser to v0.25.1 in stage environment (#937)
+* Increase resources for Amun API (#936)
+* add thoth-station/s2i-generic-data-science-notebook repo config
+* add to inspection to send messages upon completion (#786)
+* :ship: Deploy the Tag v0.25.1 for adviser
+* add pre-commit job to aicoe-aiops/ocp-ci-analysis
+* add more presubmit job to more repos
+* clean stage overlays which corresponds to ocp cluster(no longer in use) (#934)
+* :ship: Deploy the Tag v0.25.0 for adviser
+* report job back to github
+* :four_leaf_clover:include manifests for the mi scheduler moc deployment
+* :arrow_up: add presubmit to o-f/apps repo
+* Bump integration-tests to v0.6.0 in stage environment (#933)
+* :ship: Deploy the Tag v0.6.0 for integration-tests
+* smtp server information to be picked from configmap (#929)
+* secrets are base64 encoded (#928)
+* re-encrypt amun certs secrets for moc environment (#927)
+* Re-encrypt secret of moc environment for thoth components (#926)
+* Use SMTP TLS in prod (#923)
+* set amun inspection time-to-live for 15min (#922)
+* :ship: Deploy the Tag v0.13.0 for management-api
+* :ship: Deploy the Tag v0.10.0 for slo-reporter
+* :bug: rename the overlay
+* Include sprint cycle release template (#909)
+* Use prepared files in adviser container runs (#919)
+* :ship: Deploy the Tag pr-1684 for adviser
+* :ship: Deploy the Tag pr-1682 for adviser
+* 🔏 add sendinblue credentials
+* Enable preparing environment in adviser container (#918)
+* Introduce kafka env var update all across the envs (#917)
+* :ship: Deploy the Tag pr-1670 for adviser
+* ignore qeb-hwt-github-app for now
+* User API does not use Amun (#913)
+* add the missing manifests
+* add the missing manifests
+* there is no secrets file for amun-api on MOC/p9
+* there is no secrets file for amun-api on MOC/p9
+* add annotations: null all over the place...
+* :arrow_up: update all version of container images used
+* Release of version 2021.02.15 (#908)
+### Bug Fixes
+* :bowtie: Update the cnv prod argocd url with the latest (#966)
+* fix inrepo config context and job name
+* fixed the paramater attribute for amun templates
+* patch the notification job with generatename instead of name
+* fix the integration-tests tag
+* fix alertlabel for o-f/sre
+* fix some imagestreamtags
+* fix need-ok-to-test label
+* fix need-ok-to-test label
+* :bug: fix the config file name used by label_sync cronjob
+* :bug: fix the config file name used by label_sync cronjob
+### Improvements
+* :sparkles: :arrow_up: minor updates
+* :sparkles: move test jobs to prow inrepo config of adviser
+* Add flag to optionally sync results of package-extract (#949)
+* :star: corrected the name of notification job for integration tasks
+* Adjust restart policy for integration tests (#970)
+* Run integration tests that use backend namespace (#967)
+* Do not run integration tests requiring middletier namespace (#947)
+* Bump integration tests to v0.7.0 (#952)
+* use app.py from integration-tests directly
+* Correct labels to use templating (#942)
+* Bump integration tests to v0.5.0 (#931)
+* Enable integration tests (#925)
+* :sparkles: all the roles and rolebindungs to use the test-pods namespace (#903)
+* Validate User API responses in stage and test (#914)
+* Validate responses by Management API in stage and test environments (#916)
+* Rename environment variable for sending integration test reports (#910)
+* remove unused secrets file
+* :bug: TODO how do we get this IST?
+* :bug: TODO how do we get this IST?
+### Non-functional
+* testing https://github.com/operate-first/apps/pull/217\#issuecomment-779163585
+### Other
+* remove mypy job from advisor
