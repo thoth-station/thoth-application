@@ -5,6 +5,7 @@ commonLabels:
   app.kubernetes.io/component: package-extract
   app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
+  - openshift-templates/build-analysis.yaml
   - openshift-templates/package-extract.yaml
   - argo-workflows/package-extract.yaml
   - imagestream.yaml
