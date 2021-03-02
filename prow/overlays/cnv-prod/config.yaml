@@ -197,6 +197,12 @@ tide:
             required-contexts:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
+      operate-first:
+        repos:
+          apps:
+            required-contexts:
+              - aicoe/prow/pre-commit
+              - aicoe-ci/prow/kustomize-build
       thoth-station:
         repos:
           adviser:
