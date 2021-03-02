@@ -251,7 +251,7 @@ tide:
               - aicoe-ci/build-check
           user-api:
             required-contexts:
-              - aicoe-ci/pre-commit-check
+              - aicoe-ci/prow/pre-commit
               - aicoe-ci/build-check
           package-analyzer:
             required-contexts:
