@@ -25,7 +25,6 @@ parameters:
     displayName: "Document identifier"
     required: true
   - name: THOTH_ADVISER_REQUIREMENTS
-    required: true
     description: Raw stack requirements.
   - name: THOTH_LOG_ADVISER
     description: Log Dependency Mokney actions.
