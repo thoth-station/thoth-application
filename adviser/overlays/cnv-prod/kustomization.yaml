@@ -39,7 +39,7 @@ patchesJson6902:
       version: v1
       kind: Template
       name: provenance-checker
-  - path: put-into-middletier-namespace.yaml
+  - path: put-into-amun-inspection-namespace.yaml
     target:
       group: argoproj.io
       version: v1alpha1
