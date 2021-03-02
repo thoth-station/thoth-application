@@ -7,9 +7,6 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
-  - argo-workflows/advise.yaml
-  - argo-workflows/dependency-monkey.yaml
-  - argo-workflows/provenance-check.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
