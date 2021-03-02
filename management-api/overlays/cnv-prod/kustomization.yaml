@@ -25,6 +25,12 @@ patchesJson6902:
       version: v1
       kind: Role
       name: management-api
+  - path: put-into-amun-inspection-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: management-api-pods-info
 generators:
   - secret-generator.yaml
 generatorOptions:
