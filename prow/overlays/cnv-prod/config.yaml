@@ -215,8 +215,8 @@ tide:
               - aicoe-ci/build-check
           common:
             required-contexts:
-              - aicoe-ci/pre-commit-check
-              - aicoe-ci/pytest-check
+              - aicoe-ci/prow/pre-commit
+              - aicoe-ci/prow/pytest
           datasets:
             required-contexts:
               - aicoe-ci/build-check
