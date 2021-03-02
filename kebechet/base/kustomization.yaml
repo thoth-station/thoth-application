@@ -9,6 +9,7 @@ resources:
   - openshift-templates/kebechet-run-url.yaml
   - argo-workflows/kebechet-administrator.yaml
   - openshift-templates/kebechet-administrator.yaml
+  - argo-workflows/update_keb_installation.yaml
 commonLabels:
   app.kubernetes.io/name: thoth
   app.kubernetes.io/component: kebechet

@@ -8,6 +8,7 @@ resources:
 patchesStrategicMerge:
   - configmap.yaml
   - imagestreamtag.yaml
+  - kebechet.yaml
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
