@@ -236,11 +236,11 @@ tide:
               - aicoe-ci/pytest-check
           integration-tests:
             required-contexts:
-              - aicoe-ci/pre-commit-check
+              - aicoe-ci/prow/pre-commit
               - aicoe-ci/build-check
           kebechet:
             required-contexts:
-              - aicoe-ci/pre-commit-check
+              - aicoe-ci/prow/pre-commit
               - aicoe-ci/build-check
           source-management:
             required-contexts:
