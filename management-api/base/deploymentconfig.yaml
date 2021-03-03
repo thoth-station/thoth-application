@@ -27,6 +27,8 @@ spec:
               value: "thoth.management_api.openapi_server:app"
             - name: KUBERNETES_API_URL
               value: "https://kubernetes.default.svc.cluster.local"
+            - name: WEB_CONCURRENCY
+              value: "2"
             - name: KUBERNETES_VERIFY_TLS
               value: "0"
             - name: THOTH_MANAGEMENT_API_RUN_MIGRATIONS
