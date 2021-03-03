@@ -151,7 +151,7 @@ objects:
               - name: THOTH_MESSAGING_FROM_FILE
                 value: "/mnt/workdir/messages_to_be_sent.json"
               - name: THOTH_DEPLOYMENT_NAME
-                value: "{{workflow.parameters.deployment_name}}"  # TODO: get deployment name from somewhere
+                value: "{{workflow.parameters.deployment_name}}"
               - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
                 value: "0"
               - name: MESSAGES_DOCUMENT_NAME
