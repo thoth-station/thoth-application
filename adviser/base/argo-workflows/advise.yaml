@@ -111,8 +111,6 @@ spec:
             value: "/mnt/workdir/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
           - name: THOTH_ADVISER_FORK
             value: "1"
-          - name: THOTH_ADVISER_ENABLE_PREPARE
-            value: "1"
           - name: THOTH_LOG_ADVISER
             value: "{{inputs.parameters.THOTH_LOG_ADVISER}}"
           - name: THOTH_ADJUST_LOGGING
@@ -147,8 +145,6 @@ spec:
             value: "advise"
           - name: THOTH_ADVISER_LIBRARY_USAGE
             value: "input/library_usage.json"
-          - name: THOTH_ADVISER_ENABLE_PREPARE
-            value: "1"
           - name: PROMETHEUS_PUSHGATEWAY_HOST
             valueFrom:
               configMapKeyRef:

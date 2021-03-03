@@ -78,8 +78,6 @@ spec:
             value: "{{inputs.parameters.THOTH_DEPENDENCY_MONKEY_JOB_ID}}"
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
-          - name: THOTH_ADVISER_ENABLE_PREPARE
-            value: "1"
           - name: THOTH_ADVISER_REQUIREMENTS
             value: "input/Pipfile"
           - name: THOTH_LOG_ADVISER
