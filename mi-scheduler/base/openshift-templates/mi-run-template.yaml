@@ -42,6 +42,8 @@ objects:
             value: ${REPOSITORY}
           - name: ENTITIES
             value: ${ENTITIES}
+          - name: KNOWLEDGE_PATH
+            value: ${KNOWLEDGE_PATH}
       templates:
         - name: "mi"
           dag:
@@ -56,3 +58,5 @@ objects:
                       value: ${REPOSITORY}
                     - name: ENTITIES
                       value: ${ENTITIES}
+                    - name: KNOWLEDGE_PATH
+                      value: ${KNOWLEDGE_PATH}
