@@ -76,6 +76,8 @@ spec:
         name: solver
         image: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
         env:
+          - name: APP_SCRIPT
+            value: "app.sh"
           - name: THOTH_SOLVER
             value: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
           - name: THOTH_SOLVER_VIRTUALENV
