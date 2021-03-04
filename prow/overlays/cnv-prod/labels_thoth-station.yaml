@@ -8,6 +8,12 @@
 ---
 default:
   labels:
+    - color: ff9695
+      description: This is an Issue or PR someone want to give a demo or request a demo.
+      name: kind/demo
+      target: both
+      prowPlugin: label
+      addedBy: human
     - color: fef2c0
       description: Indicates a PR has been approved by an approver from all required OWNERS files.
       name: approved
