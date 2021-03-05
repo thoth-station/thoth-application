@@ -243,7 +243,7 @@ spec:
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: label-sync
+  name: label_sync
 spec:
   lookupPolicy:
     local: true

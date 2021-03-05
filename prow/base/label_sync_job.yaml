@@ -13,7 +13,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: label-sync
-          image: label-sync:latest
+          image: label_sync:latest
           args:
             - --config=/etc/config/labels.yaml
             - --confirm=true
