@@ -2,11 +2,11 @@
 kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
-  name: mi-scheduler
+  name: mi-scheduler-gh
   labels:
-    app: mi-scheduler
+    app: mi-scheduler-gh
 spec:
-  schedule: "@hourly"
+  schedule: "@daily"
   suspend: false
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
@@ -15,7 +15,7 @@ spec:
     spec:
       template:
         metadata:
-          name: mi-scheduler
+          name: mi-scheduler-gh
         spec:
           serviceAccount: mi-scheduler
           containers:
@@ -48,6 +48,10 @@ spec:
                     secretKeyRef:
                       name: sesheta-srcops
                       key: github-access-token
+                - name: SCHEDULE_KEBECHET_ANALYSIS
+                  value: "0"
+                - name: SCHEDULE_GH_REPO_ANALYSIS
+                  value: "1"
           restartPolicy: OnFailure
 ---
 kind: CronJob
