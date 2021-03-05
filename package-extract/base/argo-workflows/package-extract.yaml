@@ -7,7 +7,7 @@ spec:
   templates:
     - name: extract-packages
 
-metrics:
+      metrics:
         prometheus:
           - name: task_status_counter
             help: "Count of workflow task by status"
