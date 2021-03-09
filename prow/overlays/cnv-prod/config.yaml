@@ -6,7 +6,7 @@ plank:
   default_decoration_configs:
     "*":
       gcs_configuration:
-        bucket: s3://ci-prow-artifacts--b5e7ae8b-dcfb-4381-848f-853c8f705187/prow-logs
+        bucket: s3://ci-prow-artifacts--36f9ca3b-f5af-4432-bef8-af42508b403e/prow-logs
         path_strategy: explicit
       s3_credentials_secret: s3-credentials
       utility_images:
