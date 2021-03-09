@@ -29,7 +29,7 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/hook:v20210304-a61492beff
       name: v20210304-a61492beff
 ---
@@ -64,7 +64,7 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/sinker:v20210304-a61492beff
       name: v20210304-a61492beff
 ---
@@ -99,7 +99,7 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/deck:v20210304-a61492beff
       name: v20210304-a61492beff
 ---
@@ -134,7 +134,7 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/horologium:v20210304-a61492beff
       name: v20210304-a61492beff
 ---
@@ -169,7 +169,7 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/tide:v20210304-a61492beff
       name: v20210304-a61492beff
 ---
@@ -204,7 +204,7 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/status-reconciler:v20210304-a61492beff
       name: v20210304-a61492beff
 ---
@@ -239,7 +239,7 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/crier:v20210304-a61492beff
       name: v20210304-a61492beff
 ---
@@ -274,7 +274,7 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/needs-rebase:v20210304-a61492beff
       name: v20210304-a61492beff
 ---
@@ -309,7 +309,7 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/label_sync:v20210304-a61492beff
       name: v20210304-a61492beff
 ---
@@ -344,6 +344,6 @@ spec:
         type: Local
     - annotations: null
       from:
-        kind: ImageStreamTag
+        kind: DockerImage
         name: gcr.io/k8s-prow/pipeline:v20210304-a61492beff
       name: v20210304-a61492beff
