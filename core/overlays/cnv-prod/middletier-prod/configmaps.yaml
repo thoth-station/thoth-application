@@ -28,7 +28,7 @@ data:
 
       s3:
         bucket: "thoth"
-        keyPrefix: "data/cnv-prod/argo/artifacts/"
+        keyPrefix: "data/zero-prod/argo/artifacts/"
         endpoint: "rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
         insecure: true
         accessKeySecret:

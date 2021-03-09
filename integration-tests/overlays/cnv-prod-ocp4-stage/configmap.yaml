@@ -4,7 +4,7 @@ apiVersion: v1
 metadata:
   name: integration-tests
 data:
-  deployment-name: "cnv-prod"
+  deployment-name: "zero-prod"
   user-api: "api.moc.thoth-station.ninja"
   management-api: "management.moc.thoth-station.ninja"
   amun-api: "amun.moc.thoth-station.ninja"

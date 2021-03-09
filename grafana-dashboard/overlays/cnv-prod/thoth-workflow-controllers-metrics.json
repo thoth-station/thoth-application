@@ -609,8 +609,8 @@
           "allValue": null,
           "current": {
             "tags": [],
-            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud:80",
-            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud:80"
+            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
+            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
           },
           "hide": 0,
           "includeAll": false,
@@ -620,16 +620,16 @@
           "options": [
             {
               "selected": false,
-              "text": "workflow-controller-metrics-thoth-backend-prod.apps.cnv.massopen.cloud:80",
-              "value": "workflow-controller-metrics-thoth-backend-prod.apps.cnv.massopen.cloud:80"
+              "text": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80",
+              "value": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
             },
             {
               "selected": false,
-              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud:80",
-              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud:80"
+              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
+              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
             }
           ],
-          "query": "workflow-controller-metrics-thoth-backend-prod.apps.cnv.massopen.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud:80",
+          "query": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
           "type": "custom"
         },
         {

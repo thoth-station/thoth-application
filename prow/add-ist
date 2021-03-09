@@ -35,7 +35,9 @@ def reset_latest_tag(imagestream: dict, new_tag: str) -> None:
     """Reset the latest tag of the imagestream to the tag provided."""
     for tag in imagestream["spec"]["tags"]:
         if tag["name"] == "latest":
-            logging.info(f"resetting latest tag from {tag['from']['name']} to {new_tag}")
+            logging.info(
+                f"resetting latest tag from {tag['from']['name']} to {new_tag}"
+            )
             tag["from"]["name"] = new_tag
     return
 
@@ -47,7 +49,10 @@ def add_tag(imagestream: dict, tag_name: str) -> None:
         {
             "annotations": None,
             "name": tag_name,
-            "from": {"kind": "ImageStreamTag", "name": f"gcr.io/k8s-prow/{image_name}:{tag_name}"},
+            "from": {
+                "kind": "ImageStreamTag",
+                "name": f"gcr.io/k8s-prow/{image_name}:{tag_name}",
+            },
         }
     )
 
