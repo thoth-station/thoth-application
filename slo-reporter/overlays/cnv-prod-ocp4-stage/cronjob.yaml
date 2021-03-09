@@ -18,22 +18,12 @@ spec:
               name: slo-reporter
               env:
                 - name: THOTH_SLO_REPORTER_USING_SMTP_TLS
-                  value: "1"
+                  value: "0"
                 - name: SMTP_SERVER
                   valueFrom:
                     configMapKeyRef:
                       name: slo-reporter
                       key: smtp-server
-                - name: SMTP_SERVER_USERNAME
-                  valueFrom:
-                    secretKeyRef:
-                      name: slo-reporter
-                      key: smtp-username
-                - name: SMTP_SERVER_PASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      name: slo-reporter
-                      key: smtp-password
                 - name: EMAIL_SENDER
                   valueFrom:
                     configMapKeyRef:
