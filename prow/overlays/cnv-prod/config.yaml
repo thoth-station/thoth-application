@@ -29,6 +29,16 @@ in_repo_config:
 branch-protection:
   allow_disabled_policies: true
   orgs:
+    operate-first:
+      protect: true
+      allow_force_pushes: false
+      required_status_checks:
+        contexts:
+          - aicoe-ci/prow/pre-commit
+      exclude:
+        - "^revert-"
+        - "^kebechet-"
+        - "^dependabot/"
     thoth-station:
       protect: true
       allow_force_pushes: false
