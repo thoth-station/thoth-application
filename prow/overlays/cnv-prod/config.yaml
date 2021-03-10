@@ -23,7 +23,7 @@ in_repo_config:
     thoth-station: true
 
   allowed_clusters:
-    "thoth-station": ["api-cnv-massopen-cloud:6443"]
+    "thoth-station": ["api-zero-massopen-cloud:6443"]
 
 branch-protection:
   allow_disabled_policies: true
@@ -332,7 +332,7 @@ periodics:
             - app.py
           env:
             - name: THOTH_DEPLOYMENT_NAME
-              value: cnv-prod
+              value: zero-prod
             - name: MAIL_REPORT
               value: "0"
             - name: THOTH_USER_API_HOST
@@ -415,7 +415,7 @@ presubmits:
               - app.py
             env:
               - name: THOTH_DEPLOYMENT_NAME
-                value: cnv-prod
+                value: zero-prod
               - name: GENERATE_REPORT
                 value: "1"
               - name: MAIL_REPORT
