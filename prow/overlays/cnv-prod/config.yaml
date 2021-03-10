@@ -21,6 +21,7 @@ pod_namespace: opf-ci-prow
 in_repo_config:
   enabled:
     thoth-station: true
+    operate-first: true
 
   allowed_clusters:
     "thoth-station": ["api-zero-massopen-cloud:6443"]
