@@ -19,8 +19,8 @@ data:
   bucket-name: "thoth"
   bucket-prefix: "data"
   public-bucket-name: DH-PLAYPEN
-  host: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
-  endpoint: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
+  host: "https://s3.upshift.redhat.com/"
+  endpoint: "https://s3.upshift.redhat.com/"
   host-url: "http://prometheus-portal-thoth-infra-prod.apps.zero.massopen.cloud"
   user-api-url: "user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80"
   instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
