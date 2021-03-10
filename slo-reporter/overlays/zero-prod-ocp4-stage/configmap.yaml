@@ -8,14 +8,14 @@ data:
   smtp-server: "smtp.corp.redhat.com"
   sender-address: "aicoe-thoth@redhat.com"
   email-recipients: "aicoe-thoth@redhat.com"
-  deployment-name: cnv-prod
+  deployment-name: zero-prod
   amun-inspection-namespace: thoth-amun-inspection-prod
   amun-namespace: thoth-amun-api-prod
   backend-namespace: thoth-backend-prod
   middletier-namespace: thoth-middletier-prod
   frontend-namespace: thoth-frontend-prod
   infra-namespace: thoth-infra-prod
-  storage-bucket-name: cnv-prod
+  storage-bucket-name: zero-prod
   bucket-name: "thoth"
   bucket-prefix: "data"
   public-bucket-name: DH-PLAYPEN
