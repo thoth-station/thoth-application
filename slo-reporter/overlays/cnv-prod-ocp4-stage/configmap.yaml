@@ -4,7 +4,7 @@ apiVersion: v1
 metadata:
   name: slo-reporter-stage-prod
 data:
-  thanos-endpoint: "http://prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud"   # TODO: Use Thanos endpoint when available and set correct secret
+  thanos-endpoint: "http://prometheus-portal-thoth-infra-prod.apps.zero.massopen.cloud"   # TODO: Use Thanos endpoint when available and set correct secret
   smtp-server: "smtp.corp.redhat.com"
   sender-address: "aicoe-thoth@redhat.com"
   email-recipients: "aicoe-thoth@redhat.com"
@@ -21,13 +21,13 @@ data:
   public-bucket-name: DH-PLAYPEN
   host: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
   endpoint: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
-  host-url: "http://prometheus-portal-thoth-infra-prod.apps.cnv.massopen.cloud"
-  user-api-url: "user-api-thoth-frontend-prod.apps.cnv.massopen.cloud:80"
-  instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud:80"
-  instance-metrics-management-api: "management-api-thoth-frontend-prod.apps.cnv.massopen.cloud:80"
-  pushgateway-host: pushgateway-thoth-infra-prod.apps.cnv.massopen.cloud
+  host-url: "http://prometheus-portal-thoth-infra-prod.apps.zero.massopen.cloud"
+  user-api-url: "user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80"
+  instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
+  instance-metrics-management-api: "management-api-thoth-frontend-prod.apps.zero.massopen.cloud:80"
+  pushgateway-host: pushgateway-thoth-infra-prod.apps.zero.massopen.cloud
   pushgateway-port: "80"
-  pushgateway-url: pushgateway-thoth-infra-prod.apps.cnv.massopen.cloud:80
-  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-backend-prod.apps.cnv.massopen.cloud:80"
-  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud:80"
-  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-amun-inspection-prod.apps.cnv.massopen.cloud:80"
+  pushgateway-url: pushgateway-thoth-infra-prod.apps.zero.massopen.cloud:80
+  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
+  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
+  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-amun-inspection-prod.apps.zero.massopen.cloud:80"
