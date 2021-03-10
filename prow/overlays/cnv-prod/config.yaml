@@ -201,7 +201,7 @@ tide:
         repos:
           apps:
             required-contexts:
-              - aicoe/prow/pre-commit
+              - aicoe-ci/prow/pre-commit
               - aicoe-ci/prow/kustomize-build
       thoth-station:
         repos:
