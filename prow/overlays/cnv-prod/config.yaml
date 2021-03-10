@@ -212,122 +212,90 @@ tide:
         repos:
           apps:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/prow/kustomize-build
       thoth-station:
         repos:
           adviser:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/prow/pytest
               - aicoe-ci/build-check
           amun-api:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
           buildlog-parser:
             required-contexts:
-              - aicoe-ci/pytest-check
+              - aicoe-ci/prow/pytest
               - aicoe-ci/build-check
           common:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/prow/pytest
           datasets:
             required-contexts:
               - aicoe-ci/build-check
           init-job:
             required-contexts:
-              - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
           invectio:
             required-contexts:
-              - aicoe-ci/pre-commit-check
               - aicoe-ci/pytest-check
           integration-tests:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/build-check
           kebechet:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/build-check
-          source-management:
-            required-contexts:
-              - aicoe-ci/pre-commit-check
           thamos:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/prow/pytest
           management-api:
             required-contexts:
-              - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
           user-api:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/build-check
-          package-analyzer:
-            required-contexts:
-              - aicoe-ci/pre-commit-check
           package-extract:
             required-contexts:
-              - aicoe-ci/pre-commit-check
-              - aicoe-ci/pytest-check
+              - aicoe-ci/prow/pytest
               - aicoe-ci/build-check
           python:
             required-contexts:
-              - aicoe-ci/pytest-check
-              - aicoe-ci/pre-commit-check
+              - aicoe-ci/prow/pytest
           srcops-testing:
             required-contexts:
-              - aicoe-ci/pre-commit-check
-              - aicoe-ci/pytest-check
+              - aicoe-ci/prow/pytest
           s2i:
             required-contexts:
-              - aicoe-ci/pytest-check
+              - aicoe-ci/prow/pytest
           si-aggregator:
             required-contexts:
-              - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
           si-bandit:
             required-contexts:
               - aicoe-ci/build-check
-              - aicoe-ci/pre-commit-check
           si-cloc:
             required-contexts:
               - aicoe-ci/build-check
-              - aicoe-ci/pre-commit-check
           solver:
             required-contexts:
-              - aicoe-ci/pre-commit-check
               - aicoe-ci/pytest-check
           storages:
             required-contexts:
-              - aicoe-ci/pytest-check
-          tensorflow-symbols:
-            required-contexts:
-              - aicoe-ci/pre-commit-check
+              - aicoe-ci/prow/pytest
           investigator:
             required-contexts:
               - aicoe-ci/build-check
-              - aicoe-ci/pre-commit-check
           workflow-helpers:
             required-contexts:
               - aicoe-ci/build-check
-              - aicoe-ci/pre-commit-check
           report-processing:
             required-contexts:
               - aicoe-ci/build-check
-              - aicoe-ci/pre-commit-check
           elyra-aidevsecops-tutorial:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/build-check
           thoth-application:
             required-contexts:
-              - aicoe-ci/prow/pre-commit
               - aicoe-ci/prow/kustomize-build
 
 periodics:
