@@ -15,3 +15,20 @@ presubmits:
             requests:
               memory: "2Gi"
               cpu: "2"
+  - name: kustomize-build
+    decorate: true
+    max_concurrency: 1
+    run_if_changed: ".*yaml"
+    skip_report: false
+    context: aicoe-ci/prow/kustomize-build
+    spec:
+      containers:
+        - image: quay.io/operate-first/opf-toolbox:v0.3.2
+          command:
+            - "./test-kustomize-build"
+          env:
+            - name: IS_AICOE_CI
+              value: "1"
+          resources:
+            requests:
+              memory: "256Mi"
