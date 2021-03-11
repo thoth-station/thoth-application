@@ -15,6 +15,7 @@ spec:
   startingDeadlineSeconds: null
   jobTemplate:
     spec:
+      backoffLimit: 0
       template:
         metadata:
           labels:

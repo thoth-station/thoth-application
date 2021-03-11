@@ -255,42 +255,42 @@ scrape_configs:
   scheme: http
   static_configs:
     - targets:
-      - pushgateway-thoth-infra-prod.apps.cnv.massopen.cloud
+      - pushgateway-thoth-infra-prod.apps.zero.massopen.cloud
 - job_name: 'Thoth Metrics'
   metrics_path: '/metrics'
   scheme: http
   static_configs:
     - targets:
-      - metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud
+      - metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud
 - job_name: 'Thoth User API Metrics'
   static_configs:
     - targets:
-      - user-api-thoth-frontend-prod.apps.cnv.massopen.cloud
+      - user-api-thoth-frontend-prod.apps.zero.massopen.cloud
 - job_name: 'Thoth Amun API Metrics'
   static_configs:
     - targets:
-      - amun-api-thoth-amun-api-prod.apps.cnv.massopen.cloud
+      - amun-api-thoth-amun-api-prod.apps.zero.massopen.cloud
 - job_name: 'Thoth Management API Metrics'
   static_configs:
     - targets:
-      - management-api-thoth-frontend-prod.apps.cnv.massopen.cloud
+      - management-api-thoth-frontend-prod.apps.zero.massopen.cloud
 - job_name: 'Thoth Argo Workflow Metrics'
   metrics_path: '/metrics'
   scheme: http
   static_configs:
     - targets:
-      - workflow-controller-metrics-thoth-middletier-prod.apps.cnv.massopen.cloud
-      - workflow-controller-metrics-thoth-amun-inspection-prod.apps.cnv.massopen.cloud
-      - workflow-controller-metrics-thoth-backend-prod.apps.cnv.massopen.cloud
+      - workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud
+      - workflow-controller-metrics-thoth-amun-inspection-prod.apps.zero.massopen.cloud
+      - workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud
 - job_name: 'Thoth Investigator Consumer Metrics'
   metrics_path: '/metrics'
   scheme: http
   static_configs:
     - targets:
-      - investigator-faust-web-thoth-infra-prod.apps.cnv.massopen.cloud
+      - investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud
 - job_name: 'Thoth PostgreSQL Metrics'
   metrics_path: '/metrics'
   scheme: http
   static_configs:
     - targets:
-      - postgres-metrics-exporter-thoth-graph-prod.apps.cnv.massopen.cloud
+      - postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud

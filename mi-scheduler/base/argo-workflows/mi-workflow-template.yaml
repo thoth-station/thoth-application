@@ -26,6 +26,8 @@ spec:
                   value: "{{inputs.parameters.REPOSITORY}}"
                 - name: ENTITIES
                   value: "{{inputs.parameters.ENTITIES}}"
+                - name: KNOWLEDGE_PATH
+                  value: "{{inputs.parameters.KNOWLEDGE_PATH}}"
 
     - name: analyse
       resubmitPendingPods: true
@@ -36,8 +38,10 @@ spec:
       container:
         image: "mi"
         command: ["srcopsmetrics/cli.py"]
-        args: ["-cr", "{{inputs.parameters.REPOSITORY}}",
-               "-e", "{{inputs.parameters.ENTITIES}}"]
+        args: ["--create-knowledge",
+               "--repository", "{{inputs.parameters.REPOSITORY}}",
+               "--entities", "{{inputs.parameters.ENTITIES}}",
+               "--knowledge-path", "{{inputs.parameters.KNOWLEDGE_PATH}}"]
         env:
           - name: GITHUB_ACCESS_TOKEN
             valueFrom:

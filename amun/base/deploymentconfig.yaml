@@ -27,6 +27,8 @@ spec:
               value: "amun.entrypoint:app"
             - name: KUBERNETES_API_URL
               value: "https://kubernetes.default.svc.cluster.local"
+            - name: WEB_CONCURRENCY
+              value: "2"
             - name: KUBERNETES_VERIFY_TLS
               value: "0"
             - name: AMUN_DEBUG

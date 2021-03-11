@@ -6,6 +6,38 @@ metadata:
 spec:
   templates:
     - name: extract-packages
+
+      metrics:
+        prometheus:
+          - name: task_status_counter
+            help: "Count of workflow task by status"
+            labels:
+              - key: name
+                value: package-extract
+              - key: status
+                value: "{{status}}"
+            counter:
+              value: "1"
+
+          - name: task_duration_seconds_histogram
+            help: "Duration of workflow task when succeded"
+            when: "{{status}} == Succeeded"
+            labels:
+              - key: name
+                value: package-extract
+            histogram:
+              buckets:
+                - 5
+                - 10
+                - 30
+                - 60
+                - 120
+                - 180
+                - 300
+                - 600
+                - 900
+              value: "{{duration}}"
+
       resubmitPendingPods: true
       inputs:
         parameters:

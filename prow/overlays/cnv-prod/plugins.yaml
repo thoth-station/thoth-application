@@ -8,6 +8,7 @@ label:
     - deployment_name/ocp-stage
     - deployment_name/ocp-test
     - kind/cleanup
+    - kind/demo
     - kind/deprecation
     - kind/documentation
     - kind/question

@@ -2169,8 +2169,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "postgres-metrics-exporter-thoth-graph-prod.apps.cnv.massopen.cloud:80",
-          "value": "postgres-metrics-exporter-thoth-graph-prod.apps.cnv.massopen.cloud:80"
+          "text": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80",
+          "value": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80"
         },
         "hide": 0,
         "includeAll": false,
@@ -2180,19 +2180,19 @@
         "options": [
           {
             "selected": false,
-            "text": "postgres-metrics-exporter-thoth-graph-prod.apps.cnv.massopen.cloud:80",
-            "value": "postgres-metrics-exporter-thoth-graph-prod.apps.cnv.massopen.cloud:80"
+            "text": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80",
+            "value": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80"
           }
         ],
-        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.cnv.massopen.cloud:80",
+        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80",
         "type": "custom"
       },
       {
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud:80",
-          "value": "metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud:80"
+          "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
+          "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
         },
         "hide": 0,
         "includeAll": false,
@@ -2202,11 +2202,11 @@
         "options": [
           {
             "selected": true,
-            "text": "metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud:80",
-            "value": "metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud:80"
+            "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
+            "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.cnv.massopen.cloud:80",
+        "query": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
         "type": "custom"
       }
     ]

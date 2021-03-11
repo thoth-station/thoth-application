@@ -15,7 +15,7 @@ spec:
         spec:
           containers:
             - name: label-sync
-              image: label-sync:latest
+              image: label_sync:latest
               args:
                 - --config=/etc/config/labels_thoth-station.yaml
                 - --confirm=true
@@ -53,7 +53,7 @@ spec:
         spec:
           containers:
             - name: label-sync
-              image: label-sync:latest
+              image: label_sync:latest
               args:
                 - --config=/etc/config/labels.yaml
                 - --confirm=true
@@ -91,7 +91,7 @@ spec:
         spec:
           containers:
             - name: label-sync
-              image: label-sync:latest
+              image: label_sync:latest
               args:
                 - --config=/etc/config/labels_operate-first.yaml
                 - --confirm=true
@@ -129,7 +129,7 @@ spec:
         spec:
           containers:
             - name: label-sync
-              image: label-sync:latest
+              image: label_sync:latest
               args:
                 - --config=/etc/config/labels.yaml
                 - --confirm=true

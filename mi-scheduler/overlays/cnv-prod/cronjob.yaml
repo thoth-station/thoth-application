@@ -2,6 +2,13 @@
 kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
-  name: mi-scheduler
+  name: mi-scheduler-gh
+spec:
+  suspend: true
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: mi-scheduler-kebechet
 spec:
   suspend: true

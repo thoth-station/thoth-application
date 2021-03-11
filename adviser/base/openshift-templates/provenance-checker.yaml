@@ -27,11 +27,6 @@ parameters:
   - name: THOTH_WHITELISTED_SOURCES
     description: A comma separated values of URLs to whitelisted sources.
     displayName: Whitelisted sources
-  - name: THOTH_ADVISER_REQUIREMENTS
-    description: Raw stack requirements.
-  - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
-    description: Fully pinned down stack.
-    displayName: Locked requirements
   - name: THOTH_ADVISER_METADATA
     description: Metadata carried with the adviser request
     displayName: Adviser metadata
@@ -96,10 +91,6 @@ objects:
             value: "${THOTH_DOCUMENT_ID}"
           - name: THOTH_WHITELISTED_SOURCES
             value: "${THOTH_WHITELISTED_SOURCES}"
-          - name: THOTH_ADVISER_REQUIREMENTS
-            value: "${THOTH_ADVISER_REQUIREMENTS}"
-          - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
-            value: "${THOTH_ADVISER_REQUIREMENTS_LOCKED}"
           - name: THOTH_ADVISER_METADATA
             value: "${THOTH_ADVISER_METADATA}"
           - name: THOTH_LOG_ADVISER
@@ -139,10 +130,6 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: THOTH_WHITELISTED_SOURCES
                       value: "{{workflow.parameters.THOTH_WHITELISTED_SOURCES}}"
-                    - name: THOTH_ADVISER_REQUIREMENTS
-                      value: "{{workflow.parameters.THOTH_ADVISER_REQUIREMENTS}}"
-                    - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
-                      value: "{{workflow.parameters.THOTH_ADVISER_REQUIREMENTS_LOCKED}}"
                     - name: THOTH_ADVISER_METADATA
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
                     - name: THOTH_LOG_ADVISER

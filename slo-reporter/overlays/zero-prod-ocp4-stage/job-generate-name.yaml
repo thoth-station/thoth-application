@@ -3,4 +3,4 @@
   path: /metadata/generateName
 - op: replace
   path: /metadata/namespace
-  value: "thoth-infra-prod"
+  value: "thoth-infra-stage"
