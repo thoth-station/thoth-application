@@ -38,6 +38,11 @@ spec:
               value: "khemenu.thoth-station.ninja"
             - name: "THOTH_SENTRY_IGNORE_EXCEPTION"
               value: "thoth.user_api.exceptions.NotFoundException,thoth.storages.exceptions.NotFoundError"
+            - name: THOTH_API_REPORT_EXCEPTIONS
+              valueFrom:
+                configMapKeyRef:
+                  key: report-exceptions
+                  name: user-api
             - name: THOTH_API_VALIDATE_RESPONSES
               valueFrom:
                 configMapKeyRef:
