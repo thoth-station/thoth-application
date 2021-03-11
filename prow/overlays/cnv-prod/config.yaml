@@ -186,16 +186,10 @@ tide:
     orgs:
       AICoE:
         repos:
-          idh-manifests production:
-            required-contexts:
-              - aicoe-ci/pre-commit-check
           s2i-custom-notebook:
             required-contexts:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
-          aicoe-cd:
-            required-contexts:
-              - aicoe-ci/pre-commit-check
           prometheus-api-client-python:
             required-contexts:
               - aicoe-ci/pre-commit-check
@@ -212,7 +206,6 @@ tide:
         repos:
           adviser:
             required-contexts:
-              - aicoe-ci/prow/pytest
               - aicoe-ci/build-check
           amun-api:
             required-contexts:
@@ -220,11 +213,7 @@ tide:
               - aicoe-ci/build-check
           buildlog-parser:
             required-contexts:
-              - aicoe-ci/prow/pytest
               - aicoe-ci/build-check
-          common:
-            required-contexts:
-              - aicoe-ci/prow/pytest
           datasets:
             required-contexts:
               - aicoe-ci/build-check
@@ -240,9 +229,6 @@ tide:
           kebechet:
             required-contexts:
               - aicoe-ci/build-check
-          thamos:
-            required-contexts:
-              - aicoe-ci/prow/pytest
           management-api:
             required-contexts:
               - aicoe-ci/build-check
@@ -251,17 +237,7 @@ tide:
               - aicoe-ci/build-check
           package-extract:
             required-contexts:
-              - aicoe-ci/prow/pytest
               - aicoe-ci/build-check
-          python:
-            required-contexts:
-              - aicoe-ci/prow/pytest
-          srcops-testing:
-            required-contexts:
-              - aicoe-ci/prow/pytest
-          s2i:
-            required-contexts:
-              - aicoe-ci/prow/pytest
           si-aggregator:
             required-contexts:
               - aicoe-ci/build-check
@@ -274,9 +250,6 @@ tide:
           solver:
             required-contexts:
               - aicoe-ci/pytest-check
-          storages:
-            required-contexts:
-              - aicoe-ci/prow/pytest
           investigator:
             required-contexts:
               - aicoe-ci/build-check
@@ -289,9 +262,6 @@ tide:
           elyra-aidevsecops-tutorial:
             required-contexts:
               - aicoe-ci/build-check
-          thoth-application:
-            required-contexts:
-              - aicoe-ci/prow/kustomize-build
 
 periodics:
   - name: integration-tests-moc
@@ -338,25 +308,6 @@ presubmits:
               requests:
                 memory: "2Gi"
                 cpu: "2"
-
-  thoth-station/thoth-application:
-    - name: kustomize-build
-      decorate: true
-      max_concurrency: 1
-      run_if_changed: ".*yaml"
-      skip_report: false
-      context: aicoe-ci/prow/kustomize-build
-      spec:
-        containers:
-          - image: quay.io/operate-first/opf-toolbox:v0.2.0
-            command:
-              - "./test-kustomize-build" # this is contained in the thoth-application/ repo not the opf-toolbox
-            env:
-              - name: IS_AICOE_CI
-                value: "1"
-            resources:
-              requests:
-                memory: "256Mi"
 
   thoth-station/integration-tests:
     - name: pre-commit
