@@ -289,8 +289,13 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210304-a61492beff
+        name: v20210310-26726f9bd5
       name: latest
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/label_sync:v20210310-26726f9bd5
+      name: v20210310-26726f9bd5
     - annotations: null
       from:
         kind: DockerImage
