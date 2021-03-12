@@ -89,10 +89,10 @@ items:
               resources:
                 limits:
                   memory: 12Gi
-                  cpu: "4"
+                  cpu: "6"
                 requests:
                   memory: 12Gi
-                  cpu: "4"
+                  cpu: "8"
               volumeMounts:
                 - mountPath: /var/lib/pgsql/data
                   name: postgresql-data
