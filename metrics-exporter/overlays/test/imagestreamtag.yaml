@@ -4,10 +4,10 @@ metadata:
   name: metrics-exporter
 spec:
   tags:
-  - name: latest
-    from:
-      kind: DockerImage
-      name: quay.io/thoth-station/metrics-exporter:v0.11.0
-    importPolicy: {}
-    referencePolicy:
-      type: Source
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/metrics-exporter:v0.12.0
+      importPolicy: {}
+      referencePolicy:
+        type: Source
