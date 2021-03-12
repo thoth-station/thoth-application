@@ -6,3 +6,4 @@ metadata:
 data:
   api-https: "1"
   validate-responses: "1"
+  report-exceptions: "1"
