@@ -19,6 +19,8 @@ spec:
               env:
                 - name: THOTH_SLO_REPORTER_USING_SMTP_TLS
                   value: "0"
+                - name: THOTH_SLO_REPORTER_SEND_EMAIL
+                  value: "1"
                 - name: SMTP_SERVER
                   valueFrom:
                     configMapKeyRef:
