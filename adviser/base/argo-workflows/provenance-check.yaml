@@ -66,8 +66,6 @@ spec:
             value: "{{inputs.parameters.THOTH_PROVENANCE_CHECKER_JOB_ID}}"
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
-          - name: THOTH_ADVISER_ENABLE_PREPARE
-            value: "1"
           - name: THOTH_WHITELISTED_SOURCES
             value: "{{inputs.parameters.THOTH_WHITELISTED_SOURCES}}"
           - name: THOTH_ADVISER_REQUIREMENTS
