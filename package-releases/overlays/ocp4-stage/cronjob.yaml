@@ -4,4 +4,4 @@ apiVersion: batch/v1beta1
 metadata:
   name: package-releases
 spec:
-  suspend: false
+  suspend: true
