@@ -4,14 +4,13 @@ label:
     - community/group-programming
     - community/maintenance
     - community/question
-    - deployment_name/moc
-    - deployment_name/ocp-stage
-    - deployment_name/ocp-test
+    - deployment_name/zero-prod
+    - deployment_name/ocp4-stage
+    - deployment_name/ocp4-test
     - kind/cleanup
     - kind/demo
     - kind/deprecation
     - kind/documentation
-    - kind/question
     - kind/question
     - sig/advisor
     - sig/build
