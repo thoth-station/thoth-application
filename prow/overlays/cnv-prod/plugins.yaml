@@ -4,9 +4,11 @@ label:
     - community/group-programming
     - community/maintenance
     - community/question
-    - deployment_name/zero-prod
     - deployment_name/ocp4-stage
     - deployment_name/ocp4-test
+    - deployment_name/zero-prod
+    - hacktoberfest
+    - hacktoberfest-accepted
     - kind/cleanup
     - kind/demo
     - kind/deprecation
