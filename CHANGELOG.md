@@ -923,3 +923,106 @@
 * testing https://github.com/operate-first/apps/pull/217\#issuecomment-779163585
 ### Other
 * remove mypy job from advisor
+
+## Release 2021.03.15 (2021-03-15T04:07:09)
+### Features
+* Remove ENABLE_PREPARE specific configuration for adviser (#1016)
+* :arrow_up: Bump version v0.8.0 for integration-tests
+* :arrow_up: Bump version v0.26.0 for adviser
+* :arrow_up: Bump version v0.10.4 for graph-sync
+* :ship: Deploy the Tag v0.10.4 for graph-sync-job
+* Remove branch protection for operate-first org (#1057)
+* :ship: Deploy the Tag v0.21.0 for user-api
+* :anchor: increase cpu for the postgresql in stage (#1056)
+* Bump metrics-exporter to v0.11.0 (#1055)
+* :ship: Deploy the Tag v0.13.0 for metrics-exporter
+* :ship: Deploy the Tag v0.12.0 for metrics-exporter
+* :ship: Deploy the Tag v1.3.3 for mi-scheduler
+* SLO reporter stage and prod can send emails (#1053)
+* :whale: correct the solver imaegstream for stage
+* Change solver virtual env location (#809)
+* :maple_leaf: increase mem resource for the postgresql deployment (#1049)
+* manage pr checks with prow jobs (#1048)
+* Bump investigator to v0.10.0 in prod environment (#985)
+* :arrow_up: run integration-test v0.8 as a periodic prow job targeting {zero|cnv}-prod (#1044)
+* Push SLO-reporter to v0.11.0 (#1045)
+* :ship: Deploy the Tag v0.11.0 for slo-reporter
+* :ship: Deploy the Tag v1.3.2 for mi-scheduler
+* remove some prow configs that should be in the repos now
+* add branchprotection to o-f org
+* Run SLO-reporter prod from stage (#1038)
+* :maple_leaf: update the new kafka certs for the zero cluster
+* enable in repo config for op1st
+* Update config.yaml
+* :four_leaf_clover: component migration from cnv-moc to zero-moc in prod (#1042)
+* :maple_leaf: sync chat-notifcation secrets
+* :turtle: update the bucket name for the prow
+* :turtle: update new secrets for the prow tide
+* update prow to use local ceph endpoint
+* tiny script to update Prow's ImageStreamTags
+* update prow with new sets of credentials (#1040)
+* :arrow_up: update CI/CD configuration (#1033)
+* :ship: Deploy the Tag v1.3.1 for mi-scheduler
+* Add host variable (#1035)
+* Add graph database envs (#1034)
+* :ship: Deploy the Tag v1.7.2 for solver
+* :ship: Deploy the Tag v1.7.2 for solver
+* :ship: Deploy the Tag v1.7.2 for solver
+* Add kebechet cronjob (#1032)
+* suspend data ingestion in prod till upgrade (#1031)
+* Add build analysis metrics (#1030)
+* :arrow_up: Bump version v0.21.1 for sefkhet-abwy (#1028)
+* updated the certs for thoth routes
+* Execute solvers with app script (#1022)
+* Bump image version which ci failed to bump
+* switch back on graph-refresh in the stage (#1026)
+* :sparkles: add a kind/demo label (#1024)
+* add new workflow helper to update kebechet installation details (#987)
+* :ship: Deploy the Tag v1.3.0 for mi-scheduler
+* :ship: Deploy the Tag v1.2.0 for mi-scheduler
+* Bump integration-tests to v0.8.0 in prod environment (#1018)
+* :arrow_up: Bump version v0.8.1 for graph-backup-job (#1021)
+* :ship: Deploy the Tag v0.8.1 for graph-backup-job
+* :ship: Deploy the Tag v0.26.0 for adviser
+* Bump adviser to v0.26.0 in stage (#1020)
+* Update grafana dashboard to include new changes and metrics (#1014)
+* Bump integration-tests to v0.8.0 in stage environment (#1019)
+* Add knowledge path to parameters (#1010)
+* :sparkles: changed a few required contexts, as the repos us inrepo config now
+* :arrow_up: update pre-commit plugins, CI related configs
+* configure the role for management-api to appropriate namespace
+* Fix the role type for management-api
+* Enable management-api to run dependency-monkey in amun-inspection prod cluster
+* Enable management-api to query back logs of dependency-monkey (#1008)
+* Execute dependency monkey in amun-inspection namespace for thoth (#1007)
+* Start using inputs prepared by argo to adviser container (#982)
+* :sparkles: add required context to operate-first/apps
+* Include build-analysis template with package-extract component (#1003)
+* :whale: state backofflimit inside jobtemplate for cronjob (#1002)
+* Fix restart policy for integration-tests (#1001)
+* Bump user-api to v0.20.2 in prod environment (#990)
+### Bug Fixes
+* fix configmap for the sefkhet-abwy-chatbot
+* Make sure exceptions are reported on API when running in test/stage (#1051)
+* fix ceph bucket for statusreconciler and tide
+* fix the type of reference in prow imagestreamtags
+* Upgrade the pvc to fix disk quota limit
+* remove todo which was already fixed (#1009)
+### Improvements
+* patch up increase of cpu for the postgresql in stage
+* :turtle: upgrade solvers to latest version and decommision solver-f32-py37 (#1050)
+* Updated the image and remove required_context for optional arg (#1046)
+* :sparkles: both required contexts are used, from tide config and branch protection config 😎
+* :maple_leaf: updated the secrets for slo-reporter
+* :dragon_face: updated the promethues secrets
+* Updated ceph bucket for statusreconciler and tide (#1041)
+* :arrow_up: updated all of Prow imagestreams
+* :pencil: renamed label-sync to label_sync to conform with upstream name
+* chore: Operate First repos use .prow.yaml now (#1023)
+* Adjust web concurrency for management-api and amun-api (#993)
+* Revert "Run integration tests that use backend namespace (#967)" (#968)
+* debug the new-solver with s2i based images in test (#973)
+* Schedule graph-sync for dependency monkey only if not dry run (#1012)
+* :arrow_up: moved config to repo
+* :sparkles: reconfgured CI/CD to use prow and aicoe-ci
+* :sparkles: reconfgured common repo's test
