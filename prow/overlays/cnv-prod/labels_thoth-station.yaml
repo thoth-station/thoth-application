@@ -262,6 +262,8 @@ default:
     - color: 99cdf8
       description: Issues targeting the hacktoberfest participants.
       name: hacktoberfest
+      previously:
+        - name: #hacktoberfest
       target: issue
       prowPlugin: label
       addedBy: anyone
