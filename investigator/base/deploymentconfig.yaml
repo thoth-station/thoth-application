@@ -26,7 +26,7 @@ spec:
             - name: SUBCOMMAND
               value: "consumer"
             - name: DEBUG_LEVEL
-              value: "0"
+              value: "1"
             - name: APP_SCRIPT
               value: "app.sh"
             - name: KAFKA_CONSUMER_GROUP_ID
