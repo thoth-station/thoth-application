@@ -67,6 +67,11 @@ items:
                     secretKeyRef:
                       key: database-name
                       name: postgresql
+                - name: POSTGRESQL_ADMIN_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      key: database-admin-password
+                      name: postgresql
               image: "registry.access.redhat.com/rhscl/postgresql-10-rhel7:latest"
               imagePullPolicy: IfNotPresent
               livenessProbe:
