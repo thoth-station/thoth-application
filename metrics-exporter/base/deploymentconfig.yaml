@@ -175,6 +175,22 @@ spec:
                   key: instance-metrics-management-api
             - name: WEB_CONCURRENCY
               value: "1"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: kafka-bootstrap-servers
+            - name: KAFKA_SECURITY_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka-protocol
+                  name: kafka
+            - name: KAFKA_SSL_CA_LOCATION
+              value: "/mnt/secrets/kafka_ca.crt"
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -201,4 +217,11 @@ spec:
             initialDelaySeconds: 45
             periodSeconds: 10
             timeoutSeconds: 10
+      volumes:
+        - name: secrets
+          secret:
+            secretName: "kafka"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
   test: false
