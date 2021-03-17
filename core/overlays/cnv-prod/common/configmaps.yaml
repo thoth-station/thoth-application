@@ -68,4 +68,4 @@ apiVersion: v1
 metadata:
   name: qeb-hwt-workflow
 data:
-  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-frontend-prod.apps.zero.massopen.cloud.com"
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-frontend-prod.apps.zero.massopen.cloud"
