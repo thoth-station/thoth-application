@@ -5,4 +5,4 @@ metadata:
   name: qeb-hwt
 data:
   subdomain: qeb-hwt
-  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-frontend-prod.apps.zero.massopen.cloud.com"
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-frontend-prod.apps.zero.massopen.cloud"
