@@ -1,0 +1,75 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: github-receiver
+spec:
+  ports:
+    - port: 9393
+      targetPort: receiver
+      name: receiver
+    - port: 9990
+      targetPort: metrics
+      name: metrics
+  selector:
+    service: github-receiver
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: github-receiver
+spec:
+  to:
+    kind: Service
+    name: github-receiver
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-receiver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: github-receiver
+      app.kubernetes.io/name: thoth
+      app.kubernetes.io/managed-by: aicoe-thoth-devops
+  template:
+    metadata:
+      labels:
+        run: github-receiver
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9990'
+    spec:
+      containers:
+        - name: github-receiver
+          image: quay.io/operate-first/alertmanager-github-receiver:v0.10
+          env:
+            - name: GITHUB_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: github-secrets
+                  key: auth-token
+          args:
+            - --label="deployment_name/zero-prod"
+            - --authtoken=$(GITHUB_AUTH_TOKEN)
+            - --org=thoth-station
+            - --repo=thoth-application
+            - --enable-inmemory=false
+            - --enable-auto-close=true
+            - --label-on-resolved=resolved
+          ports:
+            - containerPort: 9393
+              name: receiver
+            - containerPort: 9990
+              name: metrics
+          resources:
+            limits:
+              cpu: 250m
+              memory: 100Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi

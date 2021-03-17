@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: alertmanager-thoth
+stringData:
+  alertmanager.yaml: |
+    global:
+      resolve_timeout: 5m
+    route:
+      group_by: ['job', 'alertname']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 3h
+      receiver: 'github-receiver-issues'
+    receivers:
+    - name: 'github-receiver-issues'
+      webhook_configs:
+        - url: ''
