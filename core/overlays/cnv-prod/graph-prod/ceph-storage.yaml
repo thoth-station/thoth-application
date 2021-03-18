@@ -1,3 +1,4 @@
+---
 apiVersion: objectbucket.io/v1alpha1
 kind: ObjectBucketClaim
 metadata:
@@ -5,3 +6,11 @@ metadata:
 spec:
   bucketName: thoth
   storageClassName: ocs-storagecluster-ceph-rgw
+---
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: thoth-zero-ceph
+spec:
+  bucketName: thoth
+  storageClassName: openshift-storage.noobaa.io
