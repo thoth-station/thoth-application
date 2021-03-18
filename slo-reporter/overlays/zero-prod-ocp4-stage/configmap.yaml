@@ -7,7 +7,7 @@ data:
   thanos-endpoint: "http://prometheus-portal-thoth-infra-prod.apps.zero.massopen.cloud"   # TODO: Use Thanos endpoint when available and set correct secret
   smtp-server: "smtp.corp.redhat.com"
   sender-address: "aicoe-thoth@redhat.com"
-  email-recipients: "aicoe-thoth@redhat.com"
+  email-recipients: "aicoe@redhat.com"
   deployment-name: zero-prod
   amun-inspection-namespace: thoth-amun-inspection-prod
   amun-namespace: thoth-amun-api-prod
