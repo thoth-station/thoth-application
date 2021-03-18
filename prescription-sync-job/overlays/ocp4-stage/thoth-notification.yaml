@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have successfully synchronized *prescription-sync* components to *OCP4-STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/test-thoth-prescription-sync|ArgoCD UI>'}"
+            - "{'text':'I have successfully synchronized *prescription-sync* components to *OCP4-STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/stage-thoth-prescription-sync|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
