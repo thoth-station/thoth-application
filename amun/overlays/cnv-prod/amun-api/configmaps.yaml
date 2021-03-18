@@ -16,8 +16,8 @@ metadata:
 data:
   bucket-name: "thoth"
   bucket-prefix: "data"
-  host: "https://s3-openshift-storage.apps.zero.massopen.cloud"
-  endpoint: "https://s3-openshift-storage.apps.zero.massopen.cloud"
+  host: "http://s3.openshift-storage.svc.cluster.local"
+  endpoint: "http://s3.openshift-storage.svc.cluster.local"
 ---
 kind: ConfigMap
 apiVersion: v1
