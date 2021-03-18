@@ -1,0 +1,11 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: prescription-sync-job
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/prescription-sync-job:v0.0.1
+      importPolicy: {}
