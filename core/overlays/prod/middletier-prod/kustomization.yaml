@@ -1,9 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-  - ../common/
-  - argo-role.yaml
-  - argo-namespace-install.yaml
-  - argo-workflow-controller-metrics.yaml
-  - argo-ui-route.yaml
-  - configmaps.yaml
