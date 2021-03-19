@@ -17,6 +17,7 @@ spec:
         parameters:
           - name: REPOSITORY
           - name: ENTITIES
+          - name: KNOWLEDGE_PATH
       steps:
         - - name: collect-knowledge
             template: analyse
