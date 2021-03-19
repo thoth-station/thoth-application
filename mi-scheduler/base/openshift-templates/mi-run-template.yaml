@@ -17,6 +17,10 @@ parameters:
     description: Entities according to MI which will be analysed in REPOSITORY
     displayName: Meta-information Indicator Entities
 
+  - name: KNOWLEDGE_PATH
+    description: Knowledge path where data is stored
+    displayName: Data path
+
   - name: WORKFLOW_ID
     required: true
     description: ID for MI Workflow
