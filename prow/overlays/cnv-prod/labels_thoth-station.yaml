@@ -349,3 +349,35 @@ default:
       name: sig/user-experience
       prowPlugin: label
       target: both
+
+    - color: d455d0
+      description: Indicates an issue is a duplicate of other open issue.
+      name: triage/duplicate
+      target: both
+      previously:
+        - name: close/duplicate
+        - name: duplicate
+      addedBy: humans
+    - color: d455d0
+      description: Indicates an issue needs more information in order to work on it.
+      name: triage/needs-information
+      previously:
+        - name: close/needs-information
+      target: both
+      addedBy: humans
+    - color: d455d0
+      description: Indicates an issue can not be reproduced as described.
+      name: triage/not-reproducible
+      previously:
+        - name: close/not-reproducible
+      target: both
+      addedBy: humans
+    - color: d455d0
+      description: Indicates an issue that can not or will not be resolved.
+      name: triage/unresolved
+      previously:
+        - name: close/unresolved
+        - name: invalid
+        - name: wontfix
+      target: both
+      addedBy: humans
