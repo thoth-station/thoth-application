@@ -7,5 +7,5 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/graph-backup-job:v0.8.1
+        name: quay.io/thoth-station/graph-backup-job:v0.8.2
       importPolicy: {}
