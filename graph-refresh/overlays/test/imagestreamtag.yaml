@@ -4,10 +4,10 @@ metadata:
   name: graph-refresh-job
 spec:
   tags:
-  - name: latest
-    from:
-      kind: DockerImage
-      name: quay.io/thoth-station/graph-refresh-job:v0.3.3
-    importPolicy: {}
-    referencePolicy:
-      type: Source
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/graph-refresh-job:v0.3.4
+      importPolicy: {}
+      referencePolicy:
+        type: Source
