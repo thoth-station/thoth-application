@@ -8,6 +8,13 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
+patches:
+  - path: advise-resources-patch.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: advise
 patchesJson6902:
   - path: job-generate-name.yaml
     target:
