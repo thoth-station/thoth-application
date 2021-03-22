@@ -18,6 +18,8 @@ spec:
           - name: REPOSITORY
           - name: ENTITIES
           - name: KNOWLEDGE_PATH
+          - name: THOTH_LOG_MI
+          - name: THOTH_LOG_MI_SCHEDULER
       steps:
         - - name: collect-knowledge
             template: analyse
@@ -29,6 +31,10 @@ spec:
                   value: "{{inputs.parameters.ENTITIES}}"
                 - name: KNOWLEDGE_PATH
                   value: "{{inputs.parameters.KNOWLEDGE_PATH}}"
+                - name: THOTH_LOG_MI_SCHEDULER
+                  value: "${THOTH_LOG_MI_SCHEDULER}"
+                - name: THOTH_LOG_MI
+                  value: "${THOTH_LOG_MI}"
 
     - name: analyse
       resubmitPendingPods: true
