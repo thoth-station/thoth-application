@@ -5,6 +5,14 @@ metadata:
   name: mi-scheduler-gh
   labels:
     app: mi-scheduler-gh
+
+parameters:
+  - name: THOTH_LOG_MI_SCHEDULER
+    displayName: mi-scheduler log level
+    description: Log level of mi-scheduler
+    required: true
+    value: 'INFO'
+
 spec:
   schedule: "@daily"
   suspend: false
@@ -52,6 +60,8 @@ spec:
                   value: "0"
                 - name: SCHEDULE_GH_REPO_ANALYSIS
                   value: "1"
+                - name: THOTH_LOG_MI_SCHEDULER
+                  value: ${THOTH_LOG_MI_SCHEDULER}
           restartPolicy: OnFailure
 ---
 kind: CronJob
@@ -60,6 +70,14 @@ metadata:
   name: mi-scheduler-kebechet
   labels:
     app: mi-scheduler-kebechet
+
+parameters:
+  - name: THOTH_LOG_MI_SCHEDULER
+    displayName: mi-scheduler log level
+    description: Log level of mi-scheduler
+    required: true
+    value: 'INFO'
+
 spec:
   schedule: "@daily"
   suspend: false
@@ -131,4 +149,6 @@ spec:
                   value: "1"
                 - name: SCHEDULE_GH_REPO_ANALYSIS
                   value: "0"
+                - name: THOTH_LOG_MI_SCHEDULER
+                  value: "${THOTH_LOG_MI_SCHEDULER}"
           restartPolicy: OnFailure

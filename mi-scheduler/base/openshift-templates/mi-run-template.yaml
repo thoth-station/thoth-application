@@ -26,12 +26,6 @@ parameters:
     description: ID for MI Workflow
     displayName: ID for MI Workflow
 
-  - name: THOTH_LOG_MI_SCHEDULER
-    displayName: mi-scheduler log level
-    description: Log level of mi-scheduler
-    required: true
-    value: 'INFO'
-
   - name: THOTH_LOG_MI
     displayName: mi log level
     description: Log level of mi
@@ -80,7 +74,5 @@ objects:
                       value: ${ENTITIES}
                     - name: KNOWLEDGE_PATH
                       value: ${KNOWLEDGE_PATH}
-                    - name: THOTH_LOG_MI_SCHEDULER
-                      value: ${THOTH_LOG_MI_SCHEDULER}
                     - name: THOTH_LOG_MI
                       value: ${THOTH_LOG_MI}
