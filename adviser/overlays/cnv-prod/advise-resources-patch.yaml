@@ -2,8 +2,8 @@
   path: /spec/templates/0/container/resources
   value:
     requests:
-      memory: "8Gi"
-      cpu: "2.5"
+      memory: "6Gi"
+      cpu: "6"
     limits:
-      memory: "8Gi"
-      cpu: "2.5"
+      memory: "6Gi"
+      cpu: "6"
