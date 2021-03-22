@@ -22,6 +22,7 @@ in_repo_config:
   enabled:
     thoth-station: true
     operate-first: true
+    aicoe-aiops: true
 
   allowed_clusters:
     "thoth-station": ["api-zero-massopen-cloud:6443"]
