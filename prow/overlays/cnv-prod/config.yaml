@@ -30,6 +30,18 @@ in_repo_config:
 branch-protection:
   allow_disabled_policies: true
   orgs:
+    b4mad:
+      repos:
+        minecraft:
+          protect: true
+          allow_force_pushes: false
+          required_status_checks:
+            contexts:
+              - aicoe-ci/prow/pre-commit
+          exclude:
+            - "^revert-"
+            - "^kebechet-"
+            - "^dependabot/"
     thoth-station:
       protect: true
       allow_force_pushes: false
@@ -109,12 +121,14 @@ tide:
   merge_method:
     aicoe-aiops: squash
     AICoE: squash
+    b4mad: squash
     operate-first: squash
     thoth-station: squash
 
   queries:
     - orgs:
         - aicoe-aiops
+        - b4mad
         - operate-first
         - thoth-station
       excludedRepos:
@@ -139,6 +153,9 @@ tide:
         - thoth-station/nvidia-usage-dashboard
         - thoth-station/pipelines-catalog
         - thoth-station/bz1816214-example
+        - b4mad/sirius
+        - b4mad/airdata
+        - b4mad/auddress
       labels:
         - approved
       missingLabels:
@@ -200,7 +217,6 @@ tide:
               - aicoe-ci/build-check
           amun-api:
             required-contexts:
-              - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
           buildlog-parser:
             required-contexts:

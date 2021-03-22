@@ -32,6 +32,11 @@ label:
     - tide/merge-method-squash
 
 external_plugins:
+  b4mad:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
   thoth-station:
     - name: needs-rebase
       events:
@@ -55,6 +60,7 @@ external_plugins:
 
 welcome:
   - repos:
+      - b4mad
       - AICoE
       - aicoe-aiops
       - operate-first
@@ -63,6 +69,7 @@ welcome:
 
 lgtm:
   - repos:
+      - b4mad
       - AICoE
       - aicoe-aiops
       - operate-first
@@ -70,6 +77,7 @@ lgtm:
 
 approve:
   - repos:
+      - b4mad
       - AICoE
       - aicoe-aiops
       - operate-first
@@ -91,6 +99,20 @@ project_config:
         thoth-deployment: New
 
 plugins:
+  b4mad:
+    - approve
+    - assign
+    - blockade
+    - blunderbuss
+    - hold
+    - label
+    - lgtm
+    - lifecycle
+    - shrug
+    - size
+    - trigger
+    - verify-owners
+    - wip
   operate-first:
     - approve
     - assign
