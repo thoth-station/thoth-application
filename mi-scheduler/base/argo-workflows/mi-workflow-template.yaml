@@ -20,6 +20,7 @@ spec:
           - name: ENTITIES
           - name: KNOWLEDGE_PATH
           - name: THOTH_ADJUST_LOGGING
+          - name: ADDITIONAL_CONFIGURATION
       steps:
         - - name: collect-knowledge
             template: analyse
@@ -33,6 +34,8 @@ spec:
                   value: "{{inputs.parameters.KNOWLEDGE_PATH}}"
                 - name: THOTH_ADJUST_LOGGING
                   value: "${inputs.parameters.THOTH_ADJUST_LOGGING}"
+                - name: ADDITIONAL_CONFIGURATION
+                  value: "${inputs.parameters.ADDITIONAL_CONFIGURATION}"
 
     - name: analyse
       resubmitPendingPods: true
@@ -42,13 +45,15 @@ spec:
           - name: ENTITIES
           - name: KNOWLEDGE_PATH
           - name: THOTH_ADJUST_LOGGING
+          - name: ADDITIONAL_CONFIGURATION
       container:
         image: "mi"
         command: ["srcopsmetrics/cli.py"]
         args: ["--create-knowledge",
                "--repository", "{{inputs.parameters.REPOSITORY}}",
                "--entities", "{{inputs.parameters.ENTITIES}}",
-               "--knowledge-path", "{{inputs.parameters.KNOWLEDGE_PATH}}"]
+               "--knowledge-path", "{{inputs.parameters.KNOWLEDGE_PATH}}",
+               "{{inputs.parameters.ADDITIONAL_CONFIGURATION}}",]
         env:
           - name: GITHUB_ACCESS_TOKEN
             valueFrom:
