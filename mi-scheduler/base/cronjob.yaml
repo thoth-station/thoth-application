@@ -6,13 +6,6 @@ metadata:
   labels:
     app: mi-scheduler-gh
 
-parameters:
-  - name: THOTH_ADJUST_LOGGING
-    displayName: mi-scheduler log level
-    description: Log level of mi-scheduler
-    required: true
-    value: 'mi_scheduler:INFO'
-
 spec:
   schedule: "@daily"
   suspend: false
@@ -61,7 +54,7 @@ spec:
                 - name: SCHEDULE_GH_REPO_ANALYSIS
                   value: "1"
                 - name: THOTH_ADJUST_LOGGING
-                  value: ${THOTH_ADJUST_LOGGING}
+                  value: 'mi_scheduler:INFO'
           restartPolicy: OnFailure
 ---
 kind: CronJob
@@ -70,13 +63,6 @@ metadata:
   name: mi-scheduler-kebechet
   labels:
     app: mi-scheduler-kebechet
-
-parameters:
-  - name: THOTH_ADJUST_LOGGING
-    displayName: mi-scheduler log level
-    description: Log level of mi-scheduler
-    required: true
-    value: 'mi_scheduler:INFO'
 
 spec:
   schedule: "@daily"
@@ -150,5 +136,5 @@ spec:
                 - name: SCHEDULE_GH_REPO_ANALYSIS
                   value: "0"
                 - name: THOTH_ADJUST_LOGGING
-                  value: "${THOTH_ADJUST_LOGGING}"
+                  value: 'mi_scheduler:INFO'
           restartPolicy: OnFailure
