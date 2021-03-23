@@ -54,7 +54,7 @@ spec:
                 - name: SCHEDULE_GH_REPO_ANALYSIS
                   value: "1"
                 - name: THOTH_ADJUST_LOGGING
-                  value: 'thoth.mi-scheduler:INFO'
+                  value: 'srcopsmetrics:INFO'
           restartPolicy: OnFailure
 ---
 kind: CronJob

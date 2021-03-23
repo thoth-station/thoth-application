@@ -32,6 +32,10 @@ parameters:
     required: true
     value: 'srcopsmetrics:INFO'
 
+  - name: ADDITIONAL_CONFIGURATION
+    displayName: mi cli additional configuration
+    description: Any other argument specification that is needed to cli
+
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
@@ -56,6 +60,9 @@ objects:
             value: ${KNOWLEDGE_PATH}
           - name: THOTH_ADJUST_LOGGING
             value: ${THOTH_ADJUST_LOGGING}
+          - name: ADDITIONAL_CONFIGURATION
+            value: "${ADDITIONAL_CONFIGURATION}"
+
       templates:
         - name: "mi"
           dag:
@@ -74,3 +81,5 @@ objects:
                       value: ${KNOWLEDGE_PATH}
                     - name: THOTH_ADJUST_LOGGING
                       value: ${THOTH_ADJUST_LOGGING}
+                    - name: ADDITIONAL_CONFIGURATION
+                      value: "${ADDITIONAL_CONFIGURATION}"
