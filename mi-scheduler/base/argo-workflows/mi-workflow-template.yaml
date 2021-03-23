@@ -10,6 +10,7 @@ metadata:
 spec:
   serviceAccountName: argo
   entrypoint: mi-workflow
+  parallelism: 2
   templates:
     - name: mi-workflow
       resubmitPendingPods: true
