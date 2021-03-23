@@ -26,11 +26,11 @@ parameters:
     description: ID for MI Workflow
     displayName: ID for MI Workflow
 
-  - name: THOTH_LOG_MI
+  - name: THOTH_ADJUST_LOGGING
     displayName: mi log level
     description: Log level of mi
     required: true
-    value: 'INFPO'
+    value: 'srcopsmetrics:INFO'
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -54,8 +54,8 @@ objects:
             value: ${ENTITIES}
           - name: KNOWLEDGE_PATH
             value: ${KNOWLEDGE_PATH}
-          - name: THOTH_LOG_MI
-            value: ${THOTH_LOG_MI}
+          - name: THOTH_ADJUST_LOGGING
+            value: ${THOTH_ADJUST_LOGGING}
       templates:
         - name: "mi"
           dag:
@@ -72,5 +72,5 @@ objects:
                       value: ${ENTITIES}
                     - name: KNOWLEDGE_PATH
                       value: ${KNOWLEDGE_PATH}
-                    - name: THOTH_LOG_MI
-                      value: ${THOTH_LOG_MI}
+                    - name: THOTH_ADJUST_LOGGING
+                      value: ${THOTH_ADJUST_LOGGING}
