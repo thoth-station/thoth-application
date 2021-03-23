@@ -18,7 +18,7 @@ spec:
           - name: REPOSITORY
           - name: ENTITIES
           - name: KNOWLEDGE_PATH
-          - name: THOTH_LOG_MI
+          - name: THOTH_ADJUST_LOGGING
       steps:
         - - name: collect-knowledge
             template: analyse
@@ -30,8 +30,8 @@ spec:
                   value: "{{inputs.parameters.ENTITIES}}"
                 - name: KNOWLEDGE_PATH
                   value: "{{inputs.parameters.KNOWLEDGE_PATH}}"
-                - name: THOTH_LOG_MI
-                  value: "${inputs.parameters.THOTH_LOG_MI}"
+                - name: THOTH_ADJUST_LOGGING
+                  value: "${inputs.parameters.THOTH_ADJUST_LOGGING}"
 
     - name: analyse
       resubmitPendingPods: true
@@ -40,7 +40,7 @@ spec:
           - name: REPOSITORY
           - name: ENTITIES
           - name: KNOWLEDGE_PATH
-          - name: THOTH_LOG_MI
+          - name: THOTH_ADJUST_LOGGING
       container:
         image: "mi"
         command: ["srcopsmetrics/cli.py"]
@@ -81,5 +81,5 @@ spec:
                 key: key-id
           - name: PYTHONPATH
             value: "."
-          - name: THOTH_LOG_MI
-            value: "${inputs.parameters.THOTH_LOG_MI}"
+          - name: THOTH_ADJUST_LOGGING
+            value: "${inputs.parameters.THOTH_ADJUST_LOGGING}"
