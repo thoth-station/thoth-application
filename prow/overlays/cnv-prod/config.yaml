@@ -225,15 +225,9 @@ tide:
           buildlog-parser:
             required-contexts:
               - aicoe-ci/build-check
-          datasets:
-            required-contexts:
-              - aicoe-ci/build-check
           init-job:
             required-contexts:
               - aicoe-ci/build-check
-          invectio:
-            required-contexts:
-              - aicoe-ci/pytest-check
           integration-tests:
             required-contexts:
               - aicoe-ci/build-check
@@ -258,19 +252,10 @@ tide:
           si-cloc:
             required-contexts:
               - aicoe-ci/build-check
-          solver:
-            required-contexts:
-              - aicoe-ci/pytest-check
           investigator:
             required-contexts:
               - aicoe-ci/build-check
           workflow-helpers:
-            required-contexts:
-              - aicoe-ci/build-check
-          report-processing:
-            required-contexts:
-              - aicoe-ci/build-check
-          elyra-aidevsecops-tutorial:
             required-contexts:
               - aicoe-ci/build-check
 
