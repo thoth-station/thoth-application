@@ -117,7 +117,7 @@ spec:
           - name: THOTH_ADVISER_PIPELINE
             value: "input/pipeline.json"
           - name: THOTH_ADVISER_PRESCRIPTION
-            value: "prescription.yaml"
+            value: "/mnt/workdir/prescription.yaml"
           - name: THOTH_ADVISER_PREDICTOR
             value: "{{inputs.parameters.THOTH_ADVISER_PREDICTOR}}"
           - name: THOTH_ADVISER_PREDICTOR_CONFIG
