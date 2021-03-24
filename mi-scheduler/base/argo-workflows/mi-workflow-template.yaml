@@ -20,7 +20,7 @@ spec:
           - name: ENTITIES
           - name: KNOWLEDGE_PATH
           - name: THOTH_ADJUST_LOGGING
-          - name: ADDITIONAL_CONFIGURATION
+          - name: MI_THOTH
       steps:
         - - name: collect-knowledge
             template: analyse
@@ -34,8 +34,8 @@ spec:
                   value: "{{inputs.parameters.KNOWLEDGE_PATH}}"
                 - name: THOTH_ADJUST_LOGGING
                   value: "${inputs.parameters.THOTH_ADJUST_LOGGING}"
-                - name: ADDITIONAL_CONFIGURATION
-                  value: "${inputs.parameters.ADDITIONAL_CONFIGURATION}"
+                - name: MI_THOTH
+                  value: "${inputs.parameters.MI_THOTH}"
 
     - name: analyse
       resubmitPendingPods: true
@@ -45,16 +45,17 @@ spec:
           - name: ENTITIES
           - name: KNOWLEDGE_PATH
           - name: THOTH_ADJUST_LOGGING
-          - name: ADDITIONAL_CONFIGURATION
+          - name: MI_THOTH
       container:
         image: "mi"
         command: ["srcopsmetrics/cli.py"]
         args: ["--create-knowledge",
                "--repository", "{{inputs.parameters.REPOSITORY}}",
                "--entities", "{{inputs.parameters.ENTITIES}}",
-               "--knowledge-path", "{{inputs.parameters.KNOWLEDGE_PATH}}",
-               "{{inputs.parameters.ADDITIONAL_CONFIGURATION}}",]
+               "--knowledge-path", "{{inputs.parameters.KNOWLEDGE_PATH}}",]
         env:
+          - name: MI_THOTH
+            value: "{{inputs.parameters.MI_THOTH}}"
           - name: GITHUB_ACCESS_TOKEN
             valueFrom:
               secretKeyRef:
@@ -88,4 +89,4 @@ spec:
           - name: PYTHONPATH
             value: "."
           - name: THOTH_ADJUST_LOGGING
-            value: "${inputs.parameters.THOTH_ADJUST_LOGGING}"
+            value: "{{inputs.parameters.THOTH_ADJUST_LOGGING}}"
