@@ -38,6 +38,18 @@ patchesJson6902:
       group: image.openshift.io
       version: v1
       kind: ImageStream
+      name: workflow-helpers
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: image.openshift.io
+      version: v1
+      kind: ImageStream
+      name: messaging
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: image.openshift.io
+      version: v1
+      kind: ImageStream
       name: amun-inspect-hwinfo
   - path: put-into-inspection-namespace.yaml
     target:
