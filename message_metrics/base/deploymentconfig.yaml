@@ -18,9 +18,9 @@ spec:
         app.kubernetes.io/component: investigator
         app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
-      serviceAccountName: investigator
+      serviceAccountName: message-metrics
       containers:
-        - image: investigator:test
+        - image: investigator
           name: message-metrics
           env:
             - name: SUBCOMMAND
