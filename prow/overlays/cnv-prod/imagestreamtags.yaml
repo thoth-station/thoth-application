@@ -294,12 +294,12 @@ spec:
     - annotations: null
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/label_sync:v20210310-26726f9bd5
+        name: 'gcr.io/k8s-prow/label_sync:v20210310-26726f9bd5'
       name: v20210310-26726f9bd5
     - annotations: null
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/label_sync:v20210127-5fd357428d
+        name: 'gcr.io/k8s-prow/label_sync:v20210127-5fd357428d'
       importPolicy: {}
       name: v20210127-5fd357428d
       referencePolicy:
@@ -307,7 +307,7 @@ spec:
     - annotations: null
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/label_sync:v20210211-72696ce111
+        name: 'gcr.io/k8s-prow/label_sync:v20210211-72696ce111'
       importPolicy: {}
       name: v20210211-72696ce111
       referencePolicy:
@@ -315,7 +315,7 @@ spec:
     - annotations: null
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/label_sync:v20210304-a61492beff
+        name: 'gcr.io/k8s-prow/label_sync:v20210304-a61492beff'
       name: v20210304-a61492beff
 ---
 apiVersion: image.openshift.io/v1
