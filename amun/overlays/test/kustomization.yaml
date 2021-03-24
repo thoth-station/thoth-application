@@ -6,6 +6,8 @@ resources:
   - role_binding.yaml
   - configmaps.yaml
   - thoth-notification.yaml
+  - message-imagestream.yaml
+  - argo-workflows/send-messages.yaml
 generators:
   - ./secret-generator.yaml
 patchesStrategicMerge:

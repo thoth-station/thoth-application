@@ -22,19 +22,3 @@ metadata:
 spec:
   lookupPolicy:
     local: true
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: workflow-helpers
-spec:
-  lookupPolicy:
-    local: true
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: messaging
-spec:
-  lookupPolicy:
-    local: true

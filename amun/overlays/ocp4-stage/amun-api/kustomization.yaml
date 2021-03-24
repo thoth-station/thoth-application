@@ -6,6 +6,8 @@ resources:
   - metrics-exporter-reader.yaml
   - role_binding.yaml
   - thoth-notification.yaml
+  - message-imagestream.yaml
+  - argo-workflows/send-messages.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
   - openshift-templates/inspection-workflow.yaml
@@ -73,6 +75,12 @@ patchesJson6902:
       version: v1alpha1
       kind: WorkflowTemplate
       name: inspection-run-template
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: send-messages
   - path: put-into-inspection-namespace.yaml
     target:
       group: ""
