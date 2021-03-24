@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - crier_rbac.yaml
   - deck_rbac.yaml
+  - prow-controller-manager_rbac.yaml
   - sinker_rbac.yaml
