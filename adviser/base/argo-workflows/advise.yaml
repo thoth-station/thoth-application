@@ -138,7 +138,7 @@ spec:
           - name: THOTH_ADVISER_LIMIT
             value: "{{inputs.parameters.THOTH_ADVISER_LIMIT}}"
           - name: THOTH_ADVISER_PRESCRIPTION
-            value: "prescription.yaml"
+            value: "/mnt/workdir/prescription.yaml"
           - name: THOTH_ADVISER_REQUIREMENTS
             value: "input/Pipfile"
           - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
