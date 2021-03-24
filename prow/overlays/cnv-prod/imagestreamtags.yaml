@@ -290,16 +290,16 @@ spec:
       from:
         kind: ImageStreamTag
         name: v20210310-26726f9bd5
+      generation: 1
+      importPolicy: {}
       name: latest
-    - annotations: null
-      from:
-        kind: DockerImage
-        name: 'gcr.io/k8s-prow/label_sync:v20210310-26726f9bd5'
-      name: v20210310-26726f9bd5
+      referencePolicy:
+        type: Source
     - annotations: null
       from:
         kind: DockerImage
         name: 'gcr.io/k8s-prow/label_sync:v20210127-5fd357428d'
+      generation: 2
       importPolicy: {}
       name: v20210127-5fd357428d
       referencePolicy:
@@ -308,6 +308,7 @@ spec:
       from:
         kind: DockerImage
         name: 'gcr.io/k8s-prow/label_sync:v20210211-72696ce111'
+      generation: 2
       importPolicy: {}
       name: v20210211-72696ce111
       referencePolicy:
@@ -316,7 +317,20 @@ spec:
       from:
         kind: DockerImage
         name: 'gcr.io/k8s-prow/label_sync:v20210304-a61492beff'
+      generation: 2
+      importPolicy: {}
       name: v20210304-a61492beff
+      referencePolicy:
+        type: Source
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: 'gcr.io/k8s-prow/label_sync:v20210310-26726f9bd5'
+      generation: 2
+      importPolicy: {}
+      name: v20210310-26726f9bd5
+      referencePolicy:
+        type: Source
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
