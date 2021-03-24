@@ -22,6 +22,10 @@ spec:
         spec:
           containers:
             - image: prescription-sync-job:latest
+              command:
+                - python3
+                - app.py
+                - sync
               name: prescription-sync-job
               env:
                 - name: THOTH_DEPLOYMENT_NAME
