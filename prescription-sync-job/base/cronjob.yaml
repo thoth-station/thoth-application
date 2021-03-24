@@ -74,30 +74,6 @@ spec:
                     configMapKeyRef:
                       name: prometheus
                       key: pushgateway-url
-                - name: KNOWLEDGE_GRAPH_HOST
-                  valueFrom:
-                    configMapKeyRef:
-                      key: postgresql-host
-                      name: thoth
-                - name: KNOWLEDGE_GRAPH_PORT
-                  value: "5432"
-                - name: KNOWLEDGE_GRAPH_SSL_DISABLED
-                  value: "1"
-                - name: KNOWLEDGE_GRAPH_USER
-                  valueFrom:
-                    secretKeyRef:
-                      name: postgresql
-                      key: database-user
-                - name: KNOWLEDGE_GRAPH_PASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      name: postgresql
-                      key: database-password
-                - name: KNOWLEDGE_GRAPH_DATABASE
-                  valueFrom:
-                    secretKeyRef:
-                      name: postgresql
-                      key: database-name
               resources:
                 requests:
                   memory: "128Mi"
