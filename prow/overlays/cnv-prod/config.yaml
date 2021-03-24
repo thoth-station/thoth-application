@@ -20,11 +20,15 @@ pod_namespace: opf-ci-prow
 
 in_repo_config:
   enabled:
-    thoth-station: true
-    operate-first: true
     aicoe-aiops: true
+    b4mad: true
+    operate-first: true
+    thoth-station: true
 
   allowed_clusters:
+    "aicoe-aiops": ["api-zero-massopen-cloud:6443"]
+    "b4mad": ["api-zero-massopen-cloud:6443"]
+    "operate-first": ["api-zero-massopen-cloud:6443"]
     "thoth-station": ["api-zero-massopen-cloud:6443"]
 
 branch-protection:
