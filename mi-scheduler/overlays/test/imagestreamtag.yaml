@@ -21,7 +21,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/mi-scheduler:v1.3.3
+        name: quay.io/thoth-station/mi-scheduler:v1.3.4
       importPolicy: {}
       referencePolicy:
         type: Source
