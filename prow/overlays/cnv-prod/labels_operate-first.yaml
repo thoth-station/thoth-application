@@ -61,6 +61,9 @@ default:
     - color: c7def8
       description: Categorizes issue or PR as related to documentation.
       name: kind/documentation
+      previously:
+        - name: docs
+        - name: documentation
       target: both
       prowPlugin: label
       addedBy: anyone
@@ -281,5 +284,19 @@ repos:
         name: "alert:boom:"
         previously:
           - name: alert 💥
+        prowPlugin: label
+        target: issue
+  operate-first/support:
+    labels:
+      - addedBy: anyone
+        color: 57BF42
+        description: Requesting onboarding to a cluster
+        name: onboarding
+        prowPlugin: label
+        target: issue
+      - addedBy: anyone
+        color: FB7591
+        description: Requesting onboarding to ArgoCD
+        name: onboarding-argocd
         prowPlugin: label
         target: issue
