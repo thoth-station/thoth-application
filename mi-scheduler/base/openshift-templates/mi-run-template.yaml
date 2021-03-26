@@ -44,6 +44,7 @@ objects:
       labels:
         app: scropsmetrics
     spec:
+      parallelism: 2
       serviceAccountName: argo
       entrypoint: mi
       activeDeadlineSeconds: 3000
