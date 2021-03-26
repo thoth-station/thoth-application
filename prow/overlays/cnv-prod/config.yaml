@@ -127,7 +127,7 @@ tide:
     AICoE: squash
     b4mad: squash
     operate-first: squash
-    thoth-station: squash
+    thoth-station: merge
 
   queries:
     - orgs:
