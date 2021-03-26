@@ -33,9 +33,9 @@ spec:
                 - name: KNOWLEDGE_PATH
                   value: "{{inputs.parameters.KNOWLEDGE_PATH}}"
                 - name: THOTH_ADJUST_LOGGING
-                  value: "${inputs.parameters.THOTH_ADJUST_LOGGING}"
+                  value: "{{inputs.parameters.THOTH_ADJUST_LOGGING}}"
                 - name: MI_THOTH
-                  value: "${inputs.parameters.MI_THOTH}"
+                  value: "{{inputs.parameters.MI_THOTH}}"
 
     - name: analyse
       resubmitPendingPods: true
