@@ -11,10 +11,6 @@ presubmits:
             - "pre-commit"
             - "run"
             - "--all-files"
-          resources:
-            requests:
-              memory: "2Gi"
-              cpu: "2"
   - name: kustomize-build
     decorate: true
     max_concurrency: 1
