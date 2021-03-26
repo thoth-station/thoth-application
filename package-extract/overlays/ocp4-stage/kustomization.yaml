@@ -27,3 +27,9 @@ patchesJson6902:
       version: v1
       kind: Template
       name: package-extract
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: build-analysis
