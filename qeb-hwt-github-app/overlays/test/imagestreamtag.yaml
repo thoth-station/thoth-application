@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/qeb-hwt-webhook-receiver:pr-153
+        name: quay.io/thoth-station/qeb-hwt-webhook-receiver:v0.3.4
       importPolicy: {}
       referencePolicy:
         type: Source
