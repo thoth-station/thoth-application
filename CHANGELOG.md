@@ -1026,3 +1026,118 @@
 * :arrow_up: moved config to repo
 * :sparkles: reconfgured CI/CD to use prow and aicoe-ci
 * :sparkles: reconfgured common repo's test
+
+## Release 2021.03.29 (2021-03-29T05:47:19)
+### Features
+* :ship: Deploy the Tag v0.3.4 for qeb-hwt
+* :ship: Deploy the Tag pr-153 for qeb-hwt
+* :turtle: include the workflow while deploying buildlog-parser
+* :ship: Deploy the Tag v0.22.1 for user-api
+* :ship: Deploy the Tag v0.6.2 for workflow-helpers
+* :fire: templates are to be placed on the infra namespace (#1118)
+* Fix parameter setup from ${..} to {{..}} (#1114)
+* Mi scheduler/reduce parallelism (#1115)
+* Remove resource allocation for prow job
+* :ship: Deploy the Tag 1.3.7 for mi-scheduler
+* :ship: Deploy the Tag v1.3.7 for mi-scheduler
+* :ship: Deploy the Tag 1.3.6 for mi-scheduler
+* :ship: Deploy the Tag v1.3.6 for mi-scheduler
+* Revert version for qebhwt v0.3.2 for prod
+* :ship: Deploy the Tag v0.3.3 for qeb-hwt
+* :ship: Deploy the Tag v2.3.2 for mi
+* :ship: Deploy the Tag v0.12.0 for messaging
+* chore: Update operate first labels (#1109)
+* :ship: Deploy the Tag v1.3.5 for mi-scheduler
+* Give full path to perscription file
+* Change thoth flag to be setup with envvar (#1107)
+* Revert "Revert "hotfix :fire:", so that we use the test-pods namespace..."
+* Revert "hotfix :fire:", so that we use the test-pods namespace...
+* :sparkles: add p-c-m rbac
+* Supply prescription.yaml to adviser container (#1078)
+* Run prescription sync command (#1105)
+* hotfix :fire:
+* :sparkles: using Prow test-pods namespace
+* Update sinker_rbac.yaml
+* manage required checks for repos (#1103)
+* :ship: Deploy the Tag v0.27.0 for adviser
+* :arrow_up: update the in_repo_config
+* :ship: Deploy the Tag v1.3.4 for mi-scheduler
+* bump resources for the qebhwt workflow (#1099)
+* pass the message image to amun-inspection stage namespace
+* Add ADDITIONAL_CONFIGURATION to passed parameters (#1098)
+* Add max number of workflows limit (#1097)
+* Fix incorrect name of mi-scheduler in logging envvar (#1096)
+* patch adviser resource with incresed resources
+* switch on data ingestion in prod cluster
+* increase the resources for the database deployment in prod
+* increase the resources for adviser run in the production environment (#1092)
+* Remove mi-scheduler env from run-mi template (#1091)
+* Add logging envs (#1090)
+* :sparkles: add the #B4mad Minecraft project (#1087)
+* :arrow_up: update the container image tags used to decorate prow jobs (#1088)
+* feat: Setup prow for aicoe-aiops (#1089)
+* :ship: Deploy the Tag v0.22.0 for user-api
+* :ship: Deploy the Tag v0.10.1 for investigator
+* :ship: Deploy the Tag v0.3.4 for graph-refresh-job
+* :ship: Deploy the Tag v0.8.2 for graph-backup-job
+* :ship: Deploy the Tag v0.12.0 for slo-reporter
+* :ship: Deploy the Tag v0.6.1 for advise-reporter
+* :ship: Deploy the Tag v0.6.1 for workflow-helpers
+* Use new version for slo-reporter
+* :ship: Deploy the Tag v0.11.1 for slo-reporter
+* Add missing knowledge_path parameter (#1083)
+* :sparkles: add triage/ labels to thoth-station repos
+* Deprecate prod overlays for thoth-station components (#1081)
+* switch on the data ingestion pipelines
+* Fix links in graph-backup job (#1080)
+* Remove old prod deployment of graph-backup-job (#1079)
+* Add prescription-sync cronjob (#1077)
+* use internal service route instead of external route
+* configure thoth prod cluster with updated ceph (#1073)
+* increase the ttl for amun-inspection workflows to 1hr (#1075)
+* Send email to AICoE (#1074)
+* introduce a new ceph setup and configured amun with it (#1072)
+* :ship: Deploy the Tag v0.10.5 for graph-sync-job
+* configure admin user for the postgresql instance (#1068)
+* :ship: Deploy the Tag v0.14.1 for metrics-exporter
+* allow-metrics-exporter to check Kafka connection (#1067)
+* Solve metrics exporter schema alarm (#1064)
+* :ship: Deploy the Tag v0.14.0 for metrics-exporter
+* :sparkles: fold the #hacktoberfest label into hacktoberfest
+* :sparkles: added hacktoberfest labels
+* :arrow_up: did some deployment_name label renaming
+* :ship: Deploy the Tag v0.15.1 for management-api
+* set the debugger on for the investigator
+* switch off data ingestion for demo time
+### Bug Fixes
+* :bug: fix a missing N
+* Prescription syncing does not require knowledge graph (#1106)
+* updated amun deployment to fix argo sync
+* fix integration-tests notification
+* debug the prow label sync imagestream to fix argocd
+* update the prow label sync imagestream to fix argocd
+* :bug: fix the webhook url of Qeb-Hwt
+* :bug: fix the webhook url of Qeb-Hwt
+* :fire: sefkhet-abwy chatbot secrets and deployment fix
+### Improvements
+* Bump up version for qebhwt v0.3.4 for stage and prod
+* :zap: Bump up version for workflow-helpers v0.6.2 for prod and stage
+* :zap: Bump up version for user-api v0.22.1 for prod and stage
+* :fire: Bump up version for messaging v0.12.0 for stage and prod (#1119)
+* Bump up version for qebhwt v0.3.3 for prod
+* Bump up version for qebhwt v0.3.3 for stage
+* message related images and workflows are available in test cluster
+* parameters are not part of mi scheduler cronjob (#1095)
+* Fix logging to use THOTH_ADJUST_LOGGING (#1094)
+* debug increase of the resources for adviser run in the production (#1093)
+* Bump up version for user-api v0.22.0 for stage
+* Bump up version for investigator v0.10.1 for stage and prod
+* Bump up version for graph-refresh v0.3.4 for stage and prod
+* Bump up version for graph-backup v0.8.2 for stage and prod
+* Bump up version for workflow-helpers v0.6.1 for stage and prod
+* Bump up version for advise-reporter v0.6.1 for stage and prod
+* updated the khemenu certs (#1082)
+* removed the aiops related presubmit jobs
+* Bump up version for management-api v0.15.1 (#1071)
+* alert manager and monitoring for thoth production (#1070)
+* Bump up version for metrics-exporter v0.14.1
