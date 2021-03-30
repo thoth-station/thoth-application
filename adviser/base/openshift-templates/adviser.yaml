@@ -73,6 +73,10 @@ parameters:
     displayName: Perform force sync
     required: true
     value: "0"
+  - name: THOTH_PASSED_API_TOKEN
+    description: API token passed by user.
+    displayName: Passed API token
+    value: ""
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -152,6 +156,13 @@ objects:
             value: "${THOTH_ADVISER_COUNT}"
           - name: THOTH_FORCE_SYNC
             value: "${THOTH_FORCE_SYNC}"
+          - name: THOTH_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: user-api-token
+                name: thoth
+          - name: PASSED_API_TOKEN
+            value: "${THOTH_PASSED_API_TOKEN}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -274,6 +285,7 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
+                when: "{{workflow.parameters.THOTH_API_TOKEN}} == {{workflow.parameters.PASSED_API_TOKEN}}"
 
               - name: "trigger-integration"
                 dependencies:
