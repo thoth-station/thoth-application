@@ -293,8 +293,6 @@ spec:
       generation: 1
       importPolicy: {}
       name: latest
-      referencePolicy:
-        type: Source
     - annotations: null
       from:
         kind: DockerImage
@@ -321,7 +319,7 @@ spec:
       importPolicy: {}
       name: v20210304-a61492beff
       referencePolicy:
-        type: Source
+        type: Local
     - annotations: null
       from:
         kind: DockerImage
@@ -330,7 +328,7 @@ spec:
       importPolicy: {}
       name: v20210310-26726f9bd5
       referencePolicy:
-        type: Source
+        type: Local
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
