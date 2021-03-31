@@ -73,6 +73,10 @@ parameters:
     displayName: Perform force sync
     required: true
     value: "0"
+  - name: THOTH_AUTHENTICATED_ADVISE
+    description: Advise performed with authentication.
+    displayName: Authenticated advise
+    value: "0"
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -274,6 +278,7 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
 
               - name: "trigger-integration"
                 dependencies:
@@ -289,6 +294,7 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_ADVISER_METADATA"
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
 
 
               - name: "kebechet-run-results"
