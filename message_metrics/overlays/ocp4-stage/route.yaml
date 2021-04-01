@@ -1,9 +1,0 @@
----
-kind: Route
-apiVersion: route.openshift.io/v1
-metadata:
-  name: message-metrics
-spec:
-  to:
-    kind: Service
-    name: message-metrics

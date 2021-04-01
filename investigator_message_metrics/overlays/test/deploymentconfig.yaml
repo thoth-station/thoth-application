@@ -1,0 +1,138 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: investigator-message-metrics
+spec:
+  replicas: 1
+  selector:
+    service: investigator-message-metrics
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: investigator-message-metrics
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
+  template:
+    metadata:
+      labels:
+        service: investigator-message-metrics
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: investigator-message-metrics
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
+    spec:
+      serviceAccountName: investigator-message-metrics
+      containers:
+        - image: investigator
+          name: investigator-message-metrics
+          env:
+            - name: SUBCOMMAND
+              value: "consumer"
+            - name: DEBUG_LEVEL
+              value: "0"
+            - name: APP_SCRIPT
+              value: "app.sh"
+            - name: THOTH_CONSUMER_MODE
+              value: "metrics"
+            - name: KAFKA_CONSUMER_GROUP_ID
+              value: "thoth.message-metrics"
+            - name: KAFKA_CONSUMER_ENABLE_AUTO_COMMIT
+              value: "false"
+            - name: KAFKA_CONSUMER_MAX_POLL_INTERVAL_MS
+              value: "900000"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: kafka-bootstrap-servers
+            - name: KAFKA_SECURITY_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka-protocol
+                  name: kafka
+            - name: KAFKA_SSL_CA_LOCATION
+              value: "/mnt/secrets/kafka_ca.crt"
+            - name: KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM
+              value: "none"
+            - name: KNOWLEDGE_GRAPH_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: postgresql-host
+            - name: KNOWLEDGE_GRAPH_PORT
+              value: "5432"
+            - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+              value: "1"
+            - name: KNOWLEDGE_GRAPH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-user
+            - name: KNOWLEDGE_GRAPH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-password
+            - name: KNOWLEDGE_GRAPH_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-name
+            - name: THOTH_CEPH_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-name
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-prefix
+                  name: ceph
+            - name: THOTH_S3_ENDPOINT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: host
+                  name: ceph
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: deployment-name
+                  name: thoth
+            - name: KUBERNETES_API_URL
+              value: "https://kubernetes.default.svc.cluster.local"
+            - name: KUBERNETES_VERIFY_TLS
+              value: "0"
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 6066
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: "/_health"
+              port: 6066
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 10
+          livenessProbe:
+            failureThreshold: 1
+            # Give this consumer 2 hours to finish
+            initialDelaySeconds: 7200
+            periodSeconds: 10
+            tcpSocket:
+              port: 80
+      volumes:
+        - name: secrets
+          secret:
+            secretName: "kafka"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
+  test: false
