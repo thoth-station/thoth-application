@@ -75,36 +75,6 @@ spec:
                 secretKeyRef:
                   name: postgresql
                   key: database-name
-            - name: THOTH_BACKEND_NAMESPACE
-              valueFrom:
-                configMapKeyRef:
-                  name: thoth
-                  key: backend-namespace
-            - name: THOTH_MIDDLETIER_NAMESPACE
-              valueFrom:
-                configMapKeyRef:
-                  name: thoth
-                  key: middletier-namespace
-            - name: THOTH_INFRA_NAMESPACE
-              valueFrom:
-                configMapKeyRef:
-                  name: thoth
-                  key: infra-namespace
-            - name: THOTH_CEPH_BUCKET
-              valueFrom:
-                configMapKeyRef:
-                  key: bucket-name
-                  name: ceph
-            - name: THOTH_CEPH_BUCKET_PREFIX
-              valueFrom:
-                configMapKeyRef:
-                  key: bucket-prefix
-                  name: ceph
-            - name: THOTH_S3_ENDPOINT_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: host
-                  name: ceph
             - name: THOTH_DEPLOYMENT_NAME
               valueFrom:
                 configMapKeyRef:
@@ -113,8 +83,6 @@ spec:
             - name: KUBERNETES_API_URL
               value: "https://kubernetes.default.svc.cluster.local"
             - name: KUBERNETES_VERIFY_TLS
-              value: "0"
-            - name: THOTH_INVESTIGATOR_SCHEDULE_REVSOLVER
               value: "0"
           volumeMounts:
             - name: secrets
