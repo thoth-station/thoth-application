@@ -10,13 +10,6 @@ metadata:
 spec:
   serviceAccountName: argo
   entrypoint: mi-workflow
-
-  synchronization:
-    semaphore:
-      configMapKeyRef:
-        name: mi-scheduler
-        key: parallel-workflows-limit
-
   templates:
     - name: mi-workflow
       resubmitPendingPods: true
