@@ -39,7 +39,7 @@ default:
       target: both
       prowPlugin: label
       addedBy: human
-    - color: fef2c0
+    - color: 0e8a16
       description: Indicates a PR has been approved by an approver from all required OWNERS files.
       name: approved
       target: prs
