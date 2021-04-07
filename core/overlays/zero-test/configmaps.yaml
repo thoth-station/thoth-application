@@ -1,0 +1,110 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: thoth
+data:
+  applicationVersion: 0.7.0-dev
+  deployment-name: zero-test
+  amun-api-url: http://amun-api.thoth-test-core.svc/api/v1
+  amun-inspection-namespace: thoth-test-core
+  amun-namespace: thoth-test-core
+  backend-namespace: thoth-test-core
+  middletier-namespace: thoth-test-core
+  frontend-namespace: thoth-test-core
+  infra-namespace: thoth-test-core
+  package-releases-only-if-package-seen: "1"
+  postgresql-host: pgbouncer.thoth-test-core.svc
+  rsyslog-host: ""
+  rsyslog-port: ""
+  storage-bucket-name: zero-test
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ceph
+data:
+  bucket-name: "thoth"
+  bucket-prefix: "data"
+  public-bucket-name: DH-PLAYPEN
+  host: "http://s3.openshift-storage.svc.cluster.local"
+  endpoint: "http://s3.openshift-storage.svc.cluster.local"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: solvers
+data:
+  solvers: |
+    solver-rhel-8-py36
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: kafka
+data:
+  kafka-ssl-auth: "1"
+  kafka-protocol: "SSL"
+  kafka-bootstrap-servers: "odh-message-bus-kafka-bootstrap-opf-kafka.apps.zero.massopen.cloud:443"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: workflow-controller-configmap
+data:
+  config: |
+    containerRuntimeExecutor: "k8sapi"
+    namespace: "thoth-test-core"
+    parallelism: 10
+
+    # metricsConfig controls the path and port for prometheus metrics
+    metricsConfig:
+      enabled: true
+      path: /metrics
+      port: 8080
+
+    workflowDefaults:
+      spec:
+        ttlStrategy:
+          secondsAfterCompletion: 7200
+          secondsAfterSuccess: 7200
+          secondsAfterFailure: 7200
+        parallelism: 10
+
+    artifactRepository:
+      archiveLogs: false
+
+      s3:
+        bucket: "thoth"
+        keyPrefix: "data/zero-test/argo/artifacts/"
+        endpoint: "s3.upshift.redhat.com"
+        insecure: true
+        accessKeySecret:
+          name: argo-artifact-repository-secrets
+          key: accessKey
+        secretKeySecret:
+          name: argo-artifact-repository-secrets
+          key: secretKey
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus
+data:
+  host-url: "http://prometheus-portal-thoth-infra-prod.apps.zero.massopen.cloud"
+  user-api-url: "user-api-thoth-test-core.apps.zero.massopen.cloud:80"
+  instance-metrics-exporter-infra: "metrics-exporter-thoth-test-core.apps.zero.massopen.cloud:80"
+  instance-metrics-management-api: "management-api-thoth-test-core.apps.zero.massopen.cloud:80"
+  pushgateway-host: pushgateway-thoth-infra-prod.apps.zero.massopen.cloud
+  pushgateway-port: "80"
+  pushgateway-url: pushgateway-thoth-infra-prod.apps.zero.massopen.cloud:80
+  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-test-core.apps.zero.massopen.cloud:80"
+  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-test-core.apps.zero.massopen.cloud:80"
+  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-test-core.apps.zero.massopen.cloud:80"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: qeb-hwt-workflow
+data:
+  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-test-core.apps.zero.massopen.cloud"
