@@ -88,11 +88,6 @@ spec:
                 configMapKeyRef:
                   key: bucket-prefix
                   name: ceph
-            - name: THOTH_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: thoth
-                  key: thoth-secret
             - name: THOTH_MANAGEMENT_API_TOKEN
               valueFrom:
                 secretKeyRef:

@@ -41,7 +41,7 @@ spec:
             - name: THOTH_USER_API_TOKEN
               valueFrom:
                 secretKeyRef:
-                  key: thoth-secret
+                  key: user-api-token
                   name: thoth
             - name: THOTH_API_REPORT_EXCEPTIONS
               valueFrom:
