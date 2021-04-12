@@ -99,6 +99,8 @@ objects:
             value: "${THOTH_ADVISER_METADATA}"
           - name: THOTH_LOG_ADVISER
             value: "${THOTH_LOG_ADVISER}"
+          - name: THOTH_AUTHENTICATED_PROVENANCE_CHECK
+            value: "${THOTH_AUTHENTICATED_PROVENANCE_CHECK}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
