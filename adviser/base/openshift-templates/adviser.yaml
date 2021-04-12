@@ -156,6 +156,8 @@ objects:
             value: "${THOTH_ADVISER_COUNT}"
           - name: THOTH_FORCE_SYNC
             value: "${THOTH_FORCE_SYNC}"
+          - name: THOTH_AUTHENTICATED_ADVISE
+            value: "${THOTH_AUTHENTICATED_ADVISE}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
