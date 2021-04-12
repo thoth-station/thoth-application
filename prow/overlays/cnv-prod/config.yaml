@@ -15,15 +15,16 @@ plank:
         initupload: gcr.io/k8s-prow/initupload:v20210319-be35a198b9
         sidecar: gcr.io/k8s-prow/sidecar:v20210319-be35a198b9
 sinker:
-    # MaxPodAge is how old a Pod can be before it is garbage-collected.
-    # Defaults to one day.
-    max_pod_age: 6h
-    # MaxProwJobAge is how old a ProwJob can be before it is garbage-collected.
-    # Defaults to one week.
-    max_prowjob_age: 12h
+  # MaxPodAge is how old a Pod can be before it is garbage-collected.
+  # Defaults to one day.
+  max_pod_age: 6h
+  # MaxProwJobAge is how old a ProwJob can be before it is garbage-collected.
+  # Defaults to one week.
+  max_prowjob_age: 12h
 
 prowjob_namespace: opf-ci-prow
 pod_namespace: opf-ci-prow
+log_level: debug
 
 in_repo_config:
   enabled:
