@@ -62,7 +62,7 @@ with open("overlays/cnv-prod/imagestreamtags.yaml") as ist:
     stream = load_all(ist.read(), Loader=Loader)
 
 updated_imagestream_tags = []
-current_tag = "v20210304-a61492beff"
+current_tag = "v20210412-f0c722e283"
 
 for data in stream:
     logging.info(f"updating ImageStream '{data['metadata']['name']}'")
