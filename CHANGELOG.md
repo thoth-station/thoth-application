@@ -1141,3 +1141,59 @@
 * Bump up version for management-api v0.15.1 (#1071)
 * alert manager and monitoring for thoth production (#1070)
 * Bump up version for metrics-exporter v0.14.1
+
+## Release 2021.04.12 (2021-04-12T05:20:40)
+### Features
+* :arrow_up: update the certs for the prow.thoth-station.ninja (#1156)
+* :ship: Deploy the Tag v0.13.1 for slo-reporter
+* :ship: Deploy the Tag v0.24.0 for user-api
+* :ship: Deploy the Tag pr-1377 for user-api
+* :ship: Deploy the Tag v0.3.1 for nepthys
+* include the postgressql required secrets
+* updated the secrets based on the renew sops file (#1150)
+* :ship: Deploy the Tag v0.3.0 for nepthys
+* add message metrics deployment (#1104)
+* created separate overlay for zero-test (#1145)
+* :ship: Deploy the Tag v2.4.0 for mi
+* :ship: Deploy the Tag pr-1372 for user-api
+* :ship: Deploy the Tag pr-1373 for user-api
+* Suspend prescription-sync-job in prod and stage (#1144)
+* :sparkles: give the approved label a nice green color
+* updated new kafka certs for the prod (#1143)
+* kafdrop for the operate-first cluster
+* :ship: Deploy the Tag pr-1372 for user-api
+* :arrow_up: :pencil: add triage/ labels to label plugin config
+* :arrow_up: :pencil: add some more thoth labels
+* :arrow_up: use argo v2.12.5 in prod deployment (#1141)
+* :ship: Deploy the Tag pr-1369 for user-api
+* Bump SLO-reporter to v0.13.0 (#1138)
+* :ship: Deploy the Tag pr-1350 for user-api
+* :ship: Deploy the Tag pr-1365 for user-api
+* :ship: Deploy the Tag v0.23.0 for user-api
+* :ship: Deploy the Tag v0.11.0 for investigator
+* :ship: Deploy the Tag v0.13.0 for messaging
+* Run graph-sync in advises only when authenticated (#1132)
+* Run graph-sync in provenance-check only when authenticated (#1133)
+* Fix advise reporter talking to kafka (#1134)
+* :robot: Fix label sync imagestream reference policy
+* :arrow_up: updated kafka certs for the production environments
+* :turtle: Fix the roles for gathering logs permissions (#1131)
+* chore: Add triage labels for Operate First (#1128)
+* :ship: Deploy the Tag v2.3.4 for mi
+* Bump adviser to 0.27.0 in stage (#1124)
+* :ship: Deploy the Tag v2.3.3 for mi
+* :ship: Deploy the Tag pr-1350 for user-api
+* :ship: Deploy the Tag v0.13.0 for slo-reporter
+* enable max time for prow jobs via sinker (#1116)
+### Bug Fixes
+* fix defaults (#1152)
+* Zero test fix (#1148)
+* :whale: access the logs in different namespace than api (#1127)
+### Improvements
+* :arrow_up: bump up adviser to 0.27.0 for zero-prod (#1157)
+* :bug: use the correct name of the label-sync config file
+* :guardsman: updated kafka certs for prod cluster
+* Fix parallel limit to use semaphore instead of parallelism (#1140)
+* :guardsman: updated thoth secrets across the board (#1137)
+* Revert ":guardsman: updated kafka certs for prod cluster (#1135)" (#1136)
+* :guardsman: updated kafka certs for prod cluster (#1135)
