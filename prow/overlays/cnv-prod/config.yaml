@@ -277,85 +277,46 @@ periodics:
       containers:
         - image: quay.io/thoth-station/integration-tests:v0.8.0
           imagePullPolicy: Always
-          command:
-            - python3
-            - app.py
           env:
-            - name: THOTH_DEPLOYMENT_NAME
-              value: zero-prod
             - name: MAIL_REPORT
-              value: "0"
+              valueFrom:
+                configMapKeyRef:
+                  key: mail-report
+                  name: integration-tests
+            - name: GENERATE_REPORT
+              valueFrom:
+                configMapKeyRef:
+                  key: generate-report
+                  name: integration-tests
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: deployment-name
+                  name: integration-tests
             - name: THOTH_USER_API_HOST
-              value: api.moc.thoth-station.ninja
+              valueFrom:
+                configMapKeyRef:
+                  key: user-api
+                  name: integration-tests
             - name: THOTH_MANAGEMENT_API_HOST
-              value: management.moc.thoth-station.ninja
+              valueFrom:
+                configMapKeyRef:
+                  key: management-api
+                  name: integration-tests
             - name: THOTH_AMUN_API_HOST
-              value: amun.moc.thoth-station.ninja
+              valueFrom:
+                configMapKeyRef:
+                  key: amun-api
+                  name: integration-tests
             - name: THOTH_MANAGEMENT_API_SECRET
-              value: ""
+              valueFrom:
+                secretKeyRef:
+                  key: management-api-token
+                  name: integration-tests
+            - name: THOTH_INTEGRATION_TESTS_TAGS
+              valueFrom:
+                configMapKeyRef:
+                  key: tags
+                  name: integration-tests
     annotations:
       description: Periodic e2e tests against MOC deployment
-
-presubmits:
-  thoth-station/integration-tests:
-    - name: pre-commit
-      decorate: true
-      skip_report: false
-      always_run: true
-      context: aicoe-ci/prow/pre-commit
-      spec:
-        containers:
-          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.5
-            command:
-              - "pre-commit"
-              - "run"
-              - "--all-files"
-            resources:
-              requests:
-                memory: "2Gi"
-                cpu: "2"
-    - name: integration-tests-moc
-      decorate: true
-      skip_report: false
-      always_run: false
-      context: aicoe-ci/prow/integration-tests
-      spec:
-        containers:
-          - image: quay.io/thoth-station/integration-tests:pr-136
-            imagePullPolicy: Always
-            command:
-              - python3
-              - app.py
-            env:
-              - name: THOTH_DEPLOYMENT_NAME
-                value: zero-prod
-              - name: GENERATE_REPORT
-                value: "1"
-              - name: MAIL_REPORT
-                value: "0"
-              - name: THOTH_USER_API_HOST
-                value: api.moc.thoth-station.ninja
-              - name: THOTH_MANAGEMENT_API_HOST
-                value: management.moc.thoth-station.ninja
-              - name: THOTH_AMUN_API_HOST
-                value: amun.moc.thoth-station.ninja
-              - name: THOTH_MANAGEMENT_API_SECRET
-                value: ""
-
-  AICoE/pricingnbs:
-    - name: pre-commit
-      decorate: true
-      skip_report: false
-      always_run: true
-      context: aicoe-ci/prow/pre-commit
-      spec:
-        containers:
-          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.5
-            command:
-              - "pre-commit"
-              - "run"
-              - "--all-files"
-            resources:
-              requests:
-                memory: "2Gi"
-                cpu: "2"
