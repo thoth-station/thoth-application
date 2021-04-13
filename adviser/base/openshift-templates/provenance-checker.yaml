@@ -200,3 +200,4 @@ objects:
                       value: "1"
                     - name: MESSAGES_DOCUMENT_NAME
                       value: "messages_to_be_sent.json"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
