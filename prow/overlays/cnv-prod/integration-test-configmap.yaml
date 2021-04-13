@@ -4,7 +4,7 @@ apiVersion: v1
 metadata:
   name: integration-tests
 data:
-  mail-report: "1"
+  mail-report: "0"
   generate-report: "1"
   deployment-name: "zero-prod"
   user-api: "api.moc.thoth-station.ninja"
