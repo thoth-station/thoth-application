@@ -271,18 +271,18 @@ tide:
 
 periodics:
   - name: integration-tests-moc
-    interval: 8h
+    interval: 6h
     decorate: true
     spec:
       containers:
         - image: quay.io/thoth-station/integration-tests:v0.8.0
           imagePullPolicy: Always
+          command:
+            - python3
+            - app.py
           env:
             - name: MAIL_REPORT
-              valueFrom:
-                configMapKeyRef:
-                  key: mail-report
-                  name: integration-tests
+              value: "0"
             - name: GENERATE_REPORT
               valueFrom:
                 configMapKeyRef:
