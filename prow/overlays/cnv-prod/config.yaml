@@ -36,6 +36,7 @@ in_repo_config:
     thoth-station: true
 
   allowed_clusters:
+    "AICoE": ["api-zero-massopen-cloud:6443"]
     "aicoe-aiops": ["api-zero-massopen-cloud:6443"]
     "b4mad": ["api-zero-massopen-cloud:6443"]
     "operate-first": ["api-zero-massopen-cloud:6443"]
@@ -44,6 +45,25 @@ in_repo_config:
 branch-protection:
   allow_disabled_policies: true
   orgs:
+    AICoE:
+      repos:
+        minecraft:
+          protect: true
+          allow_force_pushes: false
+          required_status_checks:
+            contexts:
+              - aicoe-ci/prow/pre-commit
+          exclude:
+            - "^revert-"
+            - "^kebechet-"
+            - "^dependabot/"
+      restrictions:
+        users: []
+        teams:
+          - sourceops
+        required_pull_request_reviews:
+          dismiss_stale_reviews: false
+          required_approving_review_count: 1
     b4mad:
       repos:
         minecraft:
@@ -188,6 +208,7 @@ tide:
         - AICoE/prometheus-api-client-python
         - AICoE/s2i-custom-notebook
         - AICoE/sefkhet-abwy
+        - AICoE/Varangian
       labels:
         - approved
       missingLabels:

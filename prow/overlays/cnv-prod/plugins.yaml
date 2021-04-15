@@ -90,18 +90,6 @@ approve:
     ignore_review_state: false
     lgtm_acts_as_approve: false
 
-repo_milestone:
-  "":
-    maintainers_id: 2990047
-    maintainers_team: Devs
-
-project_config:
-  project_org_configs:
-    thoth-station:
-      org_maintainers_team_id: 2990047
-      org_default_column_map:
-        thoth-deployment: New
-
 plugins:
   b4mad:
     plugins:
@@ -144,8 +132,6 @@ plugins:
       - lgtm
       - lifecycle
       - milestone
-      - project
-      - project-manager
       - shrug
       - size
       - trigger
