@@ -282,7 +282,10 @@ periodics:
             - app.py
           env:
             - name: MAIL_REPORT
-              value: "0"
+              valueFrom:
+                configMapKeyRef:
+                  key: mail-report
+                  name: integration-tests
             - name: GENERATE_REPORT
               valueFrom:
                 configMapKeyRef:
@@ -318,5 +321,12 @@ periodics:
                 configMapKeyRef:
                   key: tags
                   name: integration-tests
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "1"
+            limits:
+              memory: "256Mi"
+              cpu: "1"
     annotations:
       description: Periodic e2e tests against MOC deployment
