@@ -126,12 +126,6 @@ objects:
           emptyDir: {}
         - name: output
           emptyDir: {}
-        - name: kafka-secrets
-          secret:
-            secretName: "kafka"
-            items:
-              - key: kafka_ca.crt
-                path: kafka_ca.crt
       templates:
         - name: "qeb-hwt"
           archiveLocation:
@@ -160,22 +154,3 @@ objects:
                       value: "{{workflow.parameters.REVISION}}"
                     - name: "THOTH_HOST"
                       value: "{{workflow.parameters.THOTH_HOST}}"
-              - name: "send-messages"
-                dependencies:
-                  - "qeb-hwt-integration"
-                templateRef:
-                  name: "send-messages"
-                  template: "send-messages"
-                arguments:
-                  artifacts:
-                    - name: messagesdocument
-                      from: "{{tasks.qeb-hwt-integration.outputs.artifacts.messagestobesentdocument}}"
-                  parameters:
-                    - name: THOTH_MESSAGING_FROM_FILE
-                      value: "/mnt/workdir/messages_to_be_sent.json"
-                    - name: THOTH_DEPLOYMENT_NAME
-                      value: "{{workflow.parameters.deployment_name}}"
-                    - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
-                      value: "1"
-                    - name: MESSAGES_DOCUMENT_NAME
-                      value: "messages_to_be_sent.json"
