@@ -30,6 +30,10 @@ label:
     - tide/merge-method-merge
     - tide/merge-method-rebase
     - tide/merge-method-squash
+    - triage/duplicate
+    - triage/needs-information
+    - triage/not-reproducible
+    - triage/unresolved
 
 external_plugins:
   b4mad:
@@ -86,87 +90,78 @@ approve:
     ignore_review_state: false
     lgtm_acts_as_approve: false
 
-repo_milestone:
-  "":
-    maintainers_id: 2990047
-    maintainers_team: Devs
-
-project_config:
-  project_org_configs:
-    thoth-station:
-      org_maintainers_team_id: 2990047
-      org_default_column_map:
-        thoth-deployment: New
-
 plugins:
   b4mad:
-    - approve
-    - assign
-    - blockade
-    - blunderbuss
-    - hold
-    - label
-    - lgtm
-    - lifecycle
-    - shrug
-    - size
-    - trigger
-    - verify-owners
-    - wip
+    plugins:
+      - approve
+      - assign
+      - blockade
+      - blunderbuss
+      - hold
+      - label
+      - lgtm
+      - lifecycle
+      - shrug
+      - size
+      - trigger
+      - verify-owners
+      - wip
   operate-first:
-    - approve
-    - assign
-    - blockade
-    - blunderbuss
-    - hold
-    - label
-    - lgtm
-    - lifecycle
-    - shrug
-    - size
-    - trigger
-    - verify-owners
-    - wip
+    plugins:
+      - approve
+      - assign
+      - blockade
+      - blunderbuss
+      - hold
+      - label
+      - lgtm
+      - lifecycle
+      - shrug
+      - size
+      - trigger
+      - verify-owners
+      - wip
   thoth-station:
-    - approve
-    - assign
-    - blockade
-    - blunderbuss
-    - hold
-    - label
-    - lgtm
-    - lifecycle
-    - milestone
-    - project
-    - project-manager
-    - shrug
-    - size
-    - trigger
-    - verify-owners
-    - wip
+    plugins:
+      - approve
+      - assign
+      - blockade
+      - blunderbuss
+      - hold
+      - label
+      - lgtm
+      - lifecycle
+      - milestone
+      - shrug
+      - size
+      - trigger
+      - verify-owners
+      - wip
   AICoE:
-    - approve
-    - assign
-    - blockade
-    - blunderbuss
-    - hold
-    - label
-    - lgtm
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
+    plugins:
+      - approve
+      - assign
+      - blockade
+      - blunderbuss
+      - hold
+      - label
+      - lgtm
+      - lifecycle
+      - size
+      - trigger
+      - verify-owners
+      - wip
   aicoe-aiops:
-    - approve
-    - assign
-    - blockade
-    - blunderbuss
-    - hold
-    - label
-    - lgtm
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
+    plugins:
+      - approve
+      - assign
+      - blockade
+      - blunderbuss
+      - hold
+      - label
+      - lgtm
+      - lifecycle
+      - size
+      - trigger
+      - verify-owners
+      - wip

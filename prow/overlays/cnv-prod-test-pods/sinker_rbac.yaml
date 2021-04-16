@@ -1,6 +1,6 @@
 ---
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: "sinker"
 rules:
@@ -16,9 +16,8 @@ rules:
       - patch
 ---
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: test-pods
   name: "sinker"
 roleRef:
   apiGroup: rbac.authorization.k8s.io

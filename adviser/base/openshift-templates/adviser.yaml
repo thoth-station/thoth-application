@@ -73,6 +73,10 @@ parameters:
     displayName: Perform force sync
     required: true
     value: "0"
+  - name: THOTH_AUTHENTICATED_ADVISE
+    description: Advise performed with authentication.
+    displayName: Authenticated advise
+    value: "0"
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -152,6 +156,8 @@ objects:
             value: "${THOTH_ADVISER_COUNT}"
           - name: THOTH_FORCE_SYNC
             value: "${THOTH_FORCE_SYNC}"
+          - name: THOTH_AUTHENTICATED_ADVISE
+            value: "${THOTH_AUTHENTICATED_ADVISE}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -238,6 +244,7 @@ objects:
                   parameters:
                     - name: "THOTH_DOCUMENT_ID"
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
 
               - name: "send-messages"
                 dependencies:
@@ -258,6 +265,7 @@ objects:
                       value: "1"
                     - name: MESSAGES_DOCUMENT_NAME
                       value: "messages_to_be_sent.json"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
 
               - name: "graph-sync-advise"
                 dependencies:
@@ -274,6 +282,7 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "{{workflow.parameters.THOTH_FORCE_SYNC}}"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
 
               - name: "trigger-integration"
                 dependencies:
@@ -289,6 +298,7 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_ADVISER_METADATA"
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
 
 
               - name: "kebechet-run-results"

@@ -38,6 +38,12 @@ patchesJson6902:
       version: v1
       kind: Role
       name: user-api-pods-info
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: user-api-pods-info
 generatorOptions:
   disableNameSuffixHash: true
 generators:

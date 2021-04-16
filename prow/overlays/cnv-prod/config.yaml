@@ -9,14 +9,24 @@ plank:
         bucket: s3://ci-prow-artifacts--36f9ca3b-f5af-4432-bef8-af42508b403e/prow-logs
         path_strategy: explicit
       s3_credentials_secret: s3-credentials
+      ssh_key_secrets:
+        - ssh-secret
       utility_images:
         clonerefs: gcr.io/k8s-prow/clonerefs:v20210319-be35a198b9
         entrypoint: gcr.io/k8s-prow/entrypoint:v20210319-be35a198b9
         initupload: gcr.io/k8s-prow/initupload:v20210319-be35a198b9
         sidecar: gcr.io/k8s-prow/sidecar:v20210319-be35a198b9
+sinker:
+  # MaxPodAge is how old a Pod can be before it is garbage-collected.
+  # Defaults to one day.
+  max_pod_age: 6h
+  # MaxProwJobAge is how old a ProwJob can be before it is garbage-collected.
+  # Defaults to one week.
+  max_prowjob_age: 12h
 
 prowjob_namespace: opf-ci-prow
 pod_namespace: opf-ci-test-pods
+log_level: debug
 
 in_repo_config:
   enabled:
@@ -26,6 +36,7 @@ in_repo_config:
     thoth-station: true
 
   allowed_clusters:
+    "AICoE": ["api-zero-massopen-cloud:6443"]
     "aicoe-aiops": ["api-zero-massopen-cloud:6443"]
     "b4mad": ["api-zero-massopen-cloud:6443"]
     "operate-first": ["api-zero-massopen-cloud:6443"]
@@ -34,6 +45,25 @@ in_repo_config:
 branch-protection:
   allow_disabled_policies: true
   orgs:
+    AICoE:
+      repos:
+        minecraft:
+          protect: true
+          allow_force_pushes: false
+          required_status_checks:
+            contexts:
+              - aicoe-ci/prow/pre-commit
+          exclude:
+            - "^revert-"
+            - "^kebechet-"
+            - "^dependabot/"
+      restrictions:
+        users: []
+        teams:
+          - sourceops
+        required_pull_request_reviews:
+          dismiss_stale_reviews: false
+          required_approving_review_count: 1
     b4mad:
       repos:
         minecraft:
@@ -178,6 +208,7 @@ tide:
         - AICoE/prometheus-api-client-python
         - AICoE/s2i-custom-notebook
         - AICoE/sefkhet-abwy
+        - AICoE/Varangian
       labels:
         - approved
       missingLabels:
@@ -225,15 +256,9 @@ tide:
           buildlog-parser:
             required-contexts:
               - aicoe-ci/build-check
-          datasets:
-            required-contexts:
-              - aicoe-ci/build-check
           init-job:
             required-contexts:
               - aicoe-ci/build-check
-          invectio:
-            required-contexts:
-              - aicoe-ci/pytest-check
           integration-tests:
             required-contexts:
               - aicoe-ci/build-check
@@ -258,25 +283,16 @@ tide:
           si-cloc:
             required-contexts:
               - aicoe-ci/build-check
-          solver:
-            required-contexts:
-              - aicoe-ci/pytest-check
           investigator:
             required-contexts:
               - aicoe-ci/build-check
           workflow-helpers:
             required-contexts:
               - aicoe-ci/build-check
-          report-processing:
-            required-contexts:
-              - aicoe-ci/build-check
-          elyra-aidevsecops-tutorial:
-            required-contexts:
-              - aicoe-ci/build-check
 
 periodics:
   - name: integration-tests-moc
-    interval: 8h
+    interval: 6h
     decorate: true
     spec:
       containers:
@@ -286,99 +302,52 @@ periodics:
             - python3
             - app.py
           env:
-            - name: THOTH_DEPLOYMENT_NAME
-              value: zero-prod
             - name: MAIL_REPORT
-              value: "0"
+              valueFrom:
+                configMapKeyRef:
+                  key: mail-report
+                  name: integration-tests
+            - name: GENERATE_REPORT
+              valueFrom:
+                configMapKeyRef:
+                  key: generate-report
+                  name: integration-tests
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: deployment-name
+                  name: integration-tests
             - name: THOTH_USER_API_HOST
-              value: api.moc.thoth-station.ninja
+              valueFrom:
+                configMapKeyRef:
+                  key: user-api
+                  name: integration-tests
             - name: THOTH_MANAGEMENT_API_HOST
-              value: management.moc.thoth-station.ninja
+              valueFrom:
+                configMapKeyRef:
+                  key: management-api
+                  name: integration-tests
             - name: THOTH_AMUN_API_HOST
-              value: amun.moc.thoth-station.ninja
+              valueFrom:
+                configMapKeyRef:
+                  key: amun-api
+                  name: integration-tests
             - name: THOTH_MANAGEMENT_API_SECRET
-              value: ""
+              valueFrom:
+                secretKeyRef:
+                  key: management-api-token
+                  name: integration-tests
+            - name: THOTH_INTEGRATION_TESTS_TAGS
+              valueFrom:
+                configMapKeyRef:
+                  key: tags
+                  name: integration-tests
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "1"
+            limits:
+              memory: "256Mi"
+              cpu: "1"
     annotations:
       description: Periodic e2e tests against MOC deployment
-
-presubmits:
-  thoth-station/s2i-generic-data-science-notebook:
-    - name: pre-commit
-      decorate: true
-      skip_report: false
-      always_run: true
-      context: aicoe-ci/prow/pre-commit
-      spec:
-        containers:
-          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.5
-            command:
-              - "pre-commit"
-              - "run"
-              - "--all-files"
-            resources:
-              requests:
-                memory: "2Gi"
-                cpu: "2"
-
-  thoth-station/integration-tests:
-    - name: pre-commit
-      decorate: true
-      skip_report: false
-      always_run: true
-      context: aicoe-ci/prow/pre-commit
-      spec:
-        containers:
-          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.5
-            command:
-              - "pre-commit"
-              - "run"
-              - "--all-files"
-            resources:
-              requests:
-                memory: "2Gi"
-                cpu: "2"
-    - name: integration-tests-moc
-      decorate: true
-      skip_report: false
-      always_run: false
-      context: aicoe-ci/prow/integration-tests
-      spec:
-        containers:
-          - image: quay.io/thoth-station/integration-tests:pr-136
-            imagePullPolicy: Always
-            command:
-              - python3
-              - app.py
-            env:
-              - name: THOTH_DEPLOYMENT_NAME
-                value: zero-prod
-              - name: GENERATE_REPORT
-                value: "1"
-              - name: MAIL_REPORT
-                value: "0"
-              - name: THOTH_USER_API_HOST
-                value: api.moc.thoth-station.ninja
-              - name: THOTH_MANAGEMENT_API_HOST
-                value: management.moc.thoth-station.ninja
-              - name: THOTH_AMUN_API_HOST
-                value: amun.moc.thoth-station.ninja
-              - name: THOTH_MANAGEMENT_API_SECRET
-                value: ""
-
-  AICoE/pricingnbs:
-    - name: pre-commit
-      decorate: true
-      skip_report: false
-      always_run: true
-      context: aicoe-ci/prow/pre-commit
-      spec:
-        containers:
-          - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.5
-            command:
-              - "pre-commit"
-              - "run"
-              - "--all-files"
-            resources:
-              requests:
-                memory: "2Gi"
-                cpu: "2"

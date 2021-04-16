@@ -34,6 +34,10 @@ parameters:
     description: Log adviser actions.
     displayName: Log adviser actions
     value: INFO
+  - name: THOTH_AUTHENTICATED_PROVENANCE_CHECK
+    description: Provenance check performed with authentication.
+    displayName: Authenticated provenance-check
+    value: "0"
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -95,6 +99,8 @@ objects:
             value: "${THOTH_ADVISER_METADATA}"
           - name: THOTH_LOG_ADVISER
             value: "${THOTH_LOG_ADVISER}"
+          - name: THOTH_AUTHENTICATED_PROVENANCE_CHECK
+            value: "${THOTH_AUTHENTICATED_PROVENANCE_CHECK}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -158,6 +164,7 @@ objects:
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_FORCE_SYNC"
                       value: "1"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_PROVENANCE_CHECK}} == 1"
 
               - name: "parse-provenance-checker-output"
                 dependencies:
@@ -172,6 +179,7 @@ objects:
                   parameters:
                     - name: "THOTH_DOCUMENT_ID"
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_PROVENANCE_CHECK}} == 1"
 
               - name: "send-messages"
                 dependencies:
@@ -192,3 +200,4 @@ objects:
                       value: "1"
                     - name: MESSAGES_DOCUMENT_NAME
                       value: "messages_to_be_sent.json"
+                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"

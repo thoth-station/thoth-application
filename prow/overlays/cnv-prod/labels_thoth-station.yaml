@@ -39,7 +39,7 @@ default:
       target: both
       prowPlugin: label
       addedBy: human
-    - color: fef2c0
+    - color: 0e8a16
       description: Indicates a PR has been approved by an approver from all required OWNERS files.
       name: approved
       target: prs
@@ -379,5 +379,21 @@ default:
         - name: close/unresolved
         - name: invalid
         - name: wontfix
+      target: both
+      addedBy: humans
+
+    - color: fbca04
+      description: This issue could be used for group programming, offer or request.
+      name: thoth/group-programming
+      target: issues
+      addedBy: humans
+    - color: fbca04
+      description: This isse/PR requires himan intervention!
+      name: thoth/human-intervention-required
+      target: both
+      addedBy: both
+    - color: fbca04
+      description: This is a potential observation we need to learn from!
+      name: thoth/potential-observation
       target: both
       addedBy: humans
