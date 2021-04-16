@@ -40,44 +40,6 @@ spec:
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: label-sync-aicoe
-spec:
-  schedule: "17 * * * *"
-  concurrencyPolicy: Forbid
-  jobTemplate:
-    metadata:
-      labels:
-        app: label-sync
-    spec:
-      template:
-        spec:
-          containers:
-            - name: label-sync
-              image: label_sync:latest
-              args:
-                - --config=/etc/config/labels.yaml
-                - --confirm=true
-                - --orgs=AICoE
-                - --token=/etc/github/oauth
-              volumeMounts:
-                - name: oauth
-                  mountPath: /etc/github
-                  readOnly: true
-                - name: config
-                  mountPath: /etc/config
-                  readOnly: true
-          restartPolicy: Never
-          volumes:
-            - name: oauth
-              secret:
-                secretName: oauth-token
-            - name: config
-              configMap:
-                name: label-config
----
-apiVersion: batch/v1beta1
-kind: CronJob
-metadata:
   name: label-sync-operate-first
 spec:
   schedule: "37 * * * *"
