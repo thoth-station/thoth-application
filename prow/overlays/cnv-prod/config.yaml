@@ -368,7 +368,7 @@ periodics:
               -label:lifecycle/frozen
               label:lifecycle/rotten
             - --updated=720h
-            - --token=/etc/token/token
+            - --token=/etc/token/oauth
             - |-
               --comment=Rotten issues close after 30d of inactivity.
               Reopen the issue with `/reopen`.
@@ -384,7 +384,7 @@ periodics:
       volumes:
         - name: token
           secret:
-            secretName: github-token
+            secretName: oauth-token
 
   - name: periodic-rotten
     interval: 1h
@@ -403,7 +403,7 @@ periodics:
               label:lifecycle/stale
               -label:lifecycle/rotten
             - --updated=720h
-            - --token=/etc/token/token
+            - --token=/etc/token/oauth
             - |-
               --comment=Stale issues rot after 30d of inactivity.
               Mark the issue as fresh with `/remove-lifecycle rotten`.
@@ -421,7 +421,7 @@ periodics:
       volumes:
         - name: token
           secret:
-            secretName: github-token
+            secretName: oauth-token
 
   - name: periodic-stale
     interval: 1h
@@ -440,7 +440,7 @@ periodics:
               -label:lifecycle/stale
               -label:lifecycle/rotten
             - --updated=2160h
-            - --token=/etc/token/token
+            - --token=/etc/token/oauth
             - |-
               --comment=Issues go stale after 90d of inactivity.
               Mark the issue as fresh with `/remove-lifecycle stale`.
@@ -458,4 +458,4 @@ periodics:
       volumes:
         - name: token
           secret:
-            secretName: github-token
+            secretName: oauth-token
