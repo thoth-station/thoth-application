@@ -47,7 +47,7 @@ branch-protection:
   orgs:
     AICoE:
       repos:
-        minecraft:
+        Varangian:
           protect: true
           allow_force_pushes: false
           required_status_checks:
