@@ -414,3 +414,25 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/pipeline:v20210412-f0c722e283
       name: v20210412-f0c722e283
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: commenter
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: v20210415-ecffc9c27e
+      name: latest
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/commenter:v20210415-ecffc9c27e
+      importPolicy: {}
+      name: v20210415-ecffc9c27e
+      referencePolicy:
+        type: Local
