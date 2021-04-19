@@ -261,6 +261,7 @@ tide:
               - aicoe-ci/build-check
           integration-tests:
             required-contexts:
+              - aicoe-ci/prow/pytest
               - aicoe-ci/build-check
           kebechet:
             required-contexts:
