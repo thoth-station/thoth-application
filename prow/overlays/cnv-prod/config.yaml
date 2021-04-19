@@ -353,7 +353,7 @@ periodics:
       description: Periodic e2e tests against MOC deployment
 
   - name: periodic-close-rotten
-    interval: 1h
+    interval: 3h
     decorate: true
     annotations:
       description: Closes rotten issues after 30d of inactivity
@@ -387,7 +387,7 @@ periodics:
             secretName: oauth-token
 
   - name: periodic-rotten
-    interval: 1h
+    interval: 3h
     decorate: true
     annotations:
       description: Adds lifecycle/rotten to stale issues after 30d of inactivity
@@ -424,7 +424,7 @@ periodics:
             secretName: oauth-token
 
   - name: periodic-stale
-    interval: 1h
+    interval: 3h
     decorate: true
     annotations:
       description: Adds lifecycle/stale to issues after 90d of inactivity
