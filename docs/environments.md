@@ -1,6 +1,60 @@
 # Deployment Environments
 
-This section describes the different environments used to deploy all the Thoth Services to. All environments should be deployed using ArgoCD.
+This section describes the different environments used to deploy all the Thoth Services to OpenShift Cluster.
+
+*Note*: All environments can be deployed using ArgoCD or Kustomize.
+
+
+## Database Setup
+
+Project Thoth uses Postgresql database for knowlegde graph storage.
+
+- Deployment manifest can be found at: [Graph Manifest](../core/overlays/cnv-prod/graph-prod)
+- we manage the storage via different project Thoth components which utlises the [thoth-storage](https://pypi.org/project/thoth-storages/) module. [Details](https://github.com/thoth-station/storages#thoth-storages)
+- Local setup and management information can be acquired at [thoth-storages](https://github.com/thoth-station/storages#thoth-storages)
+
+Extensions:
+
+**amcheck**: we have setup amcheck extension for detecting database corruption errors.
+The [Issue](https://github.com/thoth-station/storages/issues/1586) based on which it was decided to use this extension.
+
+The check for database corruption is executed from metrics-exporter.
+The setup of the extension is to be performed with setup of database. init-job would help if being used, if manual process is to be used then perform the following action:
+
+Execute `CREATE EXTENSION amcheck;` in the database where amcheck is to be set. We rsh into the pod handling the postgresl and perform following action:
+
+```bash
+$ psql
+psql (10.15)
+Type "help" for help.
+
+postgres=# \c thoth
+You are now connected to database "thoth" as user "postgres".
+thoth=# CREATE EXTENSION amcheck;
+CREATE EXTENSION
+```
+
+It can be verified if installed via `\dx`
+
+```bash
+thoth=# \dx
+                                    List of installed extensions
+        Name        | Version |   Schema   |                        Description
+--------------------+---------+------------+-----------------------------------------------------------
+amcheck            | 1.0     | public     | functions for verifying relation integrity
+pg_stat_statements | 1.6     | public     | track execution statistics of all SQL statements executed
+plpgsql            | 1.0     | pg_catalog | PL/pgSQL procedural language
+(3 rows)
+```
+
+**Note**: `amcheck functions may be used only by superusers.` we currectly have made our user the **superuser**, based on your setup either do the same or create different users, assign them priviledges, and set them up in pgbouncer.
+
+Links:
+
+- [Configure pg_stat_statements extension](https://github.com/thoth-station/thoth-application/issues/726)
+- [Setup postgresql admin](https://github.com/thoth-station/thoth-application/issues/725)
+- [related issue](https://github.com/thoth-station/storages/issues/2250)
+- [documentation/amcheck-next](https://access.crunchydata.com/documentation/amcheck-next/1.5/)
 
 ## Test Environments
 
@@ -35,13 +89,19 @@ Same as Integration but with production data?
 
 ### Red Hat internal
 
-On PSI
+On Red Hat internal PSI clusters
 
 ### MassOpenCloud
 
-#### Resource Consumptions
+On Mass Open Cloud Zero clusters
 
-##### thoth-frontend-prod
+Links:
+https://massopen.cloud/
+https://www.operate-first.cloud/
+
+### Resource Consumptions
+
+#### thoth-frontend-prod
 
 Component          | CPU limit | Mem limit
 ------------------ | --------- | ---------
@@ -55,7 +115,7 @@ graph-backup       | 1         | 3Gi
 cve-update         | 250m      | 128Mi
 **Total (approx)** | **6**     | **8Gi**
 
-##### thoth-graph-prod
+#### thoth-graph-prod
 
 Component                 | CPU limit | Mem limit
 ------------------------- | --------- | ---------
@@ -65,7 +125,7 @@ pgweb                     | 1         | 512Mi
 pgbouncer                 | 2         | 2Gi
 **Total (approx)**        | **12**    | **15Gi**
 
-##### thoth-backend-prod
+#### thoth-backend-prod
 
 Component           | CPU limit | Mem limit
 ------------------- | --------- | ---------
@@ -104,7 +164,7 @@ dependency-monkey | CPU limit | Mem limit
 dependency-monkey | 1.1       | 8Gi
 graph-sync        | 250m      | 256Mi
 
-##### thoth-middletier-prod
+#### thoth-middletier-prod
 
 Component           | CPU limit | Mem limit
 ------------------- | --------- | ---------
@@ -134,7 +194,7 @@ graph-sync          | 250m      | 256Mi
 parse-solver-output | 250m      | 256Mi
 send-messages       | 500m      | 1Gi
 
-##### thoth-amun-inspection-prod
+#### thoth-amun-inspection-prod
 
 Component           | CPU limit | Mem limit
 ------------------- | --------- | ---------
