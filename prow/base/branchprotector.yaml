@@ -30,6 +30,13 @@ spec:
                 - name: config
                   mountPath: /etc/config
                   readOnly: true
+              resources:
+                requests:
+                  memory: "64Mi"
+                  cpu: "125m"
+                limits:
+                  memory: "64i"
+                  cpu: "125m"
           restartPolicy: Never
           volumes:
             - name: oauth
