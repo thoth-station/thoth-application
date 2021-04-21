@@ -4,7 +4,7 @@ apiVersion: batch/v1beta1
 metadata:
   name: advise-reporter
 spec:
-  schedule: "0 */12 * * *"
+  schedule: "0 2 * * *"
   suspend: true
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
