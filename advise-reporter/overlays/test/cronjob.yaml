@@ -4,7 +4,7 @@ apiVersion: batch/v1beta1
 metadata:
   name: advise-reporter
 spec:
-  schedule: "0 */12 * * *"
+  schedule: "0 2 * * *"
   suspend: true
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
@@ -21,6 +21,8 @@ spec:
                   value: "producer"
                 - name: APP_SCRIPT
                   value: "app.sh"
+                - name: DEBUG_LEVEL
+                  value: "1"
                 - name: KAFKA_BOOTSTRAP_SERVERS
                   valueFrom:
                     configMapKeyRef:
@@ -112,8 +114,6 @@ spec:
                     secretKeyRef:
                       name: ceph
                       key: secret-key
-                - name: THOTH_NUMBER_RELEASES
-                  value: "4"
               volumeMounts:
                 - name: secrets
                   mountPath: /mnt/secrets
@@ -121,10 +121,10 @@ spec:
               resources:
                 requests:
                   memory: "256Mi"
-                  cpu: "500m"
+                  cpu: "1"
                 limits:
                   memory: "512Mi"
-                  cpu: "500m"
+                  cpu: "1"
               livenessProbe:
                 failureThreshold: 1
                 initialDelaySeconds: 7200

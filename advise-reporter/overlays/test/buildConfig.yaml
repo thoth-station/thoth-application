@@ -25,7 +25,7 @@ spec:
     sourceStrategy:
       from:
         kind: ImageStreamTag
-        name: s2i-thoth-ubi8-py36:latest
+        name: s2i-thoth-ubi8-py38:v0.20.1
       env:
         - name: ENABLE_PIPENV
           value: "1"
