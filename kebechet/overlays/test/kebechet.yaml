@@ -25,6 +25,10 @@ parameters:
     description: "The webhook payload for kebecher run."
     displayName: "Webhook Payload"
     required: true
+  - name: KEBECHET_SLUG
+    description: "Slug of GitHub repo which needs to be updated."
+    displayName: "Kebechet slug"
+    value: "null"
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -78,6 +82,8 @@ objects:
         parameters:
           - name: "WEBHOOK_PAYLOAD"
             value: "${WEBHOOK_PAYLOAD}"
+          - name: "KEBECHET_SLUG"
+            value: "${KEBECHET_SLUG}"
       volumes:
         - name: ssh-config
           secret:

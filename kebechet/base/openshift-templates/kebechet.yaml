@@ -25,6 +25,10 @@ parameters:
     description: "The webhook payload for kebecher run."
     displayName: "Webhook Payload"
     required: true
+  - name: KEBECHET_SLUG
+    description: "Git slug of project being worked on."
+    displayName: "Kebechet Slug"
+    value: "null"
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
