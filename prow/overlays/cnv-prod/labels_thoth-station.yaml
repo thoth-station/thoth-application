@@ -302,6 +302,12 @@ default:
       target: both
       prowPlugin: label
       addedBy: anyone
+    - color: fef2c0
+      description: Categorizes an issue or PR as relevant to SIG Observability
+      name: sig/observability
+      target: both
+      prowPlugin: label
+      addedBy: anyone
 
     - addedBy: human
       color: fef2c0
