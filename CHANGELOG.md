@@ -1197,3 +1197,77 @@
 * :guardsman: updated thoth secrets across the board (#1137)
 * Revert ":guardsman: updated kafka certs for prod cluster (#1135)" (#1136)
 * :guardsman: updated kafka certs for prod cluster (#1135)
+
+## Release 2021.04.26 (2021-04-26T04:54:56)
+### Features
+* Fix the resource of the branchprotection cronjob
+* Bump slo-reporter to v0.14.1 (#1194)
+* :arrow_up: bounced integration-tests to v0.8.1
+* :sparkles: let's see if component based owners help somehow
+* :ship: Deploy the Tag v0.14.1 for slo-reporter
+* :sparkles: add sig/observability
+* Revert ":guardsman: remove the expired gpg key from the sops config (#1186)" (#1192)
+* add Kebechet slug to openshift templates (default null) (#1190)
+* :books: updated the environment docs with the database and extension (#1188)
+* Bump advise-reporter-v0.7.4 (#1191)
+* :ship: Deploy the Tag v0.7.4 for advise-reporter
+* :ship: Deploy the Tag v0.8.1 for integration-tests
+* update reporting components (#1189)
+* :ship: Deploy the Tag v0.7.3 for advise-reporter
+* :ship: Deploy the Tag v0.14.0 for slo-reporter
+* :ship: Deploy the Tag pr-189 for advise-reporter
+* :whale: update secrets based on the zero prod cluster (#1187)
+* :guardsman: remove the expired gpg key from the sops config (#1186)
+* :ship: Deploy the Tag v0.7.2 for advise-reporter
+* :ship: Deploy the Tag v0.7.1 for advise-reporter
+* :ship: Deploy the Tag v0.7.0 for advise-reporter
+* :books: Updated the resource consumptions based on components
+* Pass constraints.txt as an input to adviser (#1183)
+* Store in zero-prod on s3 in Operate First (#1173)
+* :arrow_up: add aicoe-ci/prow/pytest to required checks for integration-tests repository
+* :sparkles: reduced the frequency of lifecycle management periodic jobs
+* :sparkles: add lifecycle management
+* :ship: Deploy the Tag v0.7.1 for workflow-helpers
+* :sparkles: 🚀 add label_sync for AICoE org
+* :ship: Deploy the Tag pr-245 for workflow-helpers
+* :ship: Deploy the Tag v0.7.0 for workflow-helpers
+* :sparkles: added AICoE/Varangian
+* set resources for the prow perodic job
+* :ship: Deploy the Tag v0.14.0 for messaging
+* :ship: Deploy the Tag v0.24.3 for user-api
+* :ship: Deploy the Tag v0.24.2 for user-api
+* :ship: Deploy the Tag v1.3.8 for mi-scheduler
+* Bump User API to v0.24.1 in stage environment (#1170)
+* Bump adviser to v0.28.0 in stage environment (#1168)
+* Additionally restrict unauthenticated parts of the workflows (#1167)
+* Enable prescription sync job in stage environment (#1146)
+* :ship: Deploy the Tag v0.24.1 for user-api
+* :zap: allow in-repo prow job defining for s2i image repos
+* :ship: Deploy the Tag v0.28.0 for adviser
+* :guardsman: set different secret for app-secret from thoth token (#1165)
+* Fix parameters in the template (#1164)
+* :ship: Deploy the Tag v0.11.2 for investigator
+* Add missing User API token (#1163)
+* :ship: Deploy the Tag v0.11.1 for investigator
+* :guardsman: set prow ssh cerds for private repo support (#1162)
+* :bug: added log_level=debug for prow config
+* :arrow_up: update imagestreamtags of prow
+### Bug Fixes
+* :bug: fix the token used to auth w/ github
+* :bug: fix the commenter imagestream
+* :bug: fixed the aicoe label_sync job: it was there twice :/
+* :bug: fixed AICoE/Varangian bug in config.yaml
+* :bug: fix the periodic command of integration-tests
+* :fire: fix the prow label sync imagestream for argocd
+* :fire: fix the prow hook route needs to point to hook service
+* :fire: fix the prow imagestream tags
+### Improvements
+* :sparkles: 🚱 set resource limits and quota for branchprotector cronjob
+* Modify qeb-hwt to use thamos instead of messaging (#1180)
+* :robot: updated the pull request template for thoth-application (#1177)
+* :arrow_up: bump up the investigator and messaging for the prod (#1176)
+* :arrow_up: bump up the user-api 0.24.3 in the prod (#1175)
+* :arrow_up: bump up the investigator and messaging for the zero-test (#1174)
+* update integration test periodic (#1172)
+* :turtle: set the role for argo-admin and argo for workflows (#1161)
+* :arrow_up: updated plugin config format, see https://github.com/kubernetes/test-infra/issues/20631\#issuecomment-787693609
