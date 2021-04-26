@@ -35,7 +35,7 @@ spec:
                   memory: "64Mi"
                   cpu: "125m"
                 limits:
-                  memory: "64i"
+                  memory: "64Mi"
                   cpu: "125m"
           restartPolicy: Never
           volumes:
