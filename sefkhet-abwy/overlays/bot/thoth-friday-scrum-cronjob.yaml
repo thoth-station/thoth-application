@@ -32,9 +32,9 @@ spec:
                   name: sesheta-configmap
             - name: SESHETA_SCRUM_SPACE
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   key: scrum-space
-                  name: sesheta-configmap
+                  name: sesheta-scrum
             - name: SESHETA_SCRUM_URL
               valueFrom:
                 configMapKeyRef:
