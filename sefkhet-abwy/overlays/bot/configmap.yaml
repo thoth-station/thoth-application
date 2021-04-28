@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+data:
+  scrum-message: ☎️ the scrum is due in one minute...
+  scrum-url: 'https://bluejeans.com/5618223545'
+  sesheta-verbose: '1'
+  users-invited: >-
+    ['Christoph Goern', 'Dominik Tuchyna', 'Francesco Murdaca',
+    'Frido Pokorny', 'Harshad Reddy Nalla', 'Kevin Postlethwait',
+    'Subin Modeel']
+kind: ConfigMap
+metadata:
+  labels:
+    app: sesheta
+  name: sesheta-configmap
