@@ -8,6 +8,13 @@
 ---
 default:
   labels:
+    - color: 698b69
+      description: This Issue or PR is being worked on by a bot
+      name: bot
+      target: both
+      prowPlugin: label
+      addedBy: human or bot
+
     - color: d5f48d
       description: This Issue or PR is related to a specific deployment.
       name: deployment_name/zero-prod
@@ -356,6 +363,12 @@ default:
       prowPlugin: label
       target: both
 
+    - color: 8fc951
+      description: Indicates an issue or PR is ready to be actively worked on.
+      name: triage/accepted
+      target: both
+      prowPlugin: label
+      addedBy: org members
     - color: d455d0
       description: Indicates an issue is a duplicate of other open issue.
       name: triage/duplicate
