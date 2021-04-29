@@ -2,8 +2,8 @@
 apiVersion: v1
 data:
   scrum-message: ☎️ the scrum is due in one minute...
-  scrum-url: 'https://bluejeans.com/5618223545'
-  sesheta-verbose: '1'
+  scrum-url: "https://meet.google.com/fwf-aibs-qop?authuser=0"
+  sesheta-verbose: "1"
   users-invited: >-
     ['Christoph Goern', 'Dominik Tuchyna', 'Francesco Murdaca',
     'Frido Pokorny', 'Harshad Reddy Nalla', 'Kevin Postlethwait',
