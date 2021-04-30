@@ -163,7 +163,6 @@ tide:
     - orgs:
         - aicoe-aiops
         - b4mad
-        - operate-first
         - thoth-station
       excludedRepos:
         - thoth-station/dgraph-thoth-config
@@ -192,6 +191,17 @@ tide:
         - b4mad/auddress
       labels:
         - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebase
+    - orgs:
+        - operate-first
+      labels:
+        - approved
+        - lgtm
       missingLabels:
         - do-not-merge
         - do-not-merge/hold
