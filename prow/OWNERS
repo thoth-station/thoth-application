@@ -4,8 +4,6 @@ approvers:
   - goern
   - harshad16
 reviewers:
+  - tumido
   - fridex
   - pacospace
-  - tumido
-labels:
-  - sig/devops
