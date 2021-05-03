@@ -34,23 +34,29 @@ rules:
       - update
       - patch
     apiGroups:
-      - ''
+      - ""
     resources:
       - pods
       - pods/exec
   - verbs:
       - get
+    apiGroups:
+      - ""
+    resources:
+      - pods/log
+  - verbs:
+      - get
       - watch
       - list
     apiGroups:
-      - ''
+      - ""
     resources:
       - configmaps
   - verbs:
       - create
       - delete
     apiGroups:
-      - ''
+      - ""
     resources:
       - persistentvolumeclaims
   - verbs:
@@ -74,7 +80,7 @@ rules:
       - list
       - watch
     apiGroups:
-      - ''
+      - ""
     resources:
       - pods
       - pods/exec
@@ -82,7 +88,7 @@ rules:
   - verbs:
       - get
     apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
   - verbs:
