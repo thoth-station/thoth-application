@@ -28,7 +28,7 @@ items:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 72Gi
+          storage: 84Gi
       storageClassName: ocs-storagecluster-cephfs
       volumeMode: Filesystem
   - apiVersion: apps.openshift.io/v1
