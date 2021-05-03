@@ -2,6 +2,28 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
+  name: clonerefs
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: v20210319-be35a198b9
+      name: latest
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/clonerefs:v20210319-be35a198b9
+      importPolicy: {}
+      name: v20210319-be35a198b9
+      referencePolicy:
+        type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
   name: commenter
 spec:
   lookupPolicy:
@@ -104,6 +126,28 @@ spec:
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
+  name: entrypoint
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: v20210319-be35a198b9
+      name: latest
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/entrypoint:v20210319-be35a198b9
+      importPolicy: {}
+      name: v20210319-be35a198b9
+      referencePolicy:
+        type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
   name: hook
 spec:
   lookupPolicy:
@@ -180,6 +224,28 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/horologium:v20210412-f0c722e283
       name: v20210412-f0c722e283
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: initupload
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: v20210319-be35a198b9
+      name: latest
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/initupload:v20210319-be35a198b9
+      importPolicy: {}
+      name: v20210319-be35a198b9
+      referencePolicy:
+        type: Local
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -317,6 +383,28 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/pipeline:v20210412-f0c722e283
       name: v20210412-f0c722e283
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: sidecar
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: v20210319-be35a198b9
+      name: latest
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/sidecar:v20210319-be35a198b9
+      importPolicy: {}
+      name: v20210319-be35a198b9
+      referencePolicy:
+        type: Local
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
