@@ -9,7 +9,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -37,6 +37,11 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/hook:v20210412-f0c722e283
       name: v20210412-f0c722e283
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/hook:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -49,7 +54,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -77,6 +82,11 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/sinker:v20210412-f0c722e283
       name: v20210412-f0c722e283
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/sinker:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -89,7 +99,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -117,6 +127,11 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/deck:v20210412-f0c722e283
       name: v20210412-f0c722e283
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/deck:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -129,7 +144,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -157,6 +172,11 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/horologium:v20210412-f0c722e283
       name: v20210412-f0c722e283
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/horologium:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -169,7 +189,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -197,6 +217,11 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/tide:v20210412-f0c722e283
       name: v20210412-f0c722e283
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/tide:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -209,7 +234,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -237,6 +262,11 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/status-reconciler:v20210412-f0c722e283
       name: v20210412-f0c722e283
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/status-reconciler:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -249,7 +279,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -277,6 +307,11 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/crier:v20210412-f0c722e283
       name: v20210412-f0c722e283
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/crier:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -289,7 +324,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -317,6 +352,11 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/needs-rebase:v20210412-f0c722e283
       name: v20210412-f0c722e283
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/needs-rebase:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -329,7 +369,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       importPolicy: {}
       name: latest
       referencePolicy:
@@ -367,13 +407,18 @@ spec:
       referencePolicy:
         type: Local
     - annotations: null
-      importPolicy: {}
       from:
         kind: DockerImage
         name: gcr.io/k8s-prow/label_sync:v20210412-f0c722e283
+      importPolicy: {}
       name: v20210412-f0c722e283
       referencePolicy:
         type: Local
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/label_sync:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -386,7 +431,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210412-f0c722e283
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -414,6 +459,11 @@ spec:
         kind: DockerImage
         name: gcr.io/k8s-prow/pipeline:v20210412-f0c722e283
       name: v20210412-f0c722e283
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/pipeline:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
@@ -426,7 +476,7 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210415-ecffc9c27e
+        name: v20210502-ba10239e8c
       name: latest
     - annotations: null
       from:
@@ -436,3 +486,8 @@ spec:
       name: v20210415-ecffc9c27e
       referencePolicy:
         type: Local
+    - annotations: null
+      from:
+        kind: ImageStreamTag
+        name: gcr.io/k8s-prow/commenter:v20210502-ba10239e8c
+      name: v20210502-ba10239e8c
