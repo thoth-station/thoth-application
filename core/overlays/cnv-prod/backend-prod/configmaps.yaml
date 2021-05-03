@@ -12,9 +12,9 @@ data:
     workflowDefaults:
       spec:
         ttlStrategy:
-          secondsAfterCompletion: 7200
-          secondsAfterSuccess: 7200
-          secondsAfterFailure: 7200
+          secondsAfterCompletion: 900
+          secondsAfterSuccess: 900
+          secondsAfterFailure: 900
       parallelism: 2
 
     # metricsConfig controls the path and port for prometheus metrics
@@ -34,7 +34,7 @@ data:
           memory: 256Mi
 
     artifactRepository:
-      archiveLogs: false
+      archiveLogs: true
 
       s3:
         bucket: "thoth"
