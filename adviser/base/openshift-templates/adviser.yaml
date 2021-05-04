@@ -320,5 +320,5 @@ objects:
                     - name: git_service
                       value: "{{tasks.trigger-integration.outputs.parameters.git_service}}"
                 when: >-
-                  "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1
-                  && {{tasks.trigger-integration.outputs.parameters.source_type}} == KEBECHET"
+                  {{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1
+                  && "{{tasks.trigger-integration.outputs.parameters.source_type}}" == "KEBECHET"
