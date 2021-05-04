@@ -7,7 +7,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/mi:v2.4.0
+      name: quay.io/thoth-station/mi:v2.5.2
     importPolicy: {}
     referencePolicy:
       type: Local
