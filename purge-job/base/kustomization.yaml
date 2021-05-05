@@ -9,4 +9,4 @@ generatorOptions:
 resources:
   - imagestream.yaml
   - argo-workflows/purge-template.yaml
-  - openshift-templates/purge-template.yaml
+  - openshift-templates/purge.yaml
