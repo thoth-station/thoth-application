@@ -11,6 +11,7 @@ data:
   amun-namespace: thoth-amun-api-stage
   backend-namespace: thoth-backend-stage
   middletier-namespace: thoth-middletier-stage
+  graph-namespace: thoth-graph-stage
   frontend-namespace: thoth-frontend-stage
   infra-namespace: thoth-infra-stage
   package-releases-only-if-package-seen: "1"
