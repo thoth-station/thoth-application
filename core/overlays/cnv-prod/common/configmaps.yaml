@@ -10,6 +10,7 @@ data:
   amun-inspection-namespace: thoth-amun-inspection-prod
   amun-namespace: thoth-amun-api-prod
   backend-namespace: thoth-backend-prod
+  graph-namespace: thoth-graph-prod
   middletier-namespace: thoth-middletier-prod
   frontend-namespace: thoth-frontend-prod
   infra-namespace: thoth-infra-prod

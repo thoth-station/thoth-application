@@ -9,6 +9,7 @@ data:
   postgresql-host: postgresql.thoth-test-core.svc
   backend-namespace: thoth-test-core
   middletier-namespace: thoth-test-core
+  graph-namespace: thoth-test-core
   frontend-namespace: thoth-test-core
   infra-namespace: thoth-test-core
   solvers: |
