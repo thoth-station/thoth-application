@@ -53,6 +53,11 @@ spec:
                 configMapKeyRef:
                   key: middletier-namespace
                   name: thoth
+            - name: THOTH_GRAPH_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: graph-namespace
+                  name: thoth
             - name: THOTH_INFRA_NAMESPACE
               valueFrom:
                 configMapKeyRef:
