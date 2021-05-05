@@ -18,11 +18,42 @@ spec:
             value: "{{inputs.parameters.KEBECHET_SLUG}}"
           - name: THOTH_WORKFLOW_TASK
             value: "update_kebechet_installation"
+          - name: KNOWLEDGE_GRAPH_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: postgresql-host
+          - name: KNOWLEDGE_GRAPH_PORT
+            value: "5432"
+          - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+            value: "1"
+          - name: KNOWLEDGE_GRAPH_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-user
+          - name: KNOWLEDGE_GRAPH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-password
+          - name: KNOWLEDGE_GRAPH_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-name
+          - name: GITHUB_APP_ID
+            valueFrom:
+              secretKeyRef:
+                key: GITHUB_APP_ID
+                name: kebechet
           - name: GITHUB_KEBECHET_TOKEN
             valueFrom:
               secretKeyRef:
                 key: github-oauth-token
                 name: kebechet
+          - name: GITHUB_PRIVATE_KEY_PATH
+            value: "/home/user/github/github-privatekey"
         resources:
           limits:
             cpu: 250m
@@ -33,3 +64,9 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /mnt/workdir
+          - name: github-app-privatekey
+            mountPath: /home/user/github
+            readOnly: true
+          - name: ssh-config
+            mountPath: /home/user/.ssh
+            readOnly: true
