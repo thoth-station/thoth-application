@@ -1,0 +1,127 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: purge
+  annotations:
+    description: "Thoth: Purge job"
+    openshift.io/display-name: "Thoth: Purge job"
+    tags: thoth,ai-stacks,purge-job
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to run purge logic of Thoth to OpenShift.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    app: thoth
+    template: purge
+    component: purge
+
+parameters:
+  - name: THOTH_PURGE_WORKFLOW_ID
+    required: true
+    description: Workflow identifier.
+    displayName: Workflow id
+  - name: THOTH_PURGE_JOB_SUBCOMMAND
+    required: true
+    description: Subcommand for purge-job.
+    displayName: Subcommand
+  - name: THOTH_PURGE_OPERATING_SYSTEM_NAME
+    value: ""
+    description: Operating system name.
+    displayName: OS name
+  - name: THOTH_PURGE_OPERATING_SYSTEM_VERSION
+    value: ""
+    description: Operating system version.
+    displayName: OS version
+  - name: THOTH_PURGE_PYTHON_VERSION
+    value: ""
+    description: Python version
+    displayName: Python version
+  - name: THOTH_PURGE_DEBUG
+    value: "0"
+    description: Debug purge-job.
+    displayName: Debug purge-job
+  - name: THOTH_PURGE_PACKAGE_EXTRACT_VERSION
+    value: ""
+    description: Purge entries with the given package-extract version.
+    displayName: package-extract version
+  - name: THOTH_PURGE_PACKAGE_EXTRACT_VERSION
+    value: ""
+    description: Purge entries with the given package-extract version.
+    displayName: package-extract version
+  - name: THOTH_PURGE_ADVISER_VERSION
+    value: ""
+    description: Purge entries with the given adviser version.
+    displayName: adviser version
+  - name: THOTH_PURGE_ADVISER_END_DATETIME
+    value: ""
+    description: Purge entries older than datetime given.
+    displayName: adviser end datetime
+  - name: THOTH_PURGE_PACKAGE_EXTRACT_END_DATETIME
+    value: ""
+    description: Purge entries older than datetime given.
+    displayName: package-extract end datetime
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: "${THOTH_PURGE_WORKFLOW_ID}"
+      labels:
+        app: thoth
+        component: purge
+    spec:
+      serviceAccountName: argo
+      activeDeadlineSeconds: 3000
+      ttlStrategy:
+        secondsAfterCompletion: 7200
+        secondsAfterSuccess: 7200
+        secondsAfterFailure: 7200
+      entrypoint: purge
+      arguments:
+        parameters:
+          - name: THOTH_PURGE_JOB_SUBCOMMAND
+            value: "${THOTH_PURGE_JOB_SUBCOMMAND}"
+          - name: THOTH_PURGE_OPERATING_SYSTEM_NAME
+            value: "${THOTH_PURGE_OPERATING_SYSTEM_NAME}"
+          - name: THOTH_PURGE_OPERATING_SYSTEM_VERSION
+            value: "${THOTH_PURGE_OPERATING_SYSTEM_VERSION}"
+          - name: THOTH_PURGE_PYTHON_VERSION
+            value: "${THOTH_PURGE_PYTHON_VERSION}"
+          - name: THOTH_PURGE_DEBUG
+            value: "${THOTH_PURGE_DEBUG}"
+          - name: THOTH_PURGE_PACKAGE_EXTRACT_VERSION
+            value: "${THOTH_PURGE_PACKAGE_EXTRACT_VERSION}"
+          - name: THOTH_PURGE_PACKAGE_EXTRACT_END_DATETIME
+            value: "${THOTH_PURGE_PACKAGE_EXTRACT_END_DATETIME}"
+          - name: THOTH_PURGE_ADVISER_VERSION
+            value: "${THOTH_PURGE_ADVISER_VERSION}"
+          - name: THOTH_PURGE_ADVISER_END_DATETIME
+            value: "${THOTH_PURGE_ADVISER_END_DATETIME}"
+      templates:
+        - name: purge
+          dag:
+            tasks:
+              - name: purge
+                templateRef:
+                  name: purge
+                  template: purge-job
+                arguments:
+                  parameters:
+                    - name: THOTH_PURGE_JOB_SUBCOMMAND
+                      value: "{{workflow.parameters.THOTH_PURGE_JOB_SUBCOMMAND}}"
+                    - name: THOTH_PURGE_OPERATING_SYSTEM_NAME
+                      value: "{{workflow.parameters.THOTH_PURGE_OPERATING_SYSTEM_NAME}}"
+                    - name: THOTH_PURGE_OPERATING_SYSTEM_VERSION
+                      value: "{{workflow.parameters.THOTH_PURGE_OPERATING_SYSTEM_VERSION}}"
+                    - name: THOTH_PURGE_PYTHON_VERSION
+                      value: "{{workflow.parameters.THOTH_PURGE_PYTHON_VERSION}}"
+                    - name: THOTH_PURGE_DEBUG
+                      value: "{{workflow.parameters.THOTH_PURGE_DEBUG}}"
+                    - name: THOTH_PURGE_PACKAGE_EXTRACT_VERSION
+                      value: "{{workflow.parameters.THOTH_PURGE_PACKAGE_EXTRACT_VERSION}}"
+                    - name: THOTH_PURGE_PACKAGE_EXTRACT_END_DATETIME
+                      value: "{{workflow.parameters.THOTH_PURGE_PACKAGE_EXTRACT_END_DATETIME}}"
+                    - name: THOTH_PURGE_ADVISER_VERSION
+                      value: "{{workflow.parameters.THOTH_PURGE_ADVISER_VERSION}}"
+                    - name: THOTH_PURGE_ADVISER_END_DATETIME
+                      value: "{{workflow.parameters.THOTH_PURGE_ADVISER_END_DATETIME}}"

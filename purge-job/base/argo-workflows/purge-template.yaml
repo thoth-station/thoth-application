@@ -1,0 +1,117 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: purge
+spec:
+  templates:
+    - name: purge-job
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: THOTH_PURGE_JOB_SUBCOMMAND
+          - name: THOTH_PURGE_OPERATING_SYSTEM_NAME
+          - name: THOTH_PURGE_OPERATING_SYSTEM_VERSION
+          - name: THOTH_PURGE_PYTHON_VERSION
+          - name: THOTH_PURGE_DEBUG
+          - name: THOTH_PURGE_PACKAGE_EXTRACT_VERSION
+          - name: THOTH_PURGE_PACKAGE_EXTRACT_END_DATETIME
+          - name: THOTH_PURGE_ADVISER_VERSION
+          - name: THOTH_PURGE_ADVISER_END_DATETIME
+      retryStrategy:
+        limit: 3
+      container:
+        name: "purge"
+        image: "purge-job"
+        env:
+          - name: APP_SCRIPT
+            value: "app.sh"
+          - name: THOTH_PURGE_JOB_SUBCOMMAND
+            value: "{{inputs.parameters.THOTH_PURGE_JOB_SUBCOMMAND}}"
+          - name: THOTH_PURGE_OPERATING_SYSTEM_NAME
+            value: "{{inputs.parameters.THOTH_PURGE_OPERATING_SYSTEM_NAME}}"
+          - name: THOTH_PURGE_OPERATING_SYSTEM_VERSION
+            value: "{{inputs.parameters.THOTH_PURGE_OPERATING_SYSTEM_VERSION}}"
+          - name: THOTH_PURGE_PYTHON_VERSION
+            value: "{{inputs.parameters.THOTH_PURGE_PYTHON_VERSION}}"
+          - name: THOTH_PURGE_DEBUG
+            value: "{{inputs.parameters.THOTH_PURGE_DEBUG}}"
+          - name: THOTH_PURGE_PACKAGE_EXTRACT_VERSION
+            value: "{{inputs.parameters.THOTH_PURGE_PACKAGE_EXTRACT_VERSION}}"
+          - name: THOTH_PURGE_PACKAGE_EXTRACT_END_DATETIME
+            value: "{{inputs.parameters.THOTH_PURGE_PACKAGE_EXTRACT_END_DATETIME}}"
+          - name: THOTH_PURGE_ADVISER_VERSION
+            value: "{{inputs.parameters.THOTH_PURGE_ADVISER_VERSION}}"
+          - name: THOTH_PURGE_ADVISER_END_DATETIME
+            value: "{{inputs.parameters.THOTH_PURGE_ADVISER_END_DATETIME}}"
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: deployment-name
+                name: thoth
+          - name: THOTH_S3_ENDPOINT_URL
+            valueFrom:
+              configMapKeyRef:
+                key: host
+                name: ceph
+          - name: THOTH_CEPH_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                key: bucket-name
+                name: ceph
+          - name: THOTH_CEPH_BUCKET_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                key: bucket-prefix
+                name: ceph
+          - name: THOTH_CEPH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: key-id
+          - name: THOTH_CEPH_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: secret-key
+          - name: PROMETHEUS_PUSHGATEWAY_URL
+            valueFrom:
+              configMapKeyRef:
+                name: prometheus
+                key: pushgateway-url
+          - name: SENTRY_DSN
+            valueFrom:
+              secretKeyRef:
+                name: thoth
+                key: sentry-dsn
+          - name: KNOWLEDGE_GRAPH_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: postgresql-host
+                name: thoth
+          - name: KNOWLEDGE_GRAPH_PORT
+            value: "5432"
+          - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+            value: "1"
+          - name: KNOWLEDGE_GRAPH_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-user
+          - name: KNOWLEDGE_GRAPH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-password
+          - name: KNOWLEDGE_GRAPH_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-name
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
