@@ -56,7 +56,7 @@ spec:
                 - name: THOTH_GRAPH_REFRESH_SOLVER
                   value: "1"
                 - name: THOTH_GRAPH_REFRESH_REVSOLVER
-                  value: "0"
+                  value: "1"
                 - name: THOTH_GRAPH_REFRESH_SECURITY
                   value: "0"
                 - name: THOTH_GRAPH_REFRESH_COUNT
