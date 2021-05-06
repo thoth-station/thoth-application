@@ -318,6 +318,16 @@ repos:
           - name: alert 💥
         prowPlugin: label
         target: issue
+      - color: b60205
+        description: This issue is a SRE incident
+        name: incident
+        target: issue
+        addedBy: humans
+      - color: 0052cc
+        description: This issue contains post-mortem comment
+        name: post-mortem
+        target: issue
+        addedBy: humans
   operate-first/support:
     labels:
       - addedBy: anyone
