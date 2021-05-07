@@ -63,7 +63,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: management-api-pods-info
+  name: management-api-amun-pods-info
 subjects:
   - kind: ServiceAccount
     name: management-api
