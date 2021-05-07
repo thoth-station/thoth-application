@@ -35,7 +35,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: user-api-pods-info
+  name: middletier-pods-info
 subjects:
   - kind: ServiceAccount
     name: user-api
