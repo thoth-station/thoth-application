@@ -25,15 +25,12 @@ parameters:
     description: Subcommand for purge-job.
     displayName: Subcommand
   - name: THOTH_PURGE_OPERATING_SYSTEM_NAME
-    value: ""
     description: Operating system name.
     displayName: OS name
   - name: THOTH_PURGE_OPERATING_SYSTEM_VERSION
-    value: ""
     description: Operating system version.
     displayName: OS version
   - name: THOTH_PURGE_PYTHON_VERSION
-    value: ""
     description: Python version
     displayName: Python version
   - name: THOTH_PURGE_DEBUG
@@ -41,23 +38,18 @@ parameters:
     description: Debug purge-job.
     displayName: Debug purge-job
   - name: THOTH_PURGE_PACKAGE_EXTRACT_VERSION
-    value: ""
     description: Purge entries with the given package-extract version.
     displayName: package-extract version
   - name: THOTH_PURGE_PACKAGE_EXTRACT_VERSION
-    value: ""
     description: Purge entries with the given package-extract version.
     displayName: package-extract version
   - name: THOTH_PURGE_ADVISER_VERSION
-    value: ""
     description: Purge entries with the given adviser version.
     displayName: adviser version
   - name: THOTH_PURGE_ADVISER_END_DATETIME
-    value: ""
     description: Purge entries older than datetime given.
     displayName: adviser end datetime
   - name: THOTH_PURGE_PACKAGE_EXTRACT_END_DATETIME
-    value: ""
     description: Purge entries older than datetime given.
     displayName: package-extract end datetime
 
