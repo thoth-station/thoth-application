@@ -19,6 +19,7 @@
 """GitOps tool to add an ImageStreamTag."""
 
 
+import os
 import logging
 
 from yaml import load_all, dump_all
@@ -28,16 +29,18 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
+
 logging.basicConfig(level=logging.INFO)
+
+
+current_tag = os.getenv("TEST-INFRA-IMAGE-TAG", "v20210502-ba10239e8c")
 
 
 def reset_latest_tag(imagestream: dict, new_tag: str) -> None:
     """Reset the latest tag of the imagestream to the tag provided."""
     for tag in imagestream["spec"]["tags"]:
         if tag["name"] == "latest":
-            logging.info(
-                f"resetting latest tag from {tag['from']['name']} to {new_tag}"
-            )
+            logging.info(f"resetting latest tag from {tag['from']['name']} to {new_tag}")
             tag["from"]["name"] = new_tag
     return
 
@@ -62,7 +65,6 @@ with open("overlays/cnv-prod/imagestreamtags.yaml") as ist:
     stream = load_all(ist.read(), Loader=Loader)
 
 updated_imagestream_tags = []
-current_tag = "v20210412-f0c722e283"
 
 for data in stream:
     logging.info(f"updating ImageStream '{data['metadata']['name']}'")
