@@ -98,6 +98,22 @@ spec:
               secretKeySecret:
                 name: argo-artifact-repository-secrets
                 key: secretKey
+          - name: prescriptions_gh_release_notes
+            path: "/mnt/workdir/prescriptions_gh_release_notes.yaml"
+            archive:
+              none: {}
+            s3:
+              key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
+                {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/prescriptions_gh_release_notes.yaml"
+              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
+              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
+              insecure: true
+              accessKeySecret:
+                name: argo-artifact-repository-secrets
+                key: accessKey
+              secretKeySecret:
+                name: argo-artifact-repository-secrets
+                key: secretKey
       outputs:
         artifacts:
           - name: outputdocument
@@ -138,7 +154,7 @@ spec:
           - name: THOTH_ADVISER_LIMIT
             value: "{{inputs.parameters.THOTH_ADVISER_LIMIT}}"
           - name: THOTH_ADVISER_PRESCRIPTION
-            value: "/mnt/workdir/prescription.yaml"
+            value: "/mnt/workdir/prescription.yaml,/mnt/workdir/prescriptions_gh_release_notes.yaml"
           - name: THOTH_ADVISER_REQUIREMENTS
             value: "input/Pipfile"
           - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
