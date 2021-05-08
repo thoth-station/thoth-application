@@ -16,8 +16,6 @@ spec:
             value: ""
           - name: THOTH_MESSAGING_FROM_FILE
             value: ""
-          - name: THOTH_DEPLOYMENT_NAME
-            value: ""
           - name: THOTH_MESSAGING_PARTITIONS
             value: "1"  # this is the same as having unset so it will use the default
           - name: THOTH_MESSAGING_REPLICATION
@@ -43,7 +41,10 @@ spec:
           - name: THOTH_MESSAGING_FROM_FILE
             value: "{{inputs.parameters.THOTH_MESSAGING_FROM_FILE}}"
           - name: THOTH_DEPLOYMENT_NAME
-            value: "{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}"
+            valueFrom:
+              configMapKeyRef:
+                key: deployment-name
+                name: thoth
           - name: KAFKA_BOOTSTRAP_SERVERS
             valueFrom:
               configMapKeyRef:
@@ -59,6 +60,8 @@ spec:
         volumeMounts:
           - name: kafka-secrets
             mountPath: /mnt/kafka-secrets
+          - name: workdir
+            mountPath: /mnt/workdir
       ##########################################################################
       # NOTE: when using this in your workflow be sure to supply secret volume
       # volumes:

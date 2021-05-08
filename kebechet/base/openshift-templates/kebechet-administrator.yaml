@@ -54,7 +54,7 @@ objects:
         secondsAfterCompletion: 7200
         secondsAfterSuccess: 7200
         secondsAfterFailure: 7200
-      entrypoint: kebechet
+      entrypoint: kebechet-administrator
 
       metrics:
         prometheus:
@@ -99,7 +99,6 @@ objects:
             value: "${THOTH_SOLVER_NAME}"
           - name: "THOTH_MESSAGE_TYPE"
             value: "${THOTH_MESSAGE_TYPE}"
-          - name: deployment_name
       volumes:
         - name: workdir
           emptyDir: {}
@@ -117,7 +116,7 @@ objects:
             archiveLogs: true
           dag:
             tasks:
-              - name: "kebechet-administrator-run"
+              - name: "kebechet-administrator"
                 templateRef:
                   name: "kebechet-administrator"
                   template: "kebechet-administrator"
@@ -135,19 +134,17 @@ objects:
                       value: "{{workflow.parameters.THOTH_MESSAGE_TYPE}}"
               - name: "send-messages"
                 dependencies:
-                  - "kebechet-administrator-run"
+                  - "kebechet-administrator"
                 templateRef:
                   name: "send-messages"
                   template: "send-messages"
                 arguments:
                   artifacts:
                     - name: messagesdocument
-                      from: "{{tasks.kebechet-administrator-run.outputs.artifacts.messagestobesentdocument}}"
+                      from: "{{tasks.kebechet-administrator.outputs.artifacts.messagestobesentdocument}}"
                   parameters:
                     - name: THOTH_MESSAGING_FROM_FILE
                       value: "/mnt/workdir/messages_to_be_sent.json"
-                    - name: THOTH_DEPLOYMENT_NAME
-                      value: "{{workflow.parameters.deployment_name}}"
                     - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
                       value: "1"
                     - name: MESSAGES_DOCUMENT_NAME
