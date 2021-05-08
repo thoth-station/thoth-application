@@ -25,7 +25,7 @@ sinker:
   max_prowjob_age: 12h
 
 prowjob_namespace: opf-ci-prow
-pod_namespace: opf-ci-prow
+pod_namespace: opf-ci-test-pods
 log_level: debug
 
 in_repo_config:
