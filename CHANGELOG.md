@@ -1271,3 +1271,60 @@
 * update integration test periodic (#1172)
 * :turtle: set the role for argo-admin and argo for workflows (#1161)
 * :arrow_up: updated plugin config format, see https://github.com/kubernetes/test-infra/issues/20631\#issuecomment-787693609
+
+## Release 2021.05.10 (2021-05-10T18:17:59)
+### Features
+* Bump up prod versions for the release of 10.05.2021 (#1256)
+* update zero-test messaging (#1255)
+* messaging flush patch (#1254)
+* :arrow_up: boucne integration-tests to v0.8.2
+* Fix zero-test argo endpoint
+* Fix accessing pod log from amun namespace by management-api in stage (#1247)
+* Remove explicit stating the default value from purge templates (#1245)
+* Fix accessing pod log from different namespace by user-api (#1244)
+* Fix accessing pod log from amun namespace by management-api (#1243)
+* Enable revsolver (#1241)
+* feat: Add incident labels (#1242)
+* :ship: Deploy the Tag v1.8.0 for solver
+* :ship: Deploy the Tag v1.8.0 for solver
+* :ship: Deploy the Tag v1.8.0 for solver
+* Bump management-api to v0.16.0 in stage (#1239)
+* Introduce purge-job (#1208)
+* Add graph namespace to management-api (#1237)
+* Add graph-namespace to configmaps (#1236)
+* enable argo serviceAccount to get pod logs (#1225)
+* down scale the stage to old investigator
+* Update mi-scheduler imagestream to tag v2.5.2 (#1226)
+* :ship: Deploy the Tag v2.5.2 for mi
+* :ship: Deploy the Tag v2.5.1 for mi
+* add correct tag (#20)
+* :boom: Expand db pvc size (#1222)
+* :hourglass: Reduce the time to live 15 mins instead (#1219)
+* :ship: Bump up versions of thoth components in stage (#1220)
+* :sparkles: add OWNERS file as proposed by the SIG Observability :pencil:
+* add OWNERS for prow
+* feat(operate-first): Make tide to require lgtm label on merge (#1216)
+* Push new mi release (#1213)
+* :sparkles: add bot label
+* :arrow_up: :pencil: update the dial in url for scrum
+* :ship: Bump messaging version for amun
+* :ship: Bump version v0.15.2 for management-api
+* switch off graph-refresh for stage syncing
+* Bump adviser to v0.29.0 in stage environment (#1205)
+* Bump user-api to v0.25.0 in stage environment (#1207)
+* :robot: setup scrum-bot to the application component (#1209)
+* Deploy user-api v0.25.0 to test environment (#1206)
+* :ship: Deploy the Tag v0.29.0 for adviser
+### Bug Fixes
+* do not generate an integration-tests report html file, do not exclude any tag
+* :maple_leaf: fix the quotes in advise when expression (#1234)
+* :fire: updated the correct variable for the provenance fix (#1229)
+* Run kebechet-run-results only if authentication was done (#1201)
+### Improvements
+* Bump up investigator version fro test
+* Bump up versions for integration-tests (#1252)
+* correct the role name for user-api pods log access (#1246)
+* :sparkles: some label cleanup
+* :fire: quotes added to the when expression for correct value substitution (#1233)
+* missing tag in test (#1217)
+* Bump up versions for component in stage (#1211)
