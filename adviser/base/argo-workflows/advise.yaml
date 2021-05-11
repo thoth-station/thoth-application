@@ -121,6 +121,8 @@ spec:
         name: advise
         image: adviser
         env:
+          - name: THOTH_MCTS_HEAT_UP
+            value: "1"
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
           - name: THOTH_ADVISER_OUTPUT
