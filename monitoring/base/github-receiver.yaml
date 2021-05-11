@@ -40,6 +40,9 @@ spec:
     metadata:
       labels:
         run: github-receiver
+        service: github-receiver
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9990'
@@ -54,7 +57,7 @@ spec:
                   name: github-secrets
                   key: auth-token
           args:
-            - --label="deployment_name/zero-prod"
+            - --label=deployment_name/zero-prod
             - --authtoken=$(GITHUB_AUTH_TOKEN)
             - --org=thoth-station
             - --repo=thoth-application
