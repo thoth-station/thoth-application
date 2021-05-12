@@ -20,7 +20,7 @@ spec:
           summary: "Workflows running in Middletier Prod is 0! Please verify status of Data Ingestion in Thoth or add more workload!"
           severity: "HIGH"
 
-        # Alert when solvers do not match Thoth s2i offered 
+        # Alert when solvers do not match Thoth s2i offered
       - alert: ThothSolversThothS2iOfferedMismatch
         expr: thoth_graphdb_solvers_number_match{instance="metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"} == 1
         for: 30m
