@@ -11,85 +11,85 @@ spec:
     - name: Thoth-rules
       rules:
         # Workflows alerts
-      - alert: ThothMiddletierIngestionOCP4Stage
+      - alert: ThothMiddletierIngestion
         expr: argo_workflows_count{instance="workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80", status="Running"} < 1
         for: 30m
         annotations:
-          summary: "Workflows running in Middletier Stage is 0! Please verify status of Data Ingestion in Thoth or add more workload!"
+          summary: "Workflows running in Middletier Prod is 0! Please verify status of Data Ingestion in Thoth or add more workload!"
           severity: "HIGH"
 
         # Database alerts
-      - alert: ThothSchemaCheckStageUserAPI
+      - alert: ThothSchemaCheckProdUserAPI
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="user-api"} == 1
         for: 5m
         annotations:
           summary: "Schema of User API is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothSchemaCheckStageGraphRefresh
+      - alert: ThothSchemaCheckProdGraphRefresh
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="graph-refresh-job"} == 1
         for: 5m
         annotations:
           summary: "Schema of Graph Refresh Job is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothSchemaCheckStageInvestigator
+      - alert: ThothSchemaCheckProdInvestigator
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="investigator"} == 1
         for: 5m
         annotations:
           summary: "Schema of Investigator is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothSchemaCheckStageGraphSync
+      - alert: ThothSchemaCheckProdGraphSync
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="graph-sync"} == 1
         for: 5m
         annotations:
           summary: "Schema of Graph Sync is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothSchemaCheckStageWorkflowHelpers
+      - alert: ThothSchemaCheckProdWorkflowHelpers
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="workflow-helpers"} == 1
         for: 5m
         annotations:
           summary: "Schema of Workflow Helpers is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothSchemaCheckStageMetricsExporter
+      - alert: ThothSchemaCheckProdMetricsExporter
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="metrics-exporter"} == 1
         for: 5m
         annotations:
           summary: "Schema of Metrics Exporter is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothSchemaCheckStageManagementAPI
+      - alert: ThothSchemaCheckProdManagementAPI
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="management-api"} == 1
         for: 5m
         annotations:
           summary: "Schema of Management API is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothSchemaCheckStageAdviseReporter
+      - alert: ThothSchemaCheckProdAdviseReporter
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="advise-reporter"} == 1
         for: 5m
         annotations:
           summary: "Schema of Advise Reporter is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothSchemaCheckStageGraphBackup
+      - alert: ThothSchemaCheckProdGraphBackup
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="graph-backup-job"} == 1
         for: 5m
         annotations:
           summary: "Schema of Graph Backup is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothSchemaCheckStagePackageReleases
+      - alert: ThothSchemaCheckProdPackageReleases
         expr: thoth_graph_db_component_revision_check{env="zero-prod", component="thoth-package-release-job"} == 1
         for: 5m
         annotations:
           summary: "Schema of Package Release is not in sync with database schema."
           severity: "HIGH"
 
-      - alert: ThothDatabaseCorruptionCheckStage
+      - alert: ThothDatabaseCorruptionCheckProd
         expr: thoth_graphdb_is_corrupted{instance="metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"} == 1
         for: 5m
         annotations:
