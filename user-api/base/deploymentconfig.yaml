@@ -6,17 +6,23 @@ metadata:
 spec:
   replicas: 1
   selector:
-    service: user-api
-    app.kubernetes.io/name: thoth
     app.kubernetes.io/component: user-api
     app.kubernetes.io/managed-by: aicoe-thoth-devops
+    app.kubernetes.io/name: thoth
+    service: user-api
   template:
     metadata:
       labels:
-        service: user-api
-        app.kubernetes.io/name: thoth
         app.kubernetes.io/component: user-api
         app.kubernetes.io/managed-by: aicoe-thoth-devops
+        app.kubernetes.io/name: thoth
+        discovery.3scale.net: true
+        service: user-api
+      annotations:
+        discovery.3scale.net/description-path: "/api/v1/openapi.json"
+        discovery.3scale.net/path: "/api/v1"
+        discovery.3scale.net/port: "443"
+        discovery.3scale.net/scheme: https
     spec:
       serviceAccountName: user-api
       containers:
