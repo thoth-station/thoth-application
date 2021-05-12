@@ -129,7 +129,7 @@ spec:
           summary: "Schema of Package Release is not in sync with database schema."
           severity: "HIGH"
 
-        # Alert for alembic version mismatch between components and database.
+        # Alert for amcheck database corruption check.
       - alert: ThothDatabaseCorruptionCheckProd
         expr: thoth_graphdb_is_corrupted{instance="metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"} == 1
         for: 5m
@@ -137,9 +137,10 @@ spec:
           summary: "Database schema is corrupted, all services need to be stopped."
           severity: "HIGH"
 
+        # Alert for alembic version mismatch between components and database.
       - alert: ThothMultipleAlembicRowsProd
         expr: thoth_graphdb_alembic_table_check{instance="metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"} == 1
         for: 5m
         annotations:
-          summary: "Database table for alembic version has more than one row, database is corrupted."
+          summary: "Database table for alembic version has more than one row, database is corrupted, all services need to be stopeed."
           severity: "HIGH"
