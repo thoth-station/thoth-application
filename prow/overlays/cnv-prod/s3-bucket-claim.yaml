@@ -8,3 +8,13 @@ spec:
   storageClassName: ocs-storagecluster-ceph-rgw
   additionalConfig:
     maxSize: "10G"
+---
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: ci-prow-artifacts-s3
+spec:
+  generateBucketName: ci-prow-artifacts-
+  storageClassName: openshift-storage.noobaa.io
+  additionalConfig:
+    maxSize: "10G"
