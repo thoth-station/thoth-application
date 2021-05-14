@@ -19,6 +19,13 @@ spec:
             - --confirm=true
             - --orgs=thoth-station
             - --token=/etc/github/oauth
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "125m"
+            limits:
+              memory: "64Mi"
+              cpu: "125m"
           volumeMounts:
             - name: oauth
               mountPath: /etc/github

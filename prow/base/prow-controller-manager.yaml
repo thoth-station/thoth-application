@@ -121,6 +121,13 @@ spec:
             - name: config
               mountPath: /etc/config
               readOnly: true
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "8m"
+            limits:
+              memory: "128Mi"
+              cpu: "8m"
       volumes:
         - name: config
           configMap:

@@ -85,6 +85,13 @@ spec:
             - name: s3-credentials
               mountPath: /etc/s3-credentials
               readOnly: true
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "8m"
+            limits:
+              memory: "256Mi"
+              cpu: "8m"
       volumes:
         - name: config
           configMap:

@@ -76,6 +76,13 @@ spec:
             - name: s3-credentials
               mountPath: /etc/s3-credentials
               readOnly: true
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "175m"
+            limits:
+              memory: "1Gi"
+              cpu: "175m"
       volumes:
         - name: oauth-token
           secret:
