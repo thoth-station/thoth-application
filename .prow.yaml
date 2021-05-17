@@ -25,6 +25,3 @@ presubmits:
           env:
             - name: IS_AICOE_CI
               value: "1"
-          resources:
-            requests:
-              memory: "256Mi"
