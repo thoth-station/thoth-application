@@ -28,6 +28,6 @@ kind: Alertmanager
 metadata:
   name: thoth-monitoring
 spec:
-  externalUrl: "http://alert-manager-thoth-infra-prod.apps.zero.massopen.cloud/"
+  externalUrl: ""
   replicas: 1
   securityContext: {}

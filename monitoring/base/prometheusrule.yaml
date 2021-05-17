@@ -1,0 +1,9 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: prometheusrule
+    role: alert-rules
+  name: thoth-alerting-rules
+spec: {}
