@@ -28,6 +28,7 @@ spec:
   resources:
     requests:
       storage: 10Gi
+  storageClassName: ocs-storagecluster-cephfs
 ---
 apiVersion: apps/v1
 kind: Deployment
