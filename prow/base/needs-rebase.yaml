@@ -26,6 +26,13 @@ spec:
           ports:
             - name: http
               containerPort: 8888
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "1m"
+            limits:
+              memory: "64Mi"
+              cpu: "1m"
           volumeMounts:
             - name: hmac
               mountPath: /etc/webhook

@@ -72,6 +72,13 @@ spec:
             - name: s3-credentials
               mountPath: /etc/s3-credentials
               readOnly: true
+          resources:
+            requests:
+              cpu: "1m"
+              memory: "128Mi"
+            limits:
+              memory: "128Mi"
+              cpu: "1m"
       volumes:
         - name: github-token
           secret:
