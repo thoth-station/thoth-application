@@ -16,7 +16,7 @@ spec:
         app.kubernetes.io/component: user-api
         app.kubernetes.io/managed-by: aicoe-thoth-devops
         app.kubernetes.io/name: thoth
-        discovery.3scale.net: true
+        discovery.3scale.net: "true"
         service: user-api
       annotations:
         discovery.3scale.net/description-path: "/api/v1/openapi.json"
