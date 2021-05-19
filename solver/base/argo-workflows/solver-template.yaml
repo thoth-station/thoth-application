@@ -78,6 +78,8 @@ spec:
         env:
           - name: THOTH_SOLVER
             value: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
+          - name: THOTH_SOLVER_RAISE_ON_SYSTEM_EXIT_CODES
+            value: "1"
           - name: THOTH_SOLVER_VIRTUALENV
             value: "/opt/app-root/src/solver-venv"
           - name: THOTH_LOG_SOLVER
