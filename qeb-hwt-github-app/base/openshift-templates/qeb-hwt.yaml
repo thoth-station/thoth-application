@@ -66,9 +66,9 @@ objects:
       serviceAccountName: argo
       activeDeadlineSeconds: 3000
       ttlStrategy:
-        secondsAfterCompletion: 7200
-        secondsAfterSuccess: 7200
-        secondsAfterFailure: 7200
+        secondsAfterCompletion: 900
+        secondsAfterSuccess: 900
+        secondsAfterFailure: 900
       entrypoint: qeb-hwt
 
       metrics:
