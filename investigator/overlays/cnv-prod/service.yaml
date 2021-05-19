@@ -5,8 +5,9 @@ metadata:
   name: investigator-faust-web
 spec:
   ports:
-    - port: 80
+    - name: metrics
       protocol: TCP
+      port: 80
       targetPort: 6066
   selector:
     service: investigator-consumer
