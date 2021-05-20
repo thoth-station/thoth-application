@@ -51,7 +51,9 @@ metadata:
   name: argo-server
 spec:
   ports:
-    - port: 2746
+    - name: metrics
+      protocol: TCP
+      port: 2746
       targetPort: 2746
   selector:
     app: argo-server

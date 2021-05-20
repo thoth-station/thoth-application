@@ -5,8 +5,9 @@ metadata:
   name: workflow-controller-metrics
 spec:
   ports:
-    - port: 80
+    - name: metrics
       protocol: TCP
+      port: 80
       targetPort: 8080
   selector:
     app: workflow-controller

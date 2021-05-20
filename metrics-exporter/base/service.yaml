@@ -5,8 +5,9 @@ metadata:
   name: metrics-exporter
 spec:
   ports:
-    - port: 80
+    - name: metrics
       protocol: TCP
+      port: 80
       targetPort: 8080
   selector:
     service: metrics-exporter
