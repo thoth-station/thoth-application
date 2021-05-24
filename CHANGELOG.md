@@ -1328,3 +1328,53 @@
 * :fire: quotes added to the when expression for correct value substitution (#1233)
 * missing tag in test (#1217)
 * Bump up versions for component in stage (#1211)
+
+## Release 2021.05.24 (2021-05-24T21:21:13)
+### Features
+* :star: set the workflow template in the inspection namespace (#1409)
+* :ship: Deploy the Tag v0.8.1 for workflow-helpers
+* :globe_with_meridians: set name of service port as metrics for the components (#1355)
+* Bump workflow helpers to v0.8.0 (#1299)
+* :arrow_up: create all the std thoth labels for the elyra-tutorial repo, as it moved orgs
+* :hourglass: Reduce the time to live 15-30 mins for backend workflows (#1350)
+* Increase memory for solvers to 2Gi (#1339)
+* :four_leaf_clover: Debug user-api deployment issue
+* :hatched_chick: switch to noobaa based ceph for prow
+* :dragon_face: restructure the monitoring to automate the monitoring (#1333)
+* update the prow resource limits
+* :whale: update the prow ceph bucket name to be used
+* :twisted_rightwards_arrows: migrate gh-proxy pvc to different storage class
+* :guardsman: update the prow ceph bucket cerds
+* update the prow ceph bucket cerds (#1329)
+* :ship: Deploy the Tag v2.5.3 for mi
+* :ship: Deploy the Tag v1.4.0 for mi-scheduler
+* :ship: Deploy the Tag v0.3.6 for graph-refresh-job
+* Set limits on the prow deployments based on usage (#1300)
+* Arrange the prow images in alphabetical order (#1323)
+* setup nooba based ceph for prow (#1301)
+* update test image streams to latest releases (#1295)
+* bump slo-reporter to v0.14.2 (#1284)
+* :sparkles: 🧭 add service discovery annotations/labels to user-api (#1277)
+* bump metrics exporter to v0.14.4 (#1282)
+* Add new qeb-hwt workflow (#1181)
+* Add new alerts for prod (#1279)
+* :alarm_clock: Setup alertmanager for thoth services alerting (#1265)
+* Enable prescription sync job in prod (#1275)
+* Separate zero-test overlay investigator as it uses non cluster role (#1269)
+* Debugging the alerting
+* Debugging the alerting by alert manager
+* Debugging the alerting by alert manager
+* Bump adviser to v0.30.0 in prod (#1264)
+* Bump adviser to v0.30.0 in stage (#1263)
+### Bug Fixes
+* :repeat: Sync the image that was missed in the automation (#1351)
+* keb admin workflow was failing (#1238)
+* Switch back on the graph-refresh for the stage cluster
+### Improvements
+* :arrow_up: bump up the module for the release of 05.24.2021 (#1411)
+* Recover default MCTS heat up (#1262)
+* Tweak MCTS heat up phase (#1261)
+* Tweak MCTS heat up phase (#1260)
+### Other
+* Raise solvers on exit code propagating a signal from operating system (#1340)
+* :hatched_chick: remove the rgw storage class obc
