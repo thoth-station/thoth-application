@@ -7,11 +7,8 @@ resources:
   - role_binding.yaml
   - thoth-notification.yaml
   - message-imagestream.yaml
-  - argo-workflows/send-messages.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
-  - openshift-templates/inspection-workflow.yaml
-  - openshift-templates/inspection-with-cpu-workflow.yaml
 generators:
   - ./secret-generator.yaml
 patchesJson6902:
