@@ -95,6 +95,12 @@ patchesJson6902:
       name: send-messages
   - path: put-into-inspection-namespace.yaml
     target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: create-inspection-complete-message
+  - path: put-into-inspection-namespace.yaml
+    target:
       group: ""
       version: v1
       kind: ServiceAccount
