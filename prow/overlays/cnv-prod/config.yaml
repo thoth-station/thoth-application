@@ -212,6 +212,7 @@ tide:
         - AICoE/aicoe-cd
         - AICoE/aicoe-ci
         - AICoE/aicoe-sre
+        - AICoE/elyra-aidevsecops-tutorial
         - AICoE/idh-manifests
         - AICoE/internal-data-hub
         - AICoE/prometheus-anomaly-detector
