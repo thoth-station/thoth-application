@@ -2,7 +2,7 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: clonerfs
+  name: clonerefs
 spec:
   lookupPolicy:
     local: true
@@ -10,14 +10,22 @@ spec:
     - annotations: null
       from:
         kind: ImageStreamTag
-        name: v20210319-be35a198b9
+        name: v20210531-03cf33ddeb
       name: latest
     - annotations: null
       from:
         kind: DockerImage
-        name: gcr.io/k8s-prow/clonerfs:v20210319-be35a198b9
+        name: gcr.io/k8s-prow/clonerefs:v20210319-be35a198b9
       importPolicy: {}
       name: v20210319-be35a198b9
+      referencePolicy:
+        type: Local
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: gcr.io/k8s-prow/clonerefs:v20210531-03cf33ddeb
+      importPolicy: {}
+      name: v20210531-03cf33ddeb
       referencePolicy:
         type: Local
 ---
