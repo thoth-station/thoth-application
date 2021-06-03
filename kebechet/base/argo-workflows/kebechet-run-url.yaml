@@ -66,6 +66,11 @@ spec:
               configMapKeyRef:
                 key: deployment-name
                 name: thoth
+          - name: THAMOS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: user-api-token
+                name: thoth
         volumeMounts:
           - name: ssh-config
             mountPath: /home/user/.ssh
