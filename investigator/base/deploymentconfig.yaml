@@ -108,6 +108,11 @@ spec:
                 configMapKeyRef:
                   key: deployment-name
                   name: thoth
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
             - name: KUBERNETES_API_URL
               value: "https://kubernetes.default.svc.cluster.local"
             - name: KUBERNETES_VERIFY_TLS

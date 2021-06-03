@@ -180,6 +180,11 @@ spec:
               configMapKeyRef:
                 name: thoth
                 key: deployment-name
+          - name: THOTH_LOGGING_NO_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: logging-no-json
           - name: SENTRY_DSN
             valueFrom:
               secretKeyRef:
