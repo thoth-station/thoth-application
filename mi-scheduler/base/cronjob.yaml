@@ -49,8 +49,6 @@ spec:
                     secretKeyRef:
                       name: sesheta-srcops
                       key: github-access-token
-                - name: SCHEDULE_KEBECHET_ANALYSIS
-                  value: "0"
                 - name: SCHEDULE_GH_REPO_ANALYSIS
                   value: "1"
                 - name: THOTH_ADJUST_LOGGING
@@ -60,12 +58,12 @@ spec:
 kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
-  name: mi-scheduler-kebechet
+  name: mi-scheduler-kebechet-analyse
   labels:
-    app: mi-scheduler-kebechet
+    app: mi-scheduler-kebechet-analyse
 
 spec:
-  schedule: "@daily"
+  schedule: "0 0 * * *"
   suspend: false
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
@@ -74,7 +72,7 @@ spec:
     spec:
       template:
         metadata:
-          name: mi-scheduler-kebechet
+          name: mi-scheduler-kebechet-analyse
         spec:
           serviceAccount: mi-scheduler
           containers:
@@ -133,8 +131,86 @@ spec:
                       key: github-access-token
                 - name: SCHEDULE_KEBECHET_ANALYSIS
                   value: "1"
-                - name: SCHEDULE_GH_REPO_ANALYSIS
+                - name: THOTH_ADJUST_LOGGING
+                  value: 'thoth.mi-scheduler:INFO'
+          restartPolicy: OnFailure
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: mi-scheduler-kebechet-merge
+  labels:
+    app: mi-scheduler-kebechet-merge
+
+spec:
+  schedule: "0 8 * * *"
+  suspend: false
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: mi-scheduler-kebechet-merge
+        spec:
+          serviceAccount: mi-scheduler
+          containers:
+            - image: mi-scheduler
+              name: mi-scheduler
+              resources:
+                limits:
+                  cpu: 256m
+                  memory: 500Mi
+                requests:
+                  cpu: 256m
+                  memory: 500Mi
+              env:
+                - name: KUBERNETES_VERIFY_TLS
                   value: "0"
+                - name: APP_FILE
+                  value: "app.py"
+                - name: THOTH_MIDDLETIER_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: middletier-namespace
+                - name: THOTH_INFRA_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: infra-namespace
+                - name: KNOWLEDGE_GRAPH_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: postgresql-host
+                      name: thoth
+                - name: KNOWLEDGE_GRAPH_PORT
+                  value: "5432"
+                - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+                  value: "1"
+                - name: KNOWLEDGE_GRAPH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-user
+                - name: KNOWLEDGE_GRAPH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-password
+                - name: KNOWLEDGE_GRAPH_DATABASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-name
+                - name: GITHUB_ACCESS_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: sesheta-srcops
+                      key: github-access-token
+                - name: SCHEDULE_KEBECHET_MERGE
+                  value: "1"
                 - name: THOTH_ADJUST_LOGGING
                   value: 'thoth.mi-scheduler:INFO'
           restartPolicy: OnFailure
