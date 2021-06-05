@@ -45,6 +45,11 @@ spec:
                     configMapKeyRef:
                       key: deployment-name
                       name: kebechet
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
               image: kebechet
               livenessProbe:
                 failureThreshold: 1

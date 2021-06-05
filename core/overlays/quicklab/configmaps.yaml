@@ -16,6 +16,7 @@ data:
     solver-rhel-8-py36
     solver-fedora-32-py38
   package-releases-only-if-package-seen: "1"
+  logging-no-json: "0"
   rsyslog-host: ""
   rsyslog-port: ""
 ---

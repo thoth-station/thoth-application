@@ -61,6 +61,11 @@ spec:
                   name: sefkhet-abwy
             - name: THOTH_DEPLOYMENT_NAME
               value: aicoe-prod-bots
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
             - name: SESHETA_AIOPS_DEVOPS_SPACE
               valueFrom:
                 secretKeyRef:

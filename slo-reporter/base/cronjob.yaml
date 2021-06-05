@@ -122,6 +122,11 @@ spec:
                     configMapKeyRef:
                       key: deployment-name
                       name: thoth
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
               livenessProbe:
                 failureThreshold: 1
                 initialDelaySeconds: 7200

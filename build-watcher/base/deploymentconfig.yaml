@@ -137,6 +137,11 @@ spec:
                 configMapKeyRef:
                   key: thoth-deployment-name
                   name: build-watcher
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
             - name: PROMETHEUS_PUSHGATEWAY_HOST
               valueFrom:
                 configMapKeyRef:

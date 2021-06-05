@@ -27,6 +27,11 @@ spec:
               configMapKeyRef:
                 key: deployment-name
                 name: thoth
+          - name: THOTH_LOGGING_NO_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: logging-no-json
           - name: THOTH_WORKFLOW_TASK
             value: "kebechet_administrator"
           - name: APP_SCRIPT
@@ -70,6 +75,11 @@ spec:
               configMapKeyRef:
                 key: deployment-name
                 name: thoth
+          - name: THOTH_LOGGING_NO_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: logging-no-json
           - name: PROMETHEUS_PUSHGATEWAY_URL
             valueFrom:
               configMapKeyRef:
