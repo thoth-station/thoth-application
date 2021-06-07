@@ -14,6 +14,55 @@ default:
       target: prs
       prowPlugin: approve
       addedBy: approvers
+    - color: fc05d7
+      description: Indicates an issue/PR is related to community governance.
+      name: community/governance
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fc05d7
+      description: Indicates an issue/PR is related to the Community Handbook.
+      name: community/handbook
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fc05d7
+      description: Indicates an issue/PR is related to community governance.
+      name: community/governance
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fc05d7
+      description: Indicates an issue/PR is related to community marketing.
+      name: community/marketing
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fc05d7
+      description: Indicates an issue/PR is related to metrics around the community.
+      name: community/metrics
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fc05d7
+      description: Indicates an issue/PR is related to project news.
+      name: community/news
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fc05d7
+      description: Indicates an issue/PR is related to community onboarding.
+      name: community/onboarding
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+
+    - color: fc05d7
+      description: Indicates an issue/PR is related to project web presence.
+      name: community/website
+      target: both
+      prowPlugin: label
+      addedBy: anyone
     - color: e11d21
       description: Indicates that a PR should not merge because it touches files in blocked paths.
       name: do-not-merge/blocked-paths
@@ -312,6 +361,18 @@ default:
         - name: wontfix
       target: both
       addedBy: humans
+    - color: fc05d7
+      description: Indicates an issue/PR is related to end-user documentation.
+      name: users/documentation
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fc05d7
+      description: Indicates an issue/PR is user experience (UX).
+      name: user/experience
+      target: both
+      prowPlugin: label
+      addedBy: anyone  
 
 repos:
   operate-first/SRE:
