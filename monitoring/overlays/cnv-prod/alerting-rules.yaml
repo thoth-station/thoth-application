@@ -9,7 +9,7 @@
           # Alert for number of workflows in middletier
         - alert: ThothMiddletierIngestion
           expr: argo_workflows_count{instance="workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80", status="Running"} < 1
-          for: 30m
+          for: 60m
           annotations:
             summary: "Workflows running in Middletier Prod is 0! Please verify status of Data Ingestion in Thoth or add more workload!"
             severity: "HIGH"
