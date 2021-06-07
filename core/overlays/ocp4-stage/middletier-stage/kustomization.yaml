@@ -4,7 +4,7 @@ resources:
   - ../common/
   - argo-deployments.yaml
   - argo-imagestreams.yaml
-  - argo-mangement.yaml
+  - argo-management.yaml
   - argo-ui-controller.yaml
   - argo-workflow-controller.yaml
   - thoth-notification.yaml
