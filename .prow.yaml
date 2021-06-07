@@ -11,6 +11,13 @@ presubmits:
             - "pre-commit"
             - "run"
             - "--all-files"
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "200m"
+            limits:
+              memory: "1Gi"
+              cpu: "200m"
   - name: kustomize-build
     decorate: true
     max_concurrency: 1
@@ -25,3 +32,10 @@ presubmits:
           env:
             - name: IS_AICOE_CI
               value: "1"
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "200m"
+            limits:
+              memory: "1Gi"
+              cpu: "200m"
