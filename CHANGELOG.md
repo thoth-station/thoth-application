@@ -1378,3 +1378,70 @@
 ### Other
 * Raise solvers on exit code propagating a signal from operating system (#1340)
 * :hatched_chick: remove the rgw storage class obc
+
+## Release 2021.06.07 (2021-06-07T18:42:40)
+### Features
+* :cherry_blossom: Bump thoth production services with updated versions
+* :cherry_blossom: Bump thoth production services with updated versions
+* :ship: Deploy the Tag v0.2.5 for revsolver
+* :ship: Deploy the Tag v0.9.1 for reporter
+* :ship: Deploy the Tag v0.14.5 for metrics-exporter
+* :blossom: Refactor the argo setup for thoth services
+* :palm_tree: Adjusted the argo deployment for stage services
+* :checkered_flag: Fix the amun argo workflow setup
+* :ship: Deploy the Tag pr-1427 for user-api
+* :ship: Deploy the Tag v0.26.0 for user-api
+* :thought_balloon: update the certs for the services
+* :ship: Deploy the Tag pr-1426 for user-api
+* wrong env var used for ca location
+* Make structured logging configurable
+* Archive logs to have them accessible to users
+* Allow argo role list pod logs
+* :ship: Deploy the Tag v1.10.0 for solver
+* :ship: Deploy the Tag v1.10.0 for solver
+* :ship: Deploy the Tag v1.10.0 for solver
+* Increase memory and CPU for the CVE update job
+* Bump management-api to v0.17.2 in stage environment
+* :ship: Deploy the Tag pr-770 for management-api
+* :ship: Deploy the Tag v0.3.7 for graph-refresh-job
+* Bump graph-backup-job to v0.8.4 in stage environment
+* Bump graph-refresh to v0.3.7 in stage environment
+* Bump revsolver to v0.2.5 in stage environment
+* Bump CVE update job to v0.3.0 in stage environment
+* add 'thamos_token' for user-api authentication
+* Supply Prometheus URL to CVE update job
+* Bump adviser to v0.31.0 in stage environment
+* :ship: Deploy the Tag v1.3.0 for kebechet
+* Bump Kebechet to v1.3.0 in prod
+* Bump Kebechet to v1.3.0 in stage environment
+* :ship: Deploy the Tag v0.25.2 for user-api
+* Deploy user-api v0.25.2 to stage environment
+* :ship: Deploy the Tag v0.17.1 for management-api
+* Bump management-api to v0.17.1 in stage environment
+* :ship: Deploy the Tag pr-763 for management-api
+* :ship: Deploy the Tag v0.10.7 for graph-sync-job
+* :ship: Deploy the Tag v0.17.0 for management-api
+* Use solver v1.9.0 in prod environment
+* :ship: Deploy the Tag v1.5.0 for mi-scheduler
+* :ship: Deploy the Tag v2.6.0 for mi
+* update the clonerefs image name
+* :robot: allow cyborg to simple merge pr instead of squash for thoth-station (#1117)
+* allow cyborg to simple merge pr instead of squash for aiops (#1111)
+* Change word analysis to analyse
+* Add new cronjobs to all overlays
+* Rename old kebechet job to resemble analysis
+* Add merge cronjob
+* :sparkles: turn the utility images into imagestreamtags 👷
+* include elyra aidevsecops to prow (#1436)
+* Bump SLO-reporter to v0.14.3 (#1431)
+* :ship: Deploy the Tag v0.14.3 for slo-reporter
+* Bump solvers to v1.9.0 in stage environment (#1410)
+* :ship: Deploy the Tag v1.9.0 for solver
+* :ship: Deploy the Tag v1.9.0 for solver
+* :ship: Deploy the Tag v1.9.0 for solver
+### Bug Fixes
+* fix the name of clonerefs image for prow
+* fixed typos in Prow's ImageStream
+### Improvements
+* :mushroom: Bump up the version of stage thoth services
+* removed dups
