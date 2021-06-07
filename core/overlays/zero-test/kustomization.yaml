@@ -2,10 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
+  - argo-deployments.yaml
+  - argo-imagestreams.yaml
+  - argo-management.yaml
   - argo-role.yaml
-  - argo-namespace-install.yaml
-  - argo-ui-route.yaml
-  - argo-workflow-controller-metrics.yaml
+  - argo-ui-controller.yaml
+  - argo-workflow-controller.yaml
   - postgresql.yaml
   - pgbouncer.yaml
   - postgresql-metrics-exporter.yaml
