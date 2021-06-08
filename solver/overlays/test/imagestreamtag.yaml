@@ -35,7 +35,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/solver-fedora-32-py38:v1.10.0
+        name: quay.io/thoth-station/solver-fedora-32-py38:v1.10.1
       importPolicy: {}
       referencePolicy:
         type: Source
