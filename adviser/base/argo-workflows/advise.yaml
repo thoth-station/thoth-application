@@ -145,6 +145,8 @@ spec:
             value: "input/Pipfile.lock"
           - name: THOTH_ADVISER_CONSTRAINTS
             value: "input/constraints.txt"
+          - name: THOTH_ADVISER_LABELS
+            value: "input/labels.json"
           - name: THOTH_ADVISER_REQUIREMENTS_FORMAT
             value: "pipenv"
           - name: THOTH_ADVISER_RECOMMENDATION_TYPE
