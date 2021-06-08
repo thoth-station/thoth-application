@@ -167,6 +167,11 @@ spec:
             value: "advise"
           - name: THOTH_ADVISER_LIBRARY_USAGE
             value: "input/library_usage.json"
+          - name: THOTH_ADVISER_DEPLOYMENT_CONFIGURED_SOLVERS
+            valueFrom:
+              configMapKeyRef:
+                name: solvers
+                key: solvers
           - name: PROMETHEUS_PUSHGATEWAY_HOST
             valueFrom:
               configMapKeyRef:
