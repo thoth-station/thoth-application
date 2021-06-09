@@ -8,6 +8,7 @@ metadata:
     template: mi
 
 spec:
+  activeDeadlineSeconds: 3600
   serviceAccountName: argo
   entrypoint: mi-workflow
   templates:
