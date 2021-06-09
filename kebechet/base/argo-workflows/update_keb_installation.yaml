@@ -6,6 +6,13 @@ metadata:
 spec:
   templates:
     - name: update-kebechet-installation
+      retryStrategy:
+        limit: 5
+        backoff:
+          duration: "2"
+          factor: 2
+        affinity:
+          nodeAntiAffinity: {} # forces step to use new host (may get around some networking issues)
       resubmitPendingPods: true
       inputs:
         parameters:
