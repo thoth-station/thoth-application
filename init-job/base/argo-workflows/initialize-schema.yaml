@@ -14,7 +14,7 @@ spec:
       container:
         name: initialize-schema
         image: init-job
-        command: ['python3', 'app.py', '--initialize-schema']
+        command: ['python3', 'app.py', '--initialize-schema', '--configure-solver-rules']
         env:
           - name: THOTH_LOG_INIT_JOB
             value: "{{inputs.parameters.THOTH_LOG_INIT_JOB}}"
