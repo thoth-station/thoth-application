@@ -8,6 +8,7 @@ metadata:
     template: mi
 
 spec:
+  activeDeadlineSeconds: 3600
   serviceAccountName: argo
   entrypoint: mi-workflow
   templates:
@@ -94,5 +95,3 @@ spec:
             value: "."
           - name: THOTH_ADJUST_LOGGING
             value: "{{inputs.parameters.THOTH_ADJUST_LOGGING}}"
-        livenessProbe:
-          timeoutSeconds: 3600
