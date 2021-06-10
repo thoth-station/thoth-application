@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - deployment.yaml
+  - imagestream.yaml
+  - service.yaml
+commonLabels:
+  app.kubernetes.io/name: thoth-triage-party
+  app.kubernetes.io/component: triage-party
+  app.kubernetes.io/managed-by: aicoe-thoth-devops
