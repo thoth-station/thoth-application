@@ -77,6 +77,10 @@ parameters:
     description: Advise performed with authentication.
     displayName: Authenticated advise
     value: "0"
+  - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
+    description: Is advise being called due to release of specific package
+    displayName: Package update advise
+    value: ""
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -158,6 +162,8 @@ objects:
             value: "${THOTH_FORCE_SYNC}"
           - name: THOTH_AUTHENTICATED_ADVISE
             value: "${THOTH_AUTHENTICATED_ADVISE}"
+          - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
+            value: "${THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -222,6 +228,8 @@ objects:
                       value: "{{workflow.parameters.THOTH_ADVISER_COUNT}}"
                     - name: THOTH_ADVISER_TIMEOUT_SECONDS
                       value: "{{workflow.parameters.THOTH_ADVISER_TIMEOUT_SECONDS}}"
+                    - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
+                      value: "{{workflow.parameters.THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE}}"
                     - name: "THOTH_S3_ENDPOINT_URL"
                       value: "{{workflow.parameters.ceph_host}}"
                     - name: "THOTH_CEPH_BUCKET_NAME"
