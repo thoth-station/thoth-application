@@ -85,24 +85,6 @@ collections:
       - issue-has-question
       - issue-updated-support
 
-  - id: milestone
-    name: In Milestone
-    description: >
-      A Kanban visualization of milestones, showing the flow of issues through each stage.
-
-        * Unassigned issues represent available work
-        * >3 issues assigned to the same person within a stage signifies a bottleneck 🌊
-    display: kanban
-    overflow: 3
-    dedup: true
-    rules:
-      - milestone-not-started
-      - milestone-assignee-updated
-      - milestone-pr-needs-review
-      - milestone-pr-needs-work
-      - milestone-pr-needs-merge
-      - milestone-recently-closed
-
   - id: scrub
     name: Quarterly Scrub
     dedup: true
@@ -135,8 +117,6 @@ collections:
     overflow: 3
     dedup: true
     rules:
-      - important-not-milestoned
-      - important-milestoned
       - important-assignee-updated
       - important-pr-needs-review
       - important-pr-needs-work
@@ -157,13 +137,6 @@ collections:
     rules:
       - open-prs
       - open-issues
-
-  - id: __velocity__
-    name: issues to include in velocity metrics
-    used_for_statistics: true
-    hidden: true
-    rules:
-      - closed-milestone-issues
 
 rules:
   ### Daily Triage ####
@@ -209,7 +182,6 @@ rules:
     filters:
       - label: "!do-not-merge.*"
       - label: "!needs-rebase"
-      - label: "!cncf-cla: no"
       - tag: "!changes-requested"
       - tag: "!send"
 
@@ -396,55 +368,6 @@ rules:
       - tag: "!contributor-last"
       - responded: +6d
 
-  ### Milestone Kanban ###
-  milestone-not-started:
-    name: "Not started"
-    type: issue
-    filters:
-      - tag: open-milestone
-      - tag: "!assignee-updated"
-      - tag: "!(assignee-open-pr|assignee-closed-pr)"
-  milestone-assignee-updated:
-    name: "In Progress"
-    type: issue
-    filters:
-      - tag: open-milestone
-      - tag: "assignee-updated"
-      - tag: >-
-          !(
-          pr-changes-requested|
-          pr-reviewer-comment|
-          pr-unreviewed|
-          pr-new-commits|
-          pr-approved|
-          pr-changes-requested
-          )
-  milestone-pr-needs-work:
-    name: "PR needs work"
-    type: issue
-    filters:
-      - tag: open-milestone
-      - tag: "(pr-changes-requested|pr-reviewer-comment)"
-  milestone-pr-needs-review:
-    name: "PR needs Review"
-    type: issue
-    filters:
-      - tag: open-milestone
-      - tag: "(pr-unreviewed|pr-new-commits)"
-  milestone-pr-needs-merge:
-    name: "PR needs Merge"
-    type: issue
-    filters:
-      - tag: open-milestone
-      - tag: "(pr-approved|pr-approved-but-pushed)"
-  milestone-recently-closed:
-    name: "Finish Line"
-    type: issue
-    filters:
-      - tag: open-milestone
-      - state: closed
-      - updated: -30d
-
   ## Bug Scrub ##
   bugs-old-recv:
     name: "Bugs that deserve a follow-up comment"
@@ -550,31 +473,6 @@ rules:
       - label: "!.*bug"
       - label: ".*question"
 
-  ### Important Kanban ###
-  important-not-milestoned:
-    name: "Not in milestone"
-    type: issue
-    filters:
-      - label: "priority/important-soon|priority/critical-urgent"
-      - tag: "!open-milestone"
-      - tag: "!assignee-updated"
-      - tag: "!(assignee-open-pr|assignee-closed-pr)"
-  important-milestoned:
-    name: "In Milestone"
-    type: issue
-    filters:
-      - label: "priority/important-soon|priority/critical-urgent"
-      - tag: open-milestone
-      - tag: >-
-          !(
-           pr-changes-requested|
-           pr-reviewer-comment|
-           pr-unreviewed|
-           pr-new-commits|
-           pr-approved|
-           pr-changes-requested|
-           assignee-updated
-           )
   important-assignee-updated:
     name: "In Progress"
     type: issue
@@ -631,12 +529,3 @@ rules:
   open-prs:
     name: "Open PRs"
     type: pull_request
-
-  closed-milestone-issues:
-    name: "Recently closed milestone issues"
-    type: issue
-    filters:
-      - state: closed
-      - closed: -90d
-      - milestone: ".*"
-      - label: "!triage/duplicate"
