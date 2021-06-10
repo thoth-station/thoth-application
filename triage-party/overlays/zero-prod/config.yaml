@@ -3,8 +3,31 @@ settings:
   name: thoth-station
   min_similarity: 0.8
   repos:
+    - https://github.com/thoth-station/adviser
+    - https://github.com/thoth-station/common
     - https://github.com/thoth-station/core
+    - https://github.com/thoth-station/invectio
+    - https://github.com/thoth-station/investigator
+    - https://github.com/thoth-station/jupyterlab-requirements
+    - https://github.com/thoth-station/kebechet
+    - https://github.com/thoth-station/management-api
+    - https://github.com/thoth-station/messaging
+    - https://github.com/thoth-station/metrics-exporter
+    - https://github.com/thoth-station/package-extract
+    - https://github.com/thoth-station/pipeline-helpers
+    - https://github.com/thoth-station/prescription-sync-job
+    - https://github.com/thoth-station/prescriptions
+    - https://github.com/thoth-station/purge-job
+    - https://github.com/thoth-station/python
+    - https://github.com/thoth-station/reporter
+    - https://github.com/thoth-station/s2i-thoth
+    - https://github.com/thoth-station/slo-reporter
+    - https://github.com/thoth-station/solver
+    - https://github.com/thoth-station/storages
+    - https://github.com/thoth-station/thamos
     - https://github.com/thoth-station/thoth-application
+    - https://github.com/thoth-station/user-api
+    - https://github.com/thoth-station/workflow-helpers
 
   # See: https://developer.github.com/v4/enum/commentauthorassociation/
   # Default is "collaborator, owner, member", unless "members" is set
