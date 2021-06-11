@@ -11,4 +11,4 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: openshift-storage.noobaa.io
+  storageClassName: ocs-storagecluster-cephfs
