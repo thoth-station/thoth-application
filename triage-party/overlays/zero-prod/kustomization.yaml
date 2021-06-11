@@ -6,10 +6,8 @@ resources:
 patchesStrategicMerge:
   - imagestreamtags.yaml
 configMapGenerator:
-  - name: config
+  - name: triage-party-config
     files:
       - config.yaml
 generatorOptions:
   disableNameSuffixHash: true
-generators:
-  - secret-generator.yaml
