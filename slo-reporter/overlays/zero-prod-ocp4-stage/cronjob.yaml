@@ -126,11 +126,6 @@ spec:
                     configMapKeyRef:
                       key: deployment-name
                       name: slo-reporter-stage-prod
-                - name: THOTH_LOGGING_NO_JSON
-                  valueFrom:
-                    configMapKeyRef:
-                      name: thoth
-                      key: logging-no-json
               livenessProbe:
                 failureThreshold: 1
                 initialDelaySeconds: 7200
