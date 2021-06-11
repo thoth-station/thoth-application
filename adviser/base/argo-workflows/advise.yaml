@@ -139,6 +139,8 @@ spec:
             value: "{{inputs.parameters.THOTH_ADVISER_COUNT}}"
           - name: THOTH_ADVISER_LIMIT
             value: "{{inputs.parameters.THOTH_ADVISER_LIMIT}}"
+          - name: THOTH_ADVISER_BLOCKED_UNITS
+            value: "SecurityIndicatorStep"
           - name: THOTH_ADVISER_PRESCRIPTION
             value: "/mnt/workdir/prescription.yaml"
           - name: THOTH_ADVISER_REQUIREMENTS
