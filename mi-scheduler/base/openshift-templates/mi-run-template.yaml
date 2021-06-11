@@ -46,7 +46,6 @@ objects:
     spec:
       serviceAccountName: argo
       entrypoint: mi
-      activeDeadlineSeconds: 3000
       ttlStrategy:
         secondsAfterCompletion: 10
         secondsAfterSuccess: 10
