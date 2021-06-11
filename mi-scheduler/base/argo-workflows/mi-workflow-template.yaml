@@ -8,7 +8,6 @@ metadata:
     template: mi
 
 spec:
-  activeDeadlineSeconds: 3600
   serviceAccountName: argo
   entrypoint: mi-workflow
   templates:
@@ -38,6 +37,7 @@ spec:
                   value: "{{inputs.parameters.MI_THOTH}}"
 
     - name: analyse
+      activeDeadlineSeconds: 3600
       synchronization:
         semaphore:
           configMapKeyRef:
