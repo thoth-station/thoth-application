@@ -15,7 +15,7 @@ spec:
     - annotations: null
       from:
         kind: DockerImage
-        name: quay.io/goern/triage-party:v1.4.0
+        name: quay.io/thoth-station/triage-party:v1.4.0
       importPolicy: {}
       name: v1.4.0
       referencePolicy:
