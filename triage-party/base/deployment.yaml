@@ -14,13 +14,17 @@ spec:
     spec:
       containers:
         - name: triage-party
-          image: triage-party
+          image: triage-party:latest
           env:
             - name: GITHUB_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: triage-party-github-token
                   key: token
+            - name: PERSIST_PATH
+              value: "/app/pcache"
+            - name: PERSIST_BACKEND
+              value: "disk"
           volumeMounts:
             - name: config
               mountPath: /app/config
