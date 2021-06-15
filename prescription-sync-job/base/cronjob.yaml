@@ -38,6 +38,8 @@ spec:
                     configMapKeyRef:
                       name: thoth
                       key: logging-no-json
+                - name: THOTH_PRESCRIPTION_SYNC_OUTPUT
+                  value: "/mnt/prescriptions"
                 - name: THOTH_S3_ENDPOINT_URL
                   valueFrom:
                     configMapKeyRef:
@@ -83,6 +85,9 @@ spec:
                     configMapKeyRef:
                       name: prometheus
                       key: pushgateway-url
+              volumeMounts:
+                - name: prescriptions
+                  mountPath: /mnt/prescriptions
               resources:
                 requests:
                   memory: "128Mi"
@@ -97,3 +102,7 @@ spec:
                 failureThreshold: 1
                 periodSeconds: 10
           restartPolicy: OnFailure
+          volumes:
+            - name: prescriptions
+              persistentVolumeClaim:
+                claimName: prescriptions
