@@ -4,6 +4,7 @@ commonLabels:
   app.kubernetes.io/version: "0.6"
 resources:
   - ../../base
+  - role-binding.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
   - cronjob.yaml
