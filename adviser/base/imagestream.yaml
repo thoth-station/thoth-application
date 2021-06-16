@@ -6,3 +6,11 @@ metadata:
 spec:
   lookupPolicy:
     local: true
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: prescriptions
+spec:
+  lookupPolicy:
+    local: true
