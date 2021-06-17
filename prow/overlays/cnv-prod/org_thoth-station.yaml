@@ -247,9 +247,11 @@ orgs:
         archived: true
         description: A job which refreshes graph cache
         has_projects: false
+        has_wiki: false
       graph-metrics-exporter:
         description: Export metrics out of knowledge graph asynchronously
         has_projects: false
+        has_wiki: false
       graph-refresh-job:
         description:
           A job for scheduling solver to resolve dependency graphs of new
@@ -996,6 +998,7 @@ orgs:
               fext: admin
               glyph: admin
               graph-backup-job: admin
+              graph-metrics-exporter: admin
               graph-refresh-job: admin
               graph-sync-job: admin
               httpd-aicoe-container: admin
