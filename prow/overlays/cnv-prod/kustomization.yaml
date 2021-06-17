@@ -24,6 +24,9 @@ configMapGenerator:
   - name: labels-thoth-station
     files:
       - labels_thoth-station.yaml
+  - name: peribolos-thoth-station
+    files:
+      - org_thoth-station.yaml
   - name: labels-operate-first
     files:
       - labels_operate-first.yaml
