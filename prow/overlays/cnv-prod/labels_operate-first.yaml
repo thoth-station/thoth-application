@@ -5,7 +5,7 @@
 #     previously: list of previous labels (color name deleteAfter, previously)
 #     target: one of issues, prs, or both (also TBD)
 #     addedBy: human? prow plugin? other?
----
+---g
 default:
   labels:
     - color: 0e8a16
@@ -15,55 +15,24 @@ default:
       prowPlugin: approve
       addedBy: approvers
     - color: fc05d7
-      description: Indicates an issue/PR is related to community governance.
-      name: community/governance
+      description: Indicates an issue/PR is related to a project platform user.
+      name: area/community
       target: both
       prowPlugin: label
       addedBy: anyone
     - color: fc05d7
-      description: Indicates an issue/PR is related to the Community Handbook.
-      name: community/handbook
+      description: Indicates an issue/PR is related to the overall community.
+      name: area/community
       target: both
       prowPlugin: label
       addedBy: anyone
     - color: fc05d7
-      description: Indicates an issue/PR is related to community governance.
-      name: community/governance
+      description: Indicates an issue/PR is related to a project platform contributor.
+      name: area/contributor
       target: both
       prowPlugin: label
       addedBy: anyone
-    - color: fc05d7
-      description: Indicates an issue/PR is related to community marketing.
-      name: community/marketing
-      target: both
-      prowPlugin: label
-      addedBy: anyone
-    - color: fc05d7
-      description: Indicates an issue/PR is related to metrics around the community.
-      name: community/metrics
-      target: both
-      prowPlugin: label
-      addedBy: anyone
-    - color: fc05d7
-      description: Indicates an issue/PR is related to project news.
-      name: community/news
-      target: both
-      prowPlugin: label
-      addedBy: anyone
-    - color: fc05d7
-      description: Indicates an issue/PR is related to community onboarding.
-      name: community/onboarding
-      target: both
-      prowPlugin: label
-      addedBy: anyone
-
-    - color: fc05d7
-      description: Indicates an issue/PR is related to project web presence.
-      name: community/website
-      target: both
-      prowPlugin: label
-      addedBy: anyone
-    - color: e11d21
+   - color: e11d21
       description: Indicates that a PR should not merge because it touches files in blocked paths.
       name: do-not-merge/blocked-paths
       target: prs
@@ -117,11 +86,53 @@ default:
       prowPlugin: label
       addedBy: anyone
     - color: c7def8
+      description: Indicates an issue/PR is related to human experience.
+      name: kind/experience
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
       description: Categorizes issue or PR as related to a new feature.
       name: kind/feature
       previously:
         - name: enhancement
         - name: kind/enhancement
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Indicates an issue/PR is related to governance.
+      name: kind/governance
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Indicates an issue/PR is related to a handbook.
+      name: kind/handbook
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Indicates an issue/PR is related to marketing.
+      name: kind/marketing
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Indicates an issue/PR is related to metrics around the community.
+      name: kind/metrics
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Indicates an issue/PR is related to project news.
+      name: kind/news
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Indicates an issue/PR is related to onboarding.
+      name: kind/onboarding
       target: both
       prowPlugin: label
       addedBy: anyone
@@ -134,6 +145,12 @@ default:
         - name: triage/support
       target: both
       addedBy: humans
+    - color: c7def8
+      description: Indicates an issue/PR is related to project web presence.
+      name: kind/website
+      target: both
+      prowPlugin: label
+      addedBy: anyone
     - color: 15dd18
       description: Indicates that a PR is ready to be merged.
       name: lgtm
