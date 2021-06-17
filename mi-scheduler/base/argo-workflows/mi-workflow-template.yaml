@@ -37,7 +37,7 @@ spec:
                   value: "{{inputs.parameters.MI_THOTH}}"
 
     - name: analyse
-      activeDeadlineSeconds: 3600
+      activeDeadlineSeconds: 12000
       synchronization:
         semaphore:
           configMapKeyRef:
