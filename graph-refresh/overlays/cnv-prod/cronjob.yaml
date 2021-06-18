@@ -3,5 +3,152 @@ kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
   name: graph-refresh
+  labels:
+    app: thoth
+    component: graph-refresh
 spec:
+  schedule: "0 */1 * * *"
   suspend: false
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  startingDeadlineSeconds: null
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: thoth
+            component: graph-refresh
+        spec:
+          serviceAccountName: "graph-refresh-job"
+          containers:
+            - image: "graph-refresh-job:latest"
+              name: graph-refresh
+              env:
+                - name: THOTH_LOG_GRAPH_REFRESH_JOB
+                  value: "INFO"
+                - name: DEBUG_LEVEL
+                  value: "0"
+                - name: APP_SCRIPT
+                  value: "app.sh"
+                - name: KAFKA_BOOTSTRAP_SERVERS
+                  valueFrom:
+                    configMapKeyRef:
+                      name: kafka
+                      key: kafka-bootstrap-servers
+                - name: KAFKA_SECURITY_PROTOCOL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: kafka-protocol
+                      name: kafka
+                - name: KAFKA_SSL_CA_LOCATION
+                  value: "/mnt/secrets/kafka_ca.crt"
+                - name: KAFKA_SSL_CERTIFICATE_LOCATION
+                  value: "/mnt/secrets/kafka_user.crt"
+                - name: KAFKA_SSL_KEY_LOCATION
+                  value: "/mnt/secrets/kafka_user.key"
+                - name: KAFKA_SSL_KEY_PASSWORD
+                  value: "/mnt/secrets/kafka_user.password"
+                - name: KUBERNETES_API_URL
+                  value: "https://kubernetes.default.svc.cluster.local"
+                - name: KUBERNETES_VERIFY_TLS
+                  value: "0"
+                - name: THOTH_INFRA_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: infra-namespace
+                      name: thoth
+                - name: THOTH_GRAPH_REFRESH_SOLVER
+                  value: "1"
+                - name: THOTH_GRAPH_REFRESH_REVSOLVER
+                  value: "1"
+                - name: THOTH_GRAPH_REFRESH_SECURITY
+                  value: "0"
+                - name: THOTH_GRAPH_REFRESH_COUNT
+                  value: "800"
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: thoth
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
+                - name: RSYSLOG_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: rsyslog-host
+                      name: thoth
+                - name: RSYSLOG_PORT
+                  valueFrom:
+                    configMapKeyRef:
+                      key: rsyslog-port
+                      name: thoth
+                - name: PROMETHEUS_PUSHGATEWAY_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: pushgateway-url
+                - name: SENTRY_DSN
+                  valueFrom:
+                    secretKeyRef:
+                      name: thoth
+                      key: sentry-dsn
+                - name: KNOWLEDGE_GRAPH_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: postgresql-host
+                - name: KNOWLEDGE_GRAPH_PORT
+                  value: "5432"
+                - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+                  value: "1"
+                - name: KNOWLEDGE_GRAPH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-user
+                - name: KNOWLEDGE_GRAPH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-password
+                - name: KNOWLEDGE_GRAPH_DATABASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-name
+              volumeMounts:
+                - name: secrets
+                  mountPath: /mnt/secrets
+                  readOnly: true
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "500m"
+                limits:
+                  memory: "256Mi"
+                  cpu: "500m"
+              livenessProbe:
+                failureThreshold: 1
+                initialDelaySeconds: 1800
+                periodSeconds: 10
+                tcpSocket:
+                  port: 80
+          volumes:
+            - name: secrets
+              secret:
+                secretName: "kafka"
+                items:
+                  - key: kafka_ca.crt
+                    path: kafka_ca.crt
+                  - key: kafka_user.crt
+                    path: kafka_user.crt
+                  - key: kafka_user.key
+                    path: kafka_user.key
+                  - key: kafka_user.password
+                    path: kafka_user.password
+          restartPolicy: OnFailure
