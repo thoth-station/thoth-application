@@ -80,7 +80,6 @@ parameters:
   - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
     description: Is advise being called due to release of specific package
     displayName: Package update advise
-    value: ""
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
