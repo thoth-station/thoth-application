@@ -5,6 +5,7 @@ resources:
   - role_bindings.yaml
   - thoth-notification.yaml
 patchesStrategicMerge:
+  - deploymentconfig.yaml
   - imagestreamtag.yaml
 patches:
   - path: resources_patch.yaml

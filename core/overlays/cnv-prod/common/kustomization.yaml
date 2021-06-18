@@ -4,6 +4,8 @@ resources:
   - ../../../base/
   - roles/
 patchesStrategicMerge:
+  - argo-workflows/send-message.yaml
+  - argo-workflows/send-messages.yaml
   - configmaps.yaml
   - imagestreamtags.yaml
 generators:
