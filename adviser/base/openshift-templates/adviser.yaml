@@ -80,7 +80,6 @@ parameters:
   - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
     description: Is advise being called due to release of specific package
     displayName: Package update advise
-    value: ""
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -180,6 +179,12 @@ objects:
             items:
               - key: kafka_ca.crt
                 path: kafka_ca.crt
+              - key: kafka_user.crt
+                path: kafka_user.crt
+              - key: kafka_user.key
+                path: kafka_user.key
+              - key: kafka_user.password
+                path: kafka_user.password
         - name: ssh-config
           secret:
             secretName: kebechet

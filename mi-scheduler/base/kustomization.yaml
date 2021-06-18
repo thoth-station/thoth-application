@@ -11,5 +11,4 @@ resources:
   - cronjob.yaml
   - imagestream.yaml
   - role.yaml
-  - role_binding.yaml
   - serviceaccount.yaml

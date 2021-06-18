@@ -24,27 +24,27 @@ spec:
                 - name: SMTP_SERVER
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: slo-reporter
                       key: smtp-server
                 - name: EMAIL_SENDER
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: slo-reporter
                       key: sender-address
                 - name: EMAIL_RECIPIENTS
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: slo-reporter
                       key: email-recipients
                 - name: PROMETHEUS_PUSHGATEWAY_URL
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: prometheus
                       key: pushgateway-url
                 - name: THANOS_ENDPOINT
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: slo-reporter
                       key: thanos-endpoint
                 - name: THANOS_ACCESS_TOKEN
                   valueFrom:
@@ -55,37 +55,37 @@ spec:
                   valueFrom:
                     configMapKeyRef:
                       key: middletier-namespace
-                      name: slo-reporter-stage-prod
+                      name: thoth
                 - name: THOTH_BACKEND_NAMESPACE
                   valueFrom:
                     configMapKeyRef:
                       key: backend-namespace
-                      name: slo-reporter-stage-prod
+                      name: thoth
                 - name: THOTH_AMUN_INSPECTION_NAMESPACE
                   valueFrom:
                     configMapKeyRef:
                       key: amun-inspection-namespace
-                      name: slo-reporter-stage-prod
+                      name: thoth
                 - name: THOTH_CEPH_BUCKET
                   valueFrom:
                     configMapKeyRef:
                       key: bucket-name
-                      name: slo-reporter-stage-prod
+                      name: ceph
                 - name: THOTH_PUBLIC_CEPH_BUCKET
                   valueFrom:
                     configMapKeyRef:
                       key: public-bucket-name
-                      name: slo-reporter-stage-prod
+                      name: ceph
                 - name: THOTH_CEPH_BUCKET_PREFIX
                   valueFrom:
                     configMapKeyRef:
                       key: bucket-prefix
-                      name: slo-reporter-stage-prod
+                      name: ceph
                 - name: THOTH_S3_ENDPOINT_URL
                   valueFrom:
                     configMapKeyRef:
                       key: host
-                      name: slo-reporter-stage-prod
+                      name: ceph
                 - name: THOTH_CEPH_KEY_ID
                   valueFrom:
                     secretKeyRef:
@@ -99,33 +99,38 @@ spec:
                 - name: PROMETHEUS_INSTANCE_METRICS_EXPORTER_INFRA
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: prometheus
                       key: instance-metrics-exporter-infra
                 - name: PROMETHEUS_INSTANCE_WORKFLOW_CONTROLLER_BACKEND
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: prometheus
                       key: instance-workflow-controller-metrics-backend
                 - name: PROMETHEUS_INSTANCE_WORKFLOW_CONTROLLER_MIDDLETIER
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: prometheus
                       key: instance-workflow-controller-metrics-middletier
                 - name: PROMETHEUS_INSTANCE_WORKFLOW_CONTROLLER_AMUN_INSPECTION
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: prometheus
                       key: instance-workflow-controller-metrics-amun-inspection
                 - name: PROMETHEUS_INSTANCE_USER_API
                   valueFrom:
                     configMapKeyRef:
-                      name: slo-reporter-stage-prod
+                      name: prometheus
                       key: user-api-url
                 - name: THOTH_DEPLOYMENT_NAME
                   valueFrom:
                     configMapKeyRef:
                       key: deployment-name
-                      name: slo-reporter-stage-prod
+                      name: thoth
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
               livenessProbe:
                 failureThreshold: 1
                 initialDelaySeconds: 7200

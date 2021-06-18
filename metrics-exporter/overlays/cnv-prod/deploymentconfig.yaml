@@ -1,0 +1,244 @@
+---
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: metrics-exporter
+spec:
+  replicas: 1
+  selector:
+    service: metrics-exporter
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: metrics-exporter
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
+  template:
+    metadata:
+      labels:
+        service: metrics-exporter
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: metrics-exporter
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
+    spec:
+      serviceAccountName: metrics-exporter
+      containers:
+        - name: metrics-exporter
+          image: metrics-exporter
+          env:
+            - name: "THOTH_METRICS_EXPORTER_UPDATE_INTERVAL"
+              valueFrom:
+                configMapKeyRef:
+                  key: update-interval
+                  name: metrics-exporter
+            - name: "THOTH_METRICS_EXPORTER_GRAFANA_REDIRECT_URL"
+              valueFrom:
+                configMapKeyRef:
+                  key: grafana-redirect-url
+                  name: metrics-exporter
+            - name: "THOTH_METRICS_EXPORTER_MAX_WORKERS"
+              valueFrom:
+                configMapKeyRef:
+                  key: max-workers
+                  name: metrics-exporter
+            - name: "THOTH_METRICS_EXPORTER_WEAK_READINESS"
+              valueFrom:
+                configMapKeyRef:
+                  key: weak-readiness
+                  name: metrics-exporter
+            - name: "THOTH_FRONTEND_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: frontend-namespace
+                  name: thoth
+            - name: "THOTH_MIDDLETIER_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: middletier-namespace
+                  name: thoth
+            - name: "THOTH_BACKEND_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: backend-namespace
+                  name: thoth
+            - name: "THOTH_INFRA_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: infra-namespace
+                  name: thoth
+            - name: "THOTH_AMUN_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: amun-namespace
+                  name: thoth
+            - name: "THOTH_AMUN_INSPECTION_NAMESPACE"
+              valueFrom:
+                configMapKeyRef:
+                  key: amun-inspection-namespace
+                  name: thoth
+            - name: "RSYSLOG_HOST"
+              valueFrom:
+                configMapKeyRef:
+                  key: "rsyslog-host"
+                  name: "thoth"
+            - name: "RSYSLOG_PORT"
+              valueFrom:
+                configMapKeyRef:
+                  key: "rsyslog-port"
+                  name: "thoth"
+            - name: "SENTRY_DSN"
+              valueFrom:
+                secretKeyRef:
+                  name: "thoth"
+                  key: "sentry-dsn"
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: deployment-name
+                  name: thoth
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
+            - name: THOTH_S3_ENDPOINT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: host
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-name
+                  name: ceph
+            - name: THOTH_CEPH_BUCKET_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  key: bucket-prefix
+                  name: ceph
+            - name: THOTH_CEPH_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ceph
+                  key: key-id
+            - name: THOTH_CEPH_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ceph
+                  key: secret-key
+            - name: THOTH_STORAGES_GRAPH_CACHE_DISABLED
+              valueFrom:
+                configMapKeyRef:
+                  key: graph-cache-disabled
+                  name: metrics-exporter
+            - name: KNOWLEDGE_GRAPH_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: postgresql-host
+                  name: thoth
+            - name: KNOWLEDGE_GRAPH_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: knowledge-graph-port
+                  name: metrics-exporter
+            - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+              valueFrom:
+                configMapKeyRef:
+                  key: knowledge-graph-ssl-disabled
+                  name: metrics-exporter
+            - name: KNOWLEDGE_GRAPH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-user
+            - name: KNOWLEDGE_GRAPH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-password
+            - name: KNOWLEDGE_GRAPH_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-name
+            - name: PROMETHEUS_SERVICE_ACCOUNT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: prometheus-reader
+                  key: token
+            - name: PROMETHEUS_HOST_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: host-url
+            - name: METRICS_EXPORTER_INFRA_PROMETHEUS_INSTANCE
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: instance-metrics-exporter-infra
+            - name: MANAGEMENT_API_PROMETHEUS_INSTANCE
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: instance-metrics-management-api
+            - name: WEB_CONCURRENCY
+              value: "1"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka
+                  key: kafka-bootstrap-servers
+            - name: KAFKA_SECURITY_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka-protocol
+                  name: kafka
+            - name: KAFKA_SSL_CA_LOCATION
+              value: "/mnt/secrets/kafka_ca.crt"
+            - name: KAFKA_SSL_CERTIFICATE_LOCATION
+              value: "/mnt/secrets/kafka_user.crt"
+            - name: KAFKA_SSL_KEY_LOCATION
+              value: "/mnt/secrets/kafka_user.key"
+            - name: KAFKA_SSL_KEY_PASSWORD
+              value: "/mnt/secrets/kafka_user.password"
+          volumeMounts:
+            - name: secrets
+              mountPath: /mnt/secrets
+              readOnly: true
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "384Mi"
+              cpu: "2"
+            limits:
+              memory: "768Mi"
+              cpu: "2"
+          readinessProbe:
+            httpGet:
+              path: "/metrics"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: "/metrics"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 45
+            periodSeconds: 10
+            timeoutSeconds: 10
+      volumes:
+        - name: secrets
+          secret:
+            secretName: "kafka"
+            items:
+              - key: kafka_ca.crt
+                path: kafka_ca.crt
+              - key: kafka_user.crt
+                path: kafka_user.crt
+              - key: kafka_user.key
+                path: kafka_user.key
+              - key: kafka_user.password
+                path: kafka_user.password
+  test: false

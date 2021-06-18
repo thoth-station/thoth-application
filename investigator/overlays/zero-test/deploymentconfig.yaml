@@ -47,6 +47,12 @@ spec:
                   name: kafka
             - name: KAFKA_SSL_CA_LOCATION
               value: "/mnt/secrets/kafka_ca.crt"
+            - name: KAFKA_SSL_CERTIFICATE_LOCATION
+              value: "/mnt/secrets/kafka_user.crt"
+            - name: KAFKA_SSL_KEY_LOCATION
+              value: "/mnt/secrets/kafka_user.key"
+            - name: KAFKA_SSL_KEY_PASSWORD
+              value: "/mnt/secrets/kafka_user.password"
             - name: KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM
               value: "none"
             - name: KNOWLEDGE_GRAPH_HOST
@@ -155,4 +161,10 @@ spec:
             items:
               - key: kafka_ca.crt
                 path: kafka_ca.crt
+              - key: kafka_user.crt
+                path: kafka_user.crt
+              - key: kafka_user.key
+                path: kafka_user.key
+              - key: kafka_user.password
+                path: kafka_user.password
   test: false
