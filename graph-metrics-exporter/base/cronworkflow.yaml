@@ -4,7 +4,7 @@ kind: CronWorkflow
 metadata:
   name: graph-metrics-exporter-cf
 spec:
-  schedule: "* * * * *"
+  schedule: "@hourly"
   concurrencyPolicy: "Replace"
   startingDeadlineSeconds: null
   workflowSpec:
