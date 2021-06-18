@@ -1,0 +1,58 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: graph-metrics-exporter
+spec:
+  templates:
+    - name: graph-metrics-exporter
+      inputs:
+        parameters:
+          - name: THOTH_GRAPH_METRICS_EXPORTER_TASK
+      container:
+        image: quay.io/thoth-station/graph-metrics-exporter
+        command: ['python3', 'app.py']
+        env:
+          - name: THOTH_GRAPH_METRICS_EXPORTER_TASK
+            value: "{{inputs.parameters.THOTH_GRAPH_METRICS_EXPORTER_TASK}}"
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: deployment-name
+                name: thoth
+          - name: PROMETHEUS_PUSHGATEWAY_URL
+            valueFrom:
+              configMapKeyRef:
+                name: prometheus
+                key: pushgateway-url
+          - name: KNOWLEDGE_GRAPH_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: postgresql-host
+                name: thoth
+          - name: KNOWLEDGE_GRAPH_PORT
+            value: "5432"
+          - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+            value: "1"
+          - name: KNOWLEDGE_GRAPH_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-user
+          - name: KNOWLEDGE_GRAPH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-password
+          - name: KNOWLEDGE_GRAPH_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-name
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
