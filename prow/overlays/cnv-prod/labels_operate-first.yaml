@@ -5,7 +5,7 @@
 #     previously: list of previous labels (color name deleteAfter, previously)
 #     target: one of issues, prs, or both (also TBD)
 #     addedBy: human? prow plugin? other?
----g
+---
 default:
   labels:
     - color: 0e8a16
@@ -14,12 +14,6 @@ default:
       target: prs
       prowPlugin: approve
       addedBy: approvers
-    - color: fc05d7
-      description: Indicates an issue/PR is related to a project platform user.
-      name: area/community
-      target: both
-      prowPlugin: label
-      addedBy: anyone
     - color: fc05d7
       description: Indicates an issue/PR is related to the overall community.
       name: area/community
@@ -32,7 +26,13 @@ default:
       target: both
       prowPlugin: label
       addedBy: anyone
-   - color: e11d21
+    - color: fc05d7
+      description: Indicates an issue/PR is related to a project platform user.
+      name: area/user
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: e11d21
       description: Indicates that a PR should not merge because it touches files in blocked paths.
       name: do-not-merge/blocked-paths
       target: prs
@@ -86,7 +86,7 @@ default:
       prowPlugin: label
       addedBy: anyone
     - color: c7def8
-      description: Indicates an issue/PR is related to human experience.
+      description: Indicates an issue/PR is related to human interaction and experience of the platform, project, et al.
       name: kind/experience
       target: both
       prowPlugin: label
@@ -119,13 +119,13 @@ default:
       prowPlugin: label
       addedBy: anyone
     - color: c7def8
-      description: Indicates an issue/PR is related to metrics around the community.
+      description: Indicates an issue/PR is related to metrics.
       name: kind/metrics
       target: both
       prowPlugin: label
       addedBy: anyone
     - color: c7def8
-      description: Indicates an issue/PR is related to project news.
+      description: Indicates an issue/PR is related to project news and outreach.
       name: kind/news
       target: both
       prowPlugin: label
@@ -389,7 +389,7 @@ default:
       name: user/experience
       target: both
       prowPlugin: label
-      addedBy: anyone  
+      addedBy: anyone
 
 repos:
   operate-first/SRE:
