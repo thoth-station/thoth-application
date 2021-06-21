@@ -1,7 +1,7 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: graph-backup-job
+  name: graph-metrics-exporter
 spec:
   tags:
     - name: latest
