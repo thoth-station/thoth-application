@@ -80,6 +80,7 @@ spec:
               jsonPath: '{.data.deployment-name}'
 
     - name: prescriptions-gh-release-notes
+      serviceAccountName: argo
       inputs:
         parameters:
           - name: bucket-name
