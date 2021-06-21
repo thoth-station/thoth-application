@@ -39,6 +39,7 @@ metadata:
 data:
   solvers: |
     solver-rhel-8-py38
+    solver-fedora-34-py39
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -47,7 +48,7 @@ metadata:
 data:
   kafka-ssl-auth: "1"
   kafka-protocol: "SSL"
-  kafka-bootstrap-servers: "odh-message-bus-kafka-bootstrap-opf-kafka.apps.zero.massopen.cloud:443"
+  kafka-bootstrap-servers: "odh-message-bus-kafka-bootstrap.opf-kafka.svc:9093"
 ---
 kind: ConfigMap
 apiVersion: v1

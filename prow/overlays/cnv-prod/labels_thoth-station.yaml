@@ -76,6 +76,7 @@ default:
       target: prs
       prowPlugin: wip
       addedBy: prow
+
     - color: e11d21
       description: Categorizes issue or PR as related to a bug.
       name: kind/bug
@@ -416,3 +417,19 @@ default:
       name: thoth/potential-observation
       target: both
       addedBy: humans
+
+repos:
+  thoth-station/thoth-application:
+    labels:
+      - addedBy: anyone
+        color: e11d21
+        description: This issue is related to an operations alert!
+        name: alert💥
+        prowPlugin: label
+        target: issue
+      - color: e11d21
+        description: Categorizes issues as operational alerts (created by alert-manager)
+        name: kind/alert
+        target: issue
+        prowPlugin: label
+        addedBy: anyone

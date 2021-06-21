@@ -241,31 +241,18 @@ default:
       prowPlugin: label
       addedBy: humans
 
-    - color: fef2c0
-      description: Categorizes an issue or PR as relevant to SIG Cyborgs and Bots.
-      name: sig/cyborgs
+    - color: fefefe
+      description: This is a set of deprecated labels, they will be removed
+      name: deprecated
       target: both
       prowPlugin: label
       addedBy: anyone
-    - color: fef2c0
-      description: Categorizes an issue or PR as relevant to SIG DevOps.
-      name: sig/devops
-      target: both
-      prowPlugin: label
-      addedBy: anyone
-    - color: fef2c0
-      description: Categorizes an issue or PR as relevant to SIG Docs.
-      name: sig/docs
-      target: both
-      prowPlugin: label
       previously:
+        - name: sig/devops
+        - name: sig/docs
+        - name: sig/pipelines
+        - name: sig/cyborgs
         - name: sig/documentation
-      addedBy: anyone
-    - color: fef2c0
-      description: Categorizes an issue or PR as relevant to SIG Pipelines (CI/CD)
-      name: sig/pipelines
-      previously:
         - name: sig/build
-      target: both
-      prowPlugin: label
-      addedBy: anyone
+        - name: deployment_name/ocp4-test
+        - name: deployment_name/ocp4-stage

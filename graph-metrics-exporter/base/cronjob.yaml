@@ -1,0 +1,94 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: graph-metrics-exporter
+  labels:
+    app: thoth
+    component: graph-metrics-exporter
+spec:
+  schedule: "@hourly"
+  suspend: true
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: thoth
+            component: graph-metrics-exporter
+        spec:
+          containers:
+            - image: graph-metrics-exporter:latest
+              name: graph-metrics-exporter
+              env:
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: thoth
+                - name: PROMETHEUS_PUSHGATEWAY_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: pushgateway-url
+                - name: KNOWLEDGE_GRAPH_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: postgresql-host
+                      name: thoth
+                - name: KNOWLEDGE_GRAPH_PORT
+                  value: "5432"
+                - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+                  value: "1"
+                - name: KNOWLEDGE_GRAPH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-user
+                - name: KNOWLEDGE_GRAPH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-password
+                - name: KNOWLEDGE_GRAPH_DATABASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-name
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
+                - name: RSYSLOG_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: rsyslog-host
+                      name: thoth
+                - name: RSYSLOG_PORT
+                  valueFrom:
+                    configMapKeyRef:
+                      key: rsyslog-port
+                      name: thoth
+                - name: SENTRY_DSN
+                  valueFrom:
+                    secretKeyRef:
+                      name: thoth
+                      key: sentry-dsn
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "500m"
+                limits:
+                  memory: "256Mi"
+                  cpu: "500m"
+              livenessProbe:
+                tcpSocket:
+                  port: 80
+                initialDelaySeconds: 7200
+                failureThreshold: 1
+                periodSeconds: 10
+          restartPolicy: OnFailure

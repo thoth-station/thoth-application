@@ -8,7 +8,21 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/adviser:v0.31.0
+        name: quay.io/thoth-station/adviser:v0.34.0
+      importPolicy: {}
+      referencePolicy:
+        type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: prescriptions
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/prescriptions:v0.0.1
       importPolicy: {}
       referencePolicy:
         type: Local

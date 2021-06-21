@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have just successfully synchronized *mi-scheduler* to *CNV-PROD*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/prod-mi|ArgoCD UI> 🚚'}"
+            - "{'text':'I have just successfully synchronized *mi-scheduler* to *CNV-PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-mi|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAIL* synchronizing *mi-scheduler* to *CNV-PROD*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/prod-mi|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAIL* synchronizing *mi-scheduler* to *CNV-PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-mi|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

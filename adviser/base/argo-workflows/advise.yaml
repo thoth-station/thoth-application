@@ -60,6 +60,8 @@ spec:
             value: "100000"
           - name: THOTH_ADVISER_COUNT
             value: "1"
+          - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
+            value: ""
           - name: "THOTH_S3_ENDPOINT_URL"
           - name: "THOTH_CEPH_BUCKET_NAME"
           - name: "THOTH_CEPH_BUCKET_PREFIX"
@@ -73,22 +75,6 @@ spec:
               key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
                 {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/\
                 adviser/{{inputs.parameters.THOTH_DOCUMENT_ID}}.request"
-              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
-              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
-              insecure: true
-              accessKeySecret:
-                name: argo-artifact-repository-secrets
-                key: accessKey
-              secretKeySecret:
-                name: argo-artifact-repository-secrets
-                key: secretKey
-          - name: prescription
-            path: "/mnt/workdir/prescription.yaml"
-            archive:
-              none: {}
-            s3:
-              key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
-                {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/prescription.yaml"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
               insecure: true
@@ -117,6 +103,14 @@ spec:
               secretKeySecret:
                 name: argo-artifact-repository-secrets
                 key: secretKey
+      initContainers:
+        - name: prescriptions
+          image: prescriptions
+          command:
+            - /bin/sh
+            - -c
+            - cp --recursive /opt/app-root/src/prescriptions/* /mnt/prescriptions/
+          mirrorVolumeMounts: true
       container:
         name: advise
         image: adviser
@@ -137,14 +131,18 @@ spec:
             value: "{{inputs.parameters.THOTH_ADVISER_COUNT}}"
           - name: THOTH_ADVISER_LIMIT
             value: "{{inputs.parameters.THOTH_ADVISER_LIMIT}}"
+          - name: THOTH_ADVISER_BLOCKED_UNITS
+            value: "SecurityIndicatorStep"
           - name: THOTH_ADVISER_PRESCRIPTION
-            value: "/mnt/workdir/prescription.yaml"
+            value: "/mnt/prescriptions/"
           - name: THOTH_ADVISER_REQUIREMENTS
             value: "input/Pipfile"
           - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
             value: "input/Pipfile.lock"
           - name: THOTH_ADVISER_CONSTRAINTS
             value: "input/constraints.txt"
+          - name: THOTH_ADVISER_LABELS
+            value: "input/labels.json"
           - name: THOTH_ADVISER_REQUIREMENTS_FORMAT
             value: "pipenv"
           - name: THOTH_ADVISER_RECOMMENDATION_TYPE
@@ -161,10 +159,17 @@ spec:
             value: "{{inputs.parameters.THOTH_ADVISER_DEV}}"
           - name: THOTH_ADVISER_BEAM_WIDTH
             value: "{{inputs.parameters.THOTH_ADVISER_BEAM_WIDTH}}"
+          - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
+            value: "{{inputs.parameters.THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE}}"
           - name: THOTH_ADVISER_SUBCOMMAND
             value: "advise"
           - name: THOTH_ADVISER_LIBRARY_USAGE
             value: "input/library_usage.json"
+          - name: THOTH_ADVISER_DEPLOYMENT_CONFIGURED_SOLVERS
+            valueFrom:
+              configMapKeyRef:
+                name: solvers
+                key: solvers
           - name: PROMETHEUS_PUSHGATEWAY_HOST
             valueFrom:
               configMapKeyRef:
@@ -217,6 +222,11 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /mnt/workdir
+          - name: prescriptions
+            mountPath: /mnt/prescriptions
+        volumes:
+          - name: prescriptions
+            emptyDir: {}
         resources:
           limits:
             cpu: 1.1

@@ -9,7 +9,6 @@ metadata:
 
 parameters:
   - name: REPOSITORY
-    required: true
     description: GitHub repository whose Health Indicator will be computed
     displayName: inspected GitHub repository
 
@@ -36,6 +35,10 @@ parameters:
     displayName: mi cli kebechet inspection flag
     description: Kebechet inspection flag
 
+  - name: MI_MEGE
+    displayName: mi cli aggregated data merge flag
+    description: MI Merge data flag
+
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
@@ -46,7 +49,7 @@ objects:
     spec:
       serviceAccountName: argo
       entrypoint: mi
-      activeDeadlineSeconds: 3000
+      activeDeadlineSeconds: 12000
       ttlStrategy:
         secondsAfterCompletion: 10
         secondsAfterSuccess: 10
@@ -62,6 +65,8 @@ objects:
             value: ${THOTH_ADJUST_LOGGING}
           - name: MI_THOTH
             value: ${MI_THOTH}
+          - name: MI_MERGE
+            value: ${MI_MERGE}
 
       templates:
         - name: "mi"
@@ -83,3 +88,5 @@ objects:
                       value: ${THOTH_ADJUST_LOGGING}
                     - name: MI_THOTH
                       value: ${MI_THOTH}
+                    - name: MI_MERGE
+                      value: ${MI_MERGE}

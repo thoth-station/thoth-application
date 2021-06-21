@@ -1378,3 +1378,200 @@
 ### Other
 * Raise solvers on exit code propagating a signal from operating system (#1340)
 * :hatched_chick: remove the rgw storage class obc
+
+## Release 2021.06.07 (2021-06-07T18:42:40)
+### Features
+* :cherry_blossom: Bump thoth production services with updated versions
+* :cherry_blossom: Bump thoth production services with updated versions
+* :ship: Deploy the Tag v0.2.5 for revsolver
+* :ship: Deploy the Tag v0.9.1 for reporter
+* :ship: Deploy the Tag v0.14.5 for metrics-exporter
+* :blossom: Refactor the argo setup for thoth services
+* :palm_tree: Adjusted the argo deployment for stage services
+* :checkered_flag: Fix the amun argo workflow setup
+* :ship: Deploy the Tag pr-1427 for user-api
+* :ship: Deploy the Tag v0.26.0 for user-api
+* :thought_balloon: update the certs for the services
+* :ship: Deploy the Tag pr-1426 for user-api
+* wrong env var used for ca location
+* Make structured logging configurable
+* Archive logs to have them accessible to users
+* Allow argo role list pod logs
+* :ship: Deploy the Tag v1.10.0 for solver
+* :ship: Deploy the Tag v1.10.0 for solver
+* :ship: Deploy the Tag v1.10.0 for solver
+* Increase memory and CPU for the CVE update job
+* Bump management-api to v0.17.2 in stage environment
+* :ship: Deploy the Tag pr-770 for management-api
+* :ship: Deploy the Tag v0.3.7 for graph-refresh-job
+* Bump graph-backup-job to v0.8.4 in stage environment
+* Bump graph-refresh to v0.3.7 in stage environment
+* Bump revsolver to v0.2.5 in stage environment
+* Bump CVE update job to v0.3.0 in stage environment
+* add 'thamos_token' for user-api authentication
+* Supply Prometheus URL to CVE update job
+* Bump adviser to v0.31.0 in stage environment
+* :ship: Deploy the Tag v1.3.0 for kebechet
+* Bump Kebechet to v1.3.0 in prod
+* Bump Kebechet to v1.3.0 in stage environment
+* :ship: Deploy the Tag v0.25.2 for user-api
+* Deploy user-api v0.25.2 to stage environment
+* :ship: Deploy the Tag v0.17.1 for management-api
+* Bump management-api to v0.17.1 in stage environment
+* :ship: Deploy the Tag pr-763 for management-api
+* :ship: Deploy the Tag v0.10.7 for graph-sync-job
+* :ship: Deploy the Tag v0.17.0 for management-api
+* Use solver v1.9.0 in prod environment
+* :ship: Deploy the Tag v1.5.0 for mi-scheduler
+* :ship: Deploy the Tag v2.6.0 for mi
+* update the clonerefs image name
+* :robot: allow cyborg to simple merge pr instead of squash for thoth-station (#1117)
+* allow cyborg to simple merge pr instead of squash for aiops (#1111)
+* Change word analysis to analyse
+* Add new cronjobs to all overlays
+* Rename old kebechet job to resemble analysis
+* Add merge cronjob
+* :sparkles: turn the utility images into imagestreamtags 👷
+* include elyra aidevsecops to prow (#1436)
+* Bump SLO-reporter to v0.14.3 (#1431)
+* :ship: Deploy the Tag v0.14.3 for slo-reporter
+* Bump solvers to v1.9.0 in stage environment (#1410)
+* :ship: Deploy the Tag v1.9.0 for solver
+* :ship: Deploy the Tag v1.9.0 for solver
+* :ship: Deploy the Tag v1.9.0 for solver
+### Bug Fixes
+* fix the name of clonerefs image for prow
+* fixed typos in Prow's ImageStream
+### Improvements
+* :mushroom: Bump up the version of stage thoth services
+* removed dups
+
+## Release 2021.06.21 (2021-06-21T18:43:24)
+### Features
+* Bump metrics-expoter to v0.16.0 (#1728)
+* :arrow_up: Bump version thoth services for release v06.21.2021 (#1729)
+* :ship: Deploy the Tag v0.26.3 for user-api
+* Introduce graph-metrics-exporter Cronjob (#1719)
+* Add missing template for Kebechet administrator
+* Make repository parameter not required
+* :game_die: updated the sa for the prescription release notes
+* Add merge flags to run and workflow templates
+* :ship: Deploy the Tag v0.16.0 for metrics-exporter
+* unset the explicit declaration of default value
+* :arrow_up: bump up module with messaging update
+* :zap: setup the investigator message metrics for prod
+* :ship: Deploy the Tag v0.9.2 for reporter
+* :zap: update the kafka certs based on user auth
+* :ship: Deploy the Tag v0.26.2 for user-api
+* :ship: Deploy the Tag v1.5.1 for mi-scheduler
+* :ship: Deploy the Tag pr-1442 for user-api
+* :ship: Deploy the Tag pr-1441 for user-api
+* Add increased timeout to workflow template
+* update the ssl certs for investigator
+* add peribolos for thoth-station, see https://github.com/kubernetes/test-infra/tree/master/prow/cmd/peribolos
+* Bump graph-sync-job to v0.10.9 in prod environment
+* :ship: Deploy the Tag v0.0.1 for prescriptions
+* :ship: Deploy the Tag v0.34.0 for adviser
+* Bump adviser container to v0.34.0 in prod environment
+* Bump adviser to v0.34.0 in stage environment
+* Make prescriptions v0.0.1 available in stage and prod environments
+* Make prescriptions available to the adviser container
+* :ship: Deploy the Tag pr-1924 for adviser
+* Add image streams for prescriptions
+* Increase timeout to 12k seconds
+* Create OWNERS
+* Add activeDeadlineSeconds back to mi-run-template
+* Revert version for kebechet v1.2.4 for prod
+* Bump metrics-exporter to v0.15.0
+* add more repositories
+* :whale: set the required env vars for triage-party
+* :rabbit2: enable all deployment environments to have new solvers
+* :droplet: Enable fedora34 python 3.9 data ingestion in prod
+* Bump up all apps which are related to the messaging update
+* :panda_face: separate out the mi-scheduler requirements in zero-test
+* :ship: Deploy the Tag v0.15.0 for metrics-exporter
+* Decommission prescription-sync-job
+* Suspend prescription-sync-job in all deployments
+* :ship: Deploy the Tag v0.8.3 for workflow-helpers
+* add help plugin to all orgs Prow maintains
+* :ship: Deploy the Tag v0.9.2 for package-releases-job
+* add baboon secrets
+* :ship: Deploy the Tag v0.8.2 for workflow-helpers
+* :ship: Deploy the Tag v0.26.1 for user-api
+* :ship: Deploy the Tag v0.13.1 for investigator
+* :ship: Deploy the Tag v0.3.9 for graph-refresh-job
+* :ship: Deploy the Tag v0.8.9 for package-update-job
+* :ship: Deploy the Tag v0.33.2 for adviser
+* :ship: Deploy the Tag v1.3.2 for kebechet
+* Bump Kebechet to v1.3.2 in prod environment
+* Bump Kebechet to v1.3.2 in stage environment
+* :bust_in_silhouette: Switch to thoth-station triage-party image
+* re-added generator secret key
+* Block security indicator step to resolve stacks without si
+* Remove activeDeadlineSeconds from run template
+* Set timeoute under the step specification
+* :ship: Deploy the Tag v2.6.1 for mi
+* Fix env variable braking deployment
+* :arrow_up: updated labels of issue templates
+* Update .prow.yaml
+* bump s-a version
+* update Prow image versions
+* :ship: Deploy the Tag v0.33.1 for adviser
+* Bump adviser to v0.33.1 in stage environment
+* Add solver-f34-py39 imagestream and bump versions
+* 💣🧯 move alert and kind/alert label to only be created in t-a/ repo
+* 💣🧯 add alert and kind/alert label
+* Add solver-f34-py39 to CNV prod
+* :ship: Deploy the Tag v0.9.5 for amun-api
+* :ship: Deploy the Tag v0.14.2 for messaging
+* add new template param for package update advises
+* :sparkles: added OWNERS of triage-party
+* add some more repos
+* :sparkles: add a triage-party deployment, secret and route is missing
+* :ship: Deploy the Tag v0.8.0 for init-job
+* :sunny: increase the resource for kustomize prow job
+* Bump management-api to v0.17.3 in stage environment (#1645)
+* Configure solver rules in init-job
+* Bump adviser to v0.33.0 in stage environment (#1637)
+* :ship: Deploy the Tag v0.17.3 for management-api
+* add retry strategy for installation update
+* :ship: Deploy the Tag v0.14.6 for metrics-exporter
+* :ship: Deploy the Tag v0.3.8 for graph-refresh-job
+* :ship: Deploy the Tag v0.10.9 for graph-sync-job
+* Add increased timeout seconds
+* :ship: Deploy the Tag v1.3.1 for kebechet
+* Bump graph-sync-job to v0.10.9 in stage environment
+* Bump graph-refresh job to v0.3.8 in stage environment
+* :ship: Deploy the Tag v0.33.0 for adviser
+* Bump Kebechet to v1.3.1 in stage environment
+* :ship: Deploy the Tag pr-1898 for adviser
+* Bump user-api to v0.26.0 in stage environment
+* :ship: Deploy the Tag v1.10.1 for solver
+* :ship: Deploy the Tag v1.10.1 for solver
+* :ship: Deploy the Tag v1.10.1 for solver
+* Pass configured solvers in a deployment to adviser
+* Supply a path to labels.json location to take labels into account
+* :ship: Deploy the Tag pr-1895 for adviser
+* :ant: revert back to kebechet v1.2.4
+* :ant: increased monitoring wait time for ingestion
+* :honeybee: set resource limit for prow jobs
+* :snail: Reduce the cpu limit for metrics-exporter
+* Bump Amun API to v0.9.5 in stage environment
+* Introduce GitHub release notes prescription job
+* Enable prescription sync job in prod environment
+### Bug Fixes
+* :snail: fix the slo-reporter configmap and cronjob
+* :telescope: set the aicoe-aiops label sync based on the configmap
+* fix admin/triage acl for graph-metrics-exporter repo
+* Rollback Kebechet due to bug
+* Bump metrics-exporter to v0.14.6 to fix bug (#1642)
+* Use activeDeadlineSeconds instead of timeout spec
+### Improvements
+* :thought_balloon: updated host and certs for kafka connection
+* Disable prescriptions before adding prescriptions with dir structure
+* Bump adviser to v0.33.2 in prod and stage environments
+* deprecated a few aicoe-aiops labels
+* changed pcache storage type to ceph and updated configMapGenerator name
+* :cloud: Included the tls certs for route and secrets
+### Other
+* remove kanban views
