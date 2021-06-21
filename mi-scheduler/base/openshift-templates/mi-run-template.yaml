@@ -36,6 +36,10 @@ parameters:
     displayName: mi cli kebechet inspection flag
     description: Kebechet inspection flag
 
+  - name: MI_MEGE
+    displayName: mi cli aggregated data merge flag
+    description: MI Merge data flag
+
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
@@ -62,6 +66,8 @@ objects:
             value: ${THOTH_ADJUST_LOGGING}
           - name: MI_THOTH
             value: ${MI_THOTH}
+          - name: MI_MERGE
+            value: ${MI_MERGE}
 
       templates:
         - name: "mi"
@@ -83,3 +89,5 @@ objects:
                       value: ${THOTH_ADJUST_LOGGING}
                     - name: MI_THOTH
                       value: ${MI_THOTH}
+                    - name: MI_MERGE
+                      value: ${MI_MERGE}

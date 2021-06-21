@@ -20,6 +20,7 @@ spec:
           - name: KNOWLEDGE_PATH
           - name: THOTH_ADJUST_LOGGING
           - name: MI_THOTH
+          - name: MI_MERGE
       steps:
         - - name: collect-knowledge
             template: analyse
@@ -35,6 +36,8 @@ spec:
                   value: "{{inputs.parameters.THOTH_ADJUST_LOGGING}}"
                 - name: MI_THOTH
                   value: "{{inputs.parameters.MI_THOTH}}"
+                - name: MI_MERGE
+                  value: "{{inputs.parameters.MI_MERGE}}"
 
     - name: analyse
       activeDeadlineSeconds: 12000
@@ -51,6 +54,7 @@ spec:
           - name: KNOWLEDGE_PATH
           - name: THOTH_ADJUST_LOGGING
           - name: MI_THOTH
+          - name: MI_MERGE
       container:
         image: "mi"
         command: ["srcopsmetrics/cli.py"]
@@ -61,6 +65,8 @@ spec:
         env:
           - name: MI_THOTH
             value: "{{inputs.parameters.MI_THOTH}}"
+          - name: MI_MERGE
+            value: "{{inputs.parameters.MI_MERGE}}"
           - name: GITHUB_ACCESS_TOKEN
             valueFrom:
               secretKeyRef:
