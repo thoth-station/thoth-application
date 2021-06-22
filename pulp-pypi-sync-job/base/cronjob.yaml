@@ -10,8 +10,8 @@ spec:
   schedule: "* */6 * * *"
   suspend: true
   concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 2
-  failedJobsHistoryLimit: 4
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   startingDeadlineSeconds: null
   jobTemplate:
     spec:
