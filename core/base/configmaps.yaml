@@ -37,6 +37,6 @@ metadata:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: pulp-python-index
+  name: pulp-pypi
 data:
   host: pulp.operate-first.cloud

@@ -64,17 +64,17 @@ spec:
                 - name: THOTH_PULP_REPOSITORIES_SYNC_PULP_INSTANCE
                   valueFrom:
                     configMapKeyRef:
-                      name: pulp-python-index
+                      name: pulp-pypi
                       key: host
                 - name: THOTH_PULP_REPOSITORIES_SYNC_PULP_USERNAME
                   valueFrom:
                     secretKeyRef:
-                      name: pulp-python-index
+                      name: pulp-pypi
                       key: username
                 - name: THOTH_PULP_REPOSITORIES_SYNC_PULP_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: pulp-python-index
+                      name: pulp-pypi
                       key: password
               resources:
                 requests:
