@@ -173,6 +173,8 @@ objects:
           emptyDir: {}
         - name: output
           emptyDir: {}
+        - name: prescriptions
+          emptyDir: {}
         - name: kafka-secrets
           secret:
             secretName: "kafka"

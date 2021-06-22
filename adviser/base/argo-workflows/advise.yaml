@@ -4,9 +4,6 @@ kind: WorkflowTemplate
 metadata:
   name: advise
 spec:
-  volumes:
-    - name: prescriptions
-      emptyDir: {}
   templates:
     - name: advise
       metrics:
