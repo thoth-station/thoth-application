@@ -4,9 +4,11 @@ kind: WorkflowTemplate
 metadata:
   name: advise
 spec:
+  volumes:
+    - name: prescriptions
+      emptyDir: {}
   templates:
     - name: advise
-
       metrics:
         prometheus:
           - name: task_status_counter
@@ -105,7 +107,7 @@ spec:
                 key: secretKey
       initContainers:
         - name: prescriptions
-          image: prescriptions
+          image: prescriptions:latest
           command:
             - /bin/sh
             - -c
@@ -113,7 +115,7 @@ spec:
           mirrorVolumeMounts: true
       container:
         name: advise
-        image: adviser
+        image: adviser:latest
         env:
           - name: THOTH_DOCUMENT_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
@@ -224,9 +226,6 @@ spec:
             mountPath: /mnt/workdir
           - name: prescriptions
             mountPath: /mnt/prescriptions
-        volumes:
-          - name: prescriptions
-            emptyDir: {}
         resources:
           limits:
             cpu: 1.1
