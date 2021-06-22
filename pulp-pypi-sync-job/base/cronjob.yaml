@@ -1,0 +1,92 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: pulp-pypi-sync-job
+  labels:
+    app: thoth
+    component: pulp-pypi-sync-job
+spec:
+  schedule: "* */6 * * *"
+  suspend: true
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  startingDeadlineSeconds: null
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: thoth
+            component: pulp-pypi-sync-job
+        spec:
+          containers:
+            - image: pulp-pypi-sync-job:latest
+              name: pulp-pypi-sync-job
+              env:
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: thoth
+                - name: SENTRY_DSN
+                  valueFrom:
+                    secretKeyRef:
+                      name: thoth
+                      key: sentry-dsn
+                - name: KNOWLEDGE_GRAPH_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: postgresql-host
+                - name: KNOWLEDGE_GRAPH_PORT
+                  value: "5432"
+                - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+                  value: "1"
+                - name: KNOWLEDGE_GRAPH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-user
+                - name: KNOWLEDGE_GRAPH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-password
+                - name: KNOWLEDGE_GRAPH_DATABASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql
+                      key: database-name
+                - name: THOTH_PULP_REPOSITORIES_SYNC_DISABLE_INDEX
+                  value: "0"
+                - name: THOTH_PULP_REPOSITORIES_SYNC_PULP_INSTANCE
+                  valueFrom:
+                    configMapKeyRef:
+                      name: pulp-python-index
+                      key: host
+                - name: THOTH_PULP_REPOSITORIES_SYNC_PULP_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: pulp-python-index
+                      key: username
+                - name: THOTH_PULP_REPOSITORIES_SYNC_PULP_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: pulp-python-index
+                      key: password
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "500m"
+                limits:
+                  memory: "128Mi"
+                  cpu: "500m"
+              livenessProbe:
+                failureThreshold: 1
+                initialDelaySeconds: 1800
+                periodSeconds: 10
+                tcpSocket:
+                  port: 80
+          restartPolicy: OnFailure
