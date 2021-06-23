@@ -562,7 +562,7 @@
             }
           ],
           "thresholds": "",
-          "title": "Estimated days to solve all packages for solver-fedora-34-py39 [days]",
+          "title": "Estimated days to solve all packages for solver-fedora-34-py39",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -639,7 +639,7 @@
             }
           ],
           "thresholds": "",
-          "title": "Estimated days to solve all packages for solver-rhel-8-py38 [days]",
+          "title": "Estimated days to solve all packages for solver-rhel-8-py38",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
