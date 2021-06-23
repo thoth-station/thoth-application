@@ -33,3 +33,10 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: qeb-hwt-workflow
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: pulp-pypi
+data:
+  host: pulp.operate-first.cloud
