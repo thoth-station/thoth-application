@@ -35,7 +35,7 @@ parameters:
     displayName: mi cli kebechet inspection flag
     description: Kebechet inspection flag
 
-  - name: MI_MEGE
+  - name: MI_MERGE
     displayName: mi cli aggregated data merge flag
     description: MI Merge data flag
 
