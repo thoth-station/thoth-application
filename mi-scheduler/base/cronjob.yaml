@@ -20,7 +20,7 @@ spec:
         spec:
           serviceAccount: mi-scheduler
           containers:
-            - image: mi-scheduler
+            - image: mi-scheduler:latest
               name: mi-scheduler
               resources:
                 limits:
@@ -77,7 +77,7 @@ spec:
           serviceAccount: mi-scheduler
           containers:
             - image: mi-scheduler
-              name: mi-scheduler
+              name: mi-scheduler:latest
               resources:
                 limits:
                   cpu: 256m
@@ -157,7 +157,7 @@ spec:
           serviceAccount: mi-scheduler
           containers:
             - image: mi-scheduler
-              name: mi-scheduler
+              name: mi-scheduler:latest
               resources:
                 limits:
                   cpu: 256m
