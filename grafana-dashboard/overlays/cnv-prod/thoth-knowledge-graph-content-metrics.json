@@ -1375,7 +1375,7 @@
     },
     {
       "collapse": false,
-      "height": -13,
+      "height": -70,
       "panels": [
         {
           "cacheTimeout": null,
@@ -1627,82 +1627,7 @@
             "#584477"
           ],
           "datasource": "thoth-station",
-          "format": "percentunit",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
-          },
-          "id": 108,
-          "interval": null,
-          "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "span": 6,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
-          },
-          "tableColumn": "",
-          "targets": [
-            {
-              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py36\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "refId": "A",
-              "step": 14400
-            }
-          ],
-          "thresholds": "",
-          "title": "Solved Python Packages Releases rhel-8-py36",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "current"
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": true,
-          "colorValue": false,
-          "colors": [
-            "#584477",
-            "#967302",
-            "#584477"
-          ],
-          "datasource": "thoth-station",
+          "decimals": 3,
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -1779,6 +1704,7 @@
             "#584477"
           ],
           "datasource": "thoth-station",
+          "decimals": 3,
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -1787,7 +1713,7 @@
             "thresholdLabels": false,
             "thresholdMarkers": true
           },
-          "id": 110,
+          "id": 116,
           "interval": null,
           "links": [],
           "mappingType": 1,
@@ -1825,7 +1751,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-32-py37\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1833,83 +1759,7 @@
             }
           ],
           "thresholds": "",
-          "title": "Solved Python Packages Releases solver-fedora-32-py37",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "current"
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": true,
-          "colorValue": false,
-          "colors": [
-            "#584477",
-            "#967302",
-            "#584477"
-          ],
-          "datasource": "thoth-station",
-          "format": "percentunit",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
-          },
-          "id": 111,
-          "interval": null,
-          "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "span": 6,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
-          },
-          "tableColumn": "",
-          "targets": [
-            {
-              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-32-py38\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "refId": "A",
-              "step": 14400
-            }
-          ],
-          "thresholds": "",
-          "title": "Solved Python Packages Releases solver-fedora-32-py38",
+          "title": "Solved Python Packages Releases solver-fedora-34-py39",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -1928,8 +1778,8 @@
       "showTitle": false,
       "title": "Dashboard Row",
       "titleSize": "h6"
-    },
-    {
+        },
+        {
       "collapse": false,
       "height": -44,
       "panels": [
@@ -2563,8 +2413,84 @@
     },
     {
       "collapse": false,
-      "height": 39,
+      "height": -78,
       "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#052b51",
+            "#967302",
+            "#052b51"
+          ],
+          "datasource": "thoth-station",
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 115,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 12,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "thoth_graphdb_total_number_cve{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "Number of CVE",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
         {
           "cacheTimeout": null,
           "colorBackground": true,
@@ -2611,7 +2537,7 @@
               "to": "null"
             }
           ],
-          "span": 4,
+          "span": 5,
           "sparkline": {
             "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
@@ -2763,7 +2689,7 @@
               "to": "null"
             }
           ],
-          "span": 4,
+          "span": 3,
           "sparkline": {
             "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
@@ -2815,6 +2741,7 @@
             "#584477"
           ],
           "datasource": "thoth-station",
+          "decimals": 3,
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -3233,7 +3160,7 @@
               "intervalFactor": 2,
               "legendFormat": "Unsolved Python Packages per: {{solver_name}}",
               "refId": "A",
-              "step": 1800
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -3315,7 +3242,7 @@
               "intervalFactor": 2,
               "legendFormat": "Solved Python Packages Releases per: {{solver_name}}",
               "refId": "A",
-              "step": 1800
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -3409,7 +3336,7 @@
               "intervalFactor": 2,
               "legendFormat": "Solved Python Packages with no error: {{solver_name}}",
               "refId": "E",
-              "step": 1800
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -3493,7 +3420,7 @@
               "intervalFactor": 2,
               "legendFormat": "Solved Python Packages with solver error (unsolvable=False, unparseable=False)): {{solver_name}}",
               "refId": "A",
-              "step": 1800
+              "step": 1200
             },
             {
               "expr": "thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"}",
@@ -3501,7 +3428,7 @@
               "intervalFactor": 2,
               "legendFormat": "Solved Python Packages with solver error (unsolvable=TRUE): {{solver_name}}",
               "refId": "C",
-              "step": 1800
+              "step": 1200
             },
             {
               "expr": "thoth_graphdb_total_python_packages_with_solver_error_unparseable{instance=\"$instance\", job=\"Thoth Metrics\"}",
@@ -3509,7 +3436,7 @@
               "intervalFactor": 2,
               "legendFormat": "Solved Python Packages with solver error (unparseable=TRUE): {{solver_name}}",
               "refId": "B",
-              "step": 1800
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -3605,7 +3532,7 @@
               "intervalFactor": 2,
               "legendFormat": "SI Unanalyzed Python Packages",
               "refId": "A",
-              "step": 1800
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -3687,7 +3614,7 @@
               "intervalFactor": 2,
               "legendFormat": "SI Analyzed Python Packages",
               "refId": "A",
-              "step": 1800
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -4387,7 +4314,7 @@
               "intervalFactor": 2,
               "legendFormat": "Number of Software Environment for Run",
               "refId": "A",
-              "step": 1800
+              "step": 1200
             },
             {
               "expr": "thoth_graphdb_total_build_software_environment{instance=\"$instance\", job=\"Thoth Metrics\"}",
@@ -4395,7 +4322,7 @@
               "intervalFactor": 2,
               "legendFormat": "Number of Software Environment for Build",
               "refId": "B",
-              "step": 1800
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -4474,7 +4401,7 @@
               "intervalFactor": 2,
               "legendFormat": "Number of advised software stacks",
               "refId": "A",
-              "step": 1800
+              "step": 1200
             },
             {
               "expr": "thoth_graphdb_user_software_stacks_records{instance=\"$instance\"}",
@@ -4482,7 +4409,7 @@
               "intervalFactor": 2,
               "legendFormat": "Number of user software stacks",
               "refId": "B",
-              "step": 1800
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -4593,5 +4520,5 @@
   },
   "timezone": "",
   "title": "Thoth Knowledge Graph content metrics",
-  "version": 89
+  "version": 97
 }

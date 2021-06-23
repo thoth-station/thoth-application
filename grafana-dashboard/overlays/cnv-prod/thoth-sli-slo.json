@@ -1,654 +1,1093 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
-    },
-    "editable": true,
-    "gnetId": null,
-    "graphTooltip": 0,
-    "hideControls": false,
-    "id": 134,
-    "links": [],
-    "refresh": "30s",
-    "rows": [
+  "annotations": {
+    "list": [
       {
-        "collapse": false,
-        "height": 305,
-        "panels": [
-          {
-            "aliasColors": {
-              "Thoth Learning rate SLO": "#bf1b00"
-            },
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "decimals": 2,
-            "fill": 1,
-            "id": 64,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "hideEmpty": false,
-              "hideZero": false,
-              "max": true,
-              "min": true,
-              "show": true,
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 12,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "Thoth Solver Learning rate SLI (increase) | instance: {{instance}} | {{job}}",
-                "refId": "C",
-                "step": 600
-              },
-              {
-                "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "Thoth SI Learning rate SLI (increase) | instance: {{instance}} | {{job}}",
-                "refId": "A",
-                "step": 600
-              },
-              {
-                "expr": "10",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "Thoth Learning rate SLO",
-                "refId": "B",
-                "step": 600
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Learning Rates Python Packages",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Learning Rate",
-        "titleSize": "h6"
-      },
-      {
-        "collapse": false,
-        "height": 243,
-        "panels": [
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "fill": 1,
-            "id": 25,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "max": true,
-              "min": true,
-              "show": true,
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "Thoth Number of unsolved packages",
-                "refId": "A",
-                "step": 1200
-              },
-              {
-                "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
-                "format": "time_series",
-                "instant": false,
-                "intervalFactor": 2,
-                "legendFormat": "Thoth Unsolved Learning rate SLI (increase)",
-                "refId": "B",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Unsolved Python Packages",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "decimals": null,
-                "format": "short",
-                "label": "",
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "decimals": null,
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          },
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "fill": 1,
-            "id": 63,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "max": true,
-              "min": true,
-              "show": true,
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance_metrics\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "Thoth Number of SI unanalyzed packages",
-                "refId": "A",
-                "step": 1200
-              },
-              {
-                "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
-                "format": "time_series",
-                "instant": false,
-                "intervalFactor": 2,
-                "legendFormat": "Thoth SI Learning rate SLI (increase)",
-                "refId": "B",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "SI unanalyzed Python Packages",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "decimals": null,
-                "format": "short",
-                "label": "",
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "decimals": null,
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
-      },
-      {
-        "collapse": false,
-        "height": 522,
-        "panels": [
-          {
-            "aliasColors": {
-              "Inspection Workflow Total": "#0a50a1",
-              "Inspection Workflow: Error State": "#c15c17",
-              "Inspection Workflow: Failed State": "#bf1b00",
-              "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
-              "Inspection Workflow: Running State": "#64b0c8",
-              "Inspection Workflow: Skipped State": "#e5ac0e",
-              "Inspection Workflow: Succeeded State": "#3f6833",
-              "Workflow Error": "#c15c17",
-              "Workflow Failed": "#bf1b00",
-              "Workflow Pending": "rgb(91, 95, 96)",
-              "Workflow Running": "#64b0c8",
-              "Workflow Succeeded": "#3f6833"
-            },
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "fill": 1,
-            "id": 62,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "max": false,
-              "min": true,
-              "show": true,
-              "sort": "current",
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": true,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "argo_workflows_status_counter{instance=\"$instance\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{name}} workflow: {{status}}",
-                "refId": "B",
-                "step": 1200
-              },
-              {
-                "expr": "argo_workflows_task_status_counter{instance=\"$instance\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{name}} workflow task: {{status}}",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Workflow quality",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "decimals": null,
-                "format": "none",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          },
-          {
-            "aliasColors": {
-              "Inspection Workflow Total": "#0a50a1",
-              "Inspection Workflow: Error State": "#c15c17",
-              "Inspection Workflow: Failed State": "#bf1b00",
-              "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
-              "Inspection Workflow: Running State": "#64b0c8",
-              "Inspection Workflow: Skipped State": "#e5ac0e",
-              "Inspection Workflow: Succeeded State": "#3f6833",
-              "Workflow Error": "#c15c17",
-              "Workflow Failed": "#bf1b00",
-              "Workflow Pending": "rgb(91, 95, 96)",
-              "Workflow Running": "#64b0c8",
-              "Workflow Succeeded": "#3f6833"
-            },
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "fill": 1,
-            "id": 65,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "max": false,
-              "min": true,
-              "show": true,
-              "sort": "current",
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": true,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "argo_workflows_duration_seconds_histogram_bucket{instance=\"$instance\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{name}} workflow: {{le}}",
-                "refId": "B",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Workflow quality",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "decimals": null,
-                "format": "none",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
       }
-    ],
-    "schemaVersion": 14,
-    "style": "dark",
-    "tags": [
-      "SLO",
-      "SLI",
-      "Thoth"
-    ],
-    "templating": {
-      "list": [
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": 134,
+  "links": [],
+  "refresh": "30s",
+  "rows": [
+    {
+      "collapse": false,
+      "height": 305,
+      "panels": [
         {
-          "auto": true,
-          "auto_count": 30,
-          "auto_min": "10s",
-          "current": {
+          "aliasColors": {
+            "Thoth Learning rate SLO": "#bf1b00"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "decimals": 2,
+          "fill": 1,
+          "id": 64,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Thoth Solver Learning rate SLI (increase) | instance: {{instance}} | {{job}}",
+              "refId": "C",
+              "step": 600
+            },
+            {
+              "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Thoth SI Learning rate SLI (increase) | instance: {{instance}} | {{job}}",
+              "refId": "A",
+              "step": 600
+            },
+            {
+              "expr": "100",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Thoth Learning rate SLO",
+              "refId": "B",
+              "step": 600
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Learning Rates Python Packages",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Learning Rate",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 345,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 25,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"}",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "Thoth Number of unsolved packages",
+              "refId": "A",
+              "step": 1800
+            },
+            {
+              "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "Thoth Unsolved Learning rate SLI (increase)",
+              "refId": "B",
+              "step": 1800
+            },
+            {
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated hours to solve (1h inverval)",
+              "refId": "C",
+              "step": 1800
+            },
+            {
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated days to solve (1h inverval)",
+              "refId": "D",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Unsolved Python Packages, Learning Rate and Estimated time to solve all packages",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 68,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated hours to solve (1h inverval): {{solver_name}}",
+              "refId": "F",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Estimated time to solver packages per solver [hours]",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 69,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated days to solve (1h inverval): {{solver_name}}",
+              "refId": "E",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Estimated time to solver packages per solver [days]",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 94,
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#967302",
+            "#967302",
+            "#967302"
+          ],
+          "datasource": "thoth-station",
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 66,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 3,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated days (1h interval)",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "Estimated days to solve all packages",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#967302",
+            "#967302",
+            "#967302"
+          ],
+          "datasource": "thoth-station",
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 67,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 3,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated days (1h interval)",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "Estimated days to solve all packages for solver-fedora-34-py39",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#967302",
+            "#967302",
+            "#967302"
+          ],
+          "datasource": "thoth-station",
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 71,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 3,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated days (1h interval)",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "Estimated days to solve all packages for solver-rhel-8-py38",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 63,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance_metrics\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Thoth Number of SI unanalyzed packages",
+              "refId": "A",
+              "step": 600
+            },
+            {
+              "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "Thoth SI Learning rate SLI (increase)",
+              "refId": "B",
+              "step": 600
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "SI unanalyzed Python Packages",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 522,
+      "panels": [
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 62,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_status_counter{instance=\"$instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{name}} workflow: {{status}}",
+              "refId": "B",
+              "step": 1200
+            },
+            {
+              "expr": "argo_workflows_task_status_counter{instance=\"$instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{name}} workflow task: {{status}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Workflow quality",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 65,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_duration_seconds_histogram_bucket{instance=\"$instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{name}} workflow: {{le}}",
+              "refId": "B",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Workflow quality",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [
+    "SLO",
+    "SLI",
+    "Thoth"
+  ],
+  "templating": {
+    "list": [
+      {
+        "auto": true,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "text": "1h",
+          "value": "1h"
+        },
+        "hide": 0,
+        "label": null,
+        "name": "interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "auto",
+            "value": "$__auto_interval"
+          },
+          {
+            "selected": false,
             "text": "1m",
             "value": "1m"
           },
-          "hide": 0,
-          "label": null,
-          "name": "interval",
-          "options": [
-            {
-              "selected": false,
-              "text": "auto",
-              "value": "$__auto_interval"
-            },
-            {
-              "selected": true,
-              "text": "1m",
-              "value": "1m"
-            },
-            {
-              "selected": false,
-              "text": "10m",
-              "value": "10m"
-            },
-            {
-              "selected": false,
-              "text": "30m",
-              "value": "30m"
-            },
-            {
-              "selected": false,
-              "text": "1h",
-              "value": "1h"
-            },
-            {
-              "selected": false,
-              "text": "6h",
-              "value": "6h"
-            },
-            {
-              "selected": false,
-              "text": "12h",
-              "value": "12h"
-            },
-            {
-              "selected": false,
-              "text": "1d",
-              "value": "1d"
-            },
-            {
-              "selected": false,
-              "text": "7d",
-              "value": "7d"
-            },
-            {
-              "selected": false,
-              "text": "14d",
-              "value": "14d"
-            },
-            {
-              "selected": false,
-              "text": "30d",
-              "value": "30d"
-            }
-          ],
-          "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
-          "refresh": 2,
-          "type": "interval"
-        },
-        {
-          "allValue": null,
-          "current": {
-            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
-            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
           },
-          "hide": 0,
-          "includeAll": false,
-          "label": null,
-          "multi": false,
-          "name": "instance",
-          "options": [
-            {
-              "selected": false,
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": true,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "refresh": 2,
+        "type": "interval"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "workflow-controller-metrics-thoth-middletier-stage.apps.ocp4.prod.psi.redhat.com:80",
+          "value": "workflow-controller-metrics-thoth-middletier-stage.apps.ocp4.prod.psi.redhat.com:80"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "instance",
+        "options": [
+          {
+            "selected": false,
               "text": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80",
               "value": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
             },
             {
               "selected": false,
-              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
-              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
-            }
-          ],
+            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
+            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
+          }
+        ],
           "query": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
           "type": "custom"
         },
         {
           "allValue": null,
           "current": {
-            "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
-            "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
-          },
-          "hide": 0,
-          "includeAll": false,
-          "label": null,
-          "multi": false,
-          "name": "instance_metrics",
-          "options": [
-            {
-              "selected": false,
+          "text": "metrics-exporter-thoth-infra-stage.apps.ocp4.prod.psi.redhat.com:80",
+          "value": "metrics-exporter-thoth-infra-stage.apps.ocp4.prod.psi.redhat.com:80"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "instance_metrics",
+        "options": [
+          {
+            "selected": false,
               "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
               "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
             }
@@ -689,5 +1128,5 @@
     },
     "timezone": "",
     "title": "Thoth SLI/SLO",
-    "version": 266
-  }
+  "version": 278
+}
