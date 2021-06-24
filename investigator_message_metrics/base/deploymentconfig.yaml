@@ -145,10 +145,4 @@ spec:
             items:
               - key: kafka_ca.crt
                 path: kafka_ca.crt
-              - key: kafka_user.crt
-                path: kafka_user.crt
-              - key: kafka_user.key
-                path: kafka_user.key
-              - key: kafka_user.password
-                path: kafka_user.password
   test: false
