@@ -87,12 +87,12 @@ items:
                 initialDelaySeconds: 5
                 timeoutSeconds: 1
               resources:
-                limits:
-                  memory: 12Gi
-                  cpu: "8"
                 requests:
-                  memory: 12Gi
+                  cpu: "6"
+                  memory: 8Gi
+                limits:
                   cpu: "8"
+                  memory: 12Gi
               volumeMounts:
                 - mountPath: /var/lib/pgsql/data
                   name: postgresql-data

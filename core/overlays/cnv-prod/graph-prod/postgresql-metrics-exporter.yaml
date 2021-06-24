@@ -66,11 +66,11 @@ spec:
               protocol: TCP
           resources:
             requests:
+              cpu: "100m"
               memory: "256Mi"
-              cpu: "1"
             limits:
+              cpu: "300m"
               memory: "512Mi"
-              cpu: "1"
           livenessProbe:
             failureThreshold: 3
             httpGet:
