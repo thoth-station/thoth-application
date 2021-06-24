@@ -202,10 +202,10 @@ spec:
           resources:
             requests:
               memory: "384Mi"
-              cpu: "2"
+              cpu: "100m"
             limits:
               memory: "768Mi"
-              cpu: "2"
+              cpu: "500m"
           readinessProbe:
             httpGet:
               path: "/metrics"
