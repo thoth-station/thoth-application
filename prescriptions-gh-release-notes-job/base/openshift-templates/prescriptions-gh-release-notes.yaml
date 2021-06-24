@@ -88,7 +88,7 @@ spec:
           - name: deployment-name
           - name: s3-endpoint-url
       container:
-        image: quay.io/thoth-station/prescriptions-gh-release-notes-job:v0.0.2
+        image: prescriptions-gh-release-notes:latest
         env:
           - name: THOTH_LOGGING_NO_JSON
             value: "1"
