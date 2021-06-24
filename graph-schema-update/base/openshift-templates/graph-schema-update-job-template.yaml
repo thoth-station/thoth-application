@@ -29,6 +29,7 @@ objects:
         component: graph-schema-update-job
         mark: cleanup
     spec:
+      activeDeadlineSeconds: 7200
       backoffLimit: 7
       template:
         metadata:
