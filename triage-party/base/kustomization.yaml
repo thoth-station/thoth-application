@@ -4,6 +4,7 @@ resources:
   - deployment.yaml
   - imagestream.yaml
   - service.yaml
+  - route.yaml
 commonLabels:
   app.kubernetes.io/name: thoth-triage-party
   app.kubernetes.io/component: triage-party
