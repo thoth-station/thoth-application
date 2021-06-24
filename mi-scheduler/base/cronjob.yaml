@@ -5,13 +5,12 @@ metadata:
   name: mi-scheduler-gh
   labels:
     app: mi-scheduler-gh
-
 spec:
   schedule: "@daily"
   suspend: false
   concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 2
-  failedJobsHistoryLimit: 4
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
@@ -20,8 +19,8 @@ spec:
         spec:
           serviceAccount: mi-scheduler
           containers:
-            - image: mi-scheduler:latest
-              name: mi-scheduler
+            - name: mi-scheduler
+              image: mi-scheduler:latest
               resources:
                 limits:
                   cpu: 256m
@@ -61,13 +60,12 @@ metadata:
   name: mi-scheduler-kebechet-analyse
   labels:
     app: mi-scheduler-kebechet-analyse
-
 spec:
   schedule: "0 0 * * *"
   suspend: false
   concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 2
-  failedJobsHistoryLimit: 4
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
@@ -76,8 +74,8 @@ spec:
         spec:
           serviceAccount: mi-scheduler
           containers:
-            - image: mi-scheduler
-              name: mi-scheduler:latest
+            - name: mi-scheduler
+              image: mi-scheduler:latest
               resources:
                 limits:
                   cpu: 256m
@@ -146,8 +144,8 @@ spec:
   schedule: "0 8 * * *"
   suspend: false
   concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 2
-  failedJobsHistoryLimit: 4
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
@@ -156,8 +154,8 @@ spec:
         spec:
           serviceAccount: mi-scheduler
           containers:
-            - image: mi-scheduler
-              name: mi-scheduler:latest
+            - name: mi-scheduler
+              image: mi-scheduler:latest
               resources:
                 limits:
                   cpu: 256m
