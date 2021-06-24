@@ -5,7 +5,8 @@ metadata:
   name: investigator-message-metrics
 spec:
   ports:
-    - port: 80
+    - name: metrics
+      port: 80
       protocol: TCP
       targetPort: 6066
   selector:
