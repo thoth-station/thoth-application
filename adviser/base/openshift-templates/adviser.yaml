@@ -93,9 +93,9 @@ objects:
       serviceAccountName: argo
       activeDeadlineSeconds: 3000
       ttlStrategy:
-        secondsAfterCompletion: 1800
-        secondsAfterSuccess: 1800
-        secondsAfterFailure: 1800
+        secondsAfterCompletion: 300
+        secondsAfterSuccess: 300
+        secondsAfterFailure: 300
       entrypoint: adviser
 
       metrics:
