@@ -5,5 +5,5 @@ metadata:
   name: mi-scheduler
 data:
   repositories: ""
-  organizations: "AICoE"
+  organizations: "AICoE, aicoe-aiops"
   parallel-workflows-limit: "1"
