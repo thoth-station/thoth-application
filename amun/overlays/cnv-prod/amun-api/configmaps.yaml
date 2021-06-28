@@ -16,8 +16,8 @@ metadata:
 data:
   bucket-name: "thoth"
   bucket-prefix: "data"
-  host: "http://s3.openshift-storage.svc.cluster.local"
-  endpoint: "http://s3.openshift-storage.svc.cluster.local"
+  host: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
+  endpoint: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
 ---
 kind: ConfigMap
 apiVersion: v1

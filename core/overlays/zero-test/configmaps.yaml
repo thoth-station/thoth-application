@@ -29,8 +29,8 @@ data:
   bucket-name: "thoth"
   bucket-prefix: "data"
   public-bucket-name: DH-PLAYPEN
-  host: "http://s3.openshift-storage.svc.cluster.local"
-  endpoint: "http://s3.openshift-storage.svc.cluster.local"
+  host: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
+  endpoint: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -79,7 +79,7 @@ data:
       s3:
         bucket: "thoth"
         keyPrefix: "data/zero-test/argo/artifacts/"
-        endpoint: "s3.openshift-storage.svc.cluster.local"
+        endpoint: "rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
         insecure: true
         accessKeySecret:
           name: argo-artifact-repository-secrets
