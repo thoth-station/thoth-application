@@ -26,4 +26,4 @@ patchesJson6902:
       group: template.openshift.io
       version: v1
       kind: Template
-      name: purge-job
+      name: purge
