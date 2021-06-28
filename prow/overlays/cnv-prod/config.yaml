@@ -30,6 +30,7 @@ log_level: debug
 
 in_repo_config:
   enabled:
+    aicoe: true
     aicoe-aiops: true
     b4mad: true
     operate-first: true
@@ -46,6 +47,11 @@ branch-protection:
   allow_disabled_policies: true
   orgs:
     AICoE:
+      protect: true
+      allow_force_pushes: false
+      required_status_checks:
+        contexts:
+          - aicoe-ci/prow/pre-commit
       repos:
         Varangian:
           protect: true
