@@ -218,6 +218,7 @@ tide:
         - AICoE/aicoe-cd
         - AICoE/aicoe-ci
         - AICoE/aicoe-sre
+        - AICoE/common
         - AICoE/elyra-aidevsecops-tutorial
         - AICoE/idh-manifests
         - AICoE/internal-data-hub
