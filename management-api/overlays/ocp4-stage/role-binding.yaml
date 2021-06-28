@@ -21,7 +21,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: management-api
+  name: management-api-template
 subjects:
   - kind: ServiceAccount
     name: management-api
