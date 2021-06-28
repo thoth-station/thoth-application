@@ -296,24 +296,24 @@ rules:
   # issues needing reprioritization
   many-reactions:
     name: "many reactions, low priority"
-    resolution: "Upgrade to priority-soon, priority-longterm, or longterm-support"
+    resolution: "Upgrade to priority-soon, priority-longterm, or longterm-backlog"
     filters:
       - reactions: ">3"
       - reactions-per-month: ">0.75"
       - label: "!priority/important-soon"
       - label: "!priority/important-longterm"
-      - label: "!long-term-support"
+      - label: "!priority/backlog"
 
   many-commenters:
     name: "many commenters, low priority"
-    resolution: "Upgrade to priority-soon, priority-longterm, or longterm-support"
+    resolution: "Upgrade to priority-soon, priority-longterm, or longterm-backlog"
     filters:
       - commenters: ">2"
       - commenters-per-month: ">1.9"
       - created: "+30d"
       - label: "!priority/important-soon"
       - label: "!priority/important-longterm"
-      - label: "!long-term-support"
+      - label: "!priority/backlog"
 
   issue-zombies:
     name: "Screaming into the void"
