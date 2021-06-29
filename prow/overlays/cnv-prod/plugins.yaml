@@ -109,6 +109,10 @@ repo_milestone:
     maintainers_id: 4924960
     maintainers_team: milestone-maintainers
 
+milestone_applier:
+  thoth-station/thoth-application:
+    master: 2021.08.05
+
 plugins:
   b4mad:
     plugins:
@@ -154,6 +158,7 @@ plugins:
       - lgtm
       - lifecycle
       - milestone
+      - milestoneapplier
       - milestonestatus
       - require-matching-label
       - shrug
