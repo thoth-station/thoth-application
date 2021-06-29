@@ -104,6 +104,11 @@ approve:
     ignore_review_state: false
     lgtm_acts_as_approve: false
 
+repo_milestone:
+  "":
+    maintainers_id: 4924960
+    maintainers_team: milestone-maintainers
+
 plugins:
   b4mad:
     plugins:
@@ -149,6 +154,8 @@ plugins:
       - lgtm
       - lifecycle
       - milestone
+      - milestonestatus
+      - require-matching-label
       - shrug
       - size
       - trigger
