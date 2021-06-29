@@ -1,3 +1,7 @@
+blunderbuss:
+  max_request_count: 2
+  use_status_availability: true
+
 label:
   additional_labels:
     - community/discussion
@@ -49,6 +53,7 @@ require_matching_label:
       `triage/accepted` label and provide further guidance.
 
       The `triage/accepted` label can be added by org members by writing `/triage accepted` in a comment.
+
 external_plugins:
   b4mad:
     - name: needs-rebase
