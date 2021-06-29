@@ -66,10 +66,3 @@ data:
   instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-backend-stage.apps.ocp4.prod.psi.redhat.com:80"
   instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-middletier-stage.apps.ocp4.prod.psi.redhat.com:80"
   instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-amun-inspection-stage.apps.ocp4.prod.psi.redhat.com:80"
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: qeb-hwt-workflow
-data:
-  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-frontend-stage.apps.ocp4.prod.psi.redhat.com"

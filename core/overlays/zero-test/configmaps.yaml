@@ -103,10 +103,3 @@ data:
   instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-test-core.apps.zero.massopen.cloud:80"
   instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-test-core.apps.zero.massopen.cloud:80"
   instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-test-core.apps.zero.massopen.cloud:80"
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: qeb-hwt-workflow
-data:
-  webhook-callback-url: "http://qeb-hwt-webhook-receiver-thoth-test-core.apps.zero.massopen.cloud"

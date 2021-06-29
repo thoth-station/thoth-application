@@ -538,12 +538,6 @@ orgs:
         description: Python wrapper for ssdeep fuzzy hashing library
         has_projects: false
         has_wiki: false
-      qeb-hwt:
-        description:
-          I'm Kebechet bot, goddess of freshness - I will keep your dependencies
-          fresh and up-to-date
-        has_projects: false
-        has_wiki: false
       rapidsai-build:
         default_branch: branch-0.7
         description: RAPIDS from-source and Docker build files
@@ -1043,7 +1037,6 @@ orgs:
               prometheus-pushgateway: admin
               python: admin
               python-ssdeep: admin
-              qeb-hwt: admin
               rapidsai-build: admin
               report-processing: admin
               report-visualization: admin
