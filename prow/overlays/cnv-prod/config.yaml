@@ -30,7 +30,7 @@ log_level: debug
 
 in_repo_config:
   enabled:
-    aicoe: true
+    AICoE: true
     aicoe-aiops: true
     b4mad: true
     operate-first: true
