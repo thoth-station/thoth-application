@@ -116,7 +116,7 @@ repo_milestone:
 
 milestone_applier:
   thoth-station/thoth-application:
-    master: 2021.08.05
+    master: 2021.07.05
 
 plugins:
   b4mad:
