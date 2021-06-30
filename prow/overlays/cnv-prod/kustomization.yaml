@@ -6,7 +6,6 @@ resources:
   - roles.yaml
   - rolebindings.yaml
   - s3-bucket-claim.yaml
-  - label-sync-cronjob.yaml
   - route-ghproxy-metrics.yaml
 patchesStrategicMerge:
   - imagestreamtags.yaml
@@ -18,18 +17,6 @@ configMapGenerator:
   - name: plugins
     files:
       - plugins.yaml
-  - name: label-config
-    files:
-      - labels.yaml
-  - name: labels-aicoe-aiops
-    files:
-      - labels_aicoe-aiops.yaml
-  - name: labels-thoth-station
-    files:
-      - labels_thoth-station.yaml
-  - name: peribolos-thoth-station
-    files:
-      - org_thoth-station.yaml
 generatorOptions:
   disableNameSuffixHash: true
 generators:
