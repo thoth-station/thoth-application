@@ -5,7 +5,7 @@ metadata:
   name: package-update
 spec:
   schedule: "0 */12 * * *"
-  suspend: true
+  suspend: false
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
   failedJobsHistoryLimit: 4

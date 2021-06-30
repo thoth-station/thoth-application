@@ -8,7 +8,7 @@ metadata:
     component: graph-refresh
 spec:
   schedule: "0 */1 * * *"
-  suspend: true
+  suspend: false
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
   failedJobsHistoryLimit: 4
