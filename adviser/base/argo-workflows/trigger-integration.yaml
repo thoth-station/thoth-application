@@ -10,7 +10,6 @@ spec:
       inputs:
         parameters:
           - name: "WORKFLOW_NAME"
-          - name: "THOTH_DOCUMENT_ID"
           - name: "THOTH_ADVISER_METADATA"
       outputs:
         parameters:
@@ -29,22 +28,8 @@ spec:
         env:
           - name: THOTH_WORKFLOW_TASK
             value: "trigger_integration"
-          - name: WORKFLOW_NAME
-            value: "{{inputs.parameters.WORKFLOW_NAME}}"
-          - name: THOTH_DOCUMENT_ID
-            value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
           - name: THOTH_ADVISER_METADATA
             value: "{{inputs.parameters.THOTH_ADVISER_METADATA}}"
-          - name: WEBHOOK_CALLBACK_URL
-            valueFrom:
-              configMapKeyRef:
-                key: webhook-callback-url
-                name: qeb-hwt-workflow
-          - name: WEBHOOK_SECRET
-            valueFrom:
-              secretKeyRef:
-                key: WEBHOOK_SECRET
-                name: qeb-hwt-secret
         resources:
           limits:
             cpu: 250m

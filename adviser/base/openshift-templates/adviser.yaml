@@ -309,8 +309,6 @@ objects:
                   parameters:
                     - name: "WORKFLOW_NAME"
                       value: "{{workflow.parameters.THOTH_ADVISER_JOB_ID}}"
-                    - name: "THOTH_DOCUMENT_ID"
-                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_ADVISER_METADATA"
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
                 when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
