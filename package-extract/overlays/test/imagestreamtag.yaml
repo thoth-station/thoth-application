@@ -4,10 +4,10 @@ metadata:
   name: package-extract
 spec:
   tags:
-  - name: latest
-    from:
-      kind: DockerImage
-      name: quay.io/thoth-station/package-extract:v1.1.2
-    importPolicy: {}
-    referencePolicy:
-      type: Source
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/package-extract:v1.2.0
+      importPolicy: {}
+      referencePolicy:
+        type: Source
