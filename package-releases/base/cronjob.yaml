@@ -8,7 +8,7 @@ metadata:
     component: package-releases
 spec:
   schedule: "0 */12 * * *"
-  suspend: true
+  suspend: false
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
   startingDeadlineSeconds: null
