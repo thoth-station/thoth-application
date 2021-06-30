@@ -388,7 +388,7 @@ periodics:
             - /app/robots/commenter/app.binary
           args:
             - |-
-              --query=org:thoth-station
+              --query=org:thoth-station org:AICoE
               -label:lifecycle/frozen
               label:lifecycle/rotten
             - --updated=720h
@@ -422,7 +422,7 @@ periodics:
             - /app/robots/commenter/app.binary
           args:
             - |-
-              --query=org:thoth-station
+              --query=org:thoth-station org:AICoE
               -label:lifecycle/frozen
               label:lifecycle/stale
               -label:lifecycle/rotten
@@ -459,7 +459,7 @@ periodics:
             - /app/robots/commenter/app.binary
           args:
             - |-
-              --query=org:thoth-station
+              --query=org:thoth-station org:AICoE
               -label:lifecycle/frozen
               -label:lifecycle/stale
               -label:lifecycle/rotten
