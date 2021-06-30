@@ -30,12 +30,6 @@ configMapGenerator:
   - name: peribolos-thoth-station
     files:
       - org_thoth-station.yaml
-  - name: labels-operate-first
-    files:
-      - labels_operate-first.yaml
-  - name: labels-aicoe
-    files:
-      - labels_aicoe.yaml
 generatorOptions:
   disableNameSuffixHash: true
 generators:
