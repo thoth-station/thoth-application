@@ -43,6 +43,11 @@ spec:
                     configMapKeyRef:
                       name: thoth
                       key: infra-namespace
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: deployment-name
                 - name: GITHUB_ACCESS_TOKEN
                   valueFrom:
                     secretKeyRef:
@@ -98,6 +103,11 @@ spec:
                     configMapKeyRef:
                       name: thoth
                       key: infra-namespace
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: deployment-name
                 - name: KNOWLEDGE_GRAPH_HOST
                   valueFrom:
                     configMapKeyRef:
@@ -178,6 +188,11 @@ spec:
                     configMapKeyRef:
                       name: thoth
                       key: infra-namespace
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: deployment-name
                 - name: KNOWLEDGE_GRAPH_HOST
                   valueFrom:
                     configMapKeyRef:
