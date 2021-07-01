@@ -2,19 +2,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: solve-hundred-data-science-packages
+  name: solve-rhods-packages
 spec:
   serviceAccountName: init-job
   templates:
-    - name: solve-hundred-data-science-packages
+    - name: solve-rhods-packages
       resubmitPendingPods: true
       inputs:
         parameters:
           - name: THOTH_LOG_INIT_JOB
       container:
-        name: solve-hundred-data-science-packages
+        name: solve-rhods-packages
         image: init-job
-        command: ["python3", "app.py", "--solve-hundred-data-science-packages"]
+        command: ["python3", "app.py", "--solve-rhods-packages"]
         env:
           - name: THOTH_LOG_INIT_JOB
             value: "{{inputs.parameters.THOTH_LOG_INIT_JOB}}"

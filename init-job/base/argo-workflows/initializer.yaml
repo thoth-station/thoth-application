@@ -53,12 +53,34 @@ spec:
                 - name: THOTH_LOG_INIT_JOB
                   value: "{{workflow.parameters.THOTH_LOG_INIT_JOB}}"
 
-          - name: "solve-data-science-packages"
+          - name: "solve-hundred-data-science-packages"
             dependencies:
               - "register-indexes"
             templateRef:
-              name: "solve-data-science-packages"
-              template: "solve-data-science-packages"
+              name: "solve-hundred-data-science-packages"
+              template: "solve-hundred-data-science-packages"
+            arguments:
+              parameters:
+                - name: THOTH_LOG_INIT_JOB
+                  value: "{{workflow.parameters.THOTH_LOG_INIT_JOB}}"
+
+          - name: "solve-ray-packages"
+            dependencies:
+              - "register-indexes"
+            templateRef:
+              name: "solve-ray-packages"
+              template: "solve-ray-packages"
+            arguments:
+              parameters:
+                - name: THOTH_LOG_INIT_JOB
+                  value: "{{workflow.parameters.THOTH_LOG_INIT_JOB}}"
+
+          - name: "solve-rhods-packages"
+            dependencies:
+              - "register-indexes"
+            templateRef:
+              name: "solve-rhods-packages"
+              template: "solve-rhods-packages"
             arguments:
               parameters:
                 - name: THOTH_LOG_INIT_JOB

@@ -9,6 +9,8 @@ resources:
   - argo-workflows/register-indexes.yaml
   - argo-workflows/solve-core-packages.yaml
   - argo-workflows/solve-data-science-packages.yaml
+  - argo-workflows/solve-rhods-packages.yaml
+  - argo-workflows/solve-ray-packages.yaml
   - argo-workflows/initializer.yaml
   - imagestream.yaml
   - role_binding.yaml
