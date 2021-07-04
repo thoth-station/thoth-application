@@ -339,8 +339,8 @@ periodics:
             - name: THOTH_LOGGING_NO_JSON
               valueFrom:
                 configMapKeyRef:
-                  name: thoth
                   key: logging-no-json
+                  name: integration-tests
             - name: THOTH_USER_API_HOST
               valueFrom:
                 configMapKeyRef:
