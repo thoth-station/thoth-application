@@ -1,21 +1,4 @@
 ---
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: prow-controller-manager
-spec:
-  lookupPolicy:
-    local: true
-  tags:
-    - annotations: null
-      name: latest
-      from:
-        kind: DockerImage
-        name: gcr.io/k8s-prow/prow-controller-manager:v20210121-548289bef2
-      importPolicy: {}
-      referencePolicy:
-        type: Local
----
 apiVersion: v1
 kind: ServiceAccount
 metadata:
