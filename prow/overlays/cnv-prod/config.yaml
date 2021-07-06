@@ -247,19 +247,11 @@ tide:
     orgs:
       AICoE:
         repos:
-          s2i-custom-notebook:
-            required-contexts:
-              - aicoe-ci/pre-commit-check
-              - aicoe-ci/build-check
           prometheus-api-client-python:
             required-contexts:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/pytest-check
           sefkhet-abwy:
-            required-contexts:
-              - aicoe-ci/pre-commit-check
-              - aicoe-ci/build-check
-          pricingnbs:
             required-contexts:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
