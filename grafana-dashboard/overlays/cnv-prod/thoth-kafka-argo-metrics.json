@@ -65,7 +65,7 @@
               "intervalFactor": 2,
               "legendFormat": "{{env}} | {{message_type}} message sent from package releases producer ({{version}})",
               "refId": "B",
-              "step": 3600
+              "step": 600
             },
             {
               "expr": "thoth_graph_refresh_job_messages_sent_total{env=~\"$env\"}",
@@ -74,7 +74,7 @@
               "intervalFactor": 2,
               "legendFormat": "{{env}} | {{message_type}} message sent from graph refresh producer ({{version}})",
               "refId": "A",
-              "step": 3600
+              "step": 600
             }
           ],
           "thresholds": [],
@@ -167,7 +167,7 @@
               "intervalFactor": 2,
               "legendFormat": "{{message_type}} message Processed",
               "refId": "B",
-              "step": 7200
+              "step": 1800
             }
           ],
           "thresholds": [],
@@ -248,7 +248,7 @@
               "intervalFactor": 2,
               "legendFormat": "{{message_type}} message In progress ",
               "refId": "A",
-              "step": 7200
+              "step": 1800
             }
           ],
           "thresholds": [],
@@ -327,7 +327,7 @@
               "intervalFactor": 2,
               "legendFormat": "{{message_type}} message Exceptions",
               "refId": "C",
-              "step": 7200
+              "step": 1800
             }
           ],
           "thresholds": [],
@@ -416,7 +416,7 @@
               "intervalFactor": 2,
               "legendFormat": "MESSAGE {{base_topic_name}} ",
               "refId": "A",
-              "step": 7200
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -493,7 +493,7 @@
               "intervalFactor": 2,
               "legendFormat": "MESSAGE {{message_type}} ",
               "refId": "A",
-              "step": 7200
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -582,7 +582,7 @@
               "intervalFactor": 2,
               "legendFormat": "MESSAGE {{message_type}} SCHEDULED {{workflow_type}} WORKFLOW",
               "refId": "A",
-              "step": 3600
+              "step": 600
             }
           ],
           "thresholds": [],
@@ -674,7 +674,7 @@
               "intervalFactor": 2,
               "legendFormat": "{{status}}",
               "refId": "A",
-              "step": 7200
+              "step": 1200
             },
             {
               "expr": "sum(argo_workflows_count{instance='$instance_workflow_controller'})",
@@ -682,7 +682,7 @@
               "intervalFactor": 2,
               "legendFormat": "Total workflows",
               "refId": "B",
-              "step": 7200
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -762,7 +762,7 @@
               "intervalFactor": 2,
               "legendFormat": "queue_latency: {{le}} | queue_name: {{$queue_name}}",
               "refId": "A",
-              "step": 7200
+              "step": 1200
             }
           ],
           "thresholds": [],
@@ -785,6 +785,536 @@
           "yaxes": [
             {
               "format": "percentunit",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 342,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 11,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_status_counter{status=\"Error\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{name}} : {{status}}",
+              "refId": "A",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Argo workflows Error",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 12,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_status_counter{status=\"Succeeded\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{name}} : {{status}}",
+              "refId": "A",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Argo workflows Succeeded",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 13,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": null,
+            "sortDesc": null,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_status_counter{status=\"Failed\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{name}} : {{status}}",
+              "refId": "A",
+              "step": 1800
+            },
+            {
+              "expr": "increase(argo_workflows_status_counter{status=\"Failed\"}[$interval])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "increase {{name}} : {{status}}",
+              "refId": "B",
+              "step": 1800
+            },
+            {
+              "expr": "rate(argo_workflows_status_counter{status=\"Failed\"}[$interval])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "rate {{name}} : {{status}}",
+              "refId": "C",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Argo workflows Failed",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 14,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_task_status_counter{status=\"Error\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{name}} : {{status}}",
+              "refId": "A",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Argo workflows Task Error",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 15,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_task_status_counter{status=\"Succeeded\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{name}} : {{status}}",
+              "refId": "A",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Argo workflows Task Succeeded",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 16,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_task_status_counter{status=\"Failed\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{name}} : {{status}}",
+              "refId": "A",
+              "step": 1800
+            },
+            {
+              "expr": "increase(argo_workflows_task_status_counter{status=\"Failed\"}[$interval])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Increase {{name}} : {{status}}",
+              "refId": "B",
+              "step": 1800
+            },
+            {
+              "expr": "rate(argo_workflows_task_status_counter{status=\"Failed\"}[$interval])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "rate {{name}} : {{status}}",
+              "refId": "C",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Argo workflows Task Failed",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -946,11 +1476,73 @@
         ],
         "query": "investigator-message-metrics-thoth-infra-prod.apps.zero.massopen.cloud:80",
         "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "1h",
+          "value": "1h"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": true,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "3h",
+            "value": "3h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          }
+        ],
+        "query": "1m, 10m, 30m, 1h, 3h, 6h, 12h, 1d, 7d",
+        "type": "custom"
       }
     ]
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
@@ -980,5 +1572,5 @@
   },
   "timezone": "",
   "title": "Thoth Kafka Consumers and Argo Workflows",
-  "version": 80
+  "version": 87
 }
