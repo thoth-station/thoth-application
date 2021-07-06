@@ -1575,3 +1575,142 @@
 * :cloud: Included the tls certs for route and secrets
 ### Other
 * remove kanban views
+
+## Release 2021.07.06 (2021-07-06T21:36:57)
+### Features
+* :cloud: remove the context requirment from some repos
+* Add workflows rate metrics
+* :ship: Deploy the Tag pr-1962 for adviser
+* Make pre-commit happy
+* Update dashbaord to v3
+* :arrow_up: add some missing projects
+* :ship: Deploy the Tag pr-46 for prescriptions
+* :sparkles: add needs-triage plugin to t-s/support repo
+* Bump adviser reporter to v0.10.2
+* :ship: Deploy the Tag v0.10.2 for reporter
+* :ship: Deploy the Tag v0.16.0 for slo-reporter
+* Bump mng-api v0.17.6
+* :ship: Deploy the Tag v1.6.0 for mi-scheduler
+* :ship: Deploy the Tag v0.17.6 for management-api
+* :ship: Deploy the Tag v0.8.5 for graph-backup-job
+* :ship: Deploy the Tag pr-40 for prescriptions
+* Bump thoth reporter to v0.10.1
+* :ship: Deploy the Tag v0.10.1 for reporter
+* :ship: Deploy the Tag v0.5.2 for graph-metrics-exporter
+* :ship: Deploy the Tag v0.16.3 for metrics-exporter
+* :ship: Deploy the Tag v0.14.0 for investigator
+* Bump metrics-exporter to v0.16.3
+* stage cluster services version bump
+* :ship: Deploy the Tag v0.3.11 for graph-refresh-job
+* :ship: Deploy the Tag v0.10.11 for graph-sync-job
+* :ship: Deploy the Tag v0.26.5 for user-api
+* :ship: Deploy the Tag v0.8.6 for workflow-helpers
+* :ship: Deploy the Tag v0.35.0 for adviser
+* Bump adviser to v0.35.0 in prod environment
+* Bump adviser to v0.35.0 in stage environment
+* Add thoth deployment name envvar from thoth configmap
+* Bump metrics-exporter to v0.16.2
+* switch on only the solver needed for the ingestion
+* :ship: Deploy the Tag v0.2.6 for revsolver
+* :ship: Deploy the Tag pr-1457 for user-api
+* :ship: Deploy the Tag v0.16.2 for metrics-exporter
+* add AICoE org to lifecycle management periodics
+* add OWNERS file for MI :sparkles:
+* :ship: Deploy the Tag v1.2.0 for package-extract
+* Bump package-extract to v1.2.0 in stage environment
+* Bump reporter to v0.10.0
+* resume the data ingestion for the prod
+* pause the data ingestion for the stage cluster
+* :ship: Deploy the Tag v0.8.10 for package-update-job
+* :robot: updated image version based on patched storages
+* :ship: Deploy the Tag v0.10.10 for graph-sync-job
+* :ship: Deploy the Tag v0.8.5 for workflow-helpers
+* :ship: Deploy the Tag v0.17.5 for management-api
+* :ship: Deploy the Tag v0.26.4 for user-api
+* :ship: Deploy the Tag v0.3.10 for graph-refresh-job
+* :ship: Deploy the Tag v0.10.0 for reporter
+* Remove last bits of qeb-hwt
+* fix: Enable on repo prow for AICoE
+* pause the data ingestion for the storage issue
+* add blunderbuss config
+* add milestone-applier config for t-s/t-a:master branch
+* add milestone-maintainers config
+* Bump SLO reporter to v0.15.0
+* :ship: Deploy the Tag v0.15.0 for slo-reporter
+* bump graph-metrics-exporter to v0.5.1
+* :ship: Deploy the Tag v0.5.1 for graph-metrics-exporter
+* :ship: Deploy the Tag v0.5.0 for graph-metrics-exporter
+* add AICoE/common to tide config
+* Bump integration-tests to v0.8.3
+* :ship: Deploy the Tag v0.8.3 for integration-tests
+* fixe some support labels
+* :ship: Deploy the Tag v0.0.2 for purge-job
+* :rabbit2: allow management-api to create workflow in backend namespace
+* :panda_face: allow management-api sa to list templates in middletier
+* :package: set another storage for the thoth services
+* :ship: Deploy the Tag pr-1457 for user-api
+* :cloud: switch prow to the rgw storage class
+* :cloud: create additional storage claim for prow
+* Add openshift/origin repository
+* Add thoth-station
+* Add aicoe-aiops
+* :cloud: set more timeout sec for graph schema update
+* :squirrel: reduce resource limit based on utilization
+* Remove qeb-hwt app
+* :cloud: set the resource based on the usage
+* :game_die: reduce the resource limit for the graph schema update
+* :ship: Bump version v0.8.4 for workflow-helpers
+* :cloud: setup graph-schema-update for the zero-prod cluster
+* :ship: Deploy the Tag v0.8.4 for workflow-helpers
+* :paw_prints: setup prod overlays for the prescriptions-gh-release-notes job
+* add needs-triage to core/ repo
+* Adjust title panel
+* Update SLI/SLO dashboard
+* update content metrics dashboard
+* Decrease TTL to 5 minutes for package-extract
+* Decrease TTL for adviser pods to 5 minutes
+* :ship: Deploy the Tag pr-35 for prescriptions
+* Introduce pulp-pypi-sync-job (#1755)
+* bump metrics-exporter to v0.16.1
+* :whale: Reduce the resource usage based on comsumption
+* :ship: Deploy the Tag v0.16.1 for metrics-exporter
+* :arrow_down_small: set the resource limit for the workflow executor
+* :whale: Reduce the resource usage based on comsumption
+* :hatching_chick: upgrade the db pvc with 100gi mem
+* :ship: Deploy the Tag pr-34 for prescriptions
+* :ship: Deploy the Tag pr-33 for prescriptions
+* :arrow_up: Bump version v0.17.4 for management-api
+* :ship: Deploy the Tag v0.17.4 for management-api
+* Add latest tags to cronjobs
+* Adding first community repo labels
+### Bug Fixes
+* :bug: fix config map used for integration-tests
+* switch on only the ubi8 solver for the ingestion
+* fix typo in milestone config for t-s/t-a:master
+* fix AICoE branchprotection config
+* :panda_face: fix management-api sa to list templates in middletier
+* :fire: fix the deployment of purge job
+* :cloud: fix the rgw storage class creds used by prow
+* :game_die: fix the investogator message metrics
+* :fire: fix the investigator message metrics component deployment
+* :fire: fix the investigator message metrics component
+* :zap: fix the triage-party route issues
+* :fire: fix the mi cronjob image assignment
+* :hatching_chick: fix of the volume placement in the workflow
+* :hatching_chick: fix of the volume usage in the workflow
+* Fixing mistakes, testing pre-commit * I wanted to setup pre-commit and update my patch from my local system to see if I could fix the error message. * Then I found some errors in my file from my last edit, which was great! Real fixes! * Then I learned how pre-commit works, as it caught my mistakes until I fixed them all :) * Then I copied my changes over to my fork (quaid/thoth-application) * Now I am committing them to my fork in hopes I can go to the web UI to updated the pull request ( https://github.com/thoth-station/thoth-application/pull/1611 )
+### Improvements
+* :arrow_up: updated all imagestreamtag for prow :sparkles: refactored prow-controller-manager to use imagestreamtags
+* Bump graph related component to v0.51.0 of thoth-storages
+* cleanup: Remove labels sync and peribolos
+* chore: Remove label_sync for AICoE and OperateFirst
+* Stop SLO-reporter test
+* :arrow_up: increase limit for the storage pvc of graph db
+* :cloud: use the rgw ceph for thoth services
+* make pre-commit happy
+* Fix MEGE typo into MERGE
+* use image name with appended tag
+* use image name with appended tag
+* use image name with appended tag
+* :game_die: updated the label sync execution limits
+* Reworked to create better metadata, more versatile
