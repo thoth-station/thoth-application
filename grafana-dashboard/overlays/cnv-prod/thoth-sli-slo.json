@@ -73,14 +73,16 @@
             {
               "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
               "format": "time_series",
+              "hide": false,
               "intervalFactor": 2,
               "legendFormat": "Thoth SI Learning rate SLI (increase) | instance: {{instance}} | {{job}}",
               "refId": "A",
               "step": 600
             },
             {
-              "expr": "100",
+              "expr": "350",
               "format": "time_series",
+              "hide": false,
               "intervalFactor": 2,
               "legendFormat": "Thoth Learning rate SLO",
               "refId": "B",
@@ -133,7 +135,7 @@
     },
     {
       "collapse": false,
-      "height": 345,
+      "height": 255,
       "panels": [
         {
           "aliasColors": {},
@@ -166,7 +168,7 @@
           "renderer": "flot",
           "seriesOverrides": [],
           "spaceLength": 10,
-          "span": 4,
+          "span": 12,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -177,7 +179,7 @@
               "intervalFactor": 2,
               "legendFormat": "Thoth Number of unsolved packages",
               "refId": "A",
-              "step": 1800
+              "step": 600
             },
             {
               "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
@@ -187,111 +189,37 @@
               "intervalFactor": 2,
               "legendFormat": "Thoth Unsolved Learning rate SLI (increase)",
               "refId": "B",
-              "step": 1800
+              "step": 600
             },
             {
               "expr": "(thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "Estimated hours to solve (1h inverval)",
+              "legendFormat": "Estimated hours to solve all unsolved packages (1h inverval)",
               "refId": "C",
-              "step": 1800
+              "step": 600
             },
             {
               "expr": "(thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "Estimated days to solve (1h inverval)",
+              "legendFormat": "Estimated days to solve all unsolved packages (1h inverval)",
               "refId": "D",
-              "step": 1800
+              "step": 600
+            },
+            {
+              "expr": "(thoth_graphdb_number_python_package_versions{instance=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated days to solve all packages adding a new solver (1h interval)",
+              "refId": "E",
+              "step": 600
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
           "title": "Unsolved Python Packages, Learning Rate and Estimated time to solve all packages",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "short",
-              "label": "",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "decimals": null,
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "thoth-station",
-          "fill": 1,
-          "id": 68,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": true,
-            "hideEmpty": false,
-            "hideZero": false,
-            "max": true,
-            "min": true,
-            "show": true,
-            "sortDesc": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "span": 4,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "Estimated hours to solve (1h inverval): {{solver_name}}",
-              "refId": "F",
-              "step": 1800
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Estimated time to solver packages per solver [hours]",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -357,7 +285,7 @@
           "renderer": "flot",
           "seriesOverrides": [],
           "spaceLength": 10,
-          "span": 4,
+          "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -373,7 +301,89 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Estimated time to solver packages per solver [days]",
+          "title": "Estimated time to solve packages per solver [days]",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 68,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated hours to solve (1h inverval): {{solver_name}}",
+              "refId": "F",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Estimated time to solve packages per solver [hours]",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -413,13 +423,90 @@
       "repeatIteration": null,
       "repeatRowId": null,
       "showTitle": false,
-      "title": "Dashboard Row",
+      "title": "Estimated time to solve (graphs)",
       "titleSize": "h6"
     },
     {
       "collapse": false,
-      "height": 94,
+      "height": 89,
       "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#967302",
+            "#967302",
+            "#967302"
+          ],
+          "datasource": "thoth-station",
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 91,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "(thoth_graphdb_number_python_package_versions{instance=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated days (1h interval)",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "Estimated days to solve all packages adding a new solver (current learning rate)",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
         {
           "cacheTimeout": null,
           "colorBackground": true,
@@ -466,7 +553,7 @@
               "to": "null"
             }
           ],
-          "span": 3,
+          "span": 4,
           "sparkline": {
             "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
@@ -485,7 +572,7 @@
             }
           ],
           "thresholds": "",
-          "title": "Estimated days to solve all packages",
+          "title": "Estimated days to solve all unsolved packages",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -543,7 +630,7 @@
               "to": "null"
             }
           ],
-          "span": 3,
+          "span": 4,
           "sparkline": {
             "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
@@ -553,7 +640,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-32-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Estimated days (1h interval)",
@@ -562,7 +649,84 @@
             }
           ],
           "thresholds": "",
-          "title": "Estimated days to solve all packages for solver-fedora-34-py39",
+          "title": "Estimated days to solve all packages for solver-fedora-32-py38",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#967302",
+            "#967302",
+            "#967302"
+          ],
+          "datasource": "thoth-station",
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 70,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 4,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py36\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Estimated days (1h interval)",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "Estimated days to solve all packages for solver-rhel-8-py36",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -620,7 +784,7 @@
               "to": "null"
             }
           ],
-          "span": 3,
+          "span": 4,
           "sparkline": {
             "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
@@ -656,7 +820,7 @@
       "repeatIteration": null,
       "repeatRowId": null,
       "showTitle": false,
-      "title": "Dashboard Row",
+      "title": "Estimated time to solve (singlestats)",
       "titleSize": "h6"
     },
     {
@@ -757,13 +921,107 @@
       "repeatIteration": null,
       "repeatRowId": null,
       "showTitle": false,
-      "title": "Dashboard Row",
+      "title": "Estimated time to SI analyze (graphs)",
       "titleSize": "h6"
     },
     {
       "collapse": false,
-      "height": 522,
+      "height": 267,
       "panels": [
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 90,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "increase(argo_workflows_status_counter{instance=\"$instance\"}[$interval])",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "increase {{name}} : {{status}}",
+              "refId": "A",
+              "step": 600
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Rate Workflow status",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
         {
           "aliasColors": {
             "Inspection Workflow Total": "#0a50a1",
@@ -807,31 +1065,40 @@
           "renderer": "flot",
           "seriesOverrides": [],
           "spaceLength": 10,
-          "span": 6,
+          "span": 4,
           "stack": true,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "argo_workflows_status_counter{instance=\"$instance\"}",
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=~\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) / (sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}))",
               "format": "time_series",
+              "hide": false,
               "intervalFactor": 2,
-              "legendFormat": "{{name}} workflow: {{status}}",
-              "refId": "B",
-              "step": 1200
+              "legendFormat": "% solver workflows succeeded",
+              "refId": "D",
+              "step": 2400
             },
             {
-              "expr": "argo_workflows_task_status_counter{instance=\"$instance\"}",
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) / (sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}))",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{name}} workflow task: {{status}}",
-              "refId": "A",
-              "step": 1200
+              "legendFormat": "% solver workflows failed",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}) / (sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly_stage{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}))",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% solver workflows error",
+              "refId": "H",
+              "step": 2400
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Workflow quality",
+          "title": "Solver Workflow quality",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -847,9 +1114,840 @@
           },
           "yaxes": [
             {
-              "decimals": null,
-              "format": "none",
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": "1",
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
               "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 74,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=~\"adviser_workflows_succeeded\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "% adviser workflows succeeded",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"adviser_workflows_failed\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "% adviser workflows failed",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"adviser_workflows_error\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "% adviser workflows error",
+              "refId": "H",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Adviser Workflow quality",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": "1",
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 75,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=~\"provenance_checker_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "% provenance checker workflows succeeded",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"provenance_checker_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% provenance checker workflows failed",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"provenance_checker_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% provenance checker workflows error",
+              "refId": "H",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Provenance Checker Workflow quality",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": "1",
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 76,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=~\"security_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows succeeded",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"security_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows failed",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"security_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows error",
+              "refId": "H",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Security Workflow quality",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": "1",
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 77,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=~\"kebechet_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows succeeded",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"kebechet_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows failed",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"kebechet_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows error",
+              "refId": "H",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Kebechet Workflow quality",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": "1",
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 78,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=~\"package_extract_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows succeeded",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"package_extract_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows failed",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"package_extract_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows error",
+              "refId": "H",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Package Extract Workflow quality",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": "1",
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 79,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=~\"revsolver_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"revsolver_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows succeeded",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"revsolver_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"revsolver_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows failed",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{metric_name=\"revsolver_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly_stage{metric_name=~\"revsolver_workflows_.*\", sli_type=\"component_quality\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "% security workflows error",
+              "refId": "H",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Revsolver Workflow quality",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": "1",
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Workflow Quality",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 281,
+      "panels": [
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 80,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 5s",
+              "refId": "A",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 10s",
+              "refId": "C",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 30s",
+              "refId": "B",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 60s",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 120s",
+              "refId": "E",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 180s",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 300s",
+              "refId": "G",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 600s",
+              "refId": "H",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 900s",
+              "refId": "I",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Solver Workflow latency",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
               "logBase": 1,
               "max": null,
               "min": null,
@@ -885,12 +1983,1030 @@
           "dashes": false,
           "datasource": "thoth-station",
           "fill": 1,
-          "id": 65,
+          "id": 82,
           "legend": {
             "alignAsTable": true,
             "avg": true,
             "current": true,
             "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 5s",
+              "refId": "A",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 10s",
+              "refId": "C",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 30s",
+              "refId": "B",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 60s",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 120s",
+              "refId": "E",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 180s",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 300s",
+              "refId": "G",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 600s",
+              "refId": "H",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 900s",
+              "refId": "I",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Adviser Workflow latency",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 83,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 5s",
+              "refId": "A",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 10s",
+              "refId": "C",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 30s",
+              "refId": "B",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 60s",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 120s",
+              "refId": "E",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 180s",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 300s",
+              "refId": "G",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 600s",
+              "refId": "H",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 900s",
+              "refId": "I",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Provenance Checker Workflow latency",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 81,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 5s",
+              "refId": "A",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 10s",
+              "refId": "C",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 30s",
+              "refId": "B",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 60s",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 120s",
+              "refId": "E",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 180s",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 300s",
+              "refId": "G",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 600s",
+              "refId": "H",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 900s",
+              "refId": "I",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Security Workflow latency",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 84,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 5s",
+              "refId": "A",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 10s",
+              "refId": "C",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 30s",
+              "refId": "B",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 60s",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 120s",
+              "refId": "E",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 180s",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 300s",
+              "refId": "G",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 600s",
+              "refId": "H",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 900s",
+              "refId": "I",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Kebechet Workflow latency",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 86,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 5s",
+              "refId": "A",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 10s",
+              "refId": "C",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 30s",
+              "refId": "B",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 60s",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 120s",
+              "refId": "E",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 180s",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 300s",
+              "refId": "G",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 600s",
+              "refId": "H",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 900s",
+              "refId": "I",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Package Extract Workflow latency",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Inspection Workflow Total": "#0a50a1",
+            "Inspection Workflow: Error State": "#c15c17",
+            "Inspection Workflow: Failed State": "#bf1b00",
+            "Inspection Workflow: Pending State": "rgb(96, 95, 95)",
+            "Inspection Workflow: Running State": "#64b0c8",
+            "Inspection Workflow: Skipped State": "#e5ac0e",
+            "Inspection Workflow: Succeeded State": "#3f6833",
+            "Workflow Error": "#c15c17",
+            "Workflow Failed": "#bf1b00",
+            "Workflow Pending": "rgb(91, 95, 96)",
+            "Workflow Running": "#64b0c8",
+            "Workflow Succeeded": "#3f6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 85,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 5s",
+              "refId": "A",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 10s",
+              "refId": "C",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 30s",
+              "refId": "B",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 60s",
+              "refId": "D",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 120s",
+              "refId": "E",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 180s",
+              "refId": "F",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 300s",
+              "refId": "G",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 600s",
+              "refId": "H",
+              "step": 2400
+            },
+            {
+              "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"revsolver_workflows_latency_bucket_+Inf\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "< 900s",
+              "refId": "I",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Revsolver Workflow latency",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 3,
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Workflow Latency",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 73,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_reporter_requests_gauge{env=\"$env\"} - thoth_reporter_reports_gauge{env=\"$env\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{component}}",
+              "refId": "A",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Number of requests vs number of documents created on Ceph",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 89,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
             "min": true,
             "show": true,
             "sort": "current",
@@ -909,22 +3025,30 @@
           "seriesOverrides": [],
           "spaceLength": 10,
           "span": 6,
-          "stack": true,
+          "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "argo_workflows_duration_seconds_histogram_bucket{instance=\"$instance\"}",
+              "expr": "thoth_reporter_requests_gauge{env=\"$env\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{name}} workflow: {{le}}",
+              "legendFormat": "requests for {{component}}",
               "refId": "B",
-              "step": 1200
+              "step": 1800
+            },
+            {
+              "expr": "thoth_reporter_reports_gauge{env=\"$env\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "reports for {{component}}",
+              "refId": "C",
+              "step": 1800
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Workflow quality",
+          "title": "Number of requests and documents created on Ceph",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -940,11 +3064,190 @@
           },
           "yaxes": [
             {
-              "decimals": null,
-              "format": "none",
+              "format": "short",
               "label": null,
               "logBase": 1,
               "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "User API services quality",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {
+            "Failed adviser runs": "#bf1b00",
+            "Successfull adviser runs": "#3f6833"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 87,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_reporter_success_adviser_gauge{env=\"$env\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Successfull adviser runs {{adviser_version}}",
+              "refId": "A",
+              "step": 1800
+            },
+            {
+              "expr": "thoth_reporter_failed_adviser_gauge{env=\"$env\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Failed adviser runs {{adviser_version}}",
+              "refId": "B",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Adviser Statistics",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": "100",
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {
+            "Failed adviser runs": "#bf1b00",
+            "Successfull adviser runs": "#3f6833"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 88,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_reporter_failed_adviser_justifications_gauge{env=\"$env\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "adviser {{adviser_version}} failures % due to {{justification}}",
+              "refId": "A",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Adviser Failures Analysis",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": "100",
               "min": null,
               "show": true
             },
@@ -1051,8 +3354,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "workflow-controller-metrics-thoth-middletier-stage.apps.ocp4.prod.psi.redhat.com:80",
-          "value": "workflow-controller-metrics-thoth-middletier-stage.apps.ocp4.prod.psi.redhat.com:80"
+          "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
+          "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
         },
         "hide": 0,
         "includeAll": false,
@@ -1062,23 +3365,23 @@
         "options": [
           {
             "selected": false,
-              "text": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80",
-              "value": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
-            },
-            {
-              "selected": false,
+            "text": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80",
+            "value": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
+          },
+          {
+            "selected": true,
             "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
             "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
           }
         ],
-          "query": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
-          "type": "custom"
-        },
-        {
-          "allValue": null,
-          "current": {
-          "text": "metrics-exporter-thoth-infra-stage.apps.ocp4.prod.psi.redhat.com:80",
-          "value": "metrics-exporter-thoth-infra-stage.apps.ocp4.prod.psi.redhat.com:80"
+        "query": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
+          "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
         },
         "hide": 0,
         "includeAll": false,
@@ -1087,46 +3390,69 @@
         "name": "instance_metrics",
         "options": [
           {
-            "selected": false,
-              "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
-              "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
-            }
-          ],
-          "query": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
-          "type": "custom"
-        }
-      ]
-    },
-    "time": {
-      "from": "now-7d",
-      "to": "now"
-    },
-    "timepicker": {
-      "refresh_intervals": [
-        "5s",
-        "10s",
-        "30s",
-        "1m",
-        "5m",
-        "15m",
-        "30m",
-        "1h",
-        "2h",
-        "1d"
-      ],
-      "time_options": [
-        "5m",
-        "15m",
-        "1h",
-        "6h",
-        "12h",
-        "24h",
-        "2d",
-        "7d",
-        "30d"
-      ]
-    },
-    "timezone": "",
-    "title": "Thoth SLI/SLO",
-  "version": 278
+            "selected": true,
+            "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
+            "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
+          }
+        ],
+        "query": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": "zero-prod",
+          "value": "zero-prod"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "env",
+        "options": [
+          {
+            "selected": true,
+            "text": "zero-prod",
+            "value": "zero-prod"
+          }
+        ],
+        "query": "zero-prod",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Thoth SLI/SLO",
+  "version": 316
 }
