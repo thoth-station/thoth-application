@@ -28,6 +28,9 @@ settings:
     - https://github.com/thoth-station/pipeline-helpers
     - https://github.com/thoth-station/prescription-sync-job
     - https://github.com/thoth-station/prescriptions
+    - https://github.com/thoth-station/ps-cv
+    - https://github.com/thoth-station/ps-nlp
+    - https://github.com/thoth-station/pulp-pypi-sync-job
     - https://github.com/thoth-station/purge-job
     - https://github.com/thoth-station/python
     - https://github.com/thoth-station/report-processing
@@ -41,8 +44,10 @@ settings:
     - https://github.com/thoth-station/s2i-thoth
     - https://github.com/thoth-station/slo-reporter
     - https://github.com/thoth-station/solver
+    - https://github.com/thoth-station/solver-project-url-job
     - https://github.com/thoth-station/source-management
     - https://github.com/thoth-station/storages
+    - https://github.com/thoth-station/support
     - https://github.com/thoth-station/thamos
     - https://github.com/thoth-station/thoth-application
     - https://github.com/thoth-station/user-api
