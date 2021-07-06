@@ -1,805 +1,984 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
-    },
-    "description": "",
-    "editable": true,
-    "gnetId": null,
-    "graphTooltip": 0,
-    "hideControls": false,
-    "id": 198,
-    "links": [],
-    "refresh": "30s",
-    "rows": [
+  "annotations": {
+    "list": [
       {
-        "collapse": false,
-        "height": 396,
-        "panels": [
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "fill": 1,
-            "id": 8,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "max": false,
-              "min": false,
-              "show": true,
-              "sort": "current",
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 7,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "thoth_package_release_job_messages_sent_total{env=~\".*$env\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{env}} | {{message_type}} message sent from package releases producer ({{version}})",
-                "refId": "B",
-                "step": 1200
-              },
-              {
-                "expr": "thoth_graph_refresh_job_messages_sent_total{env=~\".*$env\"}",
-                "format": "time_series",
-                "interval": "",
-                "intervalFactor": 2,
-                "legendFormat": "{{env}} | {{message_type}} message sent from graph refresh producer ({{version}})",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Kafka Messages sent by producers",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "decimals": null,
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "decimals": null,
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          },
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "fill": 1,
-            "id": 3,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "max": true,
-              "min": true,
-              "show": true,
-              "sort": "current",
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 5,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "investigators_in_progress{instance=\"$instance_consumer\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{message_type}} message In progress ",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Kafka Messages In Progress in consumer",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
-      },
-      {
-        "collapse": false,
-        "height": 322,
-        "panels": [
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "fill": 1,
-            "id": 1,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "max": true,
-              "min": true,
-              "show": true,
-              "sort": "current",
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 7,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "investigators_processed_total{instance=\"$instance_consumer\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{message_type}} message Processed",
-                "refId": "B",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Kafka Messages processed by consumer",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "decimals": null,
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "decimals": null,
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          },
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "fill": 1,
-            "id": 4,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "max": true,
-              "min": true,
-              "show": true,
-              "sort": "current",
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 5,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "investigator_exceptions_total{instance=\"$instance_consumer\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{message_type}} message Exceptions",
-                "refId": "C",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Kafka Messages Exceptions in consumer",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
-      },
-      {
-        "collapse": false,
-        "height": 440,
-        "panels": [
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "fill": 1,
-            "id": 2,
-            "legend": {
-              "alignAsTable": true,
-              "avg": false,
-              "current": true,
-              "max": true,
-              "min": true,
-              "show": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 7,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "thoth_investigator_scheduled_workflows_total{instance=\"$instance_consumer\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "MESSAGE {{message_type}} SCHEDULED {{workflow_type}} WORKFLOW",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Workflows scheduled by consumer",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
-      },
-      {
-        "collapse": false,
-        "height": 394,
-        "panels": [
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "description": "A count of all workflows currently accessible by the controller by status",
-            "fill": 1,
-            "id": 6,
-            "legend": {
-              "alignAsTable": true,
-              "avg": true,
-              "current": true,
-              "max": true,
-              "min": false,
-              "show": true,
-              "sort": "current",
-              "sortDesc": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "argo_workflows_count{instance='$instance_workflow_controller'}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{status}}",
-                "refId": "A",
-                "step": 1200
-              },
-              {
-                "expr": "sum(argo_workflows_count{instance='$instance_workflow_controller'})",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "Total workflows",
-                "refId": "B",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Workflow status count",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          },
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "thoth-station",
-            "description": "Percentage of workflows that has queue latency below a certain threshold",
-            "fill": 1,
-            "id": 7,
-            "legend": {
-              "alignAsTable": true,
-              "avg": false,
-              "current": true,
-              "max": false,
-              "min": false,
-              "show": true,
-              "sort": "current",
-              "sortDesc": false,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "argo_workflows_queue_latency_bucket{instance='$instance_workflow_controller', queue_name=\"$queue_name\"} / ignoring(le) group_left argo_workflows_queue_latency_count{instance='$instance_workflow_controller', queue_name=\"$queue_name\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "queue_latency: {{le}} | queue_name: {{$queue_name}}",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Workflow queue latency [%]",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "percentunit",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
       }
-    ],
-    "schemaVersion": 14,
-    "style": "dark",
-    "tags": [
-      "thoth",
-      "argo",
-      "kafka"
-    ],
-    "templating": {
-      "list": [
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": 198,
+  "links": [],
+  "refresh": "30s",
+  "rows": [
+    {
+      "collapse": false,
+      "height": 331,
+      "panels": [
         {
-          "allValue": null,
-          "current": {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 8,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_package_release_job_messages_sent_total{env=~\"$env\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{env}} | {{message_type}} message sent from package releases producer ({{version}})",
+              "refId": "B",
+              "step": 3600
+            },
+            {
+              "expr": "thoth_graph_refresh_job_messages_sent_total{env=~\"$env\"}",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "{{env}} | {{message_type}} message sent from graph refresh producer ({{version}})",
+              "refId": "A",
+              "step": 3600
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Kafka Messages sent by producers",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Producers",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 335,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 1,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_investigator_processed_total{instance=\"$instance_consumer\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{message_type}} message Processed",
+              "refId": "B",
+              "step": 7200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Kafka Messages processed by consumer",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 3,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_investigator_in_progress{instance=\"$instance_consumer\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{message_type}} message In progress ",
+              "refId": "A",
+              "step": 7200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Kafka Messages In Progress in consumer",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 4,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_investigator_exceptions_total{instance=\"$instance_consumer\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{message_type}} message Exceptions",
+              "refId": "C",
+              "step": 7200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Kafka Messages Exceptions in consumer",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Consumer",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 383,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 9,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_investigator_paused_topics{instance=\"$instance_consumer\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "MESSAGE {{base_topic_name}} ",
+              "refId": "A",
+              "step": 7200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Kafka Message consumption paused status",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 10,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "message_count_by_version_total{instance=\"$instance_consumer_metrics\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "MESSAGE {{message_type}} ",
+              "refId": "A",
+              "step": 7200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Kafka message encountered per version",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 292,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "fill": 1,
+          "id": 2,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "thoth_investigator_scheduled_workflows_total{instance=\"$instance_consumer\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "MESSAGE {{message_type}} SCHEDULED {{workflow_type}} WORKFLOW",
+              "refId": "A",
+              "step": 3600
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Workflows scheduled by consumer",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 394,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "description": "A count of all workflows currently accessible by the controller by status",
+          "fill": 1,
+          "id": 6,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_count{instance='$instance_workflow_controller'}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{status}}",
+              "refId": "A",
+              "step": 7200
+            },
+            {
+              "expr": "sum(argo_workflows_count{instance='$instance_workflow_controller'})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Total workflows",
+              "refId": "B",
+              "step": 7200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Workflow status count",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "thoth-station",
+          "description": "Percentage of workflows that has queue latency below a certain threshold",
+          "fill": 1,
+          "id": 7,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "sort": "current",
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_queue_latency_bucket{instance='$instance_workflow_controller', queue_name=\"$queue_name\"} / ignoring(le) group_left argo_workflows_queue_latency_count{instance='$instance_workflow_controller', queue_name=\"$queue_name\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "queue_latency: {{le}} | queue_name: {{$queue_name}}",
+              "refId": "A",
+              "step": 7200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Workflow queue latency [%]",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percentunit",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [
+    "thoth",
+    "argo",
+    "kafka",
+    "zero-prod"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80",
+          "value": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "instance_consumer",
+        "options": [
+          {
+            "selected": true,
             "text": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80",
             "value": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80"
-          },
-          "hide": 0,
-          "includeAll": false,
-          "label": null,
-          "multi": false,
-          "name": "instance_consumer",
-          "options": [
-            {
-              "selected": false,
-              "text": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80",
-              "value": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80"
-            }
-          ],
-          "query": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80",
-          "type": "custom"
+          }
+        ],
+        "query": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80",
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80",
+          "value": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
         },
-        {
-          "allValue": null,
-          "current": {
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "instance_workflow_controller",
+        "options": [
+          {
+            "selected": true,
+            "text": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80",
+            "value": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
+          },
+          {
+            "selected": false,
             "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
             "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
-          },
-          "hide": 0,
-          "includeAll": false,
-          "label": null,
-          "multi": false,
-          "name": "instance_workflow_controller",
-          "options": [
-            {
-              "selected": false,
-              "text": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80",
-              "value": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
-            },
-            {
-              "selected": false,
-              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
-              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
-            }
-          ],
-          "query": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
-          "type": "custom"
+          }
+        ],
+        "query": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "workflow_queue",
+          "value": "workflow_queue"
         },
-        {
-          "allValue": null,
-          "current": {
-            "tags": [],
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "queue_name",
+        "options": [
+          {
+            "selected": false,
+            "text": "cron_wf_queue",
+            "value": "cron_wf_queue"
+          },
+          {
+            "selected": false,
+            "text": "pod_queue",
+            "value": "pod_queue"
+          },
+          {
+            "selected": false,
+            "text": "wf_cron_queue",
+            "value": "wf_cron_queue"
+          },
+          {
+            "selected": true,
             "text": "workflow_queue",
             "value": "workflow_queue"
-          },
-          "hide": 0,
-          "includeAll": false,
-          "label": null,
-          "multi": false,
-          "name": "queue_name",
-          "options": [
-            {
-              "selected": false,
-              "text": "cron_wf_queue",
-              "value": "cron_wf_queue"
-            },
-            {
-              "selected": false,
-              "text": "pod_queue",
-              "value": "pod_queue"
-            },
-            {
-              "selected": false,
-              "text": "wf_cron_queue",
-              "value": "wf_cron_queue"
-            },
-            {
-              "selected": true,
-              "text": "workflow_queue",
-              "value": "workflow_queue"
-            }
-          ],
-          "query": "cron_wf_queue,pod_queue,wf_cron_queue,workflow_queue",
-          "type": "custom"
+          }
+        ],
+        "query": "cron_wf_queue,pod_queue,wf_cron_queue,workflow_queue",
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "zero-prod",
+          "value": "zero-prod"
         },
-        {
-          "allValue": null,
-          "current": {
-            "text": "stage",
-            "value": "stage"
-          },
-          "hide": 0,
-          "includeAll": false,
-          "label": null,
-          "multi": false,
-          "name": "env",
-          "options": [
-            {
-              "selected": false,
-              "text": "test",
-              "value": "test"
-            },
-            {
-              "selected": true,
-              "text": "stage",
-              "value": "stage"
-            },
-            {
-              "selected": false,
-              "text": "prod",
-              "value": "prod"
-            }
-          ],
-          "query": "test, stage, prod",
-          "type": "custom"
-        }
-      ]
-    },
-    "time": {
-      "from": "now-7d",
-      "to": "now"
-    },
-    "timepicker": {
-      "refresh_intervals": [
-        "5s",
-        "10s",
-        "30s",
-        "1m",
-        "5m",
-        "15m",
-        "30m",
-        "1h",
-        "2h",
-        "1d"
-      ],
-      "time_options": [
-        "5m",
-        "15m",
-        "1h",
-        "6h",
-        "12h",
-        "24h",
-        "2d",
-        "7d",
-        "30d"
-      ]
-    },
-    "timezone": "",
-    "title": "Thoth Kafka Consumers and Argo Workflows",
-    "version": 70
-  }
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "env",
+        "options": [
+          {
+            "selected": true,
+            "text": "zero-prod",
+            "value": "zero-prod"
+          }
+        ],
+        "query": "zero-prod",
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "investigator-message-metrics-thoth-infra-prod.apps.zero.massopen.cloud:80",
+          "value": "investigator-message-metrics-thoth-infra-prod.apps.zero.massopen.cloud:80"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "instance_consumer_metrics",
+        "options": [
+          {
+            "selected": true,
+            "text": "investigator-message-metrics-thoth-infra-prod.apps.zero.massopen.cloud:80",
+            "value": "investigator-message-metrics-thoth-infra-prod.apps.zero.massopen.cloud:80"
+          }
+        ],
+        "query": "investigator-message-metrics-thoth-infra-prod.apps.zero.massopen.cloud:80",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Thoth Kafka Consumers and Argo Workflows",
+  "version": 80
+}
