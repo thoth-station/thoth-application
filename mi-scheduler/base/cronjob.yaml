@@ -61,7 +61,7 @@ spec:
                   valueFrom:
                     configMapKeyRef:
                       name: mi-scheduler
-                      value: entities
+                      key: entities
           restartPolicy: OnFailure
 ---
 kind: CronJob
