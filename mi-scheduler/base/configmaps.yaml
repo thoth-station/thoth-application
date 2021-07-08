@@ -6,5 +6,5 @@ metadata:
 data:
   entities: "PullRequest, Issue"
   repositories: "openshift/origin"
-  organizations: "thoth-station, AICoE, aicoe-aiops"
+  organizations: "thoth-station,AICoE,aicoe-aiops"
   parallel-workflows-limit: "1"
