@@ -57,6 +57,11 @@ spec:
                   value: "1"
                 - name: THOTH_ADJUST_LOGGING
                   value: 'srcopsmetrics:INFO'
+                - name: MI_ENTITIES
+                  valueFrom:
+                    configMapKeyRef:
+                      name: mi-scheduler
+                      value: entities
           restartPolicy: OnFailure
 ---
 kind: CronJob
