@@ -195,6 +195,7 @@ plugins:
       - label
       - lgtm
       - lifecycle
+      - override
       - shrug
       - size
       - trigger
@@ -231,6 +232,7 @@ plugins:
       - label
       - lgtm
       - lifecycle
+      - override
       - size
       - trigger
       - verify-owners
@@ -246,6 +248,7 @@ plugins:
       - label
       - lgtm
       - lifecycle
+      - override
       - size
       - trigger
       - verify-owners
