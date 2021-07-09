@@ -56,7 +56,7 @@ spec:
                 - name: SCHEDULE_GH_REPO_ANALYSIS
                   value: "1"
                 - name: THOTH_ADJUST_LOGGING
-                  value: 'srcopsmetrics:INFO'
+                  value: 'thoth.mi-scheduler:INFO'
                 - name: MI_ENTITIES
                   valueFrom:
                     configMapKeyRef:
