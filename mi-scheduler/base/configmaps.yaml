@@ -4,7 +4,7 @@ apiVersion: v1
 metadata:
   name: mi-scheduler
 data:
-  entities: "PullRequest, Issue"
+  entities: "PullRequest,Issue"
   repositories: "openshift/origin"
   organizations: "thoth-station,AICoE,aicoe-aiops"
   parallel-workflows-limit: "1"
