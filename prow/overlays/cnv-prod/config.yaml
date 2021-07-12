@@ -218,7 +218,6 @@ tide:
         - AICoE/aicoe-cd
         - AICoE/aicoe-ci
         - AICoE/aicoe-sre
-        - AICoE/common
         - AICoE/elyra-aidevsecops-tutorial
         - AICoE/idh-manifests
         - AICoE/internal-data-hub
@@ -229,6 +228,18 @@ tide:
         - AICoE/Varangian
       labels:
         - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebase
+    - repos:
+        - AICoE/common
+        - AICoE/meteor
+      labels:
+        - approved
+        - lgtm
       missingLabels:
         - do-not-merge
         - do-not-merge/hold
