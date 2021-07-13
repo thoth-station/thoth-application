@@ -19,6 +19,7 @@ plank:
 
 push_gateway:
   endpoint: "pushgateway-thoth-infra-prod.apps.zero.massopen.cloud"
+  serve_metrics: true
 
 sinker:
   # MaxPodAge is how old a Pod can be before it is garbage-collected.
