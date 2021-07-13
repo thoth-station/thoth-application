@@ -16,6 +16,10 @@ plank:
         entrypoint: entrypoint
         initupload: initupload
         sidecar: sidecar
+
+push_gateway:
+  endpoint: "pushgateway-thoth-infra-prod.apps.zero.massopen.cloud"
+
 sinker:
   # MaxPodAge is how old a Pod can be before it is garbage-collected.
   # Defaults to one day.
