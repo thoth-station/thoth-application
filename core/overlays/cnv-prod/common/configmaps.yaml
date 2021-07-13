@@ -14,7 +14,6 @@ data:
   middletier-namespace: thoth-middletier-prod
   frontend-namespace: thoth-frontend-prod
   infra-namespace: thoth-infra-prod
-  package-releases-only-if-package-seen: "1"
   logging-no-json: "0"
   postgresql-host: pgbouncer.thoth-graph-prod.svc
   rsyslog-host: ""

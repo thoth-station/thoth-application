@@ -47,11 +47,6 @@ spec:
                   value: "/mnt/secrets/kafka_user.key"
                 - name: KAFKA_SSL_KEY_PASSWORD
                   value: "/mnt/secrets/kafka_user.password"
-                - name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
-                  valueFrom:
-                    configMapKeyRef:
-                      key: package-releases-only-if-package-seen
-                      name: thoth
                 - name: RSYSLOG_HOST
                   valueFrom:
                     configMapKeyRef:

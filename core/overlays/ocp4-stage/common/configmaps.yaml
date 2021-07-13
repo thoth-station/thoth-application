@@ -14,7 +14,6 @@ data:
   graph-namespace: thoth-graph-stage
   frontend-namespace: thoth-frontend-stage
   infra-namespace: thoth-infra-stage
-  package-releases-only-if-package-seen: "1"
   logging-no-json: "0"
   postgresql-host: pgbouncer.thoth-graph-stage.svc
   rsyslog-host: ""

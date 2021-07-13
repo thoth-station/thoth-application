@@ -41,11 +41,6 @@ spec:
                       name: kafka
                 - name: KAFKA_SSL_CA_LOCATION
                   value: "/mnt/secrets/kafka_ca.crt"
-                - name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
-                  valueFrom:
-                    configMapKeyRef:
-                      key: package-releases-only-if-package-seen
-                      name: thoth
                 - name: RSYSLOG_HOST
                   valueFrom:
                     configMapKeyRef:
