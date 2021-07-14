@@ -51,22 +51,6 @@ spec:
               secretKeySecret:
                 name: argo-artifact-repository-secrets
                 key: secretKey
-          - name: prescription
-            path: "/mnt/workdir/prescription.yaml"
-            archive:
-              none: {}
-            s3:
-              key: "{{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/\
-              {{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/prescription.yaml"
-              endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
-              bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
-              insecure: true
-              accessKeySecret:
-                name: argo-artifact-repository-secrets
-                key: accessKey
-              secretKeySecret:
-                name: argo-artifact-repository-secrets
-                key: secretKey
       outputs:
         artifacts:
           - name: outputdocument
@@ -86,6 +70,14 @@ spec:
               secretKeySecret:
                 name: argo-artifact-repository-secrets
                 key: secretKey
+      initContainers:
+        - name: prescriptions
+          image: prescriptions
+          command:
+            - /bin/sh
+            - -c
+            - cp --recursive /opt/app-root/src/prescriptions/* /mnt/prescriptions/
+          mirrorVolumeMounts: true
       container:
         name: dm
         image: adviser
@@ -117,7 +109,7 @@ spec:
           - name: THOTH_ADVISER_PIPELINE
             value: "input/pipeline.json"
           - name: THOTH_ADVISER_PRESCRIPTION
-            value: "/mnt/workdir/prescription.yaml"
+            value: "/mnt/prescriptions/"
           - name: THOTH_ADVISER_PREDICTOR
             value: "{{inputs.parameters.THOTH_ADVISER_PREDICTOR}}"
           - name: THOTH_ADVISER_PREDICTOR_CONFIG
@@ -177,6 +169,11 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /mnt/workdir
+          - name: prescriptions
+            mountPath: /mnt/prescriptions
+        volumes:
+          - name: prescriptions
+            emptyDir: {}
         resources:
           limits:
             cpu: 1.1
