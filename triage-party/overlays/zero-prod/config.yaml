@@ -171,6 +171,7 @@ rules:
     filters:
       - label: "!priority/.*"
       - label: "!triage/.*"
+      - label: "!area/release-eng"
       - created: +7d
 
   issue-needs-comment-overdue:
