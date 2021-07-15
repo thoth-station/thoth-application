@@ -1,0 +1,97 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: mi-merge
+  labels:
+    app: thoth
+    component: mi
+    template: mi-merge
+
+spec:
+  serviceAccountName: argo
+  entrypoint: mi-merge-workflow
+  templates:
+    - name: mi-merge-workflow
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: REPOSITORY
+          - name: ENTITIES
+          - name: KNOWLEDGE_PATH
+          - name: THOTH_ADJUST_LOGGING
+          - name: MI_THOTH
+          - name: MI_MERGE
+      steps:
+        - - name: merge-data
+            template: merge
+            arguments:
+              parameters:
+                - name: REPOSITORY
+                  value: "{{inputs.parameters.REPOSITORY}}"
+                - name: ENTITIES
+                  value: "{{inputs.parameters.ENTITIES}}"
+                - name: KNOWLEDGE_PATH
+                  value: "{{inputs.parameters.KNOWLEDGE_PATH}}"
+                - name: THOTH_ADJUST_LOGGING
+                  value: "{{inputs.parameters.THOTH_ADJUST_LOGGING}}"
+                - name: MI_THOTH
+                  value: "{{inputs.parameters.MI_THOTH}}"
+                - name: MI_MERGE
+                  value: "{{inputs.parameters.MI_MERGE}}"
+
+    - name: merge
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: REPOSITORY
+          - name: ENTITIES
+          - name: KNOWLEDGE_PATH
+          - name: THOTH_ADJUST_LOGGING
+          - name: MI_THOTH
+          - name: MI_MERGE
+      container:
+        image: "mi"
+        command: ["srcopsmetrics/cli.py"]
+        args: ["--create-knowledge",
+               "--repository", "{{inputs.parameters.REPOSITORY}}",
+               "--entities", "{{inputs.parameters.ENTITIES}}",
+               "--knowledge-path", "{{inputs.parameters.KNOWLEDGE_PATH}}",]
+        env:
+          - name: MI_THOTH
+            value: "{{inputs.parameters.MI_THOTH}}"
+          - name: MI_MERGE
+            value: "{{inputs.parameters.MI_MERGE}}"
+          - name: GITHUB_ACCESS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: sesheta-srcops
+                key: github-access-token
+          - name: S3_ENDPOINT_URL
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: host
+          - name: CEPH_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: bucket-name
+          - name: CEPH_BUCKET_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: bucket-prefix
+          - name: CEPH_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: secret-key
+          - name: CEPH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: key-id
+          - name: PYTHONPATH
+            value: "."
+          - name: THOTH_ADJUST_LOGGING
+            value: "{{inputs.parameters.THOTH_ADJUST_LOGGING}}"
