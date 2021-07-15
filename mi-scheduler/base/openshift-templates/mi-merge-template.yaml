@@ -1,0 +1,92 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: mi-merge
+  labels:
+    app: thoth
+    component: mi
+    template: mi-merge
+
+parameters:
+  - name: REPOSITORY
+    description: GitHub repository whose Health Indicator will be computed
+    displayName: inspected GitHub repository
+
+  - name: ENTITIES
+    description: Entities according to MI which will be analysed in REPOSITORY
+    displayName: Meta-information Indicator Entities
+
+  - name: KNOWLEDGE_PATH
+    description: Knowledge path where data is stored
+    displayName: Data path
+
+  - name: WORKFLOW_ID
+    required: true
+    description: ID for MI Workflow
+    displayName: ID for MI Workflow
+
+  - name: THOTH_ADJUST_LOGGING
+    displayName: mi log level
+    description: Log level of mi
+    required: true
+    value: 'thoth.mi-scheduler:INFO'
+
+  - name: MI_THOTH
+    displayName: mi cli kebechet inspection flag
+    description: Kebechet inspection flag
+
+  - name: MI_MERGE
+    displayName: mi cli aggregated data merge flag
+    description: MI Merge data flag
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: mi-merge-${WORKFLOW_ID}
+      labels:
+        app: scropsmetrics
+    spec:
+      serviceAccountName: argo
+      entrypoint: mi-merge
+      activeDeadlineSeconds: 12000
+      ttlStrategy:
+        secondsAfterCompletion: 10
+        secondsAfterSuccess: 10
+      arguments:
+        parameters:
+          - name: REPOSITORY
+            value: ${REPOSITORY}
+          - name: ENTITIES
+            value: ${ENTITIES}
+          - name: KNOWLEDGE_PATH
+            value: ${KNOWLEDGE_PATH}
+          - name: THOTH_ADJUST_LOGGING
+            value: ${THOTH_ADJUST_LOGGING}
+          - name: MI_THOTH
+            value: ${MI_THOTH}
+          - name: MI_MERGE
+            value: ${MI_MERGE}
+
+      templates:
+        - name: "mi-merge"
+          dag:
+            tasks:
+              - name: "mi-merge"
+                templateRef:
+                  name: "mi-merge"
+                  template: "mi-merge-workflow"
+                arguments:
+                  parameters:
+                    - name: REPOSITORY
+                      value: ${REPOSITORY}
+                    - name: ENTITIES
+                      value: ${ENTITIES}
+                    - name: KNOWLEDGE_PATH
+                      value: ${KNOWLEDGE_PATH}
+                    - name: THOTH_ADJUST_LOGGING
+                      value: ${THOTH_ADJUST_LOGGING}
+                    - name: MI_THOTH
+                      value: ${MI_THOTH}
+                    - name: MI_MERGE
+                      value: ${MI_MERGE}
