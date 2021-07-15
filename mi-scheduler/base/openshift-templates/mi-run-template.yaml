@@ -29,7 +29,7 @@ parameters:
     displayName: mi log level
     description: Log level of mi
     required: true
-    value: 'srcopsmetrics:INFO'
+    value: 'thoth.mi-scheduler:INFO'
 
   - name: MI_THOTH
     displayName: mi cli kebechet inspection flag
