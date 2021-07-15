@@ -117,3 +117,16 @@ objects:
                       value: "{{workflow.parameters.THOTH_PURGE_ADVISER_VERSION}}"
                     - name: THOTH_PURGE_ADVISER_END_DATETIME
                       value: "{{workflow.parameters.THOTH_PURGE_ADVISER_END_DATETIME}}"
+              - name: create-issues
+                dependencies: [purge]
+                templateRef:
+                  name: create-purge-issues
+                  template: create-purge-issues
+                arguments:
+                  parameters:
+                    - name: OS_NAME
+                      value: "{{workflow.parameters.THOTH_PURGE_OPERATING_SYSTEM_NAME}}"
+                    - name: OS_VERSION
+                      value: "{{workflow.parameters.THOTH_PURGE_OPERATING_SYSTEM_VERSION}}"
+                    - name: PYTHON_VERSION
+                      value: "{{workflow.parameters.THOTH_PURGE_PYTHON_VERSION}}"
