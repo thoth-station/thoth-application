@@ -4484,7 +4484,7 @@
             "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80,open.cloud:80",
+        "query": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
         "type": "custom"
       }
     ]
