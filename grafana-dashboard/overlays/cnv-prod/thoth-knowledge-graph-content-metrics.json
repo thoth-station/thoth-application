@@ -33,7 +33,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -80,7 +80,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"CLI\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"CLI\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -109,7 +109,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -156,7 +156,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"GITHUB_APP\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"GITHUB_APP\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -185,7 +185,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -232,7 +232,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"JUPYTER_NOTEBOOK\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"JUPYTER_NOTEBOOK\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -261,7 +261,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -308,7 +308,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"KEBECHET\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"KEBECHET\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -337,7 +337,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -384,7 +384,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"S2I\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_adviser_count_per_source_type{thoth_integration=\"S2I\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -425,7 +425,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -472,7 +472,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"CLI\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"CLI\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -501,7 +501,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -548,7 +548,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"GITHUB_APP\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"GITHUB_APP\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -577,7 +577,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -624,7 +624,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"JUPYTER_NOTEBOOK\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"JUPYTER_NOTEBOOK\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -653,7 +653,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -700,7 +700,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"KEBECHET\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"KEBECHET\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -729,7 +729,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -776,7 +776,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"S2I\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_users_count_per_source_type{thoth_integration=\"S2I\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -817,7 +817,7 @@
             "#511749",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -864,7 +864,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_kebechet_total_active_repo_count{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_kebechet_total_active_repo_count{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -905,7 +905,7 @@
             "#0a50a1",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -952,7 +952,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_pypi_stats{stats_type=\"packages\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_pypi_stats{stats_type=\"packages\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -981,7 +981,7 @@
             "#0a50a1",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1028,7 +1028,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_pypi_stats{stats_type=\"releases\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_pypi_stats{stats_type=\"releases\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1069,7 +1069,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1116,7 +1116,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(thoth_graphdb_total_python_packages_per_indexes{instance=\"$instance\", job=\"Thoth Metrics\"})",
+              "expr": "sum(thoth_graphdb_total_python_packages_per_indexes{instance=\"$instance\", service=\"metrics-exporter\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1145,7 +1145,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1192,7 +1192,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_number_python_package_versions{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1221,7 +1221,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -1268,7 +1268,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_python_packages_per_indexes{instance=\"$instance\", job=\"Thoth Metrics\", index_url=\"https://pypi.org/simple\"} / ignoring(index_url, stats_type) group_right thoth_pypi_stats{stats_type=\"packages\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_python_packages_per_indexes{instance=\"$instance\", service=\"metrics-exporter\", index_url=\"https://pypi.org/simple\"} / ignoring(index_url, stats_type) group_right thoth_pypi_stats{stats_type=\"packages\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "",
@@ -1298,7 +1298,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -1345,7 +1345,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"} / ignoring(stats_type) group_right thoth_pypi_stats{stats_type=\"releases\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_number_python_package_versions{instance=\"$instance\", service=\"metrics-exporter\"} / ignoring(stats_type) group_right thoth_pypi_stats{stats_type=\"releases\", instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1386,7 +1386,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1433,7 +1433,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_python_indexes{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_python_indexes{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1462,7 +1462,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1509,7 +1509,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_solvers{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_solvers{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1538,7 +1538,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1585,7 +1585,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_solvers_database{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_solvers_database{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1626,7 +1626,7 @@
             "#967302",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "format": "percentunit",
           "gauge": {
@@ -1674,7 +1674,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", service=\"metrics-exporter\", solver_name=\"solver-rhel-8-py38\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1703,7 +1703,7 @@
             "#967302",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "format": "percentunit",
           "gauge": {
@@ -1751,7 +1751,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", service=\"metrics-exporter\", solver_name=\"solver-fedora-34-py39\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1792,7 +1792,7 @@
             "#c15c17",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1839,7 +1839,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1868,7 +1868,7 @@
             "#967302",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1915,7 +1915,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"})",
+              "expr": "sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", service=\"metrics-exporter\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -1956,7 +1956,7 @@
             "#3f6833",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2003,7 +2003,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(thoth_graphdb_total_python_packages_with_no_error{instance=\"$instance\", job=\"Thoth Metrics\"})",
+              "expr": "sum(thoth_graphdb_total_python_packages_with_no_error{instance=\"$instance\", service=\"metrics-exporter\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2032,7 +2032,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2079,7 +2079,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error{instance=\"$instance\", job=\"Thoth Metrics\"}) - sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"})",
+              "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error{instance=\"$instance\", service=\"metrics-exporter\"}) - sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", service=\"metrics-exporter\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2108,7 +2108,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2155,7 +2155,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"})",
+              "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", service=\"metrics-exporter\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2184,7 +2184,7 @@
             "#3f6833",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -2231,7 +2231,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(thoth_graphdb_total_python_packages_with_no_error{instance=\"$instance\", job=\"Thoth Metrics\"}) / sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"})",
+              "expr": "sum(thoth_graphdb_total_python_packages_with_no_error{instance=\"$instance\", service=\"metrics-exporter\"}) / sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", service=\"metrics-exporter\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2260,7 +2260,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -2307,7 +2307,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(sum(thoth_graphdb_total_python_packages_with_solver_error{instance=\"$instance\", job=\"Thoth Metrics\"}) - sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"})) / sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"})",
+              "expr": "(sum(thoth_graphdb_total_python_packages_with_solver_error{instance=\"$instance\", service=\"metrics-exporter\"}) - sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", service=\"metrics-exporter\"})) / sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", service=\"metrics-exporter\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2336,7 +2336,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "percentunit",
           "gauge": {
             "maxValue": 100,
@@ -2383,7 +2383,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"}) / sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"})",
+              "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", service=\"metrics-exporter\"}) / sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", service=\"metrics-exporter\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2424,7 +2424,7 @@
             "#967302",
             "#052b51"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2471,7 +2471,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_cve{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_cve{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2500,7 +2500,7 @@
             "#c15c17",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2547,7 +2547,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2576,7 +2576,7 @@
             "#3f6833",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2623,7 +2623,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2652,7 +2652,7 @@
             "#890f02",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2699,7 +2699,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_si_not_analyzable_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_si_not_analyzable_python_packages{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2740,7 +2740,7 @@
             "#3f6833",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "format": "percentunit",
           "gauge": {
@@ -2788,7 +2788,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"} / thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{instance=\"$instance\", service=\"metrics-exporter\"} / thoth_graphdb_number_python_package_versions{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -2825,7 +2825,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 86,
           "legend": {
@@ -2917,7 +2917,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 94,
           "legend": {
@@ -2945,7 +2945,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_kebechet_total_active_repo_count{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_kebechet_total_active_repo_count{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Kebechet total active repos",
@@ -2953,7 +2953,7 @@
               "step": 600
             },
             {
-              "expr": "delta(thoth_kebechet_total_active_repo_count{instance=\"$instance\", job=\"Thoth Metrics\"}[7d])",
+              "expr": "delta(thoth_kebechet_total_active_repo_count{instance=\"$instance\", service=\"metrics-exporter\"}[7d])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Kebechet use increase respect to last week",
@@ -3014,7 +3014,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 10,
@@ -3046,7 +3046,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_python_packages_per_indexes{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_python_packages_per_indexes{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "PythonPackages: {{index_url}}",
@@ -3054,7 +3054,7 @@
               "step": 600
             },
             {
-              "expr": "thoth_graphdb_sum_python_packages_per_indexes{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_sum_python_packages_per_indexes{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Tot Python Packages per Index",
@@ -3062,7 +3062,7 @@
               "step": 600
             },
             {
-              "expr": "thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_number_python_package_versions{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Tot Python Packages Releases",
@@ -3123,7 +3123,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 17,
@@ -3154,7 +3154,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -3204,7 +3204,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 71,
@@ -3236,7 +3236,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -3298,7 +3298,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 97,
@@ -3331,7 +3331,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_python_packages_with_no_error{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_python_packages_with_no_error{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Solved Python Packages with no error: {{solver_name}}",
@@ -3382,7 +3382,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 6,
@@ -3415,7 +3415,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_python_packages_with_solver_error{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_python_packages_with_solver_error{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Solved Python Packages with solver error (unsolvable=False, unparseable=False)): {{solver_name}}",
@@ -3423,7 +3423,7 @@
               "step": 1200
             },
             {
-              "expr": "thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Solved Python Packages with solver error (unsolvable=TRUE): {{solver_name}}",
@@ -3431,7 +3431,7 @@
               "step": 1200
             },
             {
-              "expr": "thoth_graphdb_total_python_packages_with_solver_error_unparseable{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_python_packages_with_solver_error_unparseable{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Solved Python Packages with solver error (unparseable=TRUE): {{solver_name}}",
@@ -3494,7 +3494,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 92,
@@ -3526,7 +3526,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -3576,7 +3576,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 91,
@@ -3608,7 +3608,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -3670,7 +3670,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 16,
@@ -3701,7 +3701,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_number_of_pi_per_framework{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_number_of_pi_per_framework{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "FRAMEWORK: {{framework}} | PI: {{pi}}",
@@ -3750,7 +3750,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 21,
@@ -3781,7 +3781,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{performance_table}}",
@@ -3846,7 +3846,7 @@
             "#511749",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -3893,7 +3893,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_matmul\"}",
+              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", service=\"metrics-exporter\", performance_table=\"pi_matmul\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -3922,7 +3922,7 @@
             "#511749",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -3969,7 +3969,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_conv2d\"}",
+              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", service=\"metrics-exporter\", performance_table=\"pi_conv2d\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -3998,7 +3998,7 @@
             "#511749",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -4045,7 +4045,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_conv1d\"}",
+              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", service=\"metrics-exporter\", performance_table=\"pi_conv1d\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -4086,7 +4086,7 @@
             "#3f2b5b",
             "#584477"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -4133,7 +4133,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_pybench\"}",
+              "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", service=\"metrics-exporter\", performance_table=\"pi_pybench\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -4170,7 +4170,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 13,
@@ -4202,7 +4202,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_user_software_stacks_records{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_user_software_stacks_records{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "External (User) Software Stacks",
@@ -4210,7 +4210,7 @@
               "step": 600
             },
             {
-              "expr": "thoth_graphdb_total_user_run_software_environment{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_user_run_software_environment{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Number of External Software Environment for Run",
@@ -4218,7 +4218,7 @@
               "step": 600
             },
             {
-              "expr": "thoth_graphdb_total_main_records{instance=\"$instance\", job=\"Thoth Metrics\", main_table=~\"external_.*\"}",
+              "expr": "thoth_graphdb_total_main_records{instance=\"$instance\", service=\"metrics-exporter\", main_table=~\"external_.*\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Number of {{main_table}}",
@@ -4279,7 +4279,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 15,
@@ -4309,7 +4309,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_total_run_software_environment{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_run_software_environment{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Number of Software Environment for Run",
@@ -4317,7 +4317,7 @@
               "step": 1200
             },
             {
-              "expr": "thoth_graphdb_total_build_software_environment{instance=\"$instance\", job=\"Thoth Metrics\"}",
+              "expr": "thoth_graphdb_total_build_software_environment{instance=\"$instance\", service=\"metrics-exporter\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Number of Software Environment for Build",
@@ -4366,7 +4366,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 3,
           "fill": 1,
           "id": 98,

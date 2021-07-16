@@ -29,7 +29,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "thoth-station",
+            "datasource": "opf-prometheus",
             "fill": 1,
             "id": 27,
             "legend": {
@@ -59,37 +59,37 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "user_api_info{job=\"Thoth User API Metrics\"}",
+                "expr": "user_api_info{service=\"user-api-metrics\"}",
                 "format": "time_series",
                 "intervalFactor": 2,
-                "legendFormat": "{{instance}} | {{job}} | VERSION: {{version}}",
+                "legendFormat": "{{instance}} | {{service}} | VERSION: {{version}}",
                 "refId": "A",
                 "step": 40
               },
               {
-                "expr": "thoth_metrics_exporter_info{job=\"Thoth Metrics\"}",
+                "expr": "thoth_metrics_exporter_info{service=\"metrics-exporter\"}",
                 "format": "time_series",
                 "hide": false,
                 "intervalFactor": 2,
-                "legendFormat": "{{instance}} |{{job}} | VERSION: {{version}}",
+                "legendFormat": "{{instance}} |{{service}} | VERSION: {{version}}",
                 "refId": "B",
                 "step": 40
               },
               {
-                "expr": "management_api_info{job=\"Thoth Management API Metrics\"}",
+                "expr": "management_api_info{service=\"management-api-metrics\"}",
                 "format": "time_series",
                 "hide": false,
                 "intervalFactor": 2,
-                "legendFormat": "{{instance}} | {{job}} | VERSION: {{version}}",
+                "legendFormat": "{{instance}} | {{service}} | VERSION: {{version}}",
                 "refId": "C",
                 "step": 40
               },
               {
-                "expr": "investigator_consumer_info{job=\"Thoth Investigator Consumer Metrics\"}",
+                "expr": "thoth_investigator_consumer_info{service=\"investigator-consumer-metrics\"}",
                 "format": "time_series",
                 "hide": false,
                 "intervalFactor": 2,
-                "legendFormat": "{{instance}} |{{job}} | VERSION: {{version}}",
+                "legendFormat": "{{instance}} |{{service}} | VERSION: {{version}}",
                 "refId": "E",
                 "step": 40
               }
@@ -147,7 +147,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "thoth-station",
+            "datasource": "opf-prometheus",
             "fill": 1,
             "id": 28,
             "legend": {
@@ -248,7 +248,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "thoth-station",
+            "datasource": "opf-prometheus",
             "fill": 1,
             "id": 29,
             "legend": {
@@ -335,7 +335,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "thoth-station",
+            "datasource": "opf-prometheus",
             "fill": 1,
             "id": 30,
             "legend": {
