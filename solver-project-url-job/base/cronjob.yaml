@@ -1,0 +1,92 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: solver-project-url-job
+  labels:
+    app: thoth
+    component: solver-project-url-job
+spec:
+  schedule: "@daily"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: null
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: thoth
+            component: solver-project-url-job
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - image: "solver-project-url-job:latest"
+              name: solver-project-url-job
+              env:
+                - name: KUBERNETES_API_URL
+                  value: "https://kubernetes.default.svc.cluster.local"
+                - name: THOTH_SOLVER_PROJECT_URL_DEBUG
+                  value: "1"
+                - name: THOTH_GET_SOURCE_REPOS_START_DATE
+                - name: THOTH_GET_SOURCE_REPOS_END_DATE
+                - name: THOTH_GET_SOURCE_REPOS_OUTPUT
+                - name: SENTRY_DSN
+                  valueFrom:
+                    secretKeyRef:
+                      name: thoth
+                      key: sentry-dsn
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: thoth
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
+                - name: THOTH_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-name
+                      name: ceph
+                - name: THOTH_CEPH_BUCKET_PREFIX
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-prefix
+                      name: ceph
+                - name: THOTH_S3_ENDPOINT_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: host
+                      name: ceph
+                - name: THOTH_CEPH_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: key-id
+                - name: THOTH_CEPH_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: secret-key
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "100m"
+                limits:
+                  memory: "256Mi"
+                  cpu: "300m"
+              volumeMounts:
+                - name: secrets
+                  mountPath: /mnt/secrets
+                  readOnly: true
+          volumes:
+            - name: secrets
+              secret:
+                secretName: "kafka"
+                items:
+                  - key: kafka_ca.crt
+                    path: kafka_ca.crt
