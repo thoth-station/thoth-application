@@ -1714,3 +1714,46 @@
 * use image name with appended tag
 * :game_die: updated the label sync execution limits
 * Reworked to create better metadata, more versatile
+
+## Release 2021.07.19 (2021-07-19T19:22:50)
+### Features
+* :ship: Bump up versions of thoth components in prod for release v19.07.2021 (#1846)
+* switch on only the package release for ingestion in stage
+* :ship: Deploy the Tag pr-1979 for adviser
+* :ship: Deploy the Tag pr-65 for prescriptions
+* :ship: Deploy the Tag pr-64 for prescriptions
+* add secrets for meta-informa
+* Bump metric-exporter to v0.17.0
+* :bug: converted it to a string containing a comma separated list of strings
+* :squirrel: switch on the graph-refresh job for stage
+* Use prescriptions in Dependency Monkey runs
+* :ship: Deploy the Tag v1.6.5 for mi-scheduler
+* Add operate-first as an organization
+* :ship: Deploy the Tag v0.2.0 for prescriptions
+* Bump prescriptions to v0.2.0 in stage environment
+* :ship: Deploy the Tag v0.36.0 for adviser
+* Bump adviser to v0.36.0 in stage environment
+* :sparkles: add needs-triage behavior to t-s/t-a repo
+* :sparkles: do not include area/rel-eng issues from filter
+* Deprecate prescriptions-gh-release-notes job
+* :ship: Deploy the Tag v0.17.0 for metrics-exporter
+* kafka cert update for the ocp4 stage
+* feat: Enable tide on meteor and require approved on common
+* :ship: Deploy the Tag v2.6.2 for mi
+* :ship: Deploy the Tag pr-1476 for user-api
+* Make entities with other string lists
+* :ship: Deploy the Tag v1.6.4 for mi-scheduler
+* Fix thoth logging for mi-github cronjob
+* Changing org list to not contain spaces
+* feat: Enable override to bypass failing CI if necessary
+* :ship: Deploy the Tag v1.6.3 for mi-scheduler
+* Fix ref to be key instead of value
+* Add MI entities as PullRequest and Issue
+* add needs-triage to ps-* and prescriptions repos
+* add new step in purge job for creating upstream issues
+* :ship: Deploy the Tag v1.6.2 for mi-scheduler
+* update mi-scheduler to the newest v1.6.1 version
+* :ship: Deploy the Tag v1.6.1 for mi-scheduler
+* feat: Use ACME operator for routes
+### Improvements
+* :arrow_up: added the new milestone and move the latest
