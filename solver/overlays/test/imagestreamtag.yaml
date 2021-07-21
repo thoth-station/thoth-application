@@ -21,7 +21,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/solver-rhel-8-py38:v1.10.1
+        name: quay.io/thoth-station/solver-rhel-8-py38:v1.10.2
       importPolicy: {}
       referencePolicy:
         type: Source
