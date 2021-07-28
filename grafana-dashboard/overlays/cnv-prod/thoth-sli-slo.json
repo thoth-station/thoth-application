@@ -31,7 +31,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "decimals": 2,
           "fill": 1,
           "id": 64,
@@ -142,7 +142,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 25,
           "legend": {
@@ -208,7 +208,7 @@
               "step": 600
             },
             {
-              "expr": "(thoth_graphdb_number_python_package_versions{instance=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "expr": "(thoth_graphdb_number_python_package_versions{instance=\"$instance_metrics\", service=\"metrics-exporter\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Estimated days to solve all packages adding a new solver (1h interval)",
@@ -259,7 +259,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 69,
           "legend": {
@@ -290,7 +290,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", service=\"metrics-exporter\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Estimated days to solve (1h inverval): {{solver_name}}",
@@ -341,7 +341,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 68,
           "legend": {
@@ -372,7 +372,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))",
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", service=\"metrics-exporter\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Estimated hours to solve (1h inverval): {{solver_name}}",
@@ -439,7 +439,7 @@
             "#967302",
             "#967302"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -486,7 +486,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(thoth_graphdb_number_python_package_versions{instance=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "expr": "(thoth_graphdb_number_python_package_versions{instance=\"$instance_metrics\", service=\"metrics-exporter\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Estimated days (1h interval)",
@@ -516,7 +516,7 @@
             "#967302",
             "#967302"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -593,7 +593,7 @@
             "#967302",
             "#967302"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -640,7 +640,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-32-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", service=\"metrics-exporter\", solver_name=\"solver-fedora-32-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Estimated days (1h interval)",
@@ -670,7 +670,7 @@
             "#967302",
             "#967302"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -717,7 +717,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py36\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", service=\"metrics-exporter\", solver_name=\"solver-rhel-8-py36\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Estimated days (1h interval)",
@@ -747,7 +747,7 @@
             "#967302",
             "#967302"
           ],
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -794,7 +794,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+              "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", service=\"metrics-exporter\", solver_name=\"solver-rhel-8-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Estimated days (1h interval)",
@@ -832,7 +832,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 63,
           "legend": {
@@ -946,7 +946,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 90,
           "legend": {
@@ -1040,7 +1040,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 62,
           "legend": {
@@ -1150,7 +1150,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 74,
           "legend": {
@@ -1262,7 +1262,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 75,
           "legend": {
@@ -1372,7 +1372,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 76,
           "legend": {
@@ -1482,7 +1482,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 77,
           "legend": {
@@ -1592,7 +1592,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 78,
           "legend": {
@@ -1702,7 +1702,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 79,
           "legend": {
@@ -1824,7 +1824,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 80,
           "legend": {
@@ -1981,7 +1981,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 82,
           "legend": {
@@ -2138,7 +2138,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 83,
           "legend": {
@@ -2295,7 +2295,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 81,
           "legend": {
@@ -2452,7 +2452,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 84,
           "legend": {
@@ -2609,7 +2609,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 86,
           "legend": {
@@ -2766,7 +2766,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 85,
           "legend": {
@@ -2922,7 +2922,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 73,
           "legend": {
@@ -2999,7 +2999,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 89,
           "legend": {
@@ -3101,7 +3101,7 @@
           "bars": true,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 87,
           "legend": {
@@ -3189,7 +3189,7 @@
           "bars": true,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "thoth-station",
+          "datasource": "opf-prometheus",
           "fill": 1,
           "id": 88,
           "legend": {
