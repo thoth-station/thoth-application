@@ -123,7 +123,7 @@ spec:
                 secretKeyRef:
                   name: ceph
                   key: secret-key
-            - name: GITHUB_KEBECHET_TOKEN
+            - name: GITHUB_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
                   key: github-oauth-token
