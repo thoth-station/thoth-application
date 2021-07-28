@@ -123,6 +123,11 @@ spec:
                 secretKeyRef:
                   name: ceph
                   key: secret-key
+            - name: GITHUB_KEBECHET_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: github-oauth-token
+                  name: kebechet
             - name: THOTH_STORAGES_GRAPH_CACHE_DISABLED
               valueFrom:
                 configMapKeyRef:
