@@ -39,6 +39,10 @@ parameters:
     displayName: mi cli aggregated data merge flag
     description: MI Merge data flag
 
+  - name: MI_MERGE_PATH
+    displayName: Merge path where computed statistics will be stored
+    description: Statistics path
+
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
@@ -67,6 +71,8 @@ objects:
             value: ${MI_THOTH}
           - name: MI_MERGE
             value: ${MI_MERGE}
+          - name: MI_MERGE_PATH
+            value: ${MI_MERGE_PATH}
 
       templates:
         - name: "mi"
@@ -90,3 +96,5 @@ objects:
                       value: ${MI_THOTH}
                     - name: MI_MERGE
                       value: ${MI_MERGE}
+                    - name: MI_MERGE_PATH
+                      value: ${MI_MERGE_PATH}
