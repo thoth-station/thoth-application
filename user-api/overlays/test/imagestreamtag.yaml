@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/user-api:pr-1476
+        name: quay.io/thoth-station/user-api:v0.26.6
       importPolicy: {}
       referencePolicy:
         type: Source
