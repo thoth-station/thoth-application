@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/advise-reporter:v0.10.2
+        name: quay.io/thoth-station/advise-reporter:v0.10.3
       importPolicy: {}
       referencePolicy:
         type: Source
