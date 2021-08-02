@@ -35,7 +35,7 @@ presubmits:
           resources:
             requests:
               memory: "500Mi"
-              cpu: "500m"
+              cpu: "750m"
             limits:
               memory: "1Gi"
-              cpu: "500m"
+              cpu: "1000m"
