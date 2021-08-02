@@ -1757,3 +1757,61 @@
 * feat: Use ACME operator for routes
 ### Improvements
 * :arrow_up: added the new milestone and move the latest
+
+## Release 2021.08.02 (2021-08-02T10:30:56)
+### Features
+* :fire: patch back the stable version 1.2.4 (#1870)
+* :arrow_up: update certs for the thoth routes (#1868)
+* :ship: Deploy the Tag v1.4.0 for kebechet
+* :ship: Deploy the Tag v0.5.3 for graph-metrics-exporter
+* :speak_no_evil: increase prow limits for the kustomize check
+* :ship: Deploy the Tag v0.10.12 for graph-sync-job
+* :ship: Deploy the Tag v0.3.12 for graph-refresh-job
+* :ship: Deploy the Tag v0.26.7 for user-api
+* :ship: Deploy the Tag v0.2.7 for revsolver
+* :ship: Deploy the Tag v0.10.1 for package-releases-job
+* :ship: Deploy the Tag v0.3.1 for cve-update-job
+* :ship: Deploy the Tag v0.14.1 for investigator
+* :ship: Deploy the Tag v0.16.1 for slo-reporter
+* :arrow_up: upgrade cpu limit for postgresql in stage
+* :whale: Update of pgbouncer for database connection
+* :ship: Deploy the Tag v0.17.8 for management-api
+* :ship: Deploy the Tag v0.38.1 for adviser
+* Bump prescriptions to v0.5.1 in stage environment
+* Bump adviser to v0.38.1 in stage environment
+* :ship: Deploy the Tag v0.17.7 for management-api
+* :ship: Deploy the Tag v0.10.3 for reporter
+* :ship: Deploy the Tag v0.8.11 for package-update-job
+* :ship: Deploy the Tag v0.26.6 for user-api
+* bump up revsolver in the stage env
+* Add merge path to openshift and argo templates
+* update the prometheus scrap job with investigator message metrics
+* :ship: Deploy the Tag v0.18.0 for metrics-exporter
+* :ship: Deploy the Tag v2.7.0 for mi
+* Bump adviser to v0.38.0 in stage environment
+* :ship: Deploy the Tag v0.10.0 for package-releases-job
+* Bimp package-releases-job to v0.10.0 in stage environment
+* Bump pulp-pypi-sync-job to v0.1.0 in stage environment
+* :ship: Deploy the Tag v0.37.0 for adviser
+* :ship: Deploy the Tag v0.4.0 for prescriptions
+* :ship: Deploy the Tag v1.10.2 for solver
+* :ship: Deploy the Tag v1.10.2 for solver
+* :ship: Deploy the Tag v1.10.2 for solver
+* :ship: Deploy the Tag v1.10.2 for solver
+* :arrow_up: milestone cycling
+* Added overlays and other yaml files
+* update of grafana with the opf-prometheus datasource
+### Bug Fixes
+* :fire: fix the env var for the metrics-exporter
+* :panda_face: fix the secret setup in test instance for metrics-exporter
+* :panda_face: fix the secret type of  metrics-exporter secret
+* :fire: fix the secrets with yaml issues for mi
+* :fire: fix the secrets with yaml issues
+* :fire: fix the secrets with yaml issues
+### Improvements
+* :arrow_up: Bump up the version of thoth station for v2021.08.02 release
+* :ship: Bump up version for management-api
+* :ship: Bump up version for workflows-helpers
+* :ship: Bump up version for management-api (#1863)
+* :ship: Bump up version for metrics-exporter
+* setup kebehcet github token secrets for metrics-exporter
