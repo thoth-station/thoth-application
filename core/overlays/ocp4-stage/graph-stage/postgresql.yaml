@@ -88,10 +88,10 @@ items:
                 timeoutSeconds: 1
               resources:
                 requests:
-                  cpu: "8"
+                  cpu: "10"
                   memory: 4Gi
                 limits:
-                  cpu: "10"
+                  cpu: "12"
                   memory: 6Gi
               volumeMounts:
                 - mountPath: /var/lib/pgsql/data
