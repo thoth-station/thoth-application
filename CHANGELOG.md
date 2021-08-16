@@ -1815,3 +1815,26 @@
 * :ship: Bump up version for management-api (#1863)
 * :ship: Bump up version for metrics-exporter
 * setup kebehcet github token secrets for metrics-exporter
+
+## Release 2021.08.16 (2021-08-16T17:38:51)
+### Features
+* :ship: Bump up the images based on the version update v2021.08.16 (#1879)
+* :boom: setup pulp tls route for serving
+* :ship: Deploy the Tag v0.17.9 for management-api
+* Bump management-api to v0.17.9 in stage
+* lifecycled the milestones for t-a
+* Increase liveness probe seconds on graph-refresh job
+* :arrow_up: upgrade the db cpu resource limit for stage (#1873)
+* :boat: Bump up version for investigator for fixes
+* Update the kafka creds for the stage
+* :ship: Deploy the Tag v1.10.3 for solver
+* :ship: Deploy the Tag v1.10.3 for solver
+* :ship: Deploy the Tag v1.10.3 for solver
+* :ship: Deploy the Tag v1.10.3 for solver
+* :ship: Deploy the Tag pr-93 for prescriptions
+* :ship: Deploy the Tag pr-2028 for adviser
+### Bug Fixes
+* Update the kafka creds for the test env
+* :whale: Bump up solver version for fix of python import
+### Improvements
+* :arrow_up: upgrade the db cpu resource limit more for stage (#1874)
