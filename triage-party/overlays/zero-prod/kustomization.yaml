@@ -5,6 +5,7 @@ resources:
   - pcache.yaml
 patchesStrategicMerge:
   - imagestreamtags.yaml
+  - route.yaml
 configMapGenerator:
   - name: triage-party-config
     files:
