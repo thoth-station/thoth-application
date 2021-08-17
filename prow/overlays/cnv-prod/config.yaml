@@ -318,7 +318,7 @@ periodics:
     decorate: true
     spec:
       containers:
-        - image: quay.io/thoth-station/integration-tests:v0.8.3
+        - image: quay.io/thoth-station/integration-tests:v0.8.4
           imagePullPolicy: Always
           command:
             - python3
