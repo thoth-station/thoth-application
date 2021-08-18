@@ -113,8 +113,8 @@ spec:
                   cpu: "500m"
               livenessProbe:
                 failureThreshold: 1
-                # Give this job 2 hours to finish
-                initialDelaySeconds: 7200
+                # Give this job 4 hours to finish
+                initialDelaySeconds: 14400
                 periodSeconds: 10
                 tcpSocket:
                   port: 80
