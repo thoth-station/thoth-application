@@ -21,7 +21,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/prescriptions:v0.6.0
+        name: quay.io/thoth-station/prescriptions:v0.7.0
       importPolicy: {}
       referencePolicy:
         type: Source
