@@ -15,12 +15,14 @@ spec:
   failedJobsHistoryLimit: 4
   jobTemplate:
     spec:
+      activeDeadlineSeconds: 14400
       template:
         metadata:
           labels:
             app: thoth
             component: package-releases
         spec:
+          activeDeadlineSeconds: 14400
           containers:
             - image: "package-releases-job"
               name: package-releases
