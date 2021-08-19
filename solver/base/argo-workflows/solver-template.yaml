@@ -70,6 +70,7 @@ spec:
               secretKeySecret:
                 name: argo-artifact-repository-secrets
                 key: secretKey
+      activeDeadlineSeconds: 900
       container:
         name: solver
         image: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
@@ -186,6 +187,7 @@ spec:
               secretKeySecret:
                 name: argo-artifact-repository-secrets
                 key: secretKey
+      activeDeadlineSeconds: 900
       container:
         name: solver
         image: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
