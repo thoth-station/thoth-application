@@ -63,6 +63,16 @@ branch-protection:
             - "^revert-"
             - "^kebechet-"
             - "^dependabot/"
+        meteor:
+          protect: true
+          allow_force_pushes: false
+          required_status_checks:
+            contexts:
+              - aicoe-ci/prow/pre-commit
+          exclude:
+            - "^revert-"
+            - "^kebechet-"
+            - "^dependabot/"
       restrictions:
         users: []
         teams:
