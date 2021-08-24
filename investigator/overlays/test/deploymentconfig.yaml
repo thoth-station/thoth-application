@@ -119,6 +119,8 @@ spec:
               value: "0"
             - name: THOTH_INVESTIGATOR_SCHEDULE_REVSOLVER
               value: "0"
+            - name: THOTH_INVESTIGATOR_SCHEDULE_KEBECHET_ADMIN
+              value: "0"
           volumeMounts:
             - name: secrets
               mountPath: /mnt/secrets
