@@ -51,9 +51,9 @@ objects:
       serviceAccountName: argo
       activeDeadlineSeconds: 3000
       ttlStrategy:
-        secondsAfterCompletion: 900
-        secondsAfterSuccess: 900
-        secondsAfterFailure: 900
+        secondsAfterCompletion: 10
+        secondsAfterSuccess: 10
+        secondsAfterFailure: 120
       entrypoint: kebechet-administrator
 
       metrics:
