@@ -102,10 +102,10 @@ spec:
               resources:
                 requests:
                   memory: "256Mi"
-                  cpu: "500m"
+                  cpu: "1"
                 limits:
                   memory: "512Mi"
-                  cpu: "500m"
+                  cpu: "1"
               livenessProbe:
                 failureThreshold: 1
                 # Give this job 4 hours to finish
