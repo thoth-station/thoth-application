@@ -1,0 +1,85 @@
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: prescriptions-refresh
+  labels:
+    app: thoth
+    component: prescriptions-refresh
+spec:
+  schedule: "@weekly"
+  concurrencyPolicy: "Forbid"
+  startingDeadlineSeconds: 0
+  suspend: true
+  workflowSpec:
+    serviceAccountName: argo
+    activeDeadlineSeconds: 3000
+    ttlStrategy:
+      secondsAfterCompletion: 300
+      secondsAfterSuccess: 300
+      secondsAfterFailure: 300
+    entrypoint: gh
+    metrics:
+      prometheus:
+        - name: status_counter
+          help: Count of workflow by status
+          labels:
+            - key: name
+              value: prescriptions-refresh
+            - key: status
+              value: "{{workflow.status}}"
+          counter:
+            value: "1"
+        - name: duration_seconds_histogram
+          help: Duration of workflow when succeeded
+          when: "{{workflow.status}} == Succeeded"
+          labels:
+            - key: name
+              value: prescriptions-refresh
+          histogram:
+            buckets:
+              - 5
+              - 10
+              - 30
+              - 60
+              - 120
+              - 180
+              - 300
+              - 600
+              - 900
+            value: "{{workflow.duration}}"
+    volumes:
+      - name: ssh-config
+        secret:
+          secretName: kebechet
+          items:
+            - key: ssh-privatekey
+              path: id_rsa
+              mode: 0600
+      - name: github-app-privatekey
+        secret:
+          secretName: kebechet
+          items:
+          - key: KEBBHUT_GITHUB_PRIVATE_KEY
+            path: github-privatekey
+    templates:
+      - name: gh
+        dag:
+          tasks:
+            - name: gh-link
+              templateRef:
+                name: prescriptions-refresh-gh
+                template: gh-link
+              continueOn:
+                failed: true
+            - name: gh-archived
+              templateRef:
+                name: prescriptions-refresh-gh
+                template: gh-archived
+              continueOn:
+                failed: true
+            - name: gh-release-notes
+              templateRef:
+                name: prescriptions-refresh-gh
+                template: gh-release-notes
+              continueOn:
+                failed: true
