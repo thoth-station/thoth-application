@@ -21,10 +21,481 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 21,
-  "iteration": 1629831370084,
+  "id": 23,
+  "iteration": 1629993116929,
   "links": [],
   "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 1,
+                  "text": "down"
+                },
+                "1": {
+                  "index": 0,
+                  "text": "up"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 13,
+        "x": 0,
+        "y": 0
+      },
+      "id": 97,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "User API",
+          "refId": "A",
+          "step": 600
+        },
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"management-api-thoth-frontend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Management API",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "APIs",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Considering thoth adviser manager working ",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 1,
+                  "text": "down"
+                },
+                "1": {
+                  "index": 0,
+                  "text": "up"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 11,
+        "x": 13,
+        "y": 0
+      },
+      "id": 112,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"} == 1 and on(prometheus) up{instance=\"investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"} == 1 and on(prometheus) up{instance=\"workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"} and on(prometheus) thoth_openshift_connection_issues{prometheus=\"moc/zero\"} and on(prometheus) thoth_graphdb_connection_issues{prometheus=\"moc/zero\"} and on(prometheus) thoth_kafka_connection_issues{prometheus=\"moc/zero\"} and on(prometheus) thoth_ceph_connection_issues{prometheus=\"moc/zero\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "User API",
+          "refId": "A",
+          "step": 600
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "GitHub App",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 1,
+                  "text": "down"
+                },
+                "1": {
+                  "index": 0,
+                  "text": "up"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 13,
+        "x": 0,
+        "y": 5
+      },
+      "id": 96,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Investigator",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"investigator-message-metrics-thoth-infra-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Investigator metrics",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Metrics exporter",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "PostgreSQL Metrics",
+          "refId": "G"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Components",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 1,
+                  "text": "down"
+                },
+                "1": {
+                  "index": 0,
+                  "text": "up"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 11,
+        "x": 13,
+        "y": 5
+      },
+      "id": 109,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "thoth-backend-prod",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "thoth-middletier-prod",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "up{instance=\"workflow-controller-metrics-thoth-amun-inspection-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "thoth-amun-inspection-prod",
+          "refId": "F"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Workflow Controller ",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 0,
+                  "text": "up"
+                },
+                "1": {
+                  "index": 1,
+                  "text": "down"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 95,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "thoth_openshift_connection_issues{prometheus=\"moc/zero\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "OpenShift",
+          "refId": "A",
+          "step": 600
+        },
+        {
+          "exemplar": true,
+          "expr": "thoth_graphdb_connection_issues{prometheus=\"moc/zero\"}",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "PostgreSQL",
+          "refId": "B",
+          "step": 600
+        },
+        {
+          "exemplar": true,
+          "expr": "thoth_kafka_connection_issues{prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Kafka",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "thoth_ceph_connection_issues{prometheus=\"moc/zero\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Ceph",
+          "refId": "D"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Services",
+      "type": "stat"
+    },
     {
       "datasource": "thoth-station",
       "fieldConfig": {
@@ -51,10 +522,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 9,
+        "h": 10,
+        "w": 5,
         "x": 0,
-        "y": 0
+        "y": 17
       },
       "id": 64,
       "links": [],
@@ -91,14 +562,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 15,
-        "x": 9,
-        "y": 0
+        "h": 10,
+        "w": 12,
+        "x": 5,
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 25,
@@ -132,15 +603,6 @@
       "stack": false,
       "steppedLine": false,
       "targets": [
-        {
-          "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"}",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 2,
-          "legendFormat": "Thoth Number of unsolved packages",
-          "refId": "A",
-          "step": 600
-        },
         {
           "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
           "format": "time_series",
@@ -180,7 +642,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Unsolved Python Packages, Learning Rate and Estimated time to solve all packages",
+      "title": "Learning Rate and Estimated time to solve all packages",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -224,14 +686,113 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 10,
+        "w": 7,
+        "x": 17,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 98,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.1.1",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "Thoth Number of unsolved packages",
+          "refId": "A",
+          "step": 600
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Unsolved Python Packages,",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
         "w": 12,
         "x": 0,
-        "y": 7
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 69,
@@ -322,14 +883,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 12,
         "x": 12,
-        "y": 7
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 68,
@@ -455,7 +1016,7 @@
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 35
       },
       "id": 91,
       "interval": null,
@@ -528,7 +1089,7 @@
         "h": 3,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 35
       },
       "id": 66,
       "interval": null,
@@ -601,7 +1162,7 @@
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 19
+        "y": 38
       },
       "id": 71,
       "interval": null,
@@ -676,7 +1237,7 @@
         "h": 3,
         "w": 12,
         "x": 12,
-        "y": 19
+        "y": 38
       },
       "id": 94,
       "interval": null,
@@ -716,14 +1277,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 41
       },
       "hiddenSeries": false,
       "id": 63,
@@ -834,14 +1395,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 90,
@@ -977,10 +1538,10 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
         "x": 0,
-        "y": 40
+        "y": 59
       },
       "id": 62,
       "links": [],
@@ -1044,6 +1605,122 @@
       "type": "piechart"
     },
     {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% solver workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% solver workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 8,
+        "y": 59
+      },
+      "id": 103,
+      "links": [],
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) / (sum(thoth_sli_weekly{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% solver workflows succeeded",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) / (sum(thoth_sli_weekly{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}))",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% solver workflows failed",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}) / (sum(thoth_sli_weekly{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}))",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% solver workflows error",
+          "refId": "H",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Solver Workflow quality",
+      "type": "state-timeline"
+    },
+    {
       "datasource": "thoth-station",
       "fieldConfig": {
         "defaults": {
@@ -1079,10 +1756,10 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 7,
         "w": 8,
-        "x": 8,
-        "y": 40
+        "x": 0,
+        "y": 67
       },
       "id": 74,
       "links": [],
@@ -1148,6 +1825,109 @@
       "type": "piechart"
     },
     {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% adviser workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 16,
+        "x": 8,
+        "y": 67
+      },
+      "id": 104,
+      "links": [],
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_succeeded\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% adviser workflows succeeded",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_failed\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% adviser workflows failed",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_error\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% adviser workflows error",
+          "refId": "H",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Adviser Workflow quality",
+      "type": "state-timeline"
+    },
+    {
       "datasource": "thoth-station",
       "fieldConfig": {
         "defaults": {
@@ -1168,7 +1948,22 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "% provenance checker workflows failed"
+              "options": "% adviser workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% adviser workflows task failed"
             },
             "properties": [
               {
@@ -1183,12 +1978,12 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 7,
         "w": 8,
-        "x": 16,
-        "y": 40
+        "x": 0,
+        "y": 74
       },
-      "id": 75,
+      "id": 110,
       "links": [],
       "options": {
         "displayLabels": [
@@ -1214,40 +2009,160 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_succeeded\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "% provenance checker workflows succeeded",
+          "legendFormat": "% adviser workflows task succeeded",
           "refId": "D",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflow_tasks_failed\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
           "format": "time_series",
+          "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "% provenance checker workflows failed",
+          "legendFormat": "% adviser workflows task failed",
           "refId": "F",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflow_tasks_error\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_task_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
           "format": "time_series",
+          "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "% provenance checker workflows error",
+          "legendFormat": "% adviser workflows task error",
           "refId": "H",
           "step": 2400
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Provenance Checker Workflow quality",
+      "title": "Adviser Workflow Task quality",
       "type": "piechart"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% adviser workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% adviser workflows task failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 16,
+        "x": 8,
+        "y": 74
+      },
+      "id": 111,
+      "links": [],
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_succeeded\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% adviser workflows task succeeded",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflow_tasks_failed\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% adviser workflows task failed",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflow_tasks_error\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_task_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% adviser workflows task error",
+          "refId": "H",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Adviser Workflow Task quality",
+      "type": "state-timeline"
     },
     {
       "datasource": "thoth-station",
@@ -1285,10 +2200,10 @@
         ]
       },
       "gridPos": {
-        "h": 11,
+        "h": 7,
         "w": 8,
         "x": 0,
-        "y": 49
+        "y": 81
       },
       "id": 76,
       "links": [],
@@ -1353,6 +2268,107 @@
       "timeShift": null,
       "title": "Security Workflow quality",
       "type": "piechart"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% security workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 16,
+        "x": 8,
+        "y": 81
+      },
+      "id": 105,
+      "links": [],
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"security_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% security workflows succeeded",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% security workflows failed",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% security workflows error",
+          "refId": "H",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Security Workflow quality",
+      "type": "state-timeline"
     },
     {
       "datasource": "thoth-station",
@@ -1435,10 +2451,10 @@
         ]
       },
       "gridPos": {
-        "h": 11,
+        "h": 7,
         "w": 8,
-        "x": 8,
-        "y": 49
+        "x": 0,
+        "y": 88
       },
       "id": 77,
       "links": [],
@@ -1503,6 +2519,355 @@
       "timeShift": null,
       "title": "Kebechet Workflow quality",
       "type": "piechart"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% security workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% security workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% kebechet workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% kebechet workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 16,
+        "x": 8,
+        "y": 88
+      },
+      "id": 106,
+      "links": [],
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% kebechet workflows succeeded",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% kebechet workflows failed",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% kebechet workflows error",
+          "refId": "H",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Kebechet Workflow quality",
+      "type": "state-timeline"
+    },
+    {
+      "datasource": "thoth-station",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% provenance checker workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 95
+      },
+      "id": 75,
+      "links": [],
+      "options": {
+        "displayLabels": [
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% provenance checker workflows succeeded",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% provenance checker workflows failed",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% provenance checker workflows error",
+          "refId": "H",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Provenance Checker Workflow quality",
+      "type": "piechart"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% provenance checker workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 16,
+        "x": 8,
+        "y": 95
+      },
+      "id": 107,
+      "links": [],
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% provenance checker workflows succeeded",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% provenance checker workflows failed",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "% provenance checker workflows error",
+          "refId": "H",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Provenance Checker Workflow quality",
+      "type": "state-timeline"
     },
     {
       "datasource": "thoth-station",
@@ -1585,10 +2950,10 @@
         ]
       },
       "gridPos": {
-        "h": 11,
+        "h": 7,
         "w": 8,
-        "x": 16,
-        "y": 49
+        "x": 0,
+        "y": 102
       },
       "id": 78,
       "links": [],
@@ -1655,390 +3020,150 @@
       "type": "piechart"
     },
     {
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% security workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% security workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% package extract workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% package extract workflows failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
-      "color": {
-        "cardColor": "#b4ff00",
-        "colorScale": "sqrt",
-        "colorScheme": "interpolateYlOrRd",
-        "exponent": 0.5,
-        "mode": "spectrum"
-      },
-      "dataFormat": "tsbuckets",
-      "datasource": "thoth-station",
       "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 60
+        "h": 7,
+        "w": 16,
+        "x": 8,
+        "y": 102
       },
-      "heatmap": {},
-      "hideZeroBuckets": false,
-      "highlightCards": true,
-      "id": 79,
-      "legend": {
-        "show": true
-      },
+      "id": 108,
       "links": [],
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single"
+        }
+      },
       "pluginVersion": "8.1.1",
-      "reverseYBuckets": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"revsolver_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"revsolver_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "% security workflows succeeded",
+          "legendFormat": "% package extract workflows succeeded",
           "refId": "D",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"revsolver_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"revsolver_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "% security workflows failed",
+          "legendFormat": "% package extract workflows failed",
           "refId": "F",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"revsolver_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"revsolver_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "% security workflows error",
+          "legendFormat": "% package extract workflows error",
           "refId": "H",
           "step": 2400
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Revsolver Workflow quality",
-      "tooltip": {
-        "show": true,
-        "showHistogram": false
-      },
-      "tooltipDecimals": 3,
-      "type": "heatmap",
-      "xAxis": {
-        "show": true
-      },
-      "xBucketNumber": null,
-      "xBucketSize": null,
-      "yAxis": {
-        "decimals": null,
-        "format": "short",
-        "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
-      },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
-    },
-    {
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
-      },
-      "color": {
-        "cardColor": "#b4ff00",
-        "colorScale": "sqrt",
-        "colorScheme": "interpolateYlOrRd",
-        "exponent": 0.5,
-        "mode": "spectrum"
-      },
-      "dataFormat": "tsbuckets",
-      "datasource": "thoth-station",
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 60
-      },
-      "heatmap": {},
-      "hideZeroBuckets": false,
-      "highlightCards": true,
-      "id": 82,
-      "legend": {
-        "show": true
-      },
-      "links": [],
-      "pluginVersion": "8.1.1",
-      "reverseYBuckets": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 5s",
-          "refId": "A",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 10s",
-          "refId": "C",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 30s",
-          "refId": "B",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 60s",
-          "refId": "D",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 120s",
-          "refId": "E",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 180s",
-          "refId": "F",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 300s",
-          "refId": "G",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 600s",
-          "refId": "H",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 900s",
-          "refId": "I",
-          "step": 2400
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Adviser Workflow latency",
-      "tooltip": {
-        "show": true,
-        "showHistogram": false
-      },
-      "tooltipDecimals": 3,
-      "type": "heatmap",
-      "xAxis": {
-        "show": true
-      },
-      "xBucketNumber": null,
-      "xBucketSize": null,
-      "yAxis": {
-        "decimals": null,
-        "format": "short",
-        "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
-      },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
-    },
-    {
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
-      },
-      "color": {
-        "cardColor": "#b4ff00",
-        "colorScale": "sqrt",
-        "colorScheme": "interpolateYlOrRd",
-        "exponent": 0.5,
-        "mode": "spectrum"
-      },
-      "dataFormat": "tsbuckets",
-      "datasource": "thoth-station",
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 60
-      },
-      "heatmap": {},
-      "hideZeroBuckets": false,
-      "highlightCards": true,
-      "id": 83,
-      "legend": {
-        "show": true
-      },
-      "links": [],
-      "pluginVersion": "8.1.1",
-      "reverseYBuckets": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 5s",
-          "refId": "A",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 10s",
-          "refId": "C",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 30s",
-          "refId": "B",
-          "step": 2400
-        },
-        {
-          "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "< 60s",
-          "refId": "D",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 120s",
-          "refId": "E",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 180s",
-          "refId": "F",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 300s",
-          "refId": "G",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 600s",
-          "refId": "H",
-          "step": 2400
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "< 900s",
-          "refId": "I",
-          "step": 2400
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Provenance Checker Workflow latency",
-      "tooltip": {
-        "show": true,
-        "showHistogram": false
-      },
-      "tooltipDecimals": 3,
-      "type": "heatmap",
-      "xAxis": {
-        "show": true
-      },
-      "xBucketNumber": null,
-      "xBucketSize": null,
-      "yAxis": {
-        "decimals": null,
-        "format": "short",
-        "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
-      },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
+      "title": "Package Extract Workflow quality",
+      "type": "state-timeline"
     },
     {
       "cards": {
@@ -2050,15 +3175,16 @@
         "colorScale": "sqrt",
         "colorScheme": "interpolateOranges",
         "exponent": 0.5,
+        "max": 1,
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "thoth-station",
+      "datasource": null,
       "gridPos": {
-        "h": 8,
-        "w": 8,
+        "h": 7,
+        "w": 12,
         "x": 0,
-        "y": 68
+        "y": 109
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -2197,22 +3323,23 @@
       "color": {
         "cardColor": "#b4ff00",
         "colorScale": "sqrt",
-        "colorScheme": "interpolateYlOrRd",
+        "colorScheme": "interpolateOranges",
         "exponent": 0.5,
+        "max": 1,
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "thoth-station",
+      "datasource": null,
       "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 68
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 109
       },
       "heatmap": {},
       "hideZeroBuckets": false,
       "highlightCards": true,
-      "id": 84,
+      "id": 101,
       "legend": {
         "show": true
       },
@@ -2222,7 +3349,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"security_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2232,7 +3359,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2242,7 +3369,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2252,7 +3379,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2262,7 +3389,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2272,7 +3399,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2282,7 +3409,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2292,7 +3419,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2302,7 +3429,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2313,7 +3440,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Kebechet Workflow latency",
+      "title": "Solver Workflow Task latency",
       "tooltip": {
         "show": true,
         "showHistogram": false
@@ -2327,7 +3454,7 @@
       "xBucketSize": null,
       "yAxis": {
         "decimals": null,
-        "format": "none",
+        "format": "short",
         "logBase": 1,
         "max": null,
         "min": null,
@@ -2348,20 +3475,21 @@
         "colorScale": "sqrt",
         "colorScheme": "interpolateYlOrRd",
         "exponent": 0.5,
+        "max": 1,
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "thoth-station",
+      "datasource": null,
       "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 68
+        "h": 7,
+        "w": 11,
+        "x": 1,
+        "y": 116
       },
       "heatmap": {},
       "hideZeroBuckets": false,
       "highlightCards": true,
-      "id": 86,
+      "id": 82,
       "legend": {
         "show": true
       },
@@ -2371,7 +3499,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2381,7 +3509,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2391,7 +3519,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2401,7 +3529,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2411,7 +3539,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2421,7 +3549,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2431,7 +3559,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2441,7 +3569,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2451,7 +3579,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"package_extract_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2462,7 +3590,157 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Package Extract Workflow latency",
+      "title": "Adviser Workflow latency",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "tooltipDecimals": 3,
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "short",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateOranges",
+        "exponent": 0.5,
+        "max": 1,
+        "mode": "spectrum"
+      },
+      "dataFormat": "tsbuckets",
+      "datasource": null,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 116
+      },
+      "heatmap": {},
+      "hideZeroBuckets": false,
+      "highlightCards": true,
+      "id": 102,
+      "legend": {
+        "show": true
+      },
+      "links": [],
+      "pluginVersion": "8.1.1",
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 5s",
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 10s",
+          "refId": "C",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 30s",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 60s",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 120s",
+          "refId": "E",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 180s",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 300s",
+          "refId": "G",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 600s",
+          "refId": "H",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 900s",
+          "refId": "I",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Adviser Workflow Task latency",
       "tooltip": {
         "show": true,
         "showHistogram": false
@@ -2500,12 +3778,12 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "thoth-station",
+      "datasource": null,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
         "x": 0,
-        "y": 76
+        "y": 123
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -2649,12 +3927,308 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "thoth-station",
+      "datasource": null,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
         "x": 8,
-        "y": 76
+        "y": 123
+      },
+      "heatmap": {},
+      "hideZeroBuckets": false,
+      "highlightCards": true,
+      "id": 99,
+      "legend": {
+        "show": true
+      },
+      "links": [],
+      "pluginVersion": "8.1.1",
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 5s",
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 10s",
+          "refId": "C",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 30s",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 60s",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 120s",
+          "refId": "E",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 180s",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 300s",
+          "refId": "G",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 600s",
+          "refId": "H",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 900s",
+          "refId": "I",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Kebechet Workflow latency",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "tooltipDecimals": 3,
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "none",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateYlOrRd",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "tsbuckets",
+      "datasource": null,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 123
+      },
+      "heatmap": {},
+      "hideZeroBuckets": false,
+      "highlightCards": true,
+      "id": 83,
+      "legend": {
+        "show": true
+      },
+      "links": [],
+      "pluginVersion": "8.1.1",
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 5s",
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 10s",
+          "refId": "C",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 30s",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "< 60s",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 120s",
+          "refId": "E",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 180s",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 300s",
+          "refId": "G",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 600s",
+          "refId": "H",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 900s",
+          "refId": "I",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Provenance Checker Workflow latency",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "tooltipDecimals": 3,
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "short",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateYlOrRd",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "tsbuckets",
+      "datasource": null,
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 2,
+        "y": 131
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -2786,6 +4360,304 @@
       "yBucketSize": null
     },
     {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateYlOrRd",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "tsbuckets",
+      "datasource": null,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 131
+      },
+      "heatmap": {},
+      "hideZeroBuckets": false,
+      "highlightCards": true,
+      "id": 84,
+      "legend": {
+        "show": true
+      },
+      "links": [],
+      "pluginVersion": "8.1.1",
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 5s",
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 10s",
+          "refId": "C",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 30s",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 60s",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 120s",
+          "refId": "E",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 180s",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 300s",
+          "refId": "G",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 600s",
+          "refId": "H",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 900s",
+          "refId": "I",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Kebechet Administrator Workflow latency",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "tooltipDecimals": 3,
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "none",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateYlOrRd",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "tsbuckets",
+      "datasource": null,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 131
+      },
+      "heatmap": {},
+      "hideZeroBuckets": false,
+      "highlightCards": true,
+      "id": 86,
+      "legend": {
+        "show": true
+      },
+      "links": [],
+      "pluginVersion": "8.1.1",
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 5s",
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 10s",
+          "refId": "C",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 30s",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 60s",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 120s",
+          "refId": "E",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 180s",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 300s",
+          "refId": "G",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 600s",
+          "refId": "H",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "< 900s",
+          "refId": "I",
+          "step": 2400
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Package Extract Workflow Task latency",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "tooltipDecimals": 3,
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "short",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    },
+    {
       "datasource": "thoth-station",
       "fieldConfig": {
         "defaults": {
@@ -2824,7 +4696,7 @@
         "h": 12,
         "w": 9,
         "x": 0,
-        "y": 85
+        "y": 139
       },
       "id": 87,
       "links": [],
@@ -2876,7 +4748,115 @@
       "type": "piechart"
     },
     {
-      "datasource": "thoth-station",
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 15,
+        "x": 9,
+        "y": 139
+      },
+      "hiddenSeries": false,
+      "id": 100,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.1.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "thoth_reporter_success_adviser_gauge{env=\"$env\", prometheus=\"moc/zero\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "Successfull adviser runs {{adviser_version}}",
+          "refId": "A",
+          "step": 1800
+        },
+        {
+          "exemplar": true,
+          "expr": "thoth_reporter_failed_adviser_gauge{env=\"$env\", prometheus=\"moc/zero\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "Failed adviser runs {{adviser_version}}",
+          "refId": "B",
+          "step": 1800
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Adviser Statistics",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1112",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1113",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2896,7 +4876,7 @@
               },
               {
                 "color": "red",
-                "value": 80
+                "value": 10
               }
             ]
           },
@@ -2905,15 +4885,15 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 12,
-        "w": 15,
-        "x": 9,
-        "y": 85
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 151
       },
       "id": 88,
       "links": [],
       "options": {
-        "alignValue": "left",
+        "alignValue": "center",
         "legend": {
           "displayMode": "list",
           "placement": "bottom"
@@ -2929,7 +4909,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_reporter_failed_adviser_justifications_gauge{env=\"$env\"}",
+          "expr": "thoth_reporter_failed_adviser_justifications_gauge{env=\"$env\", prometheus=\"moc/zero\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2948,14 +4928,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 97
+        "y": 162
       },
       "hiddenSeries": false,
       "id": 73,
@@ -2966,6 +4946,8 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -3041,14 +5023,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 97
+        "y": 162
       },
       "hiddenSeries": false,
       "id": 89,
@@ -3339,5 +5321,5 @@
   "timezone": "",
   "title": "Thoth SLI/SLO",
   "uid": "a30fccbb3c61cc644827f080c68c460d2132bc4a",
-  "version": 16
+  "version": 3
 }

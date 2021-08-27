@@ -22,58 +22,66 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 11,
-  "iteration": 1629882116111,
+  "id": 22,
+  "iteration": 1629993013394,
   "links": [],
   "panels": [
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "thoth-station",
-      "fill": 1,
-      "fillGradient": 0,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#73BF69",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 9,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "hiddenSeries": false,
       "id": 8,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "percentage": false,
       "pluginVersion": "8.1.1",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "thoth_package_release_job_messages_sent_total{env=~\"$env\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{env}} | {{message_type}} message sent from package releases producer ({{version}})",
           "refId": "B",
@@ -91,7 +99,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_kebechet_administrator_messages_sent_total{env=~\"$env\"}",
+          "expr": "thoth_kebechet_administrator_messages_sent_total{env=~\"$env\", prometheus=\"moc/zero\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{env}} | {{message_type}} message sent from kebechet administrator producer ({{version}})",
@@ -99,62 +107,24 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_solver_messages_sent_total{env=~\"$env\"}",
+          "expr": "thoth_solver_messages_sent_total{env=~\"$env\", prometheus=\"moc/zero\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{env}} | {{message_type}} message sent from solver producer ({{version}})",
           "refId": "D"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Kafka Messages sent by producers",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "decimals": null,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "state-timeline"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -195,8 +165,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "thoth_investigator_processed_total{instance=\"$instance_consumer\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{message_type}} message Processed",
           "refId": "B",
@@ -223,6 +195,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:115",
           "decimals": null,
           "format": "short",
           "label": null,
@@ -232,6 +205,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:116",
           "decimals": null,
           "format": "short",
           "label": null,
@@ -251,7 +225,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -292,8 +266,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "thoth_investigator_in_progress{instance=\"$instance_consumer\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{message_type}} message In progress ",
           "refId": "A",
@@ -320,6 +296,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:200",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -328,6 +305,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:201",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -346,7 +324,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -387,8 +365,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "thoth_investigator_exceptions_total{instance=\"$instance_consumer\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{message_type}} message Exceptions",
           "refId": "C",
@@ -415,6 +395,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:451",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -423,6 +404,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:452",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -441,7 +423,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -480,8 +462,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_investigator_paused_topics{instance=\"$instance_consumer\"}",
+          "exemplar": true,
+          "expr": "thoth_investigator_halted_topics{instance=\"$instance_consumer\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "MESSAGE {{base_topic_name}} ",
           "refId": "A",
@@ -508,6 +492,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:536",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -516,6 +501,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:537",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -534,7 +520,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -552,6 +538,8 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -573,8 +561,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "message_count_by_version_total{instance=\"$instance_consumer_metrics\"}",
+          "exemplar": true,
+          "expr": "message_count_by_version_total{instance=\"$instance_consumer_metrics\", prometheus=\"moc/zero\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "MESSAGE {{message_type}} ",
           "refId": "A",
@@ -601,6 +591,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:621",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -609,6 +600,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:622",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -627,7 +619,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -666,10 +658,12 @@
       "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "thoth_investigator_scheduled_workflows_total{instance=\"$instance_consumer\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "MESSAGE {{message_type}} SCHEDULED {{workflow_type}} WORKFLOW",
+          "legendFormat": "",
           "refId": "A",
           "step": 600
         }
@@ -694,6 +688,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:706",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -702,6 +697,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:707",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -720,7 +716,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "description": "A count of all workflows currently accessible by the controller by status",
       "fill": 1,
       "fillGradient": 0,
@@ -762,16 +758,20 @@
       "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "argo_workflows_count{instance='$instance_workflow_controller'}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{status}}",
           "refId": "A",
           "step": 1200
         },
         {
+          "exemplar": true,
           "expr": "sum(argo_workflows_count{instance='$instance_workflow_controller'})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Total workflows",
           "refId": "B",
@@ -798,6 +798,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:876",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -806,6 +807,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:877",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -894,6 +896,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1637",
           "format": "percentunit",
           "label": null,
           "logBase": 1,
@@ -902,6 +905,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1638",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -920,7 +924,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -989,6 +993,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1046",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -997,6 +1002,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1047",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1015,7 +1021,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1084,6 +1090,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:961",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1092,6 +1099,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:962",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1110,7 +1118,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1195,6 +1203,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1301",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1203,6 +1212,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1302",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1221,7 +1231,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1290,6 +1300,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1131",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1298,6 +1309,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1132",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1316,7 +1328,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1385,6 +1397,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1469",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1393,6 +1406,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1470",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1411,7 +1425,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1496,6 +1510,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1216",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1504,6 +1519,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1217",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1518,7 +1534,7 @@
       }
     }
   ],
-  "refresh": "30s",
+  "refresh": "",
   "schemaVersion": 30,
   "style": "dark",
   "tags": [
@@ -1532,6 +1548,7 @@
       {
         "allValue": null,
         "current": {
+          "selected": true,
           "text": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80",
           "value": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80"
         },
@@ -1550,6 +1567,7 @@
           }
         ],
         "query": "investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       },
@@ -1770,5 +1788,5 @@
   "timezone": "",
   "title": "Thoth Kafka Consumers and Argo Workflows",
   "uid": "6576535a8b26fd1a0e5328f4413dfd8bc989f54f",
-  "version": 8
+  "version": 3
 }
