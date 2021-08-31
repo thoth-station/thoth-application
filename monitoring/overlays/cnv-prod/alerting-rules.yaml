@@ -6,8 +6,46 @@
         rules:
           #### Alerts for services
 
+          # Alert for User API down
+        - alert: ThothUserAPIProd
+          expr: up{instance="user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80"} < 1
+          for: 1m
+          annotations:
+            summary: "Thoth User API is down, all services are not available!"
+            severity: "HIGH"
+
+          # Alert for mismatch between number of requests and documents produced
+        - alert: ThothAdviserResultsMissingProd
+          expr: thoth_reporter_requests_gauge{env="zero-prod", component="adviser"} - thoth_reporter_reports_gauge{env="zero-prod", component="adviser"}
+          for: 60m
+          annotations:
+            summary: "Thoth adviser results do no match requests, some requests have been lost!"
+            severity: "HIGH"
+
+        - alert: ThothProvenanceCheckerResultsMissingProd
+          expr: thoth_reporter_requests_gauge{env="zero-prod", component="provenance-checker"} - thoth_reporter_reports_gauge{env="zero-prod", component="provenance-checker"}
+          for: 60m
+          annotations:
+            summary: "Thoth provenance-chceker results do no match requests, some requests have been lost!"
+            severity: "HIGH"
+
+        - alert: ThothPackageExtractResultsMissingProd
+          expr: thoth_reporter_requests_gauge{env="zero-prod", component="package-extract"} - thoth_reporter_reports_gauge{env="zero-prod", component="package-extract"}
+          for: 60m
+          annotations:
+            summary: "Thoth package-extract results do no match requests, some requests have been lost!"
+            severity: "HIGH"
+
+          # Alert for purge job once runtime is deleted
+        - alert: ThothPurgeJobMissedProd
+          expr: thoth_number_purge_issues_total{env="zero-prod"} - thoth_number_purge_issues_created{env="zero-prod"} > 0
+          for: 1m
+          annotations:
+            summary: "Not all purge job issues have been opened!"
+            severity: "HIGH"
+
           # Alert for number of workflows in middletier
-        - alert: ThothMiddletierIngestion
+        - alert: ThothMiddletierIngestionProd
           expr: argo_workflows_count{instance="workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80", status="Running"} < 1
           for: 60m
           annotations:
@@ -15,7 +53,7 @@
             severity: "HIGH"
 
           # Alert when solvers do not match Thoth s2i offered
-        - alert: ThothSolversThothS2iOfferedMismatch
+        - alert: ThothSolversThothS2iOfferedMismatchProd
           expr: thoth_graphdb_solvers_number_match{instance="metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"} == 1
           for: 30m
           annotations:
@@ -42,6 +80,14 @@
             summary: "Kafka cannot be reached! Services cannot be scheduled."
             severity: "HIGH"
 
+          # Alert when any of the message is halted
+        - alert: ThothKafkaMessageHaltedProd
+          expr: thoth_investigator_halted_topics{instance="investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80"} == 1
+          for: 5m
+          annotations:
+            summary: "Message {{ $labels.base_topic_name }} is halted! Please check errors."
+            severity: "HIGH"
+
           #### Alerts for Database
 
           # Alert for issue in connection to Database
@@ -53,74 +99,11 @@
             severity: "HIGH"
 
           # Alerts for alembic version mismatch between components and database.
-        - alert: ThothSchemaCheckProdUserAPI
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="user-api"} == 1
+        - alert: ThothSchemaCheckProd
+          expr: thoth_graph_db_component_revision_check{env="zero-prod"} == 1
           for: 5m
           annotations:
-            summary: "Schema of User API is not in sync with database schema."
-            severity: "HIGH"
-
-        - alert: ThothSchemaCheckProdGraphRefresh
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="graph-refresh-job"} == 1
-          for: 5m
-          annotations:
-            summary: "Schema of Graph Refresh Job is not in sync with database schema."
-            severity: "HIGH"
-
-        - alert: ThothSchemaCheckProdInvestigator
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="investigator"} == 1
-          for: 5m
-          annotations:
-            summary: "Schema of Investigator is not in sync with database schema."
-            severity: "HIGH"
-
-        - alert: ThothSchemaCheckProdGraphSync
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="graph-sync"} == 1
-          for: 5m
-          annotations:
-            summary: "Schema of Graph Sync is not in sync with database schema."
-            severity: "HIGH"
-
-        - alert: ThothSchemaCheckProdWorkflowHelpers
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="workflow-helpers"} == 1
-          for: 5m
-          annotations:
-            summary: "Schema of Workflow Helpers is not in sync with database schema."
-            severity: "HIGH"
-
-        - alert: ThothSchemaCheckProdMetricsExporter
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="metrics-exporter"} == 1
-          for: 5m
-          annotations:
-            summary: "Schema of Metrics Exporter is not in sync with database schema."
-            severity: "HIGH"
-
-        - alert: ThothSchemaCheckProdManagementAPI
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="management-api"} == 1
-          for: 5m
-          annotations:
-            summary: "Schema of Management API is not in sync with database schema."
-            severity: "HIGH"
-
-        - alert: ThothSchemaCheckProdAdviseReporter
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="advise-reporter"} == 1
-          for: 5m
-          annotations:
-            summary: "Schema of Advise Reporter is not in sync with database schema."
-            severity: "HIGH"
-
-        - alert: ThothSchemaCheckProdGraphBackup
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="graph-backup-job"} == 1
-          for: 5m
-          annotations:
-            summary: "Schema of Graph Backup is not in sync with database schema."
-            severity: "HIGH"
-
-        - alert: ThothSchemaCheckProdPackageReleases
-          expr: thoth_graph_db_component_revision_check{env="zero-prod", component="thoth-package-release-job"} == 1
-          for: 5m
-          annotations:
-            summary: "Schema of Package Release is not in sync with database schema."
+            summary: "Schema of {{ $labels.component }} is not in sync with database schema."
             severity: "HIGH"
 
           # Alert for amcheck database corruption check.
