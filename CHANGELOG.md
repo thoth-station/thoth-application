@@ -1,4 +1,65 @@
 
+## Release 2021.08.31 (2021-08-31T16:34:49)
+### Features
+* :ship: Bump up the images based on the version update v2021.08.30 (#1933)
+* Bump adviser to v0.41.0 in stage environment (#1922)
+* Introduce other alarms (#1926)
+* Update dashboards in prod
+* :ship: Deploy the Tag v0.41.0 for adviser
+* Increase CPU for package-releases-job
+* :ship: Deploy the Tag v0.8.5 for integration-tests
+* Bump integration-tests to v0.8.5 in all the environments
+* Reduce TTL for kebechet administrator
+* Update dashboards
+* :ship: Deploy the Tag v0.11.0 for package-releases-job
+* Bump package-releases-job to v0.11.0 in stage environment
+* Enable patch
+* Fix investigator triggering adviser v5
+* :ship: Deploy the Tag v0.14.4 for investigator
+* :ship: Deploy the Tag v0.8.9 for workflow-helpers
+* Do not schedule kebechet admin in stage
+* increate memory for database in prod
+* :ship: Deploy the Tag pr-586 for package-releases-job
+* :ship: Deploy the Tag pr-585 for package-releases-job
+* Bump slo-reporter to v0.17.0
+* :ship: Deploy the Tag v0.17.0 for slo-reporter
+* Add more memory for high resources solver branch
+* :ship: Deploy the Tag v0.40.0 for adviser
+* :ship: Deploy the Tag v0.7.0 for prescriptions
+* Bump prescriptions to v0.7.0 in stage environment
+* Bump adviser to v0.40.0 in stage environment
+* :ship: Deploy the Tag v0.16.2 for slo-reporter
+* feat: Add exclude branches for branchprotect on Meteor repo
+* Set deadline for solver containers
+* :ship: Deploy the Tag v0.8.8 for workflow-helpers
+* :ship: Deploy the Tag v0.8.7 for graph-backup-job
+* :ship: Deploy the Tag v1.4.1 for kebechet
+* Increase package-releases deadline to 4 hours
+* :ship: Deploy the Tag v0.3.13 for graph-refresh-job
+* Bump graph-refresh to v0.3.13 in stage
+* :ship: Deploy the Tag v0.10.13 for graph-sync-job
+* Bump graph-sync to v0.10.13 in stage environment
+* :ship: Deploy the Tag v0.14.3 for investigator
+* lifecycled the milestones for t-a
+* Bump integration-tests to v0.8.4
+* :ship: Deploy the Tag v0.8.4 for integration-tests
+* :ship: Deploy the Tag v0.39.0 for adviser
+* Bump adviser to v0.39.0 in stage environment
+* Bump prescriptions to v0.6.0 in stage environment
+* :ship: Deploy the Tag v0.6.0 for prescriptions
+* aadded type route
+* updating to use ACME operator
+* Remove only-if-package-seen configuration option
+### Bug Fixes
+* fix kebechet administrator workflow in prod
+* bump slo-reporter to v0.16.2 to fix enum issues
+* Bump workflow-helpers to v0.8.8 to allow graph update and fix kebechet administrator
+* bump graph-backup to v0.8.7 to fix issue
+* Bump kebechet to fix issue
+* Branch workflow with more resources if solver fails
+* bump investigator to v0.14.3 to fix bug
+* Bump investigator to v0.14.2 to fix bugs
+
 ## Release 2020.10.01 (2020-10-01T13:06:04)
 ### Features
 * Bump multiple version to stage (#520)
