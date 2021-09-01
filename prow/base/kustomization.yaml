@@ -5,7 +5,6 @@ resources:
   - crier.yaml
   - deck.yaml
   - deploymentconfig.yaml
-  - ghproxy.yaml
   - hook.yaml
   - imagestreams.yaml
   - needs-rebase.yaml
