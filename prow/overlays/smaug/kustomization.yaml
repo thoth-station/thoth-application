@@ -6,8 +6,6 @@ resources:
   - integration-test-configmap.yaml
   - roles.yaml
   - rolebindings.yaml
-  - routes.yaml
-  - s3-bucket-claim.yaml
   - route-ghproxy-metrics.yaml
 patchesStrategicMerge:
   - imagestreamtags.yaml
