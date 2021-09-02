@@ -194,6 +194,12 @@ objects:
               - key: ssh-privatekey
                 path: id_rsa
                 mode: 0600
+        - name: github-app-privatekey
+          secret:
+            secretName: kebechet
+            items:
+            - key: KEBBHUT_GITHUB_PRIVATE_KEY
+              path: github-privatekey
 
       templates:
         - name: "adviser"

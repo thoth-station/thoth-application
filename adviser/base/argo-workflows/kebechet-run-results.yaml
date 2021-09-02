@@ -20,6 +20,9 @@ spec:
           - name: ssh-config
             mountPath: /home/user/.ssh
             readOnly: true
+          - name: github-app-privatekey
+            mountPath: /home/user/github
+            readOnly: true
         env:
           - name: PIPENV_NOSPIN
             value: "1"
@@ -35,6 +38,13 @@ spec:
             value: "{{inputs.parameters.git_service}}"
           - name: KEBECHET_ANALYSIS_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: GITHUB_APP_ID
+            valueFrom:
+              secretKeyRef:
+                key: GITHUB_APP_ID
+                name: kebechet
+          - name: GITHUB_PRIVATE_KEY_PATH
+            value: "/home/user/github/github-privatekey"
           - name: GITHUB_KEBECHET_TOKEN
             valueFrom:
               secretKeyRef:
