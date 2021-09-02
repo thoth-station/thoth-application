@@ -21,8 +21,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 23,
-  "iteration": 1629993116929,
+  "id": 8,
+  "iteration": 1630311993375,
   "links": [],
   "panels": [
     {
@@ -55,8 +55,12 @@
                 "value": null
               },
               {
-                "color": "green",
+                "color": "red",
                 "value": 0
+              },
+              {
+                "color": "green",
+                "value": 1
               }
             ]
           }
@@ -224,8 +228,12 @@
                 "value": null
               },
               {
-                "color": "green",
+                "color": "red",
                 "value": 0
+              },
+              {
+                "color": "green",
+                "value": 1
               }
             ]
           }
@@ -418,6 +426,10 @@
                 "value": null
               },
               {
+                "color": "green",
+                "value": 0
+              },
+              {
                 "color": "red",
                 "value": 1
               }
@@ -544,8 +556,10 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
+          "exemplar": true,
           "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Thoth Solver Learning rate SLI (increase) | instance: {{instance}} | {{job}}",
           "refId": "C",
@@ -1028,7 +1042,9 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -1752,6 +1768,21 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% adviser workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -1842,6 +1873,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -1862,6 +1897,21 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% adviser workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -1876,7 +1926,7 @@
       "options": {
         "alignValue": "left",
         "legend": {
-          "displayMode": "hidden",
+          "displayMode": "list",
           "placement": "bottom"
         },
         "mergeValues": true,
@@ -1974,6 +2024,21 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% adviser workflows task error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -2031,7 +2096,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflow_tasks_error\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_task_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflow_tasks_error\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2064,6 +2129,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -2095,6 +2164,21 @@
                 "id": "color",
                 "value": {
                   "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% adviser workflows task error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
                   "mode": "fixed"
                 }
               }
@@ -2149,7 +2233,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflow_tasks_error\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_task_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflow_tasks_error\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2192,6 +2276,21 @@
                 "id": "color",
                 "value": {
                   "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% security workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
                   "mode": "fixed"
                 }
               }
@@ -2287,6 +2386,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -2307,6 +2410,21 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% security workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -2321,7 +2439,7 @@
       "options": {
         "alignValue": "left",
         "legend": {
-          "displayMode": "hidden",
+          "displayMode": "list",
           "placement": "bottom"
         },
         "mergeValues": true,
@@ -5321,5 +5439,5 @@
   "timezone": "",
   "title": "Thoth SLI/SLO",
   "uid": "a30fccbb3c61cc644827f080c68c460d2132bc4a",
-  "version": 3
+  "version": 6
 }
