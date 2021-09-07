@@ -58,7 +58,7 @@ spec:
             - --github-endpoint=http://ghproxy
             - --github-endpoint=https://api.github.com
             - --s3-credentials-file=/etc/s3-credentials/service-account.json
-            - --status-path=s3://ci-prow-artifacts--e2081a4d-fd23-4347-93d5-f33e0604d95d/status-reconciler/status-reconciler-status
+            - --status-path=s3://ci-prow-artifacts--a96a53d7-728c-4ebb-bfc4-2f9e4dc68070/status-reconciler/status-reconciler-status
           volumeMounts:
             - name: github-token
               mountPath: /etc/github
