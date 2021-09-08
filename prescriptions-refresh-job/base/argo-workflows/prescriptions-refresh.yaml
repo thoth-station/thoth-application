@@ -83,3 +83,9 @@ spec:
                 template: gh-release-notes
               continueOn:
                 failed: true
+            - name: scorecards
+              templateRef:
+                name: prescriptions-refresh-scorecards
+                template: scorecards
+              continueOn:
+                failed: true
