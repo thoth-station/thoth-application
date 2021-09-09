@@ -63,7 +63,6 @@ branch-protection:
             - "^revert-"
             - "^kebechet-"
             - "^dependabot/"
-            - "^pres-"
         meteor:
           protect: true
           allow_force_pushes: false
@@ -103,6 +102,7 @@ branch-protection:
         - "^revert-"
         - "^kebechet-"
         - "^dependabot/"
+        - "^pres-"
       restrictions:
         users: []
         teams:
