@@ -4,18 +4,18 @@ apiVersion: batch/v1beta1
 metadata:
   name: mi-scheduler-gh
 spec:
-  suspend: true
+  suspend: false
 ---
 kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
   name: mi-scheduler-kebechet-analyse
 spec:
-  suspend: true
+  suspend: false
 ---
 kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
   name: mi-scheduler-kebechet-merge
 spec:
-  suspend: true
+  suspend: false
