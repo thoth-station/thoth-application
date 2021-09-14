@@ -102,14 +102,6 @@ spec:
               secretKeySecret:
                 name: argo-artifact-repository-secrets
                 key: secretKey
-      initContainers:
-        - name: prescriptions
-          image: prescriptions:latest
-          command:
-            - /bin/sh
-            - -c
-            - cp --recursive /opt/app-root/src/prescriptions/* /mnt/prescriptions/
-          mirrorVolumeMounts: true
       container:
         name: advise
         image: adviser:latest
@@ -133,7 +125,7 @@ spec:
           - name: THOTH_ADVISER_BLOCKED_UNITS
             value: "SecurityIndicatorStep"
           - name: THOTH_ADVISER_PRESCRIPTION
-            value: "/mnt/prescriptions/"
+            value: "/opt/app-root/src/prescriptions.pickle"
           - name: THOTH_ADVISER_REQUIREMENTS
             value: "input/Pipfile"
           - name: THOTH_ADVISER_REQUIREMENTS_LOCKED
@@ -221,8 +213,6 @@ spec:
         volumeMounts:
           - name: workdir
             mountPath: /mnt/workdir
-          - name: prescriptions
-            mountPath: /mnt/prescriptions
         resources:
           limits:
             cpu: 1.1
