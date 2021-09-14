@@ -4,3 +4,7 @@ resources:
   - ../../base
 patchesStrategicMerge:
   - imagestreamtag.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+generators:
+  - ./secret-generator.yaml
