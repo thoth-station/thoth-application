@@ -5,6 +5,7 @@ metadata:
   name: thoth
 data:
   applicationName: "thoth"
+  fork-namespace: "srcsops"
 ---
 kind: ConfigMap
 apiVersion: v1

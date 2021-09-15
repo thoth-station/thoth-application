@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - thoth-notification.yaml
+images:
+  - name: workflow-helpers
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/workflow-helpers
+    newTag: latest
+patchesStrategicMerge:
+  - imagestreamtag.yaml

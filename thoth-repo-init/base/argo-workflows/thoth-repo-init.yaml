@@ -1,0 +1,58 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: thoth-repo-init
+spec:
+  templates:
+    - name: thoth-repo-init
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: "project-url"
+      container:
+        image: workflow-helpers:latest
+        volumeMounts:
+          - name: ssh-config
+            mountPath: /opt/app-root/src/.ssh
+            readOnly: true
+        env:
+          - name: THOTH_DEMO_PROJECT_URL
+            value: "{{inputs.parameters.project-url}}"
+          - name: THOTH_WORKFLOW_TASK
+            value: "thoth_repository_initialization"
+          - name: GIT_SSH_COMMAND
+            # Needed to keep weak host verification for git clone.
+            value: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+          - name: THOTH_DEMO_FORK_NAMESPACE
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: fork-namespace
+          - name: GITHUB_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: github-access-token
+                name: thoth-srcops
+          - name: SENTRY_DSN
+            valueFrom:
+              secretKeyRef:
+                key: sentry-dsn
+                name: thoth
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: deployment-name
+                name: thoth
+          - name: THOTH_LOGGING_NO_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: logging-no-json
+        resources:
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
