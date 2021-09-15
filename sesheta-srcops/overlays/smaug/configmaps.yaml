@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+data:
+  github-2fa-enabled: "false"
+  github-username: sesheta-srcops
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: sesheta-srcops-github
