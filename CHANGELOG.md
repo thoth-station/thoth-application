@@ -1,4 +1,30 @@
 
+## Release 2021.09.15 (2021-09-15T05:06:48)
+### Features
+* Start using prescriptions from pickle file
+* :ship: Deploy the Tag v0.10.4 for reporter
+* Bump investigator to v0.15.0 in stage environment
+* Add tide tu AICoE tutorials repo
+* Unsuspend cronjobs
+* Update cve-update job to v0.4.0 in stage environment
+* Turn off JSON logging in stage environment
+* Move exclude rule for prescription branches to the right location (#1947)
+* Adjust the prow ceph bucket (#1948)
+* Exclude branches created for prescription updates
+* update the prow ceph bucket for the instance (#1944)
+* Update the prow routes ssl cert (#1943)
+* Fix panels colours behaviour (#1941)
+* Add manifests needed for prescriptions-refresh (#1927)
+* cycle release milestones
+* :panda_face: setup prow ci in the smaug cluster (#1940)
+* Enable CVE update job in stage
+* use GitHub app authentication present in secrets
+* Enable ingesting Fedora:34+Python 3.9 data in stage environment
+* Increase activeDeadlineSeconds for package-releases
+### Improvements
+* :arrow_up: Bump up the version of thoth station for v2021.09.13 release
+* Turn off JSON logging in test environment
+
 ## Release 2021.08.31 (2021-08-31T16:34:49)
 ### Features
 * :ship: Bump up the images based on the version update v2021.08.30 (#1933)
