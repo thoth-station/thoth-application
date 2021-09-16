@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-success-
+  name: chat-notification-succeeded-
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -19,7 +19,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have successfully synchronized *pulp-pypi-sync-job* components to *PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-pulp-pypi-sync-job|ArgoCD UI>'}"
+            - "{'text':'I have successfully synchronized *Thoth Core* components to *PROD* *frontend* namespace, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-core-frontend|ArgoCD UI> 🚀'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -33,7 +33,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-fail-
+  name: chat-notification-failed-
   annotations:
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -50,7 +50,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAIL* synchronizing *pulp-pypi-sync-job* components to *PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-pulp-pypi-sync-job|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* syncing *Thoth Core* components to *PROD* *frontend* namespace, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-core-frontend|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

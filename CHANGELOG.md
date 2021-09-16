@@ -928,7 +928,7 @@
 * Provide Amun inspection namespace to management-api (#951)
 * :ship: Deploy the Tag v0.14.0 for management-api
 * Adjust command for integration-tests in Prow (#935)
-* Select only relevant integration-tests in cnv-prod (#948)
+* Select only relevant integration-tests in PROD (#948)
 * Enable generating report in integration-tests (#943)
 * :ship: Deploy the Tag v0.9.2 for investigator
 * :ship: Deploy the Tag pr-136 for integration-tests

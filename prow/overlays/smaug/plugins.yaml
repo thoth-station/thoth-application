@@ -10,7 +10,7 @@ label:
     - community/question
     - deployment_name/ocp4-stage
     - deployment_name/ocp4-test
-    - deployment_name/zero-prod
+    - deployment_name/moc-prod
     - hacktoberfest
     - hacktoberfest-accepted
     - kind/cleanup

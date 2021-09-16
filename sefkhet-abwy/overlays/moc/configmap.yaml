@@ -1,0 +1,8 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: sefkhet-abwy
+data:
+  subdomain: sefkhet-abwy
+  webhook-callback-url: "http://sefkhet-abwy-webhook-receiver-thoth-bots-prod.apps.smaug.na.operate-first.cloud"
