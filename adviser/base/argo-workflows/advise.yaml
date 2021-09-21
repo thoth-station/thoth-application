@@ -61,6 +61,8 @@ spec:
             value: "1"
           - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
             value: ""
+          - name: THOTH_AUTHENTICATED_ADVISE
+            value: "0"
           - name: "THOTH_S3_ENDPOINT_URL"
           - name: "THOTH_CEPH_BUCKET_NAME"
           - name: "THOTH_CEPH_BUCKET_PREFIX"
@@ -156,6 +158,8 @@ spec:
             value: "advise"
           - name: THOTH_ADVISER_LIBRARY_USAGE
             value: "input/library_usage.json"
+          - name: THOTH_AUTHENTICATED_ADVISE
+            value: "{{inputs.parameters.THOTH_AUTHENTICATED_ADVISE}}"
           - name: THOTH_ADVISER_DEPLOYMENT_CONFIGURED_SOLVERS
             valueFrom:
               configMapKeyRef:

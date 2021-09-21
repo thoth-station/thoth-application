@@ -243,6 +243,8 @@ objects:
                       value: "{{workflow.parameters.THOTH_ADVISER_TIMEOUT_SECONDS}}"
                     - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
                       value: "{{workflow.parameters.THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE}}"
+                    - name: THOTH_AUTHENTICATED_ADVISE
+                      value: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}}"
                     - name: "THOTH_S3_ENDPOINT_URL"
                       value: "{{workflow.parameters.ceph_host}}"
                     - name: "THOTH_CEPH_BUCKET_NAME"
