@@ -1,11 +1,11 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: mi
+  name: mi-merge
   labels:
     app: thoth
     component: mi
-    template: mi
+    template: mi-merge
 
 parameters:
   - name: REPOSITORY
@@ -39,20 +39,16 @@ parameters:
     displayName: mi cli aggregated data merge flag
     description: MI Merge data flag
 
-  - name: MI_MERGE_PATH
-    displayName: Merge path where computed statistics will be stored
-    description: Statistics path
-
 objects:
   - apiVersion: argoproj.io/v1alpha1
     kind: Workflow
     metadata:
-      name: mi-analysis-${WORKFLOW_ID}
+      name: mi-merge-${WORKFLOW_ID}
       labels:
         app: scropsmetrics
     spec:
       serviceAccountName: argo
-      entrypoint: mi
+      entrypoint: mi-merge
       activeDeadlineSeconds: 12000
       ttlStrategy:
         secondsAfterCompletion: 10
@@ -71,17 +67,15 @@ objects:
             value: ${MI_THOTH}
           - name: MI_MERGE
             value: ${MI_MERGE}
-          - name: MI_MERGE_PATH
-            value: ${MI_MERGE_PATH}
 
       templates:
-        - name: "mi"
+        - name: "mi-merge"
           dag:
             tasks:
-              - name: "mi"
+              - name: "mi-merge"
                 templateRef:
-                  name: "mi"
-                  template: "mi-workflow"
+                  name: "mi-merge"
+                  template: "mi-merge-workflow"
                 arguments:
                   parameters:
                     - name: REPOSITORY
@@ -96,5 +90,3 @@ objects:
                       value: ${MI_THOTH}
                     - name: MI_MERGE
                       value: ${MI_MERGE}
-                    - name: MI_MERGE_PATH
-                      value: ${MI_MERGE_PATH}
