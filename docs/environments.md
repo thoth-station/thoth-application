@@ -9,7 +9,7 @@ This section describes the different environments used to deploy all the Thoth S
 
 Project Thoth uses Postgresql database for knowlegde graph storage.
 
-- Deployment manifest can be found at: [Graph Manifest](../core/overlays/cnv-prod/graph-prod)
+- Deployment manifest can be found at: [Graph Manifest](../core/overlays/moc-prod/graph-prod)
 - we manage the storage via different project Thoth components which utlises the [thoth-storage](https://pypi.org/project/thoth-storages/) module. [Details](https://github.com/thoth-station/storages#thoth-storages)
 - Local setup and management information can be acquired at [thoth-storages](https://github.com/thoth-station/storages#thoth-storages)
 

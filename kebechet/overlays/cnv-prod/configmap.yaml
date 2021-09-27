@@ -1,8 +1,0 @@
----
-apiVersion: v1
-data:
-  deployment-name: "zero-prod"
-  verbose: "1"
-kind: ConfigMap
-metadata:
-  name: kebechet
