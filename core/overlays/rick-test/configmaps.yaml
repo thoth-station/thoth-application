@@ -28,8 +28,8 @@ data:
   bucket-name: "thoth"
   bucket-prefix: "data"
   public-bucket-name: DH-PLAYPEN
-  host: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
-  endpoint: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
+  host: "https://s3-rgw-openshift-storage.apps.rick.emea.operate-first.cloud"
+  endpoint: "https://s3-rgw-openshift-storage.apps.rick.emea.operate-first.cloud"
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -46,7 +46,7 @@ metadata:
 data:
   kafka-ssl-auth: "1"
   kafka-protocol: "SSL"
-  kafka-bootstrap-servers: "odh-message-bus-kafka-bootstrap.opf-kafka.svc:9093"
+  kafka-bootstrap-servers: "opf-kafka-kafka-bootstrap.opf-kafka.svc:9093"
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -78,7 +78,7 @@ data:
       s3:
         bucket: "thoth"
         keyPrefix: "data/rick-test/argo/artifacts/"
-        endpoint: "rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
+        endpoint: "s3-rgw-openshift-storage.apps.rick.emea.operate-first.cloud"
         insecure: true
         accessKeySecret:
           name: argo-artifact-repository-secrets
