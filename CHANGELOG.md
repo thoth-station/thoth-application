@@ -1,4 +1,40 @@
 
+## Release 2021.09.28 (2021-09-28T04:35:21)
+### Features
+* :ship: Deploy the Tag v0.4.1 for cve-update-job
+* :ship: Deploy the Tag v0.18.4 for metrics-exporter
+* :ship: Deploy the Tag v0.45.0 for adviser
+* :ship: Deploy the Tag v0.9.1 for workflow-helpers
+* :ship: Deploy the Tag v0.2.9 for revsolver
+* :ship: Deploy the Tag v1.5.2 for kebechet
+* migrate triage-party to new cluster
+* :rocket: Changes required for migration to new cluster (#1972)
+* :lock: Updated ceph bucket secrets for rick cluster
+* :speech_balloon: Fixed the notification for rick cluster
+* :turtle: setup investigator for the rick cluster
+* :ship: Deploy the Tag v0.18.3 for metrics-exporter
+* :ship: Deploy the Tag v0.3.15 for graph-refresh-job
+* :ship: Deploy the Tag v1.5.1 for kebechet
+* update keb to latest patch
+* Feature/merge workflow (#1841)
+* Bump metrics-exporter to v0.18.3 in stage environment
+* Bump graph-refresh in stage to v0.3.15
+* Add Pep's key to sops
+* Propagate information about authenticated advise to adviser
+* Bump adviser to v0.44.0 in stage environment
+* :helicopter: convert zero-test environment to rick-test
+* Bump adviser to v0.43.0 in stage environment
+* Update sesheta-srcops/overlays/smaug/secrets.enc.yaml
+* update Keb to latest minor version
+* :ship: Deploy the Tag v1.5.0 for kebechet
+* :sparkles: add sesheta-srcops secrets
+* :sparkles: do ignore ssh-keys/
+* Setup milestone 2021.09.27 for new sprint
+* Migrate chatbot to moc overlays for new cluster deployment
+### Improvements
+* :arrow_up: Bump up the version of thoth station for v2021.09.27 release
+* :ship: Bump up the graph-backup-job to version v0.8.9
+
 ## Release 2021.09.15 (2021-09-15T05:06:48)
 ### Features
 * Start using prescriptions from pickle file
