@@ -1,0 +1,32 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: workflow-helpers
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/workflow-helpers:v0.8.3
+    importPolicy: {}
+    referencePolicy:
+      type: Local
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: messaging
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/messaging:v0.14.2
+    importPolicy: {}
+    referencePolicy:
+      type: Local

@@ -1,0 +1,16 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: investigator-faust-web
+spec:
+  ports:
+    - name: metrics
+      protocol: TCP
+      port: 80
+      targetPort: 6066
+  selector:
+    service: investigator-consumer
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: investigator
+    app.kubernetes.io/managed-by: aicoe-thoth-devops

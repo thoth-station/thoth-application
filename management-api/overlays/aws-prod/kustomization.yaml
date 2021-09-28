@@ -1,0 +1,46 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - role-binding.yaml
+  - thoth-notification.yaml
+  - route53.yaml
+patchesStrategicMerge:
+  - imagestreamtag.yaml
+patchesJson6902:
+  - path: job-generate-name.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      name: chat-notification-succeeded-
+  - path: job-generate-name.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      name: chat-notification-failed-
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: management-api
+  - path: put-into-amun-inspection-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: management-api-amun-pods-info
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: management-api-template
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: management-api-pods-info
