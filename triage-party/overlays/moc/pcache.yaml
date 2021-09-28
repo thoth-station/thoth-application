@@ -11,4 +11,4 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: ocs-storagecluster-cephfs
+  storageClassName: moc-nfs-csi
