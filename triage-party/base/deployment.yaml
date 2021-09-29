@@ -28,12 +28,12 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /app/config
-            - name: pcahce
+            - name: pcache
               mountPath: /app/pcache
       volumes:
         - name: config
           configMap:
             name: triage-party-config
-        - name: pcahce
+        - name: pcache
           persistentVolumeClaim:
             claimName: triage-party-pcache
