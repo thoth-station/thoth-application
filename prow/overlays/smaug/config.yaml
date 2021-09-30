@@ -229,14 +229,15 @@ tide:
         - AICoE/aicoe-cd
         - AICoE/aicoe-ci
         - AICoE/aicoe-sre
+        - AICoE/data-driven-development
         - AICoE/elyra-aidevsecops-tutorial
         - AICoE/idh-manifests
         - AICoE/internal-data-hub
         - AICoE/manage-dependencies-tutorial
         - AICoE/overlays-for-ai-pipeline-tutorial
-        - AICoE/recommend-base-image-tutorial
         - AICoE/prometheus-anomaly-detector
         - AICoE/prometheus-api-client-python
+        - AICoE/recommend-base-image-tutorial
         - AICoE/s2i-custom-notebook
         - AICoE/sefkhet-abwy
         - AICoE/Varangian
