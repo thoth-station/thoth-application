@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1beta1
 kind: Kafka
 metadata:
-  name: thoth
+  name: thoth-kafka
 spec:
   kafka:
     version: "2.6.0"

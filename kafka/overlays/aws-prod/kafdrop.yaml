@@ -19,7 +19,7 @@ spec:
           imagePullPolicy: Always
           env:
           - name: KAFKA_BROKERCONNECT
-            value: thoth-kafka-bootstrap-aicoe.apps.ocp.prod.psi.redhat.com:443
+            value: opf-kafka-kafka-bootstrap-opf-kafka.apps.balrog.aws.operate-first.cloud:443
           - name: KAFKA_TRUSTSTORE_FILE
             value: "/mnt/secrets/truststore.jks"
           - name: KAFKA_KEYSTORE_FILE
@@ -35,12 +35,12 @@ spec:
           - name: KAFKA_PROPS_SSL_TRUSTSTORE_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: "thoth-cluster-ca-cert"
+                name: "opf-kafka-cluster-ca-cert"
                 key: ca.password
           - name: KAFKA_PROPS_SSL_KEYSTORE_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: "thoth-cluster-ca-cert"
+                name: "opf-kafka-cluster-ca-cert"
                 key: ca.password
           - name: JVM_OPTS
             value: "-Xms32M -Xmx64M"
@@ -65,13 +65,13 @@ spec:
       volumes:
         - name: secrets
           secret:
-            secretName: "thoth-cluster-ca-cert"
+            secretName: "opf-kafka-cluster-ca-cert"
             items:
               - key: ca.p12
                 path: truststore.jks
         - name: keystore
           secret:
-            secretName: "thoth-cluster-ca-cert"
+            secretName: "opf-kafka-cluster-ca-cert"
             items:
               - key: ca.p12
                 path: keystore.jks
