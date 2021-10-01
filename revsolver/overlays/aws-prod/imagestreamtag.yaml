@@ -1,0 +1,14 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: revsolver
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: "quay.io/thoth-station/revsolver:v0.2.9"
+      importPolicy: {}
+      referencePolicy:
+        type: Local

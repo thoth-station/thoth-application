@@ -1,0 +1,126 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api
+  namespace: thoth-infra-prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: management-api
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api-pods-info
+  namespace: thoth-amun-inspection-prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: management-api-amun-pods-info
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api-argo-admin
+  namespace: thoth-amun-inspection-prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo-admin
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api
+  namespace: thoth-middletier-prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: management-api-template
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api-argo
+  namespace: thoth-middletier-prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api-argo-admin
+  namespace: thoth-middletier-prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo-admin
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api-pods-info
+  namespace: thoth-middletier-prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: management-api-pods-info
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api-argo
+  namespace: thoth-backend-prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: management-api-argo-admin
+  namespace: thoth-backend-prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo-admin
+subjects:
+  - kind: ServiceAccount
+    name: management-api
+    namespace: thoth-frontend-prod

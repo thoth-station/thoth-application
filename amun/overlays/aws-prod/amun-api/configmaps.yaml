@@ -1,0 +1,29 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: amun
+data:
+  amun-api-url: http://amun-api.thoth-amun-api-prod.svc
+  deployment-name: aws-prod
+  infra-namespace: thoth-amun-inspection-prod
+  inspection-namespace: thoth-amun-inspection-prod
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ceph
+data:
+  bucket-name: "thoth-store"
+  bucket-prefix: "data"
+  host: "https://s3.amazonaws.com/"
+  endpoint: "https://s3.amazonaws.com/"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus
+data:
+  pushgateway-host: prometheus-portal-thoth-infra-prod.apps.balrog.aws.operate-first.cloud
+  pushgateway-port: "80"
+  pushgateway-url: prometheus-portal-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80

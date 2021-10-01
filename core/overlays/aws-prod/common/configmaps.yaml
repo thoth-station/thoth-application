@@ -1,0 +1,66 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: thoth
+data:
+  applicationVersion: 0.7.0
+  deployment-name: aws-prod
+  amun-api-url: "http://amun-api-thoth-amun-api-prod.apps.balrog.aws.operate-first.cloud/api/v1"
+  amun-inspection-namespace: thoth-amun-inspection-prod
+  amun-namespace: thoth-amun-api-prod
+  backend-namespace: thoth-backend-prod
+  graph-namespace: thoth-graph-prod
+  middletier-namespace: thoth-middletier-prod
+  frontend-namespace: thoth-frontend-prod
+  infra-namespace: thoth-infra-prod
+  logging-no-json: "0"
+  postgresql-host: pgbouncer.thoth-graph-prod.svc
+  rsyslog-host: ""
+  rsyslog-port: ""
+  storage-bucket-name: aws-prod
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ceph
+data:
+  public-bucket-name: DH-PLAYPEN
+  bucket-name: "thoth-store"
+  bucket-prefix: "data"
+  host: "https://s3.amazonaws.com/"
+  endpoint: "https://s3.amazonaws.com/"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: solvers
+data:
+  solvers: |
+    solver-rhel-8-py38
+    solver-fedora-34-py39
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: kafka
+data:
+  kafka-ssl-auth: "1"
+  kafka-protocol: "SSL"
+  kafka-bootstrap-servers: "opf-kafka-kafka-bootstrap.opf-kafka.svc:9093"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus
+data:
+  host-url: "http://prometheus-portal-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
+  user-api-url: "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80"
+  instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"
+  instance-metrics-management-api: "management-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80"
+  pushgateway-host: pushgateway-thoth-infra-prod.apps.balrog.aws.operate-first.cloud
+  pushgateway-port: "80"
+  pushgateway-url: pushgateway-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80
+  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud:80"
+  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud:80"
+  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-amun-inspection-prod.apps.balrog.aws.operate-first.cloud:80"
