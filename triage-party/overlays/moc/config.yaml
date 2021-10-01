@@ -3,6 +3,10 @@ settings:
   name: thoth-station
   min_similarity: 0.8
   repos:
+    - https://github.com/AICoE/elyra-aidevsecops-tutorial
+    - https://github.com/AICoE/manage-dependencies-tutorial
+    - https://github.com/AICoE/overlays-for-ai-pipeline-tutorial
+    - https://github.com/AICoE/recommend-base-image-tutorial
     - https://github.com/thoth-station/adviser
     - https://github.com/thoth-station/amun-api
     - https://github.com/thoth-station/amun-client
