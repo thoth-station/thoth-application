@@ -6,6 +6,9 @@ metadata:
 spec:
   templates:
     - name: trigger-integration
+      metadata:
+        annotations:
+          alpha.image.policy.openshift.io/resolve-names: '*'
       resubmitPendingPods: true
       inputs:
         parameters:
@@ -24,7 +27,7 @@ spec:
               path: /mnt/workdir/git_service
       container:
         name: trigger-integration
-        image: workflow-helpers
+        image: workflow-helpers:latest
         env:
           - name: THOTH_WORKFLOW_TASK
             value: "trigger_integration"

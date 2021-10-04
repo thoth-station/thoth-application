@@ -11,6 +11,9 @@ metadata:
 spec:
   templates:
     - name: dm
+      metadata:
+        annotations:
+          alpha.image.policy.openshift.io/resolve-names: '*'
       resubmitPendingPods: true
       inputs:
         parameters:
@@ -72,7 +75,7 @@ spec:
                 key: secretKey
       container:
         name: dm
-        image: adviser
+        image: adviser:latest
         env:
           - name: THOTH_DEPENDENCY_MONKEY_JOB_ID
             value: "{{inputs.parameters.THOTH_DEPENDENCY_MONKEY_JOB_ID}}"
