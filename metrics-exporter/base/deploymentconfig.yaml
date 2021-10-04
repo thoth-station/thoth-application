@@ -21,7 +21,7 @@ spec:
       serviceAccountName: metrics-exporter
       containers:
         - name: metrics-exporter
-          image: metrics-exporter
+          image: metrics-exporter:latest
           env:
             - name: "THOTH_METRICS_EXPORTER_UPDATE_INTERVAL"
               valueFrom:

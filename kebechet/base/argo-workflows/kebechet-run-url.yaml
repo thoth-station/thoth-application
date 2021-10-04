@@ -16,7 +16,7 @@ spec:
         - name: KEBECHET_SERVICE_NAME
         - name: KEBECHET_METADATA
       container:
-        image: kebechet
+        image: kebechet:latest
         env:
           - name: PIPENV_NOSPIN
             value: "1"

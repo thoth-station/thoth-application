@@ -19,7 +19,7 @@ spec:
           - name: KEBECHET_SLUG
       container:
         name: update-kebechet-installation
-        image: workflow-helpers
+        image: workflow-helpers:latest
         env:
           - name: KEBECHET_SLUG
             value: "{{inputs.parameters.KEBECHET_SLUG}}"

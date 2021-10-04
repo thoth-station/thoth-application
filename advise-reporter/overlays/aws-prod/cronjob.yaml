@@ -14,7 +14,7 @@ spec:
       template:
         spec:
           containers:
-            - image: advise-reporter
+            - image: advise-reporter:latest
               name: advise-reporter-producer
               env:
                 - name: SUBCOMMAND

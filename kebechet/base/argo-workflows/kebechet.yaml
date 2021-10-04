@@ -14,7 +14,7 @@ spec:
         parameters:
         - name: WEBHOOK_PAYLOAD
       container:
-        image: kebechet
+        image: kebechet:latest
         env:
           - name: PIPENV_NOSPIN
             value: "1"
