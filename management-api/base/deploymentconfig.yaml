@@ -204,6 +204,8 @@ spec:
       - type: "ImageChange"
         imageChangeParams:
           automatic: true
+          containerNames:
+            - "management-api-openapi"
           from:
             kind: "ImageStreamTag"
             name: "management-api:latest"
