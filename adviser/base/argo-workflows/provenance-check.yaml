@@ -9,6 +9,9 @@ metadata:
 spec:
   templates:
     - name: provenance-check
+      metadata:
+        annotations:
+          alpha.image.policy.openshift.io/resolve-names: '*'
       resubmitPendingPods: true
       inputs:
         parameters:
@@ -60,7 +63,7 @@ spec:
                 key: secretKey
       container:
         name: provenance-check
-        image: adviser
+        image: adviser:latest
         env:
           - name: THOTH_PROVENANCE_CHECKER_JOB_ID
             value: "{{inputs.parameters.THOTH_PROVENANCE_CHECKER_JOB_ID}}"

@@ -12,9 +12,12 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          annotations:
+            alpha.image.policy.openshift.io/resolve-names: '*'
         spec:
           containers:
-            - image: advise-reporter
+            - image: advise-reporter:latest
               name: advise-reporter-producer
               env:
                 - name: SUBCOMMAND

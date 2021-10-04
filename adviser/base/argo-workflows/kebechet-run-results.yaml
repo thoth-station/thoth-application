@@ -6,6 +6,9 @@ metadata:
 spec:
   templates:
     - name: schedule-kebechet
+      metadata:
+        annotations:
+          alpha.image.policy.openshift.io/resolve-names: '*'
       resubmitPendingPods: true
       inputs:
         parameters:
@@ -15,7 +18,7 @@ spec:
           - name: "metadata_origin"
           - name: "git_service"
       container:
-        image: kebechet
+        image: kebechet:latest
         volumeMounts:
           - name: ssh-config
             mountPath: /home/user/.ssh

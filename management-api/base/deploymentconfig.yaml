@@ -200,7 +200,6 @@ spec:
             timeoutSeconds: 10
   test: false
   triggers:
-      - type: "ConfigChange"
       - type: "ImageChange"
         imageChangeParams:
           automatic: true
