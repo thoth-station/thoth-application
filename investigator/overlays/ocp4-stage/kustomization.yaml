@@ -9,16 +9,13 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - deploymentconfig.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
+patches:
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-stage"
     target:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-success-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-fail-
+      annotationSelector: "operation=chat-notification"
