@@ -71,6 +71,9 @@ spec:
                 name: argo-artifact-repository-secrets
                 key: secretKey
       activeDeadlineSeconds: 900
+      podMetadata:
+        annotations:
+          alpha.image.policy.openshift.io/resolve-names: '*'
       container:
         name: solver
         image: "{{inputs.parameters.THOTH_SOLVER_NAME}}"
@@ -188,6 +191,9 @@ spec:
                 name: argo-artifact-repository-secrets
                 key: secretKey
       activeDeadlineSeconds: 900
+      podMetadata:
+        annotations:
+          alpha.image.policy.openshift.io/resolve-names: '*'
       container:
         name: solver
         image: "{{inputs.parameters.THOTH_SOLVER_NAME}}"

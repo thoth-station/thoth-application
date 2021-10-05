@@ -64,6 +64,9 @@ objects:
         secondsAfterSuccess: 25
         secondsAfterFailure: 25
       entrypoint: solve-and-sync
+      podMetadata:
+        annotations:
+          alpha.image.policy.openshift.io/resolve-names: '*'
 
       metrics:
         prometheus:
