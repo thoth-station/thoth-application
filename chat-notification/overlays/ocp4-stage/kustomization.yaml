@@ -4,19 +4,6 @@ namespace: thoth-infra-stage
 resources:
   - ../../base
   - thoth-notification.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-success-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-fail-
 generatorOptions:
   disableNameSuffixHash: true
 generators:

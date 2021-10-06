@@ -1,12 +1,15 @@
 ---
-apiVersion: batch/v1
+inspectionVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-succeeded-
+  name: amun-inspection-chat-notification-success
   annotations:
+    operation: chat-notification
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
+  ttlSecondsAfterFinished: 5
+  backoffLimit: 2
   template:
     spec:
       containers:
@@ -19,7 +22,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have successfully synchronized *Thoth Amun inspection* components to *PROD* *amun-inspection* namespace 🚀'}"
+            - "{'text':'Successfully synchronized *Amun inspection* to *AWS-PROD*, see <https://argocd.operate-first.cloud/applications/prod-thoth-amun-inspection-balrog|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -28,16 +31,18 @@ spec:
                   name: chat-notification
                   key: thoth-devops
       restartPolicy: Never
-  backoffLimit: 2
 ---
-apiVersion: batch/v1
+inspectionVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-failed-
+  name: amun-inspection-chat-notification-fail
   annotations:
+    operation: chat-notification
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
+  ttlSecondsAfterFinished: 5
+  backoffLimit: 2
   template:
     spec:
       containers:
@@ -50,7 +55,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAILED* syncing *Thoth Amun inspection* components to *PROD* *amun-inspection* namespace'}"
+            - "{'text':'🔥 *FAILED* to sync *Amun inspection* to *AWS-PROD*, see <https://argocd.operate-first.cloud/applications/prod-thoth-amun-inspection-balrog|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -59,4 +64,3 @@ spec:
                   name: chat-notification
                   key: thoth-devops
       restartPolicy: Never
-  backoffLimit: 2

@@ -2,11 +2,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-success-
+  name: pulp-pypi-sync-job-chat-notification-success
   annotations:
+    operation: chat-notification
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
+  ttlSecondsAfterFinished: 5
+  backoffLimit: 2
   template:
     spec:
       containers:
@@ -19,7 +22,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have successfully synchronized *pulp-pypi-sync-job* components to *OCP4-STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/test-thoth-pulp-pypi-sync-job|ArgoCD UI>'}"
+            - "{'text':'Successfully synchronized *pulp-pypi-sync-job* to *OCP4-STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/ocp4-stage-thoth-pulp-pypi-sync-job|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -28,16 +31,18 @@ spec:
                   name: chat-notification
                   key: thoth-devops
       restartPolicy: Never
-  backoffLimit: 2
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-fail-
+  name: pulp-pypi-sync-job-chat-notification-fail
   annotations:
+    operation: chat-notification
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
+  ttlSecondsAfterFinished: 5
+  backoffLimit: 2
   template:
     spec:
       containers:
@@ -50,7 +55,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAIL* synchronizing *pulp-pypi-sync-job* components to *OCP4-STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/test-thoth-pulp-pypi-sync-job|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* to sync *pulp-pypi-sync-job* to *OCP4-STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/ocp4-stage-thoth-pulp-pypi-sync-job|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -59,4 +64,3 @@ spec:
                   name: chat-notification
                   key: thoth-devops
       restartPolicy: Never
-  backoffLimit: 2

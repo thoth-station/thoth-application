@@ -2,11 +2,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-success-
+  name: graph-metrics-exporter-chat-notification-success
   annotations:
+    operation: chat-notification
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
+  ttlSecondsAfterFinished: 5
+  backoffLimit: 2
   template:
     spec:
       containers:
@@ -19,7 +22,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have successfully synchronized *graph-metrics-exporter* components to *PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-graph-metrics-exporter|ArgoCD UI>'}"
+            - "{'text':'Successfully synchronized *graph-metrics-exporter* to *MOC-SMAUG*, see <https://argocd.operate-first.cloud/applications/prod-thoth-graph-metrics-exporter-smaug|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -28,16 +31,18 @@ spec:
                   name: chat-notification
                   key: thoth-devops
       restartPolicy: Never
-  backoffLimit: 2
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-fail-
+  name: graph-metrics-exporter-chat-notification-fail
   annotations:
+    operation: chat-notification
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
+  ttlSecondsAfterFinished: 5
+  backoffLimit: 2
   template:
     spec:
       containers:
@@ -50,7 +55,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAIL* synchronizing *graph-metrics-exporter* components to *PROD*, see <https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications/prod-thoth-graph-metrics-exporter|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* to sync *graph-metrics-exporter* to *MOC-SMAUG*, see <https://argocd.operate-first.cloud/applications/prod-thoth-graph-metrics-exporter-smaug|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -59,4 +64,3 @@ spec:
                   name: chat-notification
                   key: thoth-devops
       restartPolicy: Never
-  backoffLimit: 2

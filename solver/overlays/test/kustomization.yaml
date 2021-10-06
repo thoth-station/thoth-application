@@ -6,19 +6,6 @@ resources:
 patchesStrategicMerge:
   - imagestreamtag.yaml
   - argo-workflows/solver-template.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-success-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-fail-
 patches:
   - path: resources_patch.yaml
     target:

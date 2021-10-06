@@ -8,25 +8,18 @@ patchesStrategicMerge:
   - deploymentconfig.yaml
   - imagestreamtag.yaml
 patches:
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      annotationSelector: "operation=chat-notification"
   - path: resources_patch.yaml
     target:
       group: apps.openshift.io
       version: v1
       kind: DeploymentConfig
       name: user-api
-patchesJson6902:
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-success-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-fail-
   - path: put-into-infra-namespace.yaml
     target:
       group: rbac.authorization.k8s.io
