@@ -1,5 +1,5 @@
 ---
-inspectionVersion: batch/v1
+apiVersion: batch/v1
 kind: Job
 metadata:
   name: amun-inspection-chat-notification-success
@@ -32,7 +32,7 @@ spec:
                   key: thoth-devops
       restartPolicy: Never
 ---
-inspectionVersion: batch/v1
+apiVersion: batch/v1
 kind: Job
 metadata:
   name: amun-inspection-chat-notification-fail
