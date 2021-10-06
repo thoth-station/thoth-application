@@ -95,6 +95,8 @@ collections:
     description: >
       queue to be emptied once a week in a team triage meeting
     rules:
+      # Issues pending triage
+      - issue-needs-triage
       # SLO
       - issue-near-soon-overdue
       - issue-near-longterm-overdue
@@ -145,10 +147,10 @@ collections:
     overflow: 3
     dedup: true
     rules:
-      - important-assignee-updated
       - important-pr-needs-review
       - important-pr-needs-work
       - important-pr-needs-merge
+      - important-assignee-updated
       - important-recently-closed
 
   - id: similar
@@ -286,6 +288,13 @@ rules:
       - updated: -7d
 
   ####### Weekly Triage #########
+  issue-needs-triage:
+    name: "Issues pending triage"
+    resolution: "Assign kind/*, triage/*, priority/*, assignee, and/or mark help needed"
+    type: issue
+    filters:
+      - label: "needs-triage"
+
   # SLO nearing
   issue-near-soon-overdue:
     name: "Important soon, but no updates in 60 days"
@@ -310,6 +319,7 @@ rules:
     filters:
       - reactions: ">3"
       - reactions-per-month: ">0.75"
+      - label: "!priority/critical-urgent"
       - label: "!priority/important-soon"
       - label: "!priority/important-longterm"
       - label: "!priority/backlog"
@@ -321,6 +331,7 @@ rules:
       - commenters: ">2"
       - commenters-per-month: ">1.9"
       - created: "+30d"
+      - label: "!priority/critical-urgent"
       - label: "!priority/important-soon"
       - label: "!priority/important-longterm"
       - label: "!priority/backlog"
