@@ -2,11 +2,13 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-success-
+  name: build-watcher-chat-notification-success-
   annotations:
+    operation: chat-notification
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
+  ttlSecondsAfterFinished: 5
   template:
     spec:
       containers:
@@ -19,7 +21,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'I have just successfully synchronized *build-watcher* to *Amun* namespace, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/amun-stage-thoth-build-watcher|ArgoCD UI> 🚚'}"
+            - "{'text':'Successfully synchronized *build-watcher* to *Amun* namespace, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/amun-stage-thoth-build-watcher|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -33,11 +35,13 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: chat-notification-fail-
+  name: build-watcher-chat-notification-fail-
   annotations:
+    operation: chat-notification
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
+  ttlSecondsAfterFinished: 5
   template:
     spec:
       containers:
@@ -50,7 +54,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAIL* synchronizing *build-watcher* to *Amun*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/amun-stage-thoth-build-watcher|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* to sync *build-watcher* to *Amun*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/amun-stage-thoth-build-watcher|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

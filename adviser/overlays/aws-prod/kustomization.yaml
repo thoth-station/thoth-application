@@ -9,25 +9,18 @@ resources:
 patchesStrategicMerge:
   - imagestreamtag.yaml
 patches:
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      annotationSelector: "operation=chat-notification"
   - path: advise-resources-patch.yaml
     target:
       group: argoproj.io
       version: v1alpha1
       kind: WorkflowTemplate
       name: advise
-patchesJson6902:
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-succeeded-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-failed-
   - path: put-into-infra-namespace.yaml
     target:
       group: template.openshift.io

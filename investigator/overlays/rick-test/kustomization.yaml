@@ -9,13 +9,3 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - deploymentconfig.yaml
-patches:
-  - patch: |-
-      - op: add
-        path: /metadata/namespace
-        value: "thoth-test-core"
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      annotationSelector: "operation=chat-notification"

@@ -12,19 +12,16 @@ patchesStrategicMerge:
   - imagestreamtag.yaml
 generators:
   - ./secret-generator.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
+patches:
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-stage"
     target:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-succeeded-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-failed-
+      annotationSelector: "operation=chat-notification"
   - path: put-into-inspection-namespace.yaml
     target:
       group: image.openshift.io

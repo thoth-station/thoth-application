@@ -6,19 +6,13 @@ commonLabels:
 resources:
   - ../../base
   - thoth-notification.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
+patches:
+  - path: put-into-infra-namespace.yaml
     target:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-success-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-fail-
+      annotationSelector: "operation=chat-notification"
   - path: put-into-infra-namespace.yaml
     target:
       group: template.openshift.io

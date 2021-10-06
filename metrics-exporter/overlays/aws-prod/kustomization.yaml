@@ -14,19 +14,15 @@ patches:
       version: v1
       kind: DeploymentConfig
       name: metrics-exporter
-patchesJson6902:
-  - path: job-generate-name.yaml
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-prod"
     target:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-success-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-fail-
+      annotationSelector: "operation=chat-notification"
 generatorOptions:
   disableNameSuffixHash: true
 generators:
