@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
   - pcache.yaml
+images:
+  - name: triage-party
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-bots-prod/triage-party
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtags.yaml
   - route.yaml

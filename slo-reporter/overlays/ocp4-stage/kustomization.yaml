@@ -7,6 +7,10 @@ resources:
   - ../../base
   - configmap.yaml
   - thoth-notification.yaml
+images:
+  - name: slo-reporter
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-infra-stage/slo-reporter
+    newTag: latest
 patchesStrategicMerge:
   - cronjob.yaml
   - imagestreamtag.yaml

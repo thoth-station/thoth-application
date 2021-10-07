@@ -4,6 +4,10 @@ resources:
   - ../../base
   - configmap.yaml
   - thoth-notification.yaml
+images:
+  - name: sefkhet-abwy
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-bots-prod/sefkhet-abwy
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtag.yaml
 generatorOptions:

@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: send-message
+  annotations:
+    operation: messaging
 spec:
   templates:
     - name: send-message

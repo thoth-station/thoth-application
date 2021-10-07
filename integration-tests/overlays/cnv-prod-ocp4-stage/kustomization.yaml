@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: integration-tests
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-frontend-stage/integration-tests
+    newTag: latest
 patchesStrategicMerge:
   - configmap.yaml
   - cronjob.yaml

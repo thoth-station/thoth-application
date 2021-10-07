@@ -22,7 +22,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'Successfully synchronized *advise-reporter* to *MOC-SMAUG*, see <https://argocd.operate-first.cloud/applications/prod-thoth-adviser-reporter-smaug|ArgoCD UI> 🚚'}"
+            - "{'text':'Successfully synchronized *advise-reporter* to *MOC-SMAUG*, see <https://argocd.operate-first.cloud/applications/prod-thoth-advise-reporter-smaug|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -55,7 +55,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAILED* to sync *advise-reporter* to *MOC-SMAUG*, see <https://argocd.operate-first.cloud/applications/prod-thoth-adviser-reporter-smaug|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* to sync *advise-reporter* to *MOC-SMAUG*, see <https://argocd.operate-first.cloud/applications/prod-thoth-advise-reporter-smaug|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

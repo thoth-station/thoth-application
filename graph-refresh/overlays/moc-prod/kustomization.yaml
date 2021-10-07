@@ -4,6 +4,10 @@ resources:
   - ../../base
   - rolebindings.yaml
   - thoth-notification.yaml
+images:
+  - name: graph-refresh-job
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-frontend-prod/graph-refresh-job
+    newTag: latest
 patchesStrategicMerge:
   - cronjob.yaml
   - imagestreamtag.yaml

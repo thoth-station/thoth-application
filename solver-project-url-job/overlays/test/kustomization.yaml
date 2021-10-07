@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: solver-project-url-job
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/solver-project-url-job
+    newTag: latest
 patchesStrategicMerge:
   - cronjob.yaml
   - imagestreamtag.yaml

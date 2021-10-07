@@ -19,7 +19,6 @@ spec:
         discovery.3scale.net: "true"
         service: user-api
       annotations:
-        alpha.image.policy.openshift.io/resolve-names: '*'
         discovery.3scale.net/description-path: "/api/v1/openapi.json"
         discovery.3scale.net/path: "/api/v1"
         discovery.3scale.net/port: "443"

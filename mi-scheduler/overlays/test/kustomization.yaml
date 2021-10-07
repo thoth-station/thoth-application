@@ -2,6 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 commonLabels:
   app.kubernetes.io/version: "0.6"
+images:
+  - name: mi-scheduler
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/mi-scheduler
+    newTag: latest
 resources:
   - ../../base
   - role-binding.yaml
@@ -13,3 +17,13 @@ generatorOptions:
   disableNameSuffixHash: true
 generators:
   - ./secret-generator.yaml
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/templates/1/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/mi:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=mi"

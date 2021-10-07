@@ -7,3 +7,32 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
+patches:
+  # wf template image patch
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/adviser:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=adviser"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/kebechet:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: kebechet-run-results
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/workflow-helpers:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=workflow-helpers"

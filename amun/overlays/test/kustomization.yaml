@@ -13,3 +13,13 @@ patchesStrategicMerge:
   - openshift-templates/inspection-workflow.yaml
   - openshift-templates/inspection-with-cpu-workflow.yaml
   - deploymentconfig.yaml
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/messaging:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=messaging"

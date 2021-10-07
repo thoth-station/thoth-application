@@ -4,6 +4,7 @@ kind: WorkflowTemplate
 metadata:
   name: dm
   annotations:
+    operation: adviser
     thoth-station.ninja/template-version: 0.0.1
   labels:
     app: thoth
@@ -11,9 +12,6 @@ metadata:
 spec:
   templates:
     - name: dm
-      metadata:
-        annotations:
-          alpha.image.policy.openshift.io/resolve-names: '*'
       resubmitPendingPods: true
       inputs:
         parameters:

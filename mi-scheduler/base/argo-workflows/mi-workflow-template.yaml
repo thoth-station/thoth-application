@@ -6,7 +6,8 @@ metadata:
     app: thoth
     component: mi
     template: mi
-
+  annotations:
+    operation: mi
 spec:
   serviceAccountName: argo
   entrypoint: mi-workflow

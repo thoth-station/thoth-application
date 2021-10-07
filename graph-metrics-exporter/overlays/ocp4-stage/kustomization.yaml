@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: graph-metrics-exporter
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-graph-stage/graph-metrics-exporter
+    newTag: latest
 patchesStrategicMerge:
   - cronjob.yaml
   - imagestreamtag.yaml

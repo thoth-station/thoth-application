@@ -3,12 +3,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: parse-adviser-output
+  annotations:
+    operation: workflow-helpers
 spec:
   templates:
     - name: parse-adviser-output
-      metadata:
-        annotations:
-          alpha.image.policy.openshift.io/resolve-names: '*'
       resubmitPendingPods: true
       inputs:
         parameters:

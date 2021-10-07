@@ -7,3 +7,40 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/si-aggregator:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: aggregator
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/si-bandit:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: bandit
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/si-cloc:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: cloc
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/workflow-helpers:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: download-package

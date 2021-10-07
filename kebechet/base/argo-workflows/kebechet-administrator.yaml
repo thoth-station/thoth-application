@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: kebechet-administrator
+  annotations:
+    operation: workflow-helpers
 spec:
   templates:
     - name: kebechet-administrator

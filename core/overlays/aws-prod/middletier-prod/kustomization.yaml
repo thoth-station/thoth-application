@@ -10,6 +10,14 @@ resources:
   - argo-workflow-controller.yaml
   - thoth-notification.yaml
   - configmaps.yaml
+# wf controller image patch
+images:
+  - name: argocli
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/argocli
+    newTag: latest
+  - name: workflow-controller
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/workflow-controller
+    newTag: latest
 patches:
   - patch: |-
       - op: add
@@ -20,3 +28,12 @@ patches:
       version: v1
       kind: Job
       annotationSelector: "operation=chat-notification"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/messaging:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=messaging"

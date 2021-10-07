@@ -4,6 +4,10 @@ resources:
   - ../../base
   - role-binding.yaml
   - thoth-notification.yaml
+images:
+  - name: mi-scheduler
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/mi-scheduler
+    newTag: latest
 patchesStrategicMerge:
   - cronjob.yaml
   - imagestreamtag.yaml
@@ -11,3 +15,13 @@ generatorOptions:
   disableNameSuffixHash: true
 generators:
   - ./secret-generator.yaml
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/templates/1/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/mi:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=mi"

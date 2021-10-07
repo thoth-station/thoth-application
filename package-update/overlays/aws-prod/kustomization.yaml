@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: package-update-job
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-frontend-prod/package-update-job
+    newTag: latest
 patchesStrategicMerge:
   - cronjob.yaml
   - imagestreamtag.yaml
