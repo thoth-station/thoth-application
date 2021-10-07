@@ -4,6 +4,8 @@ resources:
   - ../../base
   - role-binding.yaml
   - thoth-notification.yaml
+  - route53.yaml
+  - khemenu-route.yaml
 images:
   - name: user-api
     newName: image-registry.openshift-image-registry.svc:5000/thoth-frontend-prod/user-api
