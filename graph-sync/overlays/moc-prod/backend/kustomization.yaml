@@ -1,0 +1,36 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app.kubernetes.io/name: thoth
+  app.kubernetes.io/component: graph-sync
+resources:
+  - ../common/
+  - thoth-notification.yaml
+patches:
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-prod"
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      annotationSelector: "operation=chat-notification"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-prod/graph-sync-job:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: graph-sync
+  - patch: |-
+      - op: replace
+        path: /spec/templates/1/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-prod/graph-sync-job:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: graph-sync
