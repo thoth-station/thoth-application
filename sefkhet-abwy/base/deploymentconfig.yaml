@@ -62,10 +62,7 @@ spec:
             - name: THOTH_DEPLOYMENT_NAME
               value: aicoe-prod-bots
             - name: THOTH_LOGGING_NO_JSON
-              valueFrom:
-                configMapKeyRef:
-                  name: thoth
-                  key: logging-no-json
+              value: "0"
             - name: SESHETA_AIOPS_DEVOPS_SPACE
               valueFrom:
                 secretKeyRef:
