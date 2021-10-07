@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: update-kebechet-installation
+  annotations:
+    operation: workflow-helpers
 spec:
   templates:
     - name: update-kebechet-installation

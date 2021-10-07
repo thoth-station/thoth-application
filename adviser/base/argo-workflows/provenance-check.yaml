@@ -6,12 +6,11 @@ metadata:
   labels:
     app: thoth
     component: provenance-check
+  annotations:
+    operation: adviser
 spec:
   templates:
     - name: provenance-check
-      metadata:
-        annotations:
-          alpha.image.policy.openshift.io/resolve-names: '*'
       resubmitPendingPods: true
       inputs:
         parameters:

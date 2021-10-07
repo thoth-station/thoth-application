@@ -3,5 +3,9 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: investigator
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/investigator
+    newTag: latest
 patchesStrategicMerge:
   - deploymentconfig.yaml

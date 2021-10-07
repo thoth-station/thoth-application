@@ -20,3 +20,21 @@ generatorOptions:
   disableNameSuffixHash: true
 generators:
   - ./secret-generator.yaml
+# wf controller image patch
+images:
+  - name: argocli
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/argocli
+    newTag: latest
+  - name: workflow-controller
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/workflow-controller
+    newTag: latest
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/messaging:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=messaging"

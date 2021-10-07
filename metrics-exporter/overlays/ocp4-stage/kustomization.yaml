@@ -4,6 +4,10 @@ resources:
   - ../../base
   - role_bindings.yaml
   - thoth-notification.yaml
+images:
+  - name: metrics-exporter
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-infra-stage/metrics-exporter
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtag.yaml
 patches:

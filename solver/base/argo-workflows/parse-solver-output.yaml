@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: parse-solver-output
+  annotations:
+    operation: workflow-helpers
 spec:
   templates:
     - name: parse-solver-output

@@ -4,6 +4,10 @@ resources:
   - ../../base
   - role-binding.yaml
   - thoth-notification.yaml
+images:
+  - name: user-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-frontend-prod/user-api
+    newTag: latest
 patchesStrategicMerge:
   - deploymentconfig.yaml
   - imagestreamtag.yaml

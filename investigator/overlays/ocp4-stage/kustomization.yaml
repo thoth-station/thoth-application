@@ -7,6 +7,10 @@ resources:
   - route.yaml
   - service.yaml
   - thoth-notification.yaml
+images:
+  - name: investigator
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-infra-stage/investigator
+    newTag: latest
 patchesStrategicMerge:
   - deploymentconfig.yaml
 patches:

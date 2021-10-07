@@ -5,6 +5,10 @@ commonLabels:
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: advise-reporter
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/advise-reporter
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtag.yaml
   - cronjob.yaml

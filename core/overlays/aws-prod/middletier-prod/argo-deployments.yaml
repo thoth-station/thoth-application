@@ -9,8 +9,6 @@ spec:
       app: argo-server
   template:
     metadata:
-      annotations:
-        alpha.image.policy.openshift.io/resolve-names: '*'
       labels:
         app: argo-server
     spec:
@@ -41,8 +39,6 @@ spec:
       app: workflow-controller
   template:
     metadata:
-      annotations:
-        alpha.image.policy.openshift.io/resolve-names: '*'
       labels:
         app: workflow-controller
     spec:
@@ -51,7 +47,7 @@ spec:
             - --configmap
             - workflow-controller-configmap
             - --executor-image
-            - argoexec:latest
+            - quay.io/argoproj/argoexec:v2.12.5
             - --namespaced
           command:
             - workflow-controller

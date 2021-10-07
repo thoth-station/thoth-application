@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: nepthys
+    newName: image-registry.openshift-image-registry.svc:5000/aicoe-prod-bots/nepthys
+    newTag: latest
 generatorOptions:
   disableNameSuffixHash: true
 generators:

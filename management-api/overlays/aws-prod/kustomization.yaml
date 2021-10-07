@@ -5,6 +5,10 @@ resources:
   - role-binding.yaml
   - thoth-notification.yaml
   - route53.yaml
+images:
+  - name: management-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-frontend-prod/management-api
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtag.yaml
 patches:

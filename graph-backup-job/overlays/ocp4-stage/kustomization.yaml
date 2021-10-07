@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: graph-backup-job
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-graph-stage/graph-backup-job
+    newTag: latest
 patchesStrategicMerge:
   - cronjob.yaml
   - imagestreamtag.yaml

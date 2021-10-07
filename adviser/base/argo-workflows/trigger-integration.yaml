@@ -3,12 +3,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: trigger-integration
+  annotations:
+    operation: workflow-helpers
 spec:
   templates:
     - name: trigger-integration
-      metadata:
-        annotations:
-          alpha.image.policy.openshift.io/resolve-names: '*'
       resubmitPendingPods: true
       inputs:
         parameters:

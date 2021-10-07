@@ -4,6 +4,10 @@ resources:
   - ../../base
   - role-binding.yaml
   - thoth-notification.yaml
+images:
+  - name: management-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/management-api
+    newTag: latest
 generatorOptions:
   disableNameSuffixHash: true
 generators:

@@ -6,6 +6,8 @@ metadata:
   labels:
     app: thoth
     component: kebechet
+  annotations:
+    operation: kebechet
 spec:
   templates:
     - name: kebechet-run-url

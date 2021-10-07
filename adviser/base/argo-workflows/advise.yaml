@@ -3,12 +3,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: advise
+  annotations:
+    operation: adviser
 spec:
   templates:
     - name: advise
-      metadata:
-        annotations:
-          alpha.image.policy.openshift.io/resolve-names: '*'
       metrics:
         prometheus:
           - name: task_status_counter

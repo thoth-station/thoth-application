@@ -6,9 +6,6 @@ metadata:
 spec:
   templates:
     - name: schedule-kebechet
-      metadata:
-        annotations:
-          alpha.image.policy.openshift.io/resolve-names: '*'
       resubmitPendingPods: true
       inputs:
         parameters:

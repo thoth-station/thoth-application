@@ -5,6 +5,10 @@ resources:
   - configmap.yaml
   - ultrahook.yaml
   - thoth-notification.yaml
+images:
+  - name: sefkhet-abwy
+    newName: image-registry.openshift-image-registry.svc:5000/aicoe-prod-bots/sefkhet-abwy
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtag.yaml
 generatorOptions:

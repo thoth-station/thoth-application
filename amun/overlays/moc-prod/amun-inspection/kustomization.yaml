@@ -20,3 +20,11 @@ patches:
       version: v1
       kind: Job
       annotationSelector: "operation=chat-notification"
+# wf controller image patch
+images:
+  - name: argocli
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/argocli
+    newTag: latest
+  - name: workflow-controller
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/workflow-controller
+    newTag: latest
