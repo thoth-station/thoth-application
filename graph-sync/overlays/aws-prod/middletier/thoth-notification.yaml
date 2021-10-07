@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: graph-sync-chat-notification-success
+  name: graph-sync-middletier-chat-notification-success
   annotations:
     operation: chat-notification
     argocd.argoproj.io/hook: PostSync
@@ -22,7 +22,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'Successfully synchronized *graph-sync* to *MOC-SMAUG*, see <https://argocd.operate-first.cloud/applications/prod-thoth-graph-sync-smaug|ArgoCD UI> 🚚'}"
+            - "{'text':'Successfully synchronized *graph-sync-middletier* to *AWS-PROD*, see <https://argocd.operate-first.cloud/applications/prod-thoth-graph-sync-middletier-balrog|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -35,7 +35,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: graph-sync-chat-notification-fail
+  name: graph-sync-middletier-chat-notification-fail
   annotations:
     operation: chat-notification
     argocd.argoproj.io/hook: SyncFail
@@ -55,7 +55,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAILED* to sync *graph-sync* to *MOC-SMAUG*, see <https://argocd.operate-first.cloud/applications/prod-thoth-graph-sync-smaug|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* to sync *graph-sync-middletier* to *AWS-PROD*, see <https://argocd.operate-first.cloud/applications/prod-thoth-graph-sync-middletier-balrog|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL

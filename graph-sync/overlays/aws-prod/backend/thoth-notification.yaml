@@ -1,0 +1,66 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: graph-sync-backend-chat-notification-success
+  annotations:
+    operation: chat-notification
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  ttlSecondsAfterFinished: 5
+  backoffLimit: 2
+  template:
+    spec:
+      containers:
+        - name: chat-notification
+          image: registry.access.redhat.com/ubi8/ubi
+          command:
+            - "curl"
+            - "-X"
+            - "POST"
+            - "-H"
+            - "Content-Type: application/json; charset=UTF-8"
+            - "-d"
+            - "{'text':'Successfully synchronized *graph-sync-backend* to *AWS-PROD*, see <https://argocd.operate-first.cloud/applications/prod-thoth-graph-sync-backend-balrog|ArgoCD UI> 🚚'}"
+            - "$(THOTH_DEVOPS_WEBHOOK_URL)"
+          env:
+            - name: THOTH_DEVOPS_WEBHOOK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chat-notification
+                  key: thoth-devops
+      restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: graph-sync-backend-chat-notification-fail
+  annotations:
+    operation: chat-notification
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  ttlSecondsAfterFinished: 5
+  backoffLimit: 2
+  template:
+    spec:
+      containers:
+        - name: chat-notification
+          image: registry.access.redhat.com/ubi8/ubi
+          command:
+            - "curl"
+            - "-X"
+            - "POST"
+            - "-H"
+            - "Content-Type: application/json; charset=UTF-8"
+            - "-d"
+            - "{'text':'🔥 *FAILED* to sync *graph-sync* to *AWS-PROD*, see <https://argocd.operate-first.cloud/applications/prod-thoth-graph-sync-backend-balrog|ArgoCD UI>'}"
+            - "$(THOTH_DEVOPS_WEBHOOK_URL)"
+          env:
+            - name: THOTH_DEVOPS_WEBHOOK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chat-notification
+                  key: thoth-devops
+      restartPolicy: Never
