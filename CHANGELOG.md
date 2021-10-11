@@ -1,4 +1,48 @@
 
+## Release 2021.10.11 (2021-10-11T21:11:20)
+* :ship: Bump up the images based on the version update v2021.10.11
+* :ship: Deploy the Tag v1.5.3 for kebechet
+* Add the watch perm for horologium in the right place
+* Remove deprecated prow/overlays/cluster-admin
+* Add missing permission for horologium and bump prow images to latest
+* Make pre-commit happy
+* Randomize walks in prescriptions for OpenSSF Scorecard
+* Run prescriptions-refresh-job for Security Scorecards
+* Randomize walks in prescriptions in deployment
+* feat: Enable lifecycle in operate-first
+* :fire: fixed the image mapping for the solvers
+* :hatching_chick: fix the configmap issue for sefkhet-abwy receiver
+* :hatching_chick: attach the routes for user-api in the balrog cluster
+* :hatching_chick: fix of the image pull issue for the solver
+* :star: migrate the prod integration based on new cluster
+* :snail: Re configure the graph-sync to have explicit overlays
+* :turtle: setup image patch to refer the absolute path for images
+* Update triage-party configuration
+* :turtle: setup user-api to use the auth support kafka
+* Add Pep as an approver
+* :panda_face: Don't declare namespace value explicitly in kustomize file
+* :fire: fix the apiversion in amun inspection
+* :fire: fix the chat-notification resolve for all apps
+* :fire: fix the chat-notification resolve for newer kustomize
+* Revert back to management-api without triggers
+* Patch the service with annotations to refer imagestreams
+* updating docs
+* Bump package release to v0.11.4 in test and stage
+* Patch the imagechange trigger in deploymentconfig
+* Testing the imagechange trigger in deploymentconfig
+* :turtle: patch up the image with the latest tag for services
+* fix: fix the kafka certs for the smaug cluster
+* patch the security indicator for aws cluster
+* patch the moc secrets for the new contributors
+* :package: Setup for project thoth deployment in aws cluster
+* updating sops with my gpg pub
+* setup prow on the data-driven-development repo
+* Bump package-release in stage to v0.11.3
+* Update triage-party configuration
+* :paperclip: patch up the pvc storage class for smaug cluster
+* :paperclip: patch up the kafka ca certs
+* :beginner: setup milestone v2021.10.11 for project thoth
+
 ## Release 2021.09.28 (2021-09-28T04:35:21)
 ### Features
 * :ship: Deploy the Tag v0.4.1 for cve-update-job
