@@ -9,4 +9,3 @@ resources:
   - argo-workflows/prescriptions-refresh-scorecards.yaml
   - argo-workflows/prescriptions-refresh.yaml
   - imagestream.yaml
-
