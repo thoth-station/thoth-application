@@ -28,6 +28,8 @@ spec:
             value: app.sh
           - name: THOTH_PRESCRIPTIONS_REFRESH_SUBCOMMAND
             value: gh-link
+          - name: THOTH_PRESCRIPTIONS_REFRESH_RANDOMIZE
+            value: "1"
           - name: GITHUB_PRIVATE_KEY_PATH
             value: /opt/app-root/src/.github/github-privatekey
           - name: THOTH_LOGGING_NO_JSON
@@ -122,6 +124,8 @@ spec:
             value: app.sh
           - name: THOTH_PRESCRIPTIONS_REFRESH_SUBCOMMAND
             value: gh-archived
+          - name: THOTH_PRESCRIPTIONS_REFRESH_RANDOMIZE
+            value: "1"
           - name: GITHUB_PRIVATE_KEY_PATH
             value: /opt/app-root/src/.github/github-privatekey
           - name: THOTH_LOGGING_NO_JSON
@@ -197,6 +201,8 @@ spec:
             value: app.sh
           - name: THOTH_PRESCRIPTIONS_REFRESH_SUBCOMMAND
             value: gh-release-notes
+          - name: THOTH_PRESCRIPTIONS_REFRESH_RANDOMIZE
+            value: "1"
           - name: GITHUB_PRIVATE_KEY_PATH
             value: /opt/app-root/src/.github/github-privatekey
           - name: THOTH_LOGGING_NO_JSON
