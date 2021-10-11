@@ -26,6 +26,8 @@ spec:
                 key: deployment-name
           - name: APP_SCRIPT
             value: app.sh
+          - name: THOTH_PRESCRIPTIONS_REFRESH_RANDOMIZE
+            value: "1"
           - name: THOTH_PRESCRIPTIONS_REFRESH_SUBCOMMAND
             value: scorecards
           - name: GITHUB_PRIVATE_KEY_PATH
