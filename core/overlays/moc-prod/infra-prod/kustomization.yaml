@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../common/
   - thoth-notification.yaml
+  - service-monitor.yaml
 generators:
   - secret-generator.yaml
 generatorOptions:
