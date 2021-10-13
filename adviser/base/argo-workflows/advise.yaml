@@ -167,15 +167,10 @@ spec:
               configMapKeyRef:
                 name: solvers
                 key: solvers
-          - name: PROMETHEUS_PUSHGATEWAY_HOST
+          - name: PROMETHEUS_PUSHGATEWAY_URL
             valueFrom:
               configMapKeyRef:
-                key: pushgateway-host
-                name: prometheus
-          - name: PROMETHEUS_PUSHGATEWAY_PORT
-            valueFrom:
-              configMapKeyRef:
-                key: pushgateway-port
+                key: pushgateway-url
                 name: prometheus
           - name: THOTH_DEPLOYMENT_NAME
             valueFrom:
