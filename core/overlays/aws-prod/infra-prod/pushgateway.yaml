@@ -1,0 +1,65 @@
+---
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: pushgateway
+  labels:
+    app: pushgateway
+spec:
+  replicas: 1
+  test: false
+  selector:
+    app: pushgateway
+    deploymentconfig: pushgateway
+  template:
+    metadata:
+      labels:
+        app: pushgateway
+        deploymentconfig: pushgateway
+    spec:
+      containers:
+        - name: pushgateway
+          image: >-
+            prom/pushgateway@sha256:f74ff5b7ad0b8fb60c24b77eaeab025d659e46ec15f32430adb976544305c01f
+          ports:
+            - containerPort: 9091
+              protocol: TCP
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "100m"
+          imagePullPolicy: Always
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: pushgateway
+  labels:
+    app: pushgateway
+spec:
+  ports:
+    - name: metrics
+      protocol: TCP
+      port: 9091
+      targetPort: 9091
+  selector:
+    app: pushgateway
+    deploymentconfig: pushgateway
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: pushgateway
+  labels:
+    app: pushgateway
+spec:
+  port:
+    targetPort: metrics
+  to:
+    kind: Service
+    name: pushgateway
+    weight: 100
