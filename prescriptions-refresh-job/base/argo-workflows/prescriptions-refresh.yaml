@@ -89,3 +89,9 @@ spec:
                 template: scorecards
               continueOn:
                 failed: true
+            - name: cve-warning
+              templateRef:
+                name: prescriptions-refresh-pg
+                template: cve-warning
+              continueOn:
+                failed: true
