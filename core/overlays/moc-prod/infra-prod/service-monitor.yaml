@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: thoth-station-monitor
+  name: thoth-station-infra-monitor
   labels:
     monitor-component: thoth-station
 spec:
