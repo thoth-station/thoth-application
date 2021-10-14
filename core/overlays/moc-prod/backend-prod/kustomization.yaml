@@ -10,6 +10,7 @@ resources:
   - argo-workflow-controller.yaml
   - thoth-notification.yaml
   - configmaps.yaml
+  - service-monitor.yaml
 # wf controller image patch
 images:
   - name: argocli
