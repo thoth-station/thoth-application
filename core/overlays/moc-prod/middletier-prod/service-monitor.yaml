@@ -20,6 +20,7 @@ spec:
           action: replace
           target_label: field
           replacement: workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud
+  namespaceSelector:
     matchNames:
       - thoth-middletier-prod
   selector: {}
