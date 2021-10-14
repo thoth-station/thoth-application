@@ -20,6 +20,7 @@ spec:
           action: replace
           target_label: field
           replacement: management-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud
+  namespaceSelector:
     matchNames:
       - thoth-frontend-prod
   selector: {}
