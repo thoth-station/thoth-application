@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: create-inspection-complete-message
+  annotations:
+    operation: workflow-helpers
 spec:
   templates:
     - name: create-inspection-complete-message
