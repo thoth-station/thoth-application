@@ -4,6 +4,7 @@ resources:
   - ../common/
   - pushgateway.yaml
   - thoth-notification.yaml
+  - service-monitor.yaml
 generators:
   - secret-generator.yaml
 generatorOptions:
