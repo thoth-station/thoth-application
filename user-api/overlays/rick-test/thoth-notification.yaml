@@ -22,7 +22,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'Successfully synchronized *RICK-TEST* to *MOC-SMAUG*, see <https://argocd.operate-first.cloud/applications/test-thoth-user-api-rick|ArgoCD UI> 🚚'}"
+            - "{'text':'Successfully synchronized *user-api* to *RICK-TEST*, see <https://argocd.operate-first.cloud/applications/test-thoth-user-api-rick|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
