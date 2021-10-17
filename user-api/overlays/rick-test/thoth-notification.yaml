@@ -30,6 +30,13 @@ spec:
                 secretKeyRef:
                   name: chat-notification
                   key: thoth-devops
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
       restartPolicy: Never
 ---
 apiVersion: batch/v1
@@ -63,4 +70,11 @@ spec:
                 secretKeyRef:
                   name: chat-notification
                   key: thoth-devops
-      restartPolicy: Never
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+restartPolicy: Never
