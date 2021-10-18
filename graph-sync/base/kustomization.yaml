@@ -10,3 +10,4 @@ resources:
   - imagestream.yaml
   - argo-workflows/sync-template.yaml
   - openshift-templates/syncJob-template.yaml
+  - openshift-templates/graph-sync.yaml
