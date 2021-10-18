@@ -37,6 +37,9 @@ patches:
       - op: replace
         path: /spec/templates/0/container/image
         value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/{{inputs.parameters.THOTH_SOLVER_NAME}}:latest
+      - op: replace
+        path: /spec/templates/1/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/{{inputs.parameters.THOTH_SOLVER_NAME}}:latest
     target:
       group: argoproj.io
       version: v1alpha1
