@@ -11,3 +11,9 @@ patches:
       version: v1
       kind: Template
       name: graph-sync-job
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: graph-sync
