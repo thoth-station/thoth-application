@@ -37,11 +37,11 @@ in_repo_config:
     thoth-station: true
 
   allowed_clusters:
-    "AICoE": ["api-zero-massopen-cloud:6443"]
-    "aicoe-aiops": ["api-zero-massopen-cloud:6443"]
-    "b4mad": ["api-zero-massopen-cloud:6443"]
-    "operate-first": ["api-zero-massopen-cloud:6443"]
-    "thoth-station": ["api-zero-massopen-cloud:6443"]
+    "AICoE": ["api.smaug.na.operate-first.cloud:6443"]
+    "aicoe-aiops": ["api.smaug.na.operate-first.cloud:6443"]
+    "b4mad": ["api.smaug.na.operate-first.cloud:6443"]
+    "operate-first": ["api.smaug.na.operate-first.cloud:6443"]
+    "thoth-station": ["api.smaug.na.operate-first.cloud:6443"]
 
 branch-protection:
   allow_disabled_policies: true
