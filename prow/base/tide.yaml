@@ -93,3 +93,15 @@ spec:
         - name: s3-credentials
           secret:
             secretName: s3-credentials
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tide
+spec:
+  selector:
+    app: tide
+  ports:
+    - port: 80
+      targetPort: 8888
+  type: NodePort
