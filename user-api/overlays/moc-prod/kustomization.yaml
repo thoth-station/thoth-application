@@ -2,7 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
+  - khemenu-route.yaml
   - role-binding.yaml
+  - route53.yaml
   - thoth-notification.yaml
 images:
   - name: user-api
@@ -42,7 +44,3 @@ patches:
       version: v1
       kind: Role
       name: middletier-pods-info
-generatorOptions:
-  disableNameSuffixHash: true
-generators:
-  - ./secret-generator.yaml
