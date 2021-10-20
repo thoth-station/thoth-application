@@ -15,7 +15,7 @@ data:
           secondsAfterCompletion: 10
           secondsAfterSuccess: 10
           secondsAfterFailure: 10
-      parallelism: 10
+      parallelism: 20
 
     # metricsConfig controls the path and port for prometheus metrics
     metricsConfig:
