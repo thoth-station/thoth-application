@@ -94,7 +94,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{instance=\"user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -105,7 +105,7 @@
         },
         {
           "exemplar": true,
-          "expr": "up{instance=\"management-api-thoth-frontend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"management-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Management API",
@@ -183,7 +183,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{instance=\"user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"} == 1 and on(prometheus) up{instance=\"investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"} == 1 and on(prometheus) up{instance=\"workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"} and on(prometheus) thoth_openshift_connection_issues{prometheus=\"moc/zero\"} and on(prometheus) thoth_graphdb_connection_issues{prometheus=\"moc/zero\"} and on(prometheus) thoth_kafka_connection_issues{prometheus=\"moc/zero\"} and on(prometheus) thoth_ceph_connection_issues{prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"} == 1 and on(prometheus) up{field=\"investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"} == 1 and on(prometheus) up{field=\"workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"} and on(prometheus) thoth_openshift_connection_issues{prometheus=\"moc/smaug\"} and on(prometheus) thoth_graphdb_connection_issues{prometheus=\"moc/smaug\"} and on(prometheus) thoth_kafka_connection_issues{prometheus=\"moc/smaug\"} and on(prometheus) thoth_ceph_connection_issues{prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -267,7 +267,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{instance=\"investigator-faust-web-thoth-infra-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Investigator",
@@ -275,7 +275,7 @@
         },
         {
           "exemplar": true,
-          "expr": "up{instance=\"investigator-message-metrics-thoth-infra-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Investigator metrics",
@@ -283,7 +283,7 @@
         },
         {
           "exemplar": true,
-          "expr": "up{instance=\"metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Metrics exporter",
@@ -291,7 +291,7 @@
         },
         {
           "exemplar": true,
-          "expr": "up{instance=\"postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "PostgreSQL Metrics",
@@ -368,7 +368,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{instance=\"workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "thoth-backend-prod",
@@ -376,7 +376,7 @@
         },
         {
           "exemplar": true,
-          "expr": "up{instance=\"workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "thoth-middletier-prod",
@@ -384,7 +384,7 @@
         },
         {
           "exemplar": true,
-          "expr": "up{instance=\"workflow-controller-metrics-thoth-amun-inspection-prod.apps.zero.massopen.cloud:80\", prometheus=\"moc/zero\"}",
+          "expr": "up{field=\"workflow-controller-metrics-thoth-amun-inspection-prod.apps.smaug.na.operate-first.cloud:80\", prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "thoth-amun-inspection-prod",
@@ -465,7 +465,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_openshift_connection_issues{prometheus=\"moc/zero\"}",
+          "expr": "thoth_openshift_connection_issues{prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -476,7 +476,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_connection_issues{prometheus=\"moc/zero\"}",
+          "expr": "thoth_graphdb_connection_issues{prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -488,7 +488,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_kafka_connection_issues{prometheus=\"moc/zero\"}",
+          "expr": "thoth_kafka_connection_issues{prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Kafka",
@@ -496,7 +496,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_ceph_connection_issues{prometheus=\"moc/zero\"}",
+          "expr": "thoth_ceph_connection_issues{prometheus=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Ceph",
@@ -557,7 +557,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
+          "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -618,7 +618,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
+          "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[$interval])",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -628,7 +628,7 @@
           "step": 600
         },
         {
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated hours to solve all unsolved packages (1h inverval)",
@@ -636,7 +636,7 @@
           "step": 600
         },
         {
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated days to solve all unsolved packages (1h inverval)",
@@ -644,7 +644,7 @@
           "step": 600
         },
         {
-          "expr": "(thoth_graphdb_number_python_package_versions{instance=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_number_python_package_versions{field=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated days to solve all packages adding a new solver (1h interval)",
@@ -742,7 +742,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"}",
+          "expr": "thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -841,7 +841,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated days to solve (1h inverval): {{solver_name}}",
@@ -939,7 +939,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated hours to solve (1h inverval): {{solver_name}}",
@@ -1054,7 +1054,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "(thoth_graphdb_number_python_package_versions{instance=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_number_python_package_versions{field=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated days (1h interval)",
@@ -1127,7 +1127,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated days (1h interval)",
@@ -1201,7 +1201,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1276,7 +1276,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{instance=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1333,7 +1333,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance_metrics\"}",
+          "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{field=\"$instance_metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Thoth Number of SI unanalyzed packages",
@@ -1341,7 +1341,7 @@
           "step": 600
         },
         {
-          "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{instance=\"$instance_metrics\"}[$interval])",
+          "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{field=\"$instance_metrics\"}[$interval])",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 2,
@@ -1452,7 +1452,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(argo_workflows_status_counter{instance=\"$instance\"}[$interval])",
+          "expr": "increase(argo_workflows_status_counter{field=\"$instance\"}[$interval])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -4911,7 +4911,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_reporter_success_adviser_gauge{env=\"$env\", prometheus=\"moc/zero\"}",
+          "expr": "thoth_reporter_success_adviser_gauge{env=\"$env\", prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4921,7 +4921,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_reporter_failed_adviser_gauge{env=\"$env\", prometheus=\"moc/zero\"}",
+          "expr": "thoth_reporter_failed_adviser_gauge{env=\"$env\", prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -5027,7 +5027,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_reporter_failed_adviser_justifications_gauge{env=\"$env\", prometheus=\"moc/zero\"}",
+          "expr": "thoth_reporter_failed_adviser_justifications_gauge{env=\"$env\", prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -5329,8 +5329,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
-          "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
+          "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80",
+          "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80"
         },
         "description": null,
         "error": null,
@@ -5342,24 +5342,24 @@
         "options": [
           {
             "selected": false,
-            "text": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80",
-            "value": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
+            "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80",
+            "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80"
           },
           {
             "selected": true,
-            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
-            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
+            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80",
+            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80"
           }
         ],
-        "query": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
+        "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80",
         "skipUrlSync": false,
         "type": "custom"
       },
       {
         "allValue": null,
         "current": {
-          "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
-          "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
+          "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80",
+          "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80"
         },
         "description": null,
         "error": null,
@@ -5371,11 +5371,11 @@
         "options": [
           {
             "selected": true,
-            "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
-            "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
+            "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80",
+            "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
+        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80",
         "skipUrlSync": false,
         "type": "custom"
       },
@@ -5384,8 +5384,8 @@
         "current": {
           "selected": true,
           "tags": [],
-          "text": "zero-prod",
-          "value": "zero-prod"
+          "text": "smaug-prod",
+          "value": "smaug-prod"
         },
         "description": null,
         "error": null,
@@ -5397,11 +5397,11 @@
         "options": [
           {
             "selected": true,
-            "text": "zero-prod",
-            "value": "zero-prod"
+            "text": "smaug-prod",
+            "value": "smaug-prod"
           }
         ],
-        "query": "zero-prod",
+        "query": "smaug-prod",
         "skipUrlSync": false,
         "type": "custom"
       }

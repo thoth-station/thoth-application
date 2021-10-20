@@ -82,7 +82,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_static{instance=\"$instance\"}",
+              "expr": "pg_static{field=\"$instance\"}",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -164,7 +164,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_max_connections{instance=\"$instance\"}",
+              "expr": "pg_settings_max_connections{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -242,7 +242,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_shared_buffers_bytes{instance=\"$instance\"}",
+              "expr": "pg_settings_shared_buffers_bytes{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -320,7 +320,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_effective_cache_size_bytes{instance=\"$instance\"}",
+              "expr": "pg_settings_effective_cache_size_bytes{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -398,7 +398,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_maintenance_work_mem_bytes{instance=\"$instance\"}",
+              "expr": "pg_settings_maintenance_work_mem_bytes{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -476,7 +476,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_work_mem_bytes{instance=\"$instance\"}",
+              "expr": "pg_settings_work_mem_bytes{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -554,7 +554,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_max_wal_size_bytes{instance=\"$instance\"}",
+              "expr": "pg_settings_max_wal_size_bytes{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -632,7 +632,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_random_page_cost{instance=\"$instance\"}",
+              "expr": "pg_settings_random_page_cost{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -710,7 +710,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_seq_page_cost{instance=\"$instance\"}",
+              "expr": "pg_settings_seq_page_cost{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -788,7 +788,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_max_worker_processes{instance=\"$instance\"}",
+              "expr": "pg_settings_max_worker_processes{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -866,7 +866,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "pg_settings_max_parallel_workers_per_gather{instance=\"$instance\"}",
+              "expr": "pg_settings_max_parallel_workers_per_gather{field=\"$instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
@@ -933,7 +933,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(pg_stat_database_tup_inserted{instance=\"$instance\", datname=\"postgres\"}[5m])",
+              "expr": "irate(pg_stat_database_tup_inserted{field=\"$instance\", datname=\"postgres\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "INSERT",
@@ -941,7 +941,7 @@
               "step": 1800
             },
             {
-              "expr": "irate(pg_stat_database_tup_updated{instance=\"$instance\", datname=\"postgres\"}[5m])",
+              "expr": "irate(pg_stat_database_tup_updated{field=\"$instance\", datname=\"postgres\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "UPDATE",
@@ -949,7 +949,7 @@
               "step": 1800
             },
             {
-              "expr": "irate(pg_stat_database_tup_deleted{instance=\"$instance\", datname=\"postgres\"}[5m])",
+              "expr": "irate(pg_stat_database_tup_deleted{field=\"$instance\", datname=\"postgres\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "DELETE",
@@ -1029,7 +1029,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "pg_stat_activity_count{instance=\"$instance\", datname=\"postgres\"}",
+              "expr": "pg_stat_activity_count{field=\"$instance\", datname=\"postgres\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{state}}",
@@ -1119,7 +1119,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(pg_stat_database_xact_commit{instance=\"$instance\", datname=\"postgres\"}[5m])",
+              "expr": "irate(pg_stat_database_xact_commit{field=\"$instance\", datname=\"postgres\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "commits",
@@ -1127,7 +1127,7 @@
               "step": 1800
             },
             {
-              "expr": "irate(pg_stat_database_xact_rollback{instance=\"$instance\", datname=\"postgres\"}[5m])",
+              "expr": "irate(pg_stat_database_xact_rollback{field=\"$instance\", datname=\"postgres\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "rollbacks",
@@ -1205,7 +1205,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "pg_stat_activity_max_tx_duration{instance=\"$instance\", datname=\"postgres\"}",
+              "expr": "pg_stat_activity_max_tx_duration{field=\"$instance\", datname=\"postgres\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "max_tx_duration [{{state}}]",
@@ -1294,7 +1294,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(pg_stat_database_conflicts{instance=\"$instance\", datname=\"postgres\"}[5m])",
+              "expr": "irate(pg_stat_database_conflicts{field=\"$instance\", datname=\"postgres\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "conflicts",
@@ -1302,7 +1302,7 @@
               "step": 1800
             },
             {
-              "expr": "irate(pg_stat_database_deadlocks{instance=\"$instance\", datname=\"postgres\"}[5m])",
+              "expr": "irate(pg_stat_database_deadlocks{field=\"$instance\", datname=\"postgres\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "deadlocks",
@@ -1380,7 +1380,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(pg_stat_database_tup_fetched{instance=\"$instance\", datname=\"postgres\"}[5m])",
+              "expr": "irate(pg_stat_database_tup_fetched{field=\"$instance\", datname=\"postgres\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "SELECT (index scan)",
@@ -1388,7 +1388,7 @@
               "step": 1800
             },
             {
-              "expr": "irate(pg_stat_database_tup_returned{instance=\"$instance\", datname=\"postgres\"}[5m])",
+              "expr": "irate(pg_stat_database_tup_returned{field=\"$instance\", datname=\"postgres\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "SELECT (table scan)",
@@ -1478,7 +1478,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "pg_stat_database_blks_hit{instance=\"$instance\", datname=\"thoth\"} / (pg_stat_database_blks_read{instance=\"$instance\", datname=\"thoth\"} + pg_stat_database_blks_hit{instance=\"$instance\", datname=\"thoth\"})",
+              "expr": "pg_stat_database_blks_hit{field=\"$instance\", datname=\"thoth\"} / (pg_stat_database_blks_read{field=\"$instance\", datname=\"thoth\"} + pg_stat_database_blks_hit{field=\"$instance\", datname=\"thoth\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Cache Hit Rate",
@@ -1556,7 +1556,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "pg_locks_count{instance=\"$instance\", datname=\"thoth\"}",
+              "expr": "pg_locks_count{field=\"$instance\", datname=\"thoth\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{mode}}",
@@ -1635,7 +1635,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(pg_stat_database_temp_bytes{instance=\"$instance\", datname=\"thoth\"}[5m])",
+              "expr": "irate(pg_stat_database_temp_bytes{field=\"$instance\", datname=\"thoth\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Temp Bytes",
@@ -1725,7 +1725,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(pg_stat_bgwriter_buffers_backend{instance=\"$instance\"}[5m])",
+              "expr": "irate(pg_stat_bgwriter_buffers_backend{field=\"$instance\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "buffers_backend",
@@ -1733,7 +1733,7 @@
               "step": 2400
             },
             {
-              "expr": "irate(pg_stat_bgwriter_buffers_alloc{instance=\"$instance\"}[5m])",
+              "expr": "irate(pg_stat_bgwriter_buffers_alloc{field=\"$instance\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "buffers_alloc",
@@ -1741,7 +1741,7 @@
               "step": 2400
             },
             {
-              "expr": "irate(pg_stat_bgwriter_buffers_backend_fsync{instance=\"$instance\"}[5m])",
+              "expr": "irate(pg_stat_bgwriter_buffers_backend_fsync{field=\"$instance\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "backend_fsync",
@@ -1749,7 +1749,7 @@
               "step": 2400
             },
             {
-              "expr": "irate(pg_stat_bgwriter_buffers_checkpoint{instance=\"$instance\"}[5m])",
+              "expr": "irate(pg_stat_bgwriter_buffers_checkpoint{field=\"$instance\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "buffers_checkpoint",
@@ -1757,7 +1757,7 @@
               "step": 2400
             },
             {
-              "expr": "irate(pg_stat_bgwriter_buffers_clean{instance=\"$instance\"}[5m])",
+              "expr": "irate(pg_stat_bgwriter_buffers_clean{field=\"$instance\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "buffers_clean",
@@ -1835,7 +1835,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(pg_stat_bgwriter_checkpoint_write_time{instance=\"$instance\"}[5m])",
+              "expr": "irate(pg_stat_bgwriter_checkpoint_write_time{field=\"$instance\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "write_time - Total amount of time that has been spent in the portion of checkpoint processing where files are written to disk.",
@@ -1843,7 +1843,7 @@
               "step": 1200
             },
             {
-              "expr": "irate(pg_stat_bgwriter_checkpoint_sync_time{instance=\"$instance\"}[5m])",
+              "expr": "irate(pg_stat_bgwriter_checkpoint_sync_time{field=\"$instance\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "sync_time - Total amount of time that has been spent in the portion of checkpoint processing where files are synchronized to disk.",
@@ -2388,7 +2388,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "thoth_graphdb_connection_issues{instance=\"$metrics_exporter_instance\"}",
+              "expr": "thoth_graphdb_connection_issues{field=\"$metrics_exporter_instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "",
@@ -2453,7 +2453,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "thoth_graphdb_size{instance=\"$metrics_exporter_instance\"}",
+              "expr": "thoth_graphdb_size{field=\"$metrics_exporter_instance\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Thoth Database Size",
@@ -2512,15 +2512,15 @@
     "thoth",
     "ops-metrics",
     "postgresql-metrics-exporter",
-    "zero-prod"
+    "smaug-prod"
   ],
   "templating": {
     "list": [
       {
         "allValue": null,
         "current": {
-          "text": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80",
-          "value": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80"
+          "text": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud:80",
+          "value": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud:80"
         },
         "hide": 0,
         "includeAll": false,
@@ -2530,18 +2530,18 @@
         "options": [
           {
             "selected": true,
-            "text": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80",
-            "value": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80"
+            "text": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud:80",
+            "value": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud:80"
           }
         ],
-        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.zero.massopen.cloud:80",
+        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud:80",
         "type": "custom"
       },
       {
         "allValue": null,
         "current": {
-          "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
-          "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
+          "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80",
+          "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80"
         },
         "hide": 0,
         "includeAll": false,
@@ -2551,19 +2551,19 @@
         "options": [
           {
             "selected": true,
-            "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
-            "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
+            "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80",
+            "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
+        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80",
         "type": "custom"
       },
       {
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "zero-prod",
-          "value": "zero-prod"
+          "text": "smaug-prod",
+          "value": "smaug-prod"
         },
         "hide": 0,
         "includeAll": false,
@@ -2573,11 +2573,11 @@
         "options": [
           {
             "selected": true,
-            "text": "zero-prod",
-            "value": "zero-prod"
+            "text": "smaug-prod",
+            "value": "smaug-prod"
           }
         ],
-        "query": "zero-prod",
+        "query": "smaug-prod",
         "type": "custom"
       }
     ]
