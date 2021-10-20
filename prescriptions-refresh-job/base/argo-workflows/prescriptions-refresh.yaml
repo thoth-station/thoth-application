@@ -87,5 +87,27 @@ spec:
               templateRef:
                 name: prescriptions-refresh-scorecards
                 template: scorecards
+            - name: gh-contributors
+              templateRef:
+                name: prescriptions-refresh-gh
+                template: gh-contributors
+              continueOn:
+                failed: true
+            - name: gh-forked
+              templateRef:
+                name: prescriptions-refresh-gh
+                template: gh-forked
+              continueOn:
+                failed: true
+            - name: gh-popularity
+              templateRef:
+                name: prescriptions-refresh-gh
+                template: gh-popularity
+              continueOn:
+                failed: true
+            - name: gh-updated
+              templateRef:
+                name: prescriptions-refresh-gh
+                template: gh-updated
               continueOn:
                 failed: true
