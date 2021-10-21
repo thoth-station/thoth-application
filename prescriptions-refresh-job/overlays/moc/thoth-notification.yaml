@@ -22,7 +22,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'Successfully synchronized *prescriptions-refresh-job* to *OCP4-STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/ocp4-stage-thoth-prescriptions-refresh-job|ArgoCD UI> 🚚'}"
+            - "{'text':'Successfully synchronized *prescriptions-refresh-job* to *MOC*, see <https://argocd.operate-first.cloud/applications/prod-thoth-prescriptions-refresh-job-smaug|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
@@ -55,7 +55,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'🔥 *FAILED* to sync *prescriptions-refresh-job* to *OCP4-STAGE*, see <https://argocd-server-aicoe-argocd.apps.ocp4.prod.psi.redhat.com/applications/ocp4-stage-thoth-prescriptions-refresh-job|ArgoCD UI>'}"
+            - "{'text':'🔥 *FAILED* to sync *prescriptions-refresh-job* to *MOC*, see <https://argocd.operate-first.cloud/applications/prod-thoth-prescriptions-refresh-job-smaug|ArgoCD UI>'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
