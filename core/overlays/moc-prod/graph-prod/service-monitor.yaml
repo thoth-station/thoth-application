@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: thoth-station-graph-monitor
+  labels:
+    monitor-component: thoth-station
+spec:
+  endpoints:
+    - interval: 15s
+      port: metrics
+      scheme: http
+      relabelings:
+        - source_labels: [service]
+          regex: "postgres-metrics-exporter"
+          action: replace
+          target_label: field
+          replacement: postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud
+  namespaceSelector:
+    matchNames:
+      - thoth-graph-prod
+  selector: {}
