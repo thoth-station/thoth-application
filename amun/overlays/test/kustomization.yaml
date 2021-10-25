@@ -17,9 +17,45 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/workflow-helpers:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=workflow-helpers"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
         value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/messaging:latest
     target:
       group: argoproj.io
       version: v1alpha1
       kind: WorkflowTemplate
       annotationSelector: "operation=messaging"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/1/script/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/kubectl:latest
+      - op: replace
+        path: /spec/templates/5/script/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/kubectl:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=inspection-build"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/1/initContainers/0/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/amun-inspect-hwinfo:latest
+      - op: replace
+        path: /spec/templates/1/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/{{inputs.parameters.inspection-id}}:latest
+      - op: replace
+        path: /spec/templates/2/script/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/kubectl:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=inspection-run"
