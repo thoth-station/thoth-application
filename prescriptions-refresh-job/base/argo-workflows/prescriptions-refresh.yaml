@@ -111,3 +111,9 @@ spec:
                 template: gh-updated
               continueOn:
                 failed: true
+            - name: quay-security
+              templateRef:
+                name: prescriptions-refresh-quay
+                template: quay-security
+              continueOn:
+                failed: true
