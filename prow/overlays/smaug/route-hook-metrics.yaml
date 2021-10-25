@@ -1,12 +1,12 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: ghproxy-metrics
+  name: hook-metrics
 spec:
   path: /metrics
   to:
     kind: Service
-    name: ghproxy
+    name: hook
     weight: 100
   port:
     targetPort: metrics

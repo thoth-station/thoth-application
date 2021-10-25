@@ -69,6 +69,8 @@ spec:
           ports:
             - name: http
               containerPort: 8888
+            - name: metrics
+              containerPort: 9090
           volumeMounts:
             - name: hmac
               mountPath: /etc/webhook
@@ -124,5 +126,10 @@ spec:
   selector:
     app: hook
   ports:
-    - port: 8888
+    - name: main
+      port: 8888
+      protocol: TCP
+    - name: metrics
+      port: 9090
+      protocol: TCP
   type: NodePort
