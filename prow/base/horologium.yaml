@@ -56,6 +56,9 @@ spec:
           args:
             - --dry-run=false
             - --config-path=/etc/config/config.yaml
+          ports:
+            - name: metrics
+              containerPort: 9090
           volumeMounts:
             - name: config
               mountPath: /etc/config
@@ -71,3 +74,17 @@ spec:
         - name: config
           configMap:
             name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: horologium
+  name: horologium
+spec:
+  ports:
+    - name: metrics
+      port: 9090
+      protocol: TCP
+  selector:
+    app: horologium

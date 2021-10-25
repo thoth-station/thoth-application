@@ -75,6 +75,9 @@ spec:
             - --github-endpoint=https://api.github.com
             - --github-workers=10
             - --kubernetes-blob-storage-workers=10
+          ports:
+            - name: metrics
+              containerPort: 9090
           volumeMounts:
             - name: oauth-token
               mountPath: /etc/github
@@ -102,3 +105,17 @@ spec:
         - name: oauth-token
           secret:
             secretName: oauth-token
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: crier
+  name: crier
+spec:
+  ports:
+    - name: metrics
+      port: 9090
+      protocol: TCP
+  selector:
+    app: crier

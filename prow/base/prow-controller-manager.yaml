@@ -100,6 +100,9 @@ spec:
             - --github-endpoint=https://api.github.com
             - --enable-controller=plank
           image: prow-controller-manager:latest
+          ports:
+            - name: metrics
+              containerPort: 9090
           volumeMounts:
             - name: config
               mountPath: /etc/config
@@ -118,3 +121,17 @@ spec:
         - name: github-token
           secret:
             secretName: github-token
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prow-controller-manager
+  name: prow-controller-manager
+spec:
+  ports:
+    - name: metrics
+      port: 9090
+      protocol: TCP
+  selector:
+    app: prow-controller-manager
