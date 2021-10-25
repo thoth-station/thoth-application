@@ -111,4 +111,4 @@ spec:
     - name: metrics
       port: 9090
       protocol: TCP
-  type: NodePort
+  type: ClusterIP
