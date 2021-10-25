@@ -8,7 +8,7 @@ spec:
     host: pulp.operate-first.cloud
     to:
         kind: Service
-        name: example-pulp-api-svc
+        name: pulp-api-svc
         weight: 100
     port:
         targetPort: api-24817
@@ -23,7 +23,7 @@ spec:
     host: pulp-content.operate-first.cloud
     to:
         kind: Service
-        name: example-pulp-content-svc
+        name: pulp-web-svc
         weight: 100
     port:
-        targetPort: content-24816
+        targetPort: web-8080
