@@ -78,8 +78,10 @@ spec:
             - --cookie-secret=/etc/cookie/secret
             - --spyglass=true
           ports:
-            - name: http
+            - name: main
               containerPort: 8080
+            - name: metrics
+              containerPort: 9090
           volumeMounts:
             - name: config
               mountPath: /etc/config
@@ -147,6 +149,11 @@ spec:
   selector:
     app: deck
   ports:
-    - port: 80
+    - name: main
+      port: 80
       targetPort: 8080
+      protocol: TCP
+    - name: metrics
+      port: 9090
+      protocol: TCP
   type: NodePort
