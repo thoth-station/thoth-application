@@ -10,15 +10,15 @@ spec:
       port: metrics
       scheme: http
       relabelings:
-        - source_labels: [service]
+        - sourceLabels: [service]
           regex: "argo-server"
           action: replace
-          target_label: field
+          targetLabel: field
           replacement: argo-ui-thoth-middletier-prod.apps.smaug.na.operate-first.cloud
-        - source_labels: [service]
+        - sourceLabels: [service]
           regex: "workflow-controller-metrics"
           action: replace
-          target_label: field
+          targetLabel: field
           replacement: workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud
   namespaceSelector:
     matchNames:
