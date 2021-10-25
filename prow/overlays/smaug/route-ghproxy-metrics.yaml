@@ -1,7 +1,7 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: gh-proxy-metrics
+  name: ghproxy-metrics
 spec:
   path: /metrics
   to:
