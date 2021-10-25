@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base
   - role-binding.yaml
+  - route53.yaml
   - thoth-notification.yaml
 images:
   - name: management-api
@@ -41,7 +42,3 @@ patches:
       version: v1
       kind: Role
       name: management-api-pods-info
-generators:
-  - secret-generator.yaml
-generatorOptions:
-  disableNameSuffixHash: true

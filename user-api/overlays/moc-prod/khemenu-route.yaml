@@ -1,0 +1,12 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+    name: user-api-khemenu-route53
+    annotations:
+      kubernetes.io/tls-acme: "true"
+      haproxy.router.openshift.io/timeout: 45s
+spec:
+    host: khemenu.thoth-station.ninja
+    to:
+        kind: Service
+        name: user-api
