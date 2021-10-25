@@ -64,8 +64,10 @@ spec:
             - --status-path=s3://ci-prow/tide/tide-status
             - --history-uri=s3://ci-prow/tide/tide-history.json
           ports:
-            - name: http
+            - name: main
               containerPort: 8888
+            - name: metrics
+              containerPort: 9090
           volumeMounts:
             - name: oauth-token
               mountPath: /etc/github
@@ -102,6 +104,11 @@ spec:
   selector:
     app: tide
   ports:
-    - port: 80
+    - name: main
+      port: 80
       targetPort: 8888
+      protocol: TCP
+    - name: metrics
+      port: 9090
+      protocol: TCP
   type: NodePort
