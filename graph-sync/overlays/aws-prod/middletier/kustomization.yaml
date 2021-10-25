@@ -10,7 +10,7 @@ patches:
   - patch: |-
       - op: add
         path: /metadata/namespace
-        value: "thoth-infra-stage"
+        value: "thoth-infra-prod"
     target:
       group: batch
       version: v1
