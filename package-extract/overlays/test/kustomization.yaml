@@ -14,4 +14,4 @@ patches:
       group: argoproj.io
       version: v1alpha1
       kind: WorkflowTemplate
-      name: revsolve
+      name: extract-packages
