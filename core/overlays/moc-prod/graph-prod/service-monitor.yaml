@@ -10,10 +10,10 @@ spec:
       port: metrics
       scheme: http
       relabelings:
-        - source_labels: [service]
+        - sourceLabels: [service]
           regex: "postgres-metrics-exporter"
           action: replace
-          target_label: field
+          targetLabel: field
           replacement: postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud
   namespaceSelector:
     matchNames:
