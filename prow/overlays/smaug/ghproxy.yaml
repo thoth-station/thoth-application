@@ -16,6 +16,19 @@ spec:
       referencePolicy:
         type: Local
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  labels:
+    app: ghproxy
+  name: ghproxy
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -52,8 +65,9 @@ spec:
               memory: "64Mi"
               cpu: "2m"
       volumes:
-        - name: cache
-          emptyDir: {}
+         - name: cache
+           persistentVolumeClaim:
+             claimName: ghproxy
 ---
 apiVersion: v1
 kind: Service
