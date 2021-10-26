@@ -1,3 +1,4 @@
+---
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
@@ -6,21 +7,6 @@ metadata:
         kubernetes.io/tls-acme: "true"
 spec:
     host: pulp.operate-first.cloud
-    to:
-        kind: Service
-        name: pulp-api-svc
-        weight: 100
-    port:
-        targetPort: api-24817
----
-kind: Route
-apiVersion: route.openshift.io/v1
-metadata:
-    name: pulp-content-external
-    annotations:
-        kubernetes.io/tls-acme: "true"
-spec:
-    host: pulp-content.operate-first.cloud
     to:
         kind: Service
         name: pulp-web-svc
