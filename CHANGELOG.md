@@ -1,4 +1,69 @@
 
+## Release 2021.10.26 (2021-10-26T04:10:35)
+* :ship: Bump up the images based on the version update v2021.10.25 (#2088)
+* :ship: Deploy the Tag v0.2.0 for prescriptions-refresh-job
+* Add Quay security task in prescriptions-refresh workflow (#2072)
+* :memo: fixed the chat notification for the graph-sync (#2086)
+* :hatching_chick: configure the pulp route (#2083)
+* patch the service monitor with correct labels (#2085)
+* :fire: patch the package-extract image fix (#2084)
+* :fire: patch the tide service to type ClusterIP (#2081)
+* add hook metrics route to routes.yaml
+* :fire: patch the github token for the prow services (#2080)
+* add metrics exposure for ghproxy deployment
+* add deck and tide metrics exposure
+* add metrics exposure for hook deployment
+* :package: Attach the pvc to the prow ghproxy (#2076)
+* :arrow_up: update certs for the thoth services (#2068)
+* :fire: patch up the image resolution for amun images (#2063)
+* Bump adviser to v0.46.0 in stage environment (#2073)
+* adding backend service monitor (#2045)
+* adding frontend service monitor (#2043)
+* Middletier prod service monitor labeling (#2044)
+* :arrow_up: upgrade the prow image for the deployment (#2071)
+* Temporarily revert the version update for the chatbot (#2069)
+* Update .prow.yaml
+* :balloon: Increase the parallelism for ingestions
+* :arrow_down_small: Turn off ingestion in the moc cluster
+* :turtle: Maintain one prod overlay for prescriptions-refresh-job
+* Bump prescriptions-refresh-job to v0.1.0 in stage (#2041)
+* Add new GitHub tasks to prescriptions-refresh-job (#1974)
+* :ship: Deploy the Tag v0.1.0 for prescriptions-refresh-job
+* Bump up the sefkhet-abwy version v0.22.2
+* :fire: patch up the image resolution for security indicators images (#2062)
+* :hatching_chick: configure the new cluster for the prow services
+* :turtle: Maintain consistency in the prow config
+* update Prow image versions
+* remove some depreacted cnv-prod config
+* :arrow_up: update rbac apiVersion to v1
+* :fire: patch up the image resolution for solver images
+* :fire: patch up the image resolution for graph-sync images
+* Fix management-api endpoint
+* :ship: Deploy the Tag v0.17.13 for management-api
+* :ship: Deploy the Tag pr-831 for management-api
+* :ship: Deploy the Tag pr-830 for management-api
+* Update thoth-notification.yaml
+* fix my own typo :/
+* fix a tiny typo in the notification text
+* set some lower resource defaults
+* reduced the resource consumption a little
+* reduce resource usage a little ;)
+* :ship: Deploy the Tag v0.17.12 for management-api
+* Patch the additional_allowed_buckets for the deck config
+* Attach the additional_allowed_buckets for the deck config
+* :turtle: patch the route for prow service
+* :turtle: patch s3 config for prow service (#2049)
+* :hatching_chick: setup s3 storage for the prow services
+* Bump up the kebechet version to v1.5.5
+* :ship: Deploy the Tag v1.5.5 for kebechet
+* adding graph service monitor
+* updating name of service monitor
+* adding namespace seperator
+* :hatching_chick: Setup pushgateway from metric collections
+* Provide Prometheus pushgateway URL to adviser
+* :turtle: upgrade kebechet version for fix of the runtime default issues (#2036)
+* :ship: Deploy the Tag v1.5.4 for kebechet
+
 ## Release 2021.10.11 (2021-10-11T21:11:20)
 * :ship: Bump up the images based on the version update v2021.10.11
 * :ship: Deploy the Tag v1.5.3 for kebechet
