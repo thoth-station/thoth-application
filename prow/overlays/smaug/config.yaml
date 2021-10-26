@@ -17,12 +17,10 @@ plank:
         initupload: initupload
         sidecar: sidecar
 sinker:
-  # MaxPodAge is how old a Pod can be before it is garbage-collected.
-  # Defaults to one day.
   max_pod_age: 6h
-  # MaxProwJobAge is how old a ProwJob can be before it is garbage-collected.
-  # Defaults to one week.
   max_prowjob_age: 12h
+  resync_period: 1m
+  terminated_pod_ttl: 120m
 
 prowjob_namespace: opf-ci-prow
 pod_namespace: opf-ci-prow
@@ -168,6 +166,8 @@ deck:
   tide_update_period: 1s
 
 tide:
+  sync_period: 2m
+
   pr_status_base_urls:
     "*": https://prow.operate-first.cloud/pr
 
