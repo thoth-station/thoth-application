@@ -62,7 +62,7 @@ with open("overlays/smaug/imagestreamtags.yaml") as ist:
     stream = load_all(ist.read(), Loader=Loader)
 
 updated_imagestream_tags = []
-current_tag = "v20211019-b0788a9d38"
+current_tag = "v20211025-c04ea2035e"
 
 for data in stream:
     logging.info(f"updating ImageStream '{data['metadata']['name']}'")
