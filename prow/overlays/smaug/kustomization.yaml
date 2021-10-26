@@ -7,9 +7,6 @@ resources:
   - route-ghproxy-metrics.yaml
   - routes.yaml
   - s3-storage.yaml
-images:
-  - name: deck
-    newTag: v20211025-c04ea2035e
 patchesStrategicMerge:
   - imagestreamtags.yaml
   - unsuspend_branchprotector.yaml
