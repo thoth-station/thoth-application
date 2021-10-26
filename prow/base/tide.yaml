@@ -81,10 +81,10 @@ spec:
           resources:
             requests:
               memory: "1Gi"
-              cpu: "175m"
+              cpu: "250m"
             limits:
               memory: "1Gi"
-              cpu: "175m"
+              cpu: "250m"
       volumes:
         - name: oauth-token
           secret:
