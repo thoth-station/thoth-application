@@ -187,6 +187,15 @@ milestone_applier:
     v2021.07.19: 2021.07.19
     v2021.07.06: 2021.07.05
 
+project_config:
+  project_org_configs:
+    thoth-station:
+      org_default_column_map:
+        Observability: New
+
+      # get this via `curl -H "Authorization: token ????" "https://api.github.com/orgs/thoth-station/teams"`
+      org_maintainers_team_id: 4924960
+
 plugins:
   b4mad:
     plugins:
