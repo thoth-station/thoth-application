@@ -58,7 +58,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "argo_workflows_count{instance='$instance'}",
+                "expr": "argo_workflows_count{field='$instance'}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "{{status}}",
@@ -136,7 +136,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "argo_workflows_error_count{instance='$instance'}",
+                "expr": "argo_workflows_error_count{field='$instance'}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "{{queue_name}}",
@@ -226,7 +226,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "argo_workflows_queue_adds_count{instance='$instance'}",
+                "expr": "argo_workflows_queue_adds_count{field='$instance'}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "{{queue_name}}",
@@ -304,7 +304,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "argo_workflows_queue_depth_count{instance='$instance'}",
+                "expr": "argo_workflows_queue_depth_count{field='$instance'}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "{{queue_name}}",
@@ -396,7 +396,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "argo_workflows_queue_latency_bucket{instance='$instance', queue_name=\"$queue_name\"} / ignoring(le) group_left argo_workflows_queue_latency_count{instance='$instance', queue_name=\"$queue_name\"}",
+                "expr": "argo_workflows_queue_latency_bucket{field='$instance', queue_name=\"$queue_name\"} / ignoring(le) group_left argo_workflows_queue_latency_count{field='$instance', queue_name=\"$queue_name\"}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "queue_latency: {{le}}",
@@ -465,7 +465,7 @@
             "span": 6,
             "targets": [
               {
-                "expr": "argo_workflows_operation_duration_seconds_bucket{instance='$instance'}",
+                "expr": "argo_workflows_operation_duration_seconds_bucket{field='$instance'}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "{{queue_name}}",
@@ -543,7 +543,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "go_memstats_alloc_bytes{instance='$instance'}",
+                "expr": "go_memstats_alloc_bytes{field='$instance'}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "Allocated Bytes",
@@ -609,8 +609,8 @@
           "allValue": null,
           "current": {
             "tags": [],
-            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
-            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
+            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80",
+            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80"
           },
           "hide": 0,
           "includeAll": false,
@@ -620,16 +620,16 @@
           "options": [
             {
               "selected": false,
-              "text": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80",
-              "value": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80"
+              "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80",
+              "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80"
             },
             {
               "selected": false,
-              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
-              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80"
+              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80",
+              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80"
             }
           ],
-          "query": "workflow-controller-metrics-thoth-backend-prod.apps.zero.massopen.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.zero.massopen.cloud:80",
+          "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80",
           "type": "custom"
         },
         {

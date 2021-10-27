@@ -67,7 +67,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "increase(flask_http_request_total{instance=\"$instance\", method=\"GET\"}[$interval])",
+                "expr": "increase(flask_http_request_total{field=\"$instance\", method=\"GET\"}[$interval])",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "GET: HTTP {{ status }}",
@@ -75,7 +75,7 @@
                 "step": 120
               },
               {
-                "expr": "increase(flask_http_request_total{instance=\"$instance\", method=\"POST\"}[$interval])",
+                "expr": "increase(flask_http_request_total{field=\"$instance\", method=\"POST\"}[$interval])",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "POST: HTTP {{ status }}",
@@ -183,7 +183,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "flask_http_request_duration_seconds_count{instance=\"$instance\",  method=\"GET\", status=\"200\"} / ignoring(endpoint) group_left flask_http_request_total{instance=\"$instance\", method=\"GET\", status=\"200\"}",
+                "expr": "flask_http_request_duration_seconds_count{field=\"$instance\",  method=\"GET\", status=\"200\"} / ignoring(endpoint) group_left flask_http_request_total{field=\"$instance\", method=\"GET\", status=\"200\"}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
@@ -280,7 +280,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "flask_http_request_duration_seconds_count{instance=\"$instance\", method=\"POST\", status=\"202\"} / ignoring(endpoint) group_left flask_http_request_total{instance=\"$instance\", method=\"POST\", status=\"202\"}",
+                "expr": "flask_http_request_duration_seconds_count{field=\"$instance\", method=\"POST\", status=\"202\"} / ignoring(endpoint) group_left flask_http_request_total{field=\"$instance\", method=\"POST\", status=\"202\"}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
@@ -288,7 +288,7 @@
                 "step": 120
               },
               {
-                "expr": "flask_http_request_duration_seconds_count{instance=\"$instance\", method=\"POST\", status=\"200\"} / ignoring(endpoint) group_left flask_http_request_total{instance=\"$instance\", method=\"POST\", status=\"200\"}",
+                "expr": "flask_http_request_duration_seconds_count{field=\"$instance\", method=\"POST\", status=\"200\"} / ignoring(endpoint) group_left flask_http_request_total{field=\"$instance\", method=\"POST\", status=\"200\"}",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
@@ -389,7 +389,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "sum(rate(flask_http_request_duration_seconds_count{instance=\"$instance\", status!=\"200\"}[$interval]))",
+                "expr": "sum(rate(flask_http_request_duration_seconds_count{field=\"$instance\", status!=\"200\"}[$interval]))",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
@@ -486,7 +486,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "process_resident_memory_bytes{instance=\"$instance\"}",
+                "expr": "process_resident_memory_bytes{field=\"$instance\"}",
                 "format": "time_series",
                 "intervalFactor": 1,
                 "legendFormat": "mem",
@@ -569,7 +569,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "rate(process_cpu_seconds_total{instance=\"$instance\"}[$interval])",
+                "expr": "rate(process_cpu_seconds_total{field=\"$instance\"}[$interval])",
                 "format": "time_series",
                 "intervalFactor": 1,
                 "legendFormat": "cpu",
@@ -689,7 +689,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "rate(flask_http_request_duration_seconds_sum{instance=\"$instance\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", status=~\"200|202\"}[$interval])\n/\nrate(flask_http_request_duration_seconds_count{instance=\"$instance\",endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", status=~\"200|202\"}[$interval])",
+                "expr": "rate(flask_http_request_duration_seconds_sum{field=\"$instance\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", status=~\"200|202\"}[$interval])\n/\nrate(flask_http_request_duration_seconds_count{field=\"$instance\",endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", status=~\"200|202\"}[$interval])",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
@@ -809,7 +809,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "increase(flask_http_request_duration_seconds_bucket{instance=\"$instance\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"/api/v1./api/v1_swagger_ui_index\", le=\"0.25\", status=~\"200|202\"}[$interval]) \n/ ignoring (le) increase(flask_http_request_duration_seconds_count{instance=\"$instance\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", status=~\"200|202\"}[$interval])",
+                "expr": "increase(flask_http_request_duration_seconds_bucket{field=\"$instance\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"/api/v1./api/v1_swagger_ui_index\", le=\"0.25\", status=~\"200|202\"}[$interval]) \n/ ignoring (le) increase(flask_http_request_duration_seconds_count{field=\"$instance\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", status=~\"200|202\"}[$interval])",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
@@ -926,7 +926,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "histogram_quantile(0.5, rate(flask_http_request_duration_seconds_bucket{instance=\"$instance\",endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\",  status=~\"200|202\"}[60s]))",
+                "expr": "histogram_quantile(0.5, rate(flask_http_request_duration_seconds_bucket{field=\"$instance\",endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\",  status=~\"200|202\"}[60s]))",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
@@ -1042,7 +1042,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "histogram_quantile(0.9, rate(flask_http_request_duration_seconds_bucket{instance=\"$instance\",endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", endpoint!=\"/api/v1./api/v1_swagger_ui_static\", status=~\"200|202\"}[$interval]))",
+                "expr": "histogram_quantile(0.9, rate(flask_http_request_duration_seconds_bucket{field=\"$instance\",endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", endpoint!=\"/api/v1./api/v1_swagger_ui_static\", status=~\"200|202\"}[$interval]))",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
@@ -1149,7 +1149,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "rate(flask_http_request_duration_seconds_count{instance=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])",
+                "expr": "rate(flask_http_request_duration_seconds_count{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])",
                 "format": "time_series",
                 "intervalFactor": 2,
                 "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
@@ -1249,7 +1249,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "rate(flask_http_request_duration_seconds_sum{instance=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])\n/\nrate(flask_http_request_duration_seconds_count{instance=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])",
+                "expr": "rate(flask_http_request_duration_seconds_sum{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])\n/\nrate(flask_http_request_duration_seconds_count{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
@@ -1350,7 +1350,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "increase(flask_http_request_duration_seconds_bucket{instance=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\", le=\"0.25\"}[$interval]) \n/ ignoring (le) increase(flask_http_request_duration_seconds_count{instance=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])",
+                "expr": "increase(flask_http_request_duration_seconds_bucket{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\", le=\"0.25\"}[$interval]) \n/ ignoring (le) increase(flask_http_request_duration_seconds_count{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])",
                 "format": "time_series",
                 "instant": false,
                 "interval": "",
@@ -1452,7 +1452,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "histogram_quantile(0.5, rate(flask_http_request_duration_seconds_bucket{instance=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval]))",
+                "expr": "histogram_quantile(0.5, rate(flask_http_request_duration_seconds_bucket{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval]))",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
@@ -1552,7 +1552,7 @@
             "steppedLine": false,
             "targets": [
               {
-                "expr": "histogram_quantile(0.9, rate(flask_http_request_duration_seconds_bucket{instance=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval]))",
+                "expr": "histogram_quantile(0.9, rate(flask_http_request_duration_seconds_bucket{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval]))",
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
@@ -1694,8 +1694,8 @@
         {
           "allValue": null,
           "current": {
-            "text": "user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80",
-            "value": "user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80"
+            "text": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80",
+            "value": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80"
           },
           "hide": 0,
           "includeAll": false,
@@ -1705,11 +1705,11 @@
           "options": [
             {
               "selected": false,
-              "text": "user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80",
-              "value": "user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80"
+              "text": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80",
+              "value": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80"
             }
           ],
-          "query": "user-api-thoth-frontend-prod.apps.zero.massopen.cloud:80",
+          "query": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80",
           "type": "custom"
         }
       ]

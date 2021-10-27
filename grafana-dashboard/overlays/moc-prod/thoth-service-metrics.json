@@ -431,8 +431,8 @@
         {
           "allValue": null,
           "current": {
-            "text": "zero-prod",
-            "value": "zero-prod"
+            "text": "smaug-prod",
+            "value": "smaug-prod"
           },
           "hide": 0,
           "includeAll": false,
@@ -442,11 +442,11 @@
           "options": [
             {
               "selected": false,
-              "text": "zero-prod",
-              "value": "zero-prod"
+              "text": "smaug-prod",
+              "value": "smaug-prod"
             }
           ],
-          "query": "zero-prod",
+          "query": "smaug-prod",
           "type": "custom"
         }
       ]

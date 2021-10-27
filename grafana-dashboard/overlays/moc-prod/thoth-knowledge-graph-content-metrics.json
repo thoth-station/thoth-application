@@ -27,7 +27,7 @@
   "panels": [
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -92,7 +92,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_adviser_count_per_source_type{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_adviser_count_per_source_type{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -167,7 +167,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_adviser_count_per_source_type{instance=\"$instance\", job=\"Thoth Metrics\", prometheus=\"moc/zero\"}",
+          "expr": "thoth_graphdb_adviser_count_per_source_type{field=\"$instance\", job=\"Thoth Metrics\", prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -181,7 +181,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -243,7 +243,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_kebechet_total_active_repo_count{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_kebechet_total_active_repo_count{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -316,7 +316,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_kebechet_total_active_repo_count{instance=\"$instance\", job=\"Thoth Metrics\", prometheus=\"moc/zero\"}",
+          "expr": "thoth_kebechet_total_active_repo_count{field=\"$instance\", job=\"Thoth Metrics\", prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -330,7 +330,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -393,7 +393,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_pypi_stats{stats_type=\"packages\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_pypi_stats{stats_type=\"packages\", field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -403,7 +403,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_graphdb_total_python_packages_per_indexes{instance=\"$instance\", job=\"Thoth Metrics\"})",
+          "expr": "sum(thoth_graphdb_total_python_packages_per_indexes{field=\"$instance\", job=\"Thoth Metrics\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "Thoth",
@@ -415,7 +415,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -478,7 +478,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_pypi_stats{stats_type=\"releases\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_pypi_stats{stats_type=\"releases\", field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -488,7 +488,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_number_python_package_versions{field=\"$instance\", job=\"Thoth Metrics\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Thoth",
@@ -500,7 +500,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -562,7 +562,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_python_packages_per_indexes{instance=\"$instance\", job=\"Thoth Metrics\", index_url=\"https://pypi.org/simple\"} / ignoring(index_url, stats_type) group_right thoth_pypi_stats{stats_type=\"packages\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_python_packages_per_indexes{field=\"$instance\", job=\"Thoth Metrics\", index_url=\"https://pypi.org/simple\"} / ignoring(index_url, stats_type) group_right thoth_pypi_stats{stats_type=\"packages\", field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -575,7 +575,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -637,7 +637,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"} / ignoring(stats_type) group_right thoth_pypi_stats{stats_type=\"releases\", instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_number_python_package_versions{field=\"$instance\", job=\"Thoth Metrics\"} / ignoring(stats_type) group_right thoth_pypi_stats{stats_type=\"releases\", field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -649,7 +649,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -711,7 +711,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_python_indexes{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_python_indexes{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -738,7 +738,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -800,7 +800,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_solvers{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_solvers{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -812,7 +812,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -874,7 +874,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_solvers_database{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_solvers_database{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -886,7 +886,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -949,7 +949,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1027,7 +1027,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\", prometheus=\"moc/zero\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\", prometheus=\"moc/zero\"}",
+          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\", prometheus=\"moc/smaug\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", job=\"Thoth Metrics\", prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1041,7 +1041,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1104,7 +1104,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1178,7 +1178,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\", prometheus=\"moc/zero\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\", prometheus=\"moc/zero\"}",
+          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\", prometheus=\"moc/smaug\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", job=\"Thoth Metrics\", prometheus=\"moc/smaug\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1192,7 +1192,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1254,7 +1254,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_unsolved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1266,7 +1266,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1328,7 +1328,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"})",
+          "expr": "sum(thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", job=\"Thoth Metrics\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1340,7 +1340,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1402,7 +1402,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "sum(thoth_graphdb_total_python_packages_with_no_error{instance=\"$instance\", job=\"Thoth Metrics\"})",
+          "expr": "sum(thoth_graphdb_total_python_packages_with_no_error{field=\"$instance\", job=\"Thoth Metrics\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1414,7 +1414,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1476,7 +1476,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error{instance=\"$instance\", job=\"Thoth Metrics\"}) - sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"})",
+          "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error{field=\"$instance\", job=\"Thoth Metrics\"}) - sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{field=\"$instance\", job=\"Thoth Metrics\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1488,7 +1488,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1550,7 +1550,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"})",
+          "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{field=\"$instance\", job=\"Thoth Metrics\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1562,7 +1562,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1624,7 +1624,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "sum(thoth_graphdb_total_python_packages_with_no_error{instance=\"$instance\", job=\"Thoth Metrics\"}) / sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"})",
+          "expr": "sum(thoth_graphdb_total_python_packages_with_no_error{field=\"$instance\", job=\"Thoth Metrics\"}) / sum(thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", job=\"Thoth Metrics\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1636,7 +1636,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1698,7 +1698,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "(sum(thoth_graphdb_total_python_packages_with_solver_error{instance=\"$instance\", job=\"Thoth Metrics\"}) - sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"})) / sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"})",
+          "expr": "(sum(thoth_graphdb_total_python_packages_with_solver_error{field=\"$instance\", job=\"Thoth Metrics\"}) - sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{field=\"$instance\", job=\"Thoth Metrics\"})) / sum(thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", job=\"Thoth Metrics\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1710,7 +1710,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1772,7 +1772,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"}) / sum(thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"})",
+          "expr": "sum(thoth_graphdb_total_python_packages_with_solver_error_unsolvable{field=\"$instance\", job=\"Thoth Metrics\"}) / sum(thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", job=\"Thoth Metrics\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1799,7 +1799,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1861,7 +1861,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_cve{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_cve{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1873,7 +1873,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1935,7 +1935,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -1947,7 +1947,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2009,7 +2009,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -2021,7 +2021,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2083,7 +2083,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_si_not_analyzable_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_si_not_analyzable_python_packages{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -2095,7 +2095,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2158,7 +2158,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"} / thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{field=\"$instance\", job=\"Thoth Metrics\"} / thoth_graphdb_number_python_package_versions{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -2188,7 +2188,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2231,7 +2231,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_python_packages_per_indexes{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_python_packages_per_indexes{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "PythonPackages: {{index_url}}",
@@ -2239,7 +2239,7 @@
           "step": 600
         },
         {
-          "expr": "thoth_graphdb_sum_python_packages_per_indexes{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_sum_python_packages_per_indexes{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Tot Python Packages per Index",
@@ -2247,7 +2247,7 @@
           "step": 600
         },
         {
-          "expr": "thoth_graphdb_number_python_package_versions{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_number_python_package_versions{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Tot Python Packages Releases",
@@ -2316,7 +2316,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2358,7 +2358,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_unsolved_python_packages_per_solver{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -2413,7 +2413,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2456,7 +2456,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_solved_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -2526,7 +2526,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2570,7 +2570,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_python_packages_with_no_error{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_python_packages_with_no_error{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Solved Python Packages with no error: {{solver_name}}",
@@ -2626,7 +2626,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2670,7 +2670,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_python_packages_with_solver_error{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_python_packages_with_solver_error{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Solved Python Packages with solver error (unsolvable=False, unparseable=False)): {{solver_name}}",
@@ -2678,7 +2678,7 @@
           "step": 1200
         },
         {
-          "expr": "thoth_graphdb_total_python_packages_with_solver_error_unsolvable{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_python_packages_with_solver_error_unsolvable{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Solved Python Packages with solver error (unsolvable=TRUE): {{solver_name}}",
@@ -2686,7 +2686,7 @@
           "step": 1200
         },
         {
-          "expr": "thoth_graphdb_total_python_packages_with_solver_error_unparseable{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_python_packages_with_solver_error_unparseable{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Solved Python Packages with solver error (unparseable=TRUE): {{solver_name}}",
@@ -2757,7 +2757,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2800,7 +2800,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -2855,7 +2855,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2898,7 +2898,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_si_analyzed_python_packages{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -2968,7 +2968,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3010,7 +3010,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_number_of_pi_per_framework{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_number_of_pi_per_framework{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "FRAMEWORK: {{framework}} | PI: {{pi}}",
@@ -3064,7 +3064,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3106,7 +3106,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_performance_records{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{performance_table}}",
@@ -3172,7 +3172,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3234,7 +3234,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_matmul\"}",
+          "expr": "thoth_graphdb_total_performance_records{field=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_matmul\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -3246,7 +3246,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3308,7 +3308,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_conv2d\"}",
+          "expr": "thoth_graphdb_total_performance_records{field=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_conv2d\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -3320,7 +3320,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3382,7 +3382,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_conv1d\"}",
+          "expr": "thoth_graphdb_total_performance_records{field=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_conv1d\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -3394,7 +3394,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3456,7 +3456,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_total_performance_records{instance=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_pybench\"}",
+          "expr": "thoth_graphdb_total_performance_records{field=\"$instance\", job=\"Thoth Metrics\", performance_table=\"pi_pybench\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "refId": "A",
@@ -3486,7 +3486,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3529,7 +3529,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_user_software_stacks_records{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_user_software_stacks_records{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "External (User) Software Stacks",
@@ -3537,7 +3537,7 @@
           "step": 600
         },
         {
-          "expr": "thoth_graphdb_total_user_run_software_environment{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_user_run_software_environment{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Number of External Software Environment for Run",
@@ -3545,7 +3545,7 @@
           "step": 600
         },
         {
-          "expr": "thoth_graphdb_total_main_records{instance=\"$instance\", job=\"Thoth Metrics\", main_table=~\"external_.*\"}",
+          "expr": "thoth_graphdb_total_main_records{field=\"$instance\", job=\"Thoth Metrics\", main_table=~\"external_.*\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Number of {{main_table}}",
@@ -3614,7 +3614,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3655,7 +3655,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_total_run_software_environment{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_run_software_environment{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Number of Software Environment for Run",
@@ -3663,7 +3663,7 @@
           "step": 1200
         },
         {
-          "expr": "thoth_graphdb_total_build_software_environment{instance=\"$instance\", job=\"Thoth Metrics\"}",
+          "expr": "thoth_graphdb_total_build_software_environment{field=\"$instance\", job=\"Thoth Metrics\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Number of Software Environment for Build",
@@ -3717,7 +3717,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3758,7 +3758,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_advised_software_stacks_records{instance=\"$instance\"}",
+          "expr": "thoth_graphdb_advised_software_stacks_records{field=\"$instance\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Number of advised software stacks",
@@ -3766,7 +3766,7 @@
           "step": 1200
         },
         {
-          "expr": "thoth_graphdb_user_software_stacks_records{instance=\"$instance\"}",
+          "expr": "thoth_graphdb_user_software_stacks_records{field=\"$instance\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Number of user software stacks",
@@ -3829,8 +3829,8 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
-          "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
+          "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80",
+          "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80"
         },
         "description": null,
         "error": null,
@@ -3842,11 +3842,11 @@
         "options": [
           {
             "selected": true,
-            "text": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80",
-            "value": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80"
+            "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80",
+            "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.zero.massopen.cloud:80,open.cloud:80",
+        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80,open.cloud:80",
         "skipUrlSync": false,
         "type": "custom"
       }
