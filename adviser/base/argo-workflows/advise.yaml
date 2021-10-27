@@ -127,7 +127,7 @@ spec:
           - name: THOTH_ADVISER_LIMIT
             value: "{{inputs.parameters.THOTH_ADVISER_LIMIT}}"
           - name: THOTH_ADVISER_BLOCKED_UNITS
-            value: "SecurityIndicatorStep"
+            value: "SecurityIndicatorStep,ThothS2IAbiCompatibilitySieve"
           - name: THOTH_ADVISER_PRESCRIPTION
             value: "/opt/app-root/src/prescriptions.pickle"
           - name: THOTH_ADVISER_REQUIREMENTS
