@@ -2,6 +2,7 @@ secrets.yaml
 secrets-*.yaml
 secrets/*
 application_default_credentials.json
+aicoe-thoth-ops-*.json
 .vscode
 .env
 **.env
