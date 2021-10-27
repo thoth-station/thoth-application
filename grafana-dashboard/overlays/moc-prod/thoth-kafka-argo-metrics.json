@@ -826,7 +826,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "description": "Percentage of workflows that has queue latency below a certain threshold",
       "fill": 1,
       "fillGradient": 0,

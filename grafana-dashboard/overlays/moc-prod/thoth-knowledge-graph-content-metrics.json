@@ -27,7 +27,7 @@
   "panels": [
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -181,7 +181,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -330,7 +330,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -415,7 +415,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -500,7 +500,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -575,7 +575,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -649,7 +649,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -738,7 +738,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -812,7 +812,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -886,7 +886,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1041,7 +1041,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1192,7 +1192,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1266,7 +1266,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1340,7 +1340,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1414,7 +1414,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1488,7 +1488,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1562,7 +1562,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1636,7 +1636,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1710,7 +1710,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1799,7 +1799,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1873,7 +1873,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1947,7 +1947,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2021,7 +2021,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2095,7 +2095,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2188,7 +2188,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2316,7 +2316,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2413,7 +2413,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2526,7 +2526,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2626,7 +2626,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2757,7 +2757,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2855,7 +2855,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2968,7 +2968,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3064,7 +3064,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3172,7 +3172,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3246,7 +3246,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3320,7 +3320,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3394,7 +3394,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3486,7 +3486,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3614,7 +3614,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3717,7 +3717,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "thoth-station",
+      "datasource": "openshift-monitoring",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
