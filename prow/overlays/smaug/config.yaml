@@ -71,6 +71,8 @@ branch-protection:
             - "^revert-"
             - "^kebechet-"
             - "^dependabot/"
+        okr:
+          protect: false
       restrictions:
         users: []
         teams:
