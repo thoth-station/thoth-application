@@ -191,22 +191,22 @@ project_config:
   project_org_configs:
     thoth-station:
       org_default_column_map:
-        "Adviser": New
-        "Amun": New
-        "Integration Testing": New
-        "Investigator": New
-        "Kebechet": New
-        "Knowledge Graph": New
-        "Meta-Information Indicators": New
-        "Observability": New
-        "Performance Indicators": New
-        "Predictable Deployment Pipeline": New
-        "Security Indicators": New
-        "Solver": New
-        "Thoth Data Science": New
-        "Thoth-Services": New
-        "thoth-toolbox": New
-        "User-API": New
+        Adviser: New
+        Amun: New
+        Integration Testing: New
+        Investigator: New
+        Kebechet: New
+        Knowledge Graph: New
+        Meta-Information Indicators: New
+        Observability: New
+        Performance Indicators: New
+        Predictable Deployment Pipeline: New
+        Security Indicators: New
+        Solver: New
+        Thoth Data Science: New
+        Thoth-Services: New
+        thoth-toolbox: New
+        User-API: New
 
       # get this via `curl -H "Authorization: token ????" "https://api.github.com/orgs/thoth-station/teams"`
       org_maintainers_team_id: 4924960
