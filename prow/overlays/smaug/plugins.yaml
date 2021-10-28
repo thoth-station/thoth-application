@@ -260,10 +260,10 @@ plugins:
       - milestoneapplier
       - milestonestatus
       - project
-      - project-manager
       - require-matching-label
       - shrug
       - size
+      - transfer-issue
       - trigger
       - verify-owners
       - wip
