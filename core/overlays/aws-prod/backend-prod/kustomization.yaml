@@ -8,8 +8,9 @@ resources:
   - argo-role.yaml
   - argo-ui-controller.yaml
   - argo-workflow-controller.yaml
-  - thoth-notification.yaml
   - configmaps.yaml
+  - service-monitor.yaml
+  - thoth-notification.yaml
 # wf controller image patch
 images:
   - name: argocli
