@@ -8,6 +8,7 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
+  - configmap.yaml
 patches:
   # chat notification
   - path: put-into-infra-namespace.yaml
