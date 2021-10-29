@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: thoth-station-graph-monitor
+  labels:
+    monitor-component: thoth-station
+spec:
+  endpoints:
+    - interval: 15s
+      port: metrics
+      scheme: http
+      relabelings:
+        - sourceLabels: [service]
+          regex: "postgres-metrics-exporter"
+          action: replace
+          targetLabel: field
+          replacement: postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/
+  namespaceSelector:
+    matchNames:
+      - thoth-graph-prod
+  selector: {}
