@@ -32,6 +32,11 @@ spec:
             value: scorecards
           - name: GITHUB_PRIVATE_KEY_PATH
             value: /opt/app-root/src/.github/github-privatekey
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            valueFrom:
+              secretKeyRef:
+                name: prescriptions
+                key: aicoe-thoth-ops-b9fa132d5b9a.json
           - name: THOTH_LOGGING_NO_JSON
             valueFrom:
               configMapKeyRef:
