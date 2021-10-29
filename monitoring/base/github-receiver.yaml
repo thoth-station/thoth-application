@@ -57,7 +57,7 @@ spec:
                   name: github-secrets
                   key: auth-token
           args:
-            - --label=deployment_name/zero-prod
+            - --label=MODIFY_IN_OVERLAYS
             - --authtoken=$(GITHUB_AUTH_TOKEN)
             - --org=thoth-station
             - --repo=thoth-application
