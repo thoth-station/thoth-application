@@ -1,0 +1,1749 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "hideControls": false,
+    "id": 194,
+    "links": [],
+    "refresh": "30s",
+    "rows": [
+      {
+        "collapse": false,
+        "height": 397,
+        "panels": [
+          {
+            "aliasColors": {
+              "GET: HTTP 200": "#3f6833",
+              "GET: HTTP 308": "#f9934e",
+              "GET: HTTP 400": "#890f02",
+              "POST: HTTP 200": "#7eb26d",
+              "POST: HTTP 202": "#cffaff",
+              "POST: HTTP 400": "#bf1b00",
+              "POST: HTTP 401": "#58140c"
+            },
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 17,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "sort": "avg",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "increase(flask_http_request_total{field=\"$instance\", method=\"GET\"}[$interval])",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "GET: HTTP {{ status }}",
+                "refId": "A",
+                "step": 120
+              },
+              {
+                "expr": "increase(flask_http_request_total{field=\"$instance\", method=\"POST\"}[$interval])",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "POST: HTTP {{ status }}",
+                "refId": "F",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Total requests per minute [TH-GP-0023]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "decimals": 3,
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "decimals": null,
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Total requests per minute [TH-GP-0023]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 466,
+        "panels": [
+          {
+            "aliasColors": {
+              "ENDPOINT: /api/v1./api/v1_openapi_json | METHOD: GET | STATUS : 200": "#890f02",
+              "ENDPOINT: /api/v1./api/v1_swagger_ui_index | METHOD: GET | STATUS : 200": "#890f02",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_advise_python_status | METHOD: GET | STATUS : 200": "#890f02",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_info | METHOD: GET | STATUS : 200": "#705da0",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_provenance_python_status | METHOD: GET | STATUS : 200": "#3f2b5b",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_advise_python | METHOD: GET | STATUS : 200": "#f9934e",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_analyze | METHOD: GET | STATUS : 200": "#ea6460",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_buildlogs | METHOD: GET | STATUS : 200": "#962d82",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_python_package_indexes | METHOD: GET | STATUS : 200": "#1f78c1",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_build | METHOD: GET | STATUS : 200": "#0a437c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_run | METHOD: GET | STATUS : 200": "rgb(194, 200, 204)",
+              "ENDPOINT: api_liveness | METHOD: GET | STATUS : 200": "#890f02",
+              "ENDPOINT: api_readiness | METHOD: GET | STATUS : 200": "#890f02",
+              "ENDPOINT: api_v1 | METHOD: GET | STATUS : 200": "#890f02"
+            },
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 43,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "flask_http_request_duration_seconds_count{field=\"$instance\",  method=\"GET\", status=\"200\"} / ignoring(endpoint) group_left flask_http_request_total{field=\"$instance\", method=\"GET\", status=\"200\"}",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "A",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Percentage of endpoint hit (GET, 200) [TH-GP-0033]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Percentage of endpoints hit (GET, 200) [TH-GP-0033]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 346,
+        "panels": [
+          {
+            "aliasColors": {
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_parse_log | METHOD: POST | STATUS : 200": "#629e51",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_advise_python | METHOD: POST | STATUS : 202": "#eab839",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_analyze | METHOD: POST | STATUS : 202": "#967302",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_buildlog | METHOD: POST | STATUS : 202": "#58140c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_provenance_python | METHOD: POST | STATUS : 202": "rgb(25, 230, 26)"
+            },
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 44,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "flask_http_request_duration_seconds_count{field=\"$instance\", method=\"POST\", status=\"202\"} / ignoring(endpoint) group_left flask_http_request_total{field=\"$instance\", method=\"POST\", status=\"202\"}",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "A",
+                "step": 120
+              },
+              {
+                "expr": "flask_http_request_duration_seconds_count{field=\"$instance\", method=\"POST\", status=\"200\"} / ignoring(endpoint) group_left flask_http_request_total{field=\"$instance\", method=\"POST\", status=\"200\"}",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "B",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Percentage of endpoint hit (POST, [200, 202]) [TH-GP-0033]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Percentage of endpoints hit (POST, 200, 202) [TH-GP-0033]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 262,
+        "panels": [
+          {
+            "aliasColors": {
+              "errors ": "#bf1b00"
+            },
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "gridPos": {
+              "h": 4,
+              "w": 6,
+              "x": 10,
+              "y": 0
+            },
+            "id": 9,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+              {
+                "alias": "errors"
+              }
+            ],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "sum(rate(flask_http_request_duration_seconds_count{field=\"$instance\", status!=\"200\"}[$interval]))",
+                "format": "time_series",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "errors ",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Errors per second [TH-GP-0026]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "transparent": false,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Errors per second [TH-GP-0026]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 250,
+        "panels": [
+          {
+            "aliasColors": {
+              "mem": "#f9d9f9"
+            },
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 13,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "process_resident_memory_bytes{field=\"$instance\"}",
+                "format": "time_series",
+                "intervalFactor": 1,
+                "legendFormat": "mem",
+                "refId": "A",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memory usage [TH-GP-0024]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "decbytes",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          },
+          {
+            "aliasColors": {
+              "cpu": "#f9e2d2"
+            },
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 16,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "rate(process_cpu_seconds_total{field=\"$instance\"}[$interval])",
+                "format": "time_series",
+                "intervalFactor": 1,
+                "legendFormat": "cpu",
+                "refId": "A",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CPU usage [TH-GP-0025]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Memory usage [TH-GP-0024] and CPU usage [TH-GP-0025]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 549,
+        "panels": [
+          {
+            "aliasColors": {
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_info | METHOD: GET | STATUS : 200": "#705da0",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_provenance_python_status | METHOD: GET | STATUS : 200": "#3f2b5b",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_advise_python | METHOD: GET | STATUS : 200": "#f9934e",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_analyze | METHOD: GET | STATUS : 200": "#ea6460",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_buildlogs | METHOD: GET | STATUS : 200": "#962d82",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_python_package_indexes | METHOD: GET | STATUS : 200": "#1f78c1",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_python_package_indexes | METHOD: GET | STATUS : 200PATH: path | METHOD: GET | STATUS : 200": "#1f78c1",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_build | METHOD: GET | STATUS : 200": "#0a437c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_run | METHOD: GET | STATUS : 200": "rgb(220, 217, 211)",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_parse_log | METHOD: POST | STATUS : 200": "#629e51",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_advise_python | METHOD: POST | STATUS : 202": "#eab839",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_analyze | METHOD: POST | STATUS : 202": "#967302",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_buildlog | METHOD: POST | STATUS : 202": "#58140c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_provenance_python | METHOD: POST | STATUS : 202": "rgb(77, 214, 25)",
+              "PATH: /api/v1/advise/python | METHOD: GET | STATUS : 200": "#e0752d",
+              "PATH: /api/v1/advise/python | METHOD: POST | STATUS : 202": "#eab839",
+              "PATH: /api/v1/analyze | METHOD: GET | STATUS : 200": "#ea6460",
+              "PATH: /api/v1/build-software-environment | METHOD: GET | STATUS : 200": "#0a437c",
+              "PATH: /api/v1/buildlog | METHOD: GET | STATUS : 200": "#962d82",
+              "PATH: /api/v1/buildlog | METHOD: POST | STATUS : 202": "#58140c",
+              "PATH: /api/v1/info | METHOD: GET | STATUS : 200": "#705da0",
+              "PATH: /api/v1/provenance/python | METHOD: POST | STATUS : 202": "rgb(47, 224, 8)",
+              "PATH: /api/v1/run-software-environment | METHOD: GET | STATUS : 200": "rgb(172, 168, 158)"
+            },
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 27,
+            "legend": {
+              "alignAsTable": true,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": false,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "rate(flask_http_request_duration_seconds_sum{field=\"$instance\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", status=~\"200|202\"}[$interval])\n/\nrate(flask_http_request_duration_seconds_count{field=\"$instance\",endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", status=~\"200|202\"}[$interval])",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "B",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Average response time [30s] [TH-GP-0028]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "decimals": null,
+                "format": "s",
+                "label": "",
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Average response time [1m] [TH-GP-0028]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 637,
+        "panels": [
+          {
+            "aliasColors": {
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_info | METHOD: GET | STATUS : 200": "#705da0",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_provenance_python_status | METHOD: GET | STATUS : 200": "#3f2b5b",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_advise_python | METHOD: GET | STATUS : 200": "#f9934e",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_analyze | METHOD: GET | STATUS : 200": "#ea6460",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_buildlogs | METHOD: GET | STATUS : 200": "#962d82",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_python_package_indexes | METHOD: GET | STATUS : 200": "#1f78c1",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_build | METHOD: GET | STATUS : 200": "#0a437c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_run | METHOD: GET | STATUS : 200": "rgb(203, 212, 200)",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_analyze | METHOD: POST | STATUS : 202": "#967302",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_buildlog | METHOD: POST | STATUS : 202": "#58140c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_provenance_python | METHOD: POST | STATUS : 202": "rgb(45, 204, 10)",
+              "PATH: /api/v1/advise/python | METHOD: GET | STATUS : 200": "#f9934e",
+              "PATH: /api/v1/advise/python | METHOD: POST | STATUS : 202": "#eab839",
+              "PATH: /api/v1/analyze | METHOD: GET | STATUS : 200": "#ea6460",
+              "PATH: /api/v1/build-software-environment | METHOD: GET | STATUS : 200": "#0a437c",
+              "PATH: /api/v1/buildlog | METHOD: GET | STATUS : 200": "#962d82",
+              "PATH: /api/v1/buildlog | METHOD: POST | STATUS : 202": "#58140c",
+              "PATH: /api/v1/info | METHOD: GET | STATUS : 200": "#705da0",
+              "PATH: /api/v1/parse-log | METHOD: POST | STATUS : 200": "#629e51",
+              "PATH: /api/v1/provenance/python | METHOD: POST | STATUS : 202": "rgb(67, 216, 11)",
+              "PATH: /api/v1/python-package-index | METHOD: GET | STATUS : 200": "#1f78c1",
+              "PATH: /api/v1/run-software-environment | METHOD: GET | STATUS : 200": "rgb(180, 175, 162)"
+            },
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 26,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": false,
+              "min": true,
+              "rightSide": false,
+              "show": true,
+              "sort": "avg",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "increase(flask_http_request_duration_seconds_bucket{field=\"$instance\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"/api/v1./api/v1_swagger_ui_index\", le=\"0.25\", status=~\"200|202\"}[$interval]) \n/ ignoring (le) increase(flask_http_request_duration_seconds_count{field=\"$instance\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\", endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", status=~\"200|202\"}[$interval])",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "B",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Requests under 250ms [TH-GP-0029]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "decimals": null,
+                "format": "percentunit",
+                "label": null,
+                "logBase": 1,
+                "max": "1",
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Requests under 250ms [TH-GP-0029]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 643,
+        "panels": [
+          {
+            "aliasColors": {
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_info | METHOD: GET | STATUS : 200": "#705da0",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_provenance_python_status | METHOD: GET | STATUS : 200": "#3f2b5b",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_advise_python | METHOD: GET | STATUS : 200": "#f9934e",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_analyze | METHOD: GET | STATUS : 200": "#ea6460",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_buildlogs | METHOD: GET | STATUS : 200": "#962d82",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_python_package_indexes | METHOD: GET | STATUS : 200": "#1f78c1",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_build | METHOD: GET | STATUS : 200": "#0a437c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_run | METHOD: GET | STATUS : 200": "rgb(208, 218, 206)",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_analyze | METHOD: POST | STATUS : 202": "#967302",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_buildlog | METHOD: POST | STATUS : 202": "#58140c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_provenance_python | METHOD: POST | STATUS : 202": "rgb(37, 208, 11)",
+              "PATH: /api/v1/advise/python | METHOD: GET | STATUS : 200": "#f9934e",
+              "PATH: /api/v1/advise/python | METHOD: POST | STATUS : 202": "#eab839",
+              "PATH: /api/v1/analyze | METHOD: GET | STATUS : 200": "#ea6460",
+              "PATH: /api/v1/build-software-environment | METHOD: GET | STATUS : 200": "#0a437c",
+              "PATH: /api/v1/buildlog | METHOD: GET | STATUS : 200": "#962d82",
+              "PATH: /api/v1/info | METHOD: GET | STATUS : 200": "#705da0",
+              "PATH: /api/v1/provenance/python | METHOD: POST | STATUS : 202": "rgb(62, 220, 15)",
+              "PATH: /api/v1/run-software-environment | METHOD: GET | STATUS : 200": "rgb(178, 174, 165)"
+            },
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 12,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "rightSide": false,
+              "show": true,
+              "sort": "avg",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.5, rate(flask_http_request_duration_seconds_bucket{field=\"$instance\",endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\",endpoint!=\"/api/v1./api/v1_swagger_ui_static\",  status=~\"200|202\"}[60s]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "B",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Request duration - p50 [TH-GP-0030]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "s",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Request duration - p50 [TH-GP-0030]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 639,
+        "panels": [
+          {
+            "aliasColors": {
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_info | METHOD: GET | STATUS : 200": "#705da0",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_provenance_python_status | METHOD: GET | STATUS : 200": "#3f2b5b",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_advise_python | METHOD: GET | STATUS : 200": "#f9934e",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_analyze | METHOD: GET | STATUS : 200": "#ea6460",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_buildlogs | METHOD: GET | STATUS : 200": "#962d82",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_python_package_indexes | METHOD: GET | STATUS : 200": "#1f78c1",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_build | METHOD: GET | STATUS : 200": "#0a437c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_software_environments_for_run | METHOD: GET | STATUS : 200": "rgb(183, 190, 181)",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_analyze | METHOD: POST | STATUS : 202": "#967302",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_buildlog | METHOD: POST | STATUS : 202": "#58140c",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_post_provenance_python | METHOD: POST | STATUS : 202": "rgb(30, 194, 15)",
+              "PATH: /api/v1/advise/python | METHOD: GET | STATUS : 200": "#f9934e",
+              "PATH: /api/v1/advise/python | METHOD: POST | STATUS : 202": "#eab839",
+              "PATH: /api/v1/analyze | METHOD: GET | STATUS : 200": "#ea6460",
+              "PATH: /api/v1/build-software-environment | METHOD: GET | STATUS : 200": "#0a437c",
+              "PATH: /api/v1/buildlog | METHOD: GET | STATUS : 200": "#962d82",
+              "PATH: /api/v1/info | METHOD: GET | STATUS : 200": "#705da0",
+              "PATH: /api/v1/provenance/python | METHOD: POST | STATUS : 202": "rgb(95, 222, 4)",
+              "PATH: /api/v1/run-software-environment | METHOD: GET | STATUS : 200": "rgb(180, 174, 159)"
+            },
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 15,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "rightSide": false,
+              "show": true,
+              "sort": "avg",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.9, rate(flask_http_request_duration_seconds_bucket{field=\"$instance\",endpoint!=\"/api/v1./api/v1_openapi_json\", endpoint!=\"None\", endpoint!=\"base_url\", endpoint!=\"api_v1\", endpoint!=\"api_readiness\",endpoint!=\"api_liveness\",endpoint!=\"/api/v1./api/v1_swagger_ui_index\", endpoint!=\"/api/v1./api/v1_swagger_ui_static\", status=~\"200|202\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "B",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Request duration - p90 [TH-GP-0031]",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "s",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Request duration - p90 [TH-GP-0031]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 365,
+        "panels": [
+          {
+            "aliasColors": {
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_get_info | METHOD: GET | STATUS : 200": "#705da0",
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_python_package_indexes | METHOD: GET | STATUS : 200": "#1f78c1",
+              "PATH: /api/v1/info | METHOD: GET | STATUS : 200": "#705da0",
+              "PATH: /api/v1/python-package-index | METHOD: GET | STATUS : 200": "#1f78c1"
+            },
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "gridPos": {
+              "h": 4,
+              "w": 10,
+              "x": 0,
+              "y": 0
+            },
+            "id": 20,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": false,
+              "show": true,
+              "sort": "avg",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "rate(flask_http_request_duration_seconds_count{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "B",
+                "step": 120
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Requests per second  [TH-GP-0026] (all endpoints)",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Requests per second [TH-GP-0026]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 374,
+        "panels": [
+          {
+            "aliasColors": {
+              "ENDPOINT: /api/v1.thoth_user_api_api_v1_list_advise_python | METHOD: GET | STATUS : 200": "#f9934e",
+              "PATH: /api/v1/advise/python | METHOD: GET | STATUS : 200": "#f9934e",
+              "PATH: /api/v1/advise/python | METHOD: POST | STATUS : 202": "#eab839"
+            },
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 11,
+            "legend": {
+              "alignAsTable": true,
+              "avg": false,
+              "current": true,
+              "max": false,
+              "min": false,
+              "rightSide": false,
+              "show": true,
+              "sort": "current",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "rate(flask_http_request_duration_seconds_sum{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])\n/\nrate(flask_http_request_duration_seconds_count{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])",
+                "format": "time_series",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Average response time  [TH-GP-0028] (All endpoints)",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "decimals": null,
+                "format": "s",
+                "label": "",
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Average response time  [TH-GP-0028]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 450,
+        "panels": [
+          {
+            "aliasColors": {
+              "PATH: /api/v1/advise/python | METHOD: GET | STATUS : 200": "#f9934e",
+              "PATH: path | METHOD: GET | STATUS : 200": "#f9934e"
+            },
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 23,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": false,
+              "min": true,
+              "rightSide": false,
+              "show": true,
+              "sort": "avg",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "increase(flask_http_request_duration_seconds_bucket{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\", le=\"0.25\"}[$interval]) \n/ ignoring (le) increase(flask_http_request_duration_seconds_count{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval])",
+                "format": "time_series",
+                "instant": false,
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Requests under 250ms [TH-GP-0029] (All endpoints)",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "decimals": null,
+                "format": "percent",
+                "label": null,
+                "logBase": 1,
+                "max": "1",
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Requests under 250ms [TH-GP-0029]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 504,
+        "panels": [
+          {
+            "aliasColors": {
+              "PATH: /api/v1/advise/python | METHOD: GET | STATUS : 200": "#f9934e",
+              "PATH: path | METHOD: GET | STATUS : 200": "#f9934e"
+            },
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 24,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "rightSide": false,
+              "show": true,
+              "sort": "avg",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.5, rate(flask_http_request_duration_seconds_bucket{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval]))",
+                "format": "time_series",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Request duration - p50 [TH-GP-0030] (All endpoints)",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "s",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Request duration - p50 [TH-GP-0030]",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": 425,
+        "panels": [
+          {
+            "aliasColors": {
+              "PATH: /api/v1/advise/python | METHOD: GET | STATUS : 200": "#f9934e",
+              "PATH: path | METHOD: GET | STATUS : 200": "#f9934e"
+            },
+            "bars": true,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "opf-prometheus",
+            "fill": 1,
+            "id": 25,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": true,
+              "rightSide": false,
+              "show": true,
+              "sort": "avg",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 12,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.9, rate(flask_http_request_duration_seconds_bucket{field=\"$instance\", endpoint!=\"api_v1\", endpoint!=\"base_url\", status=\"200\"}[$interval]))",
+                "format": "time_series",
+                "interval": "",
+                "intervalFactor": 1,
+                "legendFormat": "ENDPOINT: {{endpoint}} | METHOD: {{method}} | STATUS : {{status}}",
+                "refId": "A",
+                "step": 60
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Request duration - p90 [TH-GP-0031] (All endpoint)",
+            "tooltip": {
+              "shared": true,
+              "sort": 0,
+              "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "s",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ],
+            "yaxis": {
+              "align": false,
+              "alignLevel": null
+            }
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": false,
+        "title": "Request duration - p90 [TH-GP-0031]",
+        "titleSize": "h6"
+      }
+    ],
+    "schemaVersion": 14,
+    "style": "dark",
+    "tags": [
+      "thoth",
+      "service-metrics",
+      "user-api"
+    ],
+    "templating": {
+      "list": [
+        {
+          "auto": true,
+          "auto_count": 30,
+          "auto_min": "10s",
+          "current": {
+            "text": "10m",
+            "value": "10m"
+          },
+          "hide": 0,
+          "label": null,
+          "name": "interval",
+          "options": [
+            {
+              "selected": false,
+              "text": "auto",
+              "value": "$__auto_interval"
+            },
+            {
+              "selected": false,
+              "text": "1m",
+              "value": "1m"
+            },
+            {
+              "selected": true,
+              "text": "10m",
+              "value": "10m"
+            },
+            {
+              "selected": false,
+              "text": "30m",
+              "value": "30m"
+            },
+            {
+              "selected": false,
+              "text": "1h",
+              "value": "1h"
+            },
+            {
+              "selected": false,
+              "text": "6h",
+              "value": "6h"
+            },
+            {
+              "selected": false,
+              "text": "12h",
+              "value": "12h"
+            },
+            {
+              "selected": false,
+              "text": "1d",
+              "value": "1d"
+            },
+            {
+              "selected": false,
+              "text": "7d",
+              "value": "7d"
+            },
+            {
+              "selected": false,
+              "text": "14d",
+              "value": "14d"
+            },
+            {
+              "selected": false,
+              "text": "30d",
+              "value": "30d"
+            }
+          ],
+          "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+          "refresh": 2,
+          "type": "interval"
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80",
+            "value": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "label": null,
+          "multi": false,
+          "name": "instance",
+          "options": [
+            {
+              "selected": false,
+              "text": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80",
+              "value": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80"
+            }
+          ],
+          "query": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80",
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-2d",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "",
+    "title": "Thoth Service metrics user-api",
+    "version": 11
+  }
