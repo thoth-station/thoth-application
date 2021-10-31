@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../common/
   - pushgateway.yaml
+  - service-monitor.yaml
   - thoth-notification.yaml
 generators:
   - secret-generator.yaml
