@@ -5,6 +5,7 @@ resources:
   - pgbouncer.yaml
   - postgresql.yaml
   - postgresql-metrics-exporter.yaml
+  - service-monitor.yaml
   - thoth-notification.yaml
 patches:
   - patch: |-
