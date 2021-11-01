@@ -36,6 +36,8 @@ spec:
             value: "{{inputs.parameters.KEBECHET_SERVICE_NAME}}"
           - name: KEBECHET_METADATA
             value: "{{inputs.parameters.KEBECHET_METADATA}}"
+          - name: KEBECHET_GIT_CLONE_DIRECTORY
+            value: "/tmp/clone-dir"
           - name: GITHUB_APP_ID
             valueFrom:
               secretKeyRef:
@@ -85,6 +87,8 @@ spec:
           - name: github-app-privatekey
             mountPath: /home/user/github
             readOnly: true
+          - name: clone-dir
+            mountPath: /tmp/clone-dir
         resources:
           limits:
             cpu: 1
