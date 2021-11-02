@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: pulp-pypi-sync-job
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/pulp-pypi-sync-job
+    newTag: latest
 patchesStrategicMerge:
   - cronjob.yaml
   - imagestreamtag.yaml
