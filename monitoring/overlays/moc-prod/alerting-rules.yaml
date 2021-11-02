@@ -15,25 +15,11 @@
             severity: "HIGH"
 
           # Alert for mismatch between number of requests and documents produced
-        - alert: ThothAdviserResultsMissingProd
-          expr: thoth_reporter_requests_gauge{env="moc-prod", component="adviser"} - thoth_reporter_reports_gauge{env="moc-prod", component="adviser"}
+        - alert: ThothResultsMissingProd
+          expr: thoth_reporter_requests_gauge{env="moc-prod"} - thoth_reporter_reports_gauge{env="moc-prod"} > 0
           for: 60m
           annotations:
-            summary: "Thoth adviser results do no match requests, some requests have been lost!"
-            severity: "HIGH"
-
-        - alert: ThothProvenanceCheckerResultsMissingProd
-          expr: thoth_reporter_requests_gauge{env="moc-prod", component="provenance-checker"} - thoth_reporter_reports_gauge{env="moc-prod", component="provenance-checker"}
-          for: 60m
-          annotations:
-            summary: "Thoth provenance-chceker results do no match requests, some requests have been lost!"
-            severity: "HIGH"
-
-        - alert: ThothPackageExtractResultsMissingProd
-          expr: thoth_reporter_requests_gauge{env="moc-prod", component="package-extract"} - thoth_reporter_reports_gauge{env="moc-prod", component="package-extract"}
-          for: 60m
-          annotations:
-            summary: "Thoth package-extract results do no match requests, some requests have been lost!"
+            summary: "Thoth {{ $labels.component }} results do no match requests, some requests have been lost!"
             severity: "HIGH"
 
           # Alert for purge job once runtime is deleted
