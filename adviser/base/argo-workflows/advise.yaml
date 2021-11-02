@@ -126,8 +126,6 @@ spec:
             value: "{{inputs.parameters.THOTH_ADVISER_COUNT}}"
           - name: THOTH_ADVISER_LIMIT
             value: "{{inputs.parameters.THOTH_ADVISER_LIMIT}}"
-          - name: THOTH_ADVISER_BLOCKED_UNITS
-            value: "SecurityIndicatorStep,ThothS2IAbiCompatibilitySieve"
           - name: THOTH_ADVISER_PRESCRIPTION
             value: "/opt/app-root/src/prescriptions.pickle"
           - name: THOTH_ADVISER_REQUIREMENTS
@@ -162,6 +160,21 @@ spec:
             value: "input/library_usage.json"
           - name: THOTH_AUTHENTICATED_ADVISE
             value: "{{inputs.parameters.THOTH_AUTHENTICATED_ADVISE}}"
+          - name: THOTH_ADVISER_BLOCKED_UNITS
+            valueFrom:
+              configMapKeyRef:
+                name: adviser
+                key: blocked-units
+          - name: THOTH_ADVISER_VALIDATE_PRESCRIPTION_SCHEMA
+            valueFrom:
+              configMapKeyRef:
+                name: adviser
+                key: validate-prescription-schema
+          - name: THOTH_ADVISER_VALIDATE_UNIT_CONFIGURATION_SCHEMA
+            valueFrom:
+              configMapKeyRef:
+                name: adviser
+                key: validate-unit-configuration-schema
           - name: THOTH_ADVISER_DEPLOYMENT_CONFIGURED_SOLVERS
             valueFrom:
               configMapKeyRef:

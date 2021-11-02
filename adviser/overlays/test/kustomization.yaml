@@ -7,6 +7,7 @@ resources:
   - thoth-notification.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
+  - configmap.yaml
 patches:
   # wf template image patch
   - patch: |-
