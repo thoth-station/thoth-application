@@ -1,0 +1,100 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: advise-demo
+  annotations:
+    description: "Thoth: Advise Demo Template"
+    openshift.io/display-name: "Thoth: Advise Demo"
+    tags: thoth,ai-stacks,aistacks,machinelearning
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to run Kebechet Administrator in Thoth.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    template: thoth-repo-init
+    app: thoth
+    component: workflow_helpers
+
+parameters:
+  - name: WORKFLOW_ID
+    description: "a UUID for the workflow instance"
+    displayName: "Workflow UUID"
+    required: true
+  - name: PROJECT_URL
+    description: "Github URL of the project which the workflow is being run on."
+    displayName: "Github Project URL"
+    required: true
+
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: "${WORKFLOW_ID}"
+      labels:
+        app: thoth
+        component: workflow_helpers
+    spec:
+      serviceAccountName: argo
+      activeDeadlineSeconds: 3000
+      ttlStrategy:
+        secondsAfterCompletion: 10
+        secondsAfterSuccess: 10
+        secondsAfterFailure: 120
+      entrypoint: thoth-repo-init
+
+      metrics:
+        prometheus:
+          - name: status_counter
+            help: "Count of workflow by status"
+            labels:
+              - key: name
+                value: thoth-repo-init
+              - key: status
+                value: "{{workflow.status}}"
+            counter:
+              value: "1"
+
+          - name: duration_seconds_histogram
+            help: "Duration of workflow when succeded"
+            when: "{{workflow.status}} == Succeeded"
+            labels:
+              - key: name
+                value: thoth-repo-init
+            histogram:
+              buckets:
+                - 5
+                - 10
+                - 30
+                - 60
+                - 120
+                - 180
+                - 300
+                - 600
+                - 900
+              value: "{{workflow.duration}}"
+
+      arguments:
+        parameters:
+          - name: project-url
+            value: "${PROJECT_URL}"
+      volumes:
+        - name: ssh-config
+          secret:
+            secretName: thoth-srcops
+            items:
+            - key: ssh-privatekey
+              path: id_rsa
+      templates:
+        - name: "thoth-repo-init"
+          archiveLocation:
+            archiveLogs: true
+          dag:
+            tasks:
+              - name: "thoth-repo-init"
+                templateRef:
+                  name: "thoth-repo-init"
+                  template: "thoth-repo-init"
+                arguments:
+                  parameters:
+                    - name: "project-url"
+                      value: "{{workflow.parameters.project-url}}"
