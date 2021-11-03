@@ -113,6 +113,18 @@ require_matching_label:
       `triage/accepted` label and provide further guidance.
 
       The `triage/accepted` label can be added by org members by writing `/triage accepted` in a comment.
+  - missing_label: needs-triage
+    org: thoth-station
+    repo: kebechet
+    issues: true
+    prs: false
+    regexp: ^triage/accepted$
+    missing_comment: |
+      This issue is currently awaiting triage.
+      One of the @thoth-station/devsops will take care of the issue, and will accept the issue by applying the
+      `triage/accepted` label and provide further guidance.
+
+      The `triage/accepted` label can be added by org members by writing `/triage accepted` in a comment.
 
 external_plugins:
   b4mad:
