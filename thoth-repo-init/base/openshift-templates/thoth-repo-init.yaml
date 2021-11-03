@@ -1,7 +1,7 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: advise-demo
+  name: thoth-repo-init
   annotations:
     description: "Thoth: Advise Demo Template"
     openshift.io/display-name: "Thoth: Advise Demo"
