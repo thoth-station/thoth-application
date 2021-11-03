@@ -826,7 +826,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "smaug-openshift-monitoring",
+      "datasource": "aws-balrog-monitoring",
       "description": "Percentage of workflows that has queue latency below a certain threshold",
       "fill": 1,
       "fillGradient": 0,
