@@ -1818,7 +1818,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_memstats_heap_alloc_bytes{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", job=~\".*Argo.*\",namespace=~\"$namespace\"}",
+              "expr": "go_memstats_heap_alloc_bytes{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", job=~\".*Argo.*\",namespace=~\"$namespace\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{job}} | {{pod}}",
@@ -1896,7 +1896,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_goroutines{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", job=~\".*Argo.*\",namespace=~\"$namespace\"}",
+              "expr": "go_goroutines{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", job=~\".*Argo.*\",namespace=~\"$namespace\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{job}} | {{pod}}",
@@ -1974,7 +1974,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_gc_duration_seconds{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", job=~\".*Argo.*\",namespace=~\"$namespace\", quantile=\"1\"}",
+              "expr": "go_gc_duration_seconds{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", job=~\".*Argo.*\",namespace=~\"$namespace\", quantile=\"1\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{job}} | {{pod}}",
@@ -2053,7 +2053,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", namespace=~\"$namespace\", grpc_service=\"application.ApplicationService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
+              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", namespace=~\"$namespace\", grpc_service=\"application.ApplicationService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{grpc_code}}, {{grpc_method}}",
@@ -2131,7 +2131,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", namespace=~\"$namespace\", grpc_service=\"cluster.ClusterService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
+              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", namespace=~\"$namespace\", grpc_service=\"cluster.ClusterService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{grpc_code}},{{grpc_method}}",
@@ -2210,7 +2210,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", namespace=~\"$namespace\", grpc_service=\"project.ProjectService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
+              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", namespace=~\"$namespace\", grpc_service=\"project.ProjectService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{grpc_code}}, {{grpc_method}}",
@@ -2289,7 +2289,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", namespace=~\"$namespace\", grpc_service=\"repository.RepositoryService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
+              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", namespace=~\"$namespace\", grpc_service=\"repository.RepositoryService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{grpc_code}}, {{grpc_method}}",
@@ -2368,7 +2368,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", namespace=~\"$namespace\", grpc_service=\"session.SessionService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
+              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", namespace=~\"$namespace\", grpc_service=\"session.SessionService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{grpc_code}}, {{grpc_method}}",
@@ -2447,7 +2447,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", namespace=~\"$namespace\", grpc_service=\"version.VersionService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
+              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", namespace=~\"$namespace\", grpc_service=\"version.VersionService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{grpc_code}}, {{grpc_method}}",
@@ -2526,7 +2526,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", namespace=~\"$namespace\", grpc_service=\"account.AccountService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
+              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", namespace=~\"$namespace\", grpc_service=\"account.AccountService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{grpc_code}}, {{grpc_method}}",
@@ -2605,7 +2605,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\", namespace=~\"$namespace\", grpc_service=\"settings.SettingsService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
+              "expr": "sum(increase(grpc_server_handled_total{instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\", namespace=~\"$namespace\", grpc_service=\"settings.SettingsService\", job=~\".*Argo.*\"}[$interval])) by (grpc_code, grpc_method)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{grpc_code}}, {{grpc_method}}",
@@ -2854,7 +2854,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_memstats_heap_alloc_bytes{job=~\".*Argo.*\",namespace=~\"$namespace\", instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\"}",
+              "expr": "go_memstats_heap_alloc_bytes{job=~\".*Argo.*\",namespace=~\"$namespace\", instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{namespace}}",
@@ -2933,7 +2933,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_goroutines{job=~\".*Argo.*\",namespace=~\"$namespace\", instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com:80\"}",
+              "expr": "go_goroutines{job=~\".*Argo.*\",namespace=~\"$namespace\", instance=\"argocd-server-metrics-argocd.apps.thoth01.lab.upshift.rdu2.redhat.com\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{namespace}}",

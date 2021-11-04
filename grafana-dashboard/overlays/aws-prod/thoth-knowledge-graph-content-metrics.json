@@ -3829,8 +3829,8 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80",
-          "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"
+          "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+          "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
         },
         "description": null,
         "error": null,
@@ -3842,11 +3842,11 @@
         "options": [
           {
             "selected": true,
-            "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80",
-            "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"
+            "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+            "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80,open.cloud:80",
+        "query": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud,open.cloud",
         "skipUrlSync": false,
         "type": "custom"
       }

@@ -2519,8 +2519,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud:80",
-          "value": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud:80"
+          "text": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud",
+          "value": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud"
         },
         "hide": 0,
         "includeAll": false,
@@ -2530,18 +2530,18 @@
         "options": [
           {
             "selected": true,
-            "text": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud:80",
-            "value": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud:80"
+            "text": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud",
+            "value": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud:80",
+        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud",
         "type": "custom"
       },
       {
         "allValue": null,
         "current": {
-          "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80",
-          "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"
+          "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+          "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
         },
         "hide": 0,
         "includeAll": false,
@@ -2551,11 +2551,11 @@
         "options": [
           {
             "selected": true,
-            "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80",
-            "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"
+            "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+            "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80",
+        "query": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
         "type": "custom"
       },
       {
