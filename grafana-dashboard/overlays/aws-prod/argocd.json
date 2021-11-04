@@ -167,7 +167,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "time() - max(process_start_time_seconds{namespace=~\"$namespace\", job=\"Thoth ArgoCD Server Metrics\"})",
+              "expr": "time() - max(process_start_time_seconds{namespace=~\"$namespace\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A",
