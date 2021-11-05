@@ -609,8 +609,8 @@
           "allValue": null,
           "current": {
             "tags": [],
-            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80",
-            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80"
+            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
+            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
           },
           "hide": 0,
           "includeAll": false,
@@ -620,16 +620,16 @@
           "options": [
             {
               "selected": false,
-              "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80",
-              "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80"
+              "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud",
+              "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud"
             },
             {
               "selected": false,
-              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80",
-              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80"
+              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
+              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
             }
           ],
-          "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80",
+          "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
           "type": "custom"
         },
         {

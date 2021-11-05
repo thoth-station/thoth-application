@@ -1694,8 +1694,8 @@
         {
           "allValue": null,
           "current": {
-            "text": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80",
-            "value": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80"
+            "text": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud",
+            "value": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud"
           },
           "hide": 0,
           "includeAll": false,
@@ -1705,11 +1705,11 @@
           "options": [
             {
               "selected": false,
-              "text": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80",
-              "value": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80"
+              "text": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud",
+              "value": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud"
             }
           ],
-          "query": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80",
+          "query": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud",
           "type": "custom"
         }
       ]
