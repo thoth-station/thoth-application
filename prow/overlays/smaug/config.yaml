@@ -235,15 +235,19 @@ tide:
         - AICoE/aicoe-cd
         - AICoE/aicoe-ci
         - AICoE/aicoe-sre
+        - AICoE/content-pipeline
         - AICoE/data-driven-development
         - AICoE/elyra-aidevsecops-tutorial
         - AICoE/idh-manifests
         - AICoE/internal-data-hub
+        - AICoE/jpegio
         - AICoE/manage-dependencies-tutorial
         - AICoE/overlays-for-ai-pipeline-tutorial
         - AICoE/prometheus-anomaly-detector
         - AICoE/prometheus-api-client-python
+        - AICoE/pyIFD
         - AICoE/recommend-base-image-tutorial
+        - AICoE/summit-2021-octo-keynote
         - AICoE/s2i-custom-notebook
         - AICoE/sefkhet-abwy
         - AICoE/Varangian
@@ -258,6 +262,7 @@ tide:
     - repos:
         - AICoE/common
         - AICoE/meteor
+        - AICoE/meteor-operator
       labels:
         - approved
         - lgtm
