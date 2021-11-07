@@ -28,8 +28,8 @@ data:
   bucket-name: "thoth"
   bucket-prefix: "data"
   public-bucket-name: DH-PLAYPEN
-  host: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
-  endpoint: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
+  host: "https://s3-openshift-storage.apps.smaug.na.operate-first.cloud"
+  endpoint: "https://s3-openshift-storage.apps.smaug.na.operate-first.cloud"
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -54,7 +54,7 @@ apiVersion: v1
 metadata:
   name: prometheus
 data:
-  host-url: "http://prometheus-portal-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
+  host-url: "https://thanos-querier-openshift-monitoring.apps.smaug.na.operate-first.cloud"
   user-api-url: "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80"
   instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80"
   instance-metrics-management-api: "management-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80"
