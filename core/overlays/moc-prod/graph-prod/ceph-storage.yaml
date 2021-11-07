@@ -5,4 +5,4 @@ metadata:
   name: smaug-ceph
 spec:
   bucketName: thoth
-  storageClassName: ocs-storagecluster-ceph-rgw
+  storageClassName: openshift-storage.noobaa.io
