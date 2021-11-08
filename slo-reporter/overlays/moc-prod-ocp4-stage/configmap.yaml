@@ -4,7 +4,7 @@ apiVersion: v1
 metadata:
   name: slo-reporter
 data:
-  thanos-endpoint: "http://prometheus-portal-thoth-infra-prod.apps.smaug.na.operate-first.cloud"   # TODO: Use Thanos endpoint when available and set correct secret
+  thanos-endpoint: "https://thanos-querier-openshift-monitoring.apps.smaug.na.operate-first.cloud"
   smtp-server: "smtp.corp.redhat.com"
   sender-address: "aicoe-thoth@redhat.com"
   email-recipients: "aicoe@redhat.com"
@@ -34,7 +34,7 @@ data:
   public-bucket-name: DH-PLAYPEN
   host: "https://s3-openshift-storage.apps.smaug.na.operate-first.cloud/"
   endpoint: "https://s3-openshift-storage.apps.smaug.na.operate-first.cloud/"
-  host-url: "http://prometheus-portal-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
+  host-url: "https://thanos-querier-openshift-monitoring.apps.smaug.na.operate-first.cloud"
 ---
 kind: ConfigMap
 apiVersion: v1
