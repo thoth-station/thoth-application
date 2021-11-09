@@ -1,4 +1,92 @@
 
+## Release 2021.11.09 (2021-11-09T06:29:08)
+* patch image for the prescriptions refresh job
+* Add cve-warning prescriptions-refresh task (#2042)
+* :ship: Bump up the images based on the version update v2021.11.08 (#2134)
+* :ship: Deploy the Tag v0.9.4 for workflow-helpers
+* :ship: Deploy the Tag v0.15.2 for investigator
+* Bump init-job to v0.8.1 in stage (#2130)
+* :ship: Deploy the Tag v0.5.6 for graph-metrics-exporter
+* :ship: Deploy the Tag v0.17.3 for slo-reporter
+* :ship: Deploy the Tag v0.3.0 for prescriptions-refresh-job
+* :ship: Deploy the Tag v0.8.1 for init-job
+* :ship: Deploy the Tag v0.8.14 for package-update-job
+* :ship: Deploy the Tag v0.8.11 for graph-backup-job
+* :ship: Deploy the Tag v0.27.2 for user-api
+* :ship: Deploy the Tag v0.2.10 for revsolver
+* :ship: Deploy the Tag v0.11.5 for package-releases-job
+* :ship: Deploy the Tag v0.3.16 for graph-refresh-job
+* :ship: Deploy the Tag v0.19.0 for metrics-exporter
+* :ship: Deploy the Tag v0.47.0 for adviser
+* :ship: Deploy the Tag v0.17.14 for management-api
+* :ship: Deploy the Tag v0.10.16 for graph-sync-job
+* Bump management-api to v0.17.14 in stage
+* Bump user-api to v0.27.2 in stage environment
+* Bump graph-sync to v0.10.16 in stage
+* Bump graph-backup-job to v0.8.11 in stage
+* Bump revsolver to v0.2.10 in stage
+* Bump package-releases to v0.11.5 in stage
+* Bump graph-refresh to v0.3.16 in stage
+* Bump package-update to v0.8.14 in stage environment
+* :ship: Deploy the Tag v0.5.0 for cve-update-job
+* Bump metrics-exporter to v0.19.0 in stage environment
+* Bump adviser to v0.47.0 in stage environment
+* Bump cve-update to v0.5.0 in stage environment
+* patch the smaug secrets for slo-reportor
+* clean up the legacy way of setting up the prometheus
+* setup obj in the smaug cluster
+* patch the object bucket storage class
+* updated the aicoe repos in smaug prow
+* removing ports
+* Remove job field from the grafana dashbaord
+* Fix the datasource
+* change name of template to thoth-repo-init
+* updating name of datasource in dashboards
+* create new workflow for repo initialization
+* add needs-triage to kebechet repo
+* :bomb: use https based url in the pre-commit
+* Simplify alerting rules
+* use emptyDir for cloning git repo
+* Create adviser configmap with all the configuration options
+* Make monitored container images by prescriptions-refresh configurable
+* applying overlays for grafana dashboards to balrog
+* updating thoth-middleteir-prod with service monitor
+* frontend service-monitor creates field label on balrog
+* creating service monitor for thoth-backend-prod in balrog alphabetizing reousrces in overlay
+* creating service monitor for thoth-backend-prod in balrog
+* adding service monitor for thoth-infra-prod to balrog to enable relabeling of field metric
+* :ship: Deploy the Tag v0.9.3 for workflow-helpers
+* :panda_face: update secrets with only gith receiver token
+* updating thoth github-receiver changes
+* :panda_face: Reconfigure the secret name as it already in use
+* re-encrypted sesheta-srcops secrets
+* remove the transfer-issue plugin ;)
+* update the Prow container image tags
+* remove quotes from project names
+* remove the project-manager, add transfer-issue
+* do not branchprotect the private okr repo
+* :whale: set the big query for scorecard prescriptions
+* add ServiceAccount required for BigQuery access
+* service account key file to be ignored by git
+* add more project configs to prow project plugin
+* updating datasources to openshift-monitoring
+* add the actual plugins to t-s prow, not just the configwq
+* add the project plugin to t-s prow
+* Update sefkhet-abwy to the latest patch release
+* Turn S2I ABI sieve off for now
+* Fix the route to deck
+* excluding o-f/o-f.github.io repo #test
+* fix the pulp url based on the pulp web svc (#2087)
+* tweaked some timeouts
+* Revert "explicitely setting the deck container image tag to be used"
+* explicitely setting the deck container image tag to be used
+* giving tide a little more CPU 🆙
+* update the Prow container image tags
+* :whale: set the pulp pypi sync job prod overlay
+* set up the milestone v2021.11.08 for thoth-station
+* :bar_chart: set up the metrics service for all the prow components
+* updated grafana dashboards
+
 ## Release 2021.10.26 (2021-10-26T04:10:35)
 * :ship: Bump up the images based on the version update v2021.10.25 (#2088)
 * :ship: Deploy the Tag v0.2.0 for prescriptions-refresh-job
