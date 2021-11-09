@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/kebechet-job:v1.5.5
+        name: quay.io/thoth-station/kebechet-job:pr-900
       importPolicy: {}
       referencePolicy:
         type: Source
