@@ -188,7 +188,8 @@ repo_milestone:
 
 milestone_applier:
   thoth-station/thoth-application:
-    master: 2021.11.08
+    master: 2021.11.22
+    v2021.11.08: 2021.11.08
     v2021.10.25: 2021.10.25
     v2021.10.11: 2021.10.11
     v2021.09.27: 2021.09.27
