@@ -251,6 +251,7 @@ tide:
         - AICoE/s2i-custom-notebook
         - AICoE/sefkhet-abwy
         - AICoE/Varangian
+        - AICoE/seraph
       labels:
         - approved
       missingLabels:
