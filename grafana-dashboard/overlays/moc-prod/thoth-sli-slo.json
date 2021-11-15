@@ -644,7 +644,7 @@
           "step": 600
         },
         {
-          "expr": "(thoth_graphdb_number_python_package_versions{field=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_number_python_package_versions{field=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated days to solve all packages adding a new solver (1h interval)",
@@ -841,7 +841,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated days to solve (1h inverval): {{solver_name}}",
@@ -939,7 +939,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", job=\"Thoth Metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated hours to solve (1h inverval): {{solver_name}}",
@@ -1054,7 +1054,7 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "(thoth_graphdb_number_python_package_versions{field=\"$instance_metrics\", job=\"Thoth Metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_number_python_package_versions{field=\"$instance_metrics\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Estimated days (1h interval)",
@@ -1201,7 +1201,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-rhel-8-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", solver_name=\"solver-rhel-8-py38\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1276,7 +1276,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", job=\"Thoth Metrics\", solver_name=\"solver-fedora-34-py39\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", solver_name=\"solver-fedora-34-py39\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\"}[1h]))/24",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
