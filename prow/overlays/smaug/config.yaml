@@ -103,6 +103,7 @@ branch-protection:
         - "^kebechet-"
         - "^dependabot/"
         - "^pres-"
+        - "^gh-pages"
       restrictions:
         users: []
         teams:
