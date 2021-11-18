@@ -42,7 +42,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -120,7 +120,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "format": "dtdurations",
           "gauge": {
             "maxValue": 100,
@@ -196,7 +196,7 @@
             "rgba(237, 129, 40, 0.89)",
             "#890f02"
           ],
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -274,7 +274,7 @@
             "rgba(237, 129, 40, 0.89)",
             "#d44a3a"
           ],
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -351,7 +351,7 @@
             "rgba(237, 129, 40, 0.89)",
             "#d44a3a"
           ],
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -427,7 +427,7 @@
             "#e24d42",
             "#d44a3a"
           ],
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -499,7 +499,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 9,
           "legend": {
@@ -589,7 +589,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 10,
           "legend": {
@@ -666,7 +666,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 11,
           "legend": {
@@ -755,7 +755,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 12,
           "legend": {
@@ -832,7 +832,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 13,
           "legend": {
@@ -921,7 +921,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 14,
           "legend": {
@@ -1006,7 +1006,7 @@
             "mode": "spectrum"
           },
           "dataFormat": "timeseries",
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "heatmap": {},
           "highlightCards": true,
           "id": 19,
@@ -1053,7 +1053,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 20,
           "legend": {
@@ -1131,7 +1131,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 21,
           "legend": {
@@ -1208,7 +1208,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 22,
           "legend": {
@@ -1297,7 +1297,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 23,
           "legend": {
@@ -1375,7 +1375,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 24,
           "legend": {
@@ -1453,7 +1453,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 25,
           "legend": {
@@ -1543,7 +1543,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 26,
           "legend": {
@@ -1621,7 +1621,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 27,
           "legend": {
@@ -1699,7 +1699,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 28,
           "legend": {
@@ -1789,7 +1789,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 29,
           "legend": {
@@ -1867,7 +1867,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 31,
           "legend": {
@@ -1945,7 +1945,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 30,
           "legend": {
@@ -2023,7 +2023,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 4,
           "legend": {
@@ -2102,7 +2102,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 32,
           "legend": {
@@ -2180,7 +2180,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 33,
           "legend": {
@@ -2259,7 +2259,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 34,
           "legend": {
@@ -2338,7 +2338,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 35,
           "legend": {
@@ -2417,7 +2417,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 36,
           "legend": {
@@ -2496,7 +2496,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 37,
           "legend": {
@@ -2575,7 +2575,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 38,
           "legend": {
@@ -2666,7 +2666,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 39,
           "legend": {
@@ -2745,7 +2745,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 40,
           "legend": {
@@ -2824,7 +2824,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 42,
           "legend": {
@@ -2903,7 +2903,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "opf-prometheus",
+          "datasource": "aws-balrog-monitoring",
           "fill": 1,
           "id": 41,
           "legend": {
@@ -3015,7 +3015,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "opf-prometheus",
+        "datasource": "aws-balrog-monitoring",
         "hide": 0,
         "includeAll": true,
         "label": null,
@@ -3142,7 +3142,7 @@
           "text": "https://api.thoth01.lab.upshift.rdu2.redhat.com:6443",
           "value": "https://api.thoth01.lab.upshift.rdu2.redhat.com:6443"
         },
-        "datasource": "opf-prometheus",
+        "datasource": "aws-balrog-monitoring",
         "hide": 0,
         "includeAll": true,
         "label": null,
