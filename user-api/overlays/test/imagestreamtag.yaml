@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/user-api:v0.28.0
+        name: quay.io/thoth-station/user-api:kebechet-v0.28.1
       importPolicy: {}
       referencePolicy:
         type: Source
