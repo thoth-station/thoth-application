@@ -1,4 +1,38 @@
 
+## Release 2021.11.22 (2021-11-22T19:32:44)
+* :ship: Bump up the images based on the version update v2021.11.22 (#2155)
+* :ship: Deploy the Tag kebechet-v0.4.0 for prescriptions-refresh-job
+* add open-services-group config
+* :ship: Deploy the Tag pr-17 for purge-job
+* :ship: Deploy the Tag v0.28.1 for user-api
+* bump user-api stage to v0.28.1
+* :ship: Deploy the Tag kebechet-v0.28.1 for user-api
+* :ship: Deploy the Tag v1.6.6 for kebechet
+* :ship: Bump up the kebechet version to v1.6.6
+* do not branchprotect gh-pages
+* :ship: Deploy the Tag pr-919 for kebechet
+* patch up the correct datasource for the balrog dashboards
+* :ship: Deploy the Tag pr-918 for kebechet
+* :ship: Bump up the kebechet version to v1.6.5
+* :ship: Deploy the Tag v1.6.5 for kebechet
+* :ship: Deploy the Tag v1.6.4 for kebechet
+* :ship: Bump up the kebechet version to v1.6.4
+* :ship: Bump up the kebechet version to v1.6.3 (#2150)
+* :ship: Deploy the Tag v1.6.3 for kebechet
+* service monitor to expose prow metrics to smaug grafana (#2143)
+* :ship: Bump up the kebechet version to v1.6.2
+* :ship: Deploy the Tag v1.6.2 for kebechet
+* Bump user-api stage to v0.28.0
+* :ship: Deploy the Tag v0.28.0 for user-api
+* :ship: Deploy the Tag pr-1512 for user-api
+* :ship: Deploy the Tag v0.4.0 for nepthys
+* removing jobs from smaug dashboards
+* chore: add aicoe/seraph to tide
+* :ship: Deploy the Tag pr-900 for kebechet
+* :ship: Deploy the Tag v0.3.2 for nepthys
+* Decommission solver-project-url-job
+* updated milestone for the next sprint cycle
+
 ## Release 2021.11.09 (2021-11-09T06:29:08)
 * patch image for the prescriptions refresh job
 * Add cve-warning prescriptions-refresh task (#2042)
