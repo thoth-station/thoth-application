@@ -39,6 +39,8 @@ label:
     - triage/needs-information
     - triage/not-reproducible
     - triage/unresolved
+    - lifecycle/submission-accepted
+    - lifecycle/submission-rejected
 
 require_matching_label:
   - missing_label: needs-triage
