@@ -11,3 +11,4 @@ argocd-role-binding.yaml
 **.key
 sendgrid.env
 ssh-keys/
+gpg-keys/
