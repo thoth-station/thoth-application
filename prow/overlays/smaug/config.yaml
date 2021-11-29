@@ -261,6 +261,7 @@ tide:
         - AICoE/aicoe-sre
         - AICoE/content-pipeline
         - AICoE/data-driven-development
+        - AICoE/donkeycar
         - AICoE/elyra-aidevsecops-tutorial
         - AICoE/idh-manifests
         - AICoE/internal-data-hub
