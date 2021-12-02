@@ -7,7 +7,7 @@ data:
   thanos-endpoint: "https://thanos-querier-openshift-monitoring.apps.smaug.na.operate-first.cloud"
   smtp-server: "smtp.corp.redhat.com"
   sender-address: "aicoe-thoth@redhat.com"
-  email-recipients: "aicoe@redhat.com"
+  email-recipients: "aicoe-thoth@redhat.com"
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -41,12 +41,12 @@ apiVersion: v1
 metadata:
   name: prometheus
 data:
-  user-api-url: "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80"
-  instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80"
-  instance-metrics-management-api: "management-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud:80"
+  user-api-url: "user-api-thoth-frontend-prod.apps.apps.smaug.na.operate-first.cloud"
+  instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
+  instance-metrics-management-api: "management-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud"
   pushgateway-host: pushgateway-thoth-infra-prod.apps.smaug.na.operate-first.cloud
   pushgateway-port: "80"
   pushgateway-url: pushgateway-thoth-infra-prod.apps.smaug.na.operate-first.cloud:80
-  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud:80"
-  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud:80"
-  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-amun-inspection-prod.apps.smaug.na.operate-first.cloud:80"
+  instance-workflow-controller-metrics-backend: "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud"
+  instance-workflow-controller-metrics-middletier: "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
+  instance-workflow-controller-metrics-amun-inspection: "workflow-controller-metrics-thoth-amun-inspection-prod.apps.smaug.na.operate-first.cloud"
