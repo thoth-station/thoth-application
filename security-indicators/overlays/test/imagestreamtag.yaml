@@ -35,7 +35,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/si-cloc:v0.1.4
+        name: quay.io/thoth-station/si-cloc:v0.2.0
       importPolicy: {}
       referencePolicy:
         type: Source
