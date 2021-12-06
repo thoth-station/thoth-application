@@ -1,4 +1,31 @@
 
+## Release 2021.12.06 (2021-12-06T20:36:06)
+* :ship: Bump up the images based on the version update v2021.12.06 (#2180)
+* :ship: Deploy the Tag v0.2.0 for si-aggregator
+* :ship: Deploy the Tag v0.4.0 for prescriptions-refresh-job
+* Update the correct ceph host url for argo workflow controller (#2178)
+* Disable khemenu route from the moc prod as being used on balrog (#2179)
+* :ship: Deploy the Tag v0.1.0 for purge-job
+* :ship: Deploy the Tag v0.18.0 for slo-reporter
+* Bump purge job to v0.1.0 in stage environment
+* Adjust SLO-reporter CM
+* Update mi-scheduler to v1.7.2
+* :whale: set up the smaug thanos token for slo-reportor
+* Update mi-scheduler to v1.7.1
+* Enable prow/tide for the aicoe/donkeycar repo
+* :ship: Deploy the Tag v0.48.0 for adviser
+* Bump user-api to v0.28.2 in stage environment
+* Bump adviser to v0.48.0 in stage environment
+* Bump kebechet to version v1.6.7 for the tag issue fix (#2166)
+* :ship: Deploy the Tag v1.6.7 for kebechet
+* :ship: Deploy the Tag v0.28.2 for user-api
+* :ship: Deploy the Tag kebechet-v0.28.2 for user-api
+* Fix dashboard labels
+* add sesheta's gpg keys
+* Update mi to v2.10.1
+* required for https://github.com/AICoE/common/commit/9994b9d65fbe6963e820c1d817d8706bcb196fc1
+* updated milestone for the next sprint cycle
+
 ## Release 2021.11.22 (2021-11-22T19:32:44)
 * :ship: Bump up the images based on the version update v2021.11.22 (#2155)
 * :ship: Deploy the Tag kebechet-v0.4.0 for prescriptions-refresh-job
