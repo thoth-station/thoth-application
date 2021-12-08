@@ -6,7 +6,7 @@ plank:
   default_decoration_configs:
     "*":
       gcs_configuration:
-        bucket: s3://ci-prow/prow-logs
+        bucket: s3://thoth-backup-zero-112b364f-9d15-4d9a-8ff5-0d98aba5f107/ci-prow/prow-logs
         path_strategy: explicit
       s3_credentials_secret: s3-credentials
       ssh_key_secrets:
