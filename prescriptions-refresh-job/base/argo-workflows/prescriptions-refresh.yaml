@@ -123,3 +123,27 @@ spec:
                 template: cve-warning
               continueOn:
                 failed: true
+            - name: pypi-artifact-size
+              templateRef:
+                name: prescriptions-refresh-pypi
+                template: pypi-artifact-size
+              continueOn:
+                failed: true
+            - name: pypi-downloads
+              templateRef:
+                name: prescriptions-refresh-pypi
+                template: pypi-downloads
+              continueOn:
+                failed: true
+            - name: pypi-maintainers
+              templateRef:
+                name: prescriptions-refresh-pypi
+                template: pypi-maintainers
+              continueOn:
+                failed: true
+            - name: pypi-release
+              templateRef:
+                name: prescriptions-refresh-pypi
+                template: pypi-release
+              continueOn:
+                failed: true
