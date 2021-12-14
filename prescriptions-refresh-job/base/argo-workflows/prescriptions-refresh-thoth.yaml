@@ -1,0 +1,127 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: prescriptions-refresh-thoth
+spec:
+  templates:
+    - name: thoth-community
+      resubmitPendingPods: true
+      container:
+        name: thoth-community
+        image: prescriptions-refresh-job
+        env:
+          - name: SENTRY_DSN
+            valueFrom:
+              secretKeyRef:
+                name: thoth
+                key: sentry-dsn
+          - name: GIT_SSH_COMMAND
+            # Needed to keep weak host verification for git clone.
+            value: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: deployment-name
+          - name: APP_SCRIPT
+            value: app.sh
+          - name: THOTH_PRESCRIPTIONS_REFRESH_RANDOMIZE
+            value: "1"
+          - name: THOTH_PRESCRIPTIONS_REFRESH_SUBCOMMAND
+            value: thoth-community
+          - name: GITHUB_PRIVATE_KEY_PATH
+            value: /opt/app-root/src/.github/github-privatekey
+          - name: THOTH_LOGGING_NO_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: logging-no-json
+          - name: THOTH_PRESCRIPTIONS_REFRESH_GITHUB_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: kebechet
+                key: github-oauth-token
+          - name: GITHUB_APP_ID
+            valueFrom:
+              secretKeyRef:
+                name: kebechet
+                key: GITHUB_APP_ID
+          - name: THOTH_PRESCRIPTIONS_REFRESH_GITHUB_LABELS
+            value: bot
+          - name: THOTH_PRESCRIPTIONS_REFRESH_REPO
+            value: git@github.com:thoth-station/prescriptions.git
+          - name: THOTH_PRESCRIPTIONS_REFRESH_DEBUG
+            value: "1"
+          - name: KNOWLEDGE_GRAPH_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: postgresql-host
+          - name: KNOWLEDGE_GRAPH_PORT
+            value: "5432"
+          - name: KNOWLEDGE_GRAPH_SSL_DISABLED
+            value: "1"
+          - name: KNOWLEDGE_GRAPH_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-user
+          - name: KNOWLEDGE_GRAPH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-password
+          - name: KNOWLEDGE_GRAPH_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: database-name
+          - name: S3_ENDPOINT_URL
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: host
+          - name: CEPH_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: bucket-name
+          - name: CEPH_BUCKET_PREFIX
+            valueFrom:
+              configMapKeyRef:
+                name: ceph
+                key: bucket-prefix
+          - name: CEPH_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: secret-key
+          - name: CEPH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ceph
+                key: key-id
+          - name: PROMETHEUS_PUSHGATEWAY_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: pushgateway-host
+                name: prometheus
+          - name: PROMETHEUS_PUSHGATEWAY_PORT
+            valueFrom:
+              configMapKeyRef:
+                key: pushgateway-port
+                name: prometheus
+        resources:
+          limits:
+            cpu: 500m
+            memory: 384Mi
+          requests:
+            cpu: 500m
+            memory: 384Mi
+        volumeMounts:
+          - name: ssh-config
+            mountPath: /opt/app-root/src/.ssh
+          - name: github-app-privatekey
+            mountPath: /opt/app-root/src/.github/
+            readOnly: true

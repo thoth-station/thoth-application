@@ -71,6 +71,12 @@ spec:
                 template: gh-link
               continueOn:
                 failed: true
+            - name: thoth-community
+              templateRef:
+                name: prescriptions-refresh-thoth
+                template: thoth-community
+              continueOn:
+                failed: true
             - name: gh-archived
               templateRef:
                 name: prescriptions-refresh-gh
