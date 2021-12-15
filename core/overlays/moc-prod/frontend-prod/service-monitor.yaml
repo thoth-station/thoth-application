@@ -14,7 +14,7 @@ spec:
           regex: "user-api"
           action: replace
           targetLabel: field
-          replacement: user-api-thoth-frontend-prod.apps.apps.smaug.na.operate-first.cloud
+          replacement: user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud
         - sourceLabels: [service]
           regex: "management-api"
           action: replace
