@@ -41,7 +41,7 @@ apiVersion: v1
 metadata:
   name: prometheus
 data:
-  user-api-url: "user-api-thoth-frontend-prod.apps.apps.smaug.na.operate-first.cloud"
+  user-api-url: "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud"
   instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
   instance-metrics-management-api: "management-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud"
   pushgateway-host: pushgateway-thoth-infra-prod.apps.smaug.na.operate-first.cloud

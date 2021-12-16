@@ -94,7 +94,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"}",
+          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -183,7 +183,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"} == 1 and on(cluster) up{field=\"investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"} == 1  and on(prometheus) up{field=\"workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"} and on(cluster) thoth_openshift_connection_issues{cluster=\"$env\"} and on(cluster) thoth_graphdb_connection_issues{cluster=\"$env\"} and on(cluster) thoth_kafka_connection_issues{cluster=\"$env\"} and on(cluster) thoth_ceph_connection_issues{cluster=\"$env\"}",
+          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"} == 1 and on(cluster) up{field=\"investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"} == 1  and on(prometheus) up{field=\"workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"} and on(cluster) thoth_openshift_connection_issues{cluster=\"$env\"} and on(cluster) thoth_graphdb_connection_issues{cluster=\"$env\"} and on(cluster) thoth_kafka_connection_issues{cluster=\"$env\"} and on(cluster) thoth_ceph_connection_issues{cluster=\"$env\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
