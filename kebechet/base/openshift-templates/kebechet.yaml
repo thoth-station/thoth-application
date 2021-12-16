@@ -99,6 +99,8 @@ objects:
               path: github-privatekey
         - name: clone-dir
           emptyDir: {}
+        - name: workdir
+          emptyDir: {}
 
       templates:
         - name: "kebechet"
