@@ -101,8 +101,6 @@ spec:
             value: "{{inputs.parameters.THOTH_DEPENDENCY_MONKEY_DRY_RUN}}"
           - name: THOTH_ADVISER_PIPELINE
             value: "input/pipeline.json"
-          - name: THOTH_ADVISER_PRESCRIPTION
-            value: "/opt/app-root/src/prescriptions.pickle"
           - name: THOTH_ADVISER_PREDICTOR
             value: "{{inputs.parameters.THOTH_ADVISER_PREDICTOR}}"
           - name: THOTH_ADVISER_PREDICTOR_CONFIG
