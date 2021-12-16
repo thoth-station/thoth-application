@@ -8,7 +8,6 @@ resources:
 patchesStrategicMerge:
   - configmap.yaml
   - imagestreamtag.yaml
-  - kebechet.yaml
 generatorOptions:
   disableNameSuffixHash: true
 generators:

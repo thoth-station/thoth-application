@@ -104,6 +104,14 @@ objects:
             archiveLogs: true
           dag:
             tasks:
+              - name: "update-kebechet-installation"
+                templateRef:
+                  name: "update-kebechet-installation"
+                  template: "update-kebechet-installation"
+                arguments:
+                  parameters:
+                    - name: "KEBECHET_SLUG"
+                      value: "{{workflow.parameters.KEBECHET_SLUG}}"
               - name: "kebechet-webhook-run"
                 templateRef:
                   name: "kebechet"
