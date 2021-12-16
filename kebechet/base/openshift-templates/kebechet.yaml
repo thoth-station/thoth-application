@@ -82,6 +82,8 @@ objects:
         parameters:
           - name: "WEBHOOK_PAYLOAD"
             value: "${WEBHOOK_PAYLOAD}"
+          - name: "KEBECHET_SLUG"
+            value: "${KEBECHET_SLUG}"
       volumes:
         - name: ssh-config
           secret:
