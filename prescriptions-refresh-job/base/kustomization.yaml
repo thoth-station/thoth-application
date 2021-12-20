@@ -6,6 +6,9 @@ commonLabels:
   app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
   - argo-workflows/prescriptions-refresh-gh.yaml
+  - argo-workflows/prescriptions-refresh-pg.yaml
+  - argo-workflows/prescriptions-refresh-pypi.yaml
+  - argo-workflows/prescriptions-refresh-quay.yaml
   - argo-workflows/prescriptions-refresh-scorecards.yaml
   - argo-workflows/prescriptions-refresh.yaml
   - imagestream.yaml
