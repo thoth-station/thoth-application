@@ -1,0 +1,109 @@
+- op: replace
+  path: /spec
+  value:
+    groups:
+      - name: Thoth-rules
+        rules:
+          #### Alerts for services
+
+          # Alert for User API down
+        - alert: ThothUserAPIProd
+          expr: up{field="user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80"} < 1
+          for: 1m
+          annotations:
+            summary: "Thoth User API is down, all services are not available!"
+            severity: "HIGH"
+
+          # Alert for mismatch between number of requests and documents produced
+        - alert: ThothResultsMissingProd
+          expr: thoth_reporter_requests_gauge{env="aws-prod"} - thoth_reporter_reports_gauge{env="aws-prod"} > 0
+          for: 60m
+          annotations:
+            summary: "Thoth {{ $labels.component }} results do no match requests, some requests have been lost!"
+            severity: "HIGH"
+
+          # Alert for purge job once runtime is deleted
+        - alert: ThothPurgeJobMissedProd
+          expr: thoth_number_purge_issues_total{env="aws-prod"} - thoth_number_purge_issues_created{env="aws-prod"} > 0
+          for: 1m
+          annotations:
+            summary: "Not all purge job issues have been opened!"
+            severity: "HIGH"
+
+          # Alert for number of workflows in middletier
+        - alert: ThothMiddletierIngestionProd
+          expr: argo_workflows_count{field="workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud:80", status="Running"} < 1
+          for: 60m
+          annotations:
+            summary: "Workflows running in Middletier Prod is 0! Please verify status of Data Ingestion in Thoth or add more workload!"
+            severity: "HIGH"
+
+          # Alert when solvers do not match Thoth s2i offered
+        - alert: ThothSolversThothS2iOfferedMismatchProd
+          expr: thoth_graphdb_solvers_number_match{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          for: 30m
+          annotations:
+            summary: "Number of solvers from ConfigMap and from database do not match!"
+            severity: "MEDIUM"
+
+          #### Alerts for Ceph
+
+          # Alert for issue in connection with Ceph
+        - alert: ThothCephConnectionProd
+          expr: thoth_ceph_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          for: 10m
+          annotations:
+            summary: "Ceph cannot be reached! Components are not able to store documents."
+            severity: "HIGH"
+
+          #### Alerts for Kafka
+
+          # Alert for issue in connection with Kafka
+        - alert: ThothKafkaConnectionProd
+          expr: thoth_kafka_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          for: 10m
+          annotations:
+            summary: "Kafka cannot be reached! Services cannot be scheduled."
+            severity: "HIGH"
+
+          # Alert when any of the message is halted
+        - alert: ThothKafkaMessageHaltedProd
+          expr: thoth_investigator_halted_topics{field="investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          for: 5m
+          annotations:
+            summary: "Message {{ $labels.base_topic_name }} is halted! Please check errors."
+            severity: "HIGH"
+
+          #### Alerts for Database
+
+          # Alert for issue in connection to Database
+        - alert: ThothDatabaseConnectionProd
+          expr: thoth_graphdb_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          for: 10m
+          annotations:
+            summary: "Database cannot be reached! Services cannot be guaranteed."
+            severity: "HIGH"
+
+          # Alerts for alembic version mismatch between components and database.
+        - alert: ThothSchemaCheckProd
+          expr: thoth_graph_db_component_revision_check{env="aws-prod"} == 1
+          for: 5m
+          annotations:
+            summary: "Schema of {{ $labels.component }} is not in sync with database schema."
+            severity: "HIGH"
+
+          # Alert for amcheck database corruption check.
+        - alert: ThothDatabaseCorruptionCheckProd
+          expr: thoth_graphdb_is_corrupted{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          for: 5m
+          annotations:
+            summary: "Database schema is corrupted, all services need to be stopped."
+            severity: "HIGH"
+
+          # Alert for alembic version table corruption.
+        - alert: ThothMultipleAlembicRowsProd
+          expr: thoth_graphdb_alembic_table_check{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          for: 5m
+          annotations:
+            summary: "Database table for alembic version has more than one row, database is corrupted, all services need to be stopped."
+            severity: "HIGH"
