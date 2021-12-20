@@ -509,7 +509,7 @@
       "type": "stat"
     },
     {
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -992,7 +992,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1067,7 +1067,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1140,7 +1140,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1215,7 +1215,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1504,7 +1504,7 @@
       }
     },
     {
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1737,7 +1737,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1978,7 +1978,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2249,7 +2249,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2489,7 +2489,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2785,7 +2785,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2988,7 +2988,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -4776,7 +4776,7 @@
       "yBucketSize": null
     },
     {
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -5439,5 +5439,5 @@
   "timezone": "",
   "title": "Thoth SLI/SLO",
   "uid": "a30fccbb3c61cc644827f080c68c460d2132bc4a",
-  "version": 6
+  "version": 7
 }

@@ -501,7 +501,7 @@
       "type": "stat"
     },
     {
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -988,7 +988,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1063,7 +1063,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1136,7 +1136,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1211,7 +1211,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1500,7 +1500,7 @@
       }
     },
     {
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1733,7 +1733,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1974,7 +1974,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2245,7 +2245,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2485,7 +2485,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2781,7 +2781,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2984,7 +2984,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -4772,7 +4772,7 @@
       "yBucketSize": null
     },
     {
-      "datasource": "openshift-monitoring",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -5434,6 +5434,6 @@
   },
   "timezone": "",
   "title": "Thoth SLI/SLO",
-  "uid": "a30fccbb3c61cc644827f080c68c460d2132bc4a",
-  "version": 2
+  "uid": "ee96mo7s4buzb6lxads4aun3kpm1h9th6zxdtw7i",
+  "version": 1
 }
