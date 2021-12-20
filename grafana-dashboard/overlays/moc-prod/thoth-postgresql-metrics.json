@@ -33,7 +33,7 @@
             "#508642",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "decimals": null,
           "description": "PostgreSQL version",
           "format": "none",
@@ -116,7 +116,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Sets the maximum number of concurrent connections.",
           "format": "none",
           "gauge": {
@@ -194,7 +194,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Sets the number of shared memory buffers used by the server. [Units converted to bytes.]",
           "format": "bytes",
           "gauge": {
@@ -272,7 +272,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Sets the planner’s assumption about the size of the data cache. [Units converted to bytes.]",
           "format": "bytes",
           "gauge": {
@@ -350,7 +350,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Sets the maximum memory to be used for maintenance operations. [Units converted to bytes.]",
           "format": "bytes",
           "gauge": {
@@ -428,7 +428,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Sets the maximum memory to be used for query workspaces. [Units converted to bytes.]",
           "format": "bytes",
           "gauge": {
@@ -506,7 +506,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Sets the WAL size that triggers a checkpoint. [Units converted to bytes.]",
           "format": "bytes",
           "gauge": {
@@ -584,7 +584,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Sets the planner’s estimate of the cost of a nonsequentially fetched disk page.",
           "format": "none",
           "gauge": {
@@ -662,7 +662,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Sets the planner’s estimate of the cost of a sequentially fetched disk page.",
           "format": "none",
           "gauge": {
@@ -740,7 +740,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Maximum number of concurrent worker processes.",
           "format": "none",
           "gauge": {
@@ -818,7 +818,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Sets the maximum number of parallel processes per executor node.",
           "format": "none",
           "gauge": {
@@ -904,7 +904,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 17,
           "legend": {
@@ -998,7 +998,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 12,
           "legend": {
@@ -1090,7 +1090,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 13,
           "legend": {
@@ -1176,7 +1176,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 19,
           "legend": {
@@ -1266,7 +1266,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 22,
           "legend": {
@@ -1351,7 +1351,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 18,
           "legend": {
@@ -1449,7 +1449,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 20,
           "legend": {
@@ -1527,7 +1527,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Number of locks",
           "fill": 1,
           "id": 23,
@@ -1606,7 +1606,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "Total amount of data written to temporary files by queries in this database. All temporary files are counted, regardless of why the temporary file was created, and regardless of the log_temp_files setting.",
           "fill": 1,
           "id": 24,
@@ -1696,7 +1696,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "pg_stat_bgwriter_buffers_alloc (cumulative)\nNumber of buffers allocated, \n\npg_stat_bgwriter_buffers_backend (cumulative)\nNumber of buffers written directly by a backend, \n\npg_stat_bgwriter_buffers_backend_fsync (cumulative)\nNumber of times a backend had to execute its own fsync call (normally the background writer handles those even when the backend does its own write),\n\npg_stat_bgwriter_buffers_checkpoint (cumulative)\nNumber of buffers written during checkpoints,\n\npg_stat_bgwriter_buffers_clean (cumulative)\nNumber of buffers written by the background writer",
           "fill": 1,
           "id": 21,
@@ -1806,7 +1806,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "description": "pg_stat_bgwriter_checkpoint_sync_time (cumulative)\nTotal amount of time that has been spent in the portion of checkpoint processing where files are synchronized to disk, in milliseconds,\n\npg_stat_bgwriter_checkpoint_write_time (cumulative)\nTotal amount of time that has been spent in the portion of checkpoint processing where files are written to disk, in milliseconds",
           "fill": 1,
           "id": 25,
@@ -1904,7 +1904,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 26,
           "legend": {
@@ -1984,7 +1984,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 27,
           "legend": {
@@ -2076,7 +2076,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 31,
           "legend": {
@@ -2156,7 +2156,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 32,
           "legend": {
@@ -2252,7 +2252,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2341,7 +2341,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -2426,7 +2426,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "openshift-monitoring",
+          "datasource": "moc-smaug",
           "fill": 1,
           "id": 30,
           "legend": {
@@ -2613,5 +2613,6 @@
   },
   "timezone": "",
   "title": "Thoth PostgreSQL metrics",
-  "version": 39
+  "uid": "5f2a5d7b1356c0c8ce4277724c131ed1beac864f",
+  "version": 2
 }

@@ -1,778 +1,779 @@
 {
-    "annotations": {
-      "list": [
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": 196,
+  "links": [],
+  "refresh": "5m",
+  "rows": [
+    {
+      "collapse": false,
+      "height": 383,
+      "panels": [
         {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
-    },
-    "editable": true,
-    "gnetId": null,
-    "graphTooltip": 0,
-    "hideControls": false,
-    "id": 196,
-    "links": [],
-    "refresh": "5m",
-    "rows": [
-      {
-        "collapse": false,
-        "height": 383,
-        "panels": [
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "openshift-monitoring",
-            "description": "A count of all workflows currently accessible by the controller by status",
-            "fill": 1,
-            "id": 1,
-            "legend": {
-              "alignAsTable": true,
-              "avg": false,
-              "current": true,
-              "max": false,
-              "min": false,
-              "show": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "argo_workflows_count{field='$instance'}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{status}}",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "count",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "moc-smaug",
+          "description": "A count of all workflows currently accessible by the controller by status",
+          "fill": 1,
+          "id": 1,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
           },
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "openshift-monitoring",
-            "description": "A count of certain errors incurred by the controller",
-            "fill": 1,
-            "id": 5,
-            "legend": {
-              "alignAsTable": true,
-              "avg": false,
-              "current": true,
-              "max": false,
-              "min": false,
-              "show": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "argo_workflows_error_count{field='$instance'}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{queue_name}}",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "error_count",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
-      },
-      {
-        "collapse": false,
-        "height": 292,
-        "panels": [
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "openshift-monitoring",
-            "description": "The number of adds to the queue of workflows or cron workflows",
-            "fill": 1,
-            "id": 6,
-            "legend": {
-              "alignAsTable": true,
-              "avg": false,
-              "current": true,
-              "max": false,
-              "min": false,
-              "show": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "argo_workflows_queue_adds_count{field='$instance'}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{queue_name}}",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "queue_adds_count",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_count{field='$instance'}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{status}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "count",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
           },
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "openshift-monitoring",
-            "description": "The depth of the queue of workflows or cron workflows to be processed by the controller",
-            "fill": 1,
-            "id": 8,
-            "legend": {
-              "alignAsTable": true,
-              "avg": false,
-              "current": true,
-              "max": false,
-              "min": false,
-              "show": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "argo_workflows_queue_depth_count{field='$instance'}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{queue_name}}",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "queue_depth_count",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
-      },
-      {
-        "collapse": false,
-        "height": 343,
-        "panels": [
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "openshift-monitoring",
-            "description": "Percentage of workflows that has queue latency below a certain threshold",
-            "fill": 1,
-            "id": 2,
-            "legend": {
-              "alignAsTable": true,
-              "avg": false,
-              "current": true,
-              "max": false,
-              "min": false,
-              "show": true,
-              "sort": null,
-              "sortDesc": null,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 6,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "argo_workflows_queue_latency_bucket{field='$instance', queue_name=\"$queue_name\"} / ignoring(le) group_left argo_workflows_queue_latency_count{field='$instance', queue_name=\"$queue_name\"}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "queue_latency: {{le}}",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Workflow queue latency [%]",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "percentunit",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
           },
-          {
-            "cards": {
-              "cardPadding": null,
-              "cardRound": null
-            },
-            "color": {
-              "cardColor": "#b4ff00",
-              "colorScale": "sqrt",
-              "colorScheme": "interpolateYlOrRd",
-              "exponent": 0.5,
-              "mode": "spectrum"
-            },
-            "dataFormat": "timeseries",
-            "datasource": "openshift-monitoring",
-            "description": "A histogram of durations of operations",
-            "heatmap": {},
-            "highlightCards": true,
-            "id": 4,
-            "legend": {
-              "show": true
-            },
-            "links": [],
-            "span": 6,
-            "targets": [
-              {
-                "expr": "argo_workflows_operation_duration_seconds_bucket{field='$instance'}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "{{queue_name}}",
-                "refId": "A",
-                "step": 1200
-              }
-            ],
-            "title": "operation_duration_seconds",
-            "tooltip": {
-              "show": true,
-              "showHistogram": true
-            },
-            "type": "heatmap",
-            "xAxis": {
-              "show": true
-            },
-            "xBucketNumber": null,
-            "xBucketSize": null,
-            "yAxis": {
-              "decimals": null,
-              "format": "dtdurations",
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
               "logBase": 1,
               "max": null,
               "min": null,
-              "show": true,
-              "splitFactor": null
-            },
-            "yBucketNumber": null,
-            "yBucketSize": null
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
-      },
-      {
-        "collapse": false,
-        "height": 330,
-        "panels": [
-          {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "openshift-monitoring",
-            "description": "Total number of bytes currently allocated in go",
-            "fill": 1,
-            "id": 7,
-            "legend": {
-              "alignAsTable": true,
-              "avg": false,
-              "current": true,
-              "hideEmpty": false,
-              "max": true,
-              "min": true,
-              "show": true,
-              "total": false,
-              "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "span": 12,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-              {
-                "expr": "go_memstats_alloc_bytes{field='$instance'}",
-                "format": "time_series",
-                "intervalFactor": 2,
-                "legendFormat": "Allocated Bytes",
-                "refId": "B",
-                "step": 600
-              }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Allocated Go Bytes",
-            "tooltip": {
-              "shared": true,
-              "sort": 0,
-              "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-              "buckets": null,
-              "mode": "time",
-              "name": null,
-              "show": true,
-              "values": []
-            },
-            "yaxes": [
-              {
-                "format": "decbytes",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              },
-              {
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-              }
-            ]
-          }
-        ],
-        "repeat": null,
-        "repeatIteration": null,
-        "repeatRowId": null,
-        "showTitle": false,
-        "title": "Dashboard Row",
-        "titleSize": "h6"
-      }
-    ],
-    "schemaVersion": 14,
-    "style": "dark",
-    "tags": [
-      "thoth",
-      "argo",
-      "workflow-controller"
-    ],
-    "templating": {
-      "list": [
-        {
-          "allValue": null,
-          "current": {
-            "tags": [],
-            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
-            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
-          },
-          "hide": 0,
-          "includeAll": false,
-          "label": null,
-          "multi": false,
-          "name": "instance",
-          "options": [
-            {
-              "selected": false,
-              "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud",
-              "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud"
+              "show": true
             },
             {
-              "selected": false,
-              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
-              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
             }
-          ],
-          "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
-          "type": "custom"
+          ]
         },
         {
-          "auto": true,
-          "auto_count": 30,
-          "auto_min": "10s",
-          "current": {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "moc-smaug",
+          "description": "A count of certain errors incurred by the controller",
+          "fill": 1,
+          "id": 5,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_error_count{field='$instance'}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{queue_name}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "error_count",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 292,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "moc-smaug",
+          "description": "The number of adds to the queue of workflows or cron workflows",
+          "fill": 1,
+          "id": 6,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_queue_adds_count{field='$instance'}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{queue_name}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "queue_adds_count",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "moc-smaug",
+          "description": "The depth of the queue of workflows or cron workflows to be processed by the controller",
+          "fill": 1,
+          "id": 8,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_queue_depth_count{field='$instance'}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{queue_name}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "queue_depth_count",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 343,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "moc-smaug",
+          "description": "Percentage of workflows that has queue latency below a certain threshold",
+          "fill": 1,
+          "id": 2,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "sort": null,
+            "sortDesc": null,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "argo_workflows_queue_latency_bucket{field='$instance', queue_name=\"$queue_name\"} / ignoring(le) group_left argo_workflows_queue_latency_count{field='$instance', queue_name=\"$queue_name\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "queue_latency: {{le}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Workflow queue latency [%]",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percentunit",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "cards": {
+            "cardPadding": null,
+            "cardRound": null
+          },
+          "color": {
+            "cardColor": "#b4ff00",
+            "colorScale": "sqrt",
+            "colorScheme": "interpolateYlOrRd",
+            "exponent": 0.5,
+            "mode": "spectrum"
+          },
+          "dataFormat": "timeseries",
+          "datasource": "moc-smaug",
+          "description": "A histogram of durations of operations",
+          "heatmap": {},
+          "highlightCards": true,
+          "id": 4,
+          "legend": {
+            "show": true
+          },
+          "links": [],
+          "span": 6,
+          "targets": [
+            {
+              "expr": "argo_workflows_operation_duration_seconds_bucket{field='$instance'}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{queue_name}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "title": "operation_duration_seconds",
+          "tooltip": {
+            "show": true,
+            "showHistogram": true
+          },
+          "type": "heatmap",
+          "xAxis": {
+            "show": true
+          },
+          "xBucketNumber": null,
+          "xBucketSize": null,
+          "yAxis": {
+            "decimals": null,
+            "format": "dtdurations",
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true,
+            "splitFactor": null
+          },
+          "yBucketNumber": null,
+          "yBucketSize": null
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 330,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "moc-smaug",
+          "description": "Total number of bytes currently allocated in go",
+          "fill": 1,
+          "id": 7,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "go_memstats_alloc_bytes{field='$instance'}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Allocated Bytes",
+              "refId": "B",
+              "step": 600
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Allocated Go Bytes",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [
+    "thoth",
+    "argo",
+    "workflow-controller"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
+          "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "instance",
+        "options": [
+          {
+            "selected": false,
+            "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud",
+            "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud"
+          },
+          {
+            "selected": false,
+            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
+            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
+          }
+        ],
+        "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
+        "type": "custom"
+      },
+      {
+        "auto": true,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "text": "auto",
+          "value": "$__auto_interval"
+        },
+        "hide": 0,
+        "label": null,
+        "name": "interval",
+        "options": [
+          {
+            "selected": true,
             "text": "auto",
             "value": "$__auto_interval"
           },
-          "hide": 0,
-          "label": null,
-          "name": "interval",
-          "options": [
-            {
-              "selected": true,
-              "text": "auto",
-              "value": "$__auto_interval"
-            },
-            {
-              "selected": false,
-              "text": "1m",
-              "value": "1m"
-            },
-            {
-              "selected": false,
-              "text": "10m",
-              "value": "10m"
-            },
-            {
-              "selected": false,
-              "text": "30m",
-              "value": "30m"
-            },
-            {
-              "selected": false,
-              "text": "1h",
-              "value": "1h"
-            },
-            {
-              "selected": false,
-              "text": "6h",
-              "value": "6h"
-            },
-            {
-              "selected": false,
-              "text": "12h",
-              "value": "12h"
-            },
-            {
-              "selected": false,
-              "text": "1d",
-              "value": "1d"
-            },
-            {
-              "selected": false,
-              "text": "7d",
-              "value": "7d"
-            },
-            {
-              "selected": false,
-              "text": "14d",
-              "value": "14d"
-            },
-            {
-              "selected": false,
-              "text": "30d",
-              "value": "30d"
-            }
-          ],
-          "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
-          "refresh": 2,
-          "type": "interval"
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "refresh": 2,
+        "type": "interval"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "workflow_queue",
+          "value": "workflow_queue"
         },
-        {
-          "allValue": null,
-          "current": {
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "queue_name",
+        "options": [
+          {
+            "selected": false,
+            "text": "cron_wf_queue",
+            "value": "cron_wf_queue"
+          },
+          {
+            "selected": false,
+            "text": "pod_queue",
+            "value": "pod_queue"
+          },
+          {
+            "selected": false,
+            "text": "wf_cron_queue",
+            "value": "wf_cron_queue"
+          },
+          {
             "selected": true,
             "text": "workflow_queue",
             "value": "workflow_queue"
-          },
-          "hide": 0,
-          "includeAll": false,
-          "label": null,
-          "multi": false,
-          "name": "queue_name",
-          "options": [
-            {
-              "selected": false,
-              "text": "cron_wf_queue",
-              "value": "cron_wf_queue"
-            },
-            {
-              "selected": false,
-              "text": "pod_queue",
-              "value": "pod_queue"
-            },
-            {
-              "selected": false,
-              "text": "wf_cron_queue",
-              "value": "wf_cron_queue"
-            },
-            {
-              "selected": true,
-              "text": "workflow_queue",
-              "value": "workflow_queue"
-            }
-          ],
-          "query": "cron_wf_queue,pod_queue,wf_cron_queue,workflow_queue",
-          "type": "custom"
-        }
-      ]
-    },
-    "time": {
-      "from": "now-7d",
-      "to": "now"
-    },
-    "timepicker": {
-      "refresh_intervals": [
-        "5s",
-        "10s",
-        "30s",
-        "1m",
-        "5m",
-        "15m",
-        "30m",
-        "1h",
-        "2h",
-        "1d"
-      ],
-      "time_options": [
-        "5m",
-        "15m",
-        "1h",
-        "6h",
-        "12h",
-        "24h",
-        "2d",
-        "7d",
-        "30d"
-      ]
-    },
-    "timezone": "",
-    "title": "Thoth Workflow Controllers",
-    "version": 24
-  }
+          }
+        ],
+        "query": "cron_wf_queue,pod_queue,wf_cron_queue,workflow_queue",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Thoth Workflow Controllers",
+  "uid": "84adca3ac267decd4c26858bdd1d7e1ca9ae58be",
+  "version": 2
+}

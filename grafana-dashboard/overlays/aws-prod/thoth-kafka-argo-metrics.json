@@ -826,7 +826,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog-monitoring",
+      "datasource": "aws-balrog",
       "description": "Percentage of workflows that has queue latency below a certain threshold",
       "fill": 1,
       "fillGradient": 0,
@@ -1788,5 +1788,5 @@
   "timezone": "",
   "title": "Thoth Kafka Consumers and Argo Workflows",
   "uid": "6576535a8b26fd1a0e5328f4413dfd8bc989f54f",
-  "version": 3
+  "version": 4
 }
