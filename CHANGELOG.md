@@ -1,4 +1,45 @@
 
+## Release 2021.12.20 (2021-12-20T21:48:12)
+* :ship: Bump up the images based on the version update v2021.12.20
+* adding uids, fixing json formatting, updating datasources and versioning
+* :ship: Deploy the Tag v0.4.1 for nepthys
+* Freeze the data ingestion on balrog prod cluster
+* Freeze the db dump of smaug cluster
+* Patch the smaug cluster kafka certs due to updates
+* Patch the smaug cluster postgresql pvc to default ceph based storage
+* Patch the prescriptions refresh job for deployment
+* setting up balrog alerting-rules
+* Revert the kebechet update installation due errors (#2207)
+* Patch the volume workdir for kebechet workflow
+* Fix the kebechet slug var in the kebechet yaml (#2206)
+* add keb-update step to base template (#2191)
+* :ship: Deploy the Tag v1.3.0 for package-extract
+* Bump package-extract to v1.3.0 in stage environment
+* Explicit pipeline configuration and prescritpions are disjoint
+* :ship: Deploy the Tag v0.49.0 for adviser
+* :ship: Deploy the Tag v0.29.1 for user-api
+* :ship: Deploy the Tag pr-1535 for user-api
+* Bump user-api to v0.29.1 in stage
+* :ship: Deploy the Tag v0.29.0 for user-api
+* :ship: Deploy the Tag v0.5.0 for prescriptions-refresh-job
+* Patch moc prod ceph bucket in smaug cluster
+* reverting directory name
+* Bump adviser to v0.49.0 in stage environment
+* Patch prow instance with the s3 connection from smaug cluster
+* fixing 2160
+* Bump prescriptions-refresh-job to v0.5.0 in moc
+* Prescriptions refresh PyPI artifact size requires connection to the database
+* Bump SLO reporter to v0.19.0
+* Add PyPI specific handlers for prescriptions-refresh
+* remove double apps from field label scraped in Thanos for user-API in Smaug
+* adding documentation of Thoth-alerting
+* :ship: Deploy the Tag v0.19.0 for slo-reporter
+* :ship: Deploy the Tag pr-1529 for user-api
+* Use the rick cluster storage for prow (#2184)
+* :ship: Deploy the Tag v0.2.1 for si-bandit
+* :ship: Deploy the Tag v0.2.0 for si-cloc
+* updated milestone for the next sprint cycle
+
 ## Release 2021.12.06 (2021-12-06T20:36:06)
 * :ship: Bump up the images based on the version update v2021.12.06 (#2180)
 * :ship: Deploy the Tag v0.2.0 for si-aggregator
