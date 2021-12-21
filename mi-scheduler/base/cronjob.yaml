@@ -1,6 +1,6 @@
 ---
 kind: CronJob
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 metadata:
   name: mi-scheduler-gh
   labels:
@@ -65,7 +65,7 @@ spec:
           restartPolicy: OnFailure
 ---
 kind: CronJob
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 metadata:
   name: mi-scheduler-kebechet-analyse
   labels:
@@ -149,7 +149,7 @@ spec:
           restartPolicy: OnFailure
 ---
 kind: CronJob
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 metadata:
   name: mi-scheduler-kebechet-merge
   labels:
