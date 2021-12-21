@@ -1,5 +1,5 @@
 ---
-apiVersion: batch/v1
+apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   labels:
@@ -43,7 +43,7 @@ spec:
   successfulJobsHistoryLimit: 1
   suspend: true
 ---
-apiVersion: batch/v1
+apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   labels:
