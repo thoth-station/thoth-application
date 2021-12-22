@@ -5,3 +5,19 @@ metadata:
   name: prescriptions-refresh-job
 data:
   configured-images: ""
+  configured-packages-ml: |
+    keras
+    scikit-learn
+    torch
+    tensorflow
+  configured-packages-nlp: |
+    gensim
+    nltk
+    spacy
+    transformers
+  configured-packages-cv: |
+    opencv-python
+    pillow
+    pytesseract
+    torchvision
+  user-api: "khemenu.thoth-station.ninja"
