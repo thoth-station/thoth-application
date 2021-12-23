@@ -46,6 +46,12 @@ spec:
                   value: "1"
                 - name: PIPENV_HIDE_EMOJIS
                   value: "1"
+                - name: THOTH_BACKEND_NAMESPACE
+                  value: "thoth-backend-stage"
+                - name: THOTH_MIDDLETIER_NAMESPACE
+                  value: "thoth-middletier-stage"
+                - name: THOTH_DEPLOYMENT_NAME
+                  value: "ocp4-stage"
                 - name: GITHUB_TOKEN
                   valueFrom:
                     secretKeyRef:
