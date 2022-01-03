@@ -1,0 +1,7 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: solver-error-classifier-job
+spec:
+  suspend: true
