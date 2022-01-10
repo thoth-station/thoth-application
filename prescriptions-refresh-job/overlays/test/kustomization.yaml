@@ -9,6 +9,7 @@ resources:
 patchesStrategicMerge:
   - imagestreamtag.yaml
   - cronworkflow.yaml
+  - configmap.yaml
 patches:
   - patch: |-
       - op: replace

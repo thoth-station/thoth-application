@@ -150,6 +150,6 @@ spec:
             - name: image-analysis
               templateRef:
                 name: prescriptions-refresh-image-analysis
-                template: pypi-release
+                template: image-analysis
               continueOn:
                 failed: true

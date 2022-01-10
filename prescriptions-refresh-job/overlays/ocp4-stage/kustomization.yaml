@@ -7,13 +7,14 @@ resources:
   - ../../base
   - thoth-notification.yaml
 patchesStrategicMerge:
+  - configmap.yaml
   - imagestreamtag.yaml
   - cronworkflow.yaml
 patches:
   - patch: |-
       - op: add
         path: /metadata/namespace
-        value: "thoth-infra-prod"
+        value: "thoth-infra-stage"
     target:
       group: batch
       version: v1
@@ -22,25 +23,25 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/templates/1/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/templates/2/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/templates/3/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/templates/4/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/templates/5/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/templates/6/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
     target:
       group: argoproj.io
       version: v1alpha1
@@ -49,7 +50,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
     target:
       group: argoproj.io
       version: v1alpha1
@@ -58,7 +59,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
     target:
       group: argoproj.io
       version: v1alpha1
@@ -67,7 +68,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
     target:
       group: argoproj.io
       version: v1alpha1

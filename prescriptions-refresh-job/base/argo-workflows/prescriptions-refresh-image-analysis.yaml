@@ -11,6 +11,8 @@ spec:
         name: image-analysis
         image: prescriptions-refresh-job
         env:
+          - name: THOTH_PRESCRIPTIONS_DRY_RUN
+            value: 1
           - name: SENTRY_DSN
             valueFrom:
               secretKeyRef:

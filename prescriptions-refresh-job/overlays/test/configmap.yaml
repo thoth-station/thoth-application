@@ -1,0 +1,23 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prescriptions-refresh-job
+data:
+  configured-images: ""
+  configured-packages-ml: |
+    keras
+    scikit-learn
+    torch
+    tensorflow
+  configured-packages-nlp: |
+    gensim
+    nltk
+    spacy
+    transformers
+  configured-packages-cv: |
+    opencv-python
+    pillow
+    pytesseract
+    torchvision
+  user-api: "test.thoth-station.ninja"
