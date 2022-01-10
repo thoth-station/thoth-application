@@ -20,4 +20,4 @@ data:
     pillow
     pytesseract
     torchvision
-  user-api: ""
+  user-api: "test.thoth-station.ninja"

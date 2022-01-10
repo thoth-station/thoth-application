@@ -147,3 +147,9 @@ spec:
                 template: pypi-release
               continueOn:
                 failed: true
+            - name: image-analysis
+              templateRef:
+                name: prescriptions-refresh-image-analysis
+                template: image-analysis
+              continueOn:
+                failed: true
