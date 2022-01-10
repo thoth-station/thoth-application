@@ -141,7 +141,7 @@ branch-protection:
       allow_force_pushes: false
       required_status_checks:
         contexts:
-          - aicoe-ci/prow/pre-commit
+          - pre-commit
       exclude:
         - "^revert-"
         - "^kebechet-"
@@ -318,6 +318,12 @@ tide:
             required-contexts:
               - aicoe-ci/pre-commit-check
               - aicoe-ci/build-check
+      open-services-group:
+        repos:
+          community:
+            required-contexts:
+              - perobolos
+              - labels
       thoth-station:
         repos:
           adviser:
