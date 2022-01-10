@@ -7,3 +7,4 @@ data:
   validate-prescription-schema: "1"
   validate-unit-configuration-schema: "1"
   blocked-units: "SecurityIndicatorStep,ThothS2IAbiCompatibilitySieve"
+  search-url: "https://thoth-station.ninja/search-test/{document_id}/summary"
