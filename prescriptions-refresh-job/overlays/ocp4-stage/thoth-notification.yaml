@@ -22,7 +22,7 @@ spec:
             - "-H"
             - "Content-Type: application/json; charset=UTF-8"
             - "-d"
-            - "{'text':'Successfully synchronized *prescriptions-refresh-job* to *OCP4-STAGE*, see <https://argocd.operate-first.cloud/applications/prod-thoth-prescriptions-refresh-job|ArgoCD UI> 🚚'}"
+            - "{'text':'Successfully synchronized *prescriptions-refresh-job* to *OCP4-STAGE*, see <https://argocd.operate-first.cloud/applications/stage-thoth-prescriptions-refresh-job|ArgoCD UI> 🚚'}"
             - "$(THOTH_DEVOPS_WEBHOOK_URL)"
           env:
             - name: THOTH_DEVOPS_WEBHOOK_URL
