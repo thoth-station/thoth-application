@@ -40,7 +40,7 @@ data:
         bucket: "thoth"
         keyPrefix: "data/smaug-prod/argo/artifacts/"
         endpoint: "s3-openshift-storage.apps.smaug.na.operate-first.cloud"
-        insecure: true
+        insecure: false
         accessKeySecret:
           name: argo-artifact-repository-secrets
           key: accessKey
