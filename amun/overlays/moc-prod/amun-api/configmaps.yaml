@@ -8,6 +8,7 @@ data:
   deployment-name: smaug-prod
   infra-namespace: thoth-amun-inspection-prod
   inspection-namespace: thoth-amun-inspection-prod
+  logging-no-json: "0"
 ---
 kind: ConfigMap
 apiVersion: v1

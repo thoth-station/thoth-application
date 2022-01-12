@@ -93,7 +93,7 @@ spec:
             - name: THOTH_LOGGING_NO_JSON
               valueFrom:
                 configMapKeyRef:
-                  name: thoth
+                  name: amun
                   key: logging-no-json
             - name: PROMETHEUS_PUSHGATEWAY_HOST
               valueFrom:
