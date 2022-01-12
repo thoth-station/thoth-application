@@ -15,6 +15,10 @@ generators:
   - secret-generator.yaml
 generatorOptions:
   disableNameSuffixHash: true
+images:
+  - name: amun-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-amun-api-prod/amun-api
+    newTag: latest
 patches:
   - patch: |-
       - op: add

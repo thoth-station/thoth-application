@@ -8,6 +8,10 @@ resources:
   - thoth-notification.yaml
 generators:
   - ./secret-generator.yaml
+images:
+  - name: amun-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/amun-api
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtag.yaml
   - openshift-templates/inspection-workflow.yaml
