@@ -12,6 +12,10 @@ patchesStrategicMerge:
   - imagestreamtag.yaml
 generators:
   - ./secret-generator.yaml
+images:
+  - name: amun-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-amun-api-stage/amun-api
+    newTag: latest
 patches:
   - patch: |-
       - op: add
