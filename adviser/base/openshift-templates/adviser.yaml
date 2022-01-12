@@ -253,12 +253,6 @@ objects:
                       value: "{{workflow.parameters.ceph_bucket_prefix}}"
                     - name: "THOTH_DEPLOYMENT_NAME"
                       value: "{{workflow.parameters.deployment_name}}"
-                    - name: THOTH_SEARCH_ADVISER_URL
-                      valueFrom:
-                        configMapKeyRef:
-                          key: search-url
-                          name: adviser
-
               - name: "parse-adviser-output"
                 dependencies:
                   - "advise"
