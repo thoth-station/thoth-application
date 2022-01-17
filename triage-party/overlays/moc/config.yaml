@@ -130,11 +130,9 @@ collections:
 
   - id: recv
     name: "Receive queue"
-    description: >
-      Issues that may be waiting for our response
-
-      NOTE: for this to work properly, GitHub token must have read access to read organization members
+    description: Issues that may be waiting for our response
     rules:
+      - pickup-ready
       - question-recv
       - bugs-recv
       - enhancement-recv
@@ -152,6 +150,13 @@ collections:
       - important-pr-needs-merge
       - important-assignee-updated
       - important-recently-closed
+
+  - id: inconsistent
+    name: Inconsistent
+    description: Issues with inconsistent labels or statuses. Review to fix the inconsistencies/conflicts.
+    rules:
+      - active-unassigned
+      - long-active
 
   - id: similar
     name: Similar
@@ -480,7 +485,33 @@ rules:
     filters:
       - label: lifecycle/stale
 
+  # Inconsistencies
+  active-unassigned:
+    name: "Lifecyle Active without assignee"
+    resolution: "Assign the person working on it or fix lifecycle status"
+    type: issue
+    filters:
+      - label: "lifecycle/active"
+      - tag: "!assigned"
+
+  long-active:
+    name: "Lifecycle Active but not updated for long"
+    resolution: "Update the status"
+    type: issue
+    filters:
+      - label: "lifecycle/active"
+      - updated: +14d
+
   # Receive queue
+  pickup-ready:
+    name: "Issues waiting to be picked up"
+    resolution: "Work on them: assign yourself, add lifecycle/active"
+    type: issue
+    filters:
+      - label: "priorty/critical-urgent"
+      - label: "!lifecycle/active"
+      - tag: "!assigned"
+
   question-recv:
     name: "Questions awaiting follow-up"
     resolution: "Comment or close the issue"
