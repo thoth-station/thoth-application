@@ -1,4 +1,84 @@
 
+## Release 2022.01.17 (2022-01-17T18:43:21)
+* :ship: Bump up the images based on the version update v2022.01.17
+* :ship: Deploy the Tag v1.7.1 for kebechet
+* Add a triage-party view to highlight inconsistencies
+* Add metrics to kebechet-run-results task
+* :ship: Deploy the Tag v1.7.0 for kebechet
+* :ship: Deploy the Tag v1.6.8 for kebechet
+* :ship: Deploy the Tag v0.33.1 for user-api
+* Bump user-api to v0.33.1 in prod
+* Bump user-api to v0.33.1 in stage environment
+* Bump workflow helpers to update schema in stage
+* :ship: Deploy the Tag v0.9.7 for workflow-helpers
+* :ship: Deploy the Tag v0.33.0 for user-api
+* :ship: Deploy the Tag pr-1606 for user-api
+* :ship: Deploy the Tag pr-1605 for user-api
+* :ship: Deploy the Tag pr-1604 for user-api
+* :ship: Deploy the Tag pr-1602 for user-api
+* :zzz: Moved the logging-no-json env var to amun cm
+* Introduce image patch for the amun deploymentconfig
+* Bump metrics-exporter to v0.20.0 for Kebechet monitoring dashboard
+* :ship: Deploy the Tag v0.20.0 for metrics-exporter
+* :ship: Deploy the Tag v0.50.0 for adviser
+* :ship: Deploy the Tag pr-1600 for user-api
+* Bump adviser to v0.50.0 in stage environment
+* Bump user-api to v0.33.0 in stage
+* :ship: Deploy the Tag pr-1599 for user-api
+* :ship: Deploy the Tag pr-1598 for user-api
+* :ship: Deploy the Tag pr-1597 for user-api
+* Place adviser search URL configuration to environment section
+* :ship: Deploy the Tag pr-1590 for user-api
+* :fire: Remove the required context as the presubmit are not run always
+* :ship: Deploy the Tag v0.16.0 for messaging
+* :panda_face: Disable insecure agro artifact submission
+* Adjust links to Thoth search UI based on deployment
+* Update prescriptions-refresh-job/overlays/ocp4-stage/imagestreamtag.yaml
+* Update prescriptions-refresh-job/overlays/ocp4-stage/thoth-notification.yaml
+* use dry run for testing first
+* split configmap into overlays
+* update integration tests to latest release, related-to: https://github.com/thoth-station/integration-tests/pull/235
+* update pre-commit plugins
+* :sparkles: simplify the context of ci jobs, add required context for open-services-group/community
+* Synced up the version of grafana dashboard with the listed dashboard
+* :ship: Deploy the Tag v0.9.0 for integration-tests
+* Bump integration-tests for moc-prod
+* Bump integration-tests to v0.9.0 in stage
+* :ship: Deploy the Tag v0.32.0 for user-api
+* Bump user-api to v0.32.0 in stage environment
+* :ship: Deploy the Tag v0.31.0 for user-api
+* Update sprint prod release template
+* added solver-error-classifier yaml files
+* Bump user-api to v0.31.0 in stage
+* :ship: Bump up the images based on the storgae v0.62.1 update (#2236)
+* :ship: Deploy the Tag v0.8.12 for graph-backup-job
+* :ship: Deploy the Tag v0.9.6 for workflow-helpers
+* :ship: Deploy the Tag v0.5.7 for graph-metrics-exporter
+* :ship: Deploy the Tag v0.15.3 for investigator
+* :ship: Deploy the Tag v0.19.1 for metrics-exporter
+* :ship: Deploy the Tag v0.5.1 for cve-update-job
+* :ship: Deploy the Tag v0.3.17 for graph-refresh-job
+* Bump up the resources for nepthys
+* :ship: Deploy the Tag v0.4.3 for nepthys
+* :ship: Deploy the Tag v0.4.2 for nepthys
+* :alien: Include investigator required env vars for the doc builds
+* :boat: Bump up version for managment-api
+* Add prescription refresh workflow for image analysis
+* Increase memory requirements for package-extract
+* :ship: Deploy the Tag v0.17.15 for management-api
+* Increase number of seconds allowed package-extract to run
+* :ship: Deploy the Tag v0.30.0 for user-api
+* Revert "Update cronjob apiversion to batch/v1" (#2226)
+* :ship: Deploy the Tag v0.9.5 for workflow-helpers
+* :ship: Deploy the Tag pr-1557 for user-api
+* :ship: Deploy the Tag pr-1556 for user-api
+* Update cronjob apiversion to batch/v1
+* :ship: Deploy the Tag v0.10.18 for graph-sync-job
+* Bump graph-sync-job to v0.10.18 in stage environment
+* Enable the transfer-issue prow plugin
+* :ship: Deploy the Tag v0.10.17 for graph-sync-job
+* Bump user-api to v0.30.0 in stage environment
+
 ## Release 2021.12.20 (2021-12-20T21:48:12)
 * :ship: Bump up the images based on the version update v2021.12.20
 * adding uids, fixing json formatting, updating datasources and versioning
