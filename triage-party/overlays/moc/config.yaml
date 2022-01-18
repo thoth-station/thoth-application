@@ -137,6 +137,8 @@ collections:
       - bugs-recv
       - enhancement-recv
       - other-recv
+      - up-next
+      - active-assigned
 
   - id: important
     name: Important
@@ -157,6 +159,8 @@ collections:
     rules:
       - active-unassigned
       - long-active
+      - needs-triage-not
+      - help-important
 
   - id: similar
     name: Similar
@@ -485,23 +489,6 @@ rules:
     filters:
       - label: lifecycle/stale
 
-  # Inconsistencies
-  active-unassigned:
-    name: "Lifecyle Active without assignee"
-    resolution: "Assign the person working on it or fix lifecycle status"
-    type: issue
-    filters:
-      - label: "lifecycle/active"
-      - tag: "!assigned"
-
-  long-active:
-    name: "Lifecycle Active but not updated for long"
-    resolution: "Update the status"
-    type: issue
-    filters:
-      - label: "lifecycle/active"
-      - updated: +14d
-
   # Receive queue
   pickup-ready:
     name: "Issues waiting to be picked up"
@@ -547,6 +534,23 @@ rules:
       - label: "!.*bug"
       - label: ".*question"
 
+  up-next:
+    name: "critical-urgent issues not active yet (i.e. what's next)"
+    resolution: "Assign if needed, set lifecycle/active when work starts"
+    type: issue
+    filters:
+      - label: "!lifecycle/active"
+      - label: "priority/critical-urgent"
+
+  active-assigned:
+    name: "Active and assigned issues"
+    resolution: "This is FYI, meant to show what's currently being worked on. Just verify that's true."
+    type: issue
+    filters:
+      - label: "lifecycle/active"
+      - tag: assigned
+
+  # Important
   important-assignee-updated:
     name: "In Progress"
     type: issue
@@ -594,6 +598,39 @@ rules:
     resolution: Close as duplicate or give a better title
     filters:
       - tag: similar
+
+  # Inconsistencies
+  active-unassigned:
+    name: "Lifecyle Active without assignee"
+    resolution: "Assign the person working on it or fix lifecycle status"
+    type: issue
+    filters:
+      - label: "lifecycle/active"
+      - tag: "!assigned"
+
+  long-active:
+    name: "Lifecycle Active but not updated for long"
+    resolution: "Update the status"
+    type: issue
+    filters:
+      - label: "lifecycle/active"
+      - updated: +10d
+
+  needs-triage-not:
+    name: "needs-triage but has triage/*"
+    resolution: "Remove the conflicting label(s): needs-triage or triage/*"
+    type: issue
+    filters:
+      - label: needs-triage
+      - label: triage/.*
+
+  help-important:
+    name: "Help wanted and Important"
+    resolution: "Consider removing 'help wanted' with /remove-help"
+    type: issue
+    filters:
+      - label: "help wanted"
+      - label: "priority/(important.*|critical.*)"
 
   # for statistics generation
   open-issues:
