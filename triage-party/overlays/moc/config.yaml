@@ -13,9 +13,11 @@ settings:
     - https://github.com/thoth-station/common
     - https://github.com/thoth-station/core
     - https://github.com/thoth-station/cve-update-job
+    - https://github.com/thoth-station/datasets
     - https://github.com/thoth-station/graph-backup-job
     - https://github.com/thoth-station/graph-refresh-job
     - https://github.com/thoth-station/graph-sync-job
+    - https://github.com/thoth-station/helm-charts
     - https://github.com/thoth-station/init-job
     - https://github.com/thoth-station/invectio
     - https://github.com/thoth-station/investigator
@@ -25,27 +27,30 @@ settings:
     - https://github.com/thoth-station/messaging
     - https://github.com/thoth-station/metrics-exporter
     - https://github.com/thoth-station/mi
-    - https://github.com/thoth-station/mi-scheduler
     - https://github.com/thoth-station/micropipenv
+    - https://github.com/thoth-station/mi-scheduler
     - https://github.com/thoth-station/package-extract
     - https://github.com/thoth-station/package-releases-job
+    - https://github.com/thoth-station/package-update-job
     - https://github.com/thoth-station/pipeline-helpers
-    - https://github.com/thoth-station/prescription-sync-job
     - https://github.com/thoth-station/prescriptions
+    - https://github.com/thoth-station/prescriptions-refresh-job
+    - https://github.com/thoth-station/prescription-sync-job
     - https://github.com/thoth-station/ps-cv
+    - https://github.com/thoth-station/ps-ip
     - https://github.com/thoth-station/ps-nlp
     - https://github.com/thoth-station/pulp-pypi-sync-job
     - https://github.com/thoth-station/purge-job
     - https://github.com/thoth-station/python
+    - https://github.com/thoth-station/reporter
     - https://github.com/thoth-station/report-processing
-    - https://github.com/thoth-station/reporter
-    - https://github.com/thoth-station/reporter
     - https://github.com/thoth-station/revsolver
     - https://github.com/thoth-station/s2i
     - https://github.com/thoth-station/s2i-generic-data-science-notebook
     - https://github.com/thoth-station/s2i-minimal-notebook
     - https://github.com/thoth-station/s2i-scipy-notebook
     - https://github.com/thoth-station/s2i-thoth
+    - https://github.com/thoth-station/search
     - https://github.com/thoth-station/slo-reporter
     - https://github.com/thoth-station/solver
     - https://github.com/thoth-station/solver-project-url-job
@@ -54,6 +59,8 @@ settings:
     - https://github.com/thoth-station/support
     - https://github.com/thoth-station/thamos
     - https://github.com/thoth-station/thoth-application
+    - https://github.com/thoth-station/thoth-ops-infra
+    - https://github.com/thoth-station/thoth-station.github.io
     - https://github.com/thoth-station/user-api
     - https://github.com/thoth-station/workflow-helpers
 
