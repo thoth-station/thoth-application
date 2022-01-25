@@ -1,0 +1,9 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: pulp-metrics-exporter
+spec:
+  to:
+    kind: Service
+    name: pulp-metrics-exporter
