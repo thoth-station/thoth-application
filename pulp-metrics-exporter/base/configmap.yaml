@@ -1,0 +1,12 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: pulp-metrics-exporter
+data:
+  update-interval: "20"
+  grafana-redirect-url: "https://grafana.datahub.redhat.com/"
+  max-workers: "16"
+  weak-readiness: "1"
+  no-json-logging: "1"
+  pulp-host: "pulp.operate-first.cloud"

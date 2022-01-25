@@ -1,0 +1,113 @@
+---
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: pulp-metrics-exporter
+spec:
+  replicas: 1
+  selector:
+    service: pulp-metrics-exporter
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: pulp-metrics-exporter
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
+  template:
+    metadata:
+      labels:
+        service: pulp-metrics-exporter
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: pulp-metrics-exporter
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
+    spec:
+      containers:
+        - name: pulp-metrics-exporter
+          image: pulp-metrics-exporter:latest
+          env:
+            - name: PULP_METRICS_EXPORTER_UPDATE_INTERVAL
+              valueFrom:
+                configMapKeyRef:
+                  key: update-interval
+                  name: pulp-metrics-exporter
+            - name: PULP_METRICS_EXPORTER_GRAFANA_REDIRECT_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: grafana-redirect-url
+                  name: pulp-metrics-exporter
+            - name: PULP_METRICS_EXPORTER_MAX_WORKERS
+              valueFrom:
+                configMapKeyRef:
+                  key: max-workers
+                  name: pulp-metrics-exporter
+            - name: PULP_METRICS_EXPORTER_WEAK_READINESS
+              valueFrom:
+                configMapKeyRef:
+                  key: weak-readiness
+                  name: pulp-metrics-exporter
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: thoth
+                  key: sentry-dsn
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: deployment-name
+                  name: thoth
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  key: no-json-logging
+                  name: pulp-metrics-exporter
+            - name: PROMETHEUS_SERVICE_ACCOUNT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: prometheus-reader
+                  key: token
+            - name: PROMETHEUS_HOST_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus
+                  key: host-url
+            - name: WEB_CONCURRENCY
+              value: "1"
+            - name: PULP_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: pulp-metrics-exporter
+                  key: pulp-host
+            - name: PULP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: pulp-metrics-exporter
+                  key: pulp-username
+            - name: PULP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                 name: pulp-metrics-exporter
+                 key: pulp-password
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "384Mi"
+              cpu: "100m"
+            limits:
+              memory: "768Mi"
+              cpu: "500m"
+          readinessProbe:
+            httpGet:
+              path: "/metrics"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: "/metrics"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 45
+            periodSeconds: 10
+            timeoutSeconds: 10
+  test: false
