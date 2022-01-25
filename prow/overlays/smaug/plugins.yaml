@@ -280,7 +280,6 @@ plugins:
       - approve
       - assign
       - blockade
-      - blunderbuss
       - help
       - hold
       - label
