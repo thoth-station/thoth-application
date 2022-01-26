@@ -6,7 +6,6 @@ commonLabels:
   app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
   - configmap.yaml
-  - secret.yaml
   - deploymentconfig.yaml
   - imagestream.yaml
   - route.yaml
