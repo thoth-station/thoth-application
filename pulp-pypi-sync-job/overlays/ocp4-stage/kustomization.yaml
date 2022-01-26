@@ -7,6 +7,10 @@ images:
   - name: pulp-pypi-sync-job
     newName: image-registry.openshift-image-registry.svc:5000/thoth-frontend-stage/pulp-pypi-sync-job
     newTag: latest
+generators:
+  - secret-generator.yaml
+generatorOptions:
+  disableNameSuffixHash: true
 patchesStrategicMerge:
   - cronjob.yaml
   - imagestreamtag.yaml
