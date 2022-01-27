@@ -1,0 +1,10 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: thoth
+    component: document-sync
+  name: document-sync-job
+spec:
+  lookupPolicy:
+    local: true
