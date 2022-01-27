@@ -9,25 +9,56 @@ use `gopass` and `ansible-vault` but also `sops`. The Thoth-ops container image 
 
 To begin, you need to create or have a GPG key.
 
-If you don't have one, we can generate them from the GnuPG command-line tools, available on the [gnupg website](https://www.gnupg.org/download/).
+If you don't have one, we can generate them from the GnuPG command-line tools. If you are running Linux, these tools are probably already installed on your system. You can also install the GPG command line tools from source available on the [GnuPG website](https://www.gnupg.org/download/).
+
 - Download source corresponding to your computer's Operating system and install it. The best practice is to validate the installation against the signature available next to the link where you downloaded the source, to validate that the package you installed was what it claims to be.
-- Follow the documentation available [here](https://www.gnupg.org/documentation/index.html) to proceed with installation, however, if you are on a linux based system, you can simply build the binary from the make file. More information is also available in the [README.md file](https://github.com/gpg/gnupg/blob/master/README).
+- Follow the documentation available [here](https://www.gnupg.org/documentation/index.html) to proceed with installation, however, if you are on a Linux system, you can simply build the binary from the make file. More information is also available in the [README](https://github.com/gpg/gnupg/blob/master/README).
 
 ### Generating a key
 
-Now that we have installed the binary correctly, we need to generate a key pair to use. Formal documentation on this is available [here](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key).
-- For Operate-First, we use rsa4096 keys, and you can generate one as follows.
-  - Enter `gpg --full-generate-key` to begin generating your key and navigate through the steps, using first option 1) RSA and RSA, and then setting your key-size as 4096 bits.
-  - After this, enter the length of time the key should be valid.
-  - Enter a secure passphrase that the key will be used with, and then enter the email or user you want to associate the key with.
+Now that we have installed the binary correctly, we need to generate a key pair to use. Formal documentation on this is available [here](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key). For Operate First, we use 4096-bit RSA keys. To generate a new key pair:
+
+- Enter `gpg --full-generate-key` to begin generating your key.
+- When prompted for the kind of key you want, select the first option (1) RSA and RSA
+- Set your key-size to 4096 bits.
+- Enter the length of time the key should be valid. Typically you will choose 0 ("key does not expire"); see [here][so14718] for some thoughts on the utility of key expiration.
+- Enter the name and email address you want the key to be associated with (when you are prompted for a comment you can just press return).
+- Enter a secure passphrase when prompted
+
+[so14718]: https://security.stackexchange.com/questions/14718/does-openpgp-key-expiration-add-to-security
 
 ### Uploading keys
 
-GnuPG Keys of each DevOps and Ops engineer should be uploaded to `hkps://keys.openpgp.org` or to `https://keyserver.ubuntu.com/`, so that they are accessible to all DevOps and Ops.
-- To do this we need the hash of the key you would like to add. You can view your keys and their respective hashes with the `gpg --list-secret-keys --keyid-format=long` command.
-- Navigate to the one associated with the correct email, and copy the hash number; it will be a 16 character Alpha-numeric string, and if will be located following the type of encryption used for the key, ex: rsa4096/A7FE2341F3J458LMS. Copy that hash, and use it to export your public key of that pair `gpg --armor --export <key_hash>`. This will print the contents of your public key in your terminal.
-- Now navigate to either of the two websites listed at the beginning of this paragraph and paste in the entire contents of your key (Including the "beinging public key block" part and the dashes). Finally, you may submit your key on the website.
+The GnuPG Keys of each DevOps and Ops engineer should be uploaded to <https://keys.openpgp.org> or to <https://keyserver.ubuntu.com/>, so that they are accessible to all DevOps and Ops.
 
+- To do this we need the hash of the key you would like to add. You can view your keys and their respective hashes with the `gpg --list-secret-keys --keyid-format=long` command. You will see keys listed like this:
+
+  ```
+  sec   rsa4096/00B2023BDDDD34F0 2022-01-27 [SC]
+        15B470DE20C4E85FA87AB4A800B2023BDDDD34F0
+  uid                 [ultimate] Test User <test@example.com>
+  ssb   rsa4096/BCDC2530050F7D89 2022-01-27 [E]
+  ```
+
+- Navigate to the one associated with the correct email, and copy the hash number; it will be a 16 character Alpha-numeric string located following the type of encryption used for the key. In the above example, the key hash is `00B2023BDDDD34F0`, which comes from this line:
+
+  ```
+  sec   rsa4096/00B2023BDDDD34F0 2022-01-27 [SC]
+  ```
+
+- Export the associated key in ASCII format by running:
+
+  ```
+  gpg --armor --export <key_hash> | tee  exported.asc
+  ```
+
+  This will output the key on your terminal and save the key to the file `exported.asc`.
+
+- Now navigate to either of the two websites listed at the beginning of this paragraph and upload your key:
+
+  - For <https://keys.openpgp.org>, go to <https://keys.openpgp.org/upload>, select the file in which you saved key, and click "Upload".
+
+  - For <https://keyserver.ubuntu.com/>, click "Submit Key" and then paste your key into the popup.
 
 ## Storage location of encrypted secrets
 
