@@ -2,10 +2,10 @@
 kind: CronJob
 apiVersion: batch/v1beta1
 metadata:
-  name: slo-reporter
+  name: slo-reporter-aws
 spec:
   schedule: "0 6 * * *"
-  suspend: true
+  suspend: false
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 2
@@ -14,7 +14,7 @@ spec:
       template:
         spec:
           containers:
-            - image: "slo-reporter"
+            - image: slo-reporter
               name: slo-reporter
               env:
                 - name: THOTH_SLO_REPORTER_USING_SMTP_TLS
@@ -89,12 +89,12 @@ spec:
                 - name: THOTH_CEPH_KEY_ID
                   valueFrom:
                     secretKeyRef:
-                      name: ceph
+                      name: slo-reporter
                       key: key-id
                 - name: THOTH_CEPH_SECRET_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: ceph
+                      name: slo-reporter
                       key: secret-key
                 - name: PROMETHEUS_INSTANCE_METRICS_EXPORTER_INFRA
                   valueFrom:
