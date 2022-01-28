@@ -1,0 +1,101 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: document-sync
+spec:
+  schedule: "@daily"
+  suspend: true
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - image: quay.io/thoth-station/document-sync-job:v0.1.0
+              name: document-sync-job
+              env:
+                - name: THOTH_DOCUMENT_SYNC_DST
+                  value: "s3://thoth-store/data/aws-prod"
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: thoth
+                - name: THOTH_S3_ENDPOINT_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      key: host
+                      name: ceph
+                - name: THOTH_CEPH_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-name
+                      name: ceph
+                - name: THOTH_CEPH_BUCKET_PREFIX
+                  valueFrom:
+                    configMapKeyRef:
+                      key: bucket-prefix
+                      name: ceph
+                - name: THOTH_CEPH_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: key-id
+                - name: THOTH_CEPH_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: ceph
+                      key: secret-key
+                - name: RSYSLOG_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: rsyslog-host
+                      name: thoth
+                - name: RSYSLOG_PORT
+                  valueFrom:
+                    configMapKeyRef:
+                      key: rsyslog-port
+                      name: thoth
+                - name: PROMETHEUS_PUSHGATEWAY_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: prometheus
+                      key: pushgateway-url
+                - name: SENTRY_DSN
+                  valueFrom:
+                    secretKeyRef:
+                      name: thoth
+                      key: sentry-dsn
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
+              volumeMounts:
+                - name: dst-creds
+                  mountPath: /opt/app-root/src/.aws
+                  readOnly: true
+              resources:
+                requests:
+                  memory: "1Gi"
+                  cpu: "1"
+                limits:
+                  memory: "1.5Gi"
+                  cpu: "1"
+              livenessProbe:
+                failureThreshold: 1
+                initialDelaySeconds: 7200
+                periodSeconds: 10
+                tcpSocket:
+                  port: 80
+          volumes:
+            - name: dst-creds
+              secret:
+                secretName: dst-ceph
+                items:
+                  - key: credentials
+                    path: credentials
+          restartPolicy: OnFailure
