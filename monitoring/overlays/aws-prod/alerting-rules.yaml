@@ -8,7 +8,7 @@
 
           # Alert for User API down
         - alert: ThothUserAPIProd
-          expr: up{field="user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud:80"} < 1
+          expr: up{field="user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud"} < 1
           for: 1m
           annotations:
             summary: "Thoth User API is down, all services are not available!"
@@ -32,7 +32,7 @@
 
           # Alert for number of workflows in middletier
         - alert: ThothMiddletierIngestionProd
-          expr: argo_workflows_count{field="workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud:80", status="Running"} < 1
+          expr: argo_workflows_count{field="workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud", status="Running"} < 1
           for: 60m
           annotations:
             summary: "Workflows running in Middletier Prod is 0! Please verify status of Data Ingestion in Thoth or add more workload!"
@@ -40,7 +40,7 @@
 
           # Alert when solvers do not match Thoth s2i offered
         - alert: ThothSolversThothS2iOfferedMismatchProd
-          expr: thoth_graphdb_solvers_number_match{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          expr: thoth_graphdb_solvers_number_match{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"} == 1
           for: 30m
           annotations:
             summary: "Number of solvers from ConfigMap and from database do not match!"
@@ -50,7 +50,7 @@
 
           # Alert for issue in connection with Ceph
         - alert: ThothCephConnectionProd
-          expr: thoth_ceph_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          expr: thoth_ceph_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"} == 1
           for: 10m
           annotations:
             summary: "Ceph cannot be reached! Components are not able to store documents."
@@ -60,7 +60,7 @@
 
           # Alert for issue in connection with Kafka
         - alert: ThothKafkaConnectionProd
-          expr: thoth_kafka_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          expr: thoth_kafka_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"} == 1
           for: 10m
           annotations:
             summary: "Kafka cannot be reached! Services cannot be scheduled."
@@ -68,7 +68,7 @@
 
           # Alert when any of the message is halted
         - alert: ThothKafkaMessageHaltedProd
-          expr: thoth_investigator_halted_topics{field="investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          expr: thoth_investigator_halted_topics{field="investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"} == 1
           for: 5m
           annotations:
             summary: "Message {{ $labels.base_topic_name }} is halted! Please check errors."
@@ -78,7 +78,7 @@
 
           # Alert for issue in connection to Database
         - alert: ThothDatabaseConnectionProd
-          expr: thoth_graphdb_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          expr: thoth_graphdb_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"} == 1
           for: 10m
           annotations:
             summary: "Database cannot be reached! Services cannot be guaranteed."
@@ -94,7 +94,7 @@
 
           # Alert for amcheck database corruption check.
         - alert: ThothDatabaseCorruptionCheckProd
-          expr: thoth_graphdb_is_corrupted{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          expr: thoth_graphdb_is_corrupted{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"} == 1
           for: 5m
           annotations:
             summary: "Database schema is corrupted, all services need to be stopped."
@@ -102,7 +102,7 @@
 
           # Alert for alembic version table corruption.
         - alert: ThothMultipleAlembicRowsProd
-          expr: thoth_graphdb_alembic_table_check{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud:80"} == 1
+          expr: thoth_graphdb_alembic_table_check{field="metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"} == 1
           for: 5m
           annotations:
             summary: "Database table for alembic version has more than one row, database is corrupted, all services need to be stopped."
