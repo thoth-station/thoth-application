@@ -4,10 +4,10 @@ metadata:
   name: package-releases-job
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: quay.io/thoth-station/package-releases-job:v0.11.6
-      importPolicy: {}
-      referencePolicy:
-        type: Source
+  - from:
+      kind: DockerImage
+      name: quay.io/thoth-station/package-releases-job:v0.11.7
+    importPolicy: {}
+    name: latest
+    referencePolicy:
+      type: Source
