@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: parse-buildlog
+  annotations:
+    operation: buildlog-parser
 spec:
   templates:
     - name: parse-buildlog
