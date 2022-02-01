@@ -1,4 +1,47 @@
 
+## Release 2022.02.01 (2022-02-01T00:51:45)
+* :ship: Bump up the images based on the version update v2022.01.31
+* :ship: Deploy the Tag v0.33.4 for user-api
+* :ship: Deploy the Tag v0.5.2 for cve-update-job
+* :ship: Deploy the Tag v0.15.4 for investigator
+* :ship: Deploy the Tag v0.10.19 for graph-sync-job
+* :ship: Deploy the Tag v0.5.8 for graph-metrics-exporter
+* :ship: Deploy the Tag v0.3.18 for graph-refresh-job
+* :ship: Deploy the Tag v0.11.7 for package-releases-job
+* :ship: Deploy the Tag v0.8.15 for package-update-job
+* :ship: Deploy the Tag v0.9.8 for workflow-helpers
+* :ship: Deploy the Tag v0.19.1 for slo-reporter
+* :ship: Deploy the Tag v0.10.5 for reporter
+* :ship: Deploy the Tag pr-1637 for user-api
+* :ship: Deploy the Tag v0.17.16 for management-api
+* :ship: Deploy the Tag v0.2.11 for revsolver
+* :ship: Deploy the Tag v0.20.1 for metrics-exporter
+* :ship: Deploy the Tag v0.33.3 for user-api
+* :ship: Deploy the Tag v0.9.0 for graph-backup-job
+* Fix labels in alarms
+* :pill: patch the buildlog parser image
+* :scroll: fix certs for management-api
+* :scroll: fix certs for management-api
+* :scroll: updates certs for the stage routes
+* Introduce slo-reporter for prod and update the cronjob for rest
+* sync up secret based on new gpg key addition
+* Add gpg for sops
+* Set up document sync job for the thoth-station
+* Clean up non managed overlays from thoth-station
+* Clarify process for generating and publishing GPG keys
+* :ship: Deploy the Tag v0.33.2 for user-api
+* Include the secrets required for the pulp-metrics-exporter
+* Include the secrets required for the pulp-sync-job
+* Bump up kebechet v1.7.3 for fixing the release issue
+* :ship: Deploy the Tag v1.7.3 for kebechet
+* Turn off auto reviewers in operate-first
+* Deploy pulp-metrics-exporter
+* Bump up kebechet for fixing the release issue (#2274)
+* :ship: Deploy the Tag v1.7.2 for kebechet
+* Set the pulp sync job in stage cluster
+* Invite more repos to the triage party
+* Update triage-party configuration with more views
+
 ## Release 2022.01.17 (2022-01-17T18:43:21)
 * :ship: Bump up the images based on the version update v2022.01.17
 * :ship: Deploy the Tag v1.7.1 for kebechet
