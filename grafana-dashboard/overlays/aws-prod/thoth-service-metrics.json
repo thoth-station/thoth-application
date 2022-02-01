@@ -431,8 +431,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "balrog-prod",
-          "value": "balrog-prod"
+          "text": "aws-prod",
+          "value": "aws-prod"
         },
         "hide": 0,
         "includeAll": false,
@@ -442,11 +442,11 @@
         "options": [
           {
             "selected": false,
-            "text": "balrog-prod",
-            "value": "balrog-prod"
+            "text": "aws-prod",
+            "value": "aws-prod"
           }
         ],
-        "query": "balrog-prod",
+        "query": "aws-prod",
         "type": "custom"
       }
     ]

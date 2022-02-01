@@ -22,8 +22,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 22,
-  "iteration": 1629993013394,
+  "id": 54,
+  "iteration": 1643705433765,
   "links": [],
   "panels": [
     {
@@ -79,7 +79,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_package_release_job_messages_sent_total{env=~\"$env\"}",
+          "expr": "thoth_package_release_job_messages_sent_total{env=\"$env\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -89,7 +89,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_graph_refresh_job_messages_sent_total{env=~\"$env\"}",
+          "expr": "thoth_graph_refresh_job_messages_sent_total{env=\"$env\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -562,7 +562,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "message_count_by_version_total{field=\"$instance_consumer_metrics\", prometheus=\"aws/balrog\"}",
+          "expr": "message_count_by_version_total{field=\"$instance_consumer_metrics\", cluster=\"emea/balrog\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1643,9 +1643,9 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
-          "text": "balrog-prod",
-          "value": "balrog-prod"
+          "selected": false,
+          "text": "aws-prod",
+          "value": "aws-prod"
         },
         "description": null,
         "error": null,
@@ -1657,17 +1657,19 @@
         "options": [
           {
             "selected": true,
-            "text": "balrog-prod",
-            "value": "balrog-prod"
+            "text": "aws-prod",
+            "value": "aws-prod"
           }
         ],
-        "query": "balrog-prod",
+        "query": "aws-prod",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       },
       {
         "allValue": null,
         "current": {
+          "selected": true,
           "text": "investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
           "value": "investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
         },
@@ -1686,6 +1688,7 @@
           }
         ],
         "query": "investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       },

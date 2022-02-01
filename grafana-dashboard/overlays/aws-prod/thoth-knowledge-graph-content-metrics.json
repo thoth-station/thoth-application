@@ -167,7 +167,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_adviser_count_per_source_type{field=\"$instance\", prometheus=\"aws/balrog\"}",
+          "expr": "thoth_graphdb_adviser_count_per_source_type{field=\"$instance\", cluster=\"emea/balrog\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -316,7 +316,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_kebechet_total_active_repo_count{field=\"$instance\", prometheus=\"aws/balrog\"}",
+          "expr": "thoth_kebechet_total_active_repo_count{field=\"$instance\", cluster=\"emea/balrog\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1027,7 +1027,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", solver_name=\"solver-rhel-8-py38\", prometheus=\"aws/balrog\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", prometheus=\"aws/balrog\"}",
+          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", solver_name=\"solver-rhel-8-py38\", cluster=\"emea/balrog\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", cluster=\"emea/balrog\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1178,7 +1178,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", solver_name=\"solver-fedora-34-py39\", prometheus=\"aws/balrog\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", prometheus=\"aws/balrog\"}",
+          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", solver_name=\"solver-fedora-34-py39\", cluster=\"emea/balrog\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", cluster=\"emea/balrog\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
