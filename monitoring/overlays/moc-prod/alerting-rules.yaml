@@ -7,7 +7,7 @@
           #### Alerts for services
 
           # Alert for User API down
-        - alert: ThothUserAPIProd
+        - alert: ThothUserAPI
           expr: up{field="user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud"} < 1
           for: 1m
           annotations:
@@ -15,7 +15,7 @@
             severity: "HIGH"
 
           # Alert for mismatch between number of requests and documents produced
-        - alert: ThothResultsMissingProd
+        - alert: ThothResultsMissing
           expr: thoth_reporter_requests_gauge{env="moc-prod"} - thoth_reporter_reports_gauge{env="moc-prod"} > 0
           for: 60m
           annotations:
@@ -23,7 +23,7 @@
             severity: "HIGH"
 
           # Alert for purge job once runtime is deleted
-        - alert: ThothPurgeJobMissedProd
+        - alert: ThothPurgeJobMissed
           expr: thoth_number_purge_issues_total{env="moc-prod"} - thoth_number_purge_issues_created{env="moc-prod"} > 0
           for: 1m
           annotations:
@@ -31,7 +31,7 @@
             severity: "HIGH"
 
           # Alert for number of workflows in middletier
-        - alert: ThothMiddletierIngestionProd
+        - alert: ThothMiddletierIngestion
           expr: argo_workflows_count{field="workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud", status="Running"} < 1
           for: 60m
           annotations:
@@ -39,7 +39,7 @@
             severity: "HIGH"
 
           # Alert when solvers do not match Thoth s2i offered
-        - alert: ThothSolversThothS2iOfferedMismatchProd
+        - alert: ThothSolversThothS2iOfferedMismatch
           expr: thoth_graphdb_solvers_number_match{field="metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"} == 1
           for: 30m
           annotations:
@@ -49,7 +49,7 @@
           #### Alerts for Ceph
 
           # Alert for issue in connection with Ceph
-        - alert: ThothCephConnectionProd
+        - alert: ThothCephConnection
           expr: thoth_ceph_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"} == 1
           for: 10m
           annotations:
@@ -59,7 +59,7 @@
           #### Alerts for Kafka
 
           # Alert for issue in connection with Kafka
-        - alert: ThothKafkaConnectionProd
+        - alert: ThothKafkaConnection
           expr: thoth_kafka_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"} == 1
           for: 10m
           annotations:
@@ -67,7 +67,7 @@
             severity: "HIGH"
 
           # Alert when any of the message is halted
-        - alert: ThothKafkaMessageHaltedProd
+        - alert: ThothKafkaMessageHalted
           expr: thoth_investigator_halted_topics{field="investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud"} == 1
           for: 5m
           annotations:
@@ -77,7 +77,7 @@
           #### Alerts for Database
 
           # Alert for issue in connection to Database
-        - alert: ThothDatabaseConnectionProd
+        - alert: ThothDatabaseConnection
           expr: thoth_graphdb_connection_issues{field="metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"} == 1
           for: 10m
           annotations:
@@ -85,7 +85,7 @@
             severity: "HIGH"
 
           # Alerts for alembic version mismatch between components and database.
-        - alert: ThothSchemaCheckProd
+        - alert: ThothSchemaCheck
           expr: thoth_graph_db_component_revision_check{env="moc-prod"} == 1
           for: 5m
           annotations:
@@ -93,7 +93,7 @@
             severity: "HIGH"
 
           # Alert for amcheck database corruption check.
-        - alert: ThothDatabaseCorruptionCheckProd
+        - alert: ThothDatabaseCorruptionCheck
           expr: thoth_graphdb_is_corrupted{field="metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"} == 1
           for: 5m
           annotations:
@@ -101,9 +101,17 @@
             severity: "HIGH"
 
           # Alert for alembic version table corruption.
-        - alert: ThothMultipleAlembicRowsProd
+        - alert: ThothMultipleAlembicRows
           expr: thoth_graphdb_alembic_table_check{field="metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"} == 1
           for: 5m
           annotations:
             summary: "Database table for alembic version has more than one row, database is corrupted, all services need to be stopped."
+            severity: "HIGH"
+
+          # Alert for pg dump not created
+        - alert: ThothPGDumpMissed
+          expr: thoth_graph_backup_job{env="aws-prod"} == 1
+          for: 1m
+          annotations:
+            summary: "Graph backup job was not able to store a dump of Thoth database."
             severity: "HIGH"
