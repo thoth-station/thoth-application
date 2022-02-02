@@ -110,7 +110,7 @@
 
           # Alert for pg dump not created
         - alert: ThothPGDumpMissed
-          expr: thoth_graph_backup_job{env="aws-prod"} == 1
+          expr: thoth_graph_backup_job{env="smaug-prod"} == 1
           for: 1m
           annotations:
             summary: "Graph backup job was not able to store a dump of Thoth database."
