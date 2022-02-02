@@ -1,110 +1,167 @@
----
 apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
+kind: CronWorkflow
 metadata:
   name: prescriptions-refresh-image-analysis
+  labels:
+    app: thoth
+    component: prescriptions-refresh
 spec:
-  templates:
-    - name: image-analysis
-      resubmitPendingPods: true
-      container:
-        name: image-analysis
-        image: prescriptions-refresh-job
-        env:
-          - name: THOTH_PRESCRIPTIONS_DRY_RUN
-            value: 1
-          - name: SENTRY_DSN
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: sentry-dsn
-          - name: GIT_SSH_COMMAND
-            # Needed to keep weak host verification for git clone.
-            value: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-          - name: THOTH_DEPLOYMENT_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: thoth
-                key: deployment-name
-          - name: THOTH_USER_API_HOST
-            valueFrom:
-              configMapKeyRef:
-                name: prescription-refresh-job
-                key: user-api
-          - name: APP_SCRIPT
-            value: app.sh
-          - name: THOTH_PRESCRIPTIONS_REFRESH_RANDOMIZE
+  schedule: "@weekly"
+  concurrencyPolicy: "Forbid"
+  startingDeadlineSeconds: 0
+  suspend: true
+  workflowSpec:
+    serviceAccountName: argo
+    activeDeadlineSeconds: 3000
+    ttlStrategy:
+      secondsAfterCompletion: 300
+      secondsAfterSuccess: 300
+      secondsAfterFailure: 300
+    metrics:
+      prometheus:
+        - name: status_counter
+          help: Count of workflow by status
+          labels:
+            - key: name
+              value: prescriptions-refresh-image-analysis
+            - key: status
+              value: "{{workflow.status}}"
+          counter:
             value: "1"
-          - name: THOTH_PRESCRIPTIONS_REFRESH_SUBCOMMAND
-            value: thoth-image-analysis
-          - name: THOTH_PRESCRIPTIONS_REFRESH_CONFIGURED_IMAGES
-            valueFrom:
-              configMapKeyRef:
-                key: configured-images
-                name: prescriptions-refresh-job
-          - name: THOTH_PRESCRIPTIONS_REFRESH_ML_PACKAGES
-            valueFrom:
-              configMapKeyRef:
-                key: configured-packages-ml
-                name: prescriptions-refresh-job
-          - name: THOTH_PRESCRIPTIONS_REFRESH_NLP_PACKAGES
-            valueFrom:
-              configMapKeyRef:
-                key: configured-packages-nlp
-                name: prescriptions-refresh-job
-          - name: THOTH_PRESCRIPTIONS_REFRESH_CV_PACKAGES
-            valueFrom:
-              configMapKeyRef:
-                key: configured-packages-cv
-                name: prescriptions-refresh-job
-          - name: GITHUB_PRIVATE_KEY_PATH
-            value: /opt/app-root/src/.github/github-privatekey
-          - name: THOTH_LOGGING_NO_JSON
-            valueFrom:
-              configMapKeyRef:
-                name: thoth
-                key: logging-no-json
-          - name: THOTH_PRESCRIPTIONS_REFRESH_GITHUB_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: kebechet
-                key: github-oauth-token
-          - name: THOTH_PRESCRIPTIONS_REFRESH_QUAY_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: quay-token
-          - name: GITHUB_APP_ID
-            valueFrom:
-              secretKeyRef:
-                name: kebechet
-                key: GITHUB_APP_ID
-          - name: THOTH_PRESCRIPTIONS_REFRESH_GITHUB_LABELS
-            value: bot
-          - name: THOTH_PRESCRIPTIONS_REFRESH_REPO
-            value: git@github.com:thoth-station/prescriptions.git
-          - name: THOTH_PRESCRIPTIONS_REFRESH_DEBUG
-            value: "1"
-          - name: PROMETHEUS_PUSHGATEWAY_HOST
-            valueFrom:
-              configMapKeyRef:
-                key: pushgateway-host
-                name: prometheus
-          - name: PROMETHEUS_PUSHGATEWAY_PORT
-            valueFrom:
-              configMapKeyRef:
-                key: pushgateway-port
-                name: prometheus
-        resources:
-          limits:
-            cpu: 250m
-            memory: 256Mi
-          requests:
-            cpu: 250m
-            memory: 256Mi
-        volumeMounts:
-          - name: ssh-config
-            mountPath: /opt/app-root/src/.ssh
-          - name: github-app-privatekey
-            mountPath: /opt/app-root/src/.github/
-            readOnly: true
+        - name: duration_seconds_histogram
+          help: Duration of workflow when succeeded
+          when: "{{workflow.status}} == Succeeded"
+          labels:
+            - key: name
+              value: prescriptions-refresh-image-analysis
+          histogram:
+            buckets:
+              - 5
+              - 10
+              - 30
+              - 60
+              - 120
+              - 180
+              - 300
+              - 600
+              - 900
+            value: "{{workflow.duration}}"
+    volumes:
+      - name: ssh-config
+        secret:
+          secretName: kebechet
+          items:
+            - key: ssh-privatekey
+              path: id_rsa
+              mode: 0600
+      - name: github-app-privatekey
+        secret:
+          secretName: kebechet
+          items:
+          - key: KEBBHUT_GITHUB_PRIVATE_KEY
+            path: github-privatekey
+    entrypoint: image-analysis
+    templates:
+      - name: image-analysis
+        resubmitPendingPods: true
+        container:
+          name: image-analysis
+          image: prescriptions-refresh-job
+          env:
+            - name: THOTH_PRESCRIPTIONS_DRY_RUN
+              value: 1
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: thoth
+                  key: sentry-dsn
+            - name: GIT_SSH_COMMAND
+              # Needed to keep weak host verification for git clone.
+              value: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+            - name: THOTH_DEPLOYMENT_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: deployment-name
+            - name: THOTH_USER_API_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: prescription-refresh-job
+                  key: user-api
+            - name: APP_SCRIPT
+              value: app.sh
+            - name: THOTH_PRESCRIPTIONS_REFRESH_RANDOMIZE
+              value: "1"
+            - name: THOTH_PRESCRIPTIONS_REFRESH_SUBCOMMAND
+              value: thoth-image-analysis
+            - name: THOTH_PRESCRIPTIONS_REFRESH_CONFIGURED_IMAGES
+              valueFrom:
+                configMapKeyRef:
+                  key: configured-images
+                  name: prescriptions-refresh-job
+            - name: THOTH_PRESCRIPTIONS_REFRESH_ML_PACKAGES
+              valueFrom:
+                configMapKeyRef:
+                  key: configured-packages-ml
+                  name: prescriptions-refresh-job
+            - name: THOTH_PRESCRIPTIONS_REFRESH_NLP_PACKAGES
+              valueFrom:
+                configMapKeyRef:
+                  key: configured-packages-nlp
+                  name: prescriptions-refresh-job
+            - name: THOTH_PRESCRIPTIONS_REFRESH_CV_PACKAGES
+              valueFrom:
+                configMapKeyRef:
+                  key: configured-packages-cv
+                  name: prescriptions-refresh-job
+            - name: GITHUB_PRIVATE_KEY_PATH
+              value: /opt/app-root/src/.github/github-privatekey
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
+            - name: THOTH_PRESCRIPTIONS_REFRESH_GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: kebechet
+                  key: github-oauth-token
+            - name: THOTH_PRESCRIPTIONS_REFRESH_QUAY_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: thoth
+                  key: quay-token
+            - name: GITHUB_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: kebechet
+                  key: GITHUB_APP_ID
+            - name: THOTH_PRESCRIPTIONS_REFRESH_GITHUB_LABELS
+              value: bot
+            - name: THOTH_PRESCRIPTIONS_REFRESH_REPO
+              value: git@github.com:thoth-station/prescriptions.git
+            - name: THOTH_PRESCRIPTIONS_REFRESH_DEBUG
+              value: "1"
+            - name: PROMETHEUS_PUSHGATEWAY_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: pushgateway-host
+                  name: prometheus
+            - name: PROMETHEUS_PUSHGATEWAY_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: pushgateway-port
+                  name: prometheus
+          resources:
+            limits:
+              cpu: 250m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: ssh-config
+              mountPath: /opt/app-root/src/.ssh
+            - name: github-app-privatekey
+              mountPath: /opt/app-root/src/.github/
+              readOnly: true

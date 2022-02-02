@@ -2,6 +2,41 @@
 apiVersion: argoproj.io/v1alpha1
 kind: CronWorkflow
 metadata:
-  name: prescriptions-refresh
+  name: prescriptions-refresh-gh
+spec:
+  suspend: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: prescriptions-refresh-image-analysis
+spec:
+  suspend: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: prescriptions-refresh-pg
+spec:
+  suspend: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: prescriptions-refresh-pypi
+spec:
+  suspend: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: prescriptions-refresh-quay
+spec:
+  suspend: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: prescriptions-refresh-scorecards
 spec:
   suspend: true
