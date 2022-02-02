@@ -22,10 +22,172 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 22,
-  "iteration": 1629993013394,
+  "id": 49,
+  "iteration": 1643791834167,
   "links": [],
   "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 20,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "current_partition_offsets{cluster=\"moc/smaug\"}",
+          "interval": "",
+          "legendFormat": "investigator: {{topic_name}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Kafka messages offset",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "kafka_server_brokertopicmetrics_messagesin_total{cluster=\"moc/smaug\", topic=~\".*.thoth.*\"}",
+          "interval": "",
+          "legendFormat": "{{topic}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Total kafka messages broker",
+      "type": "timeseries"
+    },
     {
       "datasource": null,
       "fieldConfig": {
@@ -58,7 +220,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 8
       },
       "id": 8,
       "links": [],
@@ -99,7 +261,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_kebechet_administrator_messages_sent_total{env=~\"$env\", prometheus=\"moc/smaug\"}",
+          "expr": "thoth_kebechet_administrator_messages_sent_total{env=~\"$env\", cluster=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{env}} | {{message_type}} message sent from kebechet administrator producer ({{version}})",
@@ -107,7 +269,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_solver_messages_sent_total{env=~\"$env\", prometheus=\"moc/smaug\"}",
+          "expr": "thoth_solver_messages_sent_total{env=~\"$env\", cluster=\"moc/smaug\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{env}} | {{message_type}} message sent from solver producer ({{version}})",
@@ -131,7 +293,7 @@
         "h": 9,
         "w": 8,
         "x": 0,
-        "y": 9
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 1,
@@ -232,7 +394,7 @@
         "h": 9,
         "w": 8,
         "x": 8,
-        "y": 9
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 3,
@@ -331,7 +493,7 @@
         "h": 9,
         "w": 8,
         "x": 16,
-        "y": 9
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 4,
@@ -430,7 +592,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 9,
@@ -527,7 +689,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 10,
@@ -562,7 +724,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "message_count_by_version_total{field=\"$instance_consumer_metrics\", prometheus=\"moc/smaug\"}",
+          "expr": "message_count_by_version_total{field=\"$instance_consumer_metrics\", cluster=\"moc/smaug\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -626,7 +788,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 2,
@@ -724,7 +886,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 37
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 6,
@@ -834,7 +996,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 37
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 7,
@@ -931,7 +1093,7 @@
         "h": 9,
         "w": 8,
         "x": 0,
-        "y": 48
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 11,
@@ -1028,7 +1190,7 @@
         "h": 9,
         "w": 8,
         "x": 8,
-        "y": 48
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 12,
@@ -1125,7 +1287,7 @@
         "h": 9,
         "w": 8,
         "x": 16,
-        "y": 48
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 13,
@@ -1238,7 +1400,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 57
+        "y": 65
       },
       "hiddenSeries": false,
       "id": 14,
@@ -1335,7 +1497,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 57
+        "y": 65
       },
       "hiddenSeries": false,
       "id": 15,
@@ -1432,7 +1594,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 57
+        "y": 65
       },
       "hiddenSeries": false,
       "id": 16,
@@ -1788,5 +1950,5 @@
   "timezone": "",
   "title": "Thoth Kafka Consumers and Argo Workflows",
   "uid": "uum0d7lbiuac9n0knnbizslk9zcgyovegtjk1mr9",
-  "version": 5
+  "version": 6
 }
