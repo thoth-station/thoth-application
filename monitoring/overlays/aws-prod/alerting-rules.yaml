@@ -107,3 +107,11 @@
           annotations:
             summary: "Database table for alembic version has more than one row, database is corrupted, all services need to be stopped."
             severity: "HIGH"
+
+          # Alert for pg dump not created
+        - alert: ThothPGDumpMissedProd
+          expr: thoth_graph_backup_job{env="aws-prod"} == 1
+          for: 1m
+          annotations:
+            summary: "Graph backup job was not able to store a dump of Thoth database."
+            severity: "HIGH"
