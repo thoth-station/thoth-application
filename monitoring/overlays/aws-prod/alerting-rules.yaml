@@ -115,3 +115,27 @@
           annotations:
             summary: "Graph backup job was not able to store a dump of Thoth database."
             severity: "HIGH"
+
+          # Alert for bloat data (table)
+        - alert: ThothPGBloatDataTableRule1Prod
+          expr: thoth_graphdb_pct_bloat_data_table{env="aws-prod"} >= 50 && thoth_graphdb_mb_bloat_data_table{env="aws-prod"} >= 10
+          for: 5m
+          annotations:
+            summary: "Table {{ $labels.table_name }} is bloated! Please run vacuum procedure."
+            severity: "HIGH"
+
+          # Alert for bloat data (table)
+        - alert: ThothPGBloatDataTableRule2Prod
+          expr: thoth_graphdb_pct_bloat_data_table{env="aws-prod"} >= 25 and ON(env) thoth_graphdb_mb_bloat_data_table{env="aws-prod"} >= 1000
+          for: 5m
+          annotations:
+            summary: "Table {{ $labels.table_name }} is bloated! Please run vacuum procedure."
+            severity: "HIGH"
+
+          # Alert for bloat data (index)
+        - alert: ThothPGBloatDataIndexProd
+          expr: thoth_graphdb_pct_index_bloat_data_table{env="aws-prod"} >= 50 and ON(env) thoth_graphdb_mb_index_bloat_data_table{env="aws-prod"} >= 10
+          for: 5m
+          annotations:
+            summary: "Index {{ $labels.index_name }} from table {{ $labels.table_name }} is bloated! Please run vacuum procedure for indexes."
+            severity: "HIGH"
