@@ -87,7 +87,7 @@ spec:
                   cpu: "1"
               livenessProbe:
                 failureThreshold: 1
-                initialDelaySeconds: 7200
+                initialDelaySeconds: 43200
                 periodSeconds: 10
                 tcpSocket:
                   port: 80
