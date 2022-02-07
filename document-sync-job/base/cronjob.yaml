@@ -82,10 +82,10 @@ spec:
                   readOnly: true
               resources:
                 requests:
-                  memory: "1Gi"
+                  memory: "2Gi"
                   cpu: "1"
                 limits:
-                  memory: "1.5Gi"
+                  memory: "2Gi"
                   cpu: "1"
               livenessProbe:
                 failureThreshold: 1
