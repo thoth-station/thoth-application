@@ -23,6 +23,8 @@ spec:
         - name: management-api-openapi
           image: management-api:latest
           env:
+            - name: PORT
+              value: "8080"
             - name: APP_MODULE
               value: "thoth.management_api.openapi_server:app"
             - name: KUBERNETES_API_URL

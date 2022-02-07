@@ -26,6 +26,8 @@ spec:
             - containerPort: 8080
               protocol: TCP
           env:
+            - name: PORT
+              value: "8080"
             - name: GITHUB_SECRET
               valueFrom:
                 secretKeyRef:

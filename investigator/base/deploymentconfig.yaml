@@ -23,6 +23,8 @@ spec:
         - image: investigator:latest
           name: investigator-consumer
           env:
+            - name: PORT
+              value: "8080"
             - name: SUBCOMMAND
               value: "consumer"
             - name: DEBUG_LEVEL

@@ -22,6 +22,8 @@ spec:
         - env:
             - name: PYTHONPATH
               value: .
+            - name: PORT
+              value: "8080"
             - name: APP_SCRIPT
               value: chatbot
             - name: GITHUB_ACCESS_TOKEN

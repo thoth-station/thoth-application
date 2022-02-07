@@ -23,6 +23,8 @@ spec:
         - name: metrics-exporter
           image: metrics-exporter:latest
           env:
+            - name: PORT
+              value: "8080"
             - name: "THOTH_METRICS_EXPORTER_UPDATE_INTERVAL"
               valueFrom:
                 configMapKeyRef:
