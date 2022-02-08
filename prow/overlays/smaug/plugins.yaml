@@ -264,6 +264,7 @@ plugins:
       - label
       - lgtm
       - lifecycle
+      - override
       - milestone
       - milestoneapplier
       - milestonestatus
