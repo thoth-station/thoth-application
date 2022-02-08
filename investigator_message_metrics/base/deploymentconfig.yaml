@@ -23,6 +23,8 @@ spec:
         - image: investigator
           name: message-metrics
           env:
+            - name: PORT
+              value: "8080"
             - name: SUBCOMMAND
               value: "consumer"
             - name: DEBUG_LEVEL

@@ -22,6 +22,8 @@ spec:
         - name: pulp-metrics-exporter
           image: pulp-metrics-exporter:latest
           env:
+            - name: PORT
+              value: "8080"
             - name: PULP_METRICS_EXPORTER_UPDATE_INTERVAL
               valueFrom:
                 configMapKeyRef:
