@@ -6,7 +6,7 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: quay.io/thoth-station/graph-metrics-exporter:v0.5.8
+      name: quay.io/thoth-station/graph-metrics-exporter:v0.6.0
     importPolicy: {}
     name: latest
     referencePolicy:
