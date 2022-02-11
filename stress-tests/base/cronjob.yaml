@@ -1,0 +1,87 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: stress-tests
+  labels:
+    app: thoth
+    component: stress-tests
+spec:
+  schedule: "@weekly"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 4
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: null
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            app: thoth
+            component: stress-tests
+        spec:
+          restartPolicy: Never
+          containers:
+            - image: "stress-tests:latest"
+              name: stress-tests
+              env:
+                - name: MAIL_REPORT
+                  valueFrom:
+                    configMapKeyRef:
+                      key: mail-report
+                      name: stress-tests
+                - name: GENERATE_REPORT
+                  valueFrom:
+                    configMapKeyRef:
+                      key: generate-report
+                      name: stress-tests
+                - name: THOTH_DEPLOYMENT_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      key: deployment-name
+                      name: stress-tests
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
+                - name: THOTH_USER_API_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: user-api
+                      name: stress-tests
+                - name: THOTH_MANAGEMENT_API_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: management-api
+                      name: stress-tests
+                - name: THOTH_AMUN_API_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      key: amun-api
+                      name: stress-tests
+                - name: THOTH_MANAGEMENT_API_SECRET
+                  valueFrom:
+                    secretKeyRef:
+                      key: management-api-token
+                      name: stress-tests
+                - name: THOTH_STRESS_TESTS_TAGS
+                  valueFrom:
+                    configMapKeyRef:
+                      key: tags
+                      name: stress-tests
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "1"
+                limits:
+                  memory: "256Mi"
+                  cpu: "1"
+              livenessProbe:
+                httpGet:
+                  path: /liveness
+                  port: 80
+                initialDelaySeconds: 7200
+                periodSeconds: 1
