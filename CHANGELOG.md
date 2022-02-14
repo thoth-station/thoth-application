@@ -1,4 +1,68 @@
 
+## Release 2022.02.14 (2022-02-14T21:00:44)
+* :ship: Bump up the images based on the version update v2022.02.14
+* Remove old solvers from deployment manifests
+* :ship: Deploy the Tag v1.11.1 for solver
+* :ship: Deploy the Tag v1.11.1 for solver
+* :ship: Deploy the Tag v1.11.1 for solver
+* Bump solver to v1.11.1 in stage environment
+* Add missing env variables for graph-metrics-exporter
+* Add missing dependency indexes env var for solver
+* :ship: Deploy the Tag v0.16.0 for investigator
+* :ship: Deploy the Tag v0.18.0 for management-api
+* Bump investigator to v0.16.0 in stage
+* Bump management-api to v0.18.0 in stage
+* Bump advise-reporter to v0.11.0
+* :ship: Deploy the Tag v0.11.0 for reporter
+* Bump package-extract to v1.3.1
+* :ship: Deploy the Tag v1.3.1 for package-extract
+* :ship: Deploy the Tag v1.11.0 for solver
+* :ship: Deploy the Tag v1.11.0 for solver
+* :ship: Deploy the Tag v0.10.0 for amun-api
+* Bump solvers to v1.11.0 in stage environment
+* :ship: Deploy the Tag v0.51.0 for adviser
+* Bump adviser to v0.51.0 in stage environment
+* Enable CVE update job in prod deployments
+* Allow passing indexes where package dependencies should be looked up
+* feat(prow): Enable override in open-services-group (#2335)
+* Bump graph-metrics-exporter to v0.6.0
+* :ship: Deploy the Tag v0.6.0 for graph-metrics-exporter
+* Bump document-sync-job to v0.3.1 in stage
+* Provide port configuration to all deployment configs
+* Bump user-api to v0.34.4 in stage environment
+* :ship: Deploy the Tag v0.34.4 for user-api
+* Supply configured solvers for document-sync to sync solvers
+* Increase memory for document-sync-job
+* Save Pulp Grafana Dashboard
+* Bump document-sync to v0.3.0 in stage environment
+* Increase document sync to 3 days
+* :ship: Deploy the Tag pr-1662 for user-api
+* :ship: Deploy the Tag pr-1661 for user-api
+* Adjust sync concurrency based on urllib connection pool configured
+* Increase document-sync deadline to 12 hours
+* Respect JSON logging configuration
+* :ship: Deploy the Tag v0.34.3 for user-api
+* Bump user-api to v0.34.3 in stage
+* Bump user-api to v0.34.3 in prod
+* update pulp-pypi-sync-job image tag
+* :ship: Deploy the Tag v0.34.2 for user-api
+* Bump user-api to v0.34.2 in stage
+* Bump document-sync-job to v0.2.0 in stage environment
+* Bump pulp-pypi-sync-job to v0.1.1 in stage
+* :ship: Deploy the Tag pr-1652 for user-api
+* :ship: Deploy the Tag v0.34.1 for user-api
+* Fix Grafana dashboards in prod (#2299)
+* Bump user-api to v0.34.1 in stage
+* Add bloat table or index alerts for prod
+* :ship: Deploy the Tag v0.20.2 for metrics-exporter
+* Bump metrics exporter to v0.20.2 in stage
+* Adjust label for alarm
+* Fix postgresql grafana dashboard fieldlabel
+* Add pg dump missing alarm
+* :ship: Deploy the Tag v0.34.0 for user-api
+* Do not use port in instance name for Prometheus
+* :pill: fix the pulp metrics exporter secrets
+
 ## Release 2022.02.01 (2022-02-01T00:51:45)
 * :ship: Bump up the images based on the version update v2022.01.31
 * :ship: Deploy the Tag v0.33.4 for user-api
