@@ -30,6 +30,8 @@ spec:
           image: user-api
           imagePullPolicy: Always
           env:
+            - name: PORT
+              value: "8080"
             - name: APP_MODULE
               value: "thoth.user_api.openapi_server:app"
             - name: APP_CONFIG
