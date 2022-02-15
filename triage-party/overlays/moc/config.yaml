@@ -127,6 +127,7 @@ collections:
     dedup: true
     description: Once every quarter, look for stale issues, reprioritize, and de-duplicate.
     rules:
+      - backlog-refining
       - lifecycle-stale
       - features-old-recv
       - features-old
@@ -310,6 +311,7 @@ rules:
     type: issue
     filters:
       - label: "needs-triage"
+      - label: "!triage/.*"  # this is an inconsistency, see needs-triage-not
 
   # SLO nearing
   issue-near-soon-overdue:
@@ -427,7 +429,16 @@ rules:
       - tag: "!contributor-last"
       - responded: +6d
 
-  ## Bug Scrub ##
+  ## Quarterly Scrub ##
+  backlog-refining:
+    name: "Backlog or needs evindence"
+    resolution: "Consider lifecycle or priority updates, or closing"
+    type: issue
+    filters:
+      - responded: +7d
+      - created: +14d
+      - label: "priority/(backlog|awaiting-more-evidence)"
+
   bugs-old-recv:
     name: "Bugs that deserve a follow-up comment"
     resolution: "Comment or close the issue"
