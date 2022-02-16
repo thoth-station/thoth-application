@@ -23,6 +23,8 @@ spec:
         - name: amun-api
           image: amun-api:test
           env:
+            - name: PORT
+              value: "8080"
             - name: APP_MODULE
               value: "amun.entrypoint:app"
             - name: KUBERNETES_API_URL
