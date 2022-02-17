@@ -21,13 +21,30 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 53,
-  "iteration": 1643709405920,
+  "id": 4,
+  "iteration": 1645004828372,
   "links": [],
   "panels": [
     {
+      "datasource": null,
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 38,
+      "options": {
+        "content": "# Thoth PostgreSQL metrics Grafana Dashboard\n\nThis dashboard contains all the operational metrics focused on the PostgreSQL database, from real time metrics to pg dumps stored by cronjobs on the Ceph Bucket.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance*: `postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud`\n- *metrics_exporter_instance*: `metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *cluster*: `emea/balrog`\n- *instance*: `postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/`\n- *metrics_exporter_instance*: `metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud`",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.1.1",
+      "title": "General Description",
+      "type": "text"
+    },
+    {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "PostgreSQL version",
       "fieldConfig": {
         "defaults": {
@@ -66,7 +83,7 @@
         "h": 4,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 12
       },
       "id": 3,
       "interval": null,
@@ -90,7 +107,8 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_static{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_static{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -106,7 +124,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Sets the maximum number of concurrent connections.",
       "fieldConfig": {
         "defaults": {
@@ -145,7 +163,7 @@
         "h": 4,
         "w": 6,
         "x": 12,
-        "y": 0
+        "y": 12
       },
       "id": 1,
       "interval": null,
@@ -169,9 +187,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_max_connections{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_max_connections{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -181,7 +202,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Sets the number of shared memory buffers used by the server. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -220,7 +241,7 @@
         "h": 4,
         "w": 6,
         "x": 18,
-        "y": 0
+        "y": 12
       },
       "id": 2,
       "interval": null,
@@ -244,9 +265,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_shared_buffers_bytes{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_shared_buffers_bytes{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -256,7 +280,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Sets the planner’s assumption about the size of the data cache. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -295,7 +319,7 @@
         "h": 4,
         "w": 6,
         "x": 0,
-        "y": 4
+        "y": 16
       },
       "id": 4,
       "interval": null,
@@ -319,9 +343,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_effective_cache_size_bytes{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_effective_cache_size_bytes{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -331,7 +358,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Sets the maximum memory to be used for maintenance operations. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -370,7 +397,7 @@
         "h": 4,
         "w": 6,
         "x": 6,
-        "y": 4
+        "y": 16
       },
       "id": 5,
       "interval": null,
@@ -394,9 +421,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_maintenance_work_mem_bytes{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_maintenance_work_mem_bytes{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -406,7 +436,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Sets the maximum memory to be used for query workspaces. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -445,7 +475,7 @@
         "h": 4,
         "w": 6,
         "x": 12,
-        "y": 4
+        "y": 16
       },
       "id": 6,
       "interval": null,
@@ -469,9 +499,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_work_mem_bytes{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_work_mem_bytes{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -481,7 +514,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Sets the WAL size that triggers a checkpoint. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -520,7 +553,7 @@
         "h": 4,
         "w": 6,
         "x": 18,
-        "y": 4
+        "y": 16
       },
       "id": 7,
       "interval": null,
@@ -544,9 +577,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_max_wal_size_bytes{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_max_wal_size_bytes{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -556,7 +592,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Sets the planner’s estimate of the cost of a nonsequentially fetched disk page.",
       "fieldConfig": {
         "defaults": {
@@ -595,7 +631,7 @@
         "h": 4,
         "w": 6,
         "x": 0,
-        "y": 8
+        "y": 20
       },
       "id": 8,
       "interval": null,
@@ -619,9 +655,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_random_page_cost{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_random_page_cost{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -631,7 +670,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Sets the planner’s estimate of the cost of a sequentially fetched disk page.",
       "fieldConfig": {
         "defaults": {
@@ -670,7 +709,7 @@
         "h": 4,
         "w": 6,
         "x": 6,
-        "y": 8
+        "y": 20
       },
       "id": 9,
       "interval": null,
@@ -694,9 +733,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_seq_page_cost{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_seq_page_cost{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -706,7 +748,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Maximum number of concurrent worker processes.",
       "fieldConfig": {
         "defaults": {
@@ -745,7 +787,7 @@
         "h": 4,
         "w": 6,
         "x": 12,
-        "y": 8
+        "y": 20
       },
       "id": 10,
       "interval": null,
@@ -769,9 +811,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_max_worker_processes{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_max_worker_processes{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -781,7 +826,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Sets the maximum number of parallel processes per executor node.",
       "fieldConfig": {
         "defaults": {
@@ -820,7 +865,7 @@
         "h": 4,
         "w": 6,
         "x": 18,
-        "y": 8
+        "y": 20
       },
       "id": 11,
       "interval": null,
@@ -844,9 +889,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "pg_settings_max_parallel_workers_per_gather{field=\"$instance\"}",
+          "exemplar": true,
+          "expr": "pg_settings_max_parallel_workers_per_gather{field=\"$instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 14400
         }
@@ -859,14 +907,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 12
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 17,
@@ -878,6 +926,8 @@
         "min": true,
         "rightSide": false,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -899,26 +949,32 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pg_stat_database_tup_inserted{field=\"$instance\", datname=\"postgres\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_database_tup_inserted{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "INSERT",
+          "legendFormat": "INSERT, pod {{pod}}",
           "refId": "A",
           "step": 1800
         },
         {
-          "expr": "irate(pg_stat_database_tup_updated{field=\"$instance\", datname=\"postgres\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_database_tup_updated{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "UPDATE",
+          "legendFormat": "UPDATE, pod {{pod}}",
           "refId": "B",
           "step": 1800
         },
         {
+          "exemplar": true,
           "expr": "irate(pg_stat_database_tup_deleted{field=\"$instance\", datname=\"postgres\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "DELETE",
+          "legendFormat": "DELETE, pod {{pod}}",
           "refId": "C",
           "step": 1800
         }
@@ -943,6 +999,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:682",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -951,6 +1008,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:683",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -969,14 +1027,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 12
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 12,
@@ -990,6 +1048,8 @@
         "min": true,
         "rightSide": false,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1011,10 +1071,12 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pg_stat_activity_count{field=\"$instance\", datname=\"postgres\"}",
+          "exemplar": true,
+          "expr": "pg_stat_activity_count{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{state}}",
+          "legendFormat": "{{state}}, pod {{pod}}",
           "refId": "A",
           "step": 1800
         }
@@ -1039,6 +1101,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:629",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1047,6 +1110,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:630",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1065,14 +1129,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 10,
+        "h": 13,
         "w": 12,
         "x": 0,
-        "y": 23
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 13,
@@ -1084,6 +1148,8 @@
         "min": true,
         "rightSide": false,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1105,18 +1171,22 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pg_stat_database_xact_commit{field=\"$instance\", datname=\"postgres\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_database_xact_commit{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "commits",
+          "legendFormat": "commits, pod {{pod}}",
           "refId": "A",
           "step": 1800
         },
         {
-          "expr": "irate(pg_stat_database_xact_rollback{field=\"$instance\", datname=\"postgres\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_database_xact_rollback{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "rollbacks",
+          "legendFormat": "rollbacks, pod {{pod}}",
           "refId": "B",
           "step": 1800
         }
@@ -1141,6 +1211,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:523",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1149,6 +1220,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:524",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1167,14 +1239,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 10,
+        "h": 13,
         "w": 12,
         "x": 12,
-        "y": 23
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 19,
@@ -1186,6 +1258,8 @@
         "min": true,
         "rightSide": false,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1207,8 +1281,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pg_stat_activity_max_tx_duration{field=\"$instance\", datname=\"postgres\"}",
+          "exemplar": true,
+          "expr": "pg_stat_activity_max_tx_duration{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "max_tx_duration [{{state}}]",
           "refId": "A",
@@ -1235,6 +1311,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:576",
           "format": "dtdurations",
           "label": "",
           "logBase": 1,
@@ -1243,6 +1320,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:577",
           "format": "none",
           "label": "",
           "logBase": 1,
@@ -1261,26 +1339,28 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 11,
         "w": 12,
         "x": 0,
-        "y": 33
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 22,
       "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -1300,18 +1380,22 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pg_stat_database_conflicts{field=\"$instance\", datname=\"postgres\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_database_conflicts{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "conflicts",
+          "legendFormat": "conflicts, pod {{pod}}",
           "refId": "A",
           "step": 1800
         },
         {
-          "expr": "irate(pg_stat_database_deadlocks{field=\"$instance\", datname=\"postgres\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_database_deadlocks{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "deadlocks",
+          "legendFormat": "deadlocks, pod {{pod}}",
           "refId": "B",
           "step": 1800
         }
@@ -1336,6 +1420,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:366",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1344,6 +1429,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:367",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1362,14 +1448,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 11,
         "w": 12,
         "x": 12,
-        "y": 33
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 18,
@@ -1381,6 +1467,8 @@
         "min": true,
         "rightSide": false,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1402,16 +1490,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pg_stat_database_tup_fetched{field=\"$instance\", datname=\"postgres\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_database_tup_fetched{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "SELECT (index scan)",
           "refId": "A",
           "step": 1800
         },
         {
-          "expr": "irate(pg_stat_database_tup_returned{field=\"$instance\", datname=\"postgres\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_database_tup_returned{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "SELECT (table scan)",
           "refId": "B",
@@ -1438,6 +1530,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:419",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1446,6 +1539,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:420",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1464,14 +1558,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 12,
         "w": 8,
         "x": 0,
-        "y": 42
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 20,
@@ -1483,6 +1577,8 @@
         "min": true,
         "rightSide": false,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1504,10 +1600,12 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pg_stat_database_blks_hit{field=\"$instance\", datname=\"thoth\"} / (pg_stat_database_blks_read{field=\"$instance\", datname=\"thoth\"} + pg_stat_database_blks_hit{field=\"$instance\", datname=\"thoth\"})",
+          "exemplar": true,
+          "expr": "pg_stat_database_blks_hit{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"} / (pg_stat_database_blks_read{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"} + pg_stat_database_blks_hit{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Cache Hit Rate",
+          "legendFormat": "Cache Hit Rate, pod: {{pod}}",
           "refId": "A",
           "step": 2400
         }
@@ -1532,6 +1630,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:199",
           "format": "percentunit",
           "label": "",
           "logBase": 1,
@@ -1540,6 +1639,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:200",
           "format": "none",
           "label": "",
           "logBase": 1,
@@ -1558,7 +1658,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Number of locks",
       "fill": 1,
       "fillGradient": 0,
@@ -1566,7 +1666,7 @@
         "h": 12,
         "w": 10,
         "x": 8,
-        "y": 42
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 23,
@@ -1577,6 +1677,8 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1598,10 +1700,12 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pg_locks_count{field=\"$instance\", datname=\"thoth\"}",
+          "exemplar": true,
+          "expr": "pg_locks_count{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{mode}}",
+          "legendFormat": "{{mode}}, pod {{pod}}",
           "refId": "A",
           "step": 1800
         }
@@ -1626,6 +1730,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:252",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1634,6 +1739,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:253",
           "decimals": 0,
           "format": "short",
           "label": "",
@@ -1653,7 +1759,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "Total amount of data written to temporary files by queries in this database. All temporary files are counted, regardless of why the temporary file was created, and regardless of the log_temp_files setting.",
       "fill": 1,
       "fillGradient": 0,
@@ -1661,19 +1767,21 @@
         "h": 12,
         "w": 6,
         "x": 18,
-        "y": 42
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 24,
       "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -1693,10 +1801,12 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pg_stat_database_temp_bytes{field=\"$instance\", datname=\"thoth\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_database_temp_bytes{field=\"$instance\", datname=\"thoth\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Temp Bytes",
+          "legendFormat": "Temp Bytes, pod: {{pod}}",
           "refId": "A",
           "step": 3600
         }
@@ -1721,6 +1831,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:305",
           "format": "decbytes",
           "label": null,
           "logBase": 1,
@@ -1729,6 +1840,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:306",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1747,7 +1859,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "pg_stat_bgwriter_buffers_alloc (cumulative)\nNumber of buffers allocated, \n\npg_stat_bgwriter_buffers_backend (cumulative)\nNumber of buffers written directly by a backend, \n\npg_stat_bgwriter_buffers_backend_fsync (cumulative)\nNumber of times a backend had to execute its own fsync call (normally the background writer handles those even when the backend does its own write),\n\npg_stat_bgwriter_buffers_checkpoint (cumulative)\nNumber of buffers written during checkpoints,\n\npg_stat_bgwriter_buffers_clean (cumulative)\nNumber of buffers written by the background writer",
       "fill": 1,
       "fillGradient": 0,
@@ -1755,7 +1867,7 @@
         "h": 9,
         "w": 8,
         "x": 0,
-        "y": 54
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 21,
@@ -1766,6 +1878,8 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1787,42 +1901,52 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pg_stat_bgwriter_buffers_backend{field=\"$instance\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_bgwriter_buffers_backend{field=\"$instance\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "buffers_backend",
+          "legendFormat": "buffers_backend, pod {{pod}}",
           "refId": "A",
           "step": 2400
         },
         {
-          "expr": "irate(pg_stat_bgwriter_buffers_alloc{field=\"$instance\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_bgwriter_buffers_alloc{field=\"$instance\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "buffers_alloc",
+          "legendFormat": "buffers_alloc, pod {{pod}}",
           "refId": "B",
           "step": 2400
         },
         {
-          "expr": "irate(pg_stat_bgwriter_buffers_backend_fsync{field=\"$instance\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_bgwriter_buffers_backend_fsync{field=\"$instance\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "backend_fsync",
+          "legendFormat": "backend_fsync, pod {{pod}}",
           "refId": "C",
           "step": 2400
         },
         {
-          "expr": "irate(pg_stat_bgwriter_buffers_checkpoint{field=\"$instance\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_bgwriter_buffers_checkpoint{field=\"$instance\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "buffers_checkpoint",
+          "legendFormat": "buffers_checkpoint, pod {{pod}}",
           "refId": "D",
           "step": 2400
         },
         {
-          "expr": "irate(pg_stat_bgwriter_buffers_clean{field=\"$instance\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_bgwriter_buffers_clean{field=\"$instance\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "buffers_clean",
+          "legendFormat": "buffers_clean, pod {{pod}}",
           "refId": "E",
           "step": 2400
         }
@@ -1847,6 +1971,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:93",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1855,6 +1980,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:94",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1873,7 +1999,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "description": "pg_stat_bgwriter_checkpoint_sync_time (cumulative)\nTotal amount of time that has been spent in the portion of checkpoint processing where files are synchronized to disk, in milliseconds,\n\npg_stat_bgwriter_checkpoint_write_time (cumulative)\nTotal amount of time that has been spent in the portion of checkpoint processing where files are written to disk, in milliseconds",
       "fill": 1,
       "fillGradient": 0,
@@ -1881,7 +2007,7 @@
         "h": 9,
         "w": 16,
         "x": 8,
-        "y": 54
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 25,
@@ -1892,6 +2018,8 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
         "values": true
       },
@@ -1913,18 +2041,22 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pg_stat_bgwriter_checkpoint_write_time{field=\"$instance\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_bgwriter_checkpoint_write_time{field=\"$instance\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "write_time - Total amount of time that has been spent in the portion of checkpoint processing where files are written to disk.",
+          "legendFormat": "write_time, pod {{pod}}",
           "refId": "A",
           "step": 1200
         },
         {
-          "expr": "irate(pg_stat_bgwriter_checkpoint_sync_time{field=\"$instance\"}[5m])",
+          "exemplar": true,
+          "expr": "irate(pg_stat_bgwriter_checkpoint_sync_time{field=\"$instance\", cluster=\"$cluster\"}[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "sync_time - Total amount of time that has been spent in the portion of checkpoint processing where files are synchronized to disk.",
+          "legendFormat": "sync_time, pod {{pod}}",
           "refId": "B",
           "step": 1200
         }
@@ -1949,6 +2081,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:146",
           "format": "ms",
           "label": null,
           "logBase": 1,
@@ -1957,6 +2090,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:147",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1975,14 +2109,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 12,
         "x": 0,
-        "y": 63
+        "y": 80
       },
       "hiddenSeries": false,
       "id": 26,
@@ -2017,8 +2151,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_pct_bloat_data_table{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_graphdb_pct_bloat_data_table{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{table_name}}",
           "refId": "A",
@@ -2045,6 +2181,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:296",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -2053,6 +2190,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:297",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2071,14 +2209,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 12,
         "x": 12,
-        "y": 63
+        "y": 80
       },
       "hiddenSeries": false,
       "id": 27,
@@ -2113,8 +2251,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_mb_bloat_data_table{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_graphdb_mb_bloat_data_table{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{table_name}}",
           "refId": "A",
@@ -2141,6 +2281,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:361",
           "format": "decmbytes",
           "label": null,
           "logBase": 1,
@@ -2149,6 +2290,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:362",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2167,14 +2309,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 10,
         "w": 12,
         "x": 0,
-        "y": 71
+        "y": 90
       },
       "hiddenSeries": false,
       "id": 31,
@@ -2209,8 +2351,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_pct_index_bloat_data_table{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_graphdb_pct_index_bloat_data_table{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{table_name}}: {{index_name}}",
           "refId": "A",
@@ -2237,6 +2381,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:190",
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -2245,6 +2390,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:191",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2263,14 +2409,14 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 10,
         "w": 12,
         "x": 12,
-        "y": 71
+        "y": 90
       },
       "hiddenSeries": false,
       "id": 32,
@@ -2305,8 +2451,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_mb_index_bloat_data_table{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_graphdb_mb_index_bloat_data_table{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{table_name}}: {{index_name}}",
           "refId": "A",
@@ -2333,6 +2481,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:243",
           "format": "decmbytes",
           "label": null,
           "logBase": 1,
@@ -2341,6 +2490,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:244",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2356,7 +2506,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2398,7 +2548,7 @@
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 78
+        "y": 100
       },
       "id": 28,
       "interval": null,
@@ -2422,8 +2572,10 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_is_corrupted{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_graphdb_is_corrupted{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A",
@@ -2435,7 +2587,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2474,10 +2626,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 24,
         "x": 0,
-        "y": 83
+        "y": 105
       },
       "id": 29,
       "interval": null,
@@ -2501,10 +2653,12 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_graphdb_connection_issues{field=\"$metrics_exporter_instance\"}",
+          "exemplar": true,
+          "expr": "thoth_graphdb_connection_issues{field=\"$metrics_exporter_instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "",
+          "legendFormat": "pod: {{pod}}",
           "refId": "A",
           "step": 14400
         }
@@ -2517,25 +2671,26 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "aws-balrog",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 87
+        "y": 110
       },
       "hiddenSeries": false,
       "id": 30,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -2555,8 +2710,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_graphdb_size{field=\"$metrics_exporter_instance\"}",
+          "exemplar": true,
+          "expr": "thoth_graphdb_size{field=\"$metrics_exporter_instance\", cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Thoth Database Size",
           "refId": "A",
@@ -2583,6 +2740,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:121",
           "format": "decbytes",
           "label": null,
           "logBase": 1,
@@ -2591,6 +2749,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:122",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2603,6 +2762,272 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "saved"
+                },
+                "1": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "missed"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 117
+      },
+      "id": 34,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "thoth_graph_backup_job{cluster=\"$cluster\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Last graph backup dump [0 saved, 1 -> missed, alarm required]",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 117
+      },
+      "id": 40,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "thoth_graphdb_last_dump{cluster=\"$cluster\"}",
+          "interval": "",
+          "legendFormat": "{{env}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Last graph backup dump date",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 121
+      },
+      "id": 36,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "thoth_graphdb_dump_count{cluster=\"$cluster\"}",
+          "interval": "",
+          "legendFormat": "Number of dumps",
+          "refId": "A"
+        }
+      ],
+      "title": "Number of dumps available on Ceph",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "empty"
+                },
+                "1": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "to be cleaned"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 121
+      },
+      "id": 41,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "thoth_graphdb_dump_not_cleaned{cluster=\"$cluster\"}",
+          "interval": "",
+          "legendFormat": "pod: {{pod}}",
+          "refId": "A"
+        }
+      ],
+      "title": "pg dumps not cleaned [0 empty, 1 -> to be cleaned, alarm required]",
+      "type": "stat"
     }
   ],
   "refresh": "30s",
@@ -2611,15 +3036,14 @@
   "tags": [
     "thoth",
     "ops-metrics",
-    "postgresql-metrics-exporter",
-    "balrog-prod"
+    "postgresql-metrics-exporter"
   ],
   "templating": {
     "list": [
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/",
           "value": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/"
         },
@@ -2632,12 +3056,17 @@
         "name": "instance",
         "options": [
           {
+            "selected": false,
+            "text": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud",
+            "value": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud"
+          },
+          {
             "selected": true,
             "text": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/",
             "value": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/"
           }
         ],
-        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/",
+        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud, postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -2645,6 +3074,7 @@
       {
         "allValue": null,
         "current": {
+          "selected": true,
           "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
           "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
         },
@@ -2657,19 +3087,25 @@
         "name": "metrics_exporter_instance",
         "options": [
           {
+            "selected": false,
+            "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
+            "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
+          },
+          {
             "selected": true,
             "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
             "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud, metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       },
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "emea/balrog",
           "value": "emea/balrog"
         },
@@ -2679,15 +3115,21 @@
         "includeAll": false,
         "label": null,
         "multi": false,
-        "name": "env",
+        "name": "cluster",
         "options": [
+          {
+            "selected": false,
+            "text": "moc/smaug",
+            "value": "moc/smaug"
+          },
           {
             "selected": true,
             "text": "emea/balrog",
             "value": "emea/balrog"
           }
         ],
-        "query": "emea/balrog",
+        "query": "moc/smaug, emea/balrog",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       }
@@ -2724,6 +3166,6 @@
   },
   "timezone": "",
   "title": "Thoth PostgreSQL metrics",
-  "uid": "4147dd035ae977afbaa3fdfe05a4d94174b99c2e",
-  "version": 4
+  "uid": "5f2a5d7b1356c0c8ce4277724c131ed1beac864f",
+  "version": 21
 }
