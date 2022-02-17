@@ -79,14 +79,12 @@ collections:
     description: >
       queue to be emptied once a day
     rules:
-      - issue-needs-priority-overdue
       - issue-needs-comment-overdue
       - issue-soon-overdue
       - issue-longterm-overdue
       # Don't leave code reviews hanging
       - pr-reviewable
       # missing initial feedback
-      - issue-needs-kind
       - issue-needs-priority
       - issue-needs-comment
       # reprioritize
@@ -165,6 +163,7 @@ collections:
     name: Inconsistent
     description: Issues with inconsistent labels or statuses. Review to fix the inconsistencies/conflicts.
     rules:
+      - issue-needs-kind
       - active-unassigned
       - long-active
       - needs-triage-not
@@ -187,16 +186,6 @@ collections:
 
 rules:
   ### Daily Triage ####
-  issue-needs-priority-overdue:
-    name: "Unprioritized issues older than 7 days"
-    resolution: "Add a priority/ or triage/ label"
-    type: issue
-    filters:
-      - label: "!priority/.*"
-      - label: "!triage/.*"
-      - label: "!area/release-eng"
-      - created: +7d
-
   issue-needs-comment-overdue:
     name: "Uncommented older than 7 days"
     resolution: "Add a priority/ or triage/ label"
@@ -233,16 +222,6 @@ rules:
       - label: "!bot"
       - tag: "!changes-requested"
       - tag: "!send"
-
-  # Issues missing initial feedback
-  issue-needs-kind:
-    name: "Unkinded Issues"
-    resolution: "Add a kind/ label"
-    type: issue
-    filters:
-      - label: "!kind/.*"
-      - label: "!kind/support"
-      - label: "!bot"
 
   issue-needs-priority:
     name: "Unprioritized Recent Issues"
@@ -307,11 +286,13 @@ rules:
   ####### Weekly Triage #########
   issue-needs-triage:
     name: "Issues pending triage"
-    resolution: "Assign kind/*, triage/*, priority/*, assignee, and/or mark help needed"
+    resolution: "Assign triage/*, priority/*, and/or mark lifecycle/frozen or help needed"
     type: issue
     filters:
-      - label: "needs-triage"
-      - label: "!triage/.*"  # this is an inconsistency, see needs-triage-not
+      - label: "!triage/.*"
+      - label: "!priority/.*"
+      - label: "!lifecycle/frozen"
+      - label: "!help needed"
 
   # SLO nearing
   issue-near-soon-overdue:
@@ -618,6 +599,14 @@ rules:
       - tag: similar
 
   # Inconsistencies
+  issue-needs-kind:
+    name: "Unkinded Issues"
+    resolution: "Add a kind/ label"
+    type: issue
+    filters:
+      - label: "!kind/.*"
+      - label: "!bot"
+
   active-unassigned:
     name: "Lifecyle Active without assignee"
     resolution: "Assign the person working on it or fix lifecycle status"
