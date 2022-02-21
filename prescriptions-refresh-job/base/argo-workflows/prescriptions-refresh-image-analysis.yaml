@@ -69,7 +69,7 @@ spec:
           image: prescriptions-refresh-job
           env:
             - name: THOTH_PRESCRIPTIONS_DRY_RUN
-              value: 1
+              value: "1"
             - name: SENTRY_DSN
               valueFrom:
                 secretKeyRef:
@@ -86,7 +86,7 @@ spec:
             - name: THOTH_USER_API_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: prescription-refresh-job
+                  name: prescriptions-refresh-job
                   key: user-api
             - name: APP_SCRIPT
               value: app.sh
@@ -129,7 +129,7 @@ spec:
             - name: THOTH_PRESCRIPTIONS_REFRESH_QUAY_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: thoth
+                  name: prescriptions
                   key: quay-token
             - name: GITHUB_APP_ID
               valueFrom:

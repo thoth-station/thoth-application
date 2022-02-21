@@ -23,25 +23,25 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/workflowSpec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/workflowSpec/templates/1/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/workflowSpec/templates/2/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/workflowSpec/templates/3/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/workflowSpec/templates/4/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/workflowSpec/templates/5/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/workflowSpec/templates/6/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
     target:
       group: argoproj.io
       version: v1alpha1
@@ -50,16 +50,16 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/workflowSpec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
     target:
       group: argoproj.io
       version: v1alpha1
       kind: CronWorkflow
-      name: prescriptions-refresh-scorecards
+      name: prescriptions-refresh-image-analysis
   - patch: |-
       - op: replace
         path: /spec/workflowSpec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
     target:
       group: argoproj.io
       version: v1alpha1
@@ -68,9 +68,36 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/workflowSpec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/prescriptions-refresh-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
+      - op: replace
+        path: /spec/workflowSpec/templates/1/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
+      - op: replace
+        path: /spec/workflowSpec/templates/2/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
+      - op: replace
+        path: /spec/workflowSpec/templates/3/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: CronWorkflow
+      name: prescriptions-refresh-pypi
+  - patch: |-
+      - op: replace
+        path: /spec/workflowSpec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
     target:
       group: argoproj.io
       version: v1alpha1
       kind: CronWorkflow
       name:  prescriptions-refresh-quay
+  - patch: |-
+      - op: replace
+        path: /spec/workflowSpec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/prescriptions-refresh-job:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: CronWorkflow
+      name: prescriptions-refresh-scorecards

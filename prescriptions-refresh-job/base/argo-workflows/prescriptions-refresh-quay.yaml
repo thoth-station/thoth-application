@@ -107,7 +107,7 @@ spec:
             - name: THOTH_PRESCRIPTIONS_REFRESH_QUAY_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: thoth
+                  name: prescriptions
                   key: quay-token
             - name: GITHUB_APP_ID
               valueFrom:
