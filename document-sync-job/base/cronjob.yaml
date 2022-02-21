@@ -31,6 +31,8 @@ spec:
                       key: solvers
                 - name: THOTH_DOCUMENT_SYNC_CONCURRENCY
                   value: "10"
+                - name: THOTH_DOCUMENT_SYNC_DAYS
+                  value: "7"
                 - name: THOTH_S3_ENDPOINT_URL
                   valueFrom:
                     configMapKeyRef:
