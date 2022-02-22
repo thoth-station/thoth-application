@@ -370,7 +370,7 @@ periodics:
     decorate: true
     spec:
       containers:
-        - image: quay.io/thoth-station/integration-tests:v0.9.0
+        - image: quay.io/thoth-station/integration-tests:v0.9.1
           imagePullPolicy: Always
           command:
             - python3
