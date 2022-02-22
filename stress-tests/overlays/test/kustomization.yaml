@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - thoth-notification.yaml
+images:
+  - name: stress-tests
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/stress-tests
+    newTag: latest
+patchesStrategicMerge:
+  - configmap.yaml
+  - cronjob.yaml
+  - imagestreamtag.yaml
