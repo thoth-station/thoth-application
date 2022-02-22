@@ -11,5 +11,3 @@ patchesStrategicMerge:
   - configmap.yaml
   - cronjob.yaml
   - imagestreamtag.yaml
-generators:
-  - ./secret-generator.yaml
