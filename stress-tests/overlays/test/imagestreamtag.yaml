@@ -1,0 +1,13 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: stress-tests
+spec:
+  tags:
+  - from:
+      kind: DockerImage
+      name: quay.io/thoth-station/stress-tests:v0.0.0
+    importPolicy: {}
+    name: latest
+    referencePolicy:
+      type: Source

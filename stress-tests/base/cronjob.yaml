@@ -9,8 +9,8 @@ metadata:
 spec:
   schedule: "@weekly"
   suspend: true
-  successfulJobsHistoryLimit: 5
-  failedJobsHistoryLimit: 4
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
   startingDeadlineSeconds: null
   jobTemplate:
@@ -66,7 +66,7 @@ spec:
                   valueFrom:
                     secretKeyRef:
                       key: management-api-token
-                      name: stress-tests
+                      name: thoth
                 - name: THOTH_STRESS_TESTS_TAGS
                   valueFrom:
                     configMapKeyRef:
