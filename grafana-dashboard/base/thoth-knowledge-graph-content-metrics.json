@@ -21,13 +21,30 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 34,
-  "iteration": 1629970441753,
+  "id": 28,
+  "iteration": 1645004877788,
   "links": [],
   "panels": [
     {
+      "datasource": null,
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 144,
+      "options": {
+        "content": "# Thoth Knowledge Graph content metrics Grafana Dashboard\n\nThis dashboard contains all metrics focused on the knowledge collected in the database.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *instance*: `metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *instance*: `metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud`",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.1.1",
+      "title": "General Description",
+      "type": "text"
+    },
+    {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -56,10 +73,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 6,
         "w": 10,
         "x": 0,
-        "y": 0
+        "y": 11
       },
       "id": 88,
       "interval": null,
@@ -141,10 +158,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 6,
         "w": 14,
         "x": 10,
-        "y": 0
+        "y": 11
       },
       "id": 139,
       "interval": null,
@@ -167,7 +184,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_adviser_count_per_source_type{field=\"$instance\", prometheus=\"moc/smaug\"}",
+          "expr": "thoth_graphdb_adviser_count_per_source_type{field=\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -181,7 +198,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -219,7 +236,7 @@
         "h": 4,
         "w": 7,
         "x": 0,
-        "y": 9
+        "y": 17
       },
       "id": 95,
       "interval": null,
@@ -293,7 +310,7 @@
         "h": 4,
         "w": 17,
         "x": 7,
-        "y": 9
+        "y": 17
       },
       "id": 142,
       "interval": null,
@@ -316,7 +333,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_kebechet_total_active_repo_count{field=\"$instance\", prometheus=\"moc/smaug\"}",
+          "expr": "thoth_kebechet_total_active_repo_count{field=\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -330,7 +347,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -368,7 +385,7 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 13
+        "y": 21
       },
       "id": 73,
       "interval": null,
@@ -415,7 +432,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -453,7 +470,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 13
+        "y": 21
       },
       "id": 74,
       "interval": null,
@@ -500,7 +517,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -538,7 +555,7 @@
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 26
       },
       "id": 112,
       "interval": null,
@@ -575,7 +592,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -613,7 +630,7 @@
         "h": 3,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 26
       },
       "id": 113,
       "interval": null,
@@ -649,7 +666,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -687,7 +704,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 29
       },
       "id": 63,
       "interval": null,
@@ -728,7 +745,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 32
       },
       "id": 124,
       "panels": [],
@@ -738,7 +755,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -776,7 +793,7 @@
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 33
       },
       "id": 107,
       "interval": null,
@@ -812,7 +829,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -850,7 +867,7 @@
         "h": 3,
         "w": 12,
         "x": 12,
-        "y": 25
+        "y": 33
       },
       "id": 38,
       "interval": null,
@@ -886,7 +903,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -925,7 +942,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 36
       },
       "id": 109,
       "interval": null,
@@ -1004,7 +1021,7 @@
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 39
       },
       "id": 140,
       "interval": null,
@@ -1027,7 +1044,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", solver_name=\"solver-rhel-8-py38\", prometheus=\"moc/smaug\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", prometheus=\"moc/smaug\"}",
+          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", solver_name=\"solver-rhel-8-py38\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1041,7 +1058,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1080,7 +1097,7 @@
         "h": 4,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 44
       },
       "id": 116,
       "interval": null,
@@ -1155,7 +1172,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 48
       },
       "id": 141,
       "interval": null,
@@ -1178,7 +1195,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", solver_name=\"solver-fedora-34-py39\", prometheus=\"moc/smaug\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\", prometheus=\"moc/smaug\"}",
+          "expr": "thoth_graphdb_total_number_solved_python_packages{field=\"$instance\", solver_name=\"solver-fedora-34-py39\"} / ignoring(solver_name) group_left thoth_graphdb_number_python_package_versions{field=\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1192,7 +1209,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1230,7 +1247,7 @@
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 46
+        "y": 54
       },
       "id": 37,
       "interval": null,
@@ -1266,7 +1283,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1304,7 +1321,7 @@
         "h": 3,
         "w": 12,
         "x": 12,
-        "y": 46
+        "y": 54
       },
       "id": 72,
       "interval": null,
@@ -1340,7 +1357,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1378,7 +1395,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 49
+        "y": 57
       },
       "id": 76,
       "interval": null,
@@ -1414,7 +1431,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1452,7 +1469,7 @@
         "h": 3,
         "w": 8,
         "x": 8,
-        "y": 49
+        "y": 57
       },
       "id": 77,
       "interval": null,
@@ -1488,7 +1505,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1526,7 +1543,7 @@
         "h": 3,
         "w": 8,
         "x": 16,
-        "y": 49
+        "y": 57
       },
       "id": 93,
       "interval": null,
@@ -1562,7 +1579,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1600,7 +1617,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 52
+        "y": 60
       },
       "id": 100,
       "interval": null,
@@ -1636,7 +1653,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1674,7 +1691,7 @@
         "h": 3,
         "w": 8,
         "x": 8,
-        "y": 52
+        "y": 60
       },
       "id": 99,
       "interval": null,
@@ -1710,7 +1727,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1748,7 +1765,7 @@
         "h": 3,
         "w": 8,
         "x": 16,
-        "y": 52
+        "y": 60
       },
       "id": 101,
       "interval": null,
@@ -1789,7 +1806,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 63
       },
       "id": 126,
       "panels": [],
@@ -1799,7 +1816,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1837,7 +1854,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 64
       },
       "id": 115,
       "interval": null,
@@ -1873,7 +1890,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1911,7 +1928,7 @@
         "h": 3,
         "w": 10,
         "x": 0,
-        "y": 59
+        "y": 67
       },
       "id": 80,
       "interval": null,
@@ -1947,7 +1964,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1985,7 +2002,7 @@
         "h": 3,
         "w": 8,
         "x": 10,
-        "y": 59
+        "y": 67
       },
       "id": 79,
       "interval": null,
@@ -2021,7 +2038,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2059,7 +2076,7 @@
         "h": 3,
         "w": 6,
         "x": 18,
-        "y": 59
+        "y": 67
       },
       "id": 96,
       "interval": null,
@@ -2095,7 +2112,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2134,7 +2151,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 62
+        "y": 70
       },
       "id": 114,
       "interval": null,
@@ -2175,7 +2192,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 65
+        "y": 73
       },
       "id": 130,
       "panels": [],
@@ -2188,7 +2205,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2196,7 +2213,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 74
       },
       "hiddenSeries": false,
       "id": 10,
@@ -2303,7 +2320,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 77
+        "y": 85
       },
       "id": 131,
       "panels": [],
@@ -2316,7 +2333,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2324,7 +2341,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 78
+        "y": 86
       },
       "hiddenSeries": false,
       "id": 17,
@@ -2413,7 +2430,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2421,7 +2438,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 78
+        "y": 86
       },
       "hiddenSeries": false,
       "id": 71,
@@ -2513,7 +2530,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 88
+        "y": 96
       },
       "id": 132,
       "panels": [],
@@ -2526,7 +2543,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2534,7 +2551,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 89
+        "y": 97
       },
       "hiddenSeries": false,
       "id": 97,
@@ -2626,7 +2643,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2634,7 +2651,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 89
+        "y": 97
       },
       "hiddenSeries": false,
       "id": 6,
@@ -2744,7 +2761,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 100
+        "y": 108
       },
       "id": 133,
       "panels": [],
@@ -2757,7 +2774,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2765,7 +2782,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 101
+        "y": 109
       },
       "hiddenSeries": false,
       "id": 92,
@@ -2855,7 +2872,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2863,7 +2880,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 101
+        "y": 109
       },
       "hiddenSeries": false,
       "id": 91,
@@ -2955,7 +2972,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 108
+        "y": 116
       },
       "id": 134,
       "panels": [],
@@ -2968,7 +2985,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2976,7 +2993,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 109
+        "y": 117
       },
       "hiddenSeries": false,
       "id": 16,
@@ -3064,7 +3081,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3072,7 +3089,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 109
+        "y": 117
       },
       "hiddenSeries": false,
       "id": 21,
@@ -3162,7 +3179,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 118
+        "y": 126
       },
       "id": 135,
       "panels": [],
@@ -3172,7 +3189,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3210,7 +3227,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 119
+        "y": 127
       },
       "id": 55,
       "interval": null,
@@ -3246,7 +3263,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3284,7 +3301,7 @@
         "h": 3,
         "w": 8,
         "x": 8,
-        "y": 119
+        "y": 127
       },
       "id": 57,
       "interval": null,
@@ -3320,7 +3337,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3358,7 +3375,7 @@
         "h": 3,
         "w": 8,
         "x": 16,
-        "y": 119
+        "y": 127
       },
       "id": 58,
       "interval": null,
@@ -3394,7 +3411,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3432,7 +3449,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 122
+        "y": 130
       },
       "id": 66,
       "interval": null,
@@ -3473,7 +3490,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 125
+        "y": 133
       },
       "id": 137,
       "panels": [],
@@ -3486,7 +3503,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3494,7 +3511,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 126
+        "y": 134
       },
       "hiddenSeries": false,
       "id": 13,
@@ -3601,7 +3618,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 135
+        "y": 143
       },
       "id": 138,
       "panels": [],
@@ -3614,7 +3631,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3622,7 +3639,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 136
+        "y": 144
       },
       "hiddenSeries": false,
       "id": 15,
@@ -3717,7 +3734,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "moc-smaug",
+      "datasource": null,
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3725,7 +3742,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 136
+        "y": 144
       },
       "hiddenSeries": false,
       "id": 98,
@@ -3828,9 +3845,9 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
-          "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
-          "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
+          "selected": true,
+          "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+          "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
         },
         "description": null,
         "error": null,
@@ -3841,12 +3858,18 @@
         "name": "instance",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
             "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
+          },
+          {
+            "selected": true,
+            "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+            "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud,open.cloud",
+        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud, metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       }
@@ -3884,5 +3907,5 @@
   "timezone": "",
   "title": "Thoth Knowledge Graph content metrics",
   "uid": "dd5ddeda417f2083b1b0526b222609dfcf1145be",
-  "version": 5
+  "version": 10
 }

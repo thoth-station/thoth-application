@@ -21,10 +21,27 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 57,
-  "iteration": 1643705929389,
+  "id": 19,
+  "iteration": 1645001781489,
   "links": [],
   "panels": [
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 114,
+      "options": {
+        "content": "# Thoth SLI/SLO Grafana Dashboard\n\nThis dashboard contains all metrics focused on the knowledge collected in the database.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n- *interval*: `1m, 10m, 30m, 1h, 3h, 6h, 12h, 1d, 7d`\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance*: `workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud`\n- *instance_metrics*: `investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *cluster*: `aws/balrog`\n- *instance*: `workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud`\n- *instance_metrics*: `metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud`",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.1.1",
+      "title": "General Description",
+      "type": "text"
+    },
     {
       "datasource": null,
       "fieldConfig": {
@@ -69,9 +86,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 13,
+        "w": 7,
         "x": 0,
-        "y": 0
+        "y": 13
       },
       "id": 97,
       "links": [],
@@ -94,7 +111,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud\", cluster=\"$env\"}",
+          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -105,7 +122,7 @@
         },
         {
           "exemplar": true,
-          "expr": "up{field=\"management-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud\", cluster=\"$env\"}",
+          "expr": "up{field=\"management-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Management API",
@@ -158,9 +175,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 11,
-        "x": 13,
-        "y": 0
+        "w": 17,
+        "x": 7,
+        "y": 13
       },
       "id": 112,
       "links": [],
@@ -171,7 +188,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "last"
           ],
           "fields": "",
           "values": false
@@ -183,7 +200,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud\", cluster=\"$env\"} == 1 and on(cluster) up{field=\"investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud\", cluster=\"$env\"} == 1 and on(cluster) up{field=\"workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud\", cluster=\"$env\"} and on(cluster) thoth_openshift_connection_issues{cluster=\"$env\"} and on(cluster) thoth_graphdb_connection_issues{cluster=\"$env\"} and on(cluster) thoth_kafka_connection_issues{cluster=\"$env\"} and on(cluster) thoth_ceph_connection_issues{cluster=\"$env\"}",
+          "expr": "up{field=\"user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"} == 1 and on(cluster) up{field=\"investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"} == 1  and on(prometheus) up{field=\"workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$env\"} and on(cluster) thoth_openshift_connection_issues{cluster=\"$env\"} and on(cluster) thoth_graphdb_connection_issues{cluster=\"$env\"} and on(cluster) thoth_kafka_connection_issues{cluster=\"$env\"} and on(cluster) thoth_ceph_connection_issues{cluster=\"$env\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -242,9 +259,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 13,
+        "w": 10,
         "x": 0,
-        "y": 5
+        "y": 18
       },
       "id": 96,
       "links": [],
@@ -267,7 +284,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{field=\"investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud\", cluster=\"$env\"}",
+          "expr": "up{field=\"investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$cluster\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Investigator",
@@ -275,27 +292,27 @@
         },
         {
           "exemplar": true,
-          "expr": "up{field=\"investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud\", cluster=\"$env\"}",
+          "expr": "up{field=\"investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$cluster\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Investigator metrics",
-          "refId": "E"
+          "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "up{field=\"metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud\", prometheus=\"aws/balrog\"}",
+          "expr": "up{field=\"postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$cluster\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "PostgreSQL metrics",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "up{field=\"metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$cluster\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Metrics exporter",
-          "refId": "F"
-        },
-        {
-          "exemplar": true,
-          "expr": "up{field=\"postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud\", prometheus=\"aws/balrog\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "PostgreSQL Metrics",
-          "refId": "G"
+          "refId": "C"
         }
       ],
       "timeFrom": null,
@@ -343,9 +360,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 11,
-        "x": 13,
-        "y": 5
+        "w": 6,
+        "x": 10,
+        "y": 18
       },
       "id": 109,
       "links": [],
@@ -368,7 +385,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "up{field=\"workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud\", cluster=\"$env\"}",
+          "expr": "up{field=\"workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud\",cluster=\"$cluster\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "thoth-backend-prod",
@@ -376,24 +393,16 @@
         },
         {
           "exemplar": true,
-          "expr": "up{field=\"workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud\", cluster=\"$env\"}",
+          "expr": "up{field=\"workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud\", cluster=\"$cluster\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "thoth-middletier-prod",
-          "refId": "E"
-        },
-        {
-          "exemplar": true,
-          "expr": "up{field=\"workflow-controller-metrics-thoth-amun-inspection-prod.apps.balrog.aws.operate-first.cloud\", prometheus=\"aws/balrog\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "thoth-amun-inspection-prod",
-          "refId": "F"
+          "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Workflow Controller ",
+      "title": "Workflow Controllers",
       "type": "stat"
     },
     {
@@ -440,9 +449,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 24,
-        "x": 0,
-        "y": 11
+        "w": 8,
+        "x": 16,
+        "y": 18
       },
       "id": 95,
       "links": [],
@@ -465,7 +474,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_openshift_connection_issues{cluster=\"$env\"}",
+          "expr": "thoth_openshift_connection_issues{cluster=\"$cluster\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -476,7 +485,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_connection_issues{cluster=\"$env\"}",
+          "expr": "thoth_graphdb_connection_issues{cluster=\"$cluster\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -488,7 +497,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_kafka_connection_issues{prometheus=\"aws/balrog\"}",
+          "expr": "thoth_kafka_connection_issues{cluster=\"$cluster\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Kafka",
@@ -496,7 +505,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_ceph_connection_issues{prometheus=\"aws/balrog\"}",
+          "expr": "thoth_ceph_connection_issues{cluster=\"$cluster\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Ceph",
@@ -509,7 +518,7 @@
       "type": "stat"
     },
     {
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -537,7 +546,7 @@
         "h": 10,
         "w": 5,
         "x": 0,
-        "y": 17
+        "y": 24
       },
       "id": 64,
       "links": [],
@@ -557,7 +566,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[$interval])",
+          "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -583,7 +592,7 @@
         "h": 10,
         "w": 12,
         "x": 5,
-        "y": 17
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 25,
@@ -596,6 +605,7 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "current",
         "sortDesc": true,
         "total": false,
         "values": true
@@ -619,7 +629,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[$interval])",
+          "expr": "increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[$interval])",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -631,7 +641,7 @@
         },
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\", cluster=\"$env\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[1h]))",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\", cluster=\"$cluster\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[1h]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -676,6 +686,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:4912",
           "decimals": null,
           "format": "short",
           "label": "",
@@ -685,6 +696,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:4913",
           "decimals": null,
           "format": "short",
           "label": null,
@@ -711,7 +723,7 @@
         "h": 10,
         "w": 7,
         "x": 17,
-        "y": 17
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 98,
@@ -724,6 +736,7 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "current",
         "sortDesc": true,
         "total": false,
         "values": true
@@ -747,7 +760,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\", cluster=\"$env\"}",
+          "expr": "thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\", cluster=\"$cluster\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -777,6 +790,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:5062",
           "decimals": null,
           "format": "short",
           "label": "",
@@ -786,6 +800,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:5063",
           "decimals": null,
           "format": "short",
           "label": null,
@@ -812,7 +827,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 27
+        "y": 34
       },
       "hiddenSeries": false,
       "id": 69,
@@ -825,6 +840,7 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "current",
         "sortDesc": true,
         "total": false,
         "values": true
@@ -848,7 +864,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", cluster=\"$env\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", cluster=\"$cluster\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[1h]))/24",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -877,6 +893,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:5138",
           "decimals": null,
           "format": "short",
           "label": "",
@@ -886,6 +903,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:5139",
           "decimals": null,
           "format": "short",
           "label": null,
@@ -912,7 +930,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 34
       },
       "hiddenSeries": false,
       "id": 68,
@@ -925,6 +943,7 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "current",
         "sortDesc": true,
         "total": false,
         "values": true
@@ -948,7 +967,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", cluster=\"$env\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[1h]))",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", cluster=\"$cluster\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[1h]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -977,6 +996,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:5214",
           "decimals": null,
           "format": "short",
           "label": "",
@@ -986,6 +1006,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:5215",
           "decimals": null,
           "format": "short",
           "label": null,
@@ -1002,7 +1023,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1040,7 +1061,7 @@
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 42
       },
       "id": 91,
       "interval": null,
@@ -1065,7 +1086,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_number_python_package_versions{field=\"$instance_metrics\", cluster=\"$env\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[1h]))/24",
+          "expr": "(thoth_graphdb_number_python_package_versions{field=\"$instance_metrics\", cluster=\"$cluster\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[1h]))/24",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1079,7 +1100,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1117,7 +1138,7 @@
         "h": 3,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 42
       },
       "id": 66,
       "interval": null,
@@ -1140,7 +1161,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\", cluster=\"$env\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages{field=\"$instance_metrics\", cluster=\"$cluster\"} / increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[1h]))/24",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1154,7 +1175,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1192,7 +1213,7 @@
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 38
+        "y": 45
       },
       "id": 71,
       "interval": null,
@@ -1215,7 +1236,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", solver_name=\"solver-rhel-8-py38\", cluster=\"$env\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", solver_name=\"solver-rhel-8-py38\", cluster=\"$cluster\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[1h]))/24",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1229,7 +1250,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1267,7 +1288,7 @@
         "h": 3,
         "w": 12,
         "x": 12,
-        "y": 38
+        "y": 45
       },
       "id": 94,
       "interval": null,
@@ -1290,7 +1311,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", solver_name=\"solver-fedora-34-py39\", cluster=\"$env\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[1h]))/24",
+          "expr": "(thoth_graphdb_total_number_unsolved_python_packages_per_solver{field=\"$instance_metrics\", solver_name=\"solver-fedora-34-py39\", cluster=\"$cluster\"}  / ignoring(solver_name) group_left increase(thoth_graphdb_unsolved_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[1h]))/24",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1314,7 +1335,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 41
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 63,
@@ -1348,7 +1369,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{field=\"$instance_metrics\", cluster=\"$env\"}",
+          "expr": "thoth_graphdb_total_number_si_unanalyzed_python_packages{field=\"$instance_metrics\", cluster=\"$cluster\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1358,7 +1379,7 @@
         },
         {
           "exemplar": true,
-          "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$env\"}[$interval])",
+          "expr": "increase(thoth_graphdb_si_unanalyzed_python_package_versions_change_total{field=\"$instance_metrics\", cluster=\"$cluster\"}[$interval])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1388,6 +1409,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:5294",
           "decimals": null,
           "format": "short",
           "label": "",
@@ -1397,6 +1419,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:5295",
           "decimals": null,
           "format": "short",
           "label": null,
@@ -1436,7 +1459,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 48
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 90,
@@ -1471,7 +1494,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(argo_workflows_status_counter{field=\"$instance\", cluster=\"$env\"}[$interval])",
+          "expr": "increase(argo_workflows_status_counter{field=\"$instance\", cluster=\"$cluster\"}[$interval])",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1501,6 +1524,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:5370",
           "decimals": 3,
           "format": "none",
           "label": "",
@@ -1510,6 +1534,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:5371",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1524,7 +1549,7 @@
       }
     },
     {
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1577,7 +1602,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 59
+        "y": 66
       },
       "id": 62,
       "links": [],
@@ -1605,7 +1630,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) / (sum(thoth_sli_weekly{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}))",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"solver_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / (sum(thoth_sli_weekly{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1616,7 +1641,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) / (sum(thoth_sli_weekly{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}))",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / (sum(thoth_sli_weekly{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1626,7 +1651,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}) / (sum(thoth_sli_weekly{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\"}))",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / (sum(thoth_sli_weekly{metric_name=\"solver_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) + sum(thoth_sli_weekly{metric_name=\"solver_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1700,7 +1725,7 @@
         "h": 8,
         "w": 16,
         "x": 8,
-        "y": 59
+        "y": 66
       },
       "id": 103,
       "links": [],
@@ -1757,7 +1782,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1810,7 +1835,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 67
+        "y": 74
       },
       "id": 74,
       "links": [],
@@ -1838,7 +1863,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_succeeded\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1849,7 +1874,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_failed\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1860,7 +1885,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_error\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1939,7 +1964,7 @@
         "h": 7,
         "w": 16,
         "x": 8,
-        "y": 67
+        "y": 74
       },
       "id": 104,
       "links": [],
@@ -1960,7 +1985,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_succeeded\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1971,7 +1996,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_failed\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1982,7 +2007,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_error\", sli_type=\"component_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", env=\"$env\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"adviser_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1998,7 +2023,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2066,7 +2091,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 74
+        "y": 81
       },
       "id": 110,
       "links": [],
@@ -2094,7 +2119,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_succeeded\", sli_type=\"workflow_task_quality\", env=\"$env\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_.*\", sli_type=\"workflow_task_quality\", env=\"$env\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_succeeded\", sli_type=\"workflow_task_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"adviser_workflow_tasks_.*\", sli_type=\"workflow_task_quality\", cluster=\"$env\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2210,7 +2235,7 @@
         "h": 7,
         "w": 16,
         "x": 8,
-        "y": 74
+        "y": 81
       },
       "id": 111,
       "links": [],
@@ -2269,7 +2294,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2322,7 +2347,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 81
+        "y": 88
       },
       "id": 76,
       "links": [],
@@ -2353,7 +2378,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"security_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"security_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2364,7 +2389,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2374,7 +2399,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2452,7 +2477,7 @@
         "h": 7,
         "w": 16,
         "x": 8,
-        "y": 81
+        "y": 88
       },
       "id": 105,
       "links": [],
@@ -2473,7 +2498,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"security_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"security_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2484,7 +2509,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2494,7 +2519,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"security_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"security_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2509,7 +2534,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2592,7 +2617,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 88
+        "y": 95
       },
       "id": 77,
       "links": [],
@@ -2623,7 +2648,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2634,7 +2659,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2644,7 +2669,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2748,7 +2773,7 @@
         "h": 7,
         "w": 16,
         "x": 8,
-        "y": 88
+        "y": 95
       },
       "id": 106,
       "links": [],
@@ -2769,7 +2794,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2780,7 +2805,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2790,7 +2815,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"kebechet_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"kebechet_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2805,7 +2830,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2836,6 +2861,21 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "% provenance checker workflows error"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -2843,7 +2883,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 95
+        "y": 102
       },
       "id": 75,
       "links": [],
@@ -2871,7 +2911,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2882,7 +2922,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2892,7 +2932,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2940,7 +2980,7 @@
                 "id": "color",
                 "value": {
                   "fixedColor": "red",
-                  "mode": "fixed"
+                  "mode": "continuous-GrYlRd"
                 }
               }
             ]
@@ -2951,7 +2991,7 @@
         "h": 7,
         "w": 16,
         "x": 8,
-        "y": 95
+        "y": 102
       },
       "id": 107,
       "links": [],
@@ -2972,7 +3012,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2983,7 +3023,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"provenance_checker_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"provenance_checker_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3008,7 +3048,7 @@
       "type": "state-timeline"
     },
     {
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3091,7 +3131,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 102
+        "y": 109
       },
       "id": 78,
       "links": [],
@@ -3122,7 +3162,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3133,7 +3173,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3143,7 +3183,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3247,7 +3287,7 @@
         "h": 7,
         "w": 16,
         "x": 8,
-        "y": 102
+        "y": 109
       },
       "id": 108,
       "links": [],
@@ -3268,7 +3308,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_succeeded\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_succeeded\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3279,7 +3319,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_failed\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_failed\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3289,7 +3329,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_error\", sli_type=\"component_quality\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\"})",
+          "expr": "sum(thoth_sli_weekly{metric_name=\"package_extract_workflows_error\", sli_type=\"component_quality\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{metric_name=~\"package_extract_workflows_.*\", sli_type=\"component_quality\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3322,7 +3362,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 109
+        "y": 116
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -3472,7 +3512,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 109
+        "y": 116
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -3487,7 +3527,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_5\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3497,7 +3537,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_10\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3507,7 +3547,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_30\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3517,7 +3557,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_60\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3527,7 +3567,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_120\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3537,7 +3577,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_180\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3547,7 +3587,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_latency_bucket_300\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3557,7 +3597,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_600\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3567,7 +3607,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_900\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3620,9 +3660,9 @@
       "datasource": null,
       "gridPos": {
         "h": 7,
-        "w": 11,
-        "x": 1,
-        "y": 116
+        "w": 12,
+        "x": 0,
+        "y": 123
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -3637,7 +3677,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_5\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3647,7 +3687,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_10\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3657,7 +3697,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_30\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3667,7 +3707,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_60\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3677,7 +3717,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_120\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3687,7 +3727,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_180\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3697,7 +3737,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_300\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3707,7 +3747,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_600\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3717,7 +3757,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_900\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3772,7 +3812,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 116
+        "y": 123
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -3787,7 +3827,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_5\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3797,7 +3837,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_10\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3807,7 +3847,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_30\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3817,7 +3857,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_60\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"solver_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3827,7 +3867,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_120\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3837,7 +3877,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_180\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3847,7 +3887,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_latency_bucket_300\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3857,7 +3897,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_600\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3867,7 +3907,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_900\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"adviser_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3921,7 +3961,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 123
+        "y": 130
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -4070,7 +4110,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 123
+        "y": 130
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -4085,7 +4125,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_5\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4095,7 +4135,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_10\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4105,7 +4145,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_30\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4115,7 +4155,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_60\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4125,7 +4165,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_120\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4135,7 +4175,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_180\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4145,7 +4185,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_300\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4155,7 +4195,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_600\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4165,7 +4205,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_900\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4219,7 +4259,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 123
+        "y": 130
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -4234,7 +4274,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_5\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4244,7 +4284,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_10\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4254,7 +4294,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_30\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4263,8 +4303,10 @@
           "step": 2400
         },
         {
-          "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "exemplar": true,
+          "expr": "sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_60\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly_stage{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "< 60s",
           "refId": "D",
@@ -4272,7 +4314,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_120\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4282,7 +4324,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_180\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4292,7 +4334,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_300\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4302,7 +4344,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_600\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4312,7 +4354,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_900\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"provenance_checker_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4364,9 +4406,9 @@
       "datasource": null,
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 2,
-        "y": 131
+        "w": 8,
+        "x": 0,
+        "y": 138
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -4515,7 +4557,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 131
+        "y": 138
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -4530,7 +4572,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_5\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4540,7 +4582,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_10\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4550,7 +4592,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_30\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4560,7 +4602,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_60\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4570,7 +4612,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_120\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4580,7 +4622,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_180\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4590,7 +4632,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_300\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4600,7 +4642,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_600\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4610,7 +4652,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_900\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_latency\", metric_name=\"kebechet_administrator_workflows_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4664,7 +4706,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 131
+        "y": 138
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -4679,7 +4721,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_5\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_5\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4689,7 +4731,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_10\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_10\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4699,7 +4741,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_30\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_30\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4709,7 +4751,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_60\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_60\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4719,7 +4761,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_120\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_120\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4729,7 +4771,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_180\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_180\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4739,7 +4781,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_300\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_300\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4749,7 +4791,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_600\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_600\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4759,7 +4801,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_900\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\"})",
+          "expr": "sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_900\", cluster=\"$cluster\"}) / sum(thoth_sli_weekly{sli_type=\"component_task_latency\", metric_name=\"package_extract_workflows_task_latency_bucket_+Inf\", cluster=\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4796,7 +4838,7 @@
       "yBucketSize": null
     },
     {
-      "datasource": "aws-balrog",
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -4834,7 +4876,7 @@
         "h": 12,
         "w": 9,
         "x": 0,
-        "y": 139
+        "y": 146
       },
       "id": 87,
       "links": [],
@@ -4864,16 +4906,20 @@
       "pluginVersion": "8.1.1",
       "targets": [
         {
-          "expr": "thoth_reporter_success_adviser_gauge{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_reporter_success_adviser_gauge{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Successfull adviser runs {{adviser_version}}",
           "refId": "A",
           "step": 1800
         },
         {
-          "expr": "thoth_reporter_failed_adviser_gauge{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_reporter_failed_adviser_gauge{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Failed adviser runs {{adviser_version}}",
           "refId": "B",
@@ -4897,7 +4943,7 @@
         "h": 12,
         "w": 15,
         "x": 9,
-        "y": 139
+        "y": 146
       },
       "hiddenSeries": false,
       "id": 100,
@@ -4931,7 +4977,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_reporter_success_adviser_gauge{env=\"$env\", prometheus=\"aws/balrog\"}",
+          "expr": "thoth_reporter_success_adviser_gauge{cluster=\"$cluster\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4941,7 +4987,7 @@
         },
         {
           "exemplar": true,
-          "expr": "thoth_reporter_failed_adviser_gauge{env=\"$env\", prometheus=\"aws/balrog\"}",
+          "expr": "thoth_reporter_failed_adviser_gauge{cluster=\"$cluster\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -5023,10 +5069,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
+        "h": 9,
         "w": 24,
         "x": 0,
-        "y": 151
+        "y": 158
       },
       "id": 88,
       "links": [],
@@ -5047,7 +5093,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "thoth_reporter_failed_adviser_justifications_gauge{env=\"$env\", prometheus=\"aws/balrog\"}",
+          "expr": "thoth_reporter_failed_adviser_justifications_gauge{cluster=\"$cluster\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -5073,7 +5119,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 162
+        "y": 167
       },
       "hiddenSeries": false,
       "id": 73,
@@ -5107,8 +5153,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_reporter_requests_gauge{env=\"$env\"} - thoth_reporter_reports_gauge{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_reporter_requests_gauge{cluster=\"$cluster\"} - thoth_reporter_reports_gauge{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{component}}",
           "refId": "A",
@@ -5135,6 +5183,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:5524",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -5143,6 +5192,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:5525",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -5168,7 +5218,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 162
+        "y": 167
       },
       "hiddenSeries": false,
       "id": 89,
@@ -5202,16 +5252,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "thoth_reporter_requests_gauge{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_reporter_requests_gauge{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "requests for {{component}}",
           "refId": "B",
           "step": 1800
         },
         {
-          "expr": "thoth_reporter_reports_gauge{env=\"$env\"}",
+          "exemplar": true,
+          "expr": "thoth_reporter_reports_gauge{cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "reports for {{component}}",
           "refId": "C",
@@ -5238,6 +5292,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:5600",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -5246,6 +5301,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:5601",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -5349,8 +5405,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
-          "value": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud"
+          "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
+          "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
         },
         "description": null,
         "error": null,
@@ -5362,24 +5418,35 @@
         "options": [
           {
             "selected": false,
+            "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud",
+            "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud"
+          },
+          {
+            "selected": true,
+            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
+            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
+          },
+          {
+            "selected": false,
             "text": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud",
             "value": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
             "value": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       },
       {
         "allValue": null,
         "current": {
-          "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-          "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
+          "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
+          "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
         },
         "description": null,
         "error": null,
@@ -5391,18 +5458,24 @@
         "options": [
           {
             "selected": true,
+            "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
+            "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
+          },
+          {
+            "selected": false,
             "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
             "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud, metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       },
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "emea/balrog",
           "value": "emea/balrog"
         },
@@ -5412,15 +5485,21 @@
         "includeAll": false,
         "label": null,
         "multi": false,
-        "name": "env",
+        "name": "cluster",
         "options": [
+          {
+            "selected": false,
+            "text": "moc/smaug",
+            "value": "moc/smaug"
+          },
           {
             "selected": true,
             "text": "emea/balrog",
             "value": "emea/balrog"
           }
         ],
-        "query": "emea/balrog",
+        "query": "moc/smaug, emea/balrog",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       }
@@ -5457,6 +5536,6 @@
   },
   "timezone": "",
   "title": "Thoth SLI/SLO",
-  "uid": "a30fccbb3c61cc644827f080c68c460d2132bc4a",
-  "version": 3
+  "uid": "ee96mo7s4buzb6lxads4aun3kpm1h9th6zxdtw7i",
+  "version": 5
 }
