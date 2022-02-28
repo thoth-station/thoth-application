@@ -1,5 +1,55 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.02.28 (2022-02-28T18:53:59)
+* :ship: Bump up the images based on the version update v2022.02.28 (#2389)
+* :ship: Deploy the Tag v0.34.8 for user-api
+* Add username to approvers
+* Increase deadline for integration-tests
+* Bump solver-rhel-8-py38 to v1.11.2 in test environment
+* :ship: Deploy the Tag v1.11.2 for solver
+* :ship: Deploy the Tag v1.11.2 for solver
+* Bump solvers to v1.11.2 in stage
+* :hatched_chick: Prow storage is set to the respective cluster
+* Fix integration-tests OOM
+* :ship: Deploy the Tag v0.51.1 for adviser
+* :ship: Deploy the Tag v0.51.1 for adviser
+* Bump adviser to v0.51.1 in stage environment
+* :ship: Deploy the Tag v0.11.8 for package-releases-job
+* :ship: Deploy the Tag v0.9.2 for integration-tests
+* Bump package-releases to v0.11.8 in stage environment
+* :ship: Deploy the Tag v0.34.7 for user-api
+* Bump integration-tests to v0.9.2 in ocp4-stage
+* Bump integration-tests to v0.9.2 in moc-prod-ocp4-stage
+* Fix the prow with Thoth OBC from rick cluster (#2376)
+* Bump user-api to v0.34.7 in stage environment
+* Remove secret generator
+* Modify base/cronjob.yaml and add test overlay
+* :ship: Deploy the Tag pr-1681 for user-api
+* Merge overlays dashboards using variables
+* bounce integration test within prow config
+* Bump user-api to v0.34.6 in stage
+* Bump integration-tests to v0.9.1 in moc-prod
+* Bump integration-tests to v0.9.1 in ocp4-stage
+* :fire: Includes image patch, secrets and env var for prescriptions
+* Split prescriptions-refresh CronWorkflow to multiple CronWorkflows
+* :ship: Deploy the Tag v0.9.1 for integration-tests
+* :ship: Deploy the Tag v0.34.6 for user-api
+* :ship: Deploy the Tag v0.34.5 for user-api
+* :ship: Bump up the amun-api image to v0.10.1
+* :ship: Deploy the Tag v0.10.1 for amun-api
+* triage-party: simplify the daily collection
+* :fire: Provide port configuration for individual amun overlay
+* :fire: patch the prometheus url towards thanos querier
+* :ship: Deploy the Tag v0.21.0 for metrics-exporter
+* Add backlog refining list to triage-party
+* :ship: Deploy the Tag v0.6.1 for graph-metrics-exporter
+* Bump graph metrics exporter to v0.6.1
+* :fire: Provide port configuration for individual overlays
+* :guardsman: Attach thanos querier secrets for metrics read
+* :books: split the changelog per year
+* Add stress-tests cronjob
+* Perform syncs of documents that are recent
+
 - :ship: Bump up the images based on the version update v2022.02.14
 - Remove old solvers from deployment manifests
 - :ship: Deploy the Tag v1.11.1 for solver
