@@ -3,7 +3,7 @@
   value:
     requests:
       memory: "6Gi"
-      cpu: "2.5"
+      cpu: "1.1"
     limits:
       memory: "6Gi"
-      cpu: "2.5"
+      cpu: "1.1"
