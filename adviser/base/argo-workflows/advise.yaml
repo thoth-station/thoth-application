@@ -122,6 +122,8 @@ spec:
             value: "alembic.runtime.migration:WARNING,thoth.common:WARNING,thoth.analyzer.cli:WARNING,sentry_sdk.errors:WARNING"
           - name: THOTH_SENTRY_IGNORE_LOGGER
             value: "thoth.adviser.run"
+          - name: THOTH_ADVISER_MEM_OPTIMIZER_LIMIT
+            value: "5000000"
           - name: THOTH_ADVISER_COUNT
             value: "{{inputs.parameters.THOTH_ADVISER_COUNT}}"
           - name: THOTH_ADVISER_LIMIT
