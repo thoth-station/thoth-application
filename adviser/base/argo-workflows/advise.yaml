@@ -124,6 +124,10 @@ spec:
             value: "thoth.adviser.run"
           - name: THOTH_ADVISER_MEM_OPTIMIZER_LIMIT
             value: "5000000"
+          - name: THOTH_ADVISER_MEM_OPTIMIZER_ITERATION
+            value: "100"
+          - name: THOTH_ADVISER_MEM_OPTIMIZER_DROP_COUNT
+            value: "50"
           - name: THOTH_ADVISER_COUNT
             value: "{{inputs.parameters.THOTH_ADVISER_COUNT}}"
           - name: THOTH_ADVISER_LIMIT
