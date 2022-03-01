@@ -123,7 +123,7 @@ spec:
           - name: THOTH_SENTRY_IGNORE_LOGGER
             value: "thoth.adviser.run"
           - name: THOTH_ADVISER_MEM_OPTIMIZER_LIMIT
-            value: "5000000"
+            value: "5750000"
           - name: THOTH_ADVISER_MEM_OPTIMIZER_ITERATION
             value: "100"
           - name: THOTH_ADVISER_MEM_OPTIMIZER_DROP_COUNT
