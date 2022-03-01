@@ -12,7 +12,7 @@ spec:
   suspend: true
   workflowSpec:
     serviceAccountName: argo
-    activeDeadlineSeconds: 3000
+    activeDeadlineSeconds: 30000
     ttlStrategy:
       secondsAfterCompletion: 300
       secondsAfterSuccess: 300
