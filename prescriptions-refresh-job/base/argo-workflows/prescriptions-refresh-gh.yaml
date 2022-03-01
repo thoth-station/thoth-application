@@ -165,10 +165,10 @@ spec:
           resources:
             limits:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
             requests:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
           volumeMounts:
             - name: ssh-config
               mountPath: /opt/app-root/src/.ssh
@@ -242,10 +242,10 @@ spec:
           resources:
             limits:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
             requests:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
           volumeMounts:
             - name: ssh-config
               mountPath: /opt/app-root/src/.ssh
@@ -314,10 +314,10 @@ spec:
           resources:
             limits:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
             requests:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
           volumeMounts:
             - name: ssh-config
               mountPath: /opt/app-root/src/.ssh
@@ -384,10 +384,10 @@ spec:
           resources:
             limits:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
             requests:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
           volumeMounts:
             - name: ssh-config
               mountPath: /opt/app-root/src/.ssh
@@ -454,10 +454,10 @@ spec:
           resources:
             limits:
               cpu: 250m
-              memory: 384Mi
+              memory: 1Gi
             requests:
               cpu: 250m
-              memory: 384Mi
+              memory: 1Gi
           volumeMounts:
             - name: ssh-config
               mountPath: /opt/app-root/src/.ssh
@@ -524,10 +524,10 @@ spec:
           resources:
             limits:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
             requests:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
           volumeMounts:
             - name: ssh-config
               mountPath: /opt/app-root/src/.ssh
@@ -594,10 +594,10 @@ spec:
           resources:
             limits:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
             requests:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
           volumeMounts:
             - name: ssh-config
               mountPath: /opt/app-root/src/.ssh
