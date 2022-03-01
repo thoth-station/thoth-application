@@ -13,9 +13,6 @@ patchesStrategicMerge:
 patches:
   - patch: |-
       - op: replace
-        path: /spec/workflowSpec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
-      - op: replace
         path: /spec/workflowSpec/templates/1/container/image
         value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
       - op: replace
@@ -32,6 +29,9 @@ patches:
         value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/workflowSpec/templates/6/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
+      - op: replace
+        path: /spec/workflowSpec/templates/7/container/image
         value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
     target:
       group: argoproj.io
@@ -58,9 +58,6 @@ patches:
       name: prescriptions-refresh-pg
   - patch: |-
       - op: replace
-        path: /spec/workflowSpec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
-      - op: replace
         path: /spec/workflowSpec/templates/1/container/image
         value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
       - op: replace
@@ -68,6 +65,9 @@ patches:
         value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
       - op: replace
         path: /spec/workflowSpec/templates/3/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
+      - op: replace
+        path: /spec/workflowSpec/templates/4/container/image
         value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/prescriptions-refresh-job:latest
     target:
       group: argoproj.io

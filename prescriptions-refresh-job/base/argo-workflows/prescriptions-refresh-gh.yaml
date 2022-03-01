@@ -60,8 +60,26 @@ spec:
           items:
           - key: KEBBHUT_GITHUB_PRIVATE_KEY
             path: github-privatekey
-    entrypoint: gh-link
+    entrypoint: gh
     templates:
+      - name: gh
+        steps:
+          - - name: link
+              template: gh-link
+            - name: archived
+              template: gh-archived
+            - name: release-notes
+              template: gh-release-notes
+            - name: contributors
+              template: gh-contributors
+            - name: forked
+              template: gh-forked
+            - name: popularity
+              template: gh-popularity
+            - name: updated
+              template: gh-updated
+
+
       - name: gh-link
         resubmitPendingPods: true
         container:

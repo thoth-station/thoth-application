@@ -60,8 +60,19 @@ spec:
           items:
           - key: KEBBHUT_GITHUB_PRIVATE_KEY
             path: github-privatekey
-    entrypoint: pypi-artifact-size
+    entrypoint: pypi
     templates:
+      - name: pypi
+        steps:
+          - - name: artifact-size
+              template: pypi-artifact-size
+            - name: downloads
+              template: pypi-downloads
+            - name: maintainers
+              template: pypi-maintainers
+            - name: release
+              template: pypi-release
+
       - name: pypi-artifact-size
         resubmitPendingPods: true
         container:
