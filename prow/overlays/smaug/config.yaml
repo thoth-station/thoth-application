@@ -33,7 +33,7 @@ in_repo_config:
     b4mad: true
     open-services-group: true
     operate-first: true
-    # TODO(mcliff): add os-climate
+    os-climate: true
     thoth-station: true
 
   allowed_clusters:
@@ -42,12 +42,12 @@ in_repo_config:
     "b4mad": ["api.smaug.na.operate-first.cloud:6443"]
     "operate-first": ["api.smaug.na.operate-first.cloud:6443"]
     "open-services-group": ["api.smaug.na.operate-first.cloud:6443"]
+    "os-climate": ["api.smaug.na.operate-first.cloud:6443"]
     "thoth-station": ["api.smaug.na.operate-first.cloud:6443"]
 
 branch-protection:
   allow_disabled_policies: true
   orgs:
-    # TODO(mcliff): add os-climate
     AICoE:
       protect: true
       allow_force_pushes: false
@@ -157,6 +157,30 @@ branch-protection:
         required_pull_request_reviews:
           dismiss_stale_reviews: false
           required_approving_review_count: 1
+    os-climate:
+          protect: true
+          allow_force_pushes: false
+          required_status_checks:
+            contexts:
+              - aicoe-ci/prow/pre-commit
+          repos:
+            aicoe-osc-demo:
+              protect: true
+              allow_force_pushes: false
+              required_status_checks:
+                contexts:
+                  - aicoe-ci/prow/pre-commit
+              exclude:
+                - "^revert-"
+                - "^kebechet-"
+                - "^dependabot/"
+          restrictions:
+            users: []
+            teams:
+              - sourceops
+            required_pull_request_reviews:
+              dismiss_stale_reviews: false
+              required_approving_review_count: 1
 
 deck:
   spyglass:
