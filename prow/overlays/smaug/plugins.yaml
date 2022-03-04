@@ -139,6 +139,11 @@ external_plugins:
       events:
         - issue_comment
         - pull_request
+  os-climate:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
   open-services-group:
     - name: needs-rebase
       events:
@@ -172,20 +177,22 @@ welcome:
 
 lgtm:
   - repos:
-      - b4mad
       - AICoE
       - aicoe-aiops
+      - b4mad
       - open-services-group
       - operate-first
+      - os-climate
       - thoth-station
 
 approve:
   - repos:
-      - b4mad
       - AICoE
       - aicoe-aiops
+      - b4mad
       - open-services-group
       - operate-first
+      - os-climate
       - thoth-station
     require_self_approval: true
     ignore_review_state: false
@@ -280,6 +287,23 @@ plugins:
       - lifecycle
       - override
       - shrug
+      - size
+      - transfer-issue
+      - trigger
+      - verify-owners
+      - wip
+  os-climate:
+    plugins:
+      - approve
+      - assign
+      - blockade
+      - blunderbuss
+      - help
+      - hold
+      - label
+      - lgtm
+      - lifecycle
+      - override
       - size
       - transfer-issue
       - trigger

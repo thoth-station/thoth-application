@@ -33,6 +33,7 @@ in_repo_config:
     b4mad: true
     open-services-group: true
     operate-first: true
+    # TODO(mcliff): add os-climate
     thoth-station: true
 
   allowed_clusters:
@@ -46,6 +47,7 @@ in_repo_config:
 branch-protection:
   allow_disabled_policies: true
   orgs:
+    # TODO(mcliff): add os-climate
     AICoE:
       protect: true
       allow_force_pushes: false
@@ -201,6 +203,7 @@ tide:
     b4mad: squash
     open-services-group: merge
     operate-first: squash
+    os-climate: merge
     thoth-station: merge
 
   queries:
@@ -244,6 +247,7 @@ tide:
         - needs-rebase
     - orgs:
         - operate-first
+        - os-climate
       excludedRepos:
         - operate-first/operate-first.github.io
       labels:
