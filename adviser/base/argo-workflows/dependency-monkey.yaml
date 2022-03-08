@@ -4,7 +4,7 @@ kind: WorkflowTemplate
 metadata:
   name: dm
   annotations:
-    operation: adviser
+    operation: dependency
     thoth-station.ninja/template-version: 0.0.1
   labels:
     app: thoth
