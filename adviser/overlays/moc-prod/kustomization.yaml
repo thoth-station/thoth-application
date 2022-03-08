@@ -27,6 +27,26 @@ patches:
       version: v1alpha1
       kind: WorkflowTemplate
       annotationSelector: "operation=adviser"
+  # wf template image patch
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/adviser:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=dependency"
+  # wf template image patch
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-prod/kebechet:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=kebechet"
   - patch: |-
       - op: replace
         path: /spec/templates/0/container/image
