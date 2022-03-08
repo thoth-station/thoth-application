@@ -174,7 +174,7 @@ parameters:
 - name: THOTH_SEND_MESSAGES
   description: indicates whether message should be sent upon inspection completion
   displayName: send messages
-  value: "1"  # sends message by default
+  value: "0"  # Do not send message by default
 
 - name: THOTH_FORCE_SYNC
   description: should inspection complete message cause graph sync job to be run with force sync
