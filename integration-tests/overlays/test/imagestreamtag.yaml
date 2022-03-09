@@ -4,10 +4,10 @@ metadata:
   name: integration-tests
 spec:
   tags:
-    - from:
-        kind: DockerImage
-        name: quay.io/thoth-station/integration-tests:v0.10.0
-      importPolicy: {}
-      name: latest
-      referencePolicy:
-        type: Source
+  - from:
+      kind: DockerImage
+      name: quay.io/thoth-station/integration-tests:v0.10.1
+    importPolicy: {}
+    name: latest
+    referencePolicy:
+      type: Source
