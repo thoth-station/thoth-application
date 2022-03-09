@@ -234,6 +234,8 @@ spec:
       inputs:
         parameters:
           - name: inspection-id
+      retryStrategy:
+        limit: "3"
       resource:
         action: get
         successCondition: status.phase == Complete
