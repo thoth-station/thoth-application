@@ -6,7 +6,7 @@ resources:
   - thoth-notification.yaml
 images:
   - name: mi-scheduler
-    newName: image-registry.openshift-image-registry.svc:5000/thoth-infra-prod/mi-scheduler
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/mi-scheduler
     newTag: latest
 patchesStrategicMerge:
   - cronjob.yaml
@@ -21,6 +21,42 @@ patches:
       version: v1
       kind: Job
       annotationSelector: "operation=chat-notification"
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-prod"
+    target:
+      group: ""
+      version: v1
+      kind: ConfigMap
+      name: mi-scheduler
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-prod"
+    target:
+      group: "rbac.authorization.k8s.io"
+      version: v1
+      kind: Role
+      name: mi-scheduler
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-prod"
+    target:
+      group: "template.openshift.io"
+      version: v1
+      kind: Template
+      name: mi-merge
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-prod"
+    target:
+      group: "template.openshift.io"
+      version: v1
+      kind: Template
+      name: mi
   - patch: |-
       - op: replace
         path: /spec/templates/1/container/image
