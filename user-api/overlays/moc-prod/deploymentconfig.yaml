@@ -126,16 +126,6 @@ spec:
                 secretKeyRef:
                   name: ceph
                   key: secret-key
-            - name: RSYSLOG_HOST
-              valueFrom:
-                configMapKeyRef:
-                  key: rsyslog-host
-                  name: thoth
-            - name: RSYSLOG_PORT
-              valueFrom:
-                configMapKeyRef:
-                  key: rsyslog-port
-                  name: thoth
             - name: PROMETHEUS_PUSHGATEWAY_HOST
               valueFrom:
                 configMapKeyRef:
