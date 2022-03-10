@@ -16,8 +16,6 @@ data:
   infra-namespace: thoth-infra-stage
   logging-no-json: "1"
   postgresql-host: pgbouncer.thoth-graph-stage.svc
-  rsyslog-host: ""
-  rsyslog-port: ""
   storage-bucket-name: ocp4-stage
 ---
 kind: ConfigMap

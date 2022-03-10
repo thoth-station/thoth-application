@@ -16,8 +16,6 @@ data:
   infra-namespace: thoth-test-core
   logging-no-json: "1"
   postgresql-host: pgbouncer.thoth-test-core.svc
-  rsyslog-host: ""
-  rsyslog-port: ""
   storage-bucket-name: rick-test
 ---
 kind: ConfigMap
