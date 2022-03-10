@@ -15,6 +15,7 @@ spec:
       resubmitPendingPods: true
       inputs:
         parameters:
+          - name: CREATE_KNOWLEDGE
           - name: REPOSITORY
           - name: ENTITIES
           - name: KNOWLEDGE_PATH
@@ -25,6 +26,8 @@ spec:
             template: analyse
             arguments:
               parameters:
+                - name: CREATE_KNOWLEDGE
+                  value: "{{inputs.parameters.CREATE_KNOWLEDGE}}"
                 - name: REPOSITORY
                   value: "{{inputs.parameters.REPOSITORY}}"
                 - name: ENTITIES
@@ -45,6 +48,7 @@ spec:
       resubmitPendingPods: true
       inputs:
         parameters:
+          - name: CREATE_KNOWLEDGE
           - name: REPOSITORY
           - name: ENTITIES
           - name: KNOWLEDGE_PATH
@@ -53,11 +57,15 @@ spec:
       container:
         image: "mi"
         command: ["srcopsmetrics/cli.py"]
-        args: ["--create-knowledge",
-               "--repository", "{{inputs.parameters.REPOSITORY}}",
-               "--entities", "{{inputs.parameters.ENTITIES}}",
-               "--knowledge-path", "{{inputs.parameters.KNOWLEDGE_PATH}}",]
         env:
+          - name: MI_CREATE_KNOWLEDGE
+            value: "{{inputs.parameters.CREATE_KNOWLEDGE}}"
+          - name: MI_REPOSITORY
+            value: "{{inputs.parameters.REPOSITORY}}"
+          - name: MI_ENTITIES
+            value: "{{inputs.parameters.ENTITIES}}"
+          - name: MI_KNOWLEDGE_PATH
+            value: "{{inputs.parameters.KNOWLEDGE_PATH}}"
           - name: MI_THOTH
             value: "{{inputs.parameters.MI_THOTH}}"
           - name: GITHUB_ACCESS_TOKEN

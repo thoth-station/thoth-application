@@ -8,6 +8,10 @@ metadata:
     template: mi
 
 parameters:
+  - name: CREATE_KNOWLEDGE
+    description: Analyse repository and extract its entity-related data
+    displayName: Create Data flag
+
   - name: REPOSITORY
     required: true
     description: GitHub repository whose Health Indicator will be computed
@@ -52,6 +56,8 @@ objects:
         secondsAfterSuccess: 10
       arguments:
         parameters:
+          - name: CREATE_KNOWLEDGE
+            value: ${CREATE_KNOWLEDGE}
           - name: REPOSITORY
             value: ${REPOSITORY}
           - name: ENTITIES
@@ -73,6 +79,8 @@ objects:
                   template: "mi-workflow"
                 arguments:
                   parameters:
+                    - name: CREATE_KNOWLEDGE
+                      value: ${CREATE_KNOWLEDGE}
                     - name: REPOSITORY
                       value: ${REPOSITORY}
                     - name: ENTITIES
