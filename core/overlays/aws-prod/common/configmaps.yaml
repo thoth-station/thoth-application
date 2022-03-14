@@ -16,8 +16,6 @@ data:
   infra-namespace: thoth-infra-prod
   logging-no-json: "0"
   postgresql-host: pgbouncer.thoth-graph-prod.svc
-  rsyslog-host: ""
-  rsyslog-port: ""
   storage-bucket-name: aws-prod
 ---
 kind: ConfigMap
