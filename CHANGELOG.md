@@ -1,5 +1,69 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.03.14 (2022-03-14T10:35:36)
+* :ship: Bump up the images based on the version update v2022.03.14
+* bump reporter to v0.11.1
+* Run graph-refresh every 40 mins, instead of every hour
+* :ship: Deploy the Tag pr-616 for investigator
+* :ship: Deploy the Tag pr-1710 for user-api
+* Bump user-api to v0.34.12 in stage
+* Remove entries from configmaps
+* Remove RSYSLOG_HOST and RSYSLOG_PORT from deployment manifests
+* :ship: Deploy the Tag 0.34.12 for user-api
+* :ship: Deploy the Tag v0.11.1 for reporter
+* Patch mi prod deployment in smaug cluster
+* :ship: Deploy the Tag v0.11.0 for integration-tests
+* Bump integration-tests to v0.11.0
+* Add job specs
+* Bump adviser to v0.52.4 in stage environment
+* :ship: Deploy the Tag v0.52.4 for adviser
+* Patch the amun await step with retry strategy
+* :ship: Deploy the Tag v0.34.11 for user-api
+* Bump integration-tests to v0.10.11
+* :ship: Deploy the Tag v0.10.1 for integration-tests
+* Bump user-api to v0.34.11 in stage
+* Patch the kafka secrets to amun-inspection namespace
+* Fix the kafka secrets issue for amun
+* :ship: Deploy the Tag v0.10.0 for integration-tests
+* Revert "Do not send message by default after Amun inspections"
+* :ship: Deploy the Tag v0.10.0 for integration-tests
+* Bump integration tests to v0.10.0
+* :ship: Deploy the Tag v0.52.2 for adviser
+* :ship: Deploy the Tag v0.52.3 for adviser
+* bump adviser to v0.52.3 in all environments
+* Do not send message by default after Amun inspections
+* Bump adviser to v0.52.2 in prod environment
+* :ship: Deploy the Tag v0.52.2 for adviser
+* Fix the image patching of dm
+* Bump adviser to v0.52.2 in stage
+* update prow config.yaml for os-climate repos
+* add os-climate base config/plugins
+* [prow] remove some repos from needs-triage label management
+* Bump up user-api v0.34.10 to fix current openapi issue
+* :ship: Deploy the Tag v0.34.10 for user-api
+* Document where to find container images used by Prow
+* :ship: Deploy the Tag v0.52.1 for adviser
+* Adjust adviser's memory optimizer limit
+* Bump adviser to v0.52.1 in stage environment
+* :ship: Deploy the Tag v0.34.9 for user-api
+* Bump user-api to v0.34.9 in stage environment
+* :ship: Deploy the Tag v0.9.3 for integration-tests
+* Bump integration-tests to v0.9.3 in stage environment
+* Run all the steps in prescriptions-refresh PyPI workflow
+* Adjust adviser's memory optimizer configuration
+* Increase memory for prescriptions-refresh jobs to 1Gi to avoid OOM
+* Increase deadline for prescriptions-refresh jobs
+* :ship: Deploy the Tag v0.6.0 for prescriptions-refresh-job
+* Bump prescriptions-refresh to v0.6.0 in stage
+* :ship: Deploy the Tag v0.52.0 for adviser
+* Increase memory for prescriptions-refresh-pg
+* Increase memory for prescriptions-refresh-pypi
+* Bump adviser to v0.52.0 in stage environment
+* Set up adviser memory optimizer
+* Reduce CPU used by adviser on AWS prod
+* Fix thoth milestones (#2392)
+* Increase memory for prescriptions-refresh jobs
+
 ## Release 2022.02.28 (2022-02-28T18:53:59)
 * :ship: Bump up the images based on the version update v2022.02.28 (#2389)
 * :ship: Deploy the Tag v0.34.8 for user-api
