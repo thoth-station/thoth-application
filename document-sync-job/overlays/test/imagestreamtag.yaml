@@ -1,0 +1,16 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: thoth
+    component: document-sync
+  name: document-sync-job
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/document-sync-job:v0.1.0
+      importPolicy: {}
+      referencePolicy:
+        type: Local

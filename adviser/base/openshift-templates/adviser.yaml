@@ -77,6 +77,9 @@ parameters:
     description: Advise performed with authentication.
     displayName: Authenticated advise
     value: "0"
+  - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
+    description: Is advise being called due to release of specific package
+    displayName: Package update advise
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -90,9 +93,9 @@ objects:
       serviceAccountName: argo
       activeDeadlineSeconds: 3000
       ttlStrategy:
-        secondsAfterCompletion: 1800
-        secondsAfterSuccess: 1800
-        secondsAfterFailure: 1800
+        secondsAfterCompletion: 300
+        secondsAfterSuccess: 300
+        secondsAfterFailure: 300
       entrypoint: adviser
 
       metrics:
@@ -158,6 +161,8 @@ objects:
             value: "${THOTH_FORCE_SYNC}"
           - name: THOTH_AUTHENTICATED_ADVISE
             value: "${THOTH_AUTHENTICATED_ADVISE}"
+          - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
+            value: "${THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE}"
           - name: ceph_bucket_prefix
           - name: ceph_bucket_name
           - name: ceph_host
@@ -168,12 +173,20 @@ objects:
           emptyDir: {}
         - name: output
           emptyDir: {}
+        - name: prescriptions
+          emptyDir: {}
         - name: kafka-secrets
           secret:
             secretName: "kafka"
             items:
               - key: kafka_ca.crt
                 path: kafka_ca.crt
+              - key: kafka_user.crt
+                path: kafka_user.crt
+              - key: kafka_user.key
+                path: kafka_user.key
+              - key: kafka_user.password
+                path: kafka_user.password
         - name: ssh-config
           secret:
             secretName: kebechet
@@ -181,6 +194,12 @@ objects:
               - key: ssh-privatekey
                 path: id_rsa
                 mode: 0600
+        - name: github-app-privatekey
+          secret:
+            secretName: kebechet
+            items:
+            - key: KEBBHUT_GITHUB_PRIVATE_KEY
+              path: github-privatekey
 
       templates:
         - name: "adviser"
@@ -222,6 +241,10 @@ objects:
                       value: "{{workflow.parameters.THOTH_ADVISER_COUNT}}"
                     - name: THOTH_ADVISER_TIMEOUT_SECONDS
                       value: "{{workflow.parameters.THOTH_ADVISER_TIMEOUT_SECONDS}}"
+                    - name: THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE
+                      value: "{{workflow.parameters.THOTH_ADVISER_DEPLOYMENT_PACKAGE_UPDATE}}"
+                    - name: THOTH_AUTHENTICATED_ADVISE
+                      value: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}}"
                     - name: "THOTH_S3_ENDPOINT_URL"
                       value: "{{workflow.parameters.ceph_host}}"
                     - name: "THOTH_CEPH_BUCKET_NAME"
@@ -230,7 +253,6 @@ objects:
                       value: "{{workflow.parameters.ceph_bucket_prefix}}"
                     - name: "THOTH_DEPLOYMENT_NAME"
                       value: "{{workflow.parameters.deployment_name}}"
-
               - name: "parse-adviser-output"
                 dependencies:
                   - "advise"
@@ -294,8 +316,6 @@ objects:
                   parameters:
                     - name: "WORKFLOW_NAME"
                       value: "{{workflow.parameters.THOTH_ADVISER_JOB_ID}}"
-                    - name: "THOTH_DOCUMENT_ID"
-                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
                     - name: "THOTH_ADVISER_METADATA"
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
                 when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"

@@ -1,0 +1,83 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: send-messages
+spec:
+  templates:
+    - name: send-messages
+      resubmitPendingPods: true
+      inputs:
+        parameters:
+          - name: THOTH_MESSAGING_TOPIC_NAME
+            value: ""
+          - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+          - name: THOTH_MESSAGING_MESSAGE_CONTENTS
+            value: ""
+          - name: THOTH_MESSAGING_FROM_FILE
+            value: ""
+          - name: THOTH_DEPLOYMENT_NAME
+            value: ""
+          - name: THOTH_MESSAGING_PARTITIONS
+            value: "1"  # this is the same as having unset so it will use the default
+          - name: THOTH_MESSAGING_REPLICATION
+            value: "1"
+          - name: THOTH_MESSAGING_TOPIC_RETENTION_TIME
+            value: "2160000"
+          - name: MESSAGES_DOCUMENT_NAME
+        artifacts:
+          - name: "messagesdocument"
+            path: "/mnt/workdir/{{inputs.parameters.MESSAGES_DOCUMENT_NAME}}"
+      container:
+        name: send-messages
+        image: messaging:latest
+        env:
+          - name: THOTH_MESSAGING_TOPIC_NAME
+            value: "{{inputs.parameters.THOTH_MESSAGING_TOPIC_NAME}}"
+          - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+            value: "{{inputs.parameters.THOTH_MESSAGING_CREATE_IF_NOT_EXIST}}"
+          - name: THOTH_MESSAGING_MESSAGE_CONTENTS
+            value: "{{inputs.parameters.THOTH_MESSAGING_MESSAGE_CONTENTS}}"
+          - name: THOTH_MESSAGING_PARTITIONS
+            value: "{{inputs.parameters.THOTH_MESSAGING_PARTITIONS}}"
+          - name: THOTH_MESSAGING_FROM_FILE
+            value: "{{inputs.parameters.THOTH_MESSAGING_FROM_FILE}}"
+          - name: THOTH_DEPLOYMENT_NAME
+            value: "{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}"
+          - name: KAFKA_BOOTSTRAP_SERVERS
+            valueFrom:
+              configMapKeyRef:
+                name: kafka
+                key: kafka-bootstrap-servers
+          - name: KAFKA_SECURITY_PROTOCOL
+            valueFrom:
+              configMapKeyRef:
+                key: kafka-protocol
+                name: kafka
+          - name: KAFKA_SSL_CA_LOCATION
+            value: "/mnt/kafka-secrets/kafka_ca.crt"
+          - name: KAFKA_SSL_CERTIFICATE_LOCATION
+            value: "/mnt/kafka-secrets/kafka_user.crt"
+          - name: KAFKA_SSL_KEY_LOCATION
+            value: "/mnt/kafka-secrets/kafka_user.key"
+          - name: KAFKA_SSL_KEY_PASSWORD
+            value: "/mnt/kafka-secrets/kafka_user.password"
+        volumeMounts:
+          - name: kafka-secrets
+            mountPath: /mnt/kafka-secrets
+      ##########################################################################
+      # NOTE: when using this in your workflow be sure to supply secret volume
+      # volumes:
+      #   - name: kafka-secrets
+      #     secret:
+      #       secretName: "kafka"
+      #       items:
+      #         - key: kafka_ca.crt
+      #           path: kafka_ca.crt
+      #         - key: kafka_user.crt
+      #           path: kafka_user.crt
+      #         - key: kafka_user.key
+      #           path: kafka_user.key
+      #         - key: kafka_user.password
+      #           path: kafka_user.password
+      ###########################################################################

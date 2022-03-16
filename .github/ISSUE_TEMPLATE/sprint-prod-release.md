@@ -9,3 +9,9 @@ Hello, Thoth-station!
 
 This Issue would be used for the current sprint cycle production release.
 By the end of the sprint cycle, we will consolidate the information of thoth-station components features upgrade and fixes in this issue.
+
+/kind documentation
+/area release-eng
+/triage accepted
+/milestone 202X.YY.ZZ
+/priority important-soon

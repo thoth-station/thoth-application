@@ -1,0 +1,49 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: workflow-controller-configmap
+data:
+  config: |
+    containerRuntimeExecutor: "k8sapi"
+    namespace: "thoth-middletier-prod"
+    parallelism: 50
+
+    workflowDefaults:
+      spec:
+        ttlStrategy:
+          secondsAfterCompletion: 10
+          secondsAfterSuccess: 10
+          secondsAfterFailure: 10
+      parallelism: 10
+
+    # metricsConfig controls the path and port for prometheus metrics
+    metricsConfig:
+      enabled: true
+      path: /metrics
+      port: 8080
+
+    executor:
+      imagePullPolicy: IfNotPresent
+      resources:
+        requests:
+          cpu: 0.1
+          memory: 64Mi
+        limits:
+          cpu: 0.2
+          memory: 256Mi
+
+    artifactRepository:
+      archiveLogs: false
+
+      s3:
+        bucket: "thoth-store"
+        keyPrefix: "data/aws-prod/argo/artifacts/"
+        endpoint: "s3.amazonaws.com"
+        insecure: true
+        accessKeySecret:
+          name: argo-artifact-repository-secrets
+          key: accessKey
+        secretKeySecret:
+          name: argo-artifact-repository-secrets
+          key: secretKey

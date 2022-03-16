@@ -6,6 +6,8 @@ metadata:
   labels:
     app: thoth
     component: kebechet
+  annotations:
+    operation: kebechet
 spec:
   templates:
     - name: kebechet-run-url
@@ -16,7 +18,7 @@ spec:
         - name: KEBECHET_SERVICE_NAME
         - name: KEBECHET_METADATA
       container:
-        image: kebechet
+        image: kebechet:latest
         env:
           - name: PIPENV_NOSPIN
             value: "1"
@@ -34,6 +36,8 @@ spec:
             value: "{{inputs.parameters.KEBECHET_SERVICE_NAME}}"
           - name: KEBECHET_METADATA
             value: "{{inputs.parameters.KEBECHET_METADATA}}"
+          - name: KEBECHET_GIT_CLONE_DIRECTORY
+            value: "/tmp/clone-dir"
           - name: GITHUB_APP_ID
             valueFrom:
               secretKeyRef:
@@ -66,6 +70,16 @@ spec:
               configMapKeyRef:
                 key: deployment-name
                 name: thoth
+          - name: THOTH_LOGGING_NO_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: logging-no-json
+          - name: THAMOS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: user-api-token
+                name: thoth
         volumeMounts:
           - name: ssh-config
             mountPath: /home/user/.ssh
@@ -73,6 +87,8 @@ spec:
           - name: github-app-privatekey
             mountPath: /home/user/github
             readOnly: true
+          - name: clone-dir
+            mountPath: /tmp/clone-dir
         resources:
           limits:
             cpu: 1

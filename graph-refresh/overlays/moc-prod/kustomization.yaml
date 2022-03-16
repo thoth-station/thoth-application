@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - rolebindings.yaml
+  - thoth-notification.yaml
+images:
+  - name: graph-refresh-job
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-frontend-prod/graph-refresh-job
+    newTag: latest
+patchesStrategicMerge:
+  - cronjob.yaml
+  - imagestreamtag.yaml
+patches:
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      annotationSelector: "operation=chat-notification"
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: graph-refresh-template
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: graph-refresh-config

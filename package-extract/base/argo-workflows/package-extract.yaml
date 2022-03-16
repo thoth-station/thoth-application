@@ -114,14 +114,14 @@ spec:
         resources:
           limits:
             cpu: 1
-            memory: 1Gi
+            memory: 2Gi
           requests:
             cpu: 1
-            memory: 1Gi
+            memory: 2Gi
         livenessProbe:
-          # Give analyzer 30 minutes to compute results, kill it if it was not able result anything.
+          # Give analyzer 60 minutes to compute results, kill it if it was not able result anything.
           tcpSocket:
             port: 80
-          initialDelaySeconds: 1800
+          initialDelaySeconds: 3600
           failureThreshold: 1
           periodSeconds: 10

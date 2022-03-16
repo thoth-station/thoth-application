@@ -21,8 +21,10 @@ spec:
       serviceAccountName: metrics-exporter
       containers:
         - name: metrics-exporter
-          image: metrics-exporter
+          image: metrics-exporter:latest
           env:
+            - name: PORT
+              value: "8080"
             - name: "THOTH_METRICS_EXPORTER_UPDATE_INTERVAL"
               valueFrom:
                 configMapKeyRef:
@@ -93,6 +95,11 @@ spec:
                 configMapKeyRef:
                   key: deployment-name
                   name: thoth
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
             - name: THOTH_S3_ENDPOINT_URL
               valueFrom:
                 configMapKeyRef:
@@ -143,6 +150,11 @@ spec:
                 secretKeyRef:
                   name: postgresql
                   key: database-user
+            - name: GITHUB_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: github-oauth-token
+                  name: kebechet
             - name: KNOWLEDGE_GRAPH_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -197,10 +209,10 @@ spec:
           resources:
             requests:
               memory: "384Mi"
-              cpu: "2"
+              cpu: "100m"
             limits:
               memory: "768Mi"
-              cpu: "2"
+              cpu: "500m"
           readinessProbe:
             httpGet:
               path: "/metrics"

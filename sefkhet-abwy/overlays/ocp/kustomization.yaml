@@ -5,22 +5,23 @@ resources:
   - configmap.yaml
   - ultrahook.yaml
   - thoth-notification.yaml
+images:
+  - name: sefkhet-abwy
+    newName: image-registry.openshift-image-registry.svc:5000/aicoe-prod-bots/sefkhet-abwy
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtag.yaml
 generatorOptions:
   disableNameSuffixHash: true
 generators:
   - ./secret-generator.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
+patches:
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-stage"
     target:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-succeeded-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-failed-
+      annotationSelector: "operation=chat-notification"

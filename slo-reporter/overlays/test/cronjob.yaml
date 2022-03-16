@@ -4,4 +4,4 @@ apiVersion: batch/v1beta1
 metadata:
   name: slo-reporter
 spec:
-  suspend: false
+  suspend: true

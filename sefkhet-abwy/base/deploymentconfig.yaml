@@ -26,6 +26,8 @@ spec:
             - containerPort: 8080
               protocol: TCP
           env:
+            - name: PORT
+              value: "8080"
             - name: GITHUB_SECRET
               valueFrom:
                 secretKeyRef:
@@ -61,6 +63,8 @@ spec:
                   name: sefkhet-abwy
             - name: THOTH_DEPLOYMENT_NAME
               value: aicoe-prod-bots
+            - name: THOTH_LOGGING_NO_JSON
+              value: "0"
             - name: SESHETA_AIOPS_DEVOPS_SPACE
               valueFrom:
                 secretKeyRef:

@@ -4,6 +4,10 @@ resources:
   - ../../base
   - role-binding.yaml
   - thoth-notification.yaml
+images:
+  - name: management-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/management-api
+    newTag: latest
 generatorOptions:
   disableNameSuffixHash: true
 generators:
@@ -18,16 +22,3 @@ patches:
       version: v1
       kind: DeploymentConfig
       name: management-api
-patchesJson6902:
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-succeeded-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-failed-

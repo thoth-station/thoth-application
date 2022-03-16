@@ -1,28 +1,11 @@
 ---
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: prow-controller-manager
-spec:
-  lookupPolicy:
-    local: true
-  tags:
-    - annotations: null
-      name: latest
-      from:
-        kind: DockerImage
-        name: gcr.io/k8s-prow/prow-controller-manager:v20210121-548289bef2
-      importPolicy: {}
-      referencePolicy:
-        type: Local
----
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: prow-controller-manager
 ---
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: prow-controller-manager
 rules:
@@ -79,7 +62,7 @@ rules:
       - patch
 ---
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: prow-controller-manager
 roleRef:
@@ -117,6 +100,9 @@ spec:
             - --github-endpoint=https://api.github.com
             - --enable-controller=plank
           image: prow-controller-manager:latest
+          ports:
+            - name: metrics
+              containerPort: 9090
           volumeMounts:
             - name: config
               mountPath: /etc/config
@@ -135,3 +121,17 @@ spec:
         - name: github-token
           secret:
             secretName: github-token
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prow-controller-manager
+  name: prow-controller-manager
+spec:
+  ports:
+    - name: metrics
+      port: 9090
+      protocol: TCP
+  selector:
+    app: prow-controller-manager

@@ -20,6 +20,8 @@ spec:
         - name: build-watcher
           image: build-watcher
           env:
+            - name: PORT
+              value: "8080"
             - name: KUBERNETES_API_URL
               value: 'https://kubernetes.default.svc.cluster.local'
             - name: KUBERNETES_VERIFY_TLS
@@ -137,6 +139,11 @@ spec:
                 configMapKeyRef:
                   key: thoth-deployment-name
                   name: build-watcher
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
             - name: PROMETHEUS_PUSHGATEWAY_HOST
               valueFrom:
                 configMapKeyRef:

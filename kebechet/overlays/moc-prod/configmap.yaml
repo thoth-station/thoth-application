@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+data:
+  deployment-name: "smaug-prod"
+  verbose: "1"
+kind: ConfigMap
+metadata:
+  name: kebechet

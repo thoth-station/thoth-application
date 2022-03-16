@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - pcache.yaml
+images:
+  - name: triage-party
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-bots-prod/triage-party
+    newTag: latest
+patchesStrategicMerge:
+  - imagestreamtags.yaml
+  - route.yaml
+configMapGenerator:
+  - name: triage-party-config
+    files:
+      - config.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+generators:
+  - secret-generator.yaml

@@ -20,9 +20,11 @@ spec:
     spec:
       serviceAccountName: investigator
       containers:
-        - image: investigator
+        - image: investigator:latest
           name: investigator-consumer
           env:
+            - name: PORT
+              value: "8080"
             - name: SUBCOMMAND
               value: "consumer"
             - name: DEBUG_LEVEL
@@ -108,6 +110,11 @@ spec:
                 configMapKeyRef:
                   key: deployment-name
                   name: thoth
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
             - name: KUBERNETES_API_URL
               value: "https://kubernetes.default.svc.cluster.local"
             - name: KUBERNETES_VERIFY_TLS

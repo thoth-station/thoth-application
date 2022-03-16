@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: parse-provenance-checker-output
+  annotations:
+    operation: workflow-helpers
 spec:
   templates:
     - name: parse-provenance-checker-output
@@ -19,7 +21,7 @@ spec:
             path: "/mnt/workdir/messages_to_be_sent.json"
       container:
         name: parse-provenance-checker-output
-        image: workflow-helpers
+        image: workflow-helpers:latest
         env:
           - name: THOTH_WORKFLOW_TASK
             value: "parse_provenance_checker_output"

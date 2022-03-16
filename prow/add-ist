@@ -50,7 +50,7 @@ def add_tag(imagestream: dict, tag_name: str) -> None:
             "annotations": None,
             "name": tag_name,
             "from": {
-                "kind": "ImageStreamTag",
+                "kind": "DockerImage",
                 "name": f"gcr.io/k8s-prow/{image_name}:{tag_name}",
             },
         }
@@ -58,11 +58,11 @@ def add_tag(imagestream: dict, tag_name: str) -> None:
 
 
 stream = None
-with open("overlays/cnv-prod/imagestreamtags.yaml") as ist:
+with open("overlays/smaug/imagestreamtags.yaml") as ist:
     stream = load_all(ist.read(), Loader=Loader)
 
 updated_imagestream_tags = []
-current_tag = "v20210412-f0c722e283"
+current_tag = "v20211027-fe152eb205"
 
 for data in stream:
     logging.info(f"updating ImageStream '{data['metadata']['name']}'")
@@ -71,5 +71,5 @@ for data in stream:
 
     updated_imagestream_tags.append(data)
 
-with open("overlays/cnv-prod/imagestreamtags.yaml.new", "w") as ist:
+with open("overlays/smaug/imagestreamtags.yaml.new", "w") as ist:
     ist.write(dump_all(updated_imagestream_tags, Dumper=Dumper, sort_keys=True))

@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/solver-rhel-8-py36:v1.9.0
+        name: quay.io/thoth-station/solver-rhel-8-py36:v1.11.1
       importPolicy: {}
       referencePolicy:
         type: Source
@@ -21,7 +21,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/solver-rhel-8-py38:v1.9.0
+        name: quay.io/thoth-station/solver-rhel-8-py38:v1.11.1
       importPolicy: {}
       referencePolicy:
         type: Source
@@ -29,13 +29,13 @@ spec:
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: solver-fedora-32-py38
+  name: solver-fedora-34-py39
 spec:
   tags:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/solver-fedora-32-py38:v1.9.0
+        name: quay.io/thoth-station/solver-fedora-34-py39:v1.11.1
       importPolicy: {}
       referencePolicy:
         type: Source

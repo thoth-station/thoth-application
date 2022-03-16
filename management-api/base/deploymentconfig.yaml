@@ -21,8 +21,10 @@ spec:
       serviceAccountName: management-api
       containers:
         - name: management-api-openapi
-          image: management-api
+          image: management-api:latest
           env:
+            - name: PORT
+              value: "8080"
             - name: APP_MODULE
               value: "thoth.management_api.openapi_server:app"
             - name: KUBERNETES_API_URL
@@ -78,6 +80,11 @@ spec:
                 configMapKeyRef:
                   key: deployment-name
                   name: thoth
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
             - name: THOTH_S3_ENDPOINT_URL
               valueFrom:
                 configMapKeyRef:

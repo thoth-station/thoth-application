@@ -51,9 +51,9 @@ objects:
       serviceAccountName: argo
       activeDeadlineSeconds: 3000
       ttlStrategy:
-        secondsAfterCompletion: 900
-        secondsAfterSuccess: 900
-        secondsAfterFailure: 900
+        secondsAfterCompletion: 10
+        secondsAfterSuccess: 10
+        secondsAfterFailure: 120
       entrypoint: kebechet-administrator
 
       metrics:
@@ -110,6 +110,12 @@ objects:
             items:
               - key: kafka_ca.crt
                 path: kafka_ca.crt
+              - key: kafka_user.crt
+                path: kafka_user.crt
+              - key: kafka_user.key
+                path: kafka_user.key
+              - key: kafka_user.password
+                path: kafka_user.password
       templates:
         - name: "kebechet-administrator"
           archiveLocation:

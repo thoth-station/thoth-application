@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: argo
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: argo-server
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argo-binding-to-argo-ui
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo-ui
+subjects:
+  - kind: ServiceAccount
+    name: argo
+    namespace: thoth-backend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argo-binding-to-argo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo
+subjects:
+  - kind: ServiceAccount
+    name: argo
+    namespace: thoth-backend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argo-server-binding-to-argo-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo-admin
+subjects:
+  - kind: ServiceAccount
+    name: argo-server
+    namespace: thoth-backend-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argo-server-binding-to-argo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argo
+subjects:
+  - kind: ServiceAccount
+    name: argo-server
+    namespace: thoth-backend-prod

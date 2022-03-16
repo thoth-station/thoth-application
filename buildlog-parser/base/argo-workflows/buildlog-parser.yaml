@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: parse-buildlog
+  annotations:
+    operation: buildlog-parser
 spec:
   templates:
     - name: parse-buildlog
@@ -118,6 +120,11 @@ spec:
               configMapKeyRef:
                 name: thoth
                 key: deployment-name
+          - name: THOTH_LOGGING_NO_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: logging-no-json
           - name: SENTRY_DSN
             valueFrom:
               secretKeyRef:

@@ -4,7 +4,7 @@ metadata:
   name: thoth
 spec:
   kafka:
-    version: "2.5.0"
+    version: "2.6.0"
     replicas: 2
     listeners:
       plain: {}

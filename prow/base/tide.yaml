@@ -5,7 +5,7 @@ metadata:
   name: "tide"
 ---
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: "tide"
 rules:
@@ -20,7 +20,7 @@ rules:
       - watch
 ---
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: "tide"
 roleRef:
@@ -61,11 +61,13 @@ spec:
             - --github-endpoint=https://api.github.com
             - --github-graphql-endpoint=http://ghproxy/graphql
             - --s3-credentials-file=/etc/s3-credentials/service-account.json
-            - --status-path=s3://ci-prow-artifacts--024cd900-706c-488d-afb0-d28522131f45/tide/tide-status
-            - --history-uri=s3://ci-prow-artifacts--024cd900-706c-488d-afb0-d28522131f45/tide/tide-history.json
+            - --status-path=s3://ci-prow/tide/tide-status
+            - --history-uri=s3://ci-prow/tide/tide-history.json
           ports:
-            - name: http
+            - name: main
               containerPort: 8888
+            - name: metrics
+              containerPort: 9090
           volumeMounts:
             - name: oauth-token
               mountPath: /etc/github
@@ -79,10 +81,10 @@ spec:
           resources:
             requests:
               memory: "1Gi"
-              cpu: "175m"
+              cpu: "250m"
             limits:
               memory: "1Gi"
-              cpu: "175m"
+              cpu: "250m"
       volumes:
         - name: oauth-token
           secret:
@@ -93,3 +95,20 @@ spec:
         - name: s3-credentials
           secret:
             secretName: s3-credentials
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tide
+spec:
+  selector:
+    app: tide
+  ports:
+    - name: main
+      port: 80
+      targetPort: 8888
+      protocol: TCP
+    - name: metrics
+      port: 9090
+      protocol: TCP
+  type: ClusterIP

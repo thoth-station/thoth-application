@@ -22,11 +22,11 @@ spec:
               name: nepthys
               resources:
                 limits:
-                  cpu: 1
-                  memory: 2Gi
+                  cpu: 2
+                  memory: 1.5Gi
                 requests:
-                  cpu: 1
-                  memory: 2Gi
+                  cpu: 2
+                  memory: 1.5Gi
               livenessProbe:
                 failureThreshold: 1
                 # Give this job 30 minutes to finish.
@@ -46,6 +46,12 @@ spec:
                   value: "1"
                 - name: PIPENV_HIDE_EMOJIS
                   value: "1"
+                - name: THOTH_BACKEND_NAMESPACE
+                  value: "thoth-backend-stage"
+                - name: THOTH_MIDDLETIER_NAMESPACE
+                  value: "thoth-middletier-stage"
+                - name: THOTH_DEPLOYMENT_NAME
+                  value: "ocp4-stage"
                 - name: GITHUB_TOKEN
                   valueFrom:
                     secretKeyRef:

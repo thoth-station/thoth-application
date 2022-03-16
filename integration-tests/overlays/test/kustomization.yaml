@@ -3,22 +3,13 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: integration-tests
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/integration-tests
+    newTag: latest
 patchesStrategicMerge:
   - configmap.yaml
   - cronjob.yaml
   - imagestreamtag.yaml
 generators:
   - ./secret-generator.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-succeeded-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-failed-

@@ -5,6 +5,7 @@ metadata:
   name: thoth
 data:
   applicationName: "thoth"
+  fork-namespace: "srcsops"
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -32,4 +33,6 @@ metadata:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: qeb-hwt-workflow
+  name: pulp-pypi
+data:
+  host: pulp.operate-first.cloud

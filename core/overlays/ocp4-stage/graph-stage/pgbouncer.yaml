@@ -37,7 +37,7 @@ spec:
             - name: POSTGRES_SERVICE_HOST
               value: postgresql
           image: >-
-            quay.io/openshiftio/bayesian-coreapi-pgbouncer@sha256:b298f2fdfdcba895f615f1461163594d7f03a91bd87f5974978f62c561a4ba73
+            quay.io/openshiftio/bayesian-coreapi-pgbouncer:latest
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3

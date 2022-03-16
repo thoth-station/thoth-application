@@ -27,9 +27,11 @@ spec:
       serviceAccountName: user-api
       containers:
         - name: user-api
-          image: user-api
+          image: user-api:latest
           imagePullPolicy: Always
           env:
+            - name: PORT
+              value: "8080"
             - name: APP_MODULE
               value: "thoth.user_api.openapi_server:app"
             - name: APP_CONFIG
@@ -89,6 +91,11 @@ spec:
                 configMapKeyRef:
                   key: deployment-name
                   name: thoth
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
             - name: THOTH_S3_ENDPOINT_URL
               valueFrom:
                 configMapKeyRef:

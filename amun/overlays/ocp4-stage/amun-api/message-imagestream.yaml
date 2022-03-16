@@ -10,7 +10,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/workflow-helpers:v0.8.1
+      name: quay.io/thoth-station/workflow-helpers:v0.8.3
     importPolicy: {}
     referencePolicy:
       type: Local
@@ -26,7 +26,7 @@ spec:
   - name: latest
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/messaging:v0.14.1
+      name: quay.io/thoth-station/messaging:v0.14.2
     importPolicy: {}
     referencePolicy:
       type: Local

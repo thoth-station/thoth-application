@@ -1,0 +1,13 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: sefkhet-abwy-chatbot-route53
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    haproxy.router.openshift.io/timeout: 45s
+spec:
+  host: sefkhet-abwy-chatbot.thoth-station.ninja
+  to:
+    kind: Service
+    name: sefkhet-abwy-chatbot
+    weight: 100

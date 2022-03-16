@@ -104,6 +104,8 @@ objects:
             items:
             - key: KEBBHUT_GITHUB_PRIVATE_KEY
               path: github-privatekey
+        - name: clone-dir
+          emptyDir: {}
 
       templates:
         - name: "kebechet-run-url"

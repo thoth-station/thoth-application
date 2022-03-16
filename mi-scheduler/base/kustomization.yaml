@@ -6,10 +6,11 @@ commonLabels:
   app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
   - argo-workflows/mi-workflow-template.yaml
+  - argo-workflows/mi-merge-workflow.yaml
+  - openshift-templates/mi-merge-template.yaml
   - openshift-templates/mi-run-template.yaml
   - configmaps.yaml
   - cronjob.yaml
   - imagestream.yaml
   - role.yaml
-  - role_binding.yaml
   - serviceaccount.yaml

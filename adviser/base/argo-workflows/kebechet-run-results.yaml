@@ -6,6 +6,37 @@ metadata:
 spec:
   templates:
     - name: schedule-kebechet
+      metrics:
+        prometheus:
+          - name: task_status_counter
+            help: "Count of workflow task by status"
+            labels:
+              - key: name
+                value: kebechet-run-results
+              - key: status
+                value: "{{status}}"
+            counter:
+              value: "1"
+
+          - name: task_duration_seconds_histogram
+            help: "Duration of workflow task when succeded"
+            when: "{{status}} == Succeeded"
+            labels:
+              - key: name
+                value: kebechet-run-results
+            histogram:
+              buckets:
+                - 5
+                - 10
+                - 30
+                - 60
+                - 120
+                - 180
+                - 300
+                - 600
+                - 900
+              value: "{{duration}}"
+
       resubmitPendingPods: true
       inputs:
         parameters:
@@ -15,10 +46,13 @@ spec:
           - name: "metadata_origin"
           - name: "git_service"
       container:
-        image: kebechet
+        image: kebechet:latest
         volumeMounts:
           - name: ssh-config
             mountPath: /home/user/.ssh
+            readOnly: true
+          - name: github-app-privatekey
+            mountPath: /home/user/github
             readOnly: true
         env:
           - name: PIPENV_NOSPIN
@@ -35,6 +69,13 @@ spec:
             value: "{{inputs.parameters.git_service}}"
           - name: KEBECHET_ANALYSIS_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: GITHUB_APP_ID
+            valueFrom:
+              secretKeyRef:
+                key: GITHUB_APP_ID
+                name: kebechet
+          - name: GITHUB_PRIVATE_KEY_PATH
+            value: "/home/user/github/github-privatekey"
           - name: GITHUB_KEBECHET_TOKEN
             valueFrom:
               secretKeyRef:
@@ -60,6 +101,11 @@ spec:
               configMapKeyRef:
                 key: deployment-name
                 name: thoth
+          - name: THOTH_LOGGING_NO_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: logging-no-json
         resources:
           limits:
             cpu: "0.75"

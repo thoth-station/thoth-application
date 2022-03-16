@@ -73,3 +73,13 @@ For encrypting the secrets, the contributor can do the following:
 - How do we know Thoth component application is deployed in cluster and running ?
 
   Members of the aicoe-thoth-devops groups have access to the Agro CD application to view and verify that. Contact them.
+
+## Monitoring
+
+-  In the Openshift-Monitoring namepsace, ensure that you have enabled `enableUserWorkload` in the cluster-monitoring-config configmap. This allows OpenShift-Monitoring to pull metrics exposed from other namespaces.
+- After this, create or verify service monitors for any namespace in which you want to gather metrics. The service monitor allows you to create or modify additional labels. See [an example](https://github.com/thoth-station/thoth-application/blob/master/core/overlays/moc-prod/graph-prod/service-monitor.yaml) for thoth-graph-prod in Smaug.
+- At this point, by opening the monitoring tab in Openshift, you should be able to see any Prometheus metric labels that you have modified.
+- Add any additional alerts desired in the [alerting rules](https://github.com/thoth-station/thoth-application/blob/master/monitoring/overlays/moc-prod/alerting-rules.yaml) in your overlay of choice. This is an example of Smaug's alerting rules for the Thoth-application.
+- Update the [alertmanager-main-secret](cluster-scope/overlays/prod/common/alertmanager-main-secret.yaml) to ensure the that your alerts gets routed to the correct receiver.
+- If you want to pull metrics from another cluster, add or modify the [grafanadatasource](https://github.com/operate-first/apps/blob/master/grafana/overlays/moc/smaug/grafanadatasource.enc.yaml), similar to the example shown here for Smaug. The datasource file should be created in the overlay for the destination cluster.
+- Modify any [grafana dashboards](https://github.com/thoth-station/thoth-application/tree/43eac0d8c5200cdfa285d27a7410d120deab9cce/grafana-dashboard/overlays/moc-prod) of choice to include your new metric, label or datasource.

@@ -6,6 +6,8 @@ metadata:
   labels:
     app: thoth
     component: provenance-check
+  annotations:
+    operation: adviser
 spec:
   templates:
     - name: provenance-check
@@ -60,7 +62,7 @@ spec:
                 key: secretKey
       container:
         name: provenance-check
-        image: adviser
+        image: adviser:latest
         env:
           - name: THOTH_PROVENANCE_CHECKER_JOB_ID
             value: "{{inputs.parameters.THOTH_PROVENANCE_CHECKER_JOB_ID}}"
@@ -98,6 +100,11 @@ spec:
               configMapKeyRef:
                 name: thoth
                 key: storage-bucket-name
+          - name: THOTH_LOGGING_NO_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: thoth
+                key: logging-no-json
           - name: SENTRY_DSN
             valueFrom:
               secretKeyRef:

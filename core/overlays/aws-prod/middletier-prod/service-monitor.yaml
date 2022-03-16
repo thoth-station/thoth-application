@@ -1,0 +1,26 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: thoth-station-middletier-monitor
+  labels:
+    monitor-component: thoth-station
+spec:
+  endpoints:
+    - interval: 15s
+      port: metrics
+      scheme: http
+      relabelings:
+        - sourceLabels: [service]
+          regex: "argo-server"
+          action: replace
+          targetLabel: field
+          replacement: argo-ui-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud
+        - sourceLabels: [service]
+          regex: "workflow-controller-metrics"
+          action: replace
+          targetLabel: field
+          replacement: workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud
+  namespaceSelector:
+    matchNames:
+      - thoth-middletier-prod
+  selector: {}

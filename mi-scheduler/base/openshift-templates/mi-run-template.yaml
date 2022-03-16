@@ -13,7 +13,6 @@ parameters:
     displayName: Create Data flag
 
   - name: REPOSITORY
-    required: true
     description: GitHub repository whose Health Indicator will be computed
     displayName: inspected GitHub repository
 
@@ -34,11 +33,19 @@ parameters:
     displayName: mi log level
     description: Log level of mi
     required: true
-    value: 'srcopsmetrics:INFO'
+    value: 'thoth.mi-scheduler:INFO'
 
   - name: MI_THOTH
     displayName: mi cli kebechet inspection flag
     description: Kebechet inspection flag
+
+  - name: MI_MERGE
+    displayName: mi cli aggregated data merge flag
+    description: MI Merge data flag
+
+  - name: MI_MERGE_PATH
+    displayName: Merge path where computed statistics will be stored
+    description: Statistics path
 
 objects:
   - apiVersion: argoproj.io/v1alpha1
@@ -50,7 +57,7 @@ objects:
     spec:
       serviceAccountName: argo
       entrypoint: mi
-      activeDeadlineSeconds: 3000
+      activeDeadlineSeconds: 12000
       ttlStrategy:
         secondsAfterCompletion: 10
         secondsAfterSuccess: 10
@@ -68,6 +75,10 @@ objects:
             value: ${THOTH_ADJUST_LOGGING}
           - name: MI_THOTH
             value: ${MI_THOTH}
+          - name: MI_MERGE
+            value: ${MI_MERGE}
+          - name: MI_MERGE_PATH
+            value: ${MI_MERGE_PATH}
 
       templates:
         - name: "mi"
@@ -91,3 +102,7 @@ objects:
                       value: ${THOTH_ADJUST_LOGGING}
                     - name: MI_THOTH
                       value: ${MI_THOTH}
+                    - name: MI_MERGE
+                      value: ${MI_MERGE}
+                    - name: MI_MERGE_PATH
+                      value: ${MI_MERGE_PATH}

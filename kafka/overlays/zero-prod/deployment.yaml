@@ -19,7 +19,7 @@ spec:
           imagePullPolicy: Always
           env:
           - name: KAFKA_BROKERCONNECT
-            value: odh-message-bus-kafka-bootstrap-opf-kafka.apps.zero.massopen.cloud:443
+            value: odh-message-bus-kafka-bootstrap-opf-kafka.apps.smaug.na.operate-first.cloud:443
           - name: KAFKA_TRUSTSTORE_FILE
             value: "/mnt/secrets/truststore.jks"
           - name: KAFKA_KEYSTORE_FILE

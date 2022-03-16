@@ -23,6 +23,8 @@ spec:
         - image: investigator
           name: message-metrics
           env:
+            - name: PORT
+              value: "8080"
             - name: SUBCOMMAND
               value: "consumer"
             - name: DEBUG_LEVEL
@@ -75,11 +77,36 @@ spec:
                 secretKeyRef:
                   name: postgresql
                   key: database-name
+            - name: THOTH_FRONTEND_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: frontend-namespace
+                  name: thoth
+            - name: THOTH_MIDDLETIER_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: middletier-namespace
+                  name: thoth
+            - name: THOTH_INFRA_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: infra-namespace
+                  name: thoth
+            - name: THOTH_BACKEND_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  key: backend-namespace
+                  name: thoth
             - name: THOTH_DEPLOYMENT_NAME
               valueFrom:
                 configMapKeyRef:
                   key: deployment-name
                   name: thoth
+            - name: THOTH_LOGGING_NO_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: thoth
+                  key: logging-no-json
             - name: KUBERNETES_API_URL
               value: "https://kubernetes.default.svc.cluster.local"
             - name: KUBERNETES_VERIFY_TLS

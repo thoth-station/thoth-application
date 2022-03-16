@@ -8,19 +8,13 @@ resources:
 patchesStrategicMerge:
   - configmap.yaml
   - imagestreamtag.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
+patches:
+  - path: put-into-infra-namespace.yaml
     target:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-succeeded-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-failed-
+      annotationSelector: "operation=chat-notification"
   - path: put-into-infra-namespace.yaml
     target:
       group: template.openshift.io
@@ -33,6 +27,30 @@ patchesJson6902:
       version: v1
       kind: Template
       name: kebechet-run-url
+  - path: put-into-infra-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: kebechet-administrator
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/workflow-helpers:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=workflow-helpers"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-backend-stage/kebechet:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=kebechet"
 generatorOptions:
   disableNameSuffixHash: true
 generators:

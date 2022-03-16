@@ -1,0 +1,11 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: graph-backup
+  labels:
+    app: thoth
+    component: graph-backup
+spec:
+  schedule: "@weekly"
+  suspend: false

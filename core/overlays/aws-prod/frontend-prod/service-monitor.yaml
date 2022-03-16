@@ -1,0 +1,26 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: thoth-station-frontend-monitor
+  labels:
+    monitor-component: thoth-station
+spec:
+  endpoints:
+    - interval: 15s
+      port: metrics
+      scheme: http
+      relabelings:
+        - sourceLabels: [service]
+          regex: "user-api"
+          action: replace
+          targetLabel: field
+          replacement: user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud
+        - sourceLabels: [service]
+          regex: "management-api"
+          action: replace
+          targetLabel: field
+          replacement: management-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud
+  namespaceSelector:
+    matchNames:
+      - thoth-frontend-prod
+  selector: {}

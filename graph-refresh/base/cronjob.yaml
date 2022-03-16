@@ -66,6 +66,11 @@ spec:
                     configMapKeyRef:
                       key: deployment-name
                       name: thoth
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
                 - name: RSYSLOG_HOST
                   valueFrom:
                     configMapKeyRef:
@@ -123,7 +128,7 @@ spec:
                   cpu: "500m"
               livenessProbe:
                 failureThreshold: 1
-                initialDelaySeconds: 1800
+                initialDelaySeconds: 14400
                 periodSeconds: 10
                 tcpSocket:
                   port: 80

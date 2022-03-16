@@ -29,6 +29,7 @@ objects:
         component: graph-schema-update-job
         mark: cleanup
     spec:
+      activeDeadlineSeconds: 7200
       backoffLimit: 7
       template:
         metadata:
@@ -48,6 +49,11 @@ objects:
                     configMapKeyRef:
                       key: deployment-name
                       name: thoth
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
                 - name: PROMETHEUS_PUSHGATEWAY_URL
                   valueFrom:
                     configMapKeyRef:
@@ -105,8 +111,8 @@ objects:
               resources:
                 requests:
                   memory: "256Mi"
-                  cpu: "1"
+                  cpu: "100m"
                 limits:
                   memory: "512Mi"
-                  cpu: "1"
+                  cpu: "200m"
           restartPolicy: OnFailure

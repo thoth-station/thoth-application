@@ -8,21 +8,58 @@ resources:
   - thoth-notification.yaml
 generators:
   - ./secret-generator.yaml
+images:
+  - name: amun-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/amun-api
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtag.yaml
   - openshift-templates/inspection-workflow.yaml
   - openshift-templates/inspection-with-cpu-workflow.yaml
   - deploymentconfig.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/workflow-helpers:latest
     target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-succeeded-
-  - path: job-generate-name.yaml
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=workflow-helpers"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/messaging:latest
     target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-failed-
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=messaging"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/1/script/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/kubectl:latest
+      - op: replace
+        path: /spec/templates/5/script/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/kubectl:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=inspection-build"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/1/initContainers/0/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/amun-inspect-hwinfo:latest
+      - op: replace
+        path: /spec/templates/1/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/{{inputs.parameters.inspection-id}}:latest
+      - op: replace
+        path: /spec/templates/2/script/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-test-core/kubectl:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=inspection-run"

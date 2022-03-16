@@ -1,0 +1,31 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: thoth-station-infra-monitor
+  labels:
+    monitor-component: thoth-station
+spec:
+  endpoints:
+    - interval: 30s
+      port: metrics
+      scheme: http
+      relabelings:
+        - sourceLabels: [service]
+          regex: "metrics-exporter"
+          action: replace
+          targetLabel: field
+          replacement: metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud
+        - sourceLabels: [service]
+          regex: "investigator-faust-web"
+          action: replace
+          targetLabel: field
+          replacement: investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud
+        - sourceLabels: [service]
+          regex: "investigator-message-metrics"
+          action: replace
+          targetLabel: field
+          replacement: investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud
+  namespaceSelector:
+    matchNames:
+      - thoth-infra-prod
+  selector: {}

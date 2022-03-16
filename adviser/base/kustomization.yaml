@@ -16,3 +16,4 @@ resources:
   - openshift-templates/dependency-monkey.yaml
   - openshift-templates/provenance-checker.yaml
   - imagestream.yaml
+  - configmap.yaml

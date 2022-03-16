@@ -3,6 +3,10 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+images:
+  - name: metrics-exporter
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-test-core/metrics-exporter
+    newTag: latest
 patchesStrategicMerge:
   - imagestreamtag.yaml
 patches:
@@ -12,16 +16,3 @@ patches:
       version: v1
       kind: DeploymentConfig
       name: metrics-exporter
-patchesJson6902:
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-success-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-fail-

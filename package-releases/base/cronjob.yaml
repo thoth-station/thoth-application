@@ -8,19 +8,21 @@ metadata:
     component: package-releases
 spec:
   schedule: "0 */12 * * *"
-  suspend: true
+  suspend: false
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
   startingDeadlineSeconds: null
   failedJobsHistoryLimit: 4
   jobTemplate:
     spec:
+      activeDeadlineSeconds: 14400
       template:
         metadata:
           labels:
             app: thoth
             component: package-releases
         spec:
+          activeDeadlineSeconds: 14400
           containers:
             - image: "package-releases-job"
               name: package-releases
@@ -41,11 +43,6 @@ spec:
                       name: kafka
                 - name: KAFKA_SSL_CA_LOCATION
                   value: "/mnt/secrets/kafka_ca.crt"
-                - name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
-                  valueFrom:
-                    configMapKeyRef:
-                      key: package-releases-only-if-package-seen
-                      name: thoth
                 - name: RSYSLOG_HOST
                   valueFrom:
                     configMapKeyRef:
@@ -66,6 +63,11 @@ spec:
                     configMapKeyRef:
                       key: deployment-name
                       name: thoth
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
                 - name: KNOWLEDGE_GRAPH_HOST
                   valueFrom:
                     configMapKeyRef:
@@ -102,14 +104,14 @@ spec:
               resources:
                 requests:
                   memory: "256Mi"
-                  cpu: "500m"
+                  cpu: "1"
                 limits:
                   memory: "512Mi"
-                  cpu: "500m"
+                  cpu: "1"
               livenessProbe:
                 failureThreshold: 1
-                # Give this job 2 hours to finish
-                initialDelaySeconds: 7200
+                # Give this job 4 hours to finish
+                initialDelaySeconds: 14400
                 periodSeconds: 10
                 tcpSocket:
                   port: 80

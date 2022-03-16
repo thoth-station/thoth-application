@@ -104,7 +104,7 @@ spec:
             - --configmap
             - workflow-controller-configmap
             - --executor-image
-            - argoexec:latest
+            - quay.io/argoproj/argoexec:v2.12.5
             - --namespaced
           command:
             - workflow-controller

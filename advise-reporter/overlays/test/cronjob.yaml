@@ -14,7 +14,7 @@ spec:
       template:
         spec:
           containers:
-            - image: advise-reporter
+            - image: advise-reporter:latest
               name: advise-reporter-producer
               env:
                 - name: SUBCOMMAND
@@ -60,6 +60,11 @@ spec:
                     configMapKeyRef:
                       key: deployment-name
                       name: thoth
+                - name: THOTH_LOGGING_NO_JSON
+                  valueFrom:
+                    configMapKeyRef:
+                      name: thoth
+                      key: logging-no-json
                 - name: KNOWLEDGE_GRAPH_HOST
                   valueFrom:
                     configMapKeyRef:

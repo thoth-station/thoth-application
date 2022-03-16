@@ -1,0 +1,10 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: adviser
+data:
+  validate-prescription-schema: "0"
+  validate-unit-configuration-schema: "0"
+  blocked-units: "SecurityIndicatorStep,ThothS2IAbiCompatibilitySieve"
+  search-url: "https://thoth-station.ninja/search/{document_id}/summary"

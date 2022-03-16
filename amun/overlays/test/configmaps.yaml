@@ -8,6 +8,7 @@ data:
   deployment-name: ocp-test
   infra-namespace: thoth-test-core
   inspection-namespace: thoth-test-core
+  logging-no-json: "0"
   artifactRepository: |-
     archiveLogs: false
     s3:

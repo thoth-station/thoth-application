@@ -1,21 +1,83 @@
 # Secret Management
 
 This chapter describes how to manage secrets for Thoth deployments. As we migrate to ArgoCD/kustomize, we not only
-use `gopass` and `ansible-vault` but also `sops`. The thoth-ops container image v0.17.0 does include `sops`.
+use `gopass` and `ansible-vault` but also `sops`. The Thoth-ops container image v0.17.0 does include `sops`.
 
 ## GnuPG Keys
 
-GnuPG Keys of each DevOps and Ops engineer should be uploaded to `hkps://keys.openpgp.org`, so that they are
-accessible to all DevOps and Ops.
+### Installing the GnuPG Binary
+
+To begin, you need to create or have a GPG key.
+
+If you don't have one, we can generate them from the GnuPG command-line tools. If you are running Linux, these tools are probably already installed on your system. You can also install the GPG command line tools from source available on the [GnuPG website](https://www.gnupg.org/download/).
+
+- Download source corresponding to your computer's Operating system and install it. The best practice is to validate the installation against the signature available next to the link where you downloaded the source, to validate that the package you installed was what it claims to be.
+- Follow the documentation available [here](https://www.gnupg.org/documentation/index.html) to proceed with installation, however, if you are on a Linux system, you can simply build the binary from the make file. More information is also available in the [README](https://github.com/gpg/gnupg/blob/master/README).
+
+### Generating a key
+
+Now that we have installed the binary correctly, we need to generate a key pair to use. Formal documentation on this is available [here](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key). For Operate First, we use 4096-bit RSA keys. To generate a new key pair:
+
+- Enter `gpg --full-generate-key` to begin generating your key.
+- When prompted for the kind of key you want, select the first option (1) RSA and RSA
+- Set your key-size to 4096 bits.
+- Enter the length of time the key should be valid. Typically you will choose 0 ("key does not expire"); see [here][so14718] for some thoughts on the utility of key expiration.
+- Enter the name and email address you want the key to be associated with (when you are prompted for a comment you can just press return).
+- Enter a secure passphrase when prompted
+
+[so14718]: https://security.stackexchange.com/questions/14718/does-openpgp-key-expiration-add-to-security
+
+### Uploading keys
+
+The GnuPG Keys of each DevOps and Ops engineer should be uploaded to <https://keys.openpgp.org> or to <https://keyserver.ubuntu.com/>, so that they are accessible to all DevOps and Ops.
+
+- To do this we need the hash of the key you would like to add. You can view your keys and their respective hashes with the `gpg --list-secret-keys --keyid-format=long` command. You will see keys listed like this:
+
+  ```
+  sec   rsa4096/00B2023BDDDD34F0 2022-01-27 [SC]
+        15B470DE20C4E85FA87AB4A800B2023BDDDD34F0
+  uid                 [ultimate] Test User <test@example.com>
+  ssb   rsa4096/BCDC2530050F7D89 2022-01-27 [E]
+  ```
+
+- Navigate to the one associated with the correct email, and copy the hash number; it will be a 16 character Alpha-numeric string located following the type of encryption used for the key. In the above example, the key hash is `00B2023BDDDD34F0`, which comes from this line:
+
+  ```
+  sec   rsa4096/00B2023BDDDD34F0 2022-01-27 [SC]
+  ```
+
+- Export the associated key in ASCII format by running:
+
+  ```
+  gpg --armor --export <key_hash> | tee  exported.asc
+  ```
+
+  This will output the key on your terminal and save the key to the file `exported.asc`.
+
+- Now navigate to either of the two websites listed at the beginning of this paragraph and upload your key:
+
+  - For <https://keys.openpgp.org>, go to <https://keys.openpgp.org/upload>, select the file in which you saved key, and click "Upload".
+
+  - For <https://keyserver.ubuntu.com/>, click "Submit Key" and then paste your key into the popup.
 
 ## Storage location of encrypted secrets
 
-For ArgoCD applications, secret information shall be stored within the corresponding application configuration
-repository. Test, Integration, Stage and Production data should be encrypted for the corresponding sets of DevOps
-and/or Ops engineers. This configuration should be done via `.sops.yaml` and its [creation rules](https://github.com/mozilla/sops#29using-sopsyaml-conf-to-select-kmspgp-for-new-files) in the root directory of the application
-configuration repository. See [thoth-application](https://github.com/thoth-station/thoth-application/blob/master/.sops.yaml) for an example.
+For ArgoCD applications, secret information shall be stored within the corresponding application configuration repository.
+- Test, Integration, Stage and Production data should be encrypted for the corresponding sets of DevOps and/or Ops engineers. This configuration should be done via `.sops.yaml` and its [creation rules](https://github.com/mozilla/sops#29using-sopsyaml-conf-to-select-kmspgp-for-new-files) in the root directory of the application configuration repository.
+- See [thoth-application](https://github.com/thoth-station/thoth-application/blob/master/.sops.yaml) for an example.
 
-As all secrets are considered 'environment-specific' they should be generated by the coresponding overlay, and not
+As all secrets are considered 'environment-specific' they should be generated by the corresponding overlay, and not
 on the kustomize base of the application.
 
-## Local decryption of secrets
+- Update the `.sops.yaml` file with the hash for your public gpg key now that it has been uploaded, so the server can use your public key to allow you to access encrypted secrets.
+  - This is a 40 character Alpha-numberic string that is visible with the command `gpg --list-secret-keys --keyid-format=long`, however this time, we're looking for the longer 40 character hash instead of the 16 character hash. Make sure you use the correct key, with the email associated with the account you would like to add.
+
+
+## Updating the secrets file
+
+Navigate to the overlay specific to the deployment environment (ex: Smaug, Rick, etc.).
+- First you need to have your pgp key added to the secrets.enc.yaml file so that your key will be able to decrypt the file. Navigate to the overlay specific to the deployment environment (ex: Smaug, Rick, etc.).
+- In that overlay, navigate to common, then the encrypted secrets file (secrets.enc.yaml). You can either open a pull-request adding your public key block or another maintainer can do this for you, by pulling in your public key: `gpg --keyserver hkps://keyserver.ubuntu.com --recv-key <40-character-key-hash>`, and add that to the sops.pgp section of the file. Once that pull request goes through, you should be able to decrypt the secrets.enc.yaml file.
+- You have already modified the sops file in the base of the application, so now you can use that sops file to decrypt this encrypted secret: `sops -d secrets.enc.yaml > secrets.yaml`. This file should now be decrypted and you can modify the regular `secrets.yaml` file.
+  - As for how you can get access to those secrets, see the markdown file in the directory for the respective application whose secrets your attempting to modify.
+- When your changes are complete, make sure to re-encrypt the file: `sops -e core/overlays/<environment>/common/secrets.yaml > core/overlays/<environment>/common/secrets.enc.yaml`.

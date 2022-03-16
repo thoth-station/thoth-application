@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: inspection-run-template
+  annotations:
+    operation: inspection-run
 spec:
   entrypoint: main
 

@@ -9,7 +9,7 @@ This section describes the different environments used to deploy all the Thoth S
 
 Project Thoth uses Postgresql database for knowlegde graph storage.
 
-- Deployment manifest can be found at: [Graph Manifest](../core/overlays/cnv-prod/graph-prod)
+- Deployment manifest can be found at: [Graph Manifest](../core/overlays/moc-prod/graph-prod)
 - we manage the storage via different project Thoth components which utlises the [thoth-storage](https://pypi.org/project/thoth-storages/) module. [Details](https://github.com/thoth-station/storages#thoth-storages)
 - Local setup and management information can be acquired at [thoth-storages](https://github.com/thoth-station/storages#thoth-storages)
 
@@ -107,7 +107,6 @@ Component          | CPU limit | Mem limit
 ------------------ | --------- | ---------
 user-api           | 1         | 768Mi
 management-api     | 1500m     | 1Gi
-qebhwt             | 250m      | 512Mi
 package-update     | 1         | 1536Mi
 package-releases   | 500m      | 512Mi
 graph-refresh      | 500m      | 256Mi
@@ -134,14 +133,8 @@ workflow-controller | 1         | 4Gi
 adviser             | 3         | 8Mi
 provenance          | 2         | 9.5Gi
 dm                  | 1.25      | 8.25Gi
-qebhwt              | .75       | 1.75Gi
 kebechet            | 1         | 2Gi
 **Total (approx)**  | **10**    | **34Gi**
-
-qebhwt-workflow     | CPU limit | Mem limit
-------------------- | --------- | ---------
-qeb-hwt-integration | 250m      | 768Mi
-send-messages       | 500m      | 1Gi
 
 advise               | CPU limit | Mem limit
 -------------------- | --------- | ---------

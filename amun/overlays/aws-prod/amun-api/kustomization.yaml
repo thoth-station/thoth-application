@@ -1,0 +1,172 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../base
+  - configmaps.yaml
+  - metrics-exporter-reader.yaml
+  - role_binding.yaml
+  - thoth-notification.yaml
+  - message-imagestream.yaml
+  - argo-workflows/send-messages.yaml
+  - route53.yaml
+generators:
+  - secret-generator.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+images:
+  - name: amun-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-amun-api-prod/amun-api
+    newTag: latest
+patchesStrategicMerge:
+  - imagestreamtag.yaml
+patches:
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-prod"
+    target:
+      group: batch
+      version: v1
+      kind: Job
+      annotationSelector: "operation=chat-notification"
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: image.openshift.io
+      version: v1
+      kind: ImageStream
+      name: kubectl
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: image.openshift.io
+      version: v1
+      kind: ImageStream
+      name: workflow-helpers
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: image.openshift.io
+      version: v1
+      kind: ImageStream
+      name: messaging
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: image.openshift.io
+      version: v1
+      kind: ImageStream
+      name: amun-inspect-hwinfo
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: amun-inspection-workflow-with-cpu
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: template.openshift.io
+      version: v1
+      kind: Template
+      name: amun-inspection-workflow
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: inspection-build-with-cpu-template
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: inspection-build-template
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: inspection-run-with-cpu-template
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: inspection-run-template
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: send-messages
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: ""
+      version: v1
+      kind: ServiceAccount
+      name: amun-api-workflow
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: ""
+      version: v1
+      kind: ServiceAccount
+      name: amun-prepare-workflow
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: "rbac.authorization.k8s.io"
+      version: v1
+      kind: Role
+      name: amun-api
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: "rbac.authorization.k8s.io"
+      version: v1
+      kind: Role
+      name: amun-api-workflow
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: "rbac.authorization.k8s.io"
+      version: v1
+      kind: Role
+      name: amun-prepare-workflow
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/workflow-helpers:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=workflow-helpers"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/messaging:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=messaging"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/1/script/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/kubectl:latest
+      - op: replace
+        path: /spec/templates/5/script/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/kubectl:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=inspection-build"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/1/initContainers/0/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/amun-inspect-hwinfo:latest
+      - op: replace
+        path: /spec/templates/1/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/{{inputs.parameters.inspection-id}}:latest
+      - op: replace
+        path: /spec/templates/2/script/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/kubectl:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=inspection-run"

@@ -4,22 +4,20 @@ resources:
   - ../../base
   - role-binding.yaml
   - thoth-notification.yaml
+images:
+  - name: management-api
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-frontend-stage/management-api
+    newTag: latest
 patchesStrategicMerge:
   - configmap.yaml
   - imagestreamtag.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
+patches:
+  - path: put-into-infra-namespace.yaml
     target:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-succeeded-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-failed-
+      annotationSelector: "operation=chat-notification"
   - path: put-into-infra-namespace.yaml
     target:
       group: rbac.authorization.k8s.io
@@ -32,6 +30,12 @@ patchesJson6902:
       version: v1
       kind: Role
       name: management-api-amun-pods-info
+  - path: put-into-middletier-namespace.yaml
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: Role
+      name: management-api-template
   - path: put-into-middletier-namespace.yaml
     target:
       group: rbac.authorization.k8s.io

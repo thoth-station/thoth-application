@@ -7,16 +7,19 @@ resources:
   - route.yaml
   - service.yaml
   - thoth-notification.yaml
-patchesJson6902:
-  - path: job-generate-name.yaml
+images:
+  - name: investigator
+    newName: image-registry.openshift-image-registry.svc:5000/thoth-infra-stage/investigator
+    newTag: latest
+patchesStrategicMerge:
+  - deploymentconfig.yaml
+patches:
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: "thoth-infra-stage"
     target:
       group: batch
       version: v1
       kind: Job
-      name: chat-notification-success-
-  - path: job-generate-name.yaml
-    target:
-      group: batch
-      version: v1
-      kind: Job
-      name: chat-notification-fail-
+      annotationSelector: "operation=chat-notification"
