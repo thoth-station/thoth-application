@@ -200,6 +200,39 @@ project_config:
       # get this via `curl -H "Authorization: token ????" "https://api.github.com/orgs/thoth-station/teams"`
       org_maintainers_team_id: 4924960
 
+project_manager:
+  orgsRepos:
+    thoth-station:
+      projects:
+        SIG-DevSecOps:
+          columns:
+            - name: New
+              labels:
+                - sig/devsecops
+              org: thoth-station
+              state: open
+        SIG-Observability:
+          columns:
+            - name: New
+              labels:
+                - sig/observability
+              org: thoth-station
+              state: open
+        SIG-Stack-Guidance:
+          columns:
+            - name: New
+              labels:
+                - sig/stack-guidance
+              org: thoth-station
+              state: open
+        SIG-User-Experience:
+          columns:
+            - name: New
+              labels:
+                - sig/user-experience
+              org: thoth-station
+              state: open
+
 plugins:
   b4mad:
     plugins:
@@ -289,6 +322,7 @@ plugins:
       - milestoneapplier
       - milestonestatus
       - project
+      - projectmanager
       - require-matching-label
       - shrug
       - size
