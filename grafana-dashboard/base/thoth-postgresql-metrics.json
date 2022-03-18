@@ -19,14 +19,14 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
-  "iteration": 1645004828372,
+  "id": 15,
+  "iteration": 1647601230165,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": null,
       "gridPos": {
         "h": 12,
         "w": 24,
@@ -38,13 +38,11 @@
         "content": "# Thoth PostgreSQL metrics Grafana Dashboard\n\nThis dashboard contains all the operational metrics focused on the PostgreSQL database, from real time metrics to pg dumps stored by cronjobs on the Ceph Bucket.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance*: `postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud`\n- *metrics_exporter_instance*: `metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *cluster*: `emea/balrog`\n- *instance*: `postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/`\n- *metrics_exporter_instance*: `metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud`",
         "mode": "markdown"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "title": "General Description",
       "type": "text"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "PostgreSQL version",
       "fieldConfig": {
         "defaults": {
@@ -86,7 +84,6 @@
         "y": 12
       },
       "id": 3,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -104,7 +101,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -123,8 +120,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Sets the maximum number of concurrent connections.",
       "fieldConfig": {
         "defaults": {
@@ -166,7 +161,6 @@
         "y": 12
       },
       "id": 1,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -184,7 +178,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -201,8 +195,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Sets the number of shared memory buffers used by the server. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -244,7 +236,6 @@
         "y": 12
       },
       "id": 2,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -262,7 +253,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -279,8 +270,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Sets the planner’s assumption about the size of the data cache. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -322,7 +311,6 @@
         "y": 16
       },
       "id": 4,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -340,7 +328,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -357,8 +345,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Sets the maximum memory to be used for maintenance operations. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -400,7 +386,6 @@
         "y": 16
       },
       "id": 5,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -418,7 +403,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -435,8 +420,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Sets the maximum memory to be used for query workspaces. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -478,7 +461,6 @@
         "y": 16
       },
       "id": 6,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -496,7 +478,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -513,8 +495,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Sets the WAL size that triggers a checkpoint. [Units converted to bytes.]",
       "fieldConfig": {
         "defaults": {
@@ -556,7 +536,6 @@
         "y": 16
       },
       "id": 7,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -574,7 +553,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -591,8 +570,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Sets the planner’s estimate of the cost of a nonsequentially fetched disk page.",
       "fieldConfig": {
         "defaults": {
@@ -634,7 +611,6 @@
         "y": 20
       },
       "id": 8,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -652,7 +628,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -669,8 +645,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Sets the planner’s estimate of the cost of a sequentially fetched disk page.",
       "fieldConfig": {
         "defaults": {
@@ -712,7 +686,6 @@
         "y": 20
       },
       "id": 9,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -730,7 +703,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -747,8 +720,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Maximum number of concurrent worker processes.",
       "fieldConfig": {
         "defaults": {
@@ -790,7 +761,6 @@
         "y": 20
       },
       "id": 10,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -808,7 +778,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -825,8 +795,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "description": "Sets the maximum number of parallel processes per executor node.",
       "fieldConfig": {
         "defaults": {
@@ -868,7 +836,6 @@
         "y": 20
       },
       "id": 11,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -886,7 +853,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -907,7 +874,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -939,7 +905,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -980,9 +946,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Change Stats",
       "tooltip": {
         "shared": true,
@@ -991,9 +955,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1001,25 +963,18 @@
         {
           "$$hashKey": "object:682",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:683",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1027,7 +982,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1061,7 +1015,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1082,9 +1036,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Connections",
       "tooltip": {
         "shared": true,
@@ -1093,9 +1045,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1103,25 +1053,18 @@
         {
           "$$hashKey": "object:629",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:630",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1129,7 +1072,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1161,7 +1103,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1192,9 +1134,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Transactions",
       "tooltip": {
         "shared": true,
@@ -1203,9 +1143,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1213,25 +1151,18 @@
         {
           "$$hashKey": "object:523",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:524",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1239,7 +1170,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1271,7 +1201,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1292,9 +1222,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Longest Transaction",
       "tooltip": {
         "shared": true,
@@ -1303,9 +1231,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1315,8 +1241,6 @@
           "format": "dtdurations",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
@@ -1324,14 +1248,11 @@
           "format": "none",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1339,7 +1260,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1370,7 +1290,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1401,9 +1321,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Conflicts/Deadlocks",
       "tooltip": {
         "shared": true,
@@ -1412,9 +1330,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1422,25 +1338,18 @@
         {
           "$$hashKey": "object:366",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:367",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1448,7 +1357,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1480,7 +1388,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1511,9 +1419,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Read Stats",
       "tooltip": {
         "shared": true,
@@ -1522,9 +1428,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1532,25 +1436,18 @@
         {
           "$$hashKey": "object:419",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:420",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1558,7 +1455,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1590,7 +1486,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1611,9 +1507,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Cache Hit Rate",
       "tooltip": {
         "shared": true,
@@ -1622,9 +1516,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1634,8 +1526,6 @@
           "format": "percentunit",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
@@ -1643,14 +1533,11 @@
           "format": "none",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1658,7 +1545,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "description": "Number of locks",
       "fill": 1,
       "fillGradient": 0,
@@ -1690,7 +1576,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1711,9 +1597,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Lock Tables",
       "tooltip": {
         "shared": true,
@@ -1722,9 +1606,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1732,10 +1614,7 @@
         {
           "$$hashKey": "object:252",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
@@ -1744,14 +1623,11 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1759,7 +1635,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "description": "Total amount of data written to temporary files by queries in this database. All temporary files are counted, regardless of why the temporary file was created, and regardless of the log_temp_files setting.",
       "fill": 1,
       "fillGradient": 0,
@@ -1791,7 +1666,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1812,9 +1687,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Temp File",
       "tooltip": {
         "shared": true,
@@ -1823,9 +1696,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1833,25 +1704,18 @@
         {
           "$$hashKey": "object:305",
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:306",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1859,7 +1723,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "description": "pg_stat_bgwriter_buffers_alloc (cumulative)\nNumber of buffers allocated, \n\npg_stat_bgwriter_buffers_backend (cumulative)\nNumber of buffers written directly by a backend, \n\npg_stat_bgwriter_buffers_backend_fsync (cumulative)\nNumber of times a backend had to execute its own fsync call (normally the background writer handles those even when the backend does its own write),\n\npg_stat_bgwriter_buffers_checkpoint (cumulative)\nNumber of buffers written during checkpoints,\n\npg_stat_bgwriter_buffers_clean (cumulative)\nNumber of buffers written by the background writer",
       "fill": 1,
       "fillGradient": 0,
@@ -1891,7 +1754,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1952,9 +1815,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Buffers (bgwriter)",
       "tooltip": {
         "shared": true,
@@ -1963,9 +1824,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1973,25 +1832,18 @@
         {
           "$$hashKey": "object:93",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:94",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1999,7 +1851,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "description": "pg_stat_bgwriter_checkpoint_sync_time (cumulative)\nTotal amount of time that has been spent in the portion of checkpoint processing where files are synchronized to disk, in milliseconds,\n\npg_stat_bgwriter_checkpoint_write_time (cumulative)\nTotal amount of time that has been spent in the portion of checkpoint processing where files are written to disk, in milliseconds",
       "fill": 1,
       "fillGradient": 0,
@@ -2031,7 +1882,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2062,9 +1913,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Checkpoint Stats",
       "tooltip": {
         "shared": true,
@@ -2073,9 +1922,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2083,25 +1930,18 @@
         {
           "$$hashKey": "object:146",
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:147",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2109,7 +1949,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2141,7 +1980,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2162,9 +2001,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Table Bloat data (pct)",
       "tooltip": {
         "shared": true,
@@ -2173,9 +2010,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2183,25 +2018,18 @@
         {
           "$$hashKey": "object:296",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:297",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2209,7 +2037,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2241,7 +2068,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2262,9 +2089,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Table Bloat data (mb)",
       "tooltip": {
         "shared": true,
@@ -2273,9 +2098,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2283,25 +2106,18 @@
         {
           "$$hashKey": "object:361",
           "format": "decmbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:362",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2309,7 +2125,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2341,7 +2156,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2362,9 +2177,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Index Bloat data (pct)",
       "tooltip": {
         "shared": true,
@@ -2373,9 +2186,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2383,25 +2194,18 @@
         {
           "$$hashKey": "object:190",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:191",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2409,7 +2213,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2441,7 +2244,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2462,9 +2265,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Index Bloat data (mb)",
       "tooltip": {
         "shared": true,
@@ -2473,9 +2274,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2483,30 +2282,21 @@
         {
           "$$hashKey": "object:243",
           "format": "decmbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:244",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2515,12 +2305,16 @@
           "mappings": [
             {
               "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
+                "0": {
+                  "index": 1,
+                  "text": "db good state"
+                },
+                "1": {
+                  "index": 0,
+                  "text": "db corrupted"
                 }
               },
-              "type": "special"
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -2551,7 +2345,6 @@
         "y": 100
       },
       "id": 28,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -2569,9 +2362,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PF0BA5EC94FCB9BBE"
+          },
           "exemplar": true,
           "expr": "thoth_graphdb_is_corrupted{cluster=\"$cluster\"}",
           "format": "time_series",
@@ -2586,8 +2383,6 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2632,7 +2427,6 @@
         "y": 105
       },
       "id": 29,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -2650,7 +2444,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -2671,7 +2465,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2700,7 +2493,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2721,9 +2514,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Thoth Database Size",
       "tooltip": {
         "shared": true,
@@ -2732,9 +2523,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2742,29 +2531,21 @@
         {
           "$$hashKey": "object:121",
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:122",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2825,7 +2606,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -2839,7 +2620,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2882,13 +2662,17 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PF0BA5EC94FCB9BBE"
+          },
           "exemplar": true,
           "expr": "thoth_graphdb_last_dump{cluster=\"$cluster\"}",
           "interval": "",
-          "legendFormat": "{{env}}",
+          "legendFormat": "{{date}}",
           "refId": "A"
         }
       ],
@@ -2896,7 +2680,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2941,7 +2724,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -2955,7 +2738,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3016,7 +2798,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -3031,7 +2813,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 30,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [
     "thoth",
@@ -3041,17 +2823,13 @@
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/",
           "value": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/"
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "instance",
         "options": [
@@ -3072,17 +2850,13 @@
         "type": "custom"
       },
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
           "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "metrics_exporter_instance",
         "options": [
@@ -3103,17 +2877,13 @@
         "type": "custom"
       },
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": "emea/balrog",
           "value": "emea/balrog"
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "cluster",
         "options": [
@@ -3167,5 +2937,6 @@
   "timezone": "",
   "title": "Thoth PostgreSQL metrics",
   "uid": "5f2a5d7b1356c0c8ce4277724c131ed1beac864f",
-  "version": 21
+  "version": 22,
+  "weekStart": ""
 }
