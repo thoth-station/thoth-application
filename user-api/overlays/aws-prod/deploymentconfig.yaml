@@ -46,6 +46,8 @@ spec:
               value: "khemenu.thoth-station.ninja"
             - name: "THOTH_SENTRY_IGNORE_EXCEPTION"
               value: "thoth.user_api.exceptions.NotFoundException,thoth.storages.exceptions.NotFoundError"
+            - name: THOTH_SEARCH_UI_URL
+              value: "https://thoth-station.ninja/search/"
             - name: THOTH_USER_API_TOKEN
               valueFrom:
                 secretKeyRef:
@@ -126,11 +128,6 @@ spec:
                 secretKeyRef:
                   name: ceph
                   key: secret-key
-            - name: THOTH_SEARCH_UI_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: thoth-search-ui-url
-                  key: "https://thoth-station.ninja/search/"
             - name: PROMETHEUS_PUSHGATEWAY_HOST
               valueFrom:
                 configMapKeyRef:
