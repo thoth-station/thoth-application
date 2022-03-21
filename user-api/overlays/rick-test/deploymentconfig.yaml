@@ -124,6 +124,11 @@ spec:
                 secretKeyRef:
                   name: ceph
                   key: secret-key
+            - name: THOTH_SEARCH_UI_URL
+              valueFrom:
+                secretKeyRef:
+                  name: thoth-search-ui-url
+                  key: "https://thoth-station.ninja/search/"
             - name: PROMETHEUS_PUSHGATEWAY_HOST
               valueFrom:
                 configMapKeyRef:
