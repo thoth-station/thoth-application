@@ -175,6 +175,8 @@ spec:
             - name: github-app-privatekey
               mountPath: /opt/app-root/src/.github/
               readOnly: true
+          restartPolicy: OnFailure
+        backoffLimit: 3
 
       - name: gh-archived
         resubmitPendingPods: true
@@ -252,6 +254,8 @@ spec:
             - name: github-app-privatekey
               mountPath: /opt/app-root/src/.github/
               readOnly: true
+          restartPolicy: OnFailure
+        backoffLimit: 3
 
       - name: gh-release-notes
         resubmitPendingPods: true
@@ -324,6 +328,8 @@ spec:
             - name: github-app-privatekey
               mountPath: /opt/app-root/src/.github/
               readOnly: true
+          restartPolicy: OnFailure
+        backoffLimit: 3
 
       - name: gh-contributors
         resubmitPendingPods: true
@@ -394,6 +400,8 @@ spec:
             - name: github-app-privatekey
               mountPath: /opt/app-root/src/.github/
               readOnly: true
+          restartPolicy: OnFailure
+        backoffLimit: 3
 
       - name: gh-forked
         resubmitPendingPods: true
@@ -464,6 +472,8 @@ spec:
             - name: github-app-privatekey
               mountPath: /opt/app-root/src/.github/
               readOnly: true
+          restartPolicy: OnFailure
+        backoffLimit: 3
 
       - name: gh-popularity
         resubmitPendingPods: true
@@ -534,6 +544,8 @@ spec:
             - name: github-app-privatekey
               mountPath: /opt/app-root/src/.github/
               readOnly: true
+          restartPolicy: OnFailure
+        backoffLimit: 3
 
       - name: gh-updated
         resubmitPendingPods: true
@@ -604,3 +616,5 @@ spec:
             - name: github-app-privatekey
               mountPath: /opt/app-root/src/.github/
               readOnly: true
+          restartPolicy: OnFailure
+        backoffLimit: 3
