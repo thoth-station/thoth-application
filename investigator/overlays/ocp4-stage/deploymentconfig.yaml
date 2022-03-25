@@ -29,6 +29,8 @@ spec:
               value: "0"
             - name: APP_SCRIPT
               value: "app.sh"
+            - name: ARGO_PENDING_WORKFLOW_LIMIT
+              value: "900"
             - name: KAFKA_CONSUMER_GROUP_ID
               value: "thoth.investigator"
             - name: KAFKA_CONSUMER_ENABLE_AUTO_COMMIT
