@@ -113,10 +113,10 @@ spec:
           resources:
             requests:
               memory: "384Mi"
-              cpu: "1"
+              cpu: "200m"
             limits:
               memory: "384Mi"
-              cpu: "1"
+              cpu: "200m"
           readinessProbe:
             httpGet:
               path: "/readiness"
