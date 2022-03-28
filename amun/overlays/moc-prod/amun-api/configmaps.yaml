@@ -17,8 +17,8 @@ metadata:
 data:
   bucket-name: "thoth"
   bucket-prefix: "data"
-  host: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
-  endpoint: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
+  host: "https://s3-openshift-storage.apps.smaug.na.operate-first.cloud"
+  endpoint: "https://s3-openshift-storage.apps.smaug.na.operate-first.cloud"
 ---
 kind: ConfigMap
 apiVersion: v1
