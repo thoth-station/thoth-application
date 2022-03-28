@@ -60,7 +60,7 @@ spec:
                 - name: MI_ENTITIES
                   valueFrom:
                     configMapKeyRef:
-                      name: mi-scheduler
+                      name: mi-scheduler-cm
                       key: entities
           restartPolicy: OnFailure
 ---
