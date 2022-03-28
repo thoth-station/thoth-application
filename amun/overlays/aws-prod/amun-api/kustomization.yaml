@@ -8,6 +8,7 @@ resources:
   - thoth-notification.yaml
   - message-imagestream.yaml
   - argo-workflows/send-messages.yaml
+  - argo-workflows/sync-template.yaml
   - route53.yaml
 generators:
   - secret-generator.yaml
