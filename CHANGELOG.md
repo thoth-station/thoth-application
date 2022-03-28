@@ -1,5 +1,39 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.03.28 (2022-03-28T16:34:18)
+* 338bf94c :ship: Bump up the images based on the version update v2022.03.28
+* 41a0962c :ship: Deploy the Tag v1.8.0 for kebechet
+* 2b4d5006 Drop web concurrency for amun-api
+* 081be417 include the graph-sync template for the dm
+* cb5c796c patch up the moc-prod s3 for amun
+* 08be7eee :arrow_down_small: Downgrade amun api cpu limit for usability
+* 08301dec set the pending workflow limit for investigator
+* 6b8188e9 [prow] project map: SIG User Experience instead of Kebechet
+* d94dfb1d :ship: Deploy the Tag v0.34.14 for user-api
+* 21f1d617 creating aws-prod-ocp4-stage overlay for thoth-integration tests
+* c3c7a01b update pre-commit plugins
+* c011ee81 some prow cleanup
+* 3350c96f Fix user-api Thoth Search UI environment variable in deployments
+* ffd93164 Correct secretKeyRef to ConfigMapKeyRef
+* 702c12c1 :ship: Deploy the Tag v1.12.0 for solver
+* de0430a0 :ship: Deploy the Tag v1.12.0 for solver
+* 248cfc5e :ship: Deploy the Tag v1.12.0 for solver
+* 5042afbd Propagate URL to Thoth Search UI in deployments
+* f112d217 Show date last db backup
+* 396cf730 [prow] Add configuration for the projectmanager prow plugin
+* 18b71f42 adding thoth solver f35-py310 image to imagestream in test overlay
+* dc68265c Update to mi-scheduler v1.7.3
+* 8217522f Bump user-api to v0.34.13 in prod
+* cf5d753a Bump user-api to v0.34.13 in stage
+* 2f857952 :ship: Deploy the Tag v0.34.13 for user-api
+* 30d807c4 Bump adviser to v0.53.0 in prod deployments
+* 0e595c06 :ship: Deploy the Tag v0.53.0 for adviser
+* 3beaed40 Bump adviser to v0.53.0 in stage environment
+* dc36ccf8 :ship: Deploy the Tag pr-1718 for user-api
+* 6f55f73b Fix name of dashboards
+* ee6b55c6 :ship: Deploy the Tag pr-1716 for user-api
+* 54322d3d add CREATE_KNOWLEDGE flag
+
 ## Release 2022.03.14 (2022-03-14T10:35:36)
 * :ship: Bump up the images based on the version update v2022.03.14
 * bump reporter to v0.11.1
