@@ -8,3 +8,10 @@ data:
   repositories: "openshift/origin"
   organizations: "thoth-station,AICoE,aicoe-aiops,operate-first"
   parallel-workflows-limit: "1"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mi-scheduler-cm
+data:
+  entities: "PullRequest,Issue"
