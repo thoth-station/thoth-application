@@ -9,6 +9,7 @@ data:
   infra-namespace: thoth-amun-inspection-stage
   inspection-namespace: thoth-amun-inspection-stage
   logging-no-json: "0"
+  postgresql-host: pgbouncer.thoth-graph-stage.svc
 ---
 kind: ConfigMap
 apiVersion: v1

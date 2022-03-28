@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../../base
   - argo-workflows/send-messages.yaml
+  - argo-workflows/sync-template.yaml
   - configmaps.yaml
   - metrics-exporter-reader.yaml
   - message-imagestream.yaml
