@@ -168,10 +168,10 @@ project_config:
   project_org_configs:
     thoth-station:
       org_default_column_map:
-        Kebechet: New
         SIG-DevSecOps: New
         SIG-Observability: New
         SIG-Stack-Guidance: New
+        SIG-User-Experience: New
 
       # get this via `curl -H "Authorization: token ????" "https://api.github.com/orgs/thoth-station/teams"`
       org_maintainers_team_id: 4924960
