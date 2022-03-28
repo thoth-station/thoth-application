@@ -39,3 +39,12 @@ data:
           secondsAfterSuccess: 900
           secondsAfterFailure: 900
         parallelism: 10
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: kafka
+data:
+  kafka-ssl-auth: "1"
+  kafka-protocol: "SSL"
+  kafka-bootstrap-servers: "thoth-kafka-bootstrap-aicoe.apps.ocp4.prod.psi.redhat.com:443"
