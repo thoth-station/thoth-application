@@ -4,7 +4,6 @@ resources:
   - ../../../base
   - argo-workflows/send-messages.yaml
   - argo-workflows/sync-template.yaml
-  - configmaps.yaml
   - metrics-exporter-reader.yaml
   - message-imagestream.yaml
   - role_binding.yaml
@@ -96,6 +95,18 @@ patches:
       version: v1alpha1
       kind: WorkflowTemplate
       name: send-messages
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: create-inspection-complete-message
+  - path: put-into-inspection-namespace.yaml
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      name: graph-sync
   - path: put-into-inspection-namespace.yaml
     target:
       group: ""

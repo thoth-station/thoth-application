@@ -33,7 +33,7 @@ objects:
       secondsAfterFailure: 259200
 
     artifactRepositoryRef:
-      configMap: amun
+      configMap: amun-artifact-ref
       key: artifactRepository
 
     entrypoint: main

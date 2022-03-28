@@ -63,13 +63,13 @@ spec:
           - name: THOTH_CEPH_KEY_ID
             valueFrom:
               secretKeyRef:
-                name: ceph
-                key: key-id
+                name: argo-artifact-repository-secrets
+                key: accessKey
           - name: THOTH_CEPH_SECRET_KEY
             valueFrom:
               secretKeyRef:
-                name: ceph
-                key: secret-key
+                name: argo-artifact-repository-secrets
+                key: secretKey
           - name: PROMETHEUS_PUSHGATEWAY_URL
             valueFrom:
               configMapKeyRef:
