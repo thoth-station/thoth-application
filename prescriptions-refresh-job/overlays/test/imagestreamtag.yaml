@@ -4,10 +4,10 @@ metadata:
   name: prescriptions-refresh-job
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: quay.io/thoth-station/prescriptions-refresh-job:v0.6.0
-      importPolicy: {}
-      referencePolicy:
-        type: Source
+  - from:
+      kind: DockerImage
+      name: quay.io/thoth-station/prescriptions-refresh-job:pr-139
+    importPolicy: {}
+    name: latest
+    referencePolicy:
+      type: Source
