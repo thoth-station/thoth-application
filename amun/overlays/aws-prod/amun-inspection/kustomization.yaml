@@ -11,6 +11,7 @@ resources:
   - configmaps.yaml
   - metrics-exporter-reader.yaml
   - thoth-notification.yaml
+  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/adviser/overlays/aws-prod/imagestreamtag.yaml
 patches:
   - patch: |-
       - op: add
@@ -21,6 +22,17 @@ patches:
       version: v1
       kind: Job
       annotationSelector: "operation=chat-notification"
+  - patch: |-
+      - op: add
+        path: /spec/lookupPolicy
+        value:
+          local: true
+    target:
+      group: image.openshift.io
+      version: v1
+      kind: ImageStream
+      name: adviser
+
 # wf controller image patch
 images:
   - name: argocli
