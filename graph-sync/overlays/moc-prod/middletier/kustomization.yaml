@@ -19,10 +19,10 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/graph-sync-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/graph-sync-job:latest
       - op: replace
         path: /spec/templates/1/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-stage/graph-sync-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/graph-sync-job:latest
     target:
       group: argoproj.io
       version: v1alpha1
