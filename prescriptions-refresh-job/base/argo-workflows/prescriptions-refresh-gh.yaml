@@ -82,6 +82,10 @@ spec:
 
       - name: gh-link
         resubmitPendingPods: true
+        retryStrategy:
+          limit: "3"
+          # Only continue retrying if the last exit code is == 3
+          expression: "asInt(lastRetry.exitCode) == 3"
         container:
           name: gh-link
           image: prescriptions-refresh-job
@@ -178,6 +182,10 @@ spec:
 
       - name: gh-archived
         resubmitPendingPods: true
+        retryStrategy:
+          limit: "3"
+          # Only continue retrying if the last exit code is == 3
+          expression: "asInt(lastRetry.exitCode) == 3"
         container:
           name: gh-archived
           image: prescriptions-refresh-job
@@ -255,6 +263,10 @@ spec:
 
       - name: gh-release-notes
         resubmitPendingPods: true
+        retryStrategy:
+          limit: "3"
+          # Only continue retrying if the last exit code is == 3
+          expression: "asInt(lastRetry.exitCode) == 3"
         container:
           name: gh-release-notes
           image: prescriptions-refresh-job
@@ -327,6 +339,10 @@ spec:
 
       - name: gh-contributors
         resubmitPendingPods: true
+        retryStrategy:
+          limit: "3"
+          # Only continue retrying if the last exit code is == 3
+          expression: "asInt(lastRetry.exitCode) == 3"
         container:
           name: gh-contributors
           image: prescriptions-refresh-job
@@ -397,6 +413,10 @@ spec:
 
       - name: gh-forked
         resubmitPendingPods: true
+        retryStrategy:
+          limit: "3"
+          # Only continue retrying if the last exit code is == 3
+          expression: "asInt(lastRetry.exitCode) == 3"
         container:
           name: gh-forked
           image: prescriptions-refresh-job
@@ -467,6 +487,10 @@ spec:
 
       - name: gh-popularity
         resubmitPendingPods: true
+        retryStrategy:
+          limit: "3"
+          # Only continue retrying if the last exit code is == 3
+          expression: "asInt(lastRetry.exitCode) == 3"
         container:
           name: gh-popularity
           image: prescriptions-refresh-job
@@ -537,6 +561,10 @@ spec:
 
       - name: gh-updated
         resubmitPendingPods: true
+        retryStrategy:
+          limit: "3"
+          # Only continue retrying if the last exit code is == 3
+          expression: "asInt(lastRetry.exitCode) == 3"
         container:
           name: gh-updated
           image: prescriptions-refresh-job
