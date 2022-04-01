@@ -157,6 +157,15 @@ patches:
       annotationSelector: "operation=messaging"
   - patch: |-
       - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/graph-sync-job:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=graph-sync"
+  - patch: |-
+      - op: replace
         path: /spec/templates/1/script/image
         value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/kubectl:latest
       - op: replace

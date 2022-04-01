@@ -12,6 +12,7 @@ resources:
   - metrics-exporter-reader.yaml
   - thoth-notification.yaml
   - https://raw.githubusercontent.com/thoth-station/thoth-application/master/adviser/overlays/moc-prod/imagestreamtag.yaml
+  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/graph-sync/overlays/moc-prod/common/imagestreamtag.yaml
 patches:
   - patch: |-
       - op: add
@@ -32,7 +33,16 @@ patches:
       version: v1
       kind: ImageStream
       name: adviser
-
+  - patch: |-
+      - op: add
+        path: /spec/lookupPolicy
+        value:
+          local: true
+    target:
+      group: image.openshift.io
+      version: v1
+      kind: ImageStream
+      name: graph-sync-job
 # wf controller image patch
 images:
   - name: argocli
