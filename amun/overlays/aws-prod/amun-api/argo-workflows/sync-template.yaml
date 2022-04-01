@@ -3,6 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: graph-sync
+  annotations:
+    operation: graph-sync
 spec:
   templates:
     - name: graph-sync
