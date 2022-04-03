@@ -1,6 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - thoth-kafka.yaml
-  - service.yaml
+  - kafka-metrics.yaml
   - route.yaml
+  - service.yaml
+  - thoth-kafka.yaml
+  - zookeeper-metrics.yaml
