@@ -1,140 +1,62 @@
-apiVersion: kafka.strimzi.io/v1beta1
+apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
   name: thoth
 spec:
   kafka:
-    version: "2.6.0"
-    replicas: 2
+    replicas: 3
+    version: 3.0.0
+    logging:
+      type: inline
+      loggers:
+        kafka.root.logger.level: "INFO"
     listeners:
-      plain: {}
-      tls: {}
-      external:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+        configuration:
+          useServiceDnsDomain: true
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
+        authentication:
+          type: tls
+      - name: external
+        port: 9094
         type: route
+        tls: true
     storage:
       type: persistent-claim
       size: "5Gi"
-      class: "standard"
       deleteClaim: false
     config:
-      offsets.topic.replication.factor: 2
-      transaction.state.log.replication.factor: 2
-      transaction.state.log.min.isr: 1
-      log.message.format.version: "2.1"
-    metrics:
-      lowercaseOutputName: true
-      rules:
-        - pattern: kafka.server<type=(.+), name=(.+), clientId=(.+), topic=(.+), partition=(.*)><>Value
-          name: kafka_server_$1_$2
-          type: GAUGE
-          labels:
-            clientId: "$3"
-            topic: "$4"
-            partition: "$5"
-        - pattern: kafka.server<type=(.+), name=(.+), clientId=(.+), brokerHost=(.+), brokerPort=(.+)><>Value
-          name: kafka_server_$1_$2
-          type: GAUGE
-          labels:
-            clientId: "$3"
-            broker: "$4:$5"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+)Percent\w*><>MeanRate
-          name: kafka_$1_$2_$3_percent
-          type: GAUGE
-        - pattern: kafka.(\w+)<type=(.+), name=(.+)Percent\w*><>Value
-          name: kafka_$1_$2_$3_percent
-          type: GAUGE
-        - pattern: kafka.(\w+)<type=(.+), name=(.+)Percent\w*, (.+)=(.+)><>Value
-          name: kafka_$1_$2_$3_percent
-          type: GAUGE
-          labels:
-            "$4": "$5"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+)PerSec\w*, (.+)=(.+), (.+)=(.+)><>Count
-          name: kafka_$1_$2_$3_total
-          type: COUNTER
-          labels:
-            "$4": "$5"
-            "$6": "$7"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+)PerSec\w*, (.+)=(.+)><>Count
-          name: kafka_$1_$2_$3_total
-          type: COUNTER
-          labels:
-            "$4": "$5"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+)PerSec\w*><>Count
-          name: kafka_$1_$2_$3_total
-          type: COUNTER
-        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+), (.+)=(.+)><>Value
-          name: kafka_$1_$2_$3
-          type: GAUGE
-          labels:
-            "$4": "$5"
-            "$6": "$7"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+)><>Value
-          name: kafka_$1_$2_$3
-          type: GAUGE
-          labels:
-            "$4": "$5"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+)><>Value
-          name: kafka_$1_$2_$3
-          type: GAUGE
-        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+), (.+)=(.+)><>Count
-          name: kafka_$1_$2_$3_count
-          type: COUNTER
-          labels:
-            "$4": "$5"
-            "$6": "$7"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.*), (.+)=(.+)><>(\d+)thPercentile
-          name: kafka_$1_$2_$3
-          type: GAUGE
-          labels:
-            "$4": "$5"
-            "$6": "$7"
-            quantile: "0.$8"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+)><>Count
-          name: kafka_$1_$2_$3_count
-          type: COUNTER
-          labels:
-            "$4": "$5"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.*)><>(\d+)thPercentile
-          name: kafka_$1_$2_$3
-          type: GAUGE
-          labels:
-            "$4": "$5"
-            quantile: "0.$6"
-        - pattern: kafka.(\w+)<type=(.+), name=(.+)><>Count
-          name: kafka_$1_$2_$3_count
-          type: COUNTER
-        - pattern: kafka.(\w+)<type=(.+), name=(.+)><>(\d+)thPercentile
-          name: kafka_$1_$2_$3
-          type: GAUGE
-          labels:
-            quantile: "0.$4"
+      auto.create.topics.enable: "false"
+      offsets.topic.replication.factor: 3
+      transaction.state.log.replication.factor: 3
+      transaction.state.log.min.isr: 2
+      log.message.format.version: '3.0'
+      inter.broker.protocol.version: '3.0'
+      ssl.endpoint.identification.algorithm: ""
+      ssl.enabled.protocols: "TLSv1.2"
+      ssl.protocol: "TLSv1.2"
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          name: kafka-metrics-cm
+          key: metrics
   zookeeper:
     replicas: 3
     storage:
       type: ephemeral
-    metrics:
-      lowercaseOutputName: true
-      rules:
-        - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+)><>(\\w+)"
-          name: "zookeeper_$2"
-        - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+)><>(\\w+)"
-          name: "zookeeper_$3"
-          labels:
-            replicaId: "$2"
-        - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+), name2=(\\w+)><>(\\w+)"
-          name: "zookeeper_$4"
-          labels:
-            replicaId: "$2"
-            memberType: "$3"
-        - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+), name2=(\\w+), name3=(\\w+)><>(\\w+)"
-          name: "zookeeper_$4_$5"
-          labels:
-            replicaId: "$2"
-            memberType: "$3"
-        - pattern: "org.apache.ZooKeeperService<name0=StandaloneServer_port(\\d+)><>(\\w+)"
-          name: "zookeeper_$2"
-        - pattern: "org.apache.ZooKeeperService<name0=StandaloneServer_port(\\d+), name1=(InMemoryDataTree)><>(\\w+)"
-          name: "zookeeper_$2_$3"
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          name: zookeeper-metrics-cm
+          key: metrics
   entityOperator:
     topicOperator: {}
     userOperator: {}
