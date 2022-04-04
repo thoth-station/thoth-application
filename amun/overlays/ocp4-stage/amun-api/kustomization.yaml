@@ -155,7 +155,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/templates/0/container/image
-        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-prod/graph-sync-job:latest
+        value: image-registry.openshift-image-registry.svc:5000/thoth-amun-inspection-stage/graph-sync-job:latest
     target:
       group: argoproj.io
       version: v1alpha1
