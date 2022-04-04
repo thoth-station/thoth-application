@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../../base
+  - ../common
   - argo-workflows/send-messages.yaml
   - argo-workflows/sync-template.yaml
   - metrics-exporter-reader.yaml
