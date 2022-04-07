@@ -393,12 +393,12 @@ tide:
               - aicoe-ci/build-check
 
 periodics:
-  - name: integration-tests-moc
+  - name: integration-tests-prod
     interval: 6h
     decorate: true
     spec:
       containers:
-        - image: quay.io/thoth-station/integration-tests:v0.9.1
+        - image: quay.io/thoth-station/integration-tests:v0.11.1
           imagePullPolicy: Always
           command:
             - python3
@@ -454,8 +454,8 @@ periodics:
               memory: "256Mi"
               cpu: "1"
             limits:
-              memory: "256Mi"
-              cpu: "1"
+              memory: "512"
+              cpu: "2"
     annotations:
       description: Periodic e2e tests against MOC deployment
 
