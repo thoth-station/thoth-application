@@ -1,5 +1,56 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.04.18 (2022-04-18T19:05:29)
+* 041ad6a5 :ship: Bump up the images based on the version update v2022.04.18
+* 695dabef Update certs for the stage and test apps (#2519)
+* 19e379bc Update mi-scheduler to v1.7.6
+* b5a2f423 Increase the parallel wf run limit and reduce ttl in stage for backend
+* 7cce46dd :ship: Deploy the Tag v0.11.2 for integration-tests
+* 545fa12e Bump integration tests to v0.11.2 in stage
+* eb8b264b add 'needs sig' behavior
+* 134c94cb :ship: Deploy the Tag v0.10.6 for amun-api
+* 0f1004d0 Bump Amun API to v0.10.6 in stage environment
+* cc1d34fb Authorize maya to view/edit secrets and update prescription secrets
+* b06bd4ce :ship: Deploy the Tag v0.10.5 for amun-api
+* 81367bcb :ship: Deploy the Tag v0.18.3 for management-api
+* 7e21f08c Update pre-commit image tag
+* 83459a64 Bump Amun API to v0.10.5
+* 7f883d75 Bump management-api to v0.18.3 in stage
+* b2bc6021 :ship: Deploy the Tag v0.18.2 for management-api
+* e7bbce55 Bump management-api to v0.18.2 in stage
+* 17535d2c Bump integration-tests to v0.11.1
+* a3366206 add Google Cloud Big Query ServiceAccount used for prescriptions-refresh-job
+* 178fbdb5 .sops.yaml
+* 71829249 update the integration test periodic job
+* fc772126 Update mi to 2.10.7 and mi-scheduler to 1.7.5
+* 61df8e38 :ship: Deploy the Tag v0.18.1 for management-api
+* a4607f33 :ship: Deploy the Tag v0.10.4 for amun-api
+* db62c829 Bump Amun API to v0.10.4 in stage
+* 91bea41b Bump Amun API to v0.10.3 in stage
+* 34758635 :ship: Deploy the Tag v0.16.1 for messaging
+* 9ca74335 :ship: Deploy the Tag v0.11.1 for integration-tests
+* 9cc193ee update environments to latest messaging container image tag
+* 7e6a6539 :ship: Deploy the Tag v0.10.3 for amun-api
+* 878a8361 :ship: Deploy the Tag v0.10.2 for amun-api
+* 8d03a7a2 Bump Amun API to v0.10.2 in stage environment
+* 252a36f1 Fix the configmap in amun-api
+* 373493e6 Fix the stage deployment of dm graph-sync
+* 20c889dc Upgrade the kafka secrets for the stage deployments
+* 60db7c88 Upgrade kafka to version 3.0.0 for strimzi 0.26.0
+* 50a8ff5a :recycle: Keep DM sync up-to-date which uses graph-sync image
+* 008c438d Exit prescriptions-refresh-gh containers when too many requests to GitHub API
+* 3e52028a Keep DM up-to-date which uses adviser image
+* 173502da Fixed Image patch to use correct ns in prod
+* bd09ab57 Bump user-api to v0.35.0 in stage
+* a2d9f219 :ship: Deploy the Tag pr-141 for prescriptions-refresh-job
+* e7498907 :ship: Deploy the Tag pr-139 for prescriptions-refresh-job
+* 6fbbcbde :ship: Deploy the Tag v0.35.0 for user-api
+* 35a98fb9 :ship: Deploy the Tag v0.34.15 for user-api
+* 197ab85c switch on the document-sync in stage
+* 683657b7 Set kafka configmap for the amun-inspection (#2474)
+* 433c1968 configmap amun is required by both amun-api and amun-wf
+* 7659ef82 set mi-scheduler-cm configmap for mi-scheduler cronjob
+
 ## Release 2022.03.28 (2022-03-28T16:34:18)
 * 338bf94c :ship: Bump up the images based on the version update v2022.03.28
 * 41a0962c :ship: Deploy the Tag v1.8.0 for kebechet
