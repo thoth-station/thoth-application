@@ -179,12 +179,8 @@ repo_milestone:
 
 milestone_applier:
   thoth-station/thoth-application:
-    master: 2022.03.28
-    v2022.03.14: 2022.03.14
-    v2022.02.28: 2022.02.28
-    v2022.02.14: 2022.02.14
-    v2022.02.01: 2022.01.31
-    v2022.01.17: 2022.01.17
+    master: 2022.05.00
+    v2022.04.18: 2022.04.18
 
 project_config:
   project_org_configs:
