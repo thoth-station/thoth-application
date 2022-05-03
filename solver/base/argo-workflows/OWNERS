@@ -4,5 +4,5 @@ approvers:
   - KPostOffice
   - harshad16
   - fridex
-  - pacospace
-reviewers: []
+reviewers:
+  - mayaCostantini
