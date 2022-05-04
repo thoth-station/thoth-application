@@ -391,6 +391,10 @@ tide:
           workflow-helpers:
             required-contexts:
               - aicoe-ci/build-check
+      open-services-group:
+        repos:
+          peribolos-as-a-service:
+            skip-unknown-contexts: false
 
 periodics:
   - name: integration-tests-prod
