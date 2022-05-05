@@ -11,6 +11,7 @@ label:
     - deployment_name/ocp4-stage
     - deployment_name/ocp4-test
     - deployment_name/moc-prod
+    - epic
     - hacktoberfest
     - hacktoberfest-accepted
     - kind/cleanup
