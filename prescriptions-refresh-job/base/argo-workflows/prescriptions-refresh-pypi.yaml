@@ -60,6 +60,12 @@ spec:
           items:
           - key: KEBBHUT_GITHUB_PRIVATE_KEY
             path: github-privatekey
+      - name: google-app-config
+        secret:
+          secretName: prescriptions
+          items:
+            - key: thoth-prescriptions-refresh-4cfa295278d8.json
+              path: prescriptions-4cfa295278d8.json
     entrypoint: pypi
     templates:
       - name: pypi
@@ -190,10 +196,7 @@ spec:
             - name: THOTH_PRESCRIPTIONS_REFRESH_SUBCOMMAND
               value: pypi-downloads
             - name: GOOGLE_APPLICATION_CREDENTIALS
-              valueFrom:
-                secretKeyRef:
-                  name: prescriptions
-                  key: aicoe-thoth-ops-b9fa132d5b9a.json
+              value: /tmp/google-app-config/prescriptions-4cfa295278d8.json
             - name: GITHUB_PRIVATE_KEY_PATH
               value: /opt/app-root/src/.github/github-privatekey
             - name: THOTH_LOGGING_NO_JSON
@@ -240,6 +243,8 @@ spec:
             - name: github-app-privatekey
               mountPath: /opt/app-root/src/.github/
               readOnly: true
+            - name: google-app-config
+              mountPath: /tmp/google-app-config
       - name: pypi-maintainers
         resubmitPendingPods: true
         container:
