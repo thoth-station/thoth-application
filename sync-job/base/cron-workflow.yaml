@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: sync-job-cw
+  labels:
+    app: thoth
+    component: sync
+spec:
+  schedule: "0 10 14 * *"
+  timezone: "Etc/UTC"
+  concurrencyPolicy: "Replace"
+  startingDeadlineSeconds: 0
+  workflowSpec:
+    entrypoint: DocumentSyncTypeOne
+    templates:
+    - name: DocumentSyncTypeOne
+      steps:
+      - - name: SyncDocuments
+          templateRef:
+            name: sync-job-wt
+            template: SyncDocumentsByType
+          arguments:
+            parameters:
+              - name: THOTH_DOCUMENT_TYPE
+                value: "solver"
+    - name: DocumentSyncTypeTwo
+      steps:
+      - - name: SyncDocuments
+          templateRef:
+            name: sync-job-wt
+            template: SyncDocumentsByType
+          arguments:
+            parameters:
+              - name: THOTH_DOCUMENT_TYPE
+                value: "revsolver"
+    - name: DocumentSyncTypeThree
+      steps:
+      - - name: SyncDocuments
+          templateRef:
+            name: sync-job-wt
+            template: SyncDocumentsByType
+          arguments:
+            parameters:
+              - name: THOTH_DOCUMENT_TYPE
+                value: "security-indicator"
