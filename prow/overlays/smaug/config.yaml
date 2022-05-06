@@ -157,6 +157,9 @@ branch-protection:
         required_pull_request_reviews:
           dismiss_stale_reviews: false
           required_approving_review_count: 1
+      repos:
+        peribolos-as-a-service:
+          protect: false
     os-climate:
           protect: true
           allow_force_pushes: false
