@@ -6,7 +6,7 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: quay.io/thoth-station/revsolver:v0.2.11
+      name: quay.io/thoth-station/revsolver:v0.2.12
     importPolicy: {}
     name: latest
     referencePolicy:
