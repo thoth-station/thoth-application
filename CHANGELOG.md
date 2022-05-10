@@ -1,5 +1,35 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.05.10 (2022-05-10T10:46:03)
+* 9893458d :ship: Bump up the images based on the version update v2022.05.09
+* 4df8d905 :ship: Deploy the Tag v0.11.2 for reporter
+* 46eab36e :ship: Deploy the Tag v0.5.3 for cve-update-job
+* 770da5b5 :ship: Deploy the Tag v0.16.1 for investigator
+* 4f11899c :ship: Deploy the Tag v0.9.2 for graph-backup-job
+* 0994508b :ship: Deploy the Tag v0.19.2 for slo-reporter
+* 47f60a7e :ship: Deploy the Tag v0.10.20 for graph-sync-job
+* dcb5f6d9 :ship: Deploy the Tag v0.3.19 for graph-refresh-job
+* 3d3031a2 :ship: Deploy the Tag v0.21.1 for metrics-exporter
+* ed4eb38f :ship: Deploy the Tag v0.18.4 for management-api
+* c0adb1e9 :ship: Deploy the Tag v0.9.9 for workflow-helpers
+* 7b06f696 :ship: Deploy the Tag v0.2.12 for revsolver
+* 217cc750 :ship: Deploy the Tag v0.8.16 for package-update-job
+* 6d6e27cb :ship: Deploy the Tag v0.6.2 for graph-metrics-exporter
+* 57b25419 :ship: Deploy the Tag v0.11.9 for package-releases-job
+* 63056945 :ship: Deploy the Tag v0.35.1 for user-api
+* 2d9e36ae creating cron-workflow to invoke job template for the sync-job
+* 1cf0e412 feat: Disable branch protection on peribolos repo
+* 83bb2558 [prow] Add an additional 'epic' label
+* 7c280d70 Patch prescription refresh job secrets for big query
+* 18474027 feat(prow): OSG Peribolos needs Tide stop skipping checks
+* e71bcee5 maintained the OWNERS
+* 7c0ecfef adding solve-res template to test solver overlay
+* 2c0c6909 Update configmaps.yaml
+* 1d835ab8 Start the sync of the fedora35 python 3.10 solvers
+* cd315a30 [prow] Fix typo in current milestone configuration
+* ade9f7f5 adding documentation on creating new integration test overlays
+* 3c8ac503 configure the current milestone
+
 ## Release 2022.04.18 (2022-04-18T19:05:29)
 * 041ad6a5 :ship: Bump up the images based on the version update v2022.04.18
 * 695dabef Update certs for the stage and test apps (#2519)
