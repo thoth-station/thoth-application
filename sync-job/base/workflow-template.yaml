@@ -17,6 +17,12 @@ spec:
             - "package-extract"
             - "provenance-checker"
             - "security-indicator"
+        - name: THOTH_SYNC_FORCE
+          default: "0"
+        - name: THOTH_SYNC_GRACEFUL
+          default: "0"
+        - name: THOTH_SYNC_DEBUG
+          default: "0"
       container:
         image: "quay.io/thoth-station/sync-job:v0.2.4"
         env:

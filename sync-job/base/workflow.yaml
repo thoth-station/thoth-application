@@ -1,0 +1,63 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: sync
+  annotations:
+    description: "Thoth: SyncJob"
+    openshift.io/display-name: "Thoth: SyncJob"
+    tags: thoth,sync
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines the workflow to run the Sync-Job for our Ceph DB in OpenShift.
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+  labels:
+    app: thoth
+    template: sync
+    component: sync
+parameters:
+  - name: THOTH_SYNC_FORCE
+    required: false
+    description: Force run the sync job.
+    displayName: force
+  - name: THOTH_SYNC_GRACEFUL
+    required: false
+    description: Graceful sync for the sync job.
+    displayName: graceful
+  - name: THOTH_SYNC_DEBUG
+    required: true
+    description: Level of debugging to set for the sync job.
+    displayName: debug
+  - name: THOTH_DOCUMENT_TYPE
+    required: true
+    description: The document type to sync to ceph.
+    displayName: document_type
+objects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Workflow
+    metadata:
+      name: sync-job
+    spec:
+      entrypoint: SyncDocuments
+      arguments:
+        parameters:
+        - name: THOTH_SYNC_FORCE
+        - name: THOTH_SYNC_GRACEFUL
+        - name: THOTH_SYNC_DEBUG
+        - name: THOTH_DOCUMENT_TYPE
+      templates:
+      - name: SyncDocuments
+        steps:
+        - - name: SyncDocuments
+            templateRef:
+              name: sync-job-wt
+              template: SyncDocumentType
+            arguments:
+              parameters:
+                - name: THOTH_SYNC_FORCE
+                  value: "{{workflow.parameters.THOTH_DOCUMENT_TYPE}}"
+                - name: THOTH_SYNC_GRACEFUL
+                  value: "{{workflow.parameters.THOTH_SYNC_GRACEFUL}}"
+                - name: THOTH_SYNC_DEBUG
+                  value: "{{workflow.parameters.THOTH_SYNC_DEBUG}}"
+                - name: THOTH_DOCUMENT_TYPE
+                  value: "{{workflow.parameters.THOTH_DOCUMENT_TYPE}}"
