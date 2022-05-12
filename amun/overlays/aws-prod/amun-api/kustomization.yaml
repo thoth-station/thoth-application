@@ -3,13 +3,13 @@ kind: Kustomization
 resources:
   - ../../../base
   - ../common
-  - metrics-exporter-reader.yaml
-  - role_binding.yaml
-  - thoth-notification.yaml
-  - message-imagestream.yaml
   - argo-workflows/send-messages.yaml
   - argo-workflows/sync-template.yaml
+  - metrics-exporter-reader.yaml
+  - role_binding.yaml
   - route53.yaml
+  - thoth-notification.yaml
+  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/core/overlays/aws-prod/common/imagestreamtags.yaml
 generators:
   - secret-generator.yaml
 generatorOptions:

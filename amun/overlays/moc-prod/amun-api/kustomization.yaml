@@ -6,10 +6,10 @@ resources:
   - argo-workflows/send-messages.yaml
   - argo-workflows/sync-template.yaml
   - metrics-exporter-reader.yaml
-  - message-imagestream.yaml
   - role_binding.yaml
   - route53.yaml
   - thoth-notification.yaml
+  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/core/overlays/moc-prod/common/imagestreamtags.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
 generators:

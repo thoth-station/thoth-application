@@ -3,12 +3,12 @@ kind: Kustomization
 resources:
   - ../../../base
   - ../common
+  - argo-workflows/send-messages.yaml
+  - argo-workflows/sync-template.yaml
   - metrics-exporter-reader.yaml
   - role_binding.yaml
   - thoth-notification.yaml
-  - message-imagestream.yaml
-  - argo-workflows/send-messages.yaml
-  - argo-workflows/sync-template.yaml
+  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/core/overlays/ocp4-stage/common/imagestreamtags.yaml
 patchesStrategicMerge:
   - imagestreamtag.yaml
 generators:
