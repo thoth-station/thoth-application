@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
   - ../../base
   - buildconfig.yaml
-  - role_binding.yaml
   - configmaps.yaml
+  - role_binding.yaml
   - thoth-notification.yaml
 generators:
   - ./secret-generator.yaml
