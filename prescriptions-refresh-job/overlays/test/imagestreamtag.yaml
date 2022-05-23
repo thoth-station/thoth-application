@@ -6,7 +6,7 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: quay.io/thoth-station/prescriptions-refresh-job:pr-141
+      name: quay.io/thoth-station/prescriptions-refresh-job:v0.7.0
     importPolicy: {}
     name: latest
     referencePolicy:
