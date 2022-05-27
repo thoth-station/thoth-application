@@ -33,6 +33,8 @@ spec:
               value: "thoth.investigator"
             - name: KAFKA_CONSUMER_ENABLE_AUTO_COMMIT
               value: "false"
+            - name: KAFKA_CONSUMER_AUTO_OFFSET_RESET
+              value: "latest"
             - name: KAFKA_CONSUMER_MAX_POLL_INTERVAL_MS
               value: "900000"
             - name: KAFKA_BOOTSTRAP_SERVERS
