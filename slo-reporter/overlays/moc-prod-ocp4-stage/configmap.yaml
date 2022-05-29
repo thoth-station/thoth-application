@@ -12,7 +12,7 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: thoth
+  name: thoth-moc
 data:
   deployment-name: smaug-prod
   amun-inspection-namespace: thoth-amun-inspection-prod
@@ -27,7 +27,7 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: ceph
+  name: ceph-moc
 data:
   bucket-name: "thoth"
   bucket-prefix: "data"
@@ -39,7 +39,7 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: prometheus
+  name: prometheus-moc
 data:
   user-api-url: "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud"
   instance-metrics-exporter-infra: "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
