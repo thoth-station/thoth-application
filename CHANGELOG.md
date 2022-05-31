@@ -1,5 +1,30 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.05.31 (2022-05-31T18:56:26)
+* 8d168356 :ship: Bump up the images based on the version update v2022.05.30 (#2578)
+* 6f72aaa7 Adjusted slo-reporter config for moc run to use its own config
+* f1977a27 Update the kafka creds for stage cluster (#2575)
+* 24a37256 Bump up investigator version for fixing kafka consumption (#2574)
+* 3cae281c Enable auto offset reset to latest for resolving offset issues (#2573)
+* fc943652 Update solver images in stage (#2568)
+* 38ad3ce9 Bump prescriptions-refresh-job to v0.7.0 in stage (#2567)
+* 41e106e4 :ship: Deploy the Tag v0.16.2 for investigator
+* 3f6f3cf1 Updated the kafka to version 3.1.0 (#2572)
+* d13e1fec Increase activeDeadlineSeconds in backup solver workflow
+* 8c5587a5 :ship: Deploy the Tag v0.7.0 for prescriptions-refresh-job
+* 41857920 :ship: Deploy the Tag v1.9.0 for kebechet
+* 7928137c :ship: Deploy the Tag v0.55.0 for adviser
+* 90bd5f3c Bump user-api to v0.35.2 in stage
+* d80b3bc0 :ship: Deploy the Tag v0.35.2 for user-api
+* 7f46da8b Bump adviser to v0.55.0 in stage environment
+* 602b8582 Upgrade workflow-helper and graph-sync for sync fix
+* 03746016 :ship: Deploy the Tag v0.9.10 for workflow-helpers
+* 4228ae4f :ship: Deploy the Tag v0.10.21 for graph-sync-job
+* aa26b017 Patch the messaging image for all the environments
+* 0a19d1e1 :ship: Deploy the Tag v0.54.0 for adviser
+* dded6a2a Bump adviser to v0.54.0 in stage environment
+* 8e999906 adding argo workflow and modifying template
+
 ## Release 2022.05.10 (2022-05-10T10:46:03)
 * 9893458d :ship: Bump up the images based on the version update v2022.05.09
 * 4df8d905 :ship: Deploy the Tag v0.11.2 for reporter
