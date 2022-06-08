@@ -160,6 +160,8 @@ branch-protection:
       repos:
         peribolos-as-a-service:
           protect: false
+        probot-extensions:
+          protect: false
     os-climate:
           protect: true
           allow_force_pushes: false
@@ -397,6 +399,8 @@ tide:
       open-services-group:
         repos:
           peribolos-as-a-service:
+            skip-unknown-contexts: false
+          probot-extensions:
             skip-unknown-contexts: false
 
 periodics:
