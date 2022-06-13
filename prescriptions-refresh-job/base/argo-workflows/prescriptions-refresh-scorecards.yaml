@@ -6,7 +6,7 @@ metadata:
     app: thoth
     component: prescriptions-refresh
 spec:
-  schedule: "@weekly"
+  schedule: "@monthly"
   concurrencyPolicy: "Forbid"
   startingDeadlineSeconds: 0
   suspend: true

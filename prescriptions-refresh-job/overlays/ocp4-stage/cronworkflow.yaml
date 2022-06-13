@@ -39,4 +39,4 @@ kind: CronWorkflow
 metadata:
   name: prescriptions-refresh-scorecards
 spec:
-  suspend: false
+  suspend: true
