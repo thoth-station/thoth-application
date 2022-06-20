@@ -45,7 +45,7 @@ spec:
                 - name: THOTH_LOGGING_NO_JSON
                   valueFrom:
                     configMapKeyRef:
-                      name: thoth
+                      name: integration-tests
                       key: logging-no-json
                 - name: THOTH_USER_API_HOST
                   valueFrom:
