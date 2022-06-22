@@ -1,5 +1,22 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.06.22 (2022-06-22T18:01:18)
+* e7407e3b :ship: Deploy the Tag pr-897 for management-api
+* 29d3c67f :ship: Bump up version of the updated component in release v2022.06.20
+* d97caffe :ship: Deploy the Tag v1.10.0 for kebechet
+* 20cc3857 fix: Use the cm integration-tests across whole cronjob
+* 9c3e7e00 Fix the kafka connection of ocp4 test (#2592)
+* eb988c57 :ship: Deploy the Tag v0.4.4 for nepthys
+* 25d1c0e1 :ship: Deploy the Tag pr-95 for nepthys
+* c5cf6b53 Suspend scorecards handler and schedule refresh job monthly
+* 29df8059 add 2022.06.20 milestone
+* 1d268823 Bump adviser to v0.56.0 in stage
+* 6c592cb4 :ship: Deploy the Tag v0.56.0 for adviser
+* 8543a406 Bump prescriptions-refresh-job to v0.7.1 in stage
+* 450755bf :ship: Deploy the Tag v0.7.1 for prescriptions-refresh-job
+* fe1758bc feat: Disable branch protection on probot-extensions repo
+* a9cd6748 add create, and update permissions for secret resources 4 user-api
+
 ## Release 2022.05.31 (2022-05-31T18:56:26)
 * 8d168356 :ship: Bump up the images based on the version update v2022.05.30 (#2578)
 * 6f72aaa7 Adjusted slo-reporter config for moc run to use its own config
