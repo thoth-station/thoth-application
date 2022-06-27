@@ -162,6 +162,8 @@ branch-protection:
           protect: false
         probot-extensions:
           protect: false
+        probot-template:
+          protect: false
     os-climate:
           protect: true
           allow_force_pushes: false
@@ -401,6 +403,8 @@ tide:
           peribolos-as-a-service:
             skip-unknown-contexts: false
           probot-extensions:
+            skip-unknown-contexts: false
+          probot-template:
             skip-unknown-contexts: false
 
 periodics:
