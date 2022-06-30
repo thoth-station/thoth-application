@@ -272,8 +272,6 @@ tide:
     - orgs:
         - operate-first
         - os-climate
-      excludedRepos:
-        - operate-first/operate-first.github.io
       labels:
         - approved
         - lgtm
