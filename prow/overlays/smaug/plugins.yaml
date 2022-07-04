@@ -229,6 +229,30 @@ project_manager:
               org: thoth-station
               state: open
 
+branch_cleaner:
+  preserved_branches:
+    AICoE:
+      - main
+      - master
+    aicoe-aiops:
+      - main
+      - master
+    b4mad:
+      - main
+      - master
+    open-services-group:
+      - main
+      - master
+    operate-first:
+      - main
+      - master
+    os-climate:
+      - main
+      - master
+    thoth-station:
+      - main
+      - master
+
 plugins:
   b4mad:
     plugins:
