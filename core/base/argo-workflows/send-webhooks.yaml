@@ -1,0 +1,38 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: send-webhooks
+  annotations:
+    operation: workflow-helpers
+spec:
+  templates:
+  - name: send-webhooks
+    podSpecPatch: '{"serviceAccountName": "send-webhooks"}'
+    resubmitPendingPods: true
+    inputs:
+      parameters:
+      - name: document-id
+      - name: secret-namespace
+    container:
+      name: send-webhooks
+      image: workflow-helpers:latest
+      env:
+      - name: THOTH_WORKFLOW_TASK
+        value: send_webhooks
+      - name: DOCUMENT_ID
+        value: "{{inputs.parameters.document-id}}"
+      - name: THOTH_BACKEND_NAMESPACE
+        value: "{{inputs.parameters.secret-namespace}}"
+      - name: WEBHOOK_DIR
+        value: "/secret/callback"
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 256Mi
+      volumeMounts:
+      - name: callback-secret
+        mountPath: /secret/callback
