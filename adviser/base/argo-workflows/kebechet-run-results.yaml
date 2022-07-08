@@ -71,6 +71,8 @@ spec:
             value: "{{inputs.parameters.git_service}}"
           - name: KEBECHET_ANALYSIS_ID
             value: "{{inputs.parameters.THOTH_DOCUMENT_ID}}"
+          - name: THOTH_ADVISER_METADATA
+            value: "{{inputs.parameters.THOTH_ADVISER_METADATA}}"
           - name: GITHUB_APP_ID
             valueFrom:
               secretKeyRef:
