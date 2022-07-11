@@ -5,7 +5,7 @@ metadata:
   name: thoth
 data:
   applicationVersion: 0.7.0-dev
-  deployment-name: rick-test
+  deployment-name: moc-test
   amun-api-url: http://amun-api.thoth-test-core.svc/api/v1
   amun-inspection-namespace: thoth-test-core
   amun-namespace: thoth-test-core
