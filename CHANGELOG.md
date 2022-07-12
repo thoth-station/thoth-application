@@ -1,5 +1,20 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.07.12 (2022-07-12T01:39:26)
+* 756c2f11 :arrow_up: Bump up the versions for the release of v2022.07.11
+* 9dc78c05 :ship: Deploy the Tag v0.35.3 for user-api
+* e5935d67 :ship: Deploy the Tag v1.10.1 for kebechet
+* 3a9b32eb Include the thoth-advise-metadata env to the kebechet-run-result (#2610)
+* 30ab436d :dizzy: Updated certs for stage routes
+* 2e6ec643 :ship: Deploy the Tag v0.18.5 for management-api
+* 6d9433f6 Bump management-api to v0.18.5 in stage
+* 2dabc860 :ship: Deploy the Tag v0.7.2 for prescriptions-refresh-job
+* bd28bbe7 Temporarily suspend prescriptions
+* 62b44852 include operate first website repo again
+* cc291651 feat: Relocate Probot repositories to Operate First
+* 61c5c98e feat: Disable branch protection on probot-template repo
+* 9840c59c :ship: Deploy the Tag pr-1759 for user-api
+
 ## Release 2022.06.22 (2022-06-22T18:01:18)
 * e7407e3b :ship: Deploy the Tag pr-897 for management-api
 * 29d3c67f :ship: Bump up version of the updated component in release v2022.06.20
