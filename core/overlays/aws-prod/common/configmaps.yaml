@@ -46,7 +46,7 @@ metadata:
 data:
   kafka-ssl-auth: "1"
   kafka-protocol: "SSL"
-  kafka-bootstrap-servers: "opf-kafka-kafka-bootstrap.opf-kafka.svc:9093"
+  kafka-bootstrap-servers: "odh-message-bus-kafka-bootstrap.opf-kafka.svc:9093"
 ---
 kind: ConfigMap
 apiVersion: v1
