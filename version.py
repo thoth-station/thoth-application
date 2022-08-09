@@ -1,4 +1,4 @@
 """Thoth Application."""
 
 __name__ = "thoth-station"
-__version__ = "2022.07.12"
+__version__ = "2022.08.09"

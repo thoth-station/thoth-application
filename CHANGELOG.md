@@ -1,5 +1,17 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.08.09 (2022-08-09T07:50:33)
+* 9990358c :ship: Bump up version of the updated component in release v2022.08.01 (#2625)
+* ee4d8fe2 :ship: Deploy the Tag v0.9.11 for workflow-helpers
+* e6f9830d :ship: Deploy the Tag v0.11.3 for integration-tests
+* fb5b0e4a :arrow_up: Updated the version of kebechet v0.10.3
+* 9157a900 :ship: Deploy the Tag v1.10.3 for kebechet
+* daac4893 :ship: Deploy the Tag v0.56.1 for adviser
+* 6d88cd54 :arrow_up: Updated the version of kebechet v0.10.2
+* 3e9e3344 :ship: Deploy the Tag v1.10.2 for kebechet
+* b5933055 :ship: Deploy the Tag v0.7.3 for prescriptions-refresh-job
+* fe600066 :astonished: Update the kafka to stay inline with operate-first (#2621)
+
 ## Release 2022.07.12 (2022-07-12T01:39:26)
 * 756c2f11 :arrow_up: Bump up the versions for the release of v2022.07.11
 * 9dc78c05 :ship: Deploy the Tag v0.35.3 for user-api
