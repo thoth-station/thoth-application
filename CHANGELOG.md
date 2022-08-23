@@ -1,5 +1,30 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.08.23 (2022-08-23T14:38:48)
+* ce2b400f :ship: Bump up version of the updated component in release v2022.08.22 (#2632)
+* 11bce713 Fix cache expiration value (#2631)
+* 9ac88be6 :ship: Deploy the Tag v0.35.5 for user-api
+* 230919c8 :ship: Deploy the Tag v0.5.4 for cve-update-job
+* 482cd612 :ship: Deploy the Tag v0.18.6 for management-api
+* 19286242 :ship: Deploy the Tag v0.8.17 for package-update-job
+* 418192d3 :ship: Deploy the Tag v0.56.2 for adviser
+* 61ede5c0 :ship: Deploy the Tag v0.9.12 for workflow-helpers
+* 6c9574ac :ship: Deploy the Tag v0.16.3 for investigator
+* ff8b32fd :ship: Deploy the Tag v0.11.10 for package-releases-job
+* ad525d37 :ship: Deploy the Tag v0.19.3 for slo-reporter
+* 8a3c22c8 :ship: Deploy the Tag v0.6.3 for graph-metrics-exporter
+* 4dfecb3e :ship: Deploy the Tag v0.21.2 for metrics-exporter
+* e742e5ab :ship: Deploy the Tag v0.3.20 for graph-refresh-job
+* 31d68281 :ship: Deploy the Tag v0.9.3 for graph-backup-job
+* 3203c8df :ship: Deploy the Tag v0.10.22 for graph-sync-job
+* a5876639 :ship: Deploy the Tag v0.2.13 for revsolver
+* dc44bbe0 migrating Prow manifefsts to operate-first/continuous-delivery (#2606)
+* 1b36742b :ship: Deploy the Tag pr-1793 for user-api
+* 8ecaec9a :ship: Deploy the Tag v0.35.4 for user-api
+* aff63349 :ship: Deploy the Tag pr-1788 for user-api
+* ddb7cb65 Re-enable prescriptions-refresh-job
+* 2752161c Release of version 2022.08.09
+
 ## Release 2022.08.09 (2022-08-09T07:50:33)
 * 9990358c :ship: Bump up version of the updated component in release v2022.08.01 (#2625)
 * ee4d8fe2 :ship: Deploy the Tag v0.9.11 for workflow-helpers
