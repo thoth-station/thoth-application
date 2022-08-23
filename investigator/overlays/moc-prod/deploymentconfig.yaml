@@ -132,10 +132,10 @@ spec:
           resources:
             requests:
               memory: "256Mi"
-              cpu: "500m"
+              cpu: "1"
             limits:
               memory: "512Mi"
-              cpu: "500m"
+              cpu: "1.5"
           ports:
             - containerPort: 6066
               protocol: TCP
