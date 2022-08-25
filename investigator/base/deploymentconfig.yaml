@@ -21,6 +21,7 @@ spec:
       serviceAccountName: investigator
       containers:
         - image: investigator:latest
+          imagePullPolicy: IfNotPresent
           name: investigator-consumer
           env:
             - name: PORT
@@ -128,10 +129,10 @@ spec:
           resources:
             requests:
               memory: "256Mi"
-              cpu: "1"
+              cpu: "1000m"
             limits:
               memory: "512Mi"
-              cpu: "1.5"
+              cpu: "1500m"
           ports:
             - containerPort: 6066
               protocol: TCP
@@ -140,7 +141,9 @@ spec:
               path: "/_health"
               port: 6066
               scheme: HTTP
-            initialDelaySeconds: 5
+            initialDelaySeconds: 180
+            failureThreshold: 3
+            successThreshold: 1
             periodSeconds: 10
             timeoutSeconds: 10
           livenessProbe:
@@ -148,6 +151,8 @@ spec:
             # Give this consumer 2 hours to finish
             initialDelaySeconds: 7200
             periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
             tcpSocket:
               port: 80
       volumes:
