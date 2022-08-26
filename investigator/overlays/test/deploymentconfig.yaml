@@ -130,10 +130,10 @@ spec:
               readOnly: true
           resources:
             requests:
-              memory: "256Mi"
-              cpu: "1000m"
-            limits:
               memory: "512Mi"
+              cpu: "1"
+            limits:
+              memory: "768Mi"
               cpu: "1500m"
           ports:
             - containerPort: 6066
