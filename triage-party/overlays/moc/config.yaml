@@ -102,6 +102,7 @@ collections:
     rules:
       # Issues pending triage
       - issue-needs-triage
+      - issue-needs-sig
       # SLO
       - issue-near-soon-overdue
       - issue-near-longterm-overdue
@@ -293,6 +294,13 @@ rules:
       - label: "!priority/.*"
       - label: "!lifecycle/frozen"
       - label: "!help needed"
+
+  issue-needs-sig:
+    name: "Issues without SIG"
+    resolution: "Assign a sig/* label"
+    type: issue
+    filters:
+      - label: "!sig/.*"
 
   # SLO nearing
   issue-near-soon-overdue:
