@@ -5,8 +5,10 @@ settings:
   repos:
     - https://github.com/AICoE/elyra-aidevsecops-tutorial
     - https://github.com/AICoE/manage-dependencies-tutorial
+    - https://github.com/AICoE/meteor-operator
     - https://github.com/AICoE/overlays-for-ai-pipeline-tutorial
     - https://github.com/AICoE/recommend-base-image-tutorial
+    - https://github.com/open-services-group/byon
     - https://github.com/thoth-station/adviser
     - https://github.com/thoth-station/amun-api
     - https://github.com/thoth-station/amun-client
@@ -29,6 +31,7 @@ settings:
     - https://github.com/thoth-station/mi
     - https://github.com/thoth-station/micropipenv
     - https://github.com/thoth-station/mi-scheduler
+    - https://github.com/thoth-station/opendatahub-cnbi
     - https://github.com/thoth-station/package-extract
     - https://github.com/thoth-station/package-releases-job
     - https://github.com/thoth-station/package-update-job
