@@ -77,7 +77,7 @@ data:
         bucket: "thoth"
         keyPrefix: "data/ocp4-test/argo/artifacts/"
         endpoint: "s3.upshift.redhat.com"
-        insecure: true
+        insecure: false
         accessKeySecret:
           name: argo-artifact-repository-secrets
           key: accessKey

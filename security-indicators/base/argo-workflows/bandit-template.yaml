@@ -56,7 +56,6 @@ spec:
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
               key: >-
                 {{inputs.parameters.THOTH_CEPH_BUCKET_PREFIX}}/{{inputs.parameters.THOTH_DEPLOYMENT_NAME}}/si-bandit/{{inputs.parameters.THOTH_DOCUMENT_ID}}
-              insecure: true
               accessKeySecret:
                 name: argo-artifact-repository-secrets
                 key: accessKey
