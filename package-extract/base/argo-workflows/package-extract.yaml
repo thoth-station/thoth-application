@@ -64,7 +64,6 @@ spec:
                 analysis/{{inputs.parameters.THOTH_DOCUMENT_ID}}"
               endpoint: "{{inputs.parameters.THOTH_S3_ENDPOINT_URL}}"
               bucket: "{{inputs.parameters.THOTH_CEPH_BUCKET_NAME}}"
-              insecure: true
               accessKeySecret:
                 name: argo-artifact-repository-secrets
                 key: accessKey

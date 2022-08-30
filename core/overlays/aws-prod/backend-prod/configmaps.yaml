@@ -40,7 +40,7 @@ data:
         bucket: "thoth-store"
         keyPrefix: "data/aws-prod/argo/artifacts/"
         endpoint: "s3.amazonaws.com"
-        insecure: true
+        insecure: false
         accessKeySecret:
           name: argo-artifact-repository-secrets
           key: accessKey
