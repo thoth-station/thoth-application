@@ -1,5 +1,5 @@
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: metrics-exporter-from-infra
@@ -13,7 +13,7 @@ subjects:
     name: metrics-exporter
     namespace: thoth-infra-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: metrics-exporter-from-infra
@@ -27,7 +27,7 @@ subjects:
     name: metrics-exporter
     namespace: thoth-infra-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: metrics-exporter-from-infra
@@ -41,7 +41,7 @@ subjects:
     name: metrics-exporter
     namespace: thoth-infra-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: metrics-exporter-from-infra
@@ -55,7 +55,7 @@ subjects:
     name: metrics-exporter
     namespace: thoth-infra-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: metrics-exporter-from-infra
@@ -69,7 +69,7 @@ subjects:
     name: metrics-exporter
     namespace: thoth-infra-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: metrics-exporter-from-infra

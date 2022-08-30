@@ -1,5 +1,5 @@
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api
@@ -11,7 +11,7 @@ subjects:
   - kind: ServiceAccount
     name: user-api
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api-pods-info
@@ -23,7 +23,7 @@ subjects:
   - kind: ServiceAccount
     name: user-api
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api-argo
@@ -35,7 +35,7 @@ subjects:
   - kind: ServiceAccount
     name: user-api
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api-argo-admin

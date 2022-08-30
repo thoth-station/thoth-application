@@ -1,5 +1,5 @@
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api
@@ -13,7 +13,7 @@ subjects:
     name: user-api
     namespace: thoth-frontend-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api-pods-info
@@ -27,7 +27,7 @@ subjects:
     name: user-api
     namespace: thoth-frontend-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api-pods-info
@@ -41,7 +41,7 @@ subjects:
     name: user-api
     namespace: thoth-frontend-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api-argo
@@ -55,7 +55,7 @@ subjects:
     name: user-api
     namespace: thoth-frontend-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api-argo
@@ -69,7 +69,7 @@ subjects:
     name: user-api
     namespace: thoth-frontend-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api-argo-admin
@@ -83,7 +83,7 @@ subjects:
     name: user-api
     namespace: thoth-frontend-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: user-api-argo-admin
