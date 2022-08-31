@@ -1,5 +1,5 @@
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: amun-api
@@ -13,7 +13,7 @@ subjects:
     name: amun-api
     namespace: thoth-amun-api-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: amun-api-workflow
@@ -27,7 +27,7 @@ subjects:
     name: amun-api-workflow
     namespace: thoth-amun-inspection-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: amun-prepare-workflow
@@ -41,7 +41,7 @@ subjects:
     name: amun-prepare-workflow
     namespace: thoth-amun-inspection-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: amun-api-argo
@@ -55,7 +55,7 @@ subjects:
     name: amun-api
     namespace: thoth-amun-api-prod
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: amun-api-argo-admin

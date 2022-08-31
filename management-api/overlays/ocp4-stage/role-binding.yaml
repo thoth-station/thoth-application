@@ -1,5 +1,5 @@
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: management-api
@@ -13,7 +13,7 @@ subjects:
     name: management-api
     namespace: thoth-frontend-stage
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: management-api
@@ -27,7 +27,7 @@ subjects:
     name: management-api
     namespace: thoth-frontend-stage
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: management-api-pods-info
@@ -41,7 +41,7 @@ subjects:
     name: management-api
     namespace: thoth-frontend-stage
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: management-api-argo
@@ -55,7 +55,7 @@ subjects:
     name: management-api
     namespace: thoth-frontend-stage
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: management-api-argo-admin
@@ -69,7 +69,7 @@ subjects:
     name: management-api
     namespace: thoth-frontend-stage
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: management-api-argo-admin
@@ -83,7 +83,7 @@ subjects:
     name: management-api
     namespace: thoth-frontend-stage
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: management-api-pods-info
@@ -97,7 +97,7 @@ subjects:
     name: management-api
     namespace: thoth-frontend-stage
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: management-api-argo
@@ -111,7 +111,7 @@ subjects:
     name: management-api
     namespace: thoth-frontend-stage
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: management-api-argo-admin
