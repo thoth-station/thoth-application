@@ -76,7 +76,7 @@ For encrypting the secrets, the contributor can do the following:
 
 ## Monitoring
 
--  In the Openshift-Monitoring namepsace, ensure that you have enabled `enableUserWorkload` in the cluster-monitoring-config configmap. This allows OpenShift-Monitoring to pull metrics exposed from other namespaces.
+-  In the Openshift-Monitoring namespace, ensure that you have enabled `enableUserWorkload` in the cluster-monitoring-config configmap. This allows OpenShift-Monitoring to pull metrics exposed from other namespaces.
 - After this, create or verify service monitors for any namespace in which you want to gather metrics. The service monitor allows you to create or modify additional labels. See [an example](https://github.com/thoth-station/thoth-application/blob/master/core/overlays/moc-prod/graph-prod/service-monitor.yaml) for thoth-graph-prod in Smaug.
 - At this point, by opening the monitoring tab in Openshift, you should be able to see any Prometheus metric labels that you have modified.
 - Add any additional alerts desired in the [alerting rules](https://github.com/thoth-station/thoth-application/blob/master/monitoring/overlays/moc-prod/alerting-rules.yaml) in your overlay of choice. This is an example of Smaug's alerting rules for the Thoth-application.
