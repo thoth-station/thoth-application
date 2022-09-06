@@ -100,6 +100,11 @@ spec:
               secretKeyRef:
                 name: postgresql
                 key: database-name
+          - name: PROMETHEUS_PUSHGATEWAY_URL
+            valueFrom:
+              configMapKeyRef:
+                name: prometheus
+                key: pushgateway-url
         resources:
           limits:
             memory: "2Gi"
