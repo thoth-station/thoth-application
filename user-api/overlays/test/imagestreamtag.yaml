@@ -6,7 +6,7 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: quay.io/thoth-station/user-api:pr-1810
+      name: quay.io/thoth-station/user-api:v0.35.7
     importPolicy: {}
     name: latest
     referencePolicy:
