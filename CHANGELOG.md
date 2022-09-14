@@ -1,5 +1,24 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.09.14 (2022-09-14T02:56:54)
+* 771e97f0 Update the kebechet version v1.10.5
+* f886bb14 :ship: Deploy the Tag v1.10.5 for kebechet
+* 15582d16 :ship: Deploy the Tag pr-1810 for user-api
+* 1da26932 :ship: Bump up version of the updated component in release v2022.09.12
+* ec20d30b :ship: Deploy the Tag v0.7.4 for prescriptions-refresh-job
+* bd3ba0a0 :ship: Deploy the Tag v1.10.4 for kebechet
+* b48fc467 :ship: Deploy the Tag v0.35.6 for user-api
+* 71dbbe68 Add the prometheus gateway to sync job (#2645)
+* aa40b652 Fix README typo (#2646)
+* 12677b38 :recycle: Switch v1 rbac from v1beta1 as its deprecated (#2644)
+* 8bc29851 :fire: switch insecure false for the agro-worflows (#2643)
+* f407d016 removing all rick-test overlays (#2638)
+* 388750f6 Add a rule to triage-party to highlight issues without a SIG (#2641)
+* e75d2b16 :ant: Update the memory resource for investigator (#2640)
+* 85055053 :ant: Update the timeout for readinessprobe (#2639)
+* 5a5ef366 :arrow_up: Upgrade the resource cpu for investigator deployment (#2636)
+* cfad29d0 add new role and role binding for send webhooks
+
 ## Release 2022.08.23 (2022-08-23T14:38:48)
 * ce2b400f :ship: Bump up version of the updated component in release v2022.08.22 (#2632)
 * 11bce713 Fix cache expiration value (#2631)
