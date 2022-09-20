@@ -10,8 +10,8 @@ spec:
   schedule: "@daily"
   suspend: true
   concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 2
-  failedJobsHistoryLimit: 4
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 2
   jobTemplate:
     spec:
       template:
@@ -23,6 +23,7 @@ spec:
           containers:
             - image: graph-backup-job:latest
               name: graph-backup
+              volumeMounts: []
               env:
                 - name: THOTH_DEPLOYMENT_NAME
                   valueFrom:
@@ -95,10 +96,10 @@ spec:
                       key: database-name
               resources:
                 requests:
-                  memory: "3Gi"
+                  memory: "1Gi"
                   cpu: "1"
                 limits:
-                  memory: "3Gi"
+                  memory: "1Gi"
                   cpu: "1"
               livenessProbe:
                 tcpSocket:
@@ -107,3 +108,4 @@ spec:
                 failureThreshold: 1
                 periodSeconds: 10
           restartPolicy: OnFailure
+          volumes: []
