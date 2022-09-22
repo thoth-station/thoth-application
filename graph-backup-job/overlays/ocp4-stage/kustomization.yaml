@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base
   - thoth-notification.yaml
+  - pvc.yaml
 images:
   - name: graph-backup-job
     newName: image-registry.openshift-image-registry.svc:5000/thoth-graph-stage/graph-backup-job
@@ -20,3 +21,30 @@ patches:
       version: v1
       kind: Job
       annotationSelector: "operation=chat-notification"
+  - patch: |-
+      - op: add
+        path: "/spec/jobTemplate/spec/template/spec/containers/0/env/-1"
+        value: {"name": "THOTH_DATA_DUMP_PATH", "value": "/var/lib/pgsql/pg_dump.sql"}
+    target:
+      group: batch
+      version: v1beta1
+      kind: CronJob
+      name: graph-backup
+  - patch: |-
+      - op: add
+        path: "/spec/jobTemplate/spec/template/spec/containers/0/volumeMounts/-1"
+        value: {"name": "postgresql-data","mountPath": "/var/lib/pgsql"}
+    target:
+      group: batch
+      version: v1beta1
+      kind: CronJob
+      name: graph-backup
+  - patch: |-
+      - op: add
+        path: "/spec/jobTemplate/spec/template/spec/volumes/-1"
+        value: {"name": "postgresql-data","persistentVolumeClaim":{"claimName": "dbbackup"}}
+    target:
+      group: batch
+      version: v1beta1
+      kind: CronJob
+      name: graph-backup
