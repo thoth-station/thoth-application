@@ -7,4 +7,4 @@ metadata:
     app: thoth
     component: advise-reporter
 spec:
-  suspend: true
+  suspend: false
