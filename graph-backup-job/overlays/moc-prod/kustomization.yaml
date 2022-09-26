@@ -20,3 +20,15 @@ patches:
       version: v1
       kind: Job
       annotationSelector: "operation=chat-notification"
+  - patch: |-
+      - op: replace
+        path: "/spec/jobTemplate/spec/template/spec/containers/0/resources/requests/ephemeral-storage"
+        value: "20Gi"
+      - op: replace
+        path: "/spec/jobTemplate/spec/template/spec/containers/0/resources/limits/ephemeral-storage"
+        value: "20Gi"
+    target:
+      group: batch
+      version: v1beta1
+      kind: CronJob
+      name: graph-backup
