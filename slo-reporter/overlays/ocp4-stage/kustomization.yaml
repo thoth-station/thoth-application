@@ -28,3 +28,21 @@ patches:
       version: v1
       kind: Job
       annotationSelector: "operation=chat-notification"
+  - patch: |-
+      - op: add
+        path: "/spec/jobTemplate/spec/template/spec/containers/0/env/-1"
+        value: {"name": "THOTH_SLO_REPORTER_USING_SMTP_TLS", "value": "0"}
+    target:
+      group: batch
+      version: v1beta1
+      kind: CronJob
+      name: slo-reporter
+  - patch: |-
+      - op: add
+        path: "/spec/jobTemplate/spec/template/spec/containers/0/env/-1"
+        value: {"name": "THOTH_SLO_REPORTER_SEND_EMAIL", "value": "1"}
+    target:
+      group: batch
+      version: v1beta1
+      kind: CronJob
+      name: slo-reporter
