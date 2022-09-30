@@ -8,4 +8,4 @@ metadata:
     component: graph-backup
 spec:
   schedule: "@weekly"
-  suspend: false
+  suspend: true
