@@ -4,6 +4,7 @@ resources:
   - ../../base
   - role-binding.yaml
   - route53.yaml
+  - khemenu-route.yaml
   - thoth-notification.yaml
 images:
   - name: user-api

@@ -7,7 +7,6 @@ resources:
   - argo-workflows/sync-template.yaml
   - metrics-exporter-reader.yaml
   - role_binding.yaml
-  - route53.yaml
   - thoth-notification.yaml
   - https://raw.githubusercontent.com/thoth-station/thoth-application/master/core/overlays/aws-prod/common/imagestreamtags.yaml
 generators:
