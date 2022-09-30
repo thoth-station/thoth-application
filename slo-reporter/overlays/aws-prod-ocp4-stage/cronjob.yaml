@@ -5,4 +5,4 @@ metadata:
   name: slo-reporter
 spec:
   schedule: "0 6 * * *"
-  suspend: false
+  suspend: true
