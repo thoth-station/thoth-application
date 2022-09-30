@@ -10,3 +10,16 @@ spec:
     to:
         kind: Service
         name: management-api
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+    name: management-api-prod
+    annotations:
+      kubernetes.io/tls-acme: "true"
+      haproxy.router.openshift.io/timeout: 45s
+spec:
+    host: management.prod.thoth-station.ninja
+    to:
+        kind: Service
+        name: management-api
