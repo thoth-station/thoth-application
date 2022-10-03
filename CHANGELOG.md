@@ -1,5 +1,31 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.10.03 (2022-10-03T21:00:48)
+* fa0c6937 :ship: Bump up version of the updated component in release v2022.10.03
+* a9def338 :ship: Deploy the Tag v0.16.4 for investigator
+* 2823014d :turtle: Clear out the aws-prod overlay
+* f59d4121 :turtle: Use aws s3 for moc deployments
+* be6ba4bb :turtle: Migration: Turn off cronjob on the balrog cluster
+* 8c5e4b34 :turtle: Migrate hostname prod to moc deployment
+* 3411f3b3 Adjust the slo-reporter deployment
+* 7b35363d :ship: Deploy the Tag v0.7.5 for prescriptions-refresh-job
+* ef02176e Lower the limit to give space for other pvc's
+* 3c8f942a Update the components to fix the alerts
+* b4723d17 :ship: Deploy the Tag v0.5.5 for cve-update-job
+* c4a9677f :ship: Deploy the Tag v0.10.0 for graph-backup-job
+* ec1ac553 :ship: Deploy the Tag v0.56.3 for adviser
+* 102d1f24 :ship: Deploy the Tag v0.35.8 for user-api
+* 81c790d0 :ship: Deploy the Tag v0.11.11 for package-releases-job
+* 3893852b :ship: Deploy the Tag v0.21.3 for metrics-exporter
+* a58530e9 :ship: Deploy the Tag v0.3.21 for graph-refresh-job
+* e1cd029b :ship: Deploy the Tag v0.9.13 for workflow-helpers
+* de76e5cc Use pvc volume for graph-backup-job backup process
+* a3a878c8 upgrade graph-sync, solver and management-api to fix the solver runs
+* 3eb1f8e9 :ship: Deploy the Tag v0.18.7 for management-api
+* 58bfdfe5 :ship: Deploy the Tag v0.10.23 for graph-sync-job
+* 77040093 Upgrade the user-api to v0.35.7
+* ab7c372b :ship: Deploy the Tag v0.35.7 for user-api
+
 ## Release 2022.09.14 (2022-09-14T02:56:54)
 * 771e97f0 Update the kebechet version v1.10.5
 * f886bb14 :ship: Deploy the Tag v1.10.5 for kebechet
