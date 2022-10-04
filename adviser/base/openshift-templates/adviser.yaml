@@ -200,6 +200,9 @@ objects:
             items:
             - key: KEBBHUT_GITHUB_PRIVATE_KEY
               path: github-privatekey
+        - name: callback-secret
+          secret:
+            secretName: "callback-{{workflow.parameters.THOTH_DOCUMENT_ID}}"
 
       templates:
         - name: "adviser"
@@ -320,6 +323,22 @@ objects:
                       value: "{{workflow.parameters.THOTH_ADVISER_METADATA}}"
                 when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
 
+
+              - name: "send-webhooks"
+                dependencies:
+                  - "graph-sync-advise"
+                templateRef:
+                  name: "send-webhooks"
+                  template: "send-webhooks"
+                arguments:
+                  parameters:
+                    - name: document-id
+                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+                    - name: secret-namespace
+                      valueFrom:
+                        configMapKeyRef:
+                          key: backend-namespace
+                          name: thoth
 
               - name: "kebechet-run-results"
                 dependencies:
