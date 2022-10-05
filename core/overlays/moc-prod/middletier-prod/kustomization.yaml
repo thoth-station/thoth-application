@@ -38,3 +38,12 @@ patches:
       version: v1alpha1
       kind: WorkflowTemplate
       annotationSelector: "operation=messaging"
+  - patch: |-
+      - op: replace
+        path: /spec/templates/0/container/image
+        value: image-registry.openshift-image-registry.svc:5000/thoth-middletier-prod/workflow-helpers:latest
+    target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: WorkflowTemplate
+      annotationSelector: "operation=workflow-helpers"
