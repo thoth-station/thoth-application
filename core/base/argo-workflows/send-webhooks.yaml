@@ -13,7 +13,6 @@ spec:
     inputs:
       parameters:
       - name: document-id
-      - name: secret-namespace
     container:
       name: send-webhooks
       image: workflow-helpers:latest
@@ -23,7 +22,10 @@ spec:
       - name: DOCUMENT_ID
         value: "{{inputs.parameters.document-id}}"
       - name: THOTH_BACKEND_NAMESPACE
-        value: "{{inputs.parameters.secret-namespace}}"
+        valueFrom:
+          configMapKeyRef:
+            key: backend-namespace
+            name: thoth
       - name: WEBHOOK_DIR
         value: "/secret/callback"
       resources:
