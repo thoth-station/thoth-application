@@ -334,11 +334,6 @@ objects:
                   parameters:
                     - name: document-id
                       value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
-                    - name: secret-namespace
-                      valueFrom:
-                        configMapKeyRef:
-                          key: backend-namespace
-                          name: thoth
 
               - name: "kebechet-run-results"
                 dependencies:
