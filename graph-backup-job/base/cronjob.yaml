@@ -23,7 +23,9 @@ spec:
           containers:
             - image: graph-backup-job:latest
               name: graph-backup
-              volumeMounts: []
+              volumeMounts:
+                - name: postgresql-data
+                  mountPath: "/var/lib/pgsql"
               env:
                 - name: THOTH_DEPLOYMENT_NAME
                   valueFrom:
@@ -94,13 +96,17 @@ spec:
                     secretKeyRef:
                       name: postgresql
                       key: database-name
+                - name: THOTH_DATA_DUMP_PATH
+                  value: "/var/lib/pgsql/pg_dump.sql"
               resources:
                 requests:
                   memory: "1Gi"
                   cpu: "1"
+                  ephemeral-storage: "1Gi"
                 limits:
                   memory: "1Gi"
                   cpu: "1"
+                  ephemeral-storage: "1Gi"
               livenessProbe:
                 tcpSocket:
                   port: 80
@@ -108,4 +114,6 @@ spec:
                 failureThreshold: 1
                 periodSeconds: 10
           restartPolicy: OnFailure
-          volumes: []
+          volumes:
+            - name: "postgresql-data"
+              emptyDir: {}
