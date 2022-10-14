@@ -26,7 +26,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 13,
         "w": 24,
@@ -35,7 +35,7 @@
       },
       "id": 114,
       "options": {
-        "content": "# Thoth SLI/SLO Grafana Dashboard\n\nThis dashboard contains all metrics focused on the knowledge collected in the database.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n- *interval*: `1m, 10m, 30m, 1h, 3h, 6h, 12h, 1d, 7d`\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance*: `workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud`\n- *instance_metrics*: `investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *cluster*: `aws/balrog`\n- *instance*: `workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud`\n- *instance_metrics*: `metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud`",
+        "content": "# Thoth SLI/SLO Grafana Dashboard\n\nThis dashboard contains all metrics focused on the knowledge collected in the database.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n- *interval*: `1m, 10m, 30m, 1h, 3h, 6h, 12h, 1d, 7d`\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance*: `workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud`\n- *instance_metrics*: `investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n",
         "mode": "markdown"
       },
       "pluginVersion": "8.1.1",
@@ -43,7 +43,7 @@
       "type": "text"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -135,7 +135,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "description": "Considering thoth adviser manager working ",
       "fieldConfig": {
         "defaults": {
@@ -216,7 +216,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -321,7 +321,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -406,7 +406,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -585,7 +585,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -716,7 +716,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -820,7 +820,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -923,7 +923,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1328,7 +1328,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1452,7 +1452,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1666,7 +1666,7 @@
       "type": "piechart"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1901,7 +1901,7 @@
       "type": "piechart"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2157,7 +2157,7 @@
       "type": "piechart"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2414,7 +2414,7 @@
       "type": "piechart"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2684,7 +2684,7 @@
       "type": "piechart"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2947,7 +2947,7 @@
       "type": "piechart"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3198,7 +3198,7 @@
       "type": "piechart"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3357,7 +3357,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -3507,7 +3507,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -3657,7 +3657,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -3807,7 +3807,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -3956,7 +3956,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 8,
         "w": 8,
@@ -4105,7 +4105,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 8,
         "w": 8,
@@ -4254,7 +4254,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 8,
         "w": 8,
@@ -4403,7 +4403,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 8,
         "w": 8,
@@ -4552,7 +4552,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 8,
         "w": 8,
@@ -4701,7 +4701,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 8,
         "w": 8,
@@ -4936,7 +4936,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5040,7 +5040,7 @@
       }
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -5112,7 +5112,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5211,7 +5211,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5405,8 +5405,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
-          "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
+          "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud",
+          "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud"
         },
         "description": null,
         "error": null,
@@ -5425,19 +5425,9 @@
             "selected": true,
             "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
             "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
-          },
-          {
-            "selected": false,
-            "text": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud"
-          },
-          {
-            "selected": false,
-            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -5460,14 +5450,9 @@
             "selected": true,
             "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
             "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
-          },
-          {
-            "selected": false,
-            "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud, metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -5476,8 +5461,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "emea/balrog",
-          "value": "emea/balrog"
+          "text": "moc/smaug",
+          "value": "moc/smaug"
         },
         "description": null,
         "error": null,
@@ -5491,14 +5476,9 @@
             "selected": false,
             "text": "moc/smaug",
             "value": "moc/smaug"
-          },
-          {
-            "selected": true,
-            "text": "emea/balrog",
-            "value": "emea/balrog"
           }
         ],
-        "query": "moc/smaug, emea/balrog",
+        "query": "moc/smaug",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -5537,5 +5517,5 @@
   "timezone": "",
   "title": "Thoth SLI/SLO",
   "uid": "ee96mo7s4buzb6lxads4aun3kpm1h9th6zxdtw7i",
-  "version": 5
+  "version": 2
 }

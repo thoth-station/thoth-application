@@ -27,7 +27,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 15,
         "w": 24,
@@ -36,7 +36,7 @@
       },
       "id": 18,
       "options": {
-        "content": "# Thoth Kafka Consumers and Argo Workflows Grafana Dashboard\n\nThis dashboard contains all metrics focused on the knowledge collected in the database.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n- *queue_name*: `cron_wf_queue, pod_queue, wf_cron_queue, workflow_queue`\n- *interval*: `1m, 10m, 30m, 1h, 3h, 6h, 12h, 1d, 7d`\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance_consumer*: `investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n- *instance_workflow_controller*: `workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud`\n- *instance_consumer_metrics*: `investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *cluster*: `aws/balrog`\n- *instance_consumer*: `investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud`\n- *instance_workflow_controller*: `workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud`\n- *instance_consumer_metrics*: `metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud`\n",
+        "content": "# Thoth Kafka Consumers and Argo Workflows Grafana Dashboard\n\nThis dashboard contains all metrics focused on the knowledge collected in the database.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n- *queue_name*: `cron_wf_queue, pod_queue, wf_cron_queue, workflow_queue`\n- *interval*: `1m, 10m, 30m, 1h, 3h, 6h, 12h, 1d, 7d`\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance_consumer*: `investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n- *instance_workflow_controller*: `workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud`\n- *instance_consumer_metrics*: `investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n",
         "mode": "markdown"
       },
       "pluginVersion": "8.1.1",
@@ -44,7 +44,7 @@
       "type": "text"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -141,7 +141,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -242,7 +242,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -341,7 +341,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -440,7 +440,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -539,7 +539,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -638,7 +638,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -737,7 +737,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "description": "A count of all workflows currently accessible by the controller by status",
       "fill": 1,
       "fillGradient": 0,
@@ -947,7 +947,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1046,7 +1046,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1145,7 +1145,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1262,7 +1262,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1361,7 +1361,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1460,7 +1460,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1588,8 +1588,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-          "value": "investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
+          "text": "investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
+          "value": "investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
         },
         "description": null,
         "error": null,
@@ -1603,14 +1603,9 @@
             "selected": false,
             "text": "investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
             "value": "investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
-          },
-          {
-            "selected": true,
-            "text": "investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud, investigator-faust-web-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "investigator-faust-web-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -1619,8 +1614,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud",
-          "value": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud"
+          "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud",
+          "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud"
         },
         "description": null,
         "error": null,
@@ -1639,19 +1634,9 @@
             "selected": false,
             "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
             "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
-          },
-          {
-            "selected": true,
-            "text": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud"
-          },
-          {
-            "selected": false,
-            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -1701,8 +1686,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-          "value": "investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
+          "text": "investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
+          "value": "investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
         },
         "description": null,
         "error": null,
@@ -1716,14 +1701,9 @@
             "selected": false,
             "text": "investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
             "value": "investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
-          },
-          {
-            "selected": true,
-            "text": "investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud, investigator-message-metrics-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "investigator-message-metrics-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -1797,8 +1777,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "emea/balrog",
-          "value": "emea/balrog"
+          "text": "moc/smaug",
+          "value": "moc/smaug"
         },
         "description": null,
         "error": null,
@@ -1812,14 +1792,9 @@
             "selected": false,
             "text": "moc/smaug",
             "value": "moc/smaug"
-          },
-          {
-            "selected": true,
-            "text": "emea/balrog",
-            "value": "emea/balrog"
           }
         ],
-        "query": "moc/smaug, emea/balrog",
+        "query": "moc/smaug",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -1858,5 +1833,5 @@
   "timezone": "",
   "title": "Thoth Kafka Consumers and Argo Workflows",
   "uid": "uum0d7lbiuac9n0knnbizslk9zcgyovegtjk1mr9",
-  "version": 7
+  "version": 2
 }

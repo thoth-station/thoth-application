@@ -26,7 +26,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 10,
         "w": 24,
@@ -35,7 +35,7 @@
       },
       "id": 33,
       "options": {
-        "content": "# Thoth service metrics Grafana Dashboard\n\nThis dashboard contains all metrics focused on component overview (e.g. version of libraries used and thoth-storages library for alembic version deployed)\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n\n### emea/balrog\n\n- *cluster*: `emea/balrog`",
+        "content": "# Thoth service metrics Grafana Dashboard\n\nThis dashboard contains all metrics focused on component overview (e.g. version of libraries used and thoth-storages library for alembic version deployed)\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n",
         "mode": "markdown"
       },
       "pluginVersion": "8.1.1",
@@ -43,7 +43,7 @@
       "type": "text"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -141,7 +141,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -218,7 +218,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -286,7 +286,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -354,7 +354,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -434,8 +434,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "emea/balrog",
-          "value": "emea/balrog"
+          "text": "moc/smaug",
+          "value": "moc/smaug"
         },
         "description": "",
         "error": null,
@@ -449,14 +449,9 @@
             "selected": false,
             "text": "moc/smaug",
             "value": "moc/smaug"
-          },
-          {
-            "selected": true,
-            "text": "emea/balrog",
-            "value": "emea/balrog"
           }
         ],
-        "query": "moc/smaug, emea/balrog",
+        "query": "moc/smaug",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -495,5 +490,5 @@
   "timezone": "",
   "title": "Thoth Service metrics",
   "uid": "860ad3c2506d4744729adba986fdec914b3b4b75",
-  "version": 4
+  "version": 2
 }
