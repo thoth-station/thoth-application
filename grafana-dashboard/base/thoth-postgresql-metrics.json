@@ -35,7 +35,7 @@
       },
       "id": 38,
       "options": {
-        "content": "# Thoth PostgreSQL metrics Grafana Dashboard\n\nThis dashboard contains all the operational metrics focused on the PostgreSQL database, from real time metrics to pg dumps stored by cronjobs on the Ceph Bucket.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance*: `postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud`\n- *metrics_exporter_instance*: `metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *cluster*: `emea/balrog`\n- *instance*: `postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/`\n- *metrics_exporter_instance*: `metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud`",
+        "content": "# Thoth PostgreSQL metrics Grafana Dashboard\n\nThis dashboard contains all the operational metrics focused on the PostgreSQL database, from real time metrics to pg dumps stored by cronjobs on the Ceph Bucket.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance*: `postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud`\n- *metrics_exporter_instance*: `metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n",
         "mode": "markdown"
       },
       "pluginVersion": "8.4.3",
@@ -2825,8 +2825,8 @@
       {
         "current": {
           "selected": true,
-          "text": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/",
-          "value": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/"
+          "text": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud",
+          "value": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud"
         },
         "hide": 0,
         "includeAll": false,
@@ -2837,14 +2837,9 @@
             "selected": false,
             "text": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud",
             "value": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud"
-          },
-          {
-            "selected": true,
-            "text": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/",
-            "value": "postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/"
           }
         ],
-        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud, postgres-metrics-exporter-thoth-graph-prod.apps.balrog.aws.operate-first.cloud/",
+        "query": "postgres-metrics-exporter-thoth-graph-prod.apps.smaug.na.operate-first.cloud",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -2852,9 +2847,9 @@
       {
         "current": {
           "selected": true,
-          "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-          "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
-        },
+          "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
+          "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
+      },
         "hide": 0,
         "includeAll": false,
         "multi": false,
@@ -2864,14 +2859,9 @@
             "selected": false,
             "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
             "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
-          },
-          {
-            "selected": true,
-            "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud, metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -2879,8 +2869,8 @@
       {
         "current": {
           "selected": true,
-          "text": "emea/balrog",
-          "value": "emea/balrog"
+          "text": "moc/smaug",
+          "value": "moc/smaug"
         },
         "hide": 0,
         "includeAll": false,
@@ -2891,14 +2881,9 @@
             "selected": false,
             "text": "moc/smaug",
             "value": "moc/smaug"
-          },
-          {
-            "selected": true,
-            "text": "emea/balrog",
-            "value": "emea/balrog"
           }
         ],
-        "query": "moc/smaug, emea/balrog",
+        "query": "moc/smaug",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -2937,6 +2922,6 @@
   "timezone": "",
   "title": "Thoth PostgreSQL metrics",
   "uid": "5f2a5d7b1356c0c8ce4277724c131ed1beac864f",
-  "version": 22,
+  "version": 2,
   "weekStart": ""
 }

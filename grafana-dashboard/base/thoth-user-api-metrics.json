@@ -26,7 +26,7 @@
     "links": [],
     "panels": [
       {
-        "datasource": null,
+        "datasource": "moc-smaug",
         "gridPos": {
           "h": 10,
           "w": 24,
@@ -35,7 +35,7 @@
         },
         "id": 46,
         "options": {
-          "content": "# Thoth User API Metrics\n\nThis dashboard contains all metrics regarding Thoth User API.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *instance*: `user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *instance*: `user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud`\n           ",
+          "content": "# Thoth User API Metrics\n\nThis dashboard contains all metrics regarding Thoth User API.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *instance*: `user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud`\n           ",
           "mode": "markdown"
         },
         "pluginVersion": "8.1.1",
@@ -55,7 +55,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -179,7 +179,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -284,7 +284,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -395,7 +395,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -495,7 +495,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -596,7 +596,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -715,7 +715,7 @@
         "bars": true,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -839,7 +839,7 @@
         "bars": true,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -960,7 +960,7 @@
         "bars": true,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -1080,7 +1080,7 @@
         "bars": true,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -1185,7 +1185,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -1289,7 +1289,7 @@
         "bars": true,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -1393,7 +1393,7 @@
         "bars": true,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -1498,7 +1498,7 @@
         "bars": true,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -1601,7 +1601,7 @@
         "bars": true,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
@@ -1788,9 +1788,9 @@
           "allValue": null,
           "current": {
             "selected": true,
-            "text": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud"
-          },
+            "text": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud",
+            "value": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud"
+        },
           "description": null,
           "error": null,
           "hide": 0,
@@ -1803,14 +1803,9 @@
               "selected": false,
               "text": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud",
               "value": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud"
-            },
-            {
-              "selected": true,
-              "text": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud",
-              "value": "user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud"
             }
           ],
-          "query": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud, user-api-thoth-frontend-prod.apps.balrog.aws.operate-first.cloud",
+          "query": "user-api-thoth-frontend-prod.apps.smaug.na.operate-first.cloud",
           "queryValue": "",
           "skipUrlSync": false,
           "type": "custom"
@@ -1849,5 +1844,5 @@
     "timezone": "",
     "title": "Thoth Service metrics user-api",
     "uid": "b8d70c644a212b2708189159840d351610b7ea89",
-    "version": 7
+    "version": 2
   }

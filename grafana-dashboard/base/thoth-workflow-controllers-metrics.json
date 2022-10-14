@@ -26,7 +26,7 @@
     "links": [],
     "panels": [
       {
-        "datasource": null,
+        "datasource": "moc-smaug",
         "gridPos": {
           "h": 14,
           "w": 24,
@@ -35,7 +35,7 @@
         },
         "id": 10,
         "options": {
-          "content": "# Thoth Workflow Controller Grafana Dashboard\n\nThis dashboard contains all metrics focused on the Argo workflow controllers.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n- *queue_name*: `cron_wf_queue, pod_queue, wf_cron_queue, workflow_queue`\n- *interval*: `1m, 10m, 30m, 1h, 3h, 6h, 12h, 1d, 7d`\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance*: `workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *cluster*: `aws/balrog`\n- *instance*: `workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud`",
+          "content": "# Thoth Workflow Controller Grafana Dashboard\n\nThis dashboard contains all metrics focused on the Argo workflow controllers.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n- *queue_name*: `cron_wf_queue, pod_queue, wf_cron_queue, workflow_queue`\n- *interval*: `1m, 10m, 30m, 1h, 3h, 6h, 12h, 1d, 7d`\n\n### moc/smaug\n\n- *cluster*: `moc/smaug`\n- *instance*: `workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud`\n",
           "mode": "markdown"
         },
         "pluginVersion": "8.1.1",
@@ -47,7 +47,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "description": "A count of all workflows currently accessible by the controller by status",
         "fill": 1,
         "fillGradient": 0,
@@ -147,7 +147,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "description": "A count of certain errors incurred by the controller",
         "fill": 1,
         "fillGradient": 0,
@@ -247,7 +247,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "description": "The number of adds to the queue of workflows or cron workflows",
         "fill": 1,
         "fillGradient": 0,
@@ -347,7 +347,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "description": "The depth of the queue of workflows or cron workflows to be processed by the controller",
         "fill": 1,
         "fillGradient": 0,
@@ -447,7 +447,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "description": "Percentage of workflows that has queue latency below a certain threshold",
         "fill": 1,
         "fillGradient": 0,
@@ -543,7 +543,7 @@
         }
       },
       {
-        "datasource": null,
+        "datasource": "moc-smaug",
         "description": "A histogram of durations of operations",
         "fieldConfig": {
           "defaults": {
@@ -609,7 +609,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "moc-smaug",
         "description": "Total number of bytes currently allocated in go",
         "fill": 1,
         "fillGradient": 0,
@@ -720,8 +720,8 @@
           "allValue": null,
           "current": {
             "selected": true,
-            "text": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud"
+            "text": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud",
+            "value": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud"
           },
           "description": null,
           "error": null,
@@ -740,19 +740,9 @@
               "selected": false,
               "text": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
               "value": "workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud"
-            },
-            {
-              "selected": false,
-              "text": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud",
-              "value": "workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud"
-            },
-            {
-              "selected": true,
-              "text": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
-              "value": "workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud"
             }
           ],
-          "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-backend-prod.apps.balrog.aws.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.balrog.aws.operate-first.cloud",
+          "query": "workflow-controller-metrics-thoth-backend-prod.apps.smaug.na.operate-first.cloud, workflow-controller-metrics-thoth-middletier-prod.apps.smaug.na.operate-first.cloud",
           "queryValue": "",
           "skipUrlSync": false,
           "type": "custom"
@@ -878,8 +868,8 @@
           "allValue": null,
           "current": {
             "selected": true,
-            "text": "emea/balrog",
-            "value": "emea/balrog"
+            "text": "moc/smaug",
+            "value": "moc/smaug"
           },
           "description": null,
           "error": null,
@@ -893,14 +883,9 @@
               "selected": false,
               "text": "moc/smaug",
               "value": "moc/smaug"
-            },
-            {
-              "selected": true,
-              "text": "emea/balrog",
-              "value": "emea/balrog"
             }
           ],
-          "query": "moc/smaug, emea/balrog",
+          "query": "moc/smaug",
           "queryValue": "",
           "skipUrlSync": false,
           "type": "custom"
@@ -939,5 +924,5 @@
     "timezone": "",
     "title": "Thoth Workflow Controllers",
     "uid": "84adca3ac267decd4c26858bdd1d7e1ca9ae58be",
-    "version": 3
+    "version": 2
   }

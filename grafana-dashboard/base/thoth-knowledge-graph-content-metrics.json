@@ -26,7 +26,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 11,
         "w": 24,
@@ -35,7 +35,7 @@
       },
       "id": 144,
       "options": {
-        "content": "# Thoth Knowledge Graph content metrics Grafana Dashboard\n\nThis dashboard contains all metrics focused on the knowledge collected in the database.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *instance*: `metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n\n### emea/balrog\n\n- *instance*: `metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud`",
+        "content": "# Thoth Knowledge Graph content metrics Grafana Dashboard\n\nThis dashboard contains all metrics focused on the knowledge collected in the database.\n\n## Variables\n\nThe variables you can change are described below. For specific overlays they are clustered togheter and you need to set them all to see all metrics belonging to that overlay.\n\n### moc/smaug\n\n- *instance*: `metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud`\n",
         "mode": "markdown"
       },
       "pluginVersion": "8.1.1",
@@ -44,7 +44,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -123,7 +123,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -198,7 +198,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -272,7 +272,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -347,7 +347,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -432,7 +432,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -517,7 +517,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -592,7 +592,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -666,7 +666,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -740,7 +740,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -755,7 +755,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -829,7 +829,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -903,7 +903,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -978,7 +978,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1058,7 +1058,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1133,7 +1133,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1209,7 +1209,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1283,7 +1283,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1357,7 +1357,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1431,7 +1431,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1505,7 +1505,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1579,7 +1579,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1653,7 +1653,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1727,7 +1727,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1801,7 +1801,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1816,7 +1816,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1890,7 +1890,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1964,7 +1964,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2038,7 +2038,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2112,7 +2112,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2187,7 +2187,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2205,7 +2205,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2315,7 +2315,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2333,7 +2333,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2430,7 +2430,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2525,7 +2525,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2543,7 +2543,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2643,7 +2643,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2756,7 +2756,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2774,7 +2774,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2872,7 +2872,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -2967,7 +2967,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2985,7 +2985,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3081,7 +3081,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3174,7 +3174,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3189,7 +3189,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3263,7 +3263,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3337,7 +3337,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3411,7 +3411,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3485,7 +3485,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3503,7 +3503,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3613,7 +3613,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3631,7 +3631,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3734,7 +3734,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "moc-smaug",
       "decimals": 3,
       "fill": 1,
       "fillGradient": 0,
@@ -3846,8 +3846,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-          "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
+          "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
+          "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
         },
         "description": null,
         "error": null,
@@ -3861,14 +3861,9 @@
             "selected": false,
             "text": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
             "value": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud"
-          },
-          {
-            "selected": true,
-            "text": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
-            "value": "metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud"
           }
         ],
-        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud, metrics-exporter-thoth-infra-prod.apps.balrog.aws.operate-first.cloud",
+        "query": "metrics-exporter-thoth-infra-prod.apps.smaug.na.operate-first.cloud",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -3907,5 +3902,5 @@
   "timezone": "",
   "title": "Thoth Knowledge Graph content metrics",
   "uid": "dd5ddeda417f2083b1b0526b222609dfcf1145be",
-  "version": 10
+  "version": 2
 }
