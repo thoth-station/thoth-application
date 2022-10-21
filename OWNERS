@@ -1,9 +1,18 @@
 # See the OWNERS docs at https://go.k8s.io/owners
 
 approvers:
-  - codificat
   - goern
+  - codificat
   - harshad16
-  - fridex
   - mayacostantini
-reviewers: []
+  - VannTen
+
+reviewers:
+  - codificat
+  - harshad16
+  - mayacostantini
+  - VannTen
+
+emeritus_approvers:
+  - fridex  # 2022 Jun
+  - pacospace # 2022 Mar
