@@ -1,5 +1,26 @@
 # Release 2022.02.14 (2022-02-14T21:00:44)
 
+## Release 2022.10.24 (2022-10-24T16:58:02)
+* a22c5281 :boat: Bump the version of graph-metrics-exporter (#2684)
+* c9692ef2 :ship: Deploy the Tag v0.6.4 for graph-metrics-exporter
+* 8881ebc8 :boat: Bump the version of integration-tests and solver (#2683)
+* b6e0cd48 :books: Updated and removed balrog panels from grafana dashboards
+* 9844b42d Update mi to 2.12.0 and mi-s to 1.7.7 [test nmspc]
+* 70ebd89f Update mi to 2.12.0 and mi-scheduler to 1.7.7
+* 3e5229b2 :lock: Update the thanos reader token for slo-reporter
+* a9ce771d Bump up with version of management-api
+* 279e4267 :ship: Deploy the Tag v0.18.8 for management-api
+* 4bdfe9e7 :ship: Deploy the Tag v0.23.0 for sefkhet-abwy
+* f61292c8 Use emptydir for db pg_dump
+* f0f83598 fixed thoth search ur
+* c92b5d8b Update the investigator image with latest storages
+* 07b877d5 :whale: Update the certs for the stage and test urls
+* 847528a9 :ship: Deploy the Tag v0.9.14 for workflow-helpers
+* 2d8a0aa1 Patch image ref of send-webhook based on namespace (#2673)
+* febe4b7c add secret creation ability to backend, not frontend (#2671)
+* 5a1e8801 Minor fixes for argo-workflow template send-webhooks (#2672)
+* b676e9df add workflow step to run workflow helper to send webhooks
+
 ## Release 2022.10.03 (2022-10-03T21:00:48)
 * fa0c6937 :ship: Bump up version of the updated component in release v2022.10.03
 * a9def338 :ship: Deploy the Tag v0.16.4 for investigator
