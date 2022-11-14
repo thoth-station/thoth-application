@@ -6,7 +6,7 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: quay.io/thoth-station/kebechet-job:v1.10.5
+      name: quay.io/thoth-station/kebechet-job:v1.11.0
     importPolicy: {}
     name: latest
     referencePolicy:
