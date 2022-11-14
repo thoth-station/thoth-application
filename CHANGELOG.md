@@ -1,4 +1,15 @@
-# Release 2022.02.14 (2022-02-14T21:00:44)
+
+## Release 2022.11.14 (2022-11-14T16:58:02)
+
+* 886336f2 :ship: Bump up version of the updated component in release v2022.11.14 (#2697)
+* 08e19fb2 :ship: Deploy the Tag v1.11.0 for kebechet
+* 8c103e9e Upgrade sefkhet-abwy image version to v0.23.2
+* 49feaa4c Upgrade sefkhet abwy image version to v0.23.1 (#2695)
+* b9cbbed6 Update mi-scheduler to 1.7.9
+* b654cd94 Revert to weekly scorecard prescriptions
+* f3f8215a :ship: Deploy the Tag v0.8.0 for prescriptions-refresh-job
+* 926b0ac3 Bump prescriptions-refresh-job to v0.8.0 in ocp4-stage
+* fb91b828 Update mi-scheduler to 1.7.8
 
 ## Release 2022.10.24 (2022-10-24T16:58:02)
 * a22c5281 :boat: Bump the version of graph-metrics-exporter (#2684)
@@ -389,6 +400,7 @@
 * Add stress-tests cronjob
 * Perform syncs of documents that are recent
 
+## Release 2022.02.14 (2022-02-14T21:00:44)
 - :ship: Bump up the images based on the version update v2022.02.14
 - Remove old solvers from deployment manifests
 - :ship: Deploy the Tag v1.11.1 for solver
@@ -452,7 +464,7 @@
 - Do not use port in instance name for Prometheus
 - :pill: fix the pulp metrics exporter secrets
 
-# Release 2022.02.01 (2022-02-01T00:51:45)
+## Release 2022.02.01 (2022-02-01T00:51:45)
 
 - :ship: Bump up the images based on the version update v2022.01.31
 - :ship: Deploy the Tag v0.33.4 for user-api
@@ -496,7 +508,7 @@
 - Invite more repos to the triage party
 - Update triage-party configuration with more views
 
-# Release 2022.01.17 (2022-01-17T18:43:21)
+## Release 2022.01.17 (2022-01-17T18:43:21)
 
 - :ship: Bump up the images based on the version update v2022.01.17
 - :ship: Deploy the Tag v1.7.1 for kebechet
