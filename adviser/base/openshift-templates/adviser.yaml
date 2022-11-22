@@ -203,6 +203,7 @@ objects:
         - name: callback-secret
           secret:
             secretName: "callback-{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+            optional: true
 
       templates:
         - name: "adviser"
