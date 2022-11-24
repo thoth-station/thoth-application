@@ -1,0 +1,73 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grafana
+  name: grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+      name: grafana
+    spec:
+      serviceAccountName: grafana
+      containers:
+        - name: oauth-proxy
+          image: oauth-proxy
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8443
+              name: web
+          args:
+            - -https-address=:8443
+            - -http-address=
+            - -email-domain=*
+            - -upstream=http://localhost:3000
+            - -provider=openshift
+            - -tls-cert=/etc/tls/private/tls.crt
+            - -tls-key=/etc/tls/private/tls.key
+            - -client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token
+            - -cookie-secret-file=/etc/proxy/secrets/session_secret
+            - -skip-auth-regex=^/metrics,/api/datasources,/api/dashboards
+            - -client-id=system:serviceaccount:aicoe-infra-prod:grafana
+            - '-openshift-sar={"namespace": "aicoe-infra-prod", "verb": "list", "resource": "services"}'
+          volumeMounts:
+            - mountPath: /etc/tls/private
+              name: grafana-tls
+            - mountPath: /etc/proxy/secrets
+              name: secrets
+        - name: grafana
+          image: grafana
+          ports:
+            - name: grafana-http
+              containerPort: 3000
+          volumeMounts:
+            - mountPath: "/root/go/src/github.com/grafana/grafana/data"
+              name: grafana-data
+            - mountPath: "/root/go/src/github.com/grafana/grafana/conf"
+              name: grafanaconfig
+            - mountPath: /etc/tls/private
+              name: grafana-tls
+            - mountPath: /etc/proxy/secrets
+              name: secrets
+          command:
+            - "./bin/grafana-server"
+      volumes:
+        - name: grafanaconfig
+          configMap:
+            name: grafana-config
+        - name: secrets
+          secret:
+            secretName: grafana-proxy
+        - name: grafana-tls
+          secret:
+            secretName: grafana-tls
+        - name: grafana-data
+          persistentVolumeClaim:
+            claimName: "grafana-data"

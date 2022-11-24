@@ -1,0 +1,170 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus
+data:
+  alerting.rules: |
+    groups:
+      - name: Thoth-rules
+        interval: 130m
+        rules:
+
+          # Workflows alerts
+        - alert: ThothMiddletierIngestionOCP4Stage
+          expr: argo_workflows_count{instance="workflow-controller-metrics-thoth-middletier-stage.apps.ocp4.prod.psi.redhat.com:80", status="Running"} < 1
+          for: 30m
+          annotations:
+            summary: "Workflows running in Middletier Stage is 0! Please verify status of Data Ingestion in Thoth or add more workload!"
+            severity: "HIGH"
+
+          # Database alerts
+        - alert: ThothSchemaCheckStageUserAPI
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="user-api"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of User API is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothSchemaCheckStageGraphRefresh
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="graph-refresh-job"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of Graph Refresh Job is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothSchemaCheckStageInvestigator
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="investigator"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of Investigator is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothSchemaCheckStageGraphSync
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="graph-sync"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of Graph Sync is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothSchemaCheckStageWorkflowHelpers
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="workflow-helpers"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of Workflow Helpers is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothSchemaCheckStageMetricsExporter
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="metrics-exporter"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of Metrics Exporter is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothSchemaCheckStageManagementAPI
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="management-api"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of Management API is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothSchemaCheckStageAdviseReporter
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="advise-reporter"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of Advise Reporter is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothSchemaCheckStageGraphBackup
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="graph-backup-job"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of Graph Backup is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothSchemaCheckStagePackageReleases
+          expr: thoth_graph_db_component_revision_check{env="ocp4-stage", component="thoth-package-release-job"} == 1
+          for: 30m
+          annotations:
+            summary: "Schema of Package Release is not in sync with database schema."
+            severity: "HIGH"
+
+        - alert: ThothDatabaseCorruptionCheckStage
+          expr: thoth_graphdb_is_corrupted{instance="metrics-exporter-thoth-infra-stage.apps.ocp4.prod.psi.redhat.com:80"} == 1
+          for: 30m
+          annotations:
+            summary: "Database schema is corrupted, all services need to be stopped."
+            severity: "HIGH"
+
+  prometheus.yml: |
+    rule_files:
+      - '*.rules'
+
+    global:
+      scrape_interval: 20s
+
+    scrape_configs:
+    - job_name: 'pushgateway'
+      honor_labels: true
+      static_configs:
+        - targets:
+          - pushgateway-aicoe-infra-prod.apps.ocp4.prod.psi.redhat.com
+
+    - job_name: 'Thoth User API Metrics'
+      static_configs:
+        - targets:
+          - user-api-thoth-test-core.apps.ocp4.prod.psi.redhat.com
+          - user-api-thoth-frontend-stage.apps.ocp4.prod.psi.redhat.com
+
+    - job_name: 'Thoth Amun API Metrics'
+      static_configs:
+        - targets:
+          - amun-api-thoth-test-core.apps.ocp4.prod.psi.redhat.com
+          - amun-api-thoth-amun-api-stage.apps.ocp4.prod.psi.redhat.com
+
+    - job_name: 'Thoth Management API Metrics'
+      static_configs:
+        - targets:
+          - management-api-thoth-test-core.apps.ocp4.prod.psi.redhat.com
+          - management-api-thoth-frontend-stage.apps.ocp4.prod.psi.redhat.com
+
+    - job_name: 'Thoth Metrics'
+      metrics_path: '/metrics'
+      scheme: http
+      static_configs:
+        - targets:
+          - metrics-exporter-thoth-test-core.apps.ocp4.prod.psi.redhat.com
+          - metrics-exporter-thoth-infra-stage.apps.ocp4.prod.psi.redhat.com
+
+    - job_name: 'Thoth Argo Workflow Metrics'
+      metrics_path: '/metrics'
+      scheme: http
+      static_configs:
+        - targets:
+          - workflow-controller-metrics-thoth-test-core.apps.ocp4.prod.psi.redhat.com
+          - workflow-controller-metrics-thoth-middletier-stage.apps.ocp4.prod.psi.redhat.com
+          - workflow-controller-metrics-thoth-amun-inspection-stage.apps.ocp4.prod.psi.redhat.com
+          - workflow-controller-metrics-thoth-backend-stage.apps.ocp4.prod.psi.redhat.com
+
+    - job_name: 'Thoth Investigator Consumer Metrics'
+      metrics_path: '/metrics'
+      scheme: http
+      static_configs:
+        - targets:
+          - investigator-faust-web-thoth-test-core.apps.ocp4.prod.psi.redhat.com
+          - investigator-faust-web-thoth-infra-stage.apps.ocp4.prod.psi.redhat.com
+
+    - job_name: 'Thoth PostgreSQL Metrics'
+      metrics_path: '/metrics'
+      scheme: http
+      static_configs:
+        - targets:
+          - postgres-metrics-exporter-thoth-test-core.apps.ocp4.prod.psi.redhat.com
+          - postgres-metrics-exporter-thoth-graph-stage.apps.ocp4.prod.psi.redhat.com
+
+    alerting:
+      alertmanagers:
+      - scheme: http
+        static_configs:
+        - targets:
+          - "localhost:9093"

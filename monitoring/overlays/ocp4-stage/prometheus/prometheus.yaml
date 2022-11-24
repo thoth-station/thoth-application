@@ -1,0 +1,158 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: prometheus
+  name: prometheus
+spec:
+  updateStrategy:
+    type: RollingUpdate
+  podManagementPolicy: Parallel
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+      name: prometheus
+    spec:
+      serviceAccountName: prometheus
+      containers:
+        - name: prometheus
+          args:
+            - --storage.tsdb.retention=7d
+            - --storage.tsdb.min-block-duration=2h
+            - --storage.tsdb.max-block-duration=2h
+            - --storage.tsdb.path=/prometheus/data
+            - --config.file=/etc/prometheus/prometheus.yml
+            - --web.enable-lifecycle
+            - --web.enable-admin-api
+          image: prometheus
+          resources:
+            requests:
+              cpu: 3000m
+              memory: 10Gi
+            limits:
+              cpu: 4000m
+              memory: 16Gi
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /etc/prometheus
+              name: prometheus-config
+            - mountPath: /prometheus
+              name: prometheus-data
+          ports:
+            - containerPort: 9090
+              name: prometheus
+
+        # Deploy alertmanager behind prometheus-alert-buffer behind an oauth proxy
+        # use http port=4190 and https port=9943 to differ from prom-proxy
+        - name: alerts-proxy
+          image: oauth-proxy
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9443
+              name: web
+          args:
+            - -provider=openshift
+            - -https-address=:9443
+            - -http-address=
+            - -email-domain=*
+            - -upstream=http://localhost:9099
+            - -client-id=system:serviceaccount:aicoe-infra-prod:prometheus
+            - '-openshift-sar={"namespace": "aicoe-infra-prod", "verb": "list", "resource": "services"}'
+            - -tls-cert=/etc/tls/private/tls.crt
+            - -tls-key=/etc/tls/private/tls.key
+            - -client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token
+            - -cookie-secret-file=/etc/proxy/secrets/session_secret
+            - -skip-auth-regex=^/metrics
+          volumeMounts:
+            - mountPath: /etc/tls/private
+              name: alerts-tls-secret
+            - mountPath: /etc/proxy/secrets
+              name: alerts-proxy-secrets
+
+        - name: alert-buffer
+          args:
+            - --storage-path=/alert-buffer/messages.db
+          image: alert-buffer
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /alert-buffer
+              name: alerts-data
+          ports:
+            - containerPort: 9099
+              name: alert-buf
+
+        - name: alertmanager-proxy
+          image: oauth-proxy
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 10443
+              name: web
+          args:
+            - -provider=openshift
+            - -https-address=:10443
+            - -http-address=
+            - -email-domain=*
+            - -upstream=http://localhost:9093
+            - -client-id=system:serviceaccount:aicoe-infra-prod:prometheus
+            - '-openshift-sar={"namespace": "aicoe-infra-prod", "verb": "list", "resource": "services"}'
+            - -tls-cert=/etc/tls/private/tls.crt
+            - -tls-key=/etc/tls/private/tls.key
+            - -client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token
+            - -cookie-secret-file=/etc/proxy/secrets/session_secret
+            - -skip-auth-regex=^/metrics
+          volumeMounts:
+            - mountPath: /etc/tls/private
+              name: alertmanager-tls-secret
+            - mountPath: /etc/proxy/secrets
+              name: alertmanager-proxy-secret
+
+        - name: alertmanager
+          args:
+            - --log.level=debug
+            - --config.file=/etc/alertmanager/alertmanager.yml
+            - --web.external-url=https://alertmanager-aicoe-infra-prod.apps.ocp4.prod.psi.redhat.com
+          image: alertmanager
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9093
+              name: web
+          volumeMounts:
+            - mountPath: /etc/alertmanager
+              name: alertmanager-config
+            - mountPath: /alertmanager
+              name: alertmanager-data
+
+      restartPolicy: Always
+      volumes:
+        - name: prometheus-config
+          configMap:
+            defaultMode: 420
+            name: prometheus
+        - name: prometheus-data
+          persistentVolumeClaim:
+            claimName: "prometheus-data"
+        - name: alertmanager-config
+          secret:
+            secretName: alertmanager
+        - name: alertmanager-tls-secret
+          secret:
+            secretName: alertmanager-tls
+        - name: alertmanager-proxy-secret
+          secret:
+            secretName: alertmanager-proxy
+        - name: alerts-proxy-secrets
+          secret:
+            secretName: alerts-proxy
+        - name: alerts-tls-secret
+          secret:
+            secretName: alerts-tls
+        - name: alertmanager-data
+          persistentVolumeClaim:
+            claimName: "alertmanager-data"
+        - name: alerts-data
+          emptyDir: {}

@@ -1,0 +1,28 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: alertmanager
+spec:
+  to:
+    name: alertmanager
+  tls:
+    termination: Reencrypt
+    insecureEdgeTerminationPolicy: Redirect
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.alpha.openshift.io/serving-cert-secret-name: alertmanager-tls
+  labels:
+    name: alertmanager
+  name: alertmanager
+spec:
+  ports:
+    - name: alertmanager
+      port: 443
+      protocol: TCP
+      targetPort: 10443
+  selector:
+    app: prometheus

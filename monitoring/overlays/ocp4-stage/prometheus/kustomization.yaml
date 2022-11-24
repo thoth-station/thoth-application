@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - alertmanager-svc.yaml
+  - alerts-svc.yaml
+  - prometheus-config.yaml
+  - prometheus-pvc.yaml
+  - prometheus-sa.yaml
+  - prometheus-svc.yaml
+  - prometheus.yaml
+images:
+  - name: oauth-proxy
+    newName: quay.io/openshift/origin-oauth-proxy
+    newTag: latest
+  - name: prometheus
+    newName: quay.io/prometheus/prometheus
+    newTag: v2.24.1
+  - name: alertmanager
+    newName: quay.io/prometheus/alertmanager
+    newTag: latest
+  - name: alert-buffer
+    newName: quay.io/thoth-station/prometheus-alert-buffer
+    newTag: latest
+generators:
+  - secret-generator.yaml
+generatorOptions:
+  disableNameSuffixHash: true
