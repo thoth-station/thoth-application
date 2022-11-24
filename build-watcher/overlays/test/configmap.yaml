@@ -21,5 +21,5 @@ data:
   thamos-disable-tls-warning: "0"
   thoth-deployment-name: ""
   sentry-dsn: ""
-  prometheus-pushgateway-host: "pushgateway-dh-prod-monitoring.cloud.datahub.psi.redhat.com"
+  prometheus-pushgateway-host: "pushgateway-aicoe-infra-prod.apps.ocp4.prod.psi.redhat.com"
   prometheus-pushgateway-port: "80"
