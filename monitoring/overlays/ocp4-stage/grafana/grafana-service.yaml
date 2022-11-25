@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  annotations:
+    service.alpha.openshift.io/serving-cert-secret-name: grafana-tls
+  labels:
+    metrics-infra: grafana
+    name: grafana
+spec:
+  ports:
+    - name: grafana
+      port: 443
+      protocol: TCP
+      targetPort: 8443
+  selector:
+    app: grafana

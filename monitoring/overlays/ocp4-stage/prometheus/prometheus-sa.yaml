@@ -1,0 +1,13 @@
+# Authorize the prometheus service account
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+
+---
+# Create a service account for accessing prometheus data
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus-reader

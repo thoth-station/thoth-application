@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - grafana-config.yaml
+  - grafana-pvc.yaml
+  - grafana-route.yaml
+  - grafana-sa.yaml
+  - grafana-service.yaml
+  - grafana.yaml
+images:
+  - name: oauth-proxy
+    newName: quay.io/openshift/origin-oauth-proxy
+    newTag: latest
+  - name: grafana
+    newName: quay.io/thoth-station/grafana
+    newTag: latest
+generators:
+  - secret-generator.yaml
+generatorOptions:
+  disableNameSuffixHash: true
