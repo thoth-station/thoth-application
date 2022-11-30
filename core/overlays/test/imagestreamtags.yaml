@@ -20,7 +20,7 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: quay.io/thoth-station/workflow-helpers:v0.9.14
+      name: quay.io/thoth-station/workflow-helpers:pr-434
     importPolicy: {}
     name: latest
     referencePolicy:
