@@ -5,6 +5,7 @@ commonLabels:
   app.kubernetes.io/component: core
   app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
+  - argo-management.yaml
   - configmaps.yaml
   - imagestreams.yaml
   - argo-workflows/send-message.yaml

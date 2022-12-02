@@ -9,36 +9,6 @@ metadata:
   name: argo-server
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: workflow-role
-rules:
-- apiGroups:
-  - ""
-  resources:
-  - secrets
-  verbs:
-  - get
-  - watch
-  - list
-- apiGroups:
-  - ""
-  resources:
-  - pods
-  verbs:
-  - get
-  - watch
-  - patch
-  - delete
-- apiGroups:
-  - ""
-  resources:
-  - pods/log
-  verbs:
-  - get
-  - watch
----
-apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: argo-binding-to-workflow-role
