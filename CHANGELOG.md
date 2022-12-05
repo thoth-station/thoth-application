@@ -1,3 +1,25 @@
+## Release 2022.12.05 (2022-12-05T15:58:02)
+
+* 2b6fe3f9 :ship: Bump up version of the updated component in release v2022.12.05 (#2715)
+* b17aa32d Upgrade management-api in prod to get storage v0.73.6 changes (#2714)
+* 39c29ed7 :ship: Deploy the Tag v0.18.10 for management-api
+* fe5dd46e Upgrade management-api in prod to get storage v0.73.6 changes (#2713)
+* 4235692b :ship: Deploy the Tag v0.18.9 for management-api
+* 78d2312f Disable pulp index sync job for temporary fix (#2712)
+* 4ac12455 :ship: Deploy the Tag v0.5.6 for cve-update-job
+* 8545027e move workflow role to base
+* 926f856e Upgrade workflow helper image version to v0.9.15
+* 205c2474 :ship: Deploy the Tag v0.9.15 for workflow-helpers
+* 39512b7f Upgrade kebechet image version to v1.11.2 (#2709)
+* edb48318 :ship: Deploy the Tag v1.11.2 for kebechet
+* 0a287130 make callback secret optional
+* 4023dc5c :ship: Deploy the Tag pr-434 for workflow-helpers
+* b65527de Fix imagestream issue for workflow-helper (#2708)
+* d8e40aa8 :package: Use the new monitoring deployment in thoth-station component (#2705)
+* 5aee0667 upgrade kebechet for the release fix (#2706)
+* e8eeaec0 :ship: Deploy the Tag v1.11.1 for kebechet
+* 34d4a501 :chart_with_downwards_trend: Setup monitoring for stage systems
+* 1877622c Fix the amun-api deployment with web concurrency set (#2701)
 
 ## Release 2022.11.14 (2022-11-14T16:58:02)
 
