@@ -40,11 +40,6 @@ spec:
               configMapKeyRef:
                 name: thoth
                 key: logging-no-json
-          - name: AMUN_API_URL
-            valueFrom:
-              configMapKeyRef:
-                key: amun-api-url
-                name: thoth
           - name: THOTH_S3_ENDPOINT_URL
             valueFrom:
               configMapKeyRef:
@@ -145,11 +140,6 @@ spec:
               configMapKeyRef:
                 name: thoth
                 key: logging-no-json
-          - name: AMUN_API_URL
-            valueFrom:
-              configMapKeyRef:
-                key: amun-api-url
-                name: thoth
           - name: THOTH_S3_ENDPOINT_URL
             valueFrom:
               configMapKeyRef:
