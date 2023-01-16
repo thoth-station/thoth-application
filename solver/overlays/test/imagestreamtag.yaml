@@ -46,10 +46,10 @@ metadata:
   name: solver-fedora-35-py310
 spec:
   tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: quay.io/thoth-station/solver-fedora-35-py310:v1.14.1
-      importPolicy: {}
-      referencePolicy:
-        type: Source
+  - from:
+      kind: DockerImage
+      name: quay.io/thoth-station/solver-fedora-35-py310:v1.15.0
+    importPolicy: {}
+    name: latest
+    referencePolicy:
+      type: Source
