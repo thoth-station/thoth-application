@@ -20,7 +20,7 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: quay.io/thoth-station/workflow-helpers:v0.9.15
+      name: quay.io/thoth-station/workflow-helpers:v0.9.16
     importPolicy: {}
     name: latest
     referencePolicy:
