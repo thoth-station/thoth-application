@@ -6,7 +6,7 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: quay.io/thoth-station/graph-refresh-job:v0.3.21
+      name: quay.io/thoth-station/graph-refresh-job:v0.3.22
     importPolicy: {}
     name: latest
     referencePolicy:
