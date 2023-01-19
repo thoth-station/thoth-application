@@ -257,41 +257,41 @@ objects:
                       value: "{{workflow.parameters.ceph_bucket_prefix}}"
                     - name: "THOTH_DEPLOYMENT_NAME"
                       value: "{{workflow.parameters.deployment_name}}"
-              - name: "parse-adviser-output"
-                dependencies:
-                  - "advise"
-                templateRef:
-                  name: "parse-adviser-output"
-                  template: "parse-adviser-output"
-                arguments:
-                  artifacts:
-                    - name: outputdocument
-                      from: "{{tasks.advise.outputs.artifacts.outputdocument}}"
-                  parameters:
-                    - name: "THOTH_DOCUMENT_ID"
-                      value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
-                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
+              # - name: "parse-adviser-output"  NOTE: TEMPORARILY DISABLED
+              #   dependencies:
+              #     - "advise"
+              #   templateRef:
+              #     name: "parse-adviser-output"
+              #     template: "parse-adviser-output"
+              #   arguments:
+              #     artifacts:
+              #       - name: outputdocument
+              #         from: "{{tasks.advise.outputs.artifacts.outputdocument}}"
+              #     parameters:
+              #       - name: "THOTH_DOCUMENT_ID"
+              #         value: "{{workflow.parameters.THOTH_DOCUMENT_ID}}"
+              #   when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
 
-              - name: "send-messages"
-                dependencies:
-                  - "parse-adviser-output"
-                templateRef:
-                  name: "send-messages"
-                  template: "send-messages"
-                arguments:
-                  artifacts:
-                    - name: messagesdocument
-                      from: "{{tasks.parse-adviser-output.outputs.artifacts.messagestobesentdocument}}"
-                  parameters:
-                    - name: THOTH_MESSAGING_FROM_FILE
-                      value: "/mnt/workdir/messages_to_be_sent.json"
-                    - name: THOTH_DEPLOYMENT_NAME
-                      value: "{{workflow.parameters.deployment_name}}"
-                    - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
-                      value: "1"
-                    - name: MESSAGES_DOCUMENT_NAME
-                      value: "messages_to_be_sent.json"
-                when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
+              # - name: "send-messages"
+              #   dependencies:
+              #     - "parse-adviser-output"
+              #   templateRef:
+              #     name: "send-messages"
+              #     template: "send-messages"
+              #   arguments:
+              #     artifacts:
+              #       - name: messagesdocument
+              #         from: "{{tasks.parse-adviser-output.outputs.artifacts.messagestobesentdocument}}"
+              #     parameters:
+              #       - name: THOTH_MESSAGING_FROM_FILE
+              #         value: "/mnt/workdir/messages_to_be_sent.json"
+              #       - name: THOTH_DEPLOYMENT_NAME
+              #         value: "{{workflow.parameters.deployment_name}}"
+              #       - name: THOTH_MESSAGING_CREATE_IF_NOT_EXIST
+              #         value: "1"
+              #       - name: MESSAGES_DOCUMENT_NAME
+              #         value: "messages_to_be_sent.json"
+              #   when: "{{workflow.parameters.THOTH_AUTHENTICATED_ADVISE}} == 1"
 
               - name: "graph-sync-advise"
                 dependencies:
