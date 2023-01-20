@@ -34,7 +34,7 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: quay.io/thoth-station/investigator:v0.16.5
+      name: quay.io/thoth-station/investigator:pr-680
     importPolicy: {}
     name: latest
     referencePolicy:
