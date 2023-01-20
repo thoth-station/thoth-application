@@ -4,15 +4,14 @@ approvers:
   - goern
   - codificat
   - harshad16
-  - mayacostantini
   - VannTen
 
 reviewers:
   - codificat
   - harshad16
-  - mayacostantini
   - VannTen
 
 emeritus_approvers:
   - fridex  # 2022 Jun
   - pacospace # 2022 Mar
+  - mayacostantini # 2023 Jan
