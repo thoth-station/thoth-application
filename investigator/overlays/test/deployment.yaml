@@ -1,15 +1,18 @@
 ---
-apiVersion: apps.openshift.io/v1
-kind: DeploymentConfig
+apiVersion: apps/v1
+kind: Deployment
 metadata:
+  labels:
+    app: investigator
   name: investigator-consumer
 spec:
   replicas: 1
   selector:
-    service: investigator-consumer
-    app.kubernetes.io/name: thoth
-    app.kubernetes.io/component: investigator
-    app.kubernetes.io/managed-by: aicoe-thoth-devops
+    matchLabels:
+      service: investigator-consumer
+      app.kubernetes.io/name: thoth
+      app.kubernetes.io/component: investigator
+      app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
@@ -20,16 +23,20 @@ spec:
     spec:
       serviceAccountName: investigator
       containers:
-        - image: investigator
+        - image: investigator:latest
           imagePullPolicy: IfNotPresent
           name: investigator-consumer
           env:
             - name: SUBCOMMAND
               value: "consumer"
+            - name: THOTH_CONSUMER_MODE
+              value: '["middletier", "backend"]'
             - name: DEBUG_LEVEL
               value: "0"
             - name: APP_SCRIPT
               value: "app.sh"
+            - name: ARGO_PENDING_WORKFLOW_LIMIT
+              value: "900"
             - name: KAFKA_CONSUMER_GROUP_ID
               value: "thoth.investigator"
             - name: KAFKA_CONSUMER_ENABLE_AUTO_COMMIT
@@ -120,8 +127,6 @@ spec:
               value: "https://kubernetes.default.svc.cluster.local"
             - name: KUBERNETES_VERIFY_TLS
               value: "0"
-            - name: THOTH_INVESTIGATOR_SCHEDULE_REVSOLVER
-              value: "0"
             - name: THOTH_INVESTIGATOR_SCHEDULE_KEBECHET_ADMIN
               value: "0"
           volumeMounts:
@@ -164,4 +169,3 @@ spec:
             items:
               - key: kafka_ca.crt
                 path: kafka_ca.crt
-  test: false
