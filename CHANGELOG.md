@@ -1,3 +1,40 @@
+
+## Release 2023.01.24 (2023-01-24T04:50:42)
+* 918e5830 :ship: Bump up version of the updated component in release v2023.01.23 (#2736)
+* 9b687f08 :link: Split the investigator consumer based on namespace (#2734)
+* 8c111531 :ship: Deploy the Tag v0.17.0 for investigator
+* d1122dc7 :ship: Deploy the Tag pr-680 for investigator
+* 27c8c0fa Update OWNERS
+* 5523d765 temporarily disable message sending after adviser is complete
+* f8086881 :pushpin: Upgrade user-api in stage cluster for cachemiss error fix (#2732)
+* eb51159c :ship: Deploy the Tag v0.35.10 for user-api
+* eb8da84c :play_or_pause_button: Resume graph-refresh-job for data ingestion (#2731)
+* 0f3baccc :pushpin: Upgrade the all components using thoth-storages in stage cluster (#2730)
+* 854952f3 :ship: Deploy the Tag v0.11.1 for graph-sync-job
+* 7b033caf :ship: Deploy the Tag v0.35.9 for user-api
+* 30161eb1 :ship: Deploy the Tag v0.5.7 for cve-update-job
+* 2f13521b :ship: Deploy the Tag v0.9.16 for workflow-helpers
+* 3f5af098 :ship: Deploy the Tag v0.11.3 for reporter
+* d17256f5 :ship: Deploy the Tag v0.16.5 for investigator
+* ca40b2f0 :ship: Deploy the Tag v0.6.5 for graph-metrics-exporter
+* 3530e33e :ship: Deploy the Tag v0.10.1 for graph-backup-job
+* d3cc7f2b :ship: Deploy the Tag v0.3.22 for graph-refresh-job
+* 951f33db :pushpin: Upgrade the metrics-exporter in stage cluster (#2729)
+* 88073544 :ship: Deploy the Tag v0.21.4 for metrics-exporter
+* ddaf3ea0 :pushpin: Upgrade the management-api in stage cluster (#2728)
+* fe8828b3 :ship: Deploy the Tag v0.18.11 for management-api
+* c519f1f4 :pushpin: Upgrade the graph-sync and solver in stage cluster (#2726)
+* 7d988885 :ship: Deploy the Tag v0.11.0 for graph-sync-job
+* cda45aef :ship: Deploy the Tag v1.15.0 for solver
+* e318e3ce :ship: Deploy the Tag v1.15.0 for solver
+* 6a44d144 :ship: Deploy the Tag v1.15.0 for solver
+* 6804a6a5 :face_in_clouds: Remove unused env var in graph-sync job
+* 5beac8ab :face_in_clouds: Updating the kafka certs for smaug cluster deployment (#2723)
+* 78c67b60 Suspend prescription refresh execution
+* e5715793 :pause_button: Pause the graph-refresh job for sync period to stabilize (#2721)
+* aecceda2 :lock: Update the certs for the stage and test URLs (#2719)
+* 99016d90 :ship: Deploy the Tag pr-680 for investigator
+* 51e7abe6 :ship: Release of version 2022.12.05 (#2717)
 ## Release 2022.12.05 (2022-12-05T15:58:02)
 
 * 2b6fe3f9 :ship: Bump up version of the updated component in release v2022.12.05 (#2715)
