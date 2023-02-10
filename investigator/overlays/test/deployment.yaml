@@ -6,7 +6,7 @@ metadata:
     app: investigator
   name: investigator-consumer
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       service: investigator-consumer

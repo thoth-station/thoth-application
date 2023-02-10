@@ -7,4 +7,4 @@ metadata:
     app: thoth
     component: stress-tests
 spec:
-  suspend: false
+  suspend: true
