@@ -56,11 +56,6 @@ spec:
                   name: sefkhet-abwy
             - name: PYTHONPATH
               value: .
-            - name: SENTRY_DSN
-              valueFrom:
-                secretKeyRef:
-                  key: sentry-dsn
-                  name: sefkhet-abwy
             - name: THOTH_DEPLOYMENT_NAME
               value: aicoe-prod-bots
             - name: THOTH_LOGGING_NO_JSON
