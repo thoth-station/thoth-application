@@ -24,4 +24,4 @@ presubmits:
       env:
       - name: IS_AICOE_CI
         value: '1'
-      image: quay.io/operate-first/opf-toolbox:v0.15.0
+      image: quay.io/operate-first/opf-toolbox:v0.12.0
